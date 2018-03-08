@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.Pages.HowCreateFromFile"
+                xmlns:locale ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+              Style="{StaticResource TitleApp}">
+    <!--панель управлления-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Clicked="ClickedHomeCustomButton"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+    <StackLayout>
+      <Label Text="{locale:Translate LabelHeadAddFile}" Style="{StaticResource LableHeadApp}" HorizontalTextAlignment="Center"/>
+
+            <Label Text="{locale:Translate LabelNeedAddFile}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Label Text="{locale:Translate LabelNeedCreate}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Label Text="{locale:Translate LabelScreen21}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+
+      <Image Source="screen21.jpg" />
+            <Label Text="{locale:Translate LabelScreen22}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+      <Image Source="screen22.jpg" />
+            <Label Text="{locale:Translate LabelScreen231}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+
+            <Label Text="{locale:Translate LabelScreen232}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+      <Image Source="screen23.jpg" />
+            <Label Text="{locale:Translate LabelScreen24}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+      <Image Source="screen24.jpg" />
+            <Label Text="{locale:Translate LabelScreen25}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+      <Image Source="screen25.jpg" />
+     
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
