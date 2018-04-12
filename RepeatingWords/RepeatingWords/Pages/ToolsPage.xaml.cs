@@ -194,7 +194,7 @@ namespace RepeatingWords.Pages
 
         private void CreateBackUpIntoGoogleDrive(string fileNameBackup)
         {
-
+            bool success = DependencyService.Get<IGoogleDriveWorker>().CreateBackupGoogleDrive(folderNameBackUp, fileNameBackup);
         }
 
 
