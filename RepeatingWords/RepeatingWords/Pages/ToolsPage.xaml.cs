@@ -125,7 +125,7 @@ namespace RepeatingWords.Pages
 
 
         #region BACKUP HANDLE
-        string filePathDb = App.Db.DBConnection.DatabasePath;
+        string filePathToDbFull = App.Db.DBConnection.DatabasePath;
         string fileNameBackupDef = "backupcardsofwords";
         const string folderNameBackUp = "CardsOfWordsBackup";
         //пока только для ведроида
@@ -170,7 +170,7 @@ namespace RepeatingWords.Pages
             {//получим путь к папке
                 string filePathDefault = DependencyService.Get<IFileWorker>().CreateFolder(folderNameBackUp, fileNameBackup);
                 //создаем резервную копию передаем путь к БД и путь для сохранения резервной копиии
-                bool succes = DependencyService.Get<IFileWorker>().WriteFile(filePathDb, filePathDefault);
+                bool succes = DependencyService.Get<IFileWorker>().WriteFile(filePathToDbFull, filePathDefault);
                 if (succes)
                 {
                     await DisplayAlert("Успешно", "Резервная копия создана в дирректории " + folderNameBackUp, "Ок");
@@ -194,7 +194,8 @@ namespace RepeatingWords.Pages
 
         private void CreateBackUpIntoGoogleDrive(string fileNameBackup)
         {
-            bool success = DependencyService.Get<IGoogleDriveWorker>().CreateBackupGoogleDrive(folderNameBackUp, fileNameBackup);
+            //передаем название папки бэкапа.название файла которые нужно создать и путь к файлу БД
+            bool success = DependencyService.Get<IGoogleDriveWorker>().CreateBackupGoogleDrive(folderNameBackUp, fileNameBackup, filePathToDbFull);
         }
 
 
@@ -227,7 +228,7 @@ namespace RepeatingWords.Pages
 
                             if (!string.IsNullOrEmpty(fileBackUp))
                             {
-                                succes = DependencyService.Get<IFileWorker>().WriteFile(fileBackUp, filePathDb);
+                                succes = DependencyService.Get<IFileWorker>().WriteFile(fileBackUp, filePathToDbFull);
                             }
                             break;
                         }

@@ -2,6 +2,6 @@
 {
     public interface IGoogleDriveWorker
     {
-        bool CreateBackupGoogleDrive(string folderName, string fileName);
+        bool CreateBackupGoogleDrive(string folderName, string fileName, string filePathToDbFull);
     }
 }

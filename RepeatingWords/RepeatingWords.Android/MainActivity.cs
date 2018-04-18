@@ -24,8 +24,6 @@ namespace RepeatingWords.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity,GoogleApiClient.IConnectionCallbacks, IResultCallback, IDriveApiDriveContentsResult
     {
 
-       
-
         public static bool HasPermissionToReadWriteExternalStorage = false;
         protected override void OnCreate(Bundle bundle)
         {
@@ -48,7 +46,7 @@ namespace RepeatingWords.Droid
         {
             try
             {
-                if(ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage)==(int)Permission.Granted && ContextCompat.CheckSelfPermission(this,Manifest.Permission.WriteExternalStorage)==(int)Permission.Granted)
+                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted && ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted)
                 {
                     HasPermissionToReadWriteExternalStorage = true;
                 }
@@ -94,12 +92,14 @@ namespace RepeatingWords.Droid
 
 
         //GoogleApiClient.IConnectionCallbacks, IResultCallback, IDriveApiDriveContentsResult
-        const string TAG = "GDriveExample";
+        //    const string TAG = "CardsOfWords";
+        const string TAG = "clientcardsofwordsandroid";
         const int REQUEST_CODE_RESOLUTION = 3;
         GoogleApiClient _googleApiClient;
         //папка с бэкапом                
-        string folderName = "CardsOfWordsBackUp";
-        string filename = "cardsofwordsbackup";
+        string folderName = string.Empty;
+        string filename = string.Empty;
+        string pathToDb = string.Empty;
         //флаг создаем файл бэкапа или получаем файл бэкапа
         bool isCreateBackUp = true;
 
@@ -107,9 +107,13 @@ namespace RepeatingWords.Droid
 
 
         //авторизация гугл 
-        public void GoogleCustomAuthorithation(bool isCreateBackUp)
+        public void GoogleCustomAuthorithation(bool isCreateBackUp, string folderName = null, string fileName = null, string pathToDb = null)
         {
             this.isCreateBackUp = isCreateBackUp;
+            this.folderName = folderName;
+            filename = fileName;
+            this.pathToDb = pathToDb;
+
             //создаем клиент гугл
             if (_googleApiClient == null)
             {
@@ -193,7 +197,7 @@ namespace RepeatingWords.Droid
 
 
 
-        string fileLocal = "fileDbOnSmart.txt";
+       // string fileLocal = "fileDbOnSmart.txt";
 
         //получаем файл бэкапа
         private async void GetBackUpFile(IDriveApiDriveContentsResult contentResults)
@@ -250,7 +254,7 @@ namespace RepeatingWords.Droid
         //создаем бэкап
         private void CreateBackUpFolderAndFile(IDriveApiDriveContentsResult contentResults)
         {
-            string filenameCreate = filename + DateTime.Now.ToString("ddMMyyyy") + ".dat";
+           // string filenameCreate = filename + DateTime.Now.ToString("ddMMyyyy") + ".dat";
             //поиск папки с бэкапом
             DriveId folderBackUpId = FindItems(folderName).Result;
             //если папка не найдена создаем папку в гугле диске
@@ -261,7 +265,7 @@ namespace RepeatingWords.Droid
                 folderBackUpId = FindItems(folderName).Result;
             }
             //записываем файл в папку
-            WriteFile(folderBackUpId, filenameCreate, contentResults);
+            WriteFile(folderBackUpId, filename, contentResults);
         }
 
 
@@ -308,9 +312,22 @@ namespace RepeatingWords.Droid
         //метод записи файла
         private void WriteFile(DriveId folderBackUpId, string filename, IDriveApiDriveContentsResult content)
         {
-            var writer = new OutputStreamWriter(content.DriveContents.OutputStream);
-            writer.Write("backup string in base 64 string");
-            writer.Close();
+
+            //var stream = file.GetStream();
+            //byte[] filebytearray = new byte[stream.Length];
+            //stream.Read(filebytearray, 0, (int)stream.Length);
+            //this.Base64 = Convert.ToBase64String(filebytearray);
+            //var st = new MemoryStream()
+            //    st.R
+            //using (var stream = new BinaryReader(new Stream(), Encoding.Unicode);
+            
+            using (var writer = new OutputStreamWriter(content.DriveContents.OutputStream))
+            {
+                writer.Write("backup string in base 64 string");
+                writer.Close();
+            }
+
+               
             MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
                    .SetTitle(filename)
                    .SetMimeType("application/octet-stream")
