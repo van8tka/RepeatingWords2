@@ -15,23 +15,13 @@ namespace RepeatingWords.Droid
             return true;
         }
 
-        public bool RestoreBackUpGoogleDrive()
+        public bool RestoreBackupGoogleDriveFile(string filePathToDbFull,string partOfFileNameBackup,string folderName)
         {
-           bool isCreateBackUp = false;
-            var activity = (MainActivity)Forms.Context;
-            activity.GoogleCustomAuthorithation(isCreateBackUp);            
-            return true;
+                bool isCreateBackUp = false;
+                var activity = (MainActivity)Forms.Context;
+                activity.GoogleCustomAuthorithation(isCreateBackUp,folderName:folderName, fileName:partOfFileNameBackup, pathToDb: filePathToDbFull);
+                return true;
+           
         }
-        
-        
-
-
-
-
-
-
-
-
-
     }
 }

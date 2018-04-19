@@ -14,6 +14,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
+using Android.Util;
 using Java.IO;
 
 namespace RepeatingWords.Droid
@@ -202,48 +203,57 @@ namespace RepeatingWords.Droid
         //получаем файл бэкапа
         private async void GetBackUpFile(IDriveApiDriveContentsResult contentResults)
         {
-            var contentFile = new StringBuilder();
-            //получаем папку бэкапа            
-            DriveId folderBackUpId = FindItems(folderName).Result;
-            if (folderBackUpId == null)
+            try
             {
-                //папка с бэкапом не обнаружена
-            }
-            else
-            {
-                IDriveFolder driveFolder = null;
-                IDriveFile driveFile = null;
-                //получаем папку по ID
-                driveFolder = driveFolder ?? folderBackUpId.AsDriveFolder();
-                //если папка не ноль то получаем файлы                
-                if (driveFolder != null)
+                var contentFile = new StringBuilder();
+                //получаем папку бэкапа            
+                DriveId folderBackUpId = FindItems(folderName).Result;
+                if (folderBackUpId == null)
                 {
-                    var filesResult = await driveFolder.ListChildrenAsync(_googleApiClient);
-                    Java.Util.Date temp = null;
-                    foreach (var item in filesResult.MetadataBuffer)
+                    //папка с бэкапом не обнаружена
+                }
+                else
+                {
+                    IDriveFolder driveFolder = null;
+                    IDriveFile driveFile = null;
+                    //получаем папку по ID
+                    driveFolder = driveFolder ?? folderBackUpId.AsDriveFolder();
+                    //если папка не ноль то получаем файлы                
+                    if (driveFolder != null)
                     {
-                        if (item.Title.Contains(filename))
+                        var filesResult = await driveFolder.ListChildrenAsync(_googleApiClient);
+                        Java.Util.Date temp = null;
+                        foreach (var item in filesResult.MetadataBuffer)
                         {
-                            if (temp == null || !temp.After(item.ModifiedDate))
+                            if (item.Title.Contains(filename))
                             {
-                                temp = item.ModifiedDate;
-                                driveFile = item.DriveId.AsDriveFile();
+                                if (temp == null || !temp.After(item.ModifiedDate))
+                                {
+                                    temp = item.ModifiedDate;
+                                    driveFile = item.DriveId.AsDriveFile();
+                                }
                             }
                         }
                     }
-                }
-                //чтение файла и создание нового 
-                var readFile = await driveFile.OpenAsync(_googleApiClient, DriveFile.ModeReadOnly, null);
-                using (var inpstr = readFile.DriveContents.InputStream)
-                using (var streamReade = new StreamReader(inpstr))
-                {
-                    while (streamReade.Peek() >= 0)
+                    //чтение файла и создание нового 
+                    var readFile = await driveFile.OpenAsync(_googleApiClient, DriveFile.ModeReadOnly, null);
+                    using (var inpstr = readFile.DriveContents.InputStream)
+                    using (var streamReade = new StreamReader(inpstr))
                     {
-                        contentFile.Append(await streamReade.ReadLineAsync());
+                        while (streamReade.Peek() >= 0)
+                        {
+                            contentFile.Append(await streamReade.ReadLineAsync());
+                        }
                     }
+                    //contentFile получили теперь это надо записать в файл БД до завтра)
                 }
             }
-            System.Diagnostics.Debug.WriteLine(contentFile.ToString());
+            catch(Exception er)
+            {
+                Log.Error(er.Message, er.StackTrace);
+            }
+          
+            //System.Diagnostics.Debug.WriteLine(contentFile.ToString());
         }
 
 
@@ -311,23 +321,21 @@ namespace RepeatingWords.Droid
 
         //метод записи файла
         private void WriteFile(DriveId folderBackUpId, string filename, IDriveApiDriveContentsResult content)
-        {
-
-            //var stream = file.GetStream();
-            //byte[] filebytearray = new byte[stream.Length];
-            //stream.Read(filebytearray, 0, (int)stream.Length);
-            //this.Base64 = Convert.ToBase64String(filebytearray);
-            //var st = new MemoryStream()
-            //    st.R
-            //using (var stream = new BinaryReader(new Stream(), Encoding.Unicode);
-            
-            using (var writer = new OutputStreamWriter(content.DriveContents.OutputStream))
+        {          
+            using (var stream = new FileStream(pathToDb, FileMode.Open, FileAccess.Read))
             {
-                writer.Write("backup string in base 64 string");
-                writer.Close();
-            }
-
-               
+                byte[] fileByte = new byte[1024];
+                UTF8Encoding temp = new UTF8Encoding(true);
+                using (var writer = new OutputStreamWriter(content.DriveContents.OutputStream))
+                {
+                    while (stream.Read(fileByte, 0, fileByte.Length) > 0)
+                    {
+                        writer.Write(temp.GetString(fileByte));
+                    }                      
+                    // writer.Write("backup string in base 64 string");
+                    writer.Close();
+                }
+            }       
             MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
                    .SetTitle(filename)
                    .SetMimeType("application/octet-stream")
@@ -350,7 +358,7 @@ namespace RepeatingWords.Droid
 
         public void OnConnectionSuspended(int cause)
         {
-            throw new NotImplementedException();
+            Log.Error("ERRor", "OnConnectionSuspended");
         }
 
         public IDriveContents DriveContents

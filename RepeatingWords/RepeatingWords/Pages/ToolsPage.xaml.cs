@@ -229,24 +229,21 @@ namespace RepeatingWords.Pages
                             if (!string.IsNullOrEmpty(fileBackUp))
                             {
                                 succes = DependencyService.Get<IFileWorker>().WriteFile(fileBackUp, filePathToDbFull);
-                            }
+                                if (succes)
+                                    await DisplayAlert("", "Резервная копия восстановлена.", "Ок");
+                                else
+                                   await DisplayAlert("", "К сожалению, резервная копия не обнаружена.", "Ок");
+                             }
                             break;
                         }
                     case googleDriveFolder:
                         {
-
+                            succes = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathToDbFull, fileNameBackupDef, folderNameBackUp);
                             break;
                         }
                     default: break;
                 }
-                if (succes)
-                {
-                    await DisplayAlert("", "Резервная копия восстановлена.", "Ок");
-                }
-                else
-                {
-                    await DisplayAlert("", "К сожалению, резервная копия не обнаружена.", "Ок");
-                }
+                
             }
             catch (Exception er)
             {
