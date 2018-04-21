@@ -22,18 +22,25 @@ namespace RepeatingWords.Droid
 
     [Activity(Label = "Cards of words", MainLauncher = true, Theme = "@style/MyTheme.Splash", Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     //для установки SplashScreen обязательно использовать FormsAppCompatActivity а не FormsApplicationActivity
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity,GoogleApiClient.IConnectionCallbacks, IResultCallback, IDriveApiDriveContentsResult
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, GoogleApiClient.IConnectionCallbacks, IResultCallback, IDriveApiDriveContentsResult
     {
+
+
+
+
+
+
+
 
         public static bool HasPermissionToReadWriteExternalStorage = false;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
-             //проверка наличия разрешения
-                CheckPermissionForStorage();          
+            //проверка наличия разрешения
+            CheckPermissionForStorage();
             LoadApplication(new App());
-             
+
         }
         //переопределение кнопки назад
         public async override void OnBackPressed()
@@ -57,15 +64,15 @@ namespace RepeatingWords.Droid
                     ActivityCompat.RequestPermissions(this, requestPermission, REQUEST_STORAGE);
                 }
             }
-            catch(Exception er)
+            catch (Exception er)
             { }
         }
         //обработка результата установки разрешения
-        public override void OnRequestPermissionsResult(int requestCode,string[] permissions, Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
             try
             {
-                if(requestCode==REQUEST_STORAGE)
+                if (requestCode == REQUEST_STORAGE)
                 {
                     if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
                         HasPermissionToReadWriteExternalStorage = true;
@@ -78,7 +85,7 @@ namespace RepeatingWords.Droid
                     HasPermissionToReadWriteExternalStorage = false;
                 }
             }
-            catch(Exception er)
+            catch (Exception er)
             { }
         }
 
@@ -104,17 +111,20 @@ namespace RepeatingWords.Droid
         //флаг создаем файл бэкапа или получаем файл бэкапа
         bool isCreateBackUp = true;
 
+       
 
-
+        string successMessage;
+        string errorMessage;
 
         //авторизация гугл 
-        public void GoogleCustomAuthorithation(bool isCreateBackUp, string folderName = null, string fileName = null, string pathToDb = null)
+        public void GoogleCustomAuthorithation(bool isCreateBackUp, string folderName = null, string fileName = null, string pathToDb = null, string successMessage = "Excelent", string errorMessage = "Error")
         {
             this.isCreateBackUp = isCreateBackUp;
             this.folderName = folderName;
             filename = fileName;
             this.pathToDb = pathToDb;
-
+            this.successMessage = successMessage;
+            this.errorMessage = errorMessage;
             //создаем клиент гугл
             if (_googleApiClient == null)
             {
@@ -127,9 +137,13 @@ namespace RepeatingWords.Droid
             }
             if (!_googleApiClient.IsConnected)
                 _googleApiClient.Connect();
+            else
+            {
+                DoWorkBackupOrRestore(contentResults);
+            }
         }
 
-       
+
 
 
         //если ошибка подключения
@@ -145,7 +159,9 @@ namespace RepeatingWords.Droid
                 result.StartResolutionForResult(this, REQUEST_CODE_RESOLUTION);
             }
             catch (IntentSender.SendIntentException e)
-            { }
+            {
+                CreateAlertDialog("", errorMessage);
+            }
         }
 
 
@@ -168,37 +184,54 @@ namespace RepeatingWords.Droid
                         _googleApiClient.Connect();
                         break;
                     case Result.Canceled:
+                        CreateAlertDialog("", errorMessage);
                         // Log.Error(TAG, "Unable to sign in, is app registered for Drive access in Google Dev Console?");
                         break;
                     case Result.FirstUser:
+                        CreateAlertDialog("", errorMessage);
                         /// Log.Error(TAG, "Unable to sign in: RESULT_FIRST_USER");
                         break;
                     default:
+                        CreateAlertDialog("", errorMessage);
                         //  Log.Error(TAG, "Should never be here: " + resultCode);
                         return;
                 }
             }
         }
+
+
+        IDriveApiDriveContentsResult contentResults;
+
         //если удачно законектились 
         void IResultCallback.OnResult(Java.Lang.Object result)
         {
-            var contentResults = (result).JavaCast<IDriveApiDriveContentsResult>();
-            if (!contentResults.Status.IsSuccess) // handle the error
-                return;
-            Task.Run(() =>
-            {
-                if (isCreateBackUp)
-                    CreateBackUpFolderAndFile(contentResults);
-                else
-                    GetBackUpFile(contentResults);
+            contentResults = (result).JavaCast<IDriveApiDriveContentsResult>();
+            DoWorkBackupOrRestore(contentResults);
+        }
 
-            });
+        private void DoWorkBackupOrRestore(IDriveApiDriveContentsResult contentResults)
+        {
+            if(contentResults!=null)
+            {
+                if (!contentResults.Status.IsSuccess) // handle the error
+                    return;
+                Task.Run(() =>
+                {
+                    if (isCreateBackUp)
+                        CreateBackUpFolderAndFile(contentResults);
+                    else
+                        GetBackUpFile(contentResults);
+                });
+            }
+            else
+                CreateAlertDialog("", errorMessage);
+
         }
 
 
 
 
-       // string fileLocal = "fileDbOnSmart.txt";
+      
 
         //получаем файл бэкапа
         private async void GetBackUpFile(IDriveApiDriveContentsResult contentResults)
@@ -210,6 +243,7 @@ namespace RepeatingWords.Droid
                 DriveId folderBackUpId = FindItems(folderName).Result;
                 if (folderBackUpId == null)
                 {
+                    CreateAlertDialog("", errorMessage);
                     //папка с бэкапом не обнаружена
                 }
                 else
@@ -234,28 +268,50 @@ namespace RepeatingWords.Droid
                                 }
                             }
                         }
-                    }
-                    //чтение файла и создание нового 
-                    var readFile = await driveFile.OpenAsync(_googleApiClient, DriveFile.ModeReadOnly, null);
-                    using (var inpstr = readFile.DriveContents.InputStream)
-                    using (var streamReade = new StreamReader(inpstr))
-                    {
-                        while (streamReade.Peek() >= 0)
+
+                        //чтение файла из google drive и получение строки в BAse64       
+
+                        var readFile = await driveFile.OpenAsync(_googleApiClient, DriveFile.ModeReadOnly, null);
+                        using (var inpstr = readFile.DriveContents.InputStream)
+                        using (var streamReade = new StreamReader(inpstr))
                         {
-                            contentFile.Append(await streamReade.ReadLineAsync());
+                            while (streamReade.Peek() >= 0)
+                            {
+                                contentFile.Append(await streamReade.ReadLineAsync());
+                            }
                         }
+                        //конвернтируем строку из base64 и записываем в файл БД(переписываем)
+                        byte[] bytes = Convert.FromBase64String(contentFile.ToString());
+                        System.IO.File.WriteAllBytes(pathToDb, bytes);
+                        CreateAlertDialog("", successMessage);
+
                     }
-                    //contentFile получили теперь это надо записать в файл БД до завтра)
+                   
                 }
+                
             }
             catch(Exception er)
             {
                 Log.Error(er.Message, er.StackTrace);
-            }
-          
-            //System.Diagnostics.Debug.WriteLine(contentFile.ToString());
+                CreateAlertDialog("", errorMessage);
+            }                  
         }
+       
 
+        AlertDialog dl;
+        private void CreateAlertDialog(string title, string message)
+        {
+            RunOnUiThread(() =>
+            {
+                AlertDialog.Builder builder;
+                builder = new AlertDialog.Builder(this);
+                builder.SetTitle(title);
+                builder.SetMessage(message);
+                builder.SetCancelable(false);
+                builder.SetPositiveButton("OK", delegate { Finish(); });
+                builder.Show();
+            });
+        }
 
 
 
@@ -321,34 +377,35 @@ namespace RepeatingWords.Droid
 
         //метод записи файла
         private void WriteFile(DriveId folderBackUpId, string filename, IDriveApiDriveContentsResult content)
-        {          
-            using (var stream = new FileStream(pathToDb, FileMode.Open, FileAccess.Read))
+        {
+            try
             {
-                byte[] fileByte = new byte[1024];
-                UTF8Encoding temp = new UTF8Encoding(true);
+                byte[] bytes = System.IO.File.ReadAllBytes(pathToDb);
+                string file = Convert.ToBase64String(bytes);
                 using (var writer = new OutputStreamWriter(content.DriveContents.OutputStream))
                 {
-                    while (stream.Read(fileByte, 0, fileByte.Length) > 0)
-                    {
-                        writer.Write(temp.GetString(fileByte));
-                    }                      
-                    // writer.Write("backup string in base 64 string");
+                    writer.Write(file);
                     writer.Close();
                 }
-            }       
-            MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
-                   .SetTitle(filename)
-                   .SetMimeType("application/octet-stream")
-                   .Build();
-            //DriveClass.DriveApi
-            //          .GetRootFolder(_googleApiClient)
-            //          .CreateFile(_googleApiClient, changeSet, content.DriveContents);
-            IDriveFolder driveFolder = null;
-            //получаем папку по ID
-            driveFolder = driveFolder ?? folderBackUpId.AsDriveFolder();
-            //если папка не ноль то создаем файл
-            if (driveFolder != null)
-                driveFolder.CreateFile(_googleApiClient, changeSet, content.DriveContents);
+                MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
+                       .SetTitle(filename)
+                       .SetMimeType("application/octet-stream")
+                       .Build();
+                IDriveFolder driveFolder = null;
+                //получаем папку по ID
+                driveFolder = driveFolder ?? folderBackUpId.AsDriveFolder();
+                //если папка не ноль то создаем файл
+                if (driveFolder != null)
+                {
+                   var s = driveFolder.CreateFile(_googleApiClient, changeSet, content.DriveContents);
+                   CreateAlertDialog("", successMessage);
+                }
+                   
+            }
+            catch(Exception er)
+            {
+                CreateAlertDialog("", errorMessage);
+            }          
         }
 
 
@@ -358,6 +415,7 @@ namespace RepeatingWords.Droid
 
         public void OnConnectionSuspended(int cause)
         {
+            CreateAlertDialog("", errorMessage);
             Log.Error("ERRor", "OnConnectionSuspended");
         }
 
@@ -365,7 +423,7 @@ namespace RepeatingWords.Droid
         {
             get
             {
-                throw new NotImplementedException();
+               throw new NotImplementedException();
             }
         }
 
@@ -373,7 +431,7 @@ namespace RepeatingWords.Droid
         {
             get
             {
-                throw new NotImplementedException();
+               throw new NotImplementedException();
             }
         }
 

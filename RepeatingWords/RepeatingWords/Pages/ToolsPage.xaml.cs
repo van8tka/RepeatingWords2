@@ -177,7 +177,7 @@ namespace RepeatingWords.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Ошибка", "К сожалению во время создания резервной копии произошла ошибка, попробуйте другой способ создания резервной копии.", "Ок");
+                    await DisplayAlert("Ошибка", ErrorCreateBack, "Ок");
                 }
             }
             catch (Exception er)
@@ -195,7 +195,7 @@ namespace RepeatingWords.Pages
         private void CreateBackUpIntoGoogleDrive(string fileNameBackup)
         {
             //передаем название папки бэкапа.название файла которые нужно создать и путь к файлу БД
-            bool success = DependencyService.Get<IGoogleDriveWorker>().CreateBackupGoogleDrive(folderNameBackUp, fileNameBackup, filePathToDbFull);
+           DependencyService.Get<IGoogleDriveWorker>().CreateBackupGoogleDrive(folderNameBackUp, fileNameBackup, filePathToDbFull, successCreateBack, ErrorCreateBack);
         }
 
 
@@ -204,16 +204,20 @@ namespace RepeatingWords.Pages
 
 
 
+        string successRestore = "Резервная копия восстановлена";
+        string successCreateBack = "Резервная копия создана успешно";
+        string ErrorRestore = "Произошла ошибка, резервная копия не восстановлена";
+        string ErrorCreateBack = "Во время создания резервной копии произошла ошибка";
 
-
+        const string localFolder = "Поиск резервной копии в памяти телефона";
+        const string googleDriveFolder = "Поиск резервной копии на Google диск";
 
         //восстановление из backup
         private async void RestoreFromBackUpButtonCkick(object sender, EventArgs e)
         {
             try
             {
-                const string localFolder = "Поиск резервной копии в памяти телефона";
-                const string googleDriveFolder = "Поиск резервной копии на Google диск";
+               
                 //создание имени файла резервной копии
                 string fileNameBackup = string.Format(fileNameBackupDef + DateTime.Now.ToString("ddMMyyyy") + ".dat");
                 bool succes = false;
@@ -230,15 +234,15 @@ namespace RepeatingWords.Pages
                             {
                                 succes = DependencyService.Get<IFileWorker>().WriteFile(fileBackUp, filePathToDbFull);
                                 if (succes)
-                                    await DisplayAlert("", "Резервная копия восстановлена.", "Ок");
+                                    await DisplayAlert("", successRestore, "Ок");
                                 else
-                                   await DisplayAlert("", "К сожалению, резервная копия не обнаружена.", "Ок");
+                                   await DisplayAlert("", ErrorRestore, "Ок");
                              }
                             break;
                         }
                     case googleDriveFolder:
                         {
-                            succes = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathToDbFull, fileNameBackupDef, folderNameBackUp);
+                            succes = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathToDbFull, fileNameBackupDef, folderNameBackUp, successRestore, ErrorRestore);
                             break;
                         }
                     default: break;
