@@ -434,4 +434,49 @@
   <data name="ModelNoFillFullNameDictionary" xml:space="preserve">
     <value>Введите название словаря</value>
   </data>
+  <data name="BackUpCreateBtn" xml:space="preserve">
+    <value>Создать резервную копию</value>
+  </data>
+  <data name="BackUpCreateLocal" xml:space="preserve">
+    <value>Создание резервной копии в памяти телефона</value>
+  </data>
+  <data name="BackUpErrorCreated" xml:space="preserve">
+    <value>Во время создания резервной копии произошла ошибка</value>
+  </data>
+  <data name="BackUpErrorRestored" xml:space="preserve">
+    <value>Произошла ошибка, резервная копия не восстановлена</value>
+  </data>
+  <data name="BackUpGoogleDrive" xml:space="preserve">
+    <value>Создание резервной копии на Google диск</value>
+  </data>
+  <data name="BackUpInLocal" xml:space="preserve">
+    <value>В памяти телефона</value>
+  </data>
+  <data name="BackupMethod" xml:space="preserve">
+    <value>Выберите способ создания резервной копии</value>
+  </data>
+  <data name="BAckUpOnGoogle" xml:space="preserve">
+    <value>На Google диск</value>
+  </data>
+  <data name="BackUpRestoreBtn" xml:space="preserve">
+    <value>Восстановить резервную копию</value>
+  </data>
+  <data name="BackupRestored" xml:space="preserve">
+    <value>Резервная копия восстановлена</value>
+  </data>
+  <data name="BackUpSearch" xml:space="preserve">
+    <value>Поиск резервной копии</value>
+  </data>
+  <data name="BackupStr" xml:space="preserve">
+    <value>Резервное копирование</value>
+  </data>
+  <data name="BackupWasCreatedGoogle" xml:space="preserve">
+    <value>Резервная копия создана успешно</value>
+  </data>
+  <data name="BackupWasCreatedInFolder" xml:space="preserve">
+    <value>Резервная копия создана в дирректории </value>
+  </data>
+  <data name="SuccessStr" xml:space="preserve">
+    <value>Успешно</value>
+  </data>
 </root>

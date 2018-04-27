@@ -308,7 +308,7 @@ namespace RepeatingWords.Droid
                 builder.SetTitle(title);
                 builder.SetMessage(message);
                 builder.SetCancelable(false);
-                builder.SetPositiveButton("OK", delegate { Finish(); });
+                builder.SetPositiveButton("OK", delegate { });
                 builder.Show();
             });
         }
@@ -320,18 +320,26 @@ namespace RepeatingWords.Droid
         //создаем бэкап
         private void CreateBackUpFolderAndFile(IDriveApiDriveContentsResult contentResults)
         {
-           // string filenameCreate = filename + DateTime.Now.ToString("ddMMyyyy") + ".dat";
-            //поиск папки с бэкапом
-            DriveId folderBackUpId = FindItems(folderName).Result;
-            //если папка не найдена создаем папку в гугле диске
-            if (folderBackUpId == null)
+            try
             {
-                CreateFolder(folderName);
-                //получаем ID 
-                folderBackUpId = FindItems(folderName).Result;
+                // string filenameCreate = filename + DateTime.Now.ToString("ddMMyyyy") + ".dat";
+                //поиск папки с бэкапом
+                DriveId folderBackUpId = FindItems(folderName).Result;
+                //если папка не найдена создаем папку в гугле диске
+                if (folderBackUpId == null)
+                {
+                    CreateFolder(folderName);
+                    //получаем ID 
+                    folderBackUpId = FindItems(folderName).Result;
+                }
+                //записываем файл в папку
+                WriteFile(folderBackUpId, filename, contentResults);
             }
-            //записываем файл в папку
-            WriteFile(folderBackUpId, filename, contentResults);
+            catch(Exception er)
+            {
+                Log.Error("ERROR", er.Message + " "+er.StackTrace);
+            }
+        
         }
 
 
@@ -341,21 +349,29 @@ namespace RepeatingWords.Droid
         private async Task<DriveId> FindItems(string folderName)
         {
             DriveId folderId = null;
-            //установим запрос поиска
-            IDriveFolder appFolder = DriveClass.DriveApi.GetRootFolder(_googleApiClient);
-            var query = new QueryClass
-              .Builder().AddFilter(Filters.And(
-              Filters.Eq(SearchableField.Title, folderName),
-              Filters.Eq(SearchableField.Trashed, false))).Build();
-            var queryResult = await appFolder.QueryChildrenAsync(_googleApiClient, query);
-            foreach (var driveItem in queryResult.MetadataBuffer)
-            {
-                if (driveItem.IsFolder && driveItem.Title == folderName)
+            try
+            {              
+                //установим запрос поиска
+                IDriveFolder appFolder = DriveClass.DriveApi.GetRootFolder(_googleApiClient);
+                var query = new QueryClass
+                  .Builder().AddFilter(Filters.And(
+                  Filters.Eq(SearchableField.Title, folderName),
+                  Filters.Eq(SearchableField.Trashed, false))).Build();
+                var queryResult = await appFolder.QueryChildrenAsync(_googleApiClient, query);
+                foreach (var driveItem in queryResult.MetadataBuffer)
                 {
-                    folderId = driveItem.DriveId;
+                    if (driveItem.IsFolder && driveItem.Title == folderName)
+                    {
+                        folderId = driveItem.DriveId;
+                    }
                 }
+                return folderId;
             }
-            return folderId;
+            catch (Exception er)
+            {
+                Log.Error("ERROR", er.Message + " " + er.StackTrace);
+                return folderId;
+            }
         }
 
 
@@ -365,13 +381,19 @@ namespace RepeatingWords.Droid
         //создаем папку в гугле
         private void CreateFolder(string folderName)
         {
-            MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
-                        .SetTitle(folderName)
-                        .SetMimeType(DriveFolder.MimeType)
-                        .SetStarred(true)
-                        .Build();
-            var result = DriveClass.DriveApi.GetRootFolder(_googleApiClient).CreateFolder(_googleApiClient, changeSet);
-
+            try
+            {
+                MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
+                                       .SetTitle(folderName)
+                                       .SetMimeType(DriveFolder.MimeType)
+                                       .SetStarred(true)
+                                       .Build();
+                var result = DriveClass.DriveApi.GetRootFolder(_googleApiClient).CreateFolder(_googleApiClient, changeSet);
+            }
+            catch (Exception er)
+            {
+                Log.Error("ERROR", er.Message + " " + er.StackTrace);
+            }
         }
 
 

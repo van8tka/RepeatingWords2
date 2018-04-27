@@ -124,10 +124,15 @@ namespace RepeatingWords.Pages
         }
 
 
-        #region BACKUP HANDLE
+     #region BACKUP HANDLE
+
         string filePathToDbFull = App.Db.DBConnection.DatabasePath;
         string fileNameBackupDef = "backupcardsofwords";
         const string folderNameBackUp = "CardsOfWordsBackup";
+
+
+
+
         //пока только для ведроида
         //создание backup DB
 
@@ -137,10 +142,11 @@ namespace RepeatingWords.Pages
             {
                 const string localFolder = "Создание резервной копии в памяти телефона";
                 const string googleDriveFolder = "Создание резервной копии на Google диск";
+                const string choseMethodToCreateBackUp = "Выберите способ создания резервной копии";
                 //создание имени файла резервной копии
                 string fileNameBackup = string.Format(fileNameBackupDef + DateTime.Now.ToString("ddMMyyyy") + ".dat");
 
-                var action = await DisplayActionSheet("Выберите способ создания резервной копии", "Отмена", null, localFolder, googleDriveFolder);
+                var action = await DisplayActionSheet(choseMethodToCreateBackUp, "Отмена", null, localFolder, googleDriveFolder);
                 switch (action)
                 {
                     case localFolder:
@@ -168,12 +174,15 @@ namespace RepeatingWords.Pages
         {
             try
             {//получим путь к папке
+
+                const string titleSuccess = "Успешно";
+                const string backUpWasCreated = "Резервная копия создана в дирректории ";
                 string filePathDefault = DependencyService.Get<IFileWorker>().CreateFolder(folderNameBackUp, fileNameBackup);
                 //создаем резервную копию передаем путь к БД и путь для сохранения резервной копиии
                 bool succes = DependencyService.Get<IFileWorker>().WriteFile(filePathToDbFull, filePathDefault);
                 if (succes)
                 {
-                    await DisplayAlert("Успешно", "Резервная копия создана в дирректории " + folderNameBackUp, "Ок");
+                    await DisplayAlert(titleSuccess, backUpWasCreated + folderNameBackUp, "Ок");
                 }
                 else
                 {
@@ -211,17 +220,17 @@ namespace RepeatingWords.Pages
 
         const string localFolder = "Поиск резервной копии в памяти телефона";
         const string googleDriveFolder = "Поиск резервной копии на Google диск";
-
+        string titleSearchBackUp = "Поиск резервной копии";
         //восстановление из backup
         private async void RestoreFromBackUpButtonCkick(object sender, EventArgs e)
         {
             try
             {
-               
+              
                 //создание имени файла резервной копии
                 string fileNameBackup = string.Format(fileNameBackupDef + DateTime.Now.ToString("ddMMyyyy") + ".dat");
                 bool succes = false;
-                var action = await DisplayActionSheet("Поиск резервной копии", "Отмена", null, localFolder, googleDriveFolder);
+                var action = await DisplayActionSheet(titleSearchBackUp, "Отмена", null, localFolder, googleDriveFolder);
                 switch (action)
                 {
                     case localFolder:
