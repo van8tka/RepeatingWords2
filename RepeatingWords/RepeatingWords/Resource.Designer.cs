@@ -8,11 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RepeatingWords {
+namespace RepeatingWords
+{
     using System;
     using System.Reflection;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,896 +24,1214 @@ namespace RepeatingWords {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
-        
+    internal class Resource
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resource() {
+        internal Resource()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RepeatingWords.Resource", typeof(Resource).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to About app.
         /// </summary>
-        internal static string ButtonAbout {
-            get {
+        internal static string ButtonAbout
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonAbout", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Create dictionary.
         /// </summary>
-        internal static string ButtonAddDict {
-            get {
+        internal static string ButtonAddDict
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonAddDict", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Add dictionary.
         /// </summary>
-        internal static string ButtonAddDictionaryOrWords {
-            get {
+        internal static string ButtonAddDictionaryOrWords
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonAddDictionaryOrWords", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Create word.
         /// </summary>
-        internal static string ButtonAddWord {
-            get {
+        internal static string ButtonAddWord
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonAddWord", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Import words from the file.
         /// </summary>
-        internal static string ButtonAddWorFrFile {
-            get {
+        internal static string ButtonAddWorFrFile
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonAddWorFrFile", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Add dictionary from the server.
         /// </summary>
-        internal static string ButtonAddWorFrNet {
-            get {
+        internal static string ButtonAddWorFrNet
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonAddWorFrNet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
-        internal static string ButtonCreate {
-            get {
+        internal static string ButtonCreate
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonCreate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Create the dictionary.
         /// </summary>
-        internal static string ButtonHowCreateDictAndaddWord {
-            get {
+        internal static string ButtonHowCreateDictAndaddWord
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonHowCreateDictAndaddWord", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Import words from the file.
         /// </summary>
-        internal static string ButtonHowIportFile {
-            get {
+        internal static string ButtonHowIportFile
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonHowIportFile", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Next card.
         /// </summary>
-        internal static string ButtonNextWord {
-            get {
+        internal static string ButtonNextWord
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonNextWord", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Privacy.
         /// </summary>
-        internal static string ButtonPolicy {
-            get {
+        internal static string ButtonPolicy
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonPolicy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove the dictionary.
         /// </summary>
-        internal static string ButtonRemove {
-            get {
+        internal static string ButtonRemove
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonRemove", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Studying of words.
         /// </summary>
-        internal static string ButtonRepeatWords {
-            get {
+        internal static string ButtonRepeatWords
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonRepeatWords", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Write a review.
         /// </summary>
-        internal static string ButtonReviewText {
-            get {
+        internal static string ButtonReviewText
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonReviewText", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Leave a comment.
         /// </summary>
-        internal static string ButtonSendReview {
-            get {
+        internal static string ButtonSendReview
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonSendReview", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to View the list of words.
         /// </summary>
-        internal static string ButtonShowWords {
-            get {
+        internal static string ButtonShowWords
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonShowWords", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Turn the card.
         /// </summary>
-        internal static string ButtonTurnCard {
-            get {
+        internal static string ButtonTurnCard
+        {
+            get
+            {
                 return ResourceManager.GetString("ButtonTurnCard", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select the dictionary.
         /// </summary>
-        internal static string ChooseDictionaryForRepeat {
-            get {
+        internal static string ChooseDictionaryForRepeat
+        {
+            get
+            {
                 return ResourceManager.GetString("ChooseDictionaryForRepeat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Continue.
         /// </summary>
-        internal static string Continue {
-            get {
+        internal static string Continue
+        {
+            get
+            {
                 return ResourceManager.GetString("Continue", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Enter the dictionary name.
         /// </summary>
-        internal static string EntryNameDict {
-            get {
+        internal static string EntryNameDict
+        {
+            get
+            {
                 return ResourceManager.GetString("EntryNameDict", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Use these cards of words for a learning of foreign language.
         /// </summary>
-        internal static string HeaderMain {
-            get {
+        internal static string HeaderMain
+        {
+            get
+            {
                 return ResourceManager.GetString("HeaderMain", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
-        internal static string HowUseApp {
-            get {
+        internal static string HowUseApp
+        {
+            get
+            {
                 return ResourceManager.GetString("HowUseApp", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select the dictionary.
         /// </summary>
-        internal static string LabelChooseDict {
-            get {
+        internal static string LabelChooseDict
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelChooseDict", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select or create  dictionary.
         /// </summary>
-        internal static string LabelChooseDictOrCreate {
-            get {
+        internal static string LabelChooseDictOrCreate
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelChooseDictOrCreate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select the file to import.
         /// </summary>
-        internal static string LabelChooseFile {
-            get {
+        internal static string LabelChooseFile
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelChooseFile", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Suggest to select transcription keyboard.
         /// </summary>
-        internal static string LabelChooseShowKeyboardTrans {
-            get {
+        internal static string LabelChooseShowKeyboardTrans
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelChooseShowKeyboardTrans", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Choose theme.
         /// </summary>
-        internal static string LabelChooseTheme {
-            get {
+        internal static string LabelChooseTheme
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelChooseTheme", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Turned:.
         /// </summary>
-        internal static string LabelCountTurned {
-            get {
+        internal static string LabelCountTurned
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelCountTurned", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select the dictionary for load into the phone.
         /// </summary>
-        internal static string LabelDictionaryListFromNet {
-            get {
+        internal static string LabelDictionaryListFromNet
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelDictionaryListFromNet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ivan Kuzmuk.
         /// </summary>
-        internal static string LabelFIO {
-            get {
+        internal static string LabelFIO
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelFIO", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Entrer the first word.
         /// </summary>
-        internal static string LabelFirstWord {
-            get {
+        internal static string LabelFirstWord
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelFirstWord", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to We need:.
         /// </summary>
-        internal static string LabelForStart {
-            get {
+        internal static string LabelForStart
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelForStart", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Add words from file.
         /// </summary>
-        internal static string LabelHeadAddFile {
-            get {
+        internal static string LabelHeadAddFile
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelHeadAddFile", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Create the dictionary and add the word.
         /// </summary>
-        internal static string LabelHeadCreateInstr {
-            get {
+        internal static string LabelHeadCreateInstr
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelHeadCreateInstr", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Instructions of the app.
         /// </summary>
-        internal static string LabelInstruction {
-            get {
+        internal static string LabelInstruction
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelInstruction", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Choose language.
         /// </summary>
-        internal static string LabelLanguageListFromNet {
-            get {
+        internal static string LabelLanguageListFromNet
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelLanguageListFromNet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Enter the dictionary name.
         /// </summary>
-        internal static string LabelNameDict {
-            get {
+        internal static string LabelNameDict
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelNameDict", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to We need for import words from the file: .
         /// </summary>
-        internal static string LabelNeedAddFile {
-            get {
+        internal static string LabelNeedAddFile
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelNeedAddFile", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Using Notepad.exe create the file  .txt on the computer .
         /// </summary>
-        internal static string LabelNeedCreate {
-            get {
+        internal static string LabelNeedCreate
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelNeedCreate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Path to root folder:.
         /// </summary>
-        internal static string LabelPathToRoot {
-            get {
+        internal static string LabelPathToRoot
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelPathToRoot", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to All rights reserved..
         /// </summary>
-        internal static string LabelRights {
-            get {
+        internal static string LabelRights
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelRights", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Push the button [Add dictionary].
         /// </summary>
-        internal static string LabelScreen1 {
-            get {
+        internal static string LabelScreen1
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen1", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Push the button [Create dictionary].
         /// </summary>
-        internal static string LabelScreen2 {
-            get {
+        internal static string LabelScreen2
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fill the file as in example:  word  [transcription] translate. You have to use [] in every line..
         /// </summary>
-        internal static string LabelScreen21 {
-            get {
+        internal static string LabelScreen21
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen21", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to You have to save file in UTF-8..
         /// </summary>
-        internal static string LabelScreen22 {
-            get {
+        internal static string LabelScreen22
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen22", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Load this file into the phone..
         /// </summary>
-        internal static string LabelScreen231 {
-            get {
+        internal static string LabelScreen231
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen231", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Push the button [Import words from the file].
         /// </summary>
-        internal static string LabelScreen232 {
-            get {
+        internal static string LabelScreen232
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen232", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Push the our file. Wait while import will be complete. If you don&apos;t watch the file, check the path..
         /// </summary>
-        internal static string LabelScreen24 {
-            get {
+        internal static string LabelScreen24
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen24", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to After that open the list of words..
         /// </summary>
-        internal static string LabelScreen25 {
-            get {
+        internal static string LabelScreen25
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen25", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Enter the name dictionary, and push the button [Create].
         /// </summary>
-        internal static string LabelScreen3 {
-            get {
+        internal static string LabelScreen3
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen3", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Click on the dictionary.
         /// </summary>
-        internal static string LabelScreen4 {
-            get {
+        internal static string LabelScreen4
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen4", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Push the button [Create word].
         /// </summary>
-        internal static string LabelScreen5 {
-            get {
+        internal static string LabelScreen5
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen5", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Enter the word, translate of the word and transcription. Push the button [Create word].
         /// </summary>
-        internal static string LabelScreen6 {
-            get {
+        internal static string LabelScreen6
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen6", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to After that you can begin to study these words. Push the button [Studying of words].
         /// </summary>
-        internal static string LabelScreen7 {
-            get {
+        internal static string LabelScreen7
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen7", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select display language.
         /// </summary>
-        internal static string LabelScreen8 {
-            get {
+        internal static string LabelScreen8
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen8", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to to next word push the button [Next Word], to translation word push the button [Turn the card].
         /// </summary>
-        internal static string LabelScreen9 {
-            get {
+        internal static string LabelScreen9
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelScreen9", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Enter the translation of the word.
         /// </summary>
-        internal static string LabelSecondWord {
-            get {
+        internal static string LabelSecondWord
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelSecondWord", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string LabelSettings {
-            get {
+        internal static string LabelSettings
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelSettings", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Suggest.
         /// </summary>
-        internal static string LabelShowKeyboard {
-            get {
+        internal static string LabelShowKeyboard
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelShowKeyboard", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Dark.
         /// </summary>
-        internal static string LabelThemeDark {
-            get {
+        internal static string LabelThemeDark
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelThemeDark", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Light.
         /// </summary>
-        internal static string LabelThemeLight {
-            get {
+        internal static string LabelThemeLight
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelThemeLight", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Enter the transcription of the word.
         /// </summary>
-        internal static string LabelTranscription {
-            get {
+        internal static string LabelTranscription
+        {
+            get
+            {
                 return ResourceManager.GetString("LabelTranscription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please leave the comment about application, your judgement is very important for us..
         /// </summary>
-        internal static string MessagePleaseReview {
-            get {
+        internal static string MessagePleaseReview
+        {
+            get
+            {
                 return ResourceManager.GetString("MessagePleaseReview", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string ModalActCancel {
-            get {
+        internal static string ModalActCancel
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalActCancel", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Change.
         /// </summary>
-        internal static string ModalActChange {
-            get {
+        internal static string ModalActChange
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalActChange", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select the keyboard:.
         /// </summary>
-        internal static string ModalActChooseKeyboard {
-            get {
+        internal static string ModalActChooseKeyboard
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalActChooseKeyboard", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to From the first language.
         /// </summary>
-        internal static string ModalActFromFtoTr {
-            get {
+        internal static string ModalActFromFtoTr
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalActFromFtoTr", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to From the translation.
         /// </summary>
-        internal static string ModalActFromTrtoF {
-            get {
+        internal static string ModalActFromTrtoF
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalActFromTrtoF", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to List of words.
         /// </summary>
-        internal static string ModalActList {
-            get {
+        internal static string ModalActList
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalActList", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to System keyboard.
         /// </summary>
-        internal static string ModalActSysKeyboard {
-            get {
+        internal static string ModalActSysKeyboard
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalActSysKeyboard", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Transcription keyboard.
         /// </summary>
-        internal static string ModalActTranscKeyboard {
-            get {
+        internal static string ModalActTranscKeyboard
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalActTranscKeyboard", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The words are added..
         /// </summary>
-        internal static string ModalAddWords {
-            get {
+        internal static string ModalAddWords
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalAddWords", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to All words are passed.
         /// </summary>
-        internal static string ModalAllWordsComplete {
-            get {
+        internal static string ModalAllWordsComplete
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalAllWordsComplete", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Check internet connection.
         /// </summary>
-        internal static string ModalCheckNet {
-            get {
+        internal static string ModalCheckNet
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalCheckNet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select the action:.
         /// </summary>
-        internal static string ModalChooceAction {
-            get {
+        internal static string ModalChooceAction
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalChooceAction", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select display language:.
         /// </summary>
-        internal static string ModalChooseLang {
-            get {
+        internal static string ModalChooseLang
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalChooseLang", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The dictionary.
         /// </summary>
-        internal static string ModalDict {
-            get {
+        internal static string ModalDict
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalDict", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The dictionary or word was deleted!.
         /// </summary>
-        internal static string ModalDictOrWordRemove {
-            get {
+        internal static string ModalDictOrWordRemove
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalDictOrWordRemove", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Exception.
         /// </summary>
-        internal static string ModalException {
-            get {
+        internal static string ModalException
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Finish.
         /// </summary>
-        internal static string ModalFinish {
-            get {
+        internal static string ModalFinish
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalFinish", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Words aren&apos;t added to the dictionary, perhaps incorrect file..
         /// </summary>
-        internal static string ModalIncorrectFile {
-            get {
+        internal static string ModalIncorrectFile
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalIncorrectFile", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Studying of unlearned words.
         /// </summary>
-        internal static string ModalLerningTurnedWords {
-            get {
+        internal static string ModalLerningTurnedWords
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalLerningTurnedWords", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The dictionary doesn&apos;t have words..
         /// </summary>
-        internal static string ModalNoWord {
-            get {
+        internal static string ModalNoWord
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalNoWord", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to is deleted..
         /// </summary>
-        internal static string ModalRemove {
-            get {
+        internal static string ModalRemove
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalRemove", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
-        internal static string ModalRemoveAct {
-            get {
+        internal static string ModalRemoveAct
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalRemoveAct", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restart.
         /// </summary>
-        internal static string ModalRestart {
-            get {
+        internal static string ModalRestart
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalRestart", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The word.
         /// </summary>
-        internal static string ModalWord {
-            get {
+        internal static string ModalWord
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalWord", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to is deleted..
         /// </summary>
-        internal static string ModalWordRemove {
-            get {
+        internal static string ModalWordRemove
+        {
+            get
+            {
                 return ResourceManager.GetString("ModalWordRemove", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to For adding of the word fill all fields (except a transcription)..
         /// </summary>
-        internal static string ModelForAddingWord {
-            get {
+        internal static string ModelForAddingWord
+        {
+            get
+            {
                 return ResourceManager.GetString("ModelForAddingWord", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Not all fields are filled.
         /// </summary>
-        internal static string ModelNoFillFull {
-            get {
+        internal static string ModelNoFillFull
+        {
+            get
+            {
                 return ResourceManager.GetString("ModelNoFillFull", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Enter name of the dictionary.
         /// </summary>
-        internal static string ModelNoFillFullNameDictionary {
-            get {
+        internal static string ModelNoFillFullNameDictionary
+        {
+            get
+            {
                 return ResourceManager.GetString("ModelNoFillFullNameDictionary", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The word is added!.
         /// </summary>
-        internal static string ModelWordAdd {
-            get {
+        internal static string ModelWordAdd
+        {
+            get
+            {
                 return ResourceManager.GetString("ModelWordAdd", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The word is changed!.
         /// </summary>
-        internal static string ModelWordChange {
-            get {
+        internal static string ModelWordChange
+        {
+            get
+            {
                 return ResourceManager.GetString("ModelWordChange", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Voice language.
         /// </summary>
-        internal static string PickerText {
-            get {
+        internal static string PickerText
+        {
+            get
+            {
                 return ResourceManager.GetString("PickerText", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cards of words.
         /// </summary>
-        internal static string TitleMain {
-            get {
+        internal static string TitleMain
+        {
+            get
+            {
                 return ResourceManager.GetString("TitleMain", resourceCulture);
+            }
+        }
+
+        internal static string BackUpCreateLocal
+        {
+            get
+            {
+                return ResourceManager.GetString("BackUpCreateLocal", resourceCulture);
+            }
+        }
+
+        internal static string BackUpGoogleDrive
+        {
+            get
+            {
+                return ResourceManager.GetString("BackUpGoogleDrive", resourceCulture);
+            }
+        }
+
+        internal static string BackupMethod
+        {
+            get
+            {
+                return ResourceManager.GetString("BackupMethod", resourceCulture);
+            }
+        }
+
+        internal static string SuccessStr
+        {
+            get
+            {
+                return ResourceManager.GetString("SuccessStr", resourceCulture);
+            }
+        }
+
+        internal static string BackupWasCreatedInFolder
+        {
+            get
+            {
+                return ResourceManager.GetString("BackupWasCreatedInFolder", resourceCulture);
+            }
+        }
+
+        internal static string BackupRestored
+        {
+            get
+            {
+                return ResourceManager.GetString("BackupRestored", resourceCulture);
+            }
+        }
+
+        internal static string BackupWasCreatedGoogle
+        {
+            get
+            {
+                return ResourceManager.GetString("BackupWasCreatedGoogle", resourceCulture);
+            }
+        }
+
+        internal static string BackUpErrorRestored
+        {
+            get
+            {
+                return ResourceManager.GetString("BackUpErrorRestored", resourceCulture);
+            }
+        }
+
+        internal static string BackUpErrorCreated
+        {
+            get
+            {
+                return ResourceManager.GetString("BackUpErrorCreated", resourceCulture);
+            }
+        }
+
+        internal static string BackUpInLocal
+        {
+            get
+            {
+                return ResourceManager.GetString("BackUpInLocal", resourceCulture);
+            }
+        }
+
+        internal static string BackUpOnGoogle
+        {
+            get
+            {
+                return ResourceManager.GetString("BackUpOnGoogle", resourceCulture);
+            }
+        }
+
+        internal static string BackUpSearch
+        {
+            get
+            {
+                return ResourceManager.GetString("BackUpSearch", resourceCulture);
+            }
+        }
+
+        internal static string BackupStr
+        {
+            get
+            {
+                return ResourceManager.GetString("BackupStr", resourceCulture);
+            }
+        }
+
+        internal static string BackUpCreateBtn
+        {
+            get
+            {
+                return ResourceManager.GetString("BackUpCreateBtn", resourceCulture);
+            }
+        }
+
+        internal static string BackUpRestoreBtn
+        {
+            get
+            {
+                return ResourceManager.GetString("BackUpRestoreBtn", resourceCulture);
             }
         }
     }

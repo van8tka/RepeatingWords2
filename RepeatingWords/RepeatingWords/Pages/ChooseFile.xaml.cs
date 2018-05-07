@@ -174,33 +174,7 @@ namespace RepeatingWords.Pages
         }
 
 
-        //обработчик нажатий на папку или на файл(определяет короткий или длинный тап)_
-        //private async void GesturesContentView_GestureRecognized(object sender, GestureResult e)
-        //{
-        //    string itemTap = ((Label)((GesturesContentView)sender).Content).Text;
-        //    switch (e.GestureType)
-        //    {//длинное нажатие на папку обесепечивает сохранение бэкапа
-        //        case GestureType.LongPress:
-        //            {
-        //                if(getFolder)
-        //                {
-        //                 // string pathToSaveBackUp = RootPath + "/" + itemTap;
-        //                  //CreateBackUp(pathToSaveBackUp, itemTap);
-        //                }
-        //                 break;
-        //            }
-        //        case GestureType.SingleTap:
-        //            {
-        //                FileSelected(itemTap);
-        //                break;
-        //            }                 
-        //        //case GestureType.DoubleTap:
-        //        //    // Add code here
-        //        //    break;
-        //        default:
-        //            break;
-        //    }
-        //}
+       
 
 
 

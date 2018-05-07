@@ -122,7 +122,7 @@
     <comment>Добавление словаря</comment>
   </data>
   <data name="ButtonAddDictionaryOrWords" xml:space="preserve">
-    <value>Add dictionary</value>
+    <value>Dictionaries</value>
     <comment>Добавление словаря и (или) слов</comment>
   </data>
   <data name="ButtonAddWord" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>Кн перевернуть карточку</comment>
   </data>
   <data name="ChooseDictionaryForRepeat" xml:space="preserve">
-    <value>Select the dictionary</value>
+    <value>Learning</value>
     <comment>Выбор словаря для изучения слов(повторения)</comment>
   </data>
   <data name="Continue" xml:space="preserve">
@@ -425,7 +425,7 @@
     <value>All rights reserved.</value>
   </data>
   <data name="LabelChooseShowKeyboardTrans" xml:space="preserve">
-    <value>Suggest to select transcription keyboard</value>
+    <value>Suggest keyboard for transcription</value>
   </data>
   <data name="LabelShowKeyboard" xml:space="preserve">
     <value>Suggest</value>
@@ -451,5 +451,50 @@
   </data>
   <data name="ModelNoFillFullNameDictionary" xml:space="preserve">
     <value>Enter name of the dictionary</value>
+  </data>
+  <data name="BackUpCreateLocal" xml:space="preserve">
+    <value>Save backup in the local memory</value>
+  </data>
+  <data name="BackUpErrorCreated" xml:space="preserve">
+    <value>An error occurred while creating the backup</value>
+  </data>
+  <data name="BackUpErrorRestored" xml:space="preserve">
+    <value>An error occurred, the backup is not restored</value>
+  </data>
+  <data name="BackUpGoogleDrive" xml:space="preserve">
+    <value>Save backup in Google Drive</value>
+  </data>
+  <data name="BackUpInLocal" xml:space="preserve">
+    <value>In the local memory</value>
+  </data>
+  <data name="BackupMethod" xml:space="preserve">
+    <value>Backup method</value>
+  </data>
+  <data name="BackUpOnGoogle" xml:space="preserve">
+    <value>On Google Drive</value>
+  </data>
+  <data name="BackUpRestoreBtn" xml:space="preserve">
+    <value>Restore a backup</value>
+  </data>
+  <data name="BackupRestored" xml:space="preserve">
+    <value>Backup restored</value>
+  </data>
+  <data name="BackUpSearch" xml:space="preserve">
+    <value>Search a backup</value>
+  </data>
+  <data name="BackupStr" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="BackupWasCreatedGoogle" xml:space="preserve">
+    <value>The backup was created successfully</value>
+  </data>
+  <data name="BackupWasCreatedInFolder" xml:space="preserve">
+    <value>The backup was created in the directory</value>
+  </data>
+  <data name="SuccessStr" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="BackUpCreateBtn" xml:space="preserve">
+    <value>Create a backup</value>
   </data>
 </root>

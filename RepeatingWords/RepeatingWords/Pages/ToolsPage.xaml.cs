@@ -33,8 +33,8 @@ namespace RepeatingWords.Pages
                 }
                 else
                 {
-                    SwLight.IsToggled = true;
-                    this.BackgroundColor = Color.Silver;
+                    SwDark.IsToggled = false;
+                    this.BackgroundColor = Color.White;
                 }
             }
             if(App.Current.Properties.TryGetValue(TrKeyboard, out propTrKeyb))
@@ -82,7 +82,7 @@ namespace RepeatingWords.Pages
            
              if (SwDark.IsToggled == true)
             {               
-                SwLight.IsToggled = false;
+                
                 App.Current.Properties.Remove(Them);
                 App.Current.Properties.Add(Them, _blackThem);
                 Application.Current.Resources["TitleApp"] = Application.Current.Resources["TitleAppBlack"];
@@ -91,11 +91,11 @@ namespace RepeatingWords.Pages
                 Application.Current.Resources["LabelColorWB"] = Application.Current.Resources["LabelWhite"];
                 Application.Current.Resources["ColorWB"] = Application.Current.Resources["ColorWhite"];
                 Application.Current.Resources["ColorBlGr"] = Application.Current.Resources["ColorGreen"];
-                this.BackgroundColor = Color.Black;
+                this.BackgroundColor = Color.FromHex("#363636");
             }
            else
             {//при изменении IsToggled происходит вызов события switcher_ToggledLight              
-                SwLight.IsToggled = true;
+                
                 App.Current.Properties.Remove(Them);
                 App.Current.Properties.Add(Them, _whiteThem);
                 Application.Current.Resources["TitleApp"] = Application.Current.Resources["TitleAppWhite"];
@@ -104,24 +104,11 @@ namespace RepeatingWords.Pages
                 Application.Current.Resources["LabelColorWB"] = Application.Current.Resources["LabelBlack"];
                 Application.Current.Resources["ColorWB"] = Application.Current.Resources["ColorBlack"];
                 Application.Current.Resources["ColorBlGr"] = Application.Current.Resources["ColorBlue"];
-                this.BackgroundColor = Color.Silver;
+                this.BackgroundColor = Color.FromHex("#f5f5f5");
             }
 
         }
 
-        private void switcher_ToggledLight(object sender, ToggledEventArgs e)
-        {
-            //delete properties and then create new
-            if (SwLight.IsToggled == true)
-            {
-                SwDark.IsToggled = false;             
-            }
-            else
-            {
-                SwDark.IsToggled = true;
-            }
-          
-        }
 
 
      #region BACKUP HANDLE
@@ -140,27 +127,23 @@ namespace RepeatingWords.Pages
         {
             try
             {
-                const string localFolder = "Создание резервной копии в памяти телефона";
-                const string googleDriveFolder = "Создание резервной копии на Google диск";
-                const string choseMethodToCreateBackUp = "Выберите способ создания резервной копии";
+                 string localFolder = Resource.BackUpCreateLocal; 
+                 string googleDriveFolder = Resource.BackUpGoogleDrive;
+                 string choseMethodToCreateBackUp = Resource.BackupMethod;
                 //создание имени файла резервной копии
                 string fileNameBackup = string.Format(fileNameBackupDef + DateTime.Now.ToString("ddMMyyyy") + ".dat");
 
-                var action = await DisplayActionSheet(choseMethodToCreateBackUp, "Отмена", null, localFolder, googleDriveFolder);
-                switch (action)
+                var action = await DisplayActionSheet(choseMethodToCreateBackUp, Resource.ModalActCancel, null, localFolder, googleDriveFolder);
+
+                if(action == localFolder)
                 {
-                    case localFolder:
-                        {
-                            CreateBackUpIntoDefaultFolder(fileNameBackup);
-                            break;
-                        }
-                    case googleDriveFolder:
-                        {
-                            CreateBackUpIntoGoogleDrive(fileNameBackup);
-                            break;
-                        }
-                    default: break;
+                    CreateBackUpIntoDefaultFolder(fileNameBackup);
                 }
+                else if(action == googleDriveFolder)
+                {
+                    CreateBackUpIntoGoogleDrive(fileNameBackup);
+                }
+                               
             }
             catch (Exception er)
             {
@@ -175,8 +158,8 @@ namespace RepeatingWords.Pages
             try
             {//получим путь к папке
 
-                const string titleSuccess = "Успешно";
-                const string backUpWasCreated = "Резервная копия создана в дирректории ";
+                 string titleSuccess = Resource.SuccessStr;
+                 string backUpWasCreated = Resource.BackupWasCreatedInFolder+" ";
                 string filePathDefault = DependencyService.Get<IFileWorker>().CreateFolder(folderNameBackUp, fileNameBackup);
                 //создаем резервную копию передаем путь к БД и путь для сохранения резервной копиии
                 bool succes = DependencyService.Get<IFileWorker>().WriteFile(filePathToDbFull, filePathDefault);
@@ -186,7 +169,7 @@ namespace RepeatingWords.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Ошибка", ErrorCreateBack, "Ок");
+                    await DisplayAlert(Resource.ModalException, ErrorCreateBack, "Ок");
                 }
             }
             catch (Exception er)
@@ -210,17 +193,14 @@ namespace RepeatingWords.Pages
 
 
 
+        string successRestore = Resource.BackupRestored;
+        string successCreateBack = Resource.BackupWasCreatedGoogle;
+        string ErrorRestore = Resource.BackUpErrorRestored; 
+        string ErrorCreateBack = Resource.BackUpErrorCreated; 
 
-
-
-        string successRestore = "Резервная копия восстановлена";
-        string successCreateBack = "Резервная копия создана успешно";
-        string ErrorRestore = "Произошла ошибка, резервная копия не восстановлена";
-        string ErrorCreateBack = "Во время создания резервной копии произошла ошибка";
-
-        const string localFolder = "Поиск резервной копии в памяти телефона";
-        const string googleDriveFolder = "Поиск резервной копии на Google диск";
-        string titleSearchBackUp = "Поиск резервной копии";
+         string localFolder = Resource.BackUpInLocal; 
+        string googleDriveFolder = Resource.BackUpOnGoogle;
+        string titleSearchBackUp = Resource.BackUpSearch; 
         //восстановление из backup
         private async void RestoreFromBackUpButtonCkick(object sender, EventArgs e)
         {
@@ -230,33 +210,27 @@ namespace RepeatingWords.Pages
                 //создание имени файла резервной копии
                 string fileNameBackup = string.Format(fileNameBackupDef + DateTime.Now.ToString("ddMMyyyy") + ".dat");
                 bool succes = false;
-                var action = await DisplayActionSheet(titleSearchBackUp, "Отмена", null, localFolder, googleDriveFolder);
-                switch (action)
-                {
-                    case localFolder:
-                        {
-                            //для восстановления данных по умолчанию
-                            //получим последний файл бэкапа
-                            string fileBackUp = await DependencyService.Get<IFileWorker>().GetBackUpFilesAsync(folderNameBackUp);
+                var action = await DisplayActionSheet(titleSearchBackUp, Resource.ModalActCancel, null, localFolder, googleDriveFolder);
 
-                            if (!string.IsNullOrEmpty(fileBackUp))
-                            {
-                                succes = DependencyService.Get<IFileWorker>().WriteFile(fileBackUp, filePathToDbFull);
-                                if (succes)
-                                    await DisplayAlert("", successRestore, "Ок");
-                                else
-                                   await DisplayAlert("", ErrorRestore, "Ок");
-                             }
-                            break;
-                        }
-                    case googleDriveFolder:
-                        {
-                            succes = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathToDbFull, fileNameBackupDef, folderNameBackUp, successRestore, ErrorRestore);
-                            break;
-                        }
-                    default: break;
+                if(action == localFolder)
+                {
+                    //для восстановления данных по умолчанию
+                    //получим последний файл бэкапа
+                    string fileBackUp = await DependencyService.Get<IFileWorker>().GetBackUpFilesAsync(folderNameBackUp);
+
+                    if (!string.IsNullOrEmpty(fileBackUp))
+                    {
+                        succes = DependencyService.Get<IFileWorker>().WriteFile(fileBackUp, filePathToDbFull);
+                        if (succes)
+                            await DisplayAlert("", successRestore, "Ок");
+                        else
+                            await DisplayAlert("", ErrorRestore, "Ок");
+                    }
                 }
-                
+                else if(action == googleDriveFolder)
+                {
+                    succes = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathToDbFull, fileNameBackupDef, folderNameBackUp, successRestore, ErrorRestore);
+                }
             }
             catch (Exception er)
             {

@@ -55,7 +55,8 @@ namespace RepeatingWords
             if (action == ModalChange)
             {
                 CreateWord cw = new CreateWord(dict.Id, ws);
-                await Navigation.PushAsync(cw);
+                //await Navigation.PushAsync(cw);
+                await Navigation.PushModalAsync(cw);
             }
             if (action == ModalRemove)
             {
@@ -65,7 +66,7 @@ namespace RepeatingWords
                     if (App.LAr.GetLastAction().IdWord == ws.Id)
                         App.LAr.DelLastAction();
                 }
-                await DisplayAlert(ModalWord + " " + ws.RusWord + " " + ModalWordRemove, "", "Ok");
+              //  await DisplayAlert(ModalWord + " " + ws.RusWord + " " + ModalWordRemove, "", "Ok");
                 OnAppearing();
             }
         }
@@ -75,7 +76,8 @@ namespace RepeatingWords
             CreateWord cw = new CreateWord(dict.Id);
             Words word = new Words();
             cw.BindingContext = word;
-            await Navigation.PushAsync(cw);
+            // await Navigation.PushAsync(cw);
+            await Navigation.PushModalAsync(cw);
         }
 
         private async void RepeatWordsButtonClick(object sender, System.EventArgs e)

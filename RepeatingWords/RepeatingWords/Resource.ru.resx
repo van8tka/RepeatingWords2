@@ -122,7 +122,7 @@
     <comment>Добавление словаря</comment>
   </data>
   <data name="ButtonAddDictionaryOrWords" xml:space="preserve">
-    <value>Добавить словарь</value>
+    <value>Словари</value>
     <comment>Добавление словаря и (или) слов</comment>
   </data>
   <data name="ButtonAddWord" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>Кн перевернуть карточку</comment>
   </data>
   <data name="ChooseDictionaryForRepeat" xml:space="preserve">
-    <value>Выбрать словарь для изучения</value>
+    <value>Изучение</value>
     <comment>Выбор словаря для изучения слов(повторения)</comment>
   </data>
   <data name="Continue" xml:space="preserve">
@@ -407,7 +407,7 @@
     <value>Все права защищены.</value>
   </data>
   <data name="LabelChooseShowKeyboardTrans" xml:space="preserve">
-    <value>Предлагать выбор клавиатуры для ввода транскрипции</value>
+    <value>Предлагать клавиатуру для ввода транскрипции</value>
   </data>
   <data name="LabelShowKeyboard" xml:space="preserve">
     <value>Предлагать</value>

@@ -241,10 +241,11 @@ namespace RepeatingWords.Pages
         {
             try
             {
-                this.Navigation.RemovePage(this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
+                //  this.Navigation.RemovePage(this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
+
                 ETransc.Text = ETransc.Text;
                 CreateWord cr = new CreateWord(idDict,idWord, RusWord, EngWord, ETransc.Text);
-                await Navigation.PushAsync(cr);
+                await Navigation.PushModalAsync(cr);
             }
             catch (Exception er)
             {

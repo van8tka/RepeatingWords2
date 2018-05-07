@@ -116,12 +116,12 @@ namespace RepeatingWords
                     {
                        string ModalDict = Resource.ModalDict;
                        string ModalRemove = Resource.ModalRemove;                      
-                       await DisplayAlert(null, ModalDict + " " + dic.Name + " " + ModalRemove, "Ок");
+                      // await DisplayAlert(null, ModalDict + " " + dic.Name + " " + ModalRemove, "Ок");
                         OnAppearing();
                     }
                     else
                     {
-                        await DisplayAlert(null, "Во время удаления словаря произошла ошибка", "Ок");
+                        await DisplayAlert(null, Resource.ModalException, "Ок");
                     }
                     progressBar.IsVisible = false;
                     progressBar.Progress = 0.1;
@@ -164,7 +164,8 @@ namespace RepeatingWords
                 CreateWord cr = new CreateWord(dic.Id);
                 Words word1 = new Words();
                 cr.BindingContext = word1;
-                await Navigation.PushAsync(cr);
+                // await Navigation.PushAsync(cr);
+                await Navigation.PushModalAsync(cr);
             }
             catch (Exception er) { ErrorHandlerCustom.getErrorMessage(er); }
         }
@@ -251,7 +252,7 @@ namespace RepeatingWords
                 {
                     BtnEnable(true);
                    
-                    await DisplayAlert("", ModalAddWords, "Ok");
+                   // await DisplayAlert("", ModalAddWords, "Ok");
                     AddWord adw = new AddWord(dictionary);
                     await Navigation.PushAsync(adw);
                 }

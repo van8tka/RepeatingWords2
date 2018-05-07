@@ -77,27 +77,23 @@ namespace RepeatingWords
                     {
                         words.Transcription = "[]";
                     }
-
-                    int z = words.Id;
+                                     
                     words.IdDictionary = idDiction;
                     App.Wr.CreateWord(words);
-                    if (z == 0)
-                        await DisplayAlert("", ModelWordAdd, "Ok");
-                    else
-                        await DisplayAlert("", ModelWordChange, "Ok");
+                
+                    //Dictionary dict = App.Db.GetDictionary(words.IdDictionary);
 
-
-                    Dictionary dict = App.Db.GetDictionary(words.IdDictionary);
-
-                    AddWord adw = new AddWord(dict);
-                    await Navigation.PushAsync(adw);
+                    //AddWord adw = new AddWord(dict);
+                    await Navigation.PopModalAsync();
                 }
                 else
                 {
                     await DisplayAlert(ModelNoFillFull, ModelForAddingWord, "Ok");
                 }
             }
-            catch { }
+            catch(Exception er) {
+                ErrorHandlerCustom.getErrorMessage(er);
+            }
         }
 
         int FocusCoutTransc = 1;
@@ -129,13 +125,13 @@ namespace RepeatingWords
                         {
                             var words = (Words)BindingContext;
                             EntryTranscription tr = new EntryTranscription(idDiction, words.Id, words.RusWord, words.EngWord, words.Transcription);
-                            await Navigation.PushAsync(tr);
+                           await Navigation.PushModalAsync(tr);
                         }
                     }
 
                 }
             }
-            catch { }
+            catch(Exception er) { ErrorHandlerCustom.getErrorMessage(er); }
         }
     }
 

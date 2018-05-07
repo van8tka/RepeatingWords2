@@ -3,10 +3,6 @@ using RepeatingWords.Pages;
 using System;
 using System.Linq;
 using Xamarin.Forms;
-using System.IO;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Collections;
 
 namespace RepeatingWords
 {
