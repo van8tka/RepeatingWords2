@@ -154,7 +154,7 @@
     <comment>Кн удалить словарь</comment>
   </data>
   <data name="ButtonRepeatWords" xml:space="preserve">
-    <value>Изучение слов по карточкам</value>
+    <value>Изучение слов</value>
     <comment>Кн повторение карточек</comment>
   </data>
   <data name="ButtonTurnCard" xml:space="preserve">
@@ -221,7 +221,7 @@
     <value>Создать на компьютере через программу Блокнот(Notepad) файл c расширением txt."</value>
   </data>
   <data name="LabelPathToRoot" xml:space="preserve">
-    <value>Путь к корневому каталогу:</value>
+    <value>Путь к файлу:</value>
     <comment>Заголовок с указанием пути к корню системы</comment>
   </data>
   <data name="LabelScreen1" xml:space="preserve">

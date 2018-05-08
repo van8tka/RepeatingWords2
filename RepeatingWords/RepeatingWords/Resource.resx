@@ -226,7 +226,7 @@
     <comment>Создать на компьютере через программу Блокнот(Notepad) файл c расширением txt."</comment>
   </data>
   <data name="LabelPathToRoot" xml:space="preserve">
-    <value>Path to root folder:</value>
+    <value>Path to file:</value>
     <comment>Заголовок с указанием пути к корню системы</comment>
   </data>
   <data name="LabelScreen1" xml:space="preserve">

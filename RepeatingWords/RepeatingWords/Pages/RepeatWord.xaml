@@ -10,7 +10,7 @@
     </ContentPage.ToolbarItems>
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,1.0" AbsoluteLayout.LayoutFlags="All">
         <StackLayout HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,1.0" AbsoluteLayout.LayoutFlags="All">
-              <locale:AdMobView WidthRequest="320" HeightRequest="50" />
+            
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="LabelCountOfWords" Style="{DynamicResource LabelColor}" HorizontalOptions="FillAndExpand" Margin="0,15,0,0"/>
                 <Label x:Name="Labelpicker" Text="{locale:Translate PickerText}" Style="{DynamicResource LabelColor}"  HorizontalOptions="End" HorizontalTextAlignment="Center"  Margin="0,15,0,0"/>
@@ -55,10 +55,11 @@
           
             
         </StackLayout>
-        <StackLayout AbsoluteLayout.LayoutBounds=".0,0.9,1,0.5" AbsoluteLayout.LayoutFlags="All" Orientation="Vertical" >
+        <StackLayout AbsoluteLayout.LayoutBounds=".0,0.9,1,0.6" AbsoluteLayout.LayoutFlags="All" Orientation="Vertical" >
             <Button x:Name="ButtonVoice" Clicked="BtnClickSpeech" HorizontalOptions="EndAndExpand"/>
             <Button Text="{locale:Translate ButtonNextWord}" Clicked="NextWordButtonClick"  Style="{StaticResource buttonStyle}" VerticalOptions="FillAndExpand"  />
             <Button Text="{locale:Translate ButtonTurnCard}" Clicked="TurnAroundWordButtonClick"  Style="{StaticResource buttonStyle}" BackgroundColor="Green" VerticalOptions="FillAndExpand" />
+            <locale:AdMobView WidthRequest="320" HeightRequest="50"  VerticalOptions="End"/>
         </StackLayout>
     </AbsoluteLayout>
 </ContentPage>

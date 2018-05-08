@@ -1,34 +1,37 @@
-﻿using RepeatingWords.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
+﻿using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace RepeatingWords.Pages
 {
 
-   
+
     public partial class EntryTranscription : ContentPage
     {
-        int idDict;
-        string RusWord;
-        string EngWord;
-        int idWord;
-        public EntryTranscription(int idDict,int idWord ,string RusWord, string EngWord, string Trans)
+        private CreateWord createWord;
+
+        //int idDict;
+        //string RusWord;
+        //string EngWord;
+        //int idWord;
+        //public EntryTranscription(int idDict,int idWord ,string RusWord, string EngWord, string Trans)
+        //{
+        //    InitializeComponent();
+        //    this.idDict = idDict;
+        //    this.RusWord = RusWord;
+        //    this.EngWord = EngWord;
+        //    this.idWord = idWord;
+        //    ETransc.Text = Trans;
+        //}
+
+        public EntryTranscription(string Trans)
         {
             InitializeComponent();
-            this.idDict = idDict;
-            this.RusWord = RusWord;
-            this.EngWord = EngWord;
-            this.idWord = idWord;
             ETransc.Text = Trans;
+        }
+
+        public EntryTranscription(string Trans, CreateWord createWord) : this(Trans)
+        {
+            this.createWord = createWord;
         }
 
 
@@ -39,6 +42,8 @@ namespace RepeatingWords.Pages
             Application.Current.MainPage = new NavigationPage(new MainPage());
         }
 
+
+        #region CLICK_CHAR_TRANSCRIPTION
         private void Clik_ɑ(object sender, EventArgs e)
         {
             ETransc.Text = ETransc.Text + "ɑ";
@@ -197,6 +202,10 @@ namespace RepeatingWords.Pages
         {
             ETransc.Text = ETransc.Text + "z";
         }
+        #endregion
+
+
+
         private void Clik_LeftSquareBracket(object sender, EventArgs e)
         {
             ETransc.Text = ETransc.Text + "[";
@@ -244,14 +253,18 @@ namespace RepeatingWords.Pages
                 //  this.Navigation.RemovePage(this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
 
                 ETransc.Text = ETransc.Text;
-                CreateWord cr = new CreateWord(idDict,idWord, RusWord, EngWord, ETransc.Text);
-                await Navigation.PushModalAsync(cr);
+                await Navigation.PopModalAsync();
+                //CreateWord cr = new CreateWord(idDict,idWord, RusWord, EngWord, ETransc.Text);
+                createWord.TranscriptionValue = ETransc.Text;
+                await Navigation.PopModalAsync();
+                //await Navigation.PushModalAsync(cr);
             }
             catch (Exception er)
             {
                 await DisplayAlert("Error", er.Message, "Ok");
             }
         }
+
 
     }
 

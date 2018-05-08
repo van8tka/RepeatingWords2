@@ -9,10 +9,12 @@ namespace RepeatingWords
     public partial class CreateWord : ContentPage
     {
         int idDiction;
+        internal string TranscriptionValue { get; set; }
         //1 конструктор для создания
         public CreateWord(int iddiction)
         {
             InitializeComponent();
+            TranscriptionValue = string.Empty;
             idDiction = iddiction;
             //переменная для опеределения количества установок курсора на поле транскрипции
             FocusCoutTransc = 1;
@@ -23,28 +25,23 @@ namespace RepeatingWords
         {
             InitializeComponent();
             idDiction = iddiction;
+            TranscriptionValue = changeword.Transcription;
             this.BindingContext = changeword;
             FocusCoutTransc = 1;
         }
 
 
-        //3 констр при вводе транскрипции со спец клавы
-        public CreateWord(int iddiction, int idWord, string rus, string eng, string transc)
-        {
-            InitializeComponent();
-            idDiction = iddiction;
-            Words wr = new Words
-            {
-                Id = idWord,
-                IdDictionary = idDiction,
-                RusWord = rus,
-                EngWord = eng,
-                Transcription = transc
-            };
-            this.BindingContext = wr;
+      
 
-            FocusCoutTransc = 1;
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            EntryTranscription.Text = TranscriptionValue;
         }
+
+
+
+
 
         //вызов главной страницы и чистка стека страниц
         private async void ClickedHomeCustomButton(object sender, EventArgs e)
@@ -79,11 +76,7 @@ namespace RepeatingWords
                     }
                                      
                     words.IdDictionary = idDiction;
-                    App.Wr.CreateWord(words);
-                
-                    //Dictionary dict = App.Db.GetDictionary(words.IdDictionary);
-
-                    //AddWord adw = new AddWord(dict);
+                    App.Wr.CreateWord(words);                               
                     await Navigation.PopModalAsync();
                 }
                 else
@@ -112,7 +105,9 @@ namespace RepeatingWords
                     //если настроено на показ то показываем окно выбора клавиатуры
                     if (propTrKeyb.Equals(showKeyboard))
                     {
-                        FocusCoutTransc++;
+                        // FocusCoutTransc++;
+
+                      
 
                         string ModalActChooseKeyboard = Resource.ModalActChooseKeyboard;
                         string ModalActCancel = Resource.ModalActCancel;
@@ -123,9 +118,10 @@ namespace RepeatingWords
                         var action = await DisplayActionSheet(ModalActChooseKeyboard, ModalActCancel, null, ModalActSysKeyboard, ModalActTranscKeyboard);
                         if (action == ModalActTranscKeyboard)
                         {
+                            EntryTranscription.Unfocus();
                             var words = (Words)BindingContext;
-                            EntryTranscription tr = new EntryTranscription(idDiction, words.Id, words.RusWord, words.EngWord, words.Transcription);
-                           await Navigation.PushModalAsync(tr);
+                            EntryTranscription tr = new EntryTranscription(words.Transcription, this);
+                            await Navigation.PushModalAsync(tr);
                         }
                     }
 
