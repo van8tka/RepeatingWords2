@@ -3,7 +3,6 @@ using RepeatingWords.Model;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace RepeatingWords
 { 
@@ -81,7 +80,7 @@ namespace RepeatingWords
             }
             catch(Exception er)
             {
-
+                ErrorHandlerCustom.getErrorMessage(er);
             }
         }
 
@@ -102,38 +101,40 @@ namespace RepeatingWords
                     // выполняем действия, если в словаре есть ключ "propThem"
                     if (propThem.Equals(_blackThem))
                     {
-                        originalStyle = true;
+                        originalStyle = false;
                     }
                     else
                     {
-                        originalStyle = false;
+                        originalStyle = true;
                     }
                 }
                 else
                 {
                     //set default value for theme
                     originalStyle = true;
-                    App.Current.Properties.Add(Them, _blackThem);
+                    App.Current.Properties.Add(Them, _whiteThem);
                 }
 
 
                 if (originalStyle)
                 {
+                    Resources["TitleApp"] = Resources["TitleAppWhite"];
+                    Resources["LableHeadApp"] = Resources["LableHeadAppBlack"];
+                    Resources["LabelColor"] = Resources["LabelNavy"];
+                    Resources["PickerColor"] = Resources["PickerColorNavy"];
+                    Resources["LabelColorWB"] = Resources["LabelBlack"];
+                    Resources["ColorWB"] = Resources["ColorBlack"];
+                    Resources["ColorBlGr"] = Resources["ColorBlue"];                  
+                }
+                else
+                {
                     Resources["TitleApp"] = Resources["TitleAppBlack"];
                     Resources["LableHeadApp"] = Resources["LableHeadAppWhite"];
                     Resources["LabelColor"] = Resources["LabelYellow"];
                     Resources["LabelColorWB"] = Resources["LabelWhite"];
+                    Resources["PickerColor"] = Resources["PickerColorYellow"];
                     Resources["ColorWB"] = Resources["ColorWhite"];
                     Resources["ColorBlGr"] = Resources["ColorGreen"];
-                }
-                else
-                {
-                    Resources["TitleApp"] = Resources["TitleAppWhite"];
-                    Resources["LableHeadApp"] = Resources["LableHeadAppBlack"];
-                    Resources["LabelColor"] = Resources["LabelNavy"];
-                    Resources["LabelColorWB"] = Resources["LabelBlack"];
-                    Resources["ColorWB"] = Resources["ColorBlack"];
-                    Resources["ColorBlGr"] = Resources["ColorBlue"];
                 }
             }
             catch (Exception er)

@@ -91,7 +91,7 @@ namespace RepeatingWords.Pages
                 Application.Current.Resources["PickerColor"] = Application.Current.Resources["PickerColorYellow"];
                 Application.Current.Resources["LabelColorWB"] = Application.Current.Resources["LabelWhite"];
                 Application.Current.Resources["ColorWB"] = Application.Current.Resources["ColorWhite"];
-                Application.Current.Resources["ColorBlGr"] = Application.Current.Resources["ColorYelow"];
+                Application.Current.Resources["ColorBlGr"] = Application.Current.Resources["ColorYellow"];
                 this.BackgroundColor = Color.FromHex("#363636");
             }
            else
