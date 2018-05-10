@@ -479,4 +479,40 @@
   <data name="SuccessStr" xml:space="preserve">
     <value>Успешно</value>
   </data>
+  <data name="screen1" xml:space="preserve">
+    <value>screen1ru.jpg</value>
+  </data>
+  <data name="screen10" xml:space="preserve">
+    <value>screen10ru.jpg</value>
+  </data>
+  <data name="screen11" xml:space="preserve">
+    <value>screen11ru.jpg</value>
+  </data>
+  <data name="screen12" xml:space="preserve">
+    <value>screen12ru.jpg</value>
+  </data>
+  <data name="screen2" xml:space="preserve">
+    <value>screen2ru.jpg</value>
+  </data>
+  <data name="screen3" xml:space="preserve">
+    <value>screen3ru.jpg</value>
+  </data>
+  <data name="screen4" xml:space="preserve">
+    <value>screen4ru.jpg</value>
+  </data>
+  <data name="screen5" xml:space="preserve">
+    <value>screen5ru.jpg</value>
+  </data>
+  <data name="screen6" xml:space="preserve">
+    <value>screen6ru.jpg</value>
+  </data>
+  <data name="screen7" xml:space="preserve">
+    <value>screen7ru.jpg</value>
+  </data>
+  <data name="screen8" xml:space="preserve">
+    <value>screen8ru.jpg</value>
+  </data>
+  <data name="screen9" xml:space="preserve">
+    <value>screen9ru.jpg</value>
+  </data>
 </root>

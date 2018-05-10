@@ -3706,26 +3706,26 @@ namespace RepeatingWords.Droid
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f02013c
-			public const int avd_hide_password_1 = 2130837820;
+			// aapt resource value: 0x7f02014b
+			public const int avd_hide_password_1 = 2130837835;
 			
-			// aapt resource value: 0x7f02013d
-			public const int avd_hide_password_2 = 2130837821;
+			// aapt resource value: 0x7f02014c
+			public const int avd_hide_password_2 = 2130837836;
 			
-			// aapt resource value: 0x7f02013e
-			public const int avd_hide_password_3 = 2130837822;
+			// aapt resource value: 0x7f02014d
+			public const int avd_hide_password_3 = 2130837837;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f02013f
-			public const int avd_show_password_1 = 2130837823;
+			// aapt resource value: 0x7f02014e
+			public const int avd_show_password_1 = 2130837838;
 			
-			// aapt resource value: 0x7f020140
-			public const int avd_show_password_2 = 2130837824;
+			// aapt resource value: 0x7f02014f
+			public const int avd_show_password_2 = 2130837839;
 			
-			// aapt resource value: 0x7f020141
-			public const int avd_show_password_3 = 2130837825;
+			// aapt resource value: 0x7f020150
+			public const int avd_show_password_3 = 2130837840;
 			
 			// aapt resource value: 0x7f020056
 			public const int calendar_bg_selector = 2130837590;
@@ -4342,11 +4342,11 @@ namespace RepeatingWords.Droid
 			// aapt resource value: 0x7f020122
 			public const int notification_icon_background = 2130837794;
 			
-			// aapt resource value: 0x7f02013a
-			public const int notification_template_icon_bg = 2130837818;
+			// aapt resource value: 0x7f020149
+			public const int notification_template_icon_bg = 2130837833;
 			
-			// aapt resource value: 0x7f02013b
-			public const int notification_template_icon_low_bg = 2130837819;
+			// aapt resource value: 0x7f02014a
+			public const int notification_template_icon_low_bg = 2130837834;
 			
 			// aapt resource value: 0x7f020123
 			public const int notification_tile_bg = 2130837795;
@@ -4358,64 +4358,109 @@ namespace RepeatingWords.Droid
 			public const int screen1 = 2130837797;
 			
 			// aapt resource value: 0x7f020126
-			public const int screen2 = 2130837798;
+			public const int screen10 = 2130837798;
 			
 			// aapt resource value: 0x7f020127
-			public const int screen21 = 2130837799;
+			public const int screen10ru = 2130837799;
 			
 			// aapt resource value: 0x7f020128
-			public const int screen22 = 2130837800;
+			public const int screen11 = 2130837800;
 			
 			// aapt resource value: 0x7f020129
-			public const int screen23 = 2130837801;
+			public const int screen11ru = 2130837801;
 			
 			// aapt resource value: 0x7f02012a
-			public const int screen24 = 2130837802;
+			public const int screen12 = 2130837802;
 			
 			// aapt resource value: 0x7f02012b
-			public const int screen25 = 2130837803;
+			public const int screen12ru = 2130837803;
 			
 			// aapt resource value: 0x7f02012c
-			public const int screen3 = 2130837804;
+			public const int screen1ru = 2130837804;
 			
 			// aapt resource value: 0x7f02012d
-			public const int screen4 = 2130837805;
+			public const int screen2 = 2130837805;
 			
 			// aapt resource value: 0x7f02012e
-			public const int screen5 = 2130837806;
+			public const int screen21 = 2130837806;
 			
 			// aapt resource value: 0x7f02012f
-			public const int screen6 = 2130837807;
+			public const int screen22 = 2130837807;
 			
 			// aapt resource value: 0x7f020130
-			public const int screen7 = 2130837808;
+			public const int screen23 = 2130837808;
 			
 			// aapt resource value: 0x7f020131
-			public const int screen8 = 2130837809;
+			public const int screen24 = 2130837809;
 			
 			// aapt resource value: 0x7f020132
-			public const int screen9 = 2130837810;
+			public const int screen25 = 2130837810;
 			
 			// aapt resource value: 0x7f020133
-			public const int toolbarImage = 2130837811;
+			public const int screen2ru = 2130837811;
 			
 			// aapt resource value: 0x7f020134
-			public const int toolbarImageHelp = 2130837812;
+			public const int screen3 = 2130837812;
 			
 			// aapt resource value: 0x7f020135
-			public const int toolbarImageHome = 2130837813;
+			public const int screen3ru = 2130837813;
 			
 			// aapt resource value: 0x7f020136
-			public const int toolbarImageLike = 2130837814;
+			public const int screen4 = 2130837814;
 			
 			// aapt resource value: 0x7f020137
-			public const int toolbarImageTools = 2130837815;
+			public const int screen4ru = 2130837815;
 			
 			// aapt resource value: 0x7f020138
-			public const int voice = 2130837816;
+			public const int screen5 = 2130837816;
 			
 			// aapt resource value: 0x7f020139
-			public const int voiceX = 2130837817;
+			public const int screen5ru = 2130837817;
+			
+			// aapt resource value: 0x7f02013a
+			public const int screen6 = 2130837818;
+			
+			// aapt resource value: 0x7f02013b
+			public const int screen6ru = 2130837819;
+			
+			// aapt resource value: 0x7f02013c
+			public const int screen7 = 2130837820;
+			
+			// aapt resource value: 0x7f02013d
+			public const int screen7ru = 2130837821;
+			
+			// aapt resource value: 0x7f02013e
+			public const int screen8 = 2130837822;
+			
+			// aapt resource value: 0x7f02013f
+			public const int screen8ru = 2130837823;
+			
+			// aapt resource value: 0x7f020140
+			public const int screen9 = 2130837824;
+			
+			// aapt resource value: 0x7f020141
+			public const int screen9ru = 2130837825;
+			
+			// aapt resource value: 0x7f020142
+			public const int toolbarImage = 2130837826;
+			
+			// aapt resource value: 0x7f020143
+			public const int toolbarImageHelp = 2130837827;
+			
+			// aapt resource value: 0x7f020144
+			public const int toolbarImageHome = 2130837828;
+			
+			// aapt resource value: 0x7f020145
+			public const int toolbarImageLike = 2130837829;
+			
+			// aapt resource value: 0x7f020146
+			public const int toolbarImageTools = 2130837830;
+			
+			// aapt resource value: 0x7f020147
+			public const int voice = 2130837831;
+			
+			// aapt resource value: 0x7f020148
+			public const int voiceX = 2130837832;
 			
 			static Drawable()
 			{

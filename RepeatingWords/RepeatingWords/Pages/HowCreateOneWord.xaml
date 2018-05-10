@@ -13,23 +13,29 @@
       <Label Text="{locale:Translate LabelHeadCreateInstr}"   HorizontalTextAlignment="Center" Style="{StaticResource LableHeadApp}"/>
             <Label Text="{locale:Translate LabelForStart}" HorizontalOptions="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
             <Label Text="{locale:Translate LabelScreen1}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-      <Image Source="screen1.jpg" />
+                 <Image Source="{locale:Translate screen1}" />
             <Label Text="{locale:Translate LabelScreen2}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-      <Image Source="screen2.jpg" />
+                <Image Source="{locale:Translate screen2}" />
             <Label Text="{locale:Translate LabelScreen3}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-      <Image Source="screen3.jpg" />
+                 <Image Source="{locale:Translate screen3}" />
             <Label Text="{locale:Translate LabelScreen4}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-      <Image Source="screen4.jpg" />
+                <Image Source="{locale:Translate screen4}" />
             <Label Text="{locale:Translate LabelScreen5}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-      <Image Source="screen5.jpg" />
+                <Image Source="{locale:Translate screen5}" />
             <Label Text="{locale:Translate LabelScreen6}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-      <Image Source="screen6.jpg" />
+                <Image Source="{locale:Translate screen6}" />
             <Label Text="{locale:Translate LabelScreen7}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-      <Image Source="screen7.jpg" />
+                <Image Source="{locale:Translate screen7}" />
             <Label Text="{locale:Translate LabelScreen8}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-      <Image Source="screen8.jpg" />
+                <Image Source="{locale:Translate screen8}" />
             <Label Text="{locale:Translate LabelScreen9}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-      <Image Source="screen9.jpg" />
-    </StackLayout>
+                <Image Source="{locale:Translate screen9}" />
+            <Label Text="{locale:Translate LabelScreen9}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+                <Image Source="{locale:Translate screen10}" />
+            <Label Text="{locale:Translate LabelScreen9}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+                <Image Source="{locale:Translate screen11}" />
+            <Label Text="{locale:Translate LabelScreen9}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+                <Image Source="{locale:Translate screen12}" />
+        </StackLayout>
   </ScrollView>
 </ContentPage>

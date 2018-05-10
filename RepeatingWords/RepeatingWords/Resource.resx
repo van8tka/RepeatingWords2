@@ -497,4 +497,40 @@
   <data name="BackUpCreateBtn" xml:space="preserve">
     <value>Create a backup</value>
   </data>
+  <data name="screen1" xml:space="preserve">
+    <value>screen1.jpg</value>
+  </data>
+  <data name="screen10" xml:space="preserve">
+    <value>screen10.jpg</value>
+  </data>
+  <data name="screen11" xml:space="preserve">
+    <value>screen11.jpg</value>
+  </data>
+  <data name="screen12" xml:space="preserve">
+    <value>screen12.jpg</value>
+  </data>
+  <data name="screen2" xml:space="preserve">
+    <value>screen2.jpg</value>
+  </data>
+  <data name="screen3" xml:space="preserve">
+    <value>screen3.jpg</value>
+  </data>
+  <data name="screen4" xml:space="preserve">
+    <value>screen4.jpg</value>
+  </data>
+  <data name="screen5" xml:space="preserve">
+    <value>screen5.jpg</value>
+  </data>
+  <data name="screen6" xml:space="preserve">
+    <value>screen6.jpg</value>
+  </data>
+  <data name="screen7" xml:space="preserve">
+    <value>screen7.jpg</value>
+  </data>
+  <data name="screen8" xml:space="preserve">
+    <value>screen8.jpg</value>
+  </data>
+  <data name="screen9" xml:space="preserve">
+    <value>screen9.jpg</value>
+  </data>
 </root>
