@@ -198,7 +198,8 @@
     <comment>Заголовок введите слово на русском(первое слово)</comment>
   </data>
   <data name="LabelForStart" xml:space="preserve">
-    <value>Для начала работы с программой необходимо:</value>
+    <value>Для начала работы с приложением необходимо:
+добавить свой словарь со словами и добавлять слова по отдельности или добавить словарь из интернета выбрав нужный язык или добавить слова в словарь из файла.</value>
   </data>
   <data name="LabelHeadAddFile" xml:space="preserve">
     <value>Добавление слов из файла</value>
@@ -215,20 +216,21 @@
     <comment>Заголовок Введите название нового словаря</comment>
   </data>
   <data name="LabelNeedAddFile" xml:space="preserve">
-    <value>Для добавления слов из файла необходимо:</value>
+    <value>Для начала работы с программой необходимо:
+добавить свой словарь со словами и добавлять слова по отдельности, добавить словарь из сервера выбрав нужный язык, или добавить слова в словарь из файла.</value>
   </data>
   <data name="LabelNeedCreate" xml:space="preserve">
-    <value>Создать на компьютере через программу Блокнот(Notepad) файл c расширением txt."</value>
+    <value>Для добавления слов из файла необходимо создать на компьютере, ипользуя программу Блокнот(Notepad) файл c расширением txt."</value>
   </data>
   <data name="LabelPathToRoot" xml:space="preserve">
     <value>Путь к файлу:</value>
     <comment>Заголовок с указанием пути к корню системы</comment>
   </data>
   <data name="LabelScreen1" xml:space="preserve">
-    <value>Добавить словарь со словами, для этого нажмем на кнопку [Добавить словарь или слова]</value>
+    <value>Для добавления своего словаря необходимо нажать [СЛОВАРИ]</value>
   </data>
   <data name="LabelScreen2" xml:space="preserve">
-    <value>Нажать кнопку [Добавить словарь]</value>
+    <value>Нажимаем [ДОБАВИТЬ СЛОВАРЬ]</value>
   </data>
   <data name="LabelScreen21" xml:space="preserve">
     <value>Заполнить файл словами в следующем порядке: слово, транскрипция, перевод. Обязательно транскрипция в центре строки для разделения русского слова и его перевода, и обязательно использование квадратных скобок!</value>
@@ -237,37 +239,38 @@
     <value>Далее при сохранении файла указать кодировку UTF-8.</value>
   </data>
   <data name="LabelScreen231" xml:space="preserve">
-    <value>Скопировать созданный файл на телефон.</value>
+    <value>Скопировать созданный файл на телефон в любое удобное место.</value>
   </data>
   <data name="LabelScreen232" xml:space="preserve">
-    <value>Запустить программу на телефоне, выбрать словарь и нажать кнопку [Добавить слова из файла]</value>
+    <value>Запустить приложение на телефоне, выбрать словарь и выбрать  [Загрузить слова из файла]</value>
   </data>
   <data name="LabelScreen24" xml:space="preserve">
-    <value>Откроется окно с указанием пути, откуда происходит считывание информации о файлах и список файлов формата .txt. Нажимаем на наш файл и ожидаем пока все слова загрузятся в словарь. Если Вы не можете обнаружить необходимый файл, проверьте путь по которому он расположен.</value>
+    <value>Указываем путь к файлу и нажимаем на файл</value>
   </data>
   <data name="LabelScreen25" xml:space="preserve">
     <value>Когда слова загрузятся в словарь, откроется окно со списком слов.</value>
   </data>
   <data name="LabelScreen3" xml:space="preserve">
-    <value>Ввести название словаря и нажать кнопку [Создать]</value>
+    <value>Ввести название словаря и нажать кнопку [СОЗДАТЬ]</value>
   </data>
   <data name="LabelScreen4" xml:space="preserve">
     <value>Нажать на созданный словарь</value>
   </data>
   <data name="LabelScreen5" xml:space="preserve">
-    <value>Нажать на кнопку [Добавить слово]</value>
+    <value>Выбрать [Добавить слово]</value>
   </data>
   <data name="LabelScreen6" xml:space="preserve">
-    <value>Ввести слово на русском, его перевод и транскрипцию (поле Транскрипция запонять необязательно). И нажать на кнопку [Добавить слово]</value>
+    <value>Ввести слово, перевод, транскрипцию(не обязательно) и нажмите кнопку [Добавить слово]</value>
   </data>
   <data name="LabelScreen7" xml:space="preserve">
-    <value>После добавления слов, можно сразу перейти к изучению, нажав на кнопку [Изучение слов по карточкам]</value>
+    <value>При нажатии на поле ввода транскрипции можно выбрать клавиатуру 
+смартфона или клавиатуру транскрипции</value>
   </data>
   <data name="LabelScreen8" xml:space="preserve">
-    <value>Выбираем какой язык будет отображаться первый</value>
+    <value>После добавления слов нажимаем на созданный словарь и выбираем [Просмотр списка слов]</value>
   </data>
   <data name="LabelScreen9" xml:space="preserve">
-    <value>Для перехода к следующему слову нажимаем кнопку [Следующее слово], для отображения перевода слова нажимаем на кнопку [Перевернуть карточку]</value>
+    <value>Где так же можно добавлять слова(1) или перейти к изучению слов (2)</value>
   </data>
   <data name="LabelSecondWord" xml:space="preserve">
     <value>Введите перевод слова</value>
@@ -514,5 +517,29 @@
   </data>
   <data name="screen9" xml:space="preserve">
     <value>screen9ru.jpg</value>
+  </data>
+  <data name="LabelScreen10" xml:space="preserve">
+    <value>Так же можно изменить слово или удалить его вызвав контекстное меню нажатием на слово</value>
+  </data>
+  <data name="LabelScreen11" xml:space="preserve">
+    <value>При нажатии на кнопку [ИЗУЧЕНИЕ СЛОВ] откроется контекстное меню выбора языка изучения</value>
+  </data>
+  <data name="LabelScreen12" xml:space="preserve">
+    <value>Выбрав язык отобразиться окно изучения, где цифрами показано: общее кол-во слов/показанных слов/перевернутых слов</value>
+  </data>
+  <data name="screen20" xml:space="preserve">
+    <value>screen20ru.jpg</value>
+  </data>
+  <data name="screen21" xml:space="preserve">
+    <value>screen21ru.jpg</value>
+  </data>
+  <data name="screen22" xml:space="preserve">
+    <value>screen22ru.jpg</value>
+  </data>
+  <data name="screen23" xml:space="preserve">
+    <value>screen23ru.jpg</value>
+  </data>
+  <data name="screen24" xml:space="preserve">
+    <value>screen24ru.jpg</value>
   </data>
 </root>
