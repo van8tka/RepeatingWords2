@@ -72,10 +72,17 @@
             <Style x:Key="LabelNavy" TargetType="Label">
                 <Setter Property="TextColor" Value="Navy"/>
             </Style>
-            ColorBlGr
+
+            <Style x:Key="PickerColorNavy" TargetType="Picker">
+                <Setter Property="TextColor" Value="Navy"/>
+            </Style>
+            <Style x:Key="PickerColorYellow" TargetType="Picker">
+                <Setter Property="TextColor" Value="Yellow"/>
+            </Style>
+
             <Color x:Key="ColorBlack">Black</Color>
             <Color x:Key="ColorWhite">White</Color>
-
+            <Color x:Key="ColorYellow">Yellow</Color>
             <Color x:Key="ColorBlue">Blue</Color>
             <Color x:Key="ColorGreen">Lime</Color>
 

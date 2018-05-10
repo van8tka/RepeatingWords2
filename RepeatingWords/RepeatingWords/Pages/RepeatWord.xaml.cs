@@ -54,7 +54,7 @@ namespace RepeatingWords.Pages
             { lang = "en-GB"; }
 
             UpdateWord(Count, FromRus);
-
+            ButtonVoice.BackgroundColor = new Color(0, 0, 0, 0);
         }
 
 
@@ -82,6 +82,7 @@ namespace RepeatingWords.Pages
             else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
             { lang = "en-GB"; }
             UpdateWord(Count, FromRus);
+            ButtonVoice.BackgroundColor = new Color(0, 0, 0, 0);
         }
 
         //вызов главной страницы и чистка стека страниц

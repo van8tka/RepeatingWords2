@@ -118,9 +118,6 @@
     <AndroidResource Include="Resources\drawable\screen24.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\screen25.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\toolbarImage.png" />
   </ItemGroup>
   <ItemGroup>

@@ -219,11 +219,11 @@ Add your dictionary with words and add words individually, add a dictionary from
     <comment>Заголовок Введите название нового словаря</comment>
   </data>
   <data name="LabelNeedAddFile" xml:space="preserve">
-    <value>We need for import words from the file: </value>
+    <value>You need for import words from the file: </value>
     <comment>Для добавления слов из файла необходимо:</comment>
   </data>
   <data name="LabelNeedCreate" xml:space="preserve">
-    <value>Using Notepad.exe create the file  .txt on the computer </value>
+    <value>Use Notepad.exe create the file with ".txt" format on the computer </value>
     <comment>Создать на компьютере через программу Блокнот(Notepad) файл c расширением txt."</comment>
   </data>
   <data name="LabelPathToRoot" xml:space="preserve">
