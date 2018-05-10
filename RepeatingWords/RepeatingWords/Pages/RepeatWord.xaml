@@ -55,7 +55,7 @@
             
         </StackLayout>
         <StackLayout AbsoluteLayout.LayoutBounds=".0,0.9,1,0.6" AbsoluteLayout.LayoutFlags="All" Orientation="Vertical" >
-            <Button x:Name="ButtonVoice" Clicked="BtnClickSpeech" HorizontalOptions="EndAndExpand"  />
+            <Button x:Name="ButtonVoice" Clicked="BtnClickSpeech" HorizontalOptions="End"  />
             <Button Text="{locale:Translate ButtonNextWord}" Clicked="NextWordButtonClick"  Style="{StaticResource buttonStyle}" VerticalOptions="FillAndExpand"  />
             <Button Text="{locale:Translate ButtonTurnCard}" Clicked="TurnAroundWordButtonClick"  Style="{StaticResource buttonStyle}" VerticalOptions="FillAndExpand" />
             <locale:AdMobView WidthRequest="320" HeightRequest="50"  VerticalOptions="End"/>
