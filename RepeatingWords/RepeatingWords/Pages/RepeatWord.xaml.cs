@@ -27,6 +27,11 @@ namespace RepeatingWords.Pages
         int countTurned = 0;
         string TextTurned = Resource.LabelCountTurned;
         const string NameDbForContinued = "ContinueDictionary";
+        //переменная для обработки страницы при выходе из нее
+        bool OnDisapearOverride = true;
+
+
+
 
 
         public RepeatWord(int iDdictionary, bool FromRus)
@@ -55,6 +60,8 @@ namespace RepeatingWords.Pages
 
             UpdateWord(Count, FromRus);
             ButtonVoice.BackgroundColor = new Color(0, 0, 0, 0);
+            ButtonVoice.Image = "voice.png";
+            picker.SelectedIndex = 0;//its english language default
         }
 
 
@@ -77,17 +84,39 @@ namespace RepeatingWords.Pages
             if (Device.OS == TargetPlatform.Android)
             {
                 lang = "en_GB";
-                DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5351987413735598/1185308269");
+               // DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5351987413735598/1185308269");
             }
             else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
             { lang = "en-GB"; }
             UpdateWord(Count, FromRus);
             ButtonVoice.BackgroundColor = new Color(0, 0, 0, 0);
+            ButtonVoice.Image = "voice.png";
+            picker.SelectedIndex = 0;//its english language
         }
+
+
+
+        //при нажатии на кнопку назад
+        protected override void OnDisappearing()
+        {           
+            base.OnDisappearing();
+            //если не нажата софт кнопкв назад то перезагружаем
+            if (OnDisapearOverride)
+            {
+                SaveLastWorld();
+                //выход на главную
+                ComeBack();
+            }
+           
+        }
+
+
+
 
         //вызов главной страницы и чистка стека страниц
         private async void ClickedHomeCustomButton(object sender, EventArgs e)
         {
+            OnDisapearOverride = false;
             SaveLastWorld();
             //выход на главную страницу
             ComeBack();
@@ -117,41 +146,40 @@ namespace RepeatingWords.Pages
         //метод для обновления слова
         private void UpdateWord(int count, bool lang)
         {
-            if (lang)
+            try
             {
-                WordRepeat.TextColor = (Color)Application.Current.Resources["ColorWB"];
-                WordRepeat.Text = GetWords(count).RusWord;
-                //управление видимостью озвучки               
-                ButtonVoice.IsEnabled = false;
-                picker.IsVisible = true;
-                ButtonVoice.Image = "voiceX.png";
-                TranscriptionRepeat.IsVisible = false;
-            }
-            else
-            {
-                WordRepeat.TextColor = (Color)Application.Current.Resources["ColorBlGr"];
-                Words w = GetWords(count);
-                //если транскрипции нет 
-                if (w.Transcription == "[]")
-                {//выводим только перевод
-                    WordRepeat.Text = w.EngWord;
+                if (lang)
+                {
+                    WordRepeat.TextColor = (Color)Application.Current.Resources["ColorWB"];
+                    WordRepeat.Text = GetWords(count).RusWord;
+                    //управление видимостью озвучки               
+                    //  ButtonVoice.IsEnabled = false;
+                    picker.IsVisible = true;
+                    //   ButtonVoice.Image = "voiceX.png";
                     TranscriptionRepeat.IsVisible = false;
                 }
                 else
-                {//перевод и транскрипцию
-                    WordRepeat.Text = w.EngWord;
-                    TranscriptionRepeat.Text = w.Transcription;
-                    TranscriptionRepeat.IsVisible = true;
+                {
+                    WordRepeat.TextColor = (Color)Application.Current.Resources["ColorBlGr"];
+                    Words w = GetWords(count);
+                    //если транскрипции нет 
+                    if (w.Transcription == "[]")
+                    {//выводим только перевод
+                        WordRepeat.Text = w.EngWord;
+                        TranscriptionRepeat.IsVisible = false;
+                    }
+                    else
+                    {//перевод и транскрипцию
+                        WordRepeat.Text = w.EngWord;
+                        TranscriptionRepeat.Text = w.Transcription;
+                        TranscriptionRepeat.IsVisible = true;
+                    }
                 }
-
-                //управление видимостью озвучки
-
-                ButtonVoice.IsEnabled = true;
-                ButtonVoice.Image = "voice.png";
-                picker.IsVisible = true;
-
             }
-
+            catch(Exception er)
+            {
+                ErrorHandlerCustom.getErrorMessage(er);
+            }                
         }
 
 
@@ -160,6 +188,8 @@ namespace RepeatingWords.Pages
         //для получения слова
         Words GetWords(int index)
         {
+            if (index > words.Count())
+                index = 0;
             Words item = words.ElementAt(index);
             return item;
         }
@@ -243,7 +273,7 @@ namespace RepeatingWords.Pages
         }
 
 
-
+        string postFixNotLearningWords = Resource.NotLearningPostfics;
 
         //===============================метод создания словаря перевернутых слов(невыученных)=================
         private async Task CreateTurnedDB()
@@ -255,13 +285,13 @@ namespace RepeatingWords.Pages
                     string NameD = App.Db.GetDictionary(iDdictionary).Name;
                     string NameDictionary;
                     //проверим это словарь который уже изучали или нет(содержит приставку lerning)
-                    if (NameD.Contains("-learning"))
+                    if (NameD.Contains(postFixNotLearningWords))
                     {
                         NameDictionary = NameD;
                     }
                     else
                     {
-                        NameDictionary = App.Db.GetDictionary(iDdictionary).Name + "-learning";
+                        NameDictionary = App.Db.GetDictionary(iDdictionary).Name + postFixNotLearningWords;
                     }
                     Dictionary deldict = App.Db.GetDictionarys().Where(x => x.Name == NameDictionary).FirstOrDefault();
                     if (deldict != null)
@@ -297,17 +327,24 @@ namespace RepeatingWords.Pages
 
         //переопределение метода обработки события при нажатии кнопки НАЗАД, 
         //для его срабатывания надо в MainActivity тоже переопределить метод OnBackPressed
+       
         protected override bool OnBackButtonPressed()
         {//метод добавления словаря для возможности продолжения с последнего места
+            OnDisapearOverride = false;
             SaveLastWorld();
             //выход на главную страницу
             ComeBack();
             return true;
         }
 
+
+
+      
+
+
         private void SaveLastWorld()
         {
-            Task.Run(() =>
+          Task.Run(() =>
             {
                 try
                 {
@@ -385,6 +422,7 @@ namespace RepeatingWords.Pages
         #region ChoseLanguage
         private void picker_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             switch (picker.Items[picker.SelectedIndex].ToString())
             {
                 case "English":

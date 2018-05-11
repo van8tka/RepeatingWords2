@@ -1234,5 +1234,15 @@ namespace RepeatingWords
                 return ResourceManager.GetString("BackUpRestoreBtn", resourceCulture);
             }
         }
+
+
+        internal static string NotLearningPostfics
+        {
+            get
+            {
+                return ResourceManager.GetString("NotLearningPostfics", resourceCulture);
+            }
+        }
+        
     }
 }

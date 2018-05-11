@@ -22,7 +22,9 @@ namespace RepeatingWords.Pages
         public ToolsPage()
         {
             InitializeComponent();
-         
+
+            //fullscreen advertizing
+            DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5351987413735598/2092653053");
             object propThem = "";
             object propTrKeyb = "";
             if (App.Current.Properties.TryGetValue(Them, out propThem))
@@ -128,8 +130,8 @@ namespace RepeatingWords.Pages
         private async void BackUpButtonCkick(object sender, EventArgs e)
         {
             try
-            {
-                 string localFolder = Resource.BackUpCreateLocal; 
+            {               
+                string localFolder = Resource.BackUpCreateLocal; 
                  string googleDriveFolder = Resource.BackUpGoogleDrive;
                  string choseMethodToCreateBackUp = Resource.BackupMethod;
                 //создание имени файла резервной копии
@@ -208,7 +210,7 @@ namespace RepeatingWords.Pages
         {
             try
             {
-              
+                       
                 //создание имени файла резервной копии
                 string fileNameBackup = string.Format(fileNameBackupDef + DateTime.Now.ToString("ddMMyyyy") + ".dat");
                 bool succes = false;

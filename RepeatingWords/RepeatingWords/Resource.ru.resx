@@ -542,4 +542,7 @@
   <data name="screen24" xml:space="preserve">
     <value>screen24ru.jpg</value>
   </data>
+  <data name="NotLearningPostfics" xml:space="preserve">
+    <value>- перевернутые карточки</value>
+  </data>
 </root>

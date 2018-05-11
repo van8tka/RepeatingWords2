@@ -99,13 +99,13 @@ namespace RepeatingWords
                 if (App.Current.Properties.TryGetValue(Them, out propThem))
                 {
                     // выполняем действия, если в словаре есть ключ "propThem"
-                    if (propThem.Equals(_blackThem))
+                    if (propThem.Equals(_whiteThem))
                     {
-                        originalStyle = false;
+                        originalStyle = true;
                     }
                     else
                     {
-                        originalStyle = true;
+                        originalStyle = false;
                     }
                 }
                 else
@@ -134,7 +134,7 @@ namespace RepeatingWords
                     Resources["LabelColorWB"] = Resources["LabelWhite"];
                     Resources["PickerColor"] = Resources["PickerColorYellow"];
                     Resources["ColorWB"] = Resources["ColorWhite"];
-                    Resources["ColorBlGr"] = Resources["ColorGreen"];
+                    Resources["ColorBlGr"] = Resources["ColorYellow"];
                 }
             }
             catch (Exception er)

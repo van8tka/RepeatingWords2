@@ -559,4 +559,7 @@ smartphone or keyboard transcription</value>
   <data name="screen24" xml:space="preserve">
     <value>screen24.jpg</value>
   </data>
+  <data name="NotLearningPostfics" xml:space="preserve">
+    <value>- not learned words</value>
+  </data>
 </root>

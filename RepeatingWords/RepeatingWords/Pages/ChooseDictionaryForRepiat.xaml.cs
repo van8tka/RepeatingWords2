@@ -8,8 +8,8 @@ namespace RepeatingWords.Pages
 {
     public partial class ChooseDictionaryForRepiat : ContentPage
     {
-        const string NameDbForContinued = "ContinueDictionary";
-        const string NameDbForContinuedLearn = "ContinueDictionary-learning";
+         string NameDbForContinued = "ContinueDictionary";
+         string NameDbForContinuedLearn = "ContinueDictionary"+Resource.NotLearningPostfics;
 
         public ChooseDictionaryForRepiat()
         {

@@ -11,8 +11,8 @@ namespace RepeatingWords
     public partial class ChooseDb : ContentPage
     {
         //имя словаря для продолжения повторения слов(не должно отображаться)
-        const string NameDbForContinued = "ContinueDictionary";
-        const string NameDbForContinuedLearn = "ContinueDictionary-learning";
+         string NameDbForContinued = "ContinueDictionary";
+        string NameDbForContinuedLearn = "ContinueDictionary"+Resource.NotLearningPostfics;
        
         public ChooseDb()
         {
