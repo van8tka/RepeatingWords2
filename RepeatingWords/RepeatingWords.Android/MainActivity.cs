@@ -27,7 +27,9 @@ namespace RepeatingWords.Droid
 
 
 
+        internal static MainActivity Instance { get; private set; }
 
+       
 
 
 
@@ -36,6 +38,7 @@ namespace RepeatingWords.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            Instance = this;
             global::Xamarin.Forms.Forms.Init(this, bundle);
             //проверка наличия разрешения
             CheckPermissionForStorage();

@@ -129,9 +129,9 @@ namespace RepeatingWords.Pages
                                 {
                                     Id = 0,
                                     IdDictionary = dictionary.Id,
-                                    RusWord = fileWords[0],
+                                    RusWord = fileWords[0].Trim(),
                                     Transcription = "[" + fileWords[1] + "]",
-                                    EngWord = fileWords[2]
+                                    EngWord = fileWords[2].Trim()
                                 };//добавим слово в БД
                                 await App.WrAsync.AsyncCreateWord(item);
                             }

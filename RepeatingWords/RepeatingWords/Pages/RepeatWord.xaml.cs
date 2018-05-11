@@ -225,6 +225,7 @@ namespace RepeatingWords.Pages
                         //вызовем метод для проверки есть ли в списке перевернутые слова
                         //если есть то создадим БД и добавим в нее слова
                         await CreateTurnedDB();
+                        OnDisapearOverride = false;
                         //перреход на главную страницу
                         await Navigation.PopToRootAsync();
                     }

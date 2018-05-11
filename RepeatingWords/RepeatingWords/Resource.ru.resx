@@ -458,7 +458,7 @@
   <data name="BackupMethod" xml:space="preserve">
     <value>Выберите способ создания резервной копии</value>
   </data>
-  <data name="BAckUpOnGoogle" xml:space="preserve">
+  <data name="BackUpOnGoogle" xml:space="preserve">
     <value>На Google диск</value>
   </data>
   <data name="BackUpRestoreBtn" xml:space="preserve">

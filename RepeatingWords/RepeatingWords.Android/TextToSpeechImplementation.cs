@@ -25,13 +25,13 @@ namespace RepeatingWords.Droid
                 var p = new Dictionary<string, string>();
                 var locale = new Java.Util.Locale(Lang);
                 speaker.SetLanguage(locale);
-                speaker.Speak(toSpeak, QueueMode.Flush, p);
+                speaker.Speak(toSpeak, QueueMode.Flush, null, null);
             }
         }
 
         public void Speak(string text, string languageIso)
         {
-            var ctx = Forms.Context;
+            var ctx = MainActivity.Instance;
             toSpeak = text;
             Lang = languageIso;   
             if (speaker == null)
@@ -43,7 +43,7 @@ namespace RepeatingWords.Droid
                 var p = new Dictionary<string, string>();
                 var locale = new Java.Util.Locale(languageIso);
                 speaker.SetLanguage(locale);
-                speaker.Speak(toSpeak, QueueMode.Flush, p);
+                speaker.Speak(toSpeak, QueueMode.Flush, null, null);
                
             }
         }
