@@ -1,0 +1,4 @@
+key for cardsofwords
+alias:devprogram
+password:
+использовать файл devprogram или cordsofwordskey
