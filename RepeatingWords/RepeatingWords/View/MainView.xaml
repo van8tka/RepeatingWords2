@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.View.MainView"
+             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"    
+              xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"    
+             Style="{DynamicResource TitleApp}"
+            
+            >
+    <!--панель управлления-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Tools" Icon="toolbarImageTools.png" Command="{Binding ShowToolsCommand}"></ToolbarItem>
+        <ToolbarItem Name="Like" Icon="toolbarImageLike.png" Command="{Binding LikeCommand}"></ToolbarItem>
+        <ToolbarItem Name="Help" Icon="toolbarImageHelp.png" Command="{Binding HelperCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Behaviors>
+        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadPageCommand}"/>
+    </ContentPage.Behaviors>
+
+    <StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+            <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate ButtonAddDictionaryOrWords}" Command="{Binding ChooseDictionaryCommand}"/>
+            <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate Continue}" Command="{Binding ContinueLearningCommand}" IsEnabled="{Binding IsEnabledContinue, Mode=TwoWay}"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="End">
+            <local:AdMobView HeightRequest="50" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

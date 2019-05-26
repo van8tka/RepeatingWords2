@@ -4,8 +4,9 @@ using System.IO;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System;
+using RepeatingWords.LoggerService;
 
-[assembly:Dependency(typeof(RepeatingWords.Droid.FolderWorker))]
+[assembly: Dependency(typeof(RepeatingWords.Droid.FolderWorker))]
 
 namespace RepeatingWords.Droid
 {
@@ -44,10 +45,12 @@ namespace RepeatingWords.Droid
                 }
                 catch(UnauthorizedAccessException er)
                 {
+                    Log.Logger.Error(er);
                     throw new UnauthorizedAccessException();
                 }
                  catch(Exception er)
                 {
+                    Log.Logger.Error(er);
                     return null;
                 }
               
@@ -66,10 +69,12 @@ namespace RepeatingWords.Droid
             }
             catch (UnauthorizedAccessException er)
             {
+                Log.Logger.Error(er);
                 throw new UnauthorizedAccessException();
             }
             catch (Exception er)
             {
+                Log.Logger.Error(er);
                 return null;
             }          
         }

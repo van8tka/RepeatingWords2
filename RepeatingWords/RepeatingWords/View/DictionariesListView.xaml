@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.View.DictionariesListView"
+             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"           
+             Style="{StaticResource TitleApp}"
+             Title="{local:Translate TitleDictionaries}"
+             >
+    <!--панель управлления-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <RelativeLayout Margin="10,0,10,5">
+            <ContentView RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" 
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                <StackLayout>
+                    <StackLayout VerticalOptions="Start">
+                        <local:AdMobView HeightRequest="60" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <ListView x:Name ="dictionaryList" ItemsSource="{Binding DictionaryList}" SelectedItem ="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout VerticalOptions="Center" >
+                                                <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" />
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+            <ImageButton
+                x:Name="FabAddBtn"               
+                BackgroundColor="Transparent"
+                Source="floating_btn_add.png"
+                Command="{Binding AddDictionaryCommand}"              
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-60}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
+                />
+            <ImageButton
+                x:Name="FabCloudBtn"              
+                BackgroundColor="Transparent"
+                Source="floating_btn_cloud.png"
+                Command="{Binding AddWordsFromNetCommand}"              
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-60}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-130}"
+                />
+
+        </RelativeLayout>
+    </ContentPage.Content>
+        
+</ContentPage>

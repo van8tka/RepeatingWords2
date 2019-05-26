@@ -9,9 +9,9 @@ using Android.Content;
 [assembly: ExportRenderer(typeof(AdMobView), typeof(AdMobRenderer))]
 namespace RepeatingWords.Droid
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     public class AdMobRenderer : ViewRenderer<AdMobView, AdView>
     {
-      //  public AdMobRenderer(Context context) : base(context) { }
         protected override void OnElementChanged(ElementChangedEventArgs<AdMobView> e)
         {
             base.OnElementChanged(e);
@@ -19,9 +19,8 @@ namespace RepeatingWords.Droid
             if (Control == null)
             {
                 var ad = new AdView(Context);
-                ad.AdSize = AdSize.Banner;
-                ad.AdUnitId = "ca-app-pub-5351987413735598/7586925463";
-
+                ad.AdSize = AdSize.SmartBanner;
+                ad.AdUnitId = "ca-app-pub-5993977371632312/4711503801";
                 var requestbuilder = new AdRequest.Builder();
                 ad.LoadAd(requestbuilder.Build());
 
@@ -29,42 +28,5 @@ namespace RepeatingWords.Droid
             }
         }
     }
+#pragma warning restore CS0618 // Type or member is obsolete
 }
-
-//    public class AdMobRenderer : ViewRenderer<AdMobView, AdView>
-//{
-//    string idAbMobBanner = "ca-app-pub-5351987413735598/7586925463";
-//    public AdMobRenderer(Context context):base(context)  { }
-
-//    protected override void OnElementChanged(ElementChangedEventArgs<AdMobView> e)
-//    {
-//        base.OnElementChanged(e);
-
-//        if (e.NewElement != null && Control == null)
-//            SetNativeControl(CreateAdView());
-//    }
-
-//        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-//        {
-//            base.OnElementPropertyChanged(sender, e);
-
-//            if (e.PropertyName == nameof(AdView.AdUnitId))
-//                Control.AdUnitId = idAbMobBanner;
-//        }
-
-//        private AdView CreateAdView()
-//    {
-//        var adView = new AdView(Context)
-//        {
-//            AdSize = AdSize.SmartBanner,
-//            AdUnitId = idAbMobBanner
-//        };
-
-//        adView.LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
-
-//        adView.LoadAd(new AdRequest.Builder().Build());
-
-//        return adView;
-//    }
-//}
-//}

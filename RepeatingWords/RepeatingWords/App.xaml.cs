@@ -1,175 +1,55 @@
-﻿using System;
-using RepeatingWords.Model;
-using Xamarin.Forms;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Xamarin.Forms;
+using SimpleInjector;
+using RepeatingWords.Interfaces;
+using RepeatingWords.Helpers.Interfaces;
+using System.Threading.Tasks;
+using RepeatingWords.Services;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace RepeatingWords
-{ 
+{
     public partial class App : Application
     {
-        //переменная для определения стиля темы приложения
-        private bool originalStyle = true;
-
-
-        //исходные данные для инициализации БД
-        Dictionary dictInit = new Dictionary()
-        {
-            Id = 0,
-            Name = "ExampleDictionary"
-        };
-        List<Words> lw = new List<Words>()
-        {
-           new Words() {Id=0,IdDictionary=1,RusWord="словарь", EngWord="dictionary", Transcription= "[ˈdɪkʃəneri]" },
-           new Words() { Id = 0, IdDictionary = 1, RusWord = "книга", EngWord = "book", Transcription = "[bʊk]" },
-           new Words() { Id = 0, IdDictionary = 1, RusWord = "стол", EngWord = "table", Transcription = "[teɪb(ə)l]" },
-         };
-
-        public const string DATABASE_NAME = "repeatwords.db";
-        public static DictionaryRepository db;
-
-        public static DictionaryRepository Db
-        {
-            get
-            {
-                if (db == null)
-                {
-                    db = new DictionaryRepository(DATABASE_NAME);
-                }
-                return db;
-            }
-        }
-        public static WordRepositiry Wr = new WordRepositiry(Db.DBConnection);
-        public static LastActionRepository LAr = new LastActionRepository(Db.DBConnection);
-        //асинхронное соединение с БД 
-        public static WordRepositiry WrAsync = new WordRepositiry(Db.DBConnectionAsync);
-
-        public App()
-        {
+           //ctor   
+        public App(ISQLite sqlitePath)
+        {           
             InitializeComponent();
-            if (Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone)
-                InitDb();
-
-            CleanStackAndGoRootPage();
-
-            SetOriginalStyle();
-            SetChooseTranscriptionKeyboard();
+            InitApp(sqlitePath);           
         }
 
-
-        public  void CleanStackAndGoRootPage()
-        {
-          MainPage = new NavigationPage(new MainPage());
-        } 
-
-
-
-        //method for set default chosse keyboard when add word
-        private void SetChooseTranscriptionKeyboard()
-        {
-            try
-            {
-                const string TrKeyboard = "TrKeyboard";
-                const string showKeyboard = "true";
-
-                object propTrKeyb;
-                if (!App.Current.Properties.TryGetValue(TrKeyboard, out propTrKeyb))
-                {
-                    App.Current.Properties.Add(TrKeyboard, showKeyboard);
-                }
-            }
-            catch(Exception er)
-            {
-                ErrorHandlerCustom.getErrorMessage(er);
-            }
+        private Container _container;
+        private void InitApp(ISQLite sqlitePath)
+        {           
+            _container = LocatorService.Boot(sqlitePath);
+            var init = _container.GetInstance<IInitDefaultDb>();
+            Task.Run(() => init.LoadDefaultData());
+            if (Device.RuntimePlatform == Device.UWP)
+               InitNavigation();        
         }
 
-        const string Them = "theme";
-        const string _whiteThem = "white";
-        const string _blackThem = "black";
-
-        //method for set default theme
-        private void SetOriginalStyle()
+      
+        private Task InitNavigation()
         {
-            try
+            Task.Run(() =>
             {
-                object propThem;
-
-
-                if (App.Current.Properties.TryGetValue(Them, out propThem))
-                {
-                    // выполняем действия, если в словаре есть ключ "propThem"
-                    if (propThem.Equals(_whiteThem))
-                    {
-                        originalStyle = true;
-                    }
-                    else
-                    {
-                        originalStyle = false;
-                    }
-                }
-                else
-                {
-                    //set default value for theme
-                    originalStyle = true;
-                    App.Current.Properties.Add(Them, _whiteThem);
-                }
-
-
-                if (originalStyle)
-                {
-                    Resources["TitleApp"] = Resources["TitleAppWhite"];
-                    Resources["LableHeadApp"] = Resources["LableHeadAppBlack"];
-                    Resources["LabelColor"] = Resources["LabelNavy"];
-                    Resources["PickerColor"] = Resources["PickerColorNavy"];
-                    Resources["LabelColorWB"] = Resources["LabelBlack"];
-                    Resources["ColorWB"] = Resources["ColorBlack"];
-                    Resources["ColorBlGr"] = Resources["ColorBlue"];                  
-                }
-                else
-                {
-                    Resources["TitleApp"] = Resources["TitleAppBlack"];
-                    Resources["LableHeadApp"] = Resources["LableHeadAppWhite"];
-                    Resources["LabelColor"] = Resources["LabelYellow"];
-                    Resources["LabelColorWB"] = Resources["LabelWhite"];
-                    Resources["PickerColor"] = Resources["PickerColorYellow"];
-                    Resources["ColorWB"] = Resources["ColorWhite"];
-                    Resources["ColorBlGr"] = Resources["ColorYellow"];
-                }
-            }
-            catch (Exception er)
-            {
-               
-            }
+                _container.GetInstance<INewVersionAppChecker>().CheckNewVersionApp();
+            });
+            _container.GetInstance<IThemeService>().GetCurrentTheme();
+                           
+            var navService = _container.GetInstance<INavigationService>();
+            return navService.InitializeAsync();
         }
+ 
 
-
-
-        //метод инициализации БД тестовыми данными
-        private void InitDb()
+        protected override async void OnStart()
         {
-            Dictionary dict = Db.GetDictionarys().FirstOrDefault();
-            if (dict == null)
-            {
-                Db.CreateDictionary(dictInit);
-                int z = Db.GetDictionarys().FirstOrDefault().Id;
-                foreach (var w in lw)
-                {
-                    w.IdDictionary = z;
-                    Wr.CreateWord(w);
-                }
-
-            }
-        }
-
-        protected override void OnStart()
-        {
-            //инициализация базы данных
-            InitDb();
+            if (Device.RuntimePlatform != Device.UWP)
+                await InitNavigation();
         }
         protected override void OnSleep()
         { }
         protected override void OnResume()
-        { }
+        { }       
     }
 }

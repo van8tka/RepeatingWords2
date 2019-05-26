@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             xmlns:custom="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
+               xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
+             mc:Ignorable="d"
+             x:Class="RepeatingWords.View.WorkSpaceEnterWordView"            
+             >
+    <ContentView.Content>
+        <StackLayout>
+            <Label  x:Name="WordRepeat" Text="{Binding CurrentShowingWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorCustomBackgrountButton}"  >
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double">
+                      <On Platform="Android" Value="24" />
+                      <On Platform="UWP" Value="22" />
+                    </OnPlatform>
+                </Label.FontSize>
+            </Label>
+            <StackLayout Margin="20,0,20,0" >
+
+                <custom:EntryRepeatingWord
+                    x:Name="EntryWordView"
+                    CornerRadius="18"                  
+                    IsTextPredictionEnabled="False"                   
+                    IsSpellCheckEnabled="False"
+                    IsCurvedCornersEnabled="True"                      
+                    BorderColor="{Binding ColorEnterWord, Mode=TwoWay}"                  
+                    Placeholder="{local:Translate EnterAnswer}"
+                    PlaceholderColor="Gray"
+                    TextColor="{DynamicResource ColorWB}"  
+                    Text="{Binding EnterAnswerWord, Mode=TwoWay}" 
+                    FontSize="Medium"                   
+                    >
+                    <custom:EntryRepeatingWord.Behaviors>
+                        <behavior:EventToCommandBehavior EventName="Completed" Command="{Binding CheckWordCommand}"/>
+                    </custom:EntryRepeatingWord.Behaviors>
+                </custom:EntryRepeatingWord>
+
+            </StackLayout>
+            <StackLayout Margin="0,5,20,0" HorizontalOptions="End" Orientation="Horizontal">
+                <Label Text="{local:Translate ButtonHint}" TextColor="Gray" FontSize="17" Margin="10,0,10,0" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HintWordCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="{local:Translate ButtonCheck}" TextColor="Gray" FontSize="17" Margin="10,0,10,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CheckWordCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

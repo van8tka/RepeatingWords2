@@ -8,6 +8,8 @@
 
   <style name="MyTheme.Splash" parent="Theme.AppCompat.NoActionBar">
     <item name="android:windowBackground">@drawable/MainGP</item>
-    <item name="android:windowNoTitle">true</item>  
+    <item name="android:windowNoTitle">true</item>
+    <item name="colorAccent">@color/colorMainDefineApp</item>
+    <item name="android:colorActivatedHighlight">@color/colorMainDefineApp</item>
   </style>
 </resources>
