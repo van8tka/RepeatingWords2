@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RepeatingWords.Model

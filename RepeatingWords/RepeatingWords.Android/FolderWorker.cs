@@ -44,10 +44,12 @@ namespace RepeatingWords.Droid
                 }
                 catch(UnauthorizedAccessException er)
                 {
+                    ErrorHandlerCustom.getErrorMessage(er);
                     throw new UnauthorizedAccessException();
                 }
                  catch(Exception er)
                 {
+                    ErrorHandlerCustom.getErrorMessage(er);
                     return null;
                 }
               
@@ -66,10 +68,12 @@ namespace RepeatingWords.Droid
             }
             catch (UnauthorizedAccessException er)
             {
+                ErrorHandlerCustom.getErrorMessage(er);
                 throw new UnauthorizedAccessException();
             }
             catch (Exception er)
             {
+                ErrorHandlerCustom.getErrorMessage(er);
                 return null;
             }          
         }

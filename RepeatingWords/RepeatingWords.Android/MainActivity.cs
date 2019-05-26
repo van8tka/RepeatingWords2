@@ -41,12 +41,11 @@ namespace RepeatingWords.Droid
             Instance = this;
             global::Xamarin.Forms.Forms.Init(this, bundle);
             //проверка наличия разрешения
-            CheckPermissionForStorage();
+            CheckPermissionForStorage();                     
             LoadApplication(new App());
-
         }
         //переопределение кнопки назад
-        public async override void OnBackPressed()
+        public override void OnBackPressed()
         {
             base.OnBackPressed();
         }
@@ -68,7 +67,9 @@ namespace RepeatingWords.Droid
                 }
             }
             catch (Exception er)
-            { }
+            {
+                Log.Error("CheckPermissionForStorage", er.Message);
+            }
         }
         //обработка результата установки разрешения
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
@@ -89,7 +90,9 @@ namespace RepeatingWords.Droid
                 }
             }
             catch (Exception er)
-            { }
+            {
+                Log.Error("OnRequestPermissionsResult", er.Message);
+            }
         }
 
 
@@ -163,7 +166,7 @@ namespace RepeatingWords.Droid
             }
             catch (IntentSender.SendIntentException e)
             {
-                CreateAlertDialog("", errorMessage);
+                CreateAlertDialog("", errorMessage+e.Message);
             }
         }
 
@@ -187,16 +190,13 @@ namespace RepeatingWords.Droid
                         _googleApiClient.Connect();
                         break;
                     case Result.Canceled:
-                        CreateAlertDialog("", errorMessage);
-                        // Log.Error(TAG, "Unable to sign in, is app registered for Drive access in Google Dev Console?");
+                        CreateAlertDialog("", errorMessage);                     
                         break;
                     case Result.FirstUser:
-                        CreateAlertDialog("", errorMessage);
-                        /// Log.Error(TAG, "Unable to sign in: RESULT_FIRST_USER");
+                        CreateAlertDialog("", errorMessage);                     
                         break;
                     default:
-                        CreateAlertDialog("", errorMessage);
-                        //  Log.Error(TAG, "Should never be here: " + resultCode);
+                        CreateAlertDialog("", errorMessage);                      
                         return;
                 }
             }
@@ -300,8 +300,6 @@ namespace RepeatingWords.Droid
             }                  
         }
        
-
-        AlertDialog dl;
         private void CreateAlertDialog(string title, string message)
         {
             RunOnUiThread(() =>
@@ -429,7 +427,7 @@ namespace RepeatingWords.Droid
             }
             catch(Exception er)
             {
-                CreateAlertDialog("", errorMessage);
+                CreateAlertDialog("", errorMessage+er.Message);
             }          
         }
 

@@ -1,13 +1,8 @@
 ﻿using RepeatingWords.Model;
-
 using System.Collections.Generic;
-using System.Collections;
 using Xamarin.Forms;
 using System;
 using System.Threading.Tasks;
-using System.Diagnostics;
-using XLabs.Forms.Behaviors;
-using XLabs.Forms.Controls;
 using System.Linq;
 
 namespace RepeatingWords.Pages
@@ -227,7 +222,7 @@ namespace RepeatingWords.Pages
 
 
         //вызов главной страницы и чистка стека страниц
-        private async void ClickedHomeCustomButton(object sender, EventArgs e)
+        private void ClickedHomeCustomButton(object sender, EventArgs e)
         {
             //выход на главную страницу
             Application.Current.MainPage = new NavigationPage(new MainPage());
@@ -254,7 +249,9 @@ namespace RepeatingWords.Pages
                     string textpath = TextPath.Text;
                     RootPath = RootPath.Remove(RootPath.LastIndexOf('/'));
                     TextPath.Text = textpath.Remove(textpath.LastIndexOf('/'));
+#pragma warning disable CS4014
                     UpdateFileList(getFolder, RootPath);
+#pragma warning restore CS4014
                 }
             }            
             else

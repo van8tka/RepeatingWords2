@@ -49,13 +49,13 @@ namespace RepeatingWords.Pages
             LabelCountOfWords.Text = words.Count().ToString() + "/" + (countW + Count).ToString() + "/" + countTurned.ToString();
             //LabelCountOfWordsTurn.Text = TextTurned+" "+ countTurned.ToString();
             // код для Android
-            if (Device.OS == TargetPlatform.Android)
+            if (Device.RuntimePlatform == Device.Android)
             {
                 lang = "en_GB";
                // DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5351987413735598/1185308269");
             }
             else
-                 if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                 if (Device.RuntimePlatform == Device.UWP)
             { lang = "en-GB"; }
 
             UpdateWord(Count, FromRus);
@@ -81,12 +81,11 @@ namespace RepeatingWords.Pages
             Count = la.IdWord;
             //сколько слов всего и пройдено
             LabelCountOfWords.Text = words.Count().ToString() + "/" + (countW + Count).ToString() + "/" + countTurned.ToString();
-            if (Device.OS == TargetPlatform.Android)
+            if (Device.RuntimePlatform == Device.Android)
             {
-                lang = "en_GB";
-               // DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5351987413735598/1185308269");
+                lang = "en_GB";              
             }
-            else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+            else if (Device.RuntimePlatform == Device.UWP)
             { lang = "en-GB"; }
             UpdateWord(Count, FromRus);
             ButtonVoice.BackgroundColor = new Color(0, 0, 0, 0);
@@ -114,7 +113,7 @@ namespace RepeatingWords.Pages
 
 
         //вызов главной страницы и чистка стека страниц
-        private async void ClickedHomeCustomButton(object sender, EventArgs e)
+        private void ClickedHomeCustomButton(object sender, EventArgs e)
         {
             OnDisapearOverride = false;
             SaveLastWorld();
@@ -429,11 +428,11 @@ namespace RepeatingWords.Pages
                 case "English":
                     {
 
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "en_GB";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "en-GB";
                         }
@@ -442,11 +441,11 @@ namespace RepeatingWords.Pages
                     }
                 case "French":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "fr_FR";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "fr-FR";
                         }
@@ -454,11 +453,11 @@ namespace RepeatingWords.Pages
                     }
                 case "German":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "de_DE";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "de-DE";
                         }
@@ -467,11 +466,11 @@ namespace RepeatingWords.Pages
                     }
                 case "Polish":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "pl_PL";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "pl-PL";
                         }
@@ -480,11 +479,11 @@ namespace RepeatingWords.Pages
                     }
                 case "Ukrainian":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "uk_UK";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "uk-UK";
                         }
@@ -493,11 +492,11 @@ namespace RepeatingWords.Pages
                     }
                 case "Italian":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "it_IT";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "it-IT";
                         }
@@ -506,11 +505,11 @@ namespace RepeatingWords.Pages
                     }
                 case "Русский":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "ru_RU";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "ru-RU";
                         }
@@ -519,11 +518,11 @@ namespace RepeatingWords.Pages
                     }
                 case "Chinese":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "zh_CN";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "zh-CN";
                         }
@@ -532,11 +531,11 @@ namespace RepeatingWords.Pages
                     }
                 case "Japanese":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "ja_JP";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "ja-JP";
                         }
@@ -545,11 +544,11 @@ namespace RepeatingWords.Pages
                     }
                 case "Portuguese(Brazil)":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "pt_BR";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "pt-BR";
                         }
@@ -558,11 +557,11 @@ namespace RepeatingWords.Pages
                     }
                 case "Spanish":
                     {
-                        if (Device.OS == TargetPlatform.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             lang = "es_ES";
                         }
-                        else if (Device.OS == TargetPlatform.WinPhone || Device.OS == TargetPlatform.Windows)
+                        else if (Device.RuntimePlatform == Device.UWP)
                         {
                             lang = "es-ES";
                         }

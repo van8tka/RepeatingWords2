@@ -24,7 +24,7 @@ namespace RepeatingWords.Pages
             InitializeComponent();
 
             //fullscreen advertizing
-            DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5351987413735598/2092653053");
+            DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/4024752876");
             object propThem = "";
             object propTrKeyb = "";
             if (App.Current.Properties.TryGetValue(Them, out propThem))
@@ -55,7 +55,7 @@ namespace RepeatingWords.Pages
 
 
         //вызов главной страницы и чистка стека страниц
-        private async void ClickedHomeCustomButton(object sender, EventArgs e)
+        private void ClickedHomeCustomButton(object sender, EventArgs e)
         {
             //выход на главную страницу
             Application.Current.MainPage = new NavigationPage(new MainPage());
@@ -141,7 +141,7 @@ namespace RepeatingWords.Pages
 
                 if(action == localFolder)
                 {
-                    CreateBackUpIntoDefaultFolder(fileNameBackup);
+                    await CreateBackUpIntoDefaultFolder(fileNameBackup);
                 }
                 else if(action == googleDriveFolder)
                 {

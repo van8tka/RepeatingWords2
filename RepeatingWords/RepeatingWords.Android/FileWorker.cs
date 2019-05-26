@@ -33,6 +33,7 @@ namespace RepeatingWords.Droid
             }
           catch(Exception er)
             {
+                ErrorHandlerCustom.getErrorMessage(er);
                 throw;
             }
         }
@@ -137,10 +138,12 @@ namespace RepeatingWords.Droid
             }
             catch (UnauthorizedAccessException er)
             {
+                ErrorHandlerCustom.getErrorMessage(er);
                 throw;
             }
             catch (Exception er)
             {
+                ErrorHandlerCustom.getErrorMessage(er);
                 throw;
             }
         }
@@ -160,6 +163,7 @@ namespace RepeatingWords.Droid
                 }
                 catch (Exception er)
                 {
+                    ErrorHandlerCustom.getErrorMessage(er);
                     throw;
                 }
             });          

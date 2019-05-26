@@ -14,11 +14,13 @@ namespace RepeatingWords.Droid
         private readonly GestureDetector _detector;
 
 
+#pragma warning disable CS0618 // Type or member is obsolete
         public LabelGestureRendered()
         {
             _listener = new LabelGestureListener();
             _detector = new GestureDetector(_listener);
         }
+#pragma warning restore CS0618 // Type or member is obsolete
 
 
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)

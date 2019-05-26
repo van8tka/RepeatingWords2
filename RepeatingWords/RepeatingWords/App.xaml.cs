@@ -3,6 +3,7 @@ using RepeatingWords.Model;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 
 namespace RepeatingWords
 { 
@@ -39,21 +40,30 @@ namespace RepeatingWords
                 return db;
             }
         }
-        public static WordRepositiry Wr = new WordRepositiry(Db.DBConnection);
-        public static LastActionRepository LAr = new LastActionRepository(Db.DBConnection);
-        //асинхронное соединение с БД 
-        public static WordRepositiry WrAsync = new WordRepositiry(Db.DBConnectionAsync);
+        public static WordRepositiry Wr { get; set; }
+        public static LastActionRepository LAr { get; set; } 
+        public static WordRepositiry WrAsync { get; set; }
 
         public App()
         {
             InitializeComponent();
-            if (Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone)
+            if (Device.RuntimePlatform == Device.UWP)
                 InitDb();
-
             CleanStackAndGoRootPage();
-
             SetOriginalStyle();
             SetChooseTranscriptionKeyboard();
+
+            try
+            {
+                Wr   = new WordRepositiry(Db.DBConnection);
+                LAr  = new LastActionRepository(Db.DBConnection);       
+                WrAsync   = new WordRepositiry(Db.DBConnectionAsync);
+            }
+            catch(Exception er)
+            {
+                Debug.WriteLine(er);
+                throw;
+            }
         }
 
 
@@ -139,7 +149,7 @@ namespace RepeatingWords
             }
             catch (Exception er)
             {
-               
+                ErrorHandlerCustom.getErrorMessage(er);
             }
         }
 

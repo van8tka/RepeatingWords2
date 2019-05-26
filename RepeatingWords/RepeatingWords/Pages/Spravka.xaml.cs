@@ -9,7 +9,7 @@ namespace RepeatingWords
         public Spravka()
         {
             InitializeComponent();
-            if (Device.OS == TargetPlatform.Windows || Device.OS ==TargetPlatform.WinPhone)
+            if (Device.RuntimePlatform == Device.UWP)
             {
                 BtPolicy.IsVisible = true;
                 BtPolicy.IsEnabled = true;
@@ -23,7 +23,7 @@ namespace RepeatingWords
 
 
         //вызов главной страницы и чистка стека страниц
-        private async void ClickedHomeCustomButton(object sender, EventArgs e)
+        private void ClickedHomeCustomButton(object sender, EventArgs e)
         {
             //выход на главную страницу
             Application.Current.MainPage = new NavigationPage(new MainPage());
