@@ -61,6 +61,9 @@
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.5.231</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Ads">
+      <Version>60.1142.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.GooglePlayServices">
       <Version>27.0.0</Version>
     </PackageReference>

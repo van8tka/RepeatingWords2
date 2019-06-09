@@ -52,7 +52,7 @@ namespace RepeatingWords.Pages
             if (Device.RuntimePlatform == Device.Android)
             {
                 lang = "en_GB";
-               // DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5351987413735598/1185308269");
+                DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/2459277342");
             }
             else
                  if (Device.RuntimePlatform == Device.UWP)

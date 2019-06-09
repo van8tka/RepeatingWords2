@@ -39,6 +39,7 @@ namespace RepeatingWords.Droid
         {
             base.OnCreate(bundle);
             Instance = this;
+            Android.Gms.Ads.MobileAds.Initialize(ApplicationContext, "ca-app-pub-5993977371632312~7094124560");
             global::Xamarin.Forms.Forms.Init(this, bundle);
             //проверка наличия разрешения
             CheckPermissionForStorage();                     
