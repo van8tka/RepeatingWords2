@@ -55,9 +55,9 @@ namespace RepeatingWords
 
             try
             {
-                Wr   = new WordRepositiry(Db.DBConnection);
-                LAr  = new LastActionRepository(Db.DBConnection);       
-                WrAsync   = new WordRepositiry(Db.DBConnectionAsync);
+                Wr = new WordRepositiry(Db.DBConnection);
+                LAr = new LastActionRepository(Db.DBConnection);       
+                WrAsync = new WordRepositiry(Db.DBConnectionAsync);
             }
             catch(Exception er)
             {

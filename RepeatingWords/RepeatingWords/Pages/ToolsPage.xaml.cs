@@ -24,7 +24,8 @@ namespace RepeatingWords.Pages
             InitializeComponent();
 
             //fullscreen advertizing
-            DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/4024752876");
+             DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/4024752876");
+         
             object propThem = "";
             object propTrKeyb = "";
             if (App.Current.Properties.TryGetValue(Them, out propThem))

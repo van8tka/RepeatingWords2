@@ -4,6 +4,6 @@ namespace RepeatingWords
 {
     public class AdMobView : ContentView
     {
-       // public AdMobView()      {  }
+       public AdMobView()      {  }
     }
 }
