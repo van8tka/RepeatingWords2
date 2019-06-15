@@ -8,20 +8,16 @@ namespace RepeatingWords.Model
 {
     public class DictionaryRepository
     {
-        SQLiteConnection database;
-        SQLiteAsyncConnection asyncdatabase;
+        SQLiteConnection database;      
         public DictionaryRepository(string filename)
         {
             string databasePath = DependencyService.Get<ISQLite>().GetDatabasePath(filename);
             database = new SQLiteConnection(databasePath);
-            asyncdatabase = new SQLiteAsyncConnection(databasePath);
-            DBConnection = database;
-            DBConnectionAsync = asyncdatabase;
+            DBConnection = database;      
             database.CreateTable<Dictionary>();
             database.CreateTable<Words>();
             database.CreateTable<LastAction>();
-        }
-        public SQLiteAsyncConnection DBConnectionAsync { get; }
+        }      
         public SQLiteConnection DBConnection { get; }
         public IEnumerable<Dictionary> GetDictionarys()
         {

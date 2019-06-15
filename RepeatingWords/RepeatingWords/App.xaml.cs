@@ -41,8 +41,7 @@ namespace RepeatingWords
             }
         }
         public static WordRepositiry Wr { get; set; }
-        public static LastActionRepository LAr { get; set; } 
-        public static WordRepositiry WrAsync { get; set; }
+        public static LastActionRepository LAr { get; set; }    
 
         public App()
         {
@@ -56,8 +55,7 @@ namespace RepeatingWords
             try
             {
                 Wr = new WordRepositiry(Db.DBConnection);
-                LAr = new LastActionRepository(Db.DBConnection);       
-                WrAsync = new WordRepositiry(Db.DBConnectionAsync);
+                LAr = new LastActionRepository(Db.DBConnection);                     
             }
             catch(Exception er)
             {

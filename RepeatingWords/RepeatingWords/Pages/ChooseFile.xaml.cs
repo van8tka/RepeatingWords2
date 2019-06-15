@@ -128,7 +128,7 @@ namespace RepeatingWords.Pages
                                     Transcription = "[" + fileWords[1] + "]",
                                     EngWord = fileWords[2].Trim()
                                 };//добавим слово в БД
-                                await App.WrAsync.AsyncCreateWord(item);
+                                await Task.Run(()=> App.Wr.CreateWord(item));
                             }
                         }          
                         if (CreateWordsFromFile)
@@ -164,17 +164,8 @@ namespace RepeatingWords.Pages
                     OnBackButtonPressed();
                 else
                     await FileSelected(itemTap);
-            }
-           
+            }           
         }
-
-
-       
-
-
-
-
-     
             
         public async Task<bool> UpdateFileList(bool getFolderList, string folderPath = null)
         {

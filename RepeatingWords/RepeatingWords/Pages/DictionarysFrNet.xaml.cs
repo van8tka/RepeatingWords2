@@ -73,7 +73,7 @@ namespace RepeatingWords.Pages
                 await DisplayAlert("Error", er.Message, "Ok");
             }
         }
-        //асинхронный метод добавления слов в ыбранный словарь
+        //асинхронный метод добавления слов в выбранный словарь
         private async Task GreateWords(int idLast, IEnumerable<Words> wordsList)
         {
             foreach (var i in wordsList)
@@ -86,7 +86,7 @@ namespace RepeatingWords.Pages
                     Transcription = i.Transcription,
                     EngWord = i.EngWord
                 };
-                await App.WrAsync.AsyncCreateWord(newW);
+                 await Task.Run(()=> App.Wr.CreateWord(newW));
             }
         }
     }

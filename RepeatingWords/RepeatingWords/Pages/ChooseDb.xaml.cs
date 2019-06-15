@@ -239,7 +239,7 @@ namespace RepeatingWords
                             Transcription = "[" + fileWords[1] + "]",
                             EngWord = fileWords[2]
                         };//добавим слово в БД
-                        await App.WrAsync.AsyncCreateWord(item);
+                        await Task.Run(()=> App.Wr.CreateWord(item));
                     }
                 }
 
@@ -251,9 +251,7 @@ namespace RepeatingWords
                 if (CreateWordsFromFile)
                 {
                     BtnEnable(true);
-                   
-                   // await DisplayAlert("", ModalAddWords, "Ok");
-                    AddWord adw = new AddWord(dictionary);
+                     AddWord adw = new AddWord(dictionary);
                     await Navigation.PushAsync(adw);
                 }
                 else
