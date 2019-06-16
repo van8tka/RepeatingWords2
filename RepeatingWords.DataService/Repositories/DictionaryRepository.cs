@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SQLite;
-using Xamarin.Forms;
+ 
 
-
-namespace RepeatingWords.Model
+namespace RepeatingWords.DataService.Model
 {
     public class DictionaryRepository
     {

@@ -1,7 +1,7 @@
 ﻿using SQLite;
 using System.Linq;
 
-namespace RepeatingWords.Model
+namespace RepeatingWords.DataService.Model
 {
     public class LastActionRepository
     {

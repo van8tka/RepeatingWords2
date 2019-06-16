@@ -3,7 +3,7 @@ using System.Linq;
 using SQLite;
 using System.Threading.Tasks;
 
-namespace RepeatingWords.Model
+namespace RepeatingWords.DataService.Model
 {
     public class WordRepositiry
     {
