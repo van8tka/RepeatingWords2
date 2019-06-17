@@ -1,39 +1,39 @@
-﻿using SQLite;
-using System.Linq;
+﻿//using SQLite;
+//using System.Linq;
 
-namespace RepeatingWords.DataService.Model
-{
-    public class LastActionRepository
-    {
-        SQLiteConnection database;
+//namespace RepeatingWords.DataService.Model
+//{
+//    public class LastActionRepository
+//    {
+//        SQLiteConnection database;
 
-        public LastActionRepository(SQLiteConnection database)
-        {
-            this.database = database;
-        }
+//        public LastActionRepository(SQLiteConnection database)
+//        {
+//            this.database = database;
+//        }
 
 
-        public LastAction GetLastAction()
-        {
-            LastAction la = (from i in database.Table<LastAction>() select i).FirstOrDefault();
-            return la;
-        }
-        public int SaveLastAction(LastAction item)
-        {
-            if (GetLastAction() != null)
-            {
-                item.Id = GetLastAction().Id;
-                database.Update(item);
-                return item.Id;
-            }
-            else
-            {
-                return database.Insert(item);
-            }
-        }
-        public void DelLastAction()
-        {
-            database.Delete<LastAction>(GetLastAction().Id);
-        }
-    }
-}
+//        public LastAction GetLastAction()
+//        {
+//            LastAction la = (from i in database.Table<LastAction>() select i).FirstOrDefault();
+//            return la;
+//        }
+//        public int SaveLastAction(LastAction item)
+//        {
+//            if (GetLastAction() != null)
+//            {
+//                item.Id = GetLastAction().Id;
+//                database.Update(item);
+//                return item.Id;
+//            }
+//            else
+//            {
+//                return database.Insert(item);
+//            }
+//        }
+//        public void DelLastAction()
+//        {
+//            database.Delete<LastAction>(GetLastAction().Id);
+//        }
+//    }
+//}

@@ -1,16 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RepeatingWords.DataService.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RepeatingWords.DataService
 {
-   public class SQLiteContext:DbContext, IDbContext
+    public class SQLiteContext:DbContext 
     {
         //ctor
         public SQLiteContext(string dbpath)
-        {
+        {        
             DbPath = dbpath;
             Database.Migrate();
         }
@@ -18,7 +15,7 @@ namespace RepeatingWords.DataService
         public string DbPath { get; }
         public DbSet<Model.Dictionary> Dictionaries { get; set; }
         public DbSet<Model.Words> Words { get; set; }
-        public DbSet<Model.LastAction> LastAction { get; set; }
+        public DbSet<Model.LastAction> LastActions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
