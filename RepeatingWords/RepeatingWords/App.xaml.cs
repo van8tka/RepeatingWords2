@@ -4,6 +4,12 @@ using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using Unity;
+using RepeatingWords.DataService.Repositories;
+using RepeatingWords.DataService.Interfaces;
+using RepeatingWords.Interfaces;
+using RepeatingWords.Services;
+ 
 
 namespace RepeatingWords
 { 
@@ -11,59 +17,37 @@ namespace RepeatingWords
     {
         //переменная для определения стиля темы приложения
         private bool originalStyle = true;
-
-
-        //исходные данные для инициализации БД
-        Dictionary dictInit = new Dictionary()
-        {
-            Id = 0,
-            Name = "ExampleDictionary"
-        };
-        List<Words> lw = new List<Words>()
-        {
-           new Words() {Id=0,IdDictionary=1,RusWord="словарь", EngWord="dictionary", Transcription= "[ˈdɪkʃəneri]" },
-           new Words() { Id = 0, IdDictionary = 1, RusWord = "книга", EngWord = "book", Transcription = "[bʊk]" },
-           new Words() { Id = 0, IdDictionary = 1, RusWord = "стол", EngWord = "table", Transcription = "[teɪb(ə)l]" },
-         };
-
         public const string DATABASE_NAME = "repeatwords.db";
-        public static DictionaryRepository db;
+        private readonly IUnityContainer _container;
 
-        public static DictionaryRepository Db
-        {
-            get
-            {
-                if (db == null)
-                {
-                    db = new DictionaryRepository(DATABASE_NAME);
-                }
-                return db;
-            }
-        }
-        public static WordRepositiry Wr { get; set; }
-        public static LastActionRepository LAr { get; set; }    
+        const string Them = "theme";
+        const string _whiteThem = "white";
+        const string _blackThem = "black";
+ 
 
-        public App()
-        {
+        public App(ISQLite sqlitePath)
+        {            
             InitializeComponent();
-            if (Device.RuntimePlatform == Device.UWP)
-                InitDb();
+            _container = new UnityContainer();
+            Boot(sqlitePath);
             CleanStackAndGoRootPage();
             SetOriginalStyle();
             SetChooseTranscriptionKeyboard();
-
-            try
-            {
-                Wr = new WordRepositiry(Db.DBConnection);
-                LAr = new LastActionRepository(Db.DBConnection);                     
-            }
-            catch(Exception er)
-            {
-                Debug.WriteLine(er);
-                throw;
-            }
+            InitDb();          
         }
 
+        private void InitDb()
+        {
+            var init = _container.Resolve<IInitDefaultDb>();
+            init.LoadDefaultData();
+        }
+
+        private void Boot(ISQLite sqlitePath)
+        {           
+            _container.RegisterInstance(typeof(ISQLite), sqlitePath);
+            _container.RegisterInstance(typeof(IUnitOfWork),new UnitOfWork(sqlitePath.GetDatabasePath(DATABASE_NAME)));
+            _container.RegisterType<IInitDefaultDb, InitDefaultDb>();           
+        }
 
         public  void CleanStackAndGoRootPage()
         {
@@ -92,9 +76,7 @@ namespace RepeatingWords
             }
         }
 
-        const string Them = "theme";
-        const string _whiteThem = "white";
-        const string _blackThem = "black";
+      
 
         //method for set default theme
         private void SetOriginalStyle()
@@ -152,29 +134,8 @@ namespace RepeatingWords
         }
 
 
-
-        //метод инициализации БД тестовыми данными
-        private void InitDb()
-        {
-            Dictionary dict = Db.GetDictionarys().FirstOrDefault();
-            if (dict == null)
-            {
-                Db.CreateDictionary(dictInit);
-                int z = Db.GetDictionarys().FirstOrDefault().Id;
-                foreach (var w in lw)
-                {
-                    w.IdDictionary = z;
-                    Wr.CreateWord(w);
-                }
-
-            }
-        }
-
         protected override void OnStart()
-        {
-            //инициализация базы данных
-            InitDb();
-        }
+        { }
         protected override void OnSleep()
         { }
         protected override void OnResume()

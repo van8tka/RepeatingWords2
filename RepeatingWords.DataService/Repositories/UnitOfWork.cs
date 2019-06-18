@@ -19,5 +19,10 @@ namespace RepeatingWords.DataService.Repositories
         public IRepository<Words> WordsRepository => _wordsRepo ?? (_wordsRepo = new GenericRepository<Words>(_dbContext));
         private IRepository<LastAction> _lastAction;
         public IRepository<LastAction> LastActionRepository => _lastAction ?? (_lastAction = new GenericRepository<LastAction>(_dbContext));
+
+        public void Save()
+        {
+            _dbContext.SaveChanges();
+        }
     }
 }

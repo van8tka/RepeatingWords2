@@ -25,14 +25,8 @@ namespace RepeatingWords.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, GoogleApiClient.IConnectionCallbacks, IResultCallback, IDriveApiDriveContentsResult
     {
 
-
-
         internal static MainActivity Instance { get; private set; }
-
-       
-
-
-
+     
 
         public static bool HasPermissionToReadWriteExternalStorage = false;
         protected override void OnCreate(Bundle bundle)
@@ -43,7 +37,7 @@ namespace RepeatingWords.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             //проверка наличия разрешения
             CheckPermissionForStorage();                     
-            LoadApplication(new App());
+            LoadApplication(new App( new SQLite_Android()));
         }
         //переопределение кнопки назад
         public override void OnBackPressed()

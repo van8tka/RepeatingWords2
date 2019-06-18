@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RepeatingWords.DataService.Interfaces;
 
 namespace RepeatingWords.DataService
 {
