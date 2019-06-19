@@ -1,6 +1,7 @@
-﻿using RepeatingWords.Model;
+﻿using RepeatingWords.DataService.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -42,8 +43,8 @@ namespace RepeatingWords.Pages
             Turn = FromRus;
             this.iDdictionary = iDdictionary;
             //получаем карточки и сортируем их рандомно
-
-            words = App.Wr.GetWords(iDdictionary);
+            Debugger.Break();
+            //   words = App.Wr.GetWords(iDdictionary);
             RandomWordList();
             //кол во слов и пройденных слов
             LabelCountOfWords.Text = words.Count().ToString() + "/" + (countW + Count).ToString() + "/" + countTurned.ToString();
@@ -76,7 +77,8 @@ namespace RepeatingWords.Pages
             //переменная для многократного переворота карточки
             Turn = FromRus;
             iDdictionary = la.IdDictionary;
-            words = App.Wr.GetWords(la.IdDictionary);
+            Debugger.Break();
+            //  words = App.Wr.GetWords(la.IdDictionary);
             //определяем чему равен Count;
             Count = la.IdWord;
             //сколько слов всего и пройдено
@@ -256,9 +258,10 @@ namespace RepeatingWords.Pages
                         //LabelCountOfWordsTurn.Text = TextTurned + " " + countTurned.ToString();
                         //получим последнюю БД и очистим список перевернутых слов
                         TurnedWords.Clear();
-                        Dictionary di = App.Db.GetDictionarys().LastOrDefault();
-                        iDdictionary = di.Id;//получим новый список слов из БД
-                        words = App.Wr.GetWords(di.Id);//обновим экран
+                        Debugger.Break();
+                     //   Dictionary di = App.Db.GetDictionarys().LastOrDefault();
+                     //   iDdictionary = di.Id;//получим новый список слов из БД
+                     //   words = App.Wr.GetWords(di.Id);//обновим экран
                         UpdateWord(Count, FromRus);
                     }
 
@@ -282,8 +285,10 @@ namespace RepeatingWords.Pages
             {
                 if (TurnedWords.Any())
                 {
-                    string NameD = App.Db.GetDictionary(iDdictionary).Name;
-                    string NameDictionary;
+                    Debugger.Break();
+                    string NameD = string.Empty;
+                    //string NameD = App.Db.GetDictionary(iDdictionary).Name;
+                    string NameDictionary = string.Empty;
                     //проверим это словарь который уже изучали или нет(содержит приставку lerning)
                     if (NameD.Contains(postFixNotLearningWords))
                     {
@@ -291,28 +296,32 @@ namespace RepeatingWords.Pages
                     }
                     else
                     {
-                        NameDictionary = App.Db.GetDictionary(iDdictionary).Name + postFixNotLearningWords;
+                        Debugger.Break();
+                        //  NameDictionary = App.Db.GetDictionary(iDdictionary).Name + postFixNotLearningWords;
                     }
-                    Dictionary deldict = App.Db.GetDictionarys().Where(x => x.Name == NameDictionary).FirstOrDefault();
-                    if (deldict != null)
-                    {
-                        App.Wr.DeleteWords(deldict.Id);
-                        App.Db.DeleteDictionary(deldict.Id);
+                    Debugger.Break();
+                    //  Dictionary deldict = App.Db.GetDictionarys().Where(x => x.Name == NameDictionary).FirstOrDefault();
+                    //if (deldict != null)
+                    //{
+                    //    App.Wr.DeleteWords(deldict.Id);
+                    //    App.Db.DeleteDictionary(deldict.Id);
 
-                    }
+                    //}
 
                     Dictionary dict = new Dictionary()
                     {
                         Id = 0,
                         Name = NameDictionary
                     };
-                    App.Db.CreateDictionary(dict);
-                    int IdLastDictionary = App.Db.GetDictionarys().LastOrDefault().Id;
+                    Debugger.Break();
+                    //App.Db.CreateDictionary(dict);
+                    //  int IdLastDictionary = App.Db.GetDictionarys().LastOrDefault().Id;
                     foreach (var i in TurnedWords)
                     {
                         i.Id = 0;
-                        i.IdDictionary = IdLastDictionary;
-                        App.Wr.CreateWord(i);
+                        Debugger.Break();
+                        //i.IdDictionary = IdLastDictionary;
+                        //App.Wr.CreateWord(i);
                     }
                 }
             }
@@ -349,28 +358,33 @@ namespace RepeatingWords.Pages
                 try
                 {
                     //проверим наличие словаря для продолжения изучения слов
-                    if (!App.Db.GetDictionarys().Where(x => x.Name == NameDbForContinued).Any())
-                    {//если нету то создадим
-                        App.Db.CreateDictionary(new Dictionary() { Id = 0, Name = NameDbForContinued });
-                    }
+                    Debugger.Break();
+                    //if (!App.Db.GetDictionarys().Where(x => x.Name == NameDbForContinued).Any())
+                    //{//если нету то создадим
+                    //    App.Db.CreateDictionary(new Dictionary() { Id = 0, Name = NameDbForContinued });
+                    //}
                     //обновим слова(или добавим)
-                    int IdContinueDict = App.Db.GetDictionarys().Where(x => x.Name == NameDbForContinued).FirstOrDefault().Id;
-                    App.Wr.DeleteWords(IdContinueDict);
+                    Debugger.Break();
+                    //int IdContinueDict = App.Db.GetDictionarys().Where(x => x.Name == NameDbForContinued).FirstOrDefault().Id;
+                    //App.Wr.DeleteWords(IdContinueDict);
                     foreach (Words w in words)
                     {
                         w.Id = 0;
-                        w.IdDictionary = IdContinueDict;
-                        App.Wr.CreateWord(w);
+                        Debugger.Break();
+                        //w.IdDictionary = IdContinueDict;
+                        //App.Wr.CreateWord(w);
                     }
                     //при нажатии  на кн выхода сохраняется последнее слово
-                    LastAction i = new LastAction()
-                    {
-                        Id = 0,
-                        IdDictionary = IdContinueDict,
-                        FromRus = FromRus,
-                        IdWord = Count
-                    };
-                    App.LAr.SaveLastAction(i);
+                    Debugger.Break();
+                    //LastAction i = new LastAction()
+                    //{
+                    //    Id = 0,
+                    //    IdDictionary = IdContinueDict,
+                    //    FromRus = FromRus,
+                    //    IdWord = Count
+                    //};
+                    Debugger.Break();
+                   // App.LAr.SaveLastAction(i);
                     
                 }
                 catch(Exception er)

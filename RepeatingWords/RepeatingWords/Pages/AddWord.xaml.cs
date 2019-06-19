@@ -1,10 +1,10 @@
-﻿using RepeatingWords.Model;
-using RepeatingWords.Pages;
+﻿using RepeatingWords.Pages;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using System;
+using RepeatingWords.DataService.Model;
+using System.Diagnostics;
 
 namespace RepeatingWords
 {
@@ -15,10 +15,12 @@ namespace RepeatingWords
         {
             InitializeComponent();
             dict = dictionary;
-            int ws = App.Wr.GetWords(dictionary.Id).Count();
+            Debugger.Break();
+            // int ws = App.Wr.GetWords(dictionary.Id).Count();
             //для отображения имени словаря в заголовке
-            DictionaryName.Text = dict.Name + " (" + ws.ToString() + ")";
-            this.BindingContext = App.Wr.GetWords(dictionary.Id);
+            Debugger.Break();
+            //DictionaryName.Text = dict.Name + " (" + ws.ToString() + ")";
+            //this.BindingContext = App.Wr.GetWords(dictionary.Id);
         }
 
         //вызов главной страницы и чистка стека страниц
@@ -31,10 +33,12 @@ namespace RepeatingWords
         //обработка перехода на страницу Rendering
         protected override void OnAppearing()
         {
-            int ws = App.Wr.GetWords(dict.Id).Count();
+            Debugger.Break();
+            //    int ws = App.Wr.GetWords(dict.Id).Count();
             //для отображения имени словаря в заголовке
-            DictionaryName.Text = dict.Name + " (" + ws.ToString() + ")";
-            wordsList.ItemsSource = App.Wr.GetWords(dict.Id);
+            Debugger.Break();
+            //DictionaryName.Text = dict.Name + " (" + ws.ToString() + ")";
+            //wordsList.ItemsSource = App.Wr.GetWords(dict.Id);
             //полуаем размеры ширины столбцов grid
             base.OnAppearing();
         }
@@ -60,13 +64,14 @@ namespace RepeatingWords
             }
             if (action == ModalRemove)
             {
-                App.Wr.DeleteWord(ws.Id);
-                if (App.LAr.GetLastAction() != null)
-                {
-                    if (App.LAr.GetLastAction().IdWord == ws.Id)
-                        App.LAr.DelLastAction();
-                }
-              //  await DisplayAlert(ModalWord + " " + ws.RusWord + " " + ModalWordRemove, "", "Ok");
+                Debugger.Break();
+                //App.Wr.DeleteWord(ws.Id);
+                //if (App.LAr.GetLastAction() != null)
+                //{
+                //    if (App.LAr.GetLastAction().IdWord == ws.Id)
+                //        App.LAr.DelLastAction();
+                //}
+
                 OnAppearing();
             }
         }
@@ -75,41 +80,42 @@ namespace RepeatingWords
         {
             CreateWord cw = new CreateWord(dict.Id);
             Words word = new Words();
-            cw.BindingContext = word;
-            // await Navigation.PushAsync(cw);
+            cw.BindingContext = word;          
             await Navigation.PushModalAsync(cw);
         }
 
         private async void RepeatWordsButtonClick(object sender, System.EventArgs e)
         {
-            IEnumerable<Words> wor = App.Wr.GetWords(dict.Id);
+            Debugger.Break();
+           // IEnumerable<Words> wor = App.Wr.GetWords(dict.Id);
             string ModalChooseLang = Resource.ModalChooseLang;
             string ModalActFromFtoTr = Resource.ModalActFromFtoTr;
             string ModalActFromTrtoF = Resource.ModalActFromTrtoF;
             string ModalException = Resource.ModalException;
             string ModalNoWord = Resource.ModalNoWord;
-            if (wor.Any())
-            {
-                bool FromRussia = false;
-                var action = await DisplayActionSheet(ModalChooseLang, "", "", ModalActFromFtoTr, ModalActFromTrtoF);
-                if (action == ModalActFromFtoTr)
-                {
-                    FromRussia = true;
-                    RepeatWord rw = new RepeatWord(dict.Id, FromRussia);
-                    await Navigation.PushAsync(rw);
-                }
-                else
-                {
-                    if (action == ModalActFromTrtoF)
-                    {
-                        FromRussia = false;
-                        RepeatWord rw = new RepeatWord(dict.Id, FromRussia);
-                        await Navigation.PushAsync(rw);
-                    }
-                }
-            }
-            else
-                await DisplayAlert(ModalException, ModalNoWord, "Ок");
+            Debugger.Break();
+            //if (wor.Any())
+            //{
+            //    bool FromRussia = false;
+            //    var action = await DisplayActionSheet(ModalChooseLang, "", "", ModalActFromFtoTr, ModalActFromTrtoF);
+            //    if (action == ModalActFromFtoTr)
+            //    {
+            //        FromRussia = true;
+            //        RepeatWord rw = new RepeatWord(dict.Id, FromRussia);
+            //        await Navigation.PushAsync(rw);
+            //    }
+            //    else
+            //    {
+            //        if (action == ModalActFromTrtoF)
+            //        {
+            //            FromRussia = false;
+            //            RepeatWord rw = new RepeatWord(dict.Id, FromRussia);
+            //            await Navigation.PushAsync(rw);
+            //        }
+            //    }
+            //}
+            //else
+            //    await DisplayAlert(ModalException, ModalNoWord, "Ок");
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using RepeatingWords.Model;
-using System;
+﻿using System;
 using RepeatingWords.Pages;
 using Xamarin.Forms;
-
+using RepeatingWords.DataService.Model;
+using System.Diagnostics;
 
 namespace RepeatingWords
 {
@@ -76,7 +76,8 @@ namespace RepeatingWords
                     }
                                      
                     words.IdDictionary = idDiction;
-                    App.Wr.CreateWord(words);                               
+                    Debugger.Break();
+                    // App.Wr.CreateWord(words);                               
                     await Navigation.PopModalAsync();
                 }
                 else

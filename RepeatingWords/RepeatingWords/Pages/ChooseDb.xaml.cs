@@ -1,10 +1,11 @@
-﻿using RepeatingWords.Model;
-using RepeatingWords.Pages;
+﻿using RepeatingWords.Pages;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using System;
 using System.Threading.Tasks;
+using RepeatingWords.DataService.Model;
+using System.Diagnostics;
 
 namespace RepeatingWords
 {
@@ -48,8 +49,10 @@ namespace RepeatingWords
         {
            return Task.Run(() =>
             {
-                var item = App.Db.GetDictionarys().Where(x => x.Name != NameDbForContinued && x.Name != NameDbForContinuedLearn).OrderBy(x => x.Name);
-                return item;
+                Debugger.Break();
+                return new List<Dictionary>().OrderBy(x=>x);
+                //var item = App.Db.GetDictionarys().Where(x => x.Name != NameDbForContinued && x.Name != NameDbForContinuedLearn).OrderBy(x => x.Name);
+                //return item;
             });
         }
 
@@ -140,13 +143,15 @@ namespace RepeatingWords
                 try
                 {
                     //удаляем словарь
-                    App.Db.DeleteDictionary(dic.Id);
+                    Debugger.Break();
+                    // App.Db.DeleteDictionary(dic.Id);
                     //удаляем слова этого словаря
-                    App.Wr.DeleteWords(dic.Id);
-                    if (App.LAr.GetLastAction() != null && App.LAr.GetLastAction().IdDictionary == dic.Id)
-                    {
-                        App.LAr.DelLastAction();
-                    }
+                    Debugger.Break();
+                    //App.Wr.DeleteWords(dic.Id);
+                    //if (App.LAr.GetLastAction() != null && App.LAr.GetLastAction().IdDictionary == dic.Id)
+                    //{
+                    //    App.LAr.DelLastAction();
+                    //}
                     return true;
                    
                 }
@@ -239,7 +244,8 @@ namespace RepeatingWords
                             Transcription = "[" + fileWords[1] + "]",
                             EngWord = fileWords[2]
                         };//добавим слово в БД
-                        await Task.Run(()=> App.Wr.CreateWord(item));
+                        Debugger.Break();
+                       // await Task.Run(()=> App.Wr.CreateWord(item));
                     }
                 }
 

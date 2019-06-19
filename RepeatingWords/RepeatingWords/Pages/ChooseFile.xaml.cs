@@ -4,6 +4,8 @@ using Xamarin.Forms;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
+using RepeatingWords.DataService.Model;
+using System.Diagnostics;
 
 namespace RepeatingWords.Pages
 {
@@ -128,8 +130,9 @@ namespace RepeatingWords.Pages
                                     Transcription = "[" + fileWords[1] + "]",
                                     EngWord = fileWords[2].Trim()
                                 };//добавим слово в БД
-                                await Task.Run(()=> App.Wr.CreateWord(item));
-                            }
+                            Debugger.Break();
+                            //  await Task.Run(()=> App.Wr.CreateWord(item));
+                        }
                         }          
                         if (CreateWordsFromFile)
                         {

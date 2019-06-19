@@ -1,7 +1,7 @@
-﻿using RepeatingWords.Model;
+﻿using RepeatingWords.DataService.Model;
 using RepeatingWords.Pages;
 using System;
-using System.Linq;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace RepeatingWords
@@ -24,12 +24,14 @@ namespace RepeatingWords
         }
         private async void ReturnButtonClick(object sender, System.EventArgs e)
         {
-
-            LastAction la = App.LAr.GetLastAction();
-
+            Debugger.Break();
+            // LastAction la = App.LAr.GetLastAction();
+            LastAction la=null;
             if (la != null)
             {
-                Dictionary dic = App.Db.GetDictionarys().Where(x => x.Id == la.IdDictionary).FirstOrDefault();
+                Debugger.Break();
+                Dictionary dic = null;
+                // Dictionary dic = App.Db.GetDictionarys().Where(x => x.Id == la.IdDictionary).FirstOrDefault();
                 if (dic != null)
                 {
                     RepeatWord adwords = new RepeatWord(la);
@@ -73,11 +75,5 @@ namespace RepeatingWords
             Spravka spv = new Spravka();
             await Navigation.PushAsync(spv);
         }
-
-       
- 
-
-
-
     }
 }

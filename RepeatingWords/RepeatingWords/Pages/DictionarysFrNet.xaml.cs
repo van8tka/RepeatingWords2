@@ -1,6 +1,8 @@
-﻿using RepeatingWords.Model;
+﻿using RepeatingWords.DataService.Model;
+using RepeatingWords.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -56,13 +58,16 @@ namespace RepeatingWords.Pages
                 Dictionary dictionaryNet = (Dictionary)e.SelectedItem;
                 int id = dictionaryNet.Id;
                 //создаем этот словарь локально
-                App.Db.CreateDictionary(dictionaryNet);             
+                Debugger.Break();
+                //App.Db.CreateDictionary(dictionaryNet);             
                 //получаем список слов выбранного словаря в интеренете
                 IEnumerable<Words> wordsList = await onService.Get(id);
                 //получаем последний словарь(который только что создали)
-                int idLast = App.Db.GetDictionarys().LastOrDefault().Id;
+                Debugger.Break();
+                //int idLast = App.Db.GetDictionarys().LastOrDefault().Id;
                 //проходим по списку слов и создаем слова для этого словаря
-                await GreateWords(idLast, wordsList);
+                Debugger.Break();
+              //  await GreateWords(idLast, wordsList);
                 AddWord adw = new AddWord(dictionaryNet);
                 await Navigation.PushAsync(adw);
                 progressBar.IsVisible = false;
@@ -86,7 +91,8 @@ namespace RepeatingWords.Pages
                     Transcription = i.Transcription,
                     EngWord = i.EngWord
                 };
-                 await Task.Run(()=> App.Wr.CreateWord(newW));
+                Debugger.Break();
+                // await Task.Run(()=> App.Wr.CreateWord(newW));
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -116,9 +117,22 @@ namespace RepeatingWords.Pages
 
 
 
-     #region BACKUP HANDLE
+        #region BACKUP HANDLE
 
-        string filePathToDbFull = App.Db.DBConnection.DatabasePath;
+
+        //   string filePathToDbFull = App.Db.DBConnection.DatabasePath;
+        string filePathToDbFull {
+            get
+            {
+                Debugger.Break();
+              //  App.Db.DBConnection.DatabasePath
+                return null;
+            }
+            set
+            {
+                Debugger.Break();
+            }
+        }
         string fileNameBackupDef = "backupcardsofwords";
         const string folderNameBackUp = "CardsOfWordsBackup";
 

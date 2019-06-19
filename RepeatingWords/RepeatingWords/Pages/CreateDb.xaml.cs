@@ -1,6 +1,8 @@
-﻿using RepeatingWords.Model;
+﻿using RepeatingWords.DataService.Model;
+using RepeatingWords.Model;
 using RepeatingWords.Pages;
 using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace RepeatingWords
@@ -44,7 +46,8 @@ namespace RepeatingWords
                 if (!String.IsNullOrEmpty(dictionary.Name))
                 {
                     dictionary.Id = 0;
-                    App.Db.CreateDictionary(dictionary);
+                Debugger.Break();
+             //   App.Db.CreateDictionary(dictionary);
                     await Navigation.PopAsync();
                 }        
         }
