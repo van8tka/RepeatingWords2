@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using RepeatingWords.Model;
 using System;
+using RepeatingWords.DataService.Model;
 
 namespace RepeatingWords
 {
