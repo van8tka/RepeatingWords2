@@ -45,6 +45,7 @@ namespace RepeatingWords
         private void Boot(ISQLite sqlitePath)
         {           
             _container.RegisterInstance(typeof(ISQLite), sqlitePath);
+            _container.RegisterInstance(typeof(ILogger), DependencyService.Get<ILogManager>().GetLog());
             _container.RegisterInstance(typeof(IUnitOfWork),new UnitOfWork(sqlitePath.GetDatabasePath(DATABASE_NAME)));
             _container.RegisterType<IInitDefaultDb, InitDefaultDb>();           
         }
@@ -139,6 +140,6 @@ namespace RepeatingWords
         protected override void OnSleep()
         { }
         protected override void OnResume()
-        { }
+        { }       
     }
 }

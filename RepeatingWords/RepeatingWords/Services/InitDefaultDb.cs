@@ -2,7 +2,6 @@
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Interfaces;
 using System;
-using System.Diagnostics;
 using System.Linq;
 
 namespace RepeatingWords.Services
@@ -10,10 +9,12 @@ namespace RepeatingWords.Services
     public class InitDefaultDb : IInitDefaultDb
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger _log;
 
-        public InitDefaultDb(IUnitOfWork unitOfWork)
+        public InitDefaultDb(IUnitOfWork unitOfWork, ILogger log)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+            _log = log ?? throw new ArgumentNullException(nameof(log));
         }
 
         public bool LoadDefaultData()
@@ -22,6 +23,7 @@ namespace RepeatingWords.Services
             {                
                 if (_unitOfWork.DictionaryRepository.Get().Count()==0)
                 {
+                    _log.Info("Init new database");
                     int idDefdictionary = CreateDefaultDictionary();
                     CreateDefaultWords(idDefdictionary);
                 }
@@ -29,7 +31,7 @@ namespace RepeatingWords.Services
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
+                _log.Error(e);
                 throw;              
             }
         }
