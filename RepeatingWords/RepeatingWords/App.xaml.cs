@@ -5,7 +5,7 @@ using RepeatingWords.DataService.Repositories;
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.Services;
-
+using RepeatingWords.LoggerService;
 
 namespace RepeatingWords
 {

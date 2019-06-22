@@ -1,4 +1,5 @@
 ﻿using RepeatingWords.DataService.Model;
+using RepeatingWords.LoggerService;
 using RepeatingWords.Services;
 using System;
 using System.Collections.Generic;

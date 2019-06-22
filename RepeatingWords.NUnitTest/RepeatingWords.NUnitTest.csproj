@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\RepeatingWords.DataService\RepeatingWords.DataService.csproj" />
     <ProjectReference Include="..\RepeatingWords.Interfaces\RepeatingWords.Interfaces.csproj" />
-    <ProjectReference Include="..\RepeatingWords.LoggerService\RepeatingWords.LoggerService.csproj" />
     <ProjectReference Include="..\RepeatingWords\RepeatingWords\RepeatingWords.csproj" />
   </ItemGroup>
 

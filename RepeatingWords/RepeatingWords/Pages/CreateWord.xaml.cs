@@ -3,7 +3,7 @@ using RepeatingWords.Pages;
 using Xamarin.Forms;
 using RepeatingWords.DataService.Model;
 using System.Diagnostics;
- 
+using RepeatingWords.LoggerService;
 
 namespace RepeatingWords
 {

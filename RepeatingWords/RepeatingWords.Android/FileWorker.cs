@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System;
 using System.Diagnostics;
 using RepeatingWords.Services;
+using RepeatingWords.LoggerService;
 
 [assembly: Dependency(typeof(RepeatingWords.Droid.FileWorker))]
 

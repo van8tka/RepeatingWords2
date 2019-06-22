@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using System;
 using RepeatingWords.Services;
+using RepeatingWords.LoggerService;
 
 [assembly:Dependency(typeof(RepeatingWords.Droid.FolderWorker))]
 

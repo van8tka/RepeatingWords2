@@ -1,6 +1,7 @@
 ﻿using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Interfaces;
+using RepeatingWords.LoggerService;
 using System;
 using System.Linq;
 

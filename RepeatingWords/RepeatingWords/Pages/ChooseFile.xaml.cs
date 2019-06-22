@@ -7,6 +7,7 @@ using System.Linq;
 using RepeatingWords.DataService.Model;
 using System.Diagnostics;
 using RepeatingWords.Services;
+using RepeatingWords.LoggerService;
 
 namespace RepeatingWords.Pages
 {
