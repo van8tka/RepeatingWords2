@@ -4,7 +4,7 @@ namespace RepeatingWords.Interfaces
 {
     public interface ILogger
     {
-        void Trace(string mesage, params object[] args);
+        void Trace(string message, params object[] args);
         void Debug(string message, params object[] args);
         void Info(string message, params object[] args);
         void Warn(string message, params object[] args);

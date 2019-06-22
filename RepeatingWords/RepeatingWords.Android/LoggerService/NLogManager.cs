@@ -18,7 +18,13 @@ namespace RepeatingWords.Droid.LoggerService
             var config = new LoggingConfiguration();
             ConsoleConfigurationLogger(config);
             FileConfigurationLogger(config);
+          //  MailConfigurationLogger(config);
             NLog.LogManager.Configuration = config;
+        }
+
+        private void MailConfigurationLogger(LoggingConfiguration config)
+        {
+            throw new NotImplementedException();
         }
 
         private void FileConfigurationLogger(LoggingConfiguration config)
@@ -47,8 +53,5 @@ namespace RepeatingWords.Droid.LoggerService
             var logger = NLog.LogManager.GetLogger(filename);
             return new NLogLogger(logger);
         }
-
-       
-
     }
 }
