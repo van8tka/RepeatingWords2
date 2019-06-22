@@ -1,9 +1,8 @@
 using Unity;
 using NUnit.Framework;
 using RepeatingWords.Interfaces;
-using RepeatingWords.NUnitTest;
 
-namespace Tests
+namespace RepeatingWords.NUnitTest
 {
     public class TestInitDbDefault
     {
@@ -12,15 +11,15 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            var container = TestUnityConfig.Load();
+            var container = UnityConfig.Load();
             _init = container.Resolve<IInitDefaultDb>();
         }
 
         [Test]
-        public void TestCreateDb()
+        public void Test_LoadDefaultData_InvokeInitDefData_InitIsTrue()
         {
-            _init.LoadDefaultData();
-            Assert.Pass();
+          var result = _init.LoadDefaultData();
+          Assert.IsTrue(result);
         }
     }
 }

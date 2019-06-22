@@ -16,21 +16,21 @@ namespace RepeatingWords.Services
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public void LoadDefaultData()
+        public bool LoadDefaultData()
         {
             try
-            {
-                var ter = _unitOfWork.DictionaryRepository.Get();
+            {                
                 if (_unitOfWork.DictionaryRepository.Get().Count()==0)
                 {
                     int idDefdictionary = CreateDefaultDictionary();
                     CreateDefaultWords(idDefdictionary);
                 }
+                return true;
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e);
-                throw;
+                throw;              
             }
         }
 

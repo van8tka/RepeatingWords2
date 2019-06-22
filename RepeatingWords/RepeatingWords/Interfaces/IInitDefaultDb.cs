@@ -2,6 +2,6 @@
 {
     public interface IInitDefaultDb
     {
-         void LoadDefaultData();
+         bool LoadDefaultData();
     }
 }

@@ -6,7 +6,7 @@ using Unity;
 
 namespace RepeatingWords.NUnitTest
 {
-    internal class TestUnityConfig
+    internal class UnityConfig
     {
         internal static UnityContainer Load()
         {
@@ -25,7 +25,7 @@ namespace RepeatingWords.NUnitTest
         //для тестирования sqlite in memory
         public string GetDatabasePath(string filename)
         {
-            return ":memory:";
+            return ":memory:";         
         }
     }
 }
