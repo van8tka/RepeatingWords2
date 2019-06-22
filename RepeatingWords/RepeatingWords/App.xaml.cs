@@ -6,6 +6,7 @@ using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.Services;
 using RepeatingWords.LoggerService;
+using RepeatingWords.ViewModel;
 
 namespace RepeatingWords
 {
@@ -45,7 +46,9 @@ namespace RepeatingWords
             _container.RegisterType<ILoggerService, Log>();
             _container.Resolve<ILoggerService>();
             _container.RegisterInstance(typeof(IUnitOfWork),new UnitOfWork(sqlitePath.GetDatabasePath(DATABASE_NAME)));
-            _container.RegisterType<IInitDefaultDb, InitDefaultDb>();           
+            _container.RegisterType<IInitDefaultDb, InitDefaultDb>();
+            _container.RegisterInstance(typeof(INavigation), )
+            _container.RegisterType<IMainPage, MainPageVM>();
         }
 
         public  void CleanStackAndGoRootPage()
