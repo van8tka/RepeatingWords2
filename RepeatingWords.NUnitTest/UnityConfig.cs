@@ -16,6 +16,8 @@ namespace RepeatingWords.NUnitTest
             var testPath = new TestSQLitePath();
             container.RegisterInstance(typeof(ISQLite), testPath);
             container.RegisterType<ILogger, TestLogger>();
+            container.RegisterType<ILoggerService, Log>();
+            container.Resolve<ILoggerService>();
             container.RegisterInstance(typeof(IUnitOfWork), new UnitOfWork(testPath.GetDatabasePath(string.Empty)));
             container.RegisterType<IInitDefaultDb, InitDefaultDb>();
             return container;
