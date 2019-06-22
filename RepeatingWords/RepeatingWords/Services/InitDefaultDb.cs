@@ -20,7 +20,7 @@ namespace RepeatingWords.Services
         public bool LoadDefaultData()
         {
             try
-            {                
+            {               
                 if (_unitOfWork.DictionaryRepository.Get().Count()==0)
                 {
                     _log.Info("Init new database");

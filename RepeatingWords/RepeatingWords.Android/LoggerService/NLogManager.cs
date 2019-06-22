@@ -5,6 +5,7 @@ using NLog.Config;
 using NLog.Targets;
 using RepeatingWords.Droid.LoggerService;
 using RepeatingWords.Interfaces;
+using NLog.MailKit;
 
 [assembly: Xamarin.Forms.Dependency(typeof(NLogManager))]
 namespace RepeatingWords.Droid.LoggerService
@@ -18,13 +19,26 @@ namespace RepeatingWords.Droid.LoggerService
             var config = new LoggingConfiguration();
             ConsoleConfigurationLogger(config);
             FileConfigurationLogger(config);
-          //  MailConfigurationLogger(config);
+            MailConfigurationLogger(config);
             NLog.LogManager.Configuration = config;
         }
 
         private void MailConfigurationLogger(LoggingConfiguration config)
         {
-            throw new NotImplementedException();
+            var mailTarget = new NLog.MailKit.MailTarget();
+            mailTarget.Name = "mail_cardsofwords_log";
+            mailTarget.Subject = "CARDSOFWORDS_ERROR_LOG";
+            mailTarget.To = "ioan.kuzmuk@gmail.com";
+            mailTarget.From = "van8tka@mail.ru";
+            mailTarget.SmtpUserName = "van8tka@mail.ru";
+            mailTarget.SmtpPassword = "dfyznrf6734004";
+            mailTarget.SmtpServer = "smtp.mail.ru";
+            mailTarget.SecureSocketOption = MailKit.Security.SecureSocketOptions.Auto;
+            mailTarget.SmtpPort = 465;
+            mailTarget.SmtpAuthentication = NLog.MailKit.SmtpAuthenticationMode.Basic;
+            config.AddTarget("mail", mailTarget);
+            var mailRule = new LoggingRule("*", NLog.LogLevel.Error, mailTarget);
+            config.LoggingRules.Add(mailRule);
         }
 
         private void FileConfigurationLogger(LoggingConfiguration config)
