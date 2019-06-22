@@ -5,7 +5,7 @@ using NLog.Config;
 using NLog.Targets;
 using RepeatingWords.Droid.LoggerService;
 using RepeatingWords.Interfaces;
-using NLog.MailKit;
+
 
 [assembly: Xamarin.Forms.Dependency(typeof(NLogManager))]
 namespace RepeatingWords.Droid.LoggerService

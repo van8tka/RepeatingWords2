@@ -1,18 +1,14 @@
 ﻿using System;
-using RepeatingWords.Model;
 using Xamarin.Forms;
-using System.Collections.Generic;
-using System.Linq;
-using System.Diagnostics;
 using Unity;
 using RepeatingWords.DataService.Repositories;
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.Services;
- 
+
 
 namespace RepeatingWords
-{ 
+{
     public partial class App : Application
     {
         //переменная для определения стиля темы приложения
@@ -46,6 +42,8 @@ namespace RepeatingWords
         {           
             _container.RegisterInstance(typeof(ISQLite), sqlitePath);
             _container.RegisterInstance(typeof(ILogger), DependencyService.Get<ILogManager>().GetLog());
+            _container.RegisterType<ILoggerService, Log>();
+            _container.Resolve<ILoggerService>();
             _container.RegisterInstance(typeof(IUnitOfWork),new UnitOfWork(sqlitePath.GetDatabasePath(DATABASE_NAME)));
             _container.RegisterType<IInitDefaultDb, InitDefaultDb>();           
         }

@@ -8,22 +8,20 @@ namespace RepeatingWords.Services
 {
     public class InitDefaultDb : IInitDefaultDb
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly ILogger _log;
+        private readonly IUnitOfWork _unitOfWork;    
 
-        public InitDefaultDb(IUnitOfWork unitOfWork, ILogger log)
+        public InitDefaultDb(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-            _log = log ?? throw new ArgumentNullException(nameof(log));
+            _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));          
         }
 
         public bool LoadDefaultData()
         {
             try
-            {               
+            {              
                 if (_unitOfWork.DictionaryRepository.Get().Count()==0)
                 {
-                    _log.Info("Init new database");
+                    Log.Logger.Info("Init new database");
                     int idDefdictionary = CreateDefaultDictionary();
                     CreateDefaultWords(idDefdictionary);
                 }
@@ -31,7 +29,7 @@ namespace RepeatingWords.Services
             }
             catch (Exception e)
             {
-                _log.Error(e);
+                Log.Logger.Error(e);
                 throw;              
             }
         }
