@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\RepeatingWords.DataService\RepeatingWords.DataService.csproj" />
+    <ProjectReference Include="..\..\RepeatingWords.Interfaces\RepeatingWords.Interfaces.csproj" />
+    <ProjectReference Include="..\..\RepeatingWords.LoggerService\RepeatingWords.LoggerService.csproj" />
   </ItemGroup>
 
   <ItemGroup>

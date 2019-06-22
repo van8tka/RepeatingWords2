@@ -2,6 +2,7 @@
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Repositories;
 using RepeatingWords.Interfaces;
+using RepeatingWords.LoggerService;
 using RepeatingWords.Services;
 using Unity;
  

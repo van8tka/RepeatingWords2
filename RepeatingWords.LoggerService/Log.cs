@@ -1,7 +1,7 @@
 ﻿using RepeatingWords.Interfaces;
 using System;
 
-namespace RepeatingWords.Services
+namespace RepeatingWords.LoggerService
 {
     public class Log:ILoggerService
     {

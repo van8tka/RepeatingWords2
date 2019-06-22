@@ -164,6 +164,14 @@
     <AndroidResource Include="Resources\drawable\MainGP.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\RepeatingWords.Interfaces\RepeatingWords.Interfaces.csproj">
+      <Project>{e373e6c9-f821-4eaa-9a5a-bf322fb09226}</Project>
+      <Name>RepeatingWords.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RepeatingWords.LoggerService\RepeatingWords.LoggerService.csproj">
+      <Project>{57d3e0d8-ecd2-44b1-a17d-12d89624ff75}</Project>
+      <Name>RepeatingWords.LoggerService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RepeatingWords\RepeatingWords.csproj">
       <Project>{7f2039cf-0f62-47b7-bde2-ec856927ed57}</Project>
       <Name>RepeatingWords</Name>
