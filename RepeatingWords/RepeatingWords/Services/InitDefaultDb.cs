@@ -2,7 +2,6 @@
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -21,26 +20,11 @@ namespace RepeatingWords.Services
         {
             try
             {
-                if (_unitOfWork.DictionaryRepository.Get().AsEnumerable().Any())
+                var ter = _unitOfWork.DictionaryRepository.Get();
+                if (_unitOfWork.DictionaryRepository.Get().Count()==0)
                 {
-                    //исходные данные для инициализации БД
-                    var dictionary = new Dictionary()
-                    {
-                        Id = 0,
-                        Name = "ExampleDictionary"
-                    };
-
-                    dictionary = _unitOfWork.DictionaryRepository.Create(dictionary);
-                    var listWords = new List<Words>()
-                    {
-                       new Words() {Id=0,IdDictionary=dictionary.Id,RusWord="словарь", EngWord="dictionary", Transcription= "[ˈdɪkʃəneri]" },
-                       new Words() { Id = 0, IdDictionary = dictionary.Id, RusWord = "книга", EngWord = "book", Transcription = "[bʊk]" },
-                       new Words() { Id = 0, IdDictionary = dictionary.Id, RusWord = "стол", EngWord = "table", Transcription = "[teɪb(ə)l]" },
-                    };
-                    foreach (var word in listWords)
-                    {
-                        _unitOfWork.WordsRepository.Create(word);
-                    }
+                    int idDefdictionary = CreateDefaultDictionary();
+                    CreateDefaultWords(idDefdictionary);
                 }
             }
             catch (Exception e)
@@ -48,6 +32,25 @@ namespace RepeatingWords.Services
                 Debug.WriteLine(e);
                 throw;
             }
+        }
+
+        private void CreateDefaultWords(int idDefdictionary)
+        {
+            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = idDefdictionary, RusWord = "словарь", EngWord = "dictionary", Transcription = "[ˈdɪkʃəneri]" });
+            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = idDefdictionary, RusWord = "книга", EngWord = "book", Transcription = "[bʊk]" });
+            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = idDefdictionary, RusWord = "стол", EngWord = "table", Transcription = "[teɪb(ə)l]" });
+            _unitOfWork.Save();
+        }
+
+        private int CreateDefaultDictionary()
+        {             
+            var dic = _unitOfWork.DictionaryRepository.Create(new Dictionary()
+            {
+                Id = 0,
+                Name = "ExampleDictionary"
+            } );
+            _unitOfWork.Save();
+            return dic.Id;
         }
     }
 }

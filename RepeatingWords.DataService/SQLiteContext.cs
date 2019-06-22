@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
+using RepeatingWords.DataService.Model;
 
 namespace RepeatingWords.DataService
 {
@@ -6,19 +8,22 @@ namespace RepeatingWords.DataService
     {
         //ctor
         public SQLiteContext(string dbpath)
-        {        
-            DbPath = dbpath;
-            Database.Migrate();
+        {
+            _dbpath = dbpath ?? throw new ArgumentNullException(nameof(dbpath));
+             Database.Migrate();          
         }
 
-        public string DbPath { get; }
-        public DbSet<Model.Dictionary> Dictionaries { get; set; }
-        public DbSet<Model.Words> Words { get; set; }
-        public DbSet<Model.LastAction> LastActions { get; set; }
+        private readonly string _dbpath;
+        public DbSet<Dictionary> Dictionary { get; set; }
+        public DbSet<Words> Words { get; set; }
+        public DbSet<LastAction> LastActions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite($"Filename={DbPath}");
+            if(_dbpath.Contains("memory"))           
+                optionsBuilder.UseSqlite(@"Data Source =:memory:");          
+            else
+                optionsBuilder.UseSqlite($"Filename={_dbpath}");
         }
 
     }

@@ -6,7 +6,7 @@ using Unity;
 
 namespace RepeatingWords.NUnitTest
 {
-    internal class UnityConfig
+    internal class TestUnityConfig
     {
         internal static UnityContainer Load()
         {

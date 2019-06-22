@@ -7,7 +7,6 @@ namespace RepeatingWords.DataService.Interfaces
         IRepository<Dictionary> DictionaryRepository { get; }
         IRepository<Words> WordsRepository { get; }
         IRepository<LastAction> LastActionRepository { get; }
-
         void Save();
     }
 }

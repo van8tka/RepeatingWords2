@@ -12,7 +12,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            var container = UnityConfig.Load();
+            var container = TestUnityConfig.Load();
             _init = container.Resolve<IInitDefaultDb>();
         }
 
