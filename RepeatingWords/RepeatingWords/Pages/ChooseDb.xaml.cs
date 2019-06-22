@@ -6,6 +6,7 @@ using System;
 using System.Threading.Tasks;
 using RepeatingWords.DataService.Model;
 using System.Diagnostics;
+using RepeatingWords.Services;
 
 namespace RepeatingWords
 {
@@ -132,7 +133,7 @@ namespace RepeatingWords
                 }
                
             }
-            catch (Exception er) { ErrorHandlerCustom.getErrorMessage(er); }
+            catch (Exception er) { Log.Logger.Error(er); }
 
         }
 
@@ -155,7 +156,7 @@ namespace RepeatingWords
                     return true;
                    
                 }
-                catch (Exception er) { ErrorHandlerCustom.getErrorMessage(er); return false; }
+                catch (Exception er) { Log.Logger.Error(er); return false; }
             });
            
         }
@@ -172,7 +173,7 @@ namespace RepeatingWords
                 // await Navigation.PushAsync(cr);
                 await Navigation.PushModalAsync(cr);
             }
-            catch (Exception er) { ErrorHandlerCustom.getErrorMessage(er); }
+            catch (Exception er) { Log.Logger.Error(er); }
         }
 
 

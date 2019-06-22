@@ -1,4 +1,5 @@
 ﻿
+using RepeatingWords.Services;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -166,7 +167,7 @@ namespace RepeatingWords.Pages
             }
             catch (Exception er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
             }
 
         }
@@ -193,7 +194,7 @@ namespace RepeatingWords.Pages
             }
             catch (Exception er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
             }
         }
 
@@ -253,7 +254,7 @@ namespace RepeatingWords.Pages
             }
             catch (Exception er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
             }
         }
             #endregion

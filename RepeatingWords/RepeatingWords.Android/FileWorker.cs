@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using System;
 using System.Diagnostics;
+using RepeatingWords.Services;
 
 [assembly: Dependency(typeof(RepeatingWords.Droid.FileWorker))]
 
@@ -33,7 +34,7 @@ namespace RepeatingWords.Droid
             }
           catch(Exception er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
                 throw;
             }
         }
@@ -77,7 +78,7 @@ namespace RepeatingWords.Droid
             }
             catch (Exception er)
             {
-                Debug.WriteLine("_____________________custom error__________" + er.Message);
+                Log.Logger.Error(er);
                 throw;
             }
         }
@@ -97,8 +98,8 @@ namespace RepeatingWords.Droid
                 return true;
             }
             catch (Exception er)
-            {                
-                Debug.WriteLine("_____custom error___writefileAndroid_______" + er.Message);
+            {
+                Log.Logger.Error(er);
                 throw;
             }
         }
@@ -138,12 +139,12 @@ namespace RepeatingWords.Droid
             }
             catch (UnauthorizedAccessException er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
                 throw;
             }
             catch (Exception er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
                 throw;
             }
         }
@@ -163,7 +164,7 @@ namespace RepeatingWords.Droid
                 }
                 catch (Exception er)
                 {
-                    ErrorHandlerCustom.getErrorMessage(er);
+                    Log.Logger.Error(er);
                     throw;
                 }
             });          

@@ -71,7 +71,7 @@ namespace RepeatingWords
             }
             catch(Exception er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
             }
         }
 
@@ -128,7 +128,7 @@ namespace RepeatingWords
             }
             catch (Exception er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
             }
         }
 

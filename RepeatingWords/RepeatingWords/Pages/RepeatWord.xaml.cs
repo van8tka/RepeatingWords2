@@ -1,4 +1,5 @@
 ﻿using RepeatingWords.DataService.Model;
+using RepeatingWords.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -179,7 +180,7 @@ namespace RepeatingWords.Pages
             }
             catch(Exception er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
             }                
         }
 
@@ -389,7 +390,7 @@ namespace RepeatingWords.Pages
                 }
                 catch(Exception er)
                 {
-                    ErrorHandlerCustom.getErrorMessage(er);
+                    Log.Logger.Error(er);
                 }
                
             });          

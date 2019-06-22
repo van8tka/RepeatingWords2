@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using RepeatingWords.DataService.Model;
 using System.Diagnostics;
+using RepeatingWords.Services;
 
 namespace RepeatingWords.Pages
 {
@@ -48,8 +49,8 @@ namespace RepeatingWords.Pages
                 }
                 catch (Exception er)
                 {
-                    ErrorHandlerCustom.getErrorMessage(er);
-                }
+                Log.Logger.Error(er);
+            }
         }
 
 
@@ -85,8 +86,8 @@ namespace RepeatingWords.Pages
               
             }
             catch (Exception er)
-            {              
-                ErrorHandlerCustom.getErrorMessage(er);
+            {
+                Log.Logger.Error(er);
                 await DisplayAlert("Error", er.Message, "Ok");
             }
         }
@@ -151,9 +152,9 @@ namespace RepeatingWords.Pages
                     }
                 }
                 catch (Exception er)
-                {         
-                    ErrorHandlerCustom.getErrorMessage(er);
-                }                 
+                {
+                Log.Logger.Error(er);
+            }                 
         }
 
 
@@ -208,7 +209,7 @@ namespace RepeatingWords.Pages
             }
             catch(Exception er)
             {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
                 return false;
             }
         }

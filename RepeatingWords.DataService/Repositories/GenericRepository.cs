@@ -45,6 +45,7 @@ namespace RepeatingWords.DataService.Model
             }
             catch(Exception e)
             {
+                //fixme: change Debug to Log
                 Debug.WriteLine(e);
                 return false;
             }            

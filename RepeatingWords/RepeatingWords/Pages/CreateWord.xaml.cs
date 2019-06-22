@@ -3,6 +3,7 @@ using RepeatingWords.Pages;
 using Xamarin.Forms;
 using RepeatingWords.DataService.Model;
 using System.Diagnostics;
+using RepeatingWords.Services;
 
 namespace RepeatingWords
 {
@@ -86,7 +87,7 @@ namespace RepeatingWords
                 }
             }
             catch(Exception er) {
-                ErrorHandlerCustom.getErrorMessage(er);
+                Log.Logger.Error(er);
             }
         }
 
@@ -128,7 +129,7 @@ namespace RepeatingWords
 
                 }
             }
-            catch(Exception er) { ErrorHandlerCustom.getErrorMessage(er); }
+            catch(Exception er) { Log.Logger.Error(er); }
         }
     }
 
