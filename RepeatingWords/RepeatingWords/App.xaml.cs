@@ -7,6 +7,7 @@ using RepeatingWords.Interfaces;
 using RepeatingWords.Services;
 using RepeatingWords.LoggerService;
 using RepeatingWords.ViewModel;
+using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords
 {

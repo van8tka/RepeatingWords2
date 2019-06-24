@@ -1,28 +1,20 @@
 ﻿using RepeatingWords.DataService.Interfaces;
+using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Pages;
 using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
-    public interface IMainPage
-    {
-        ICommand BegianLearningCommand { get; set; }
-        ICommand ChooseDictionaryCommand { get; set; }
-        ICommand ContinueLearningCommand { get; set; }
-        ICommand ShowToolsCommand { get; set; }
-        ICommand LikeCommand { get; set; }
-        ICommand HelperCommand { get; set; }
-    }
+   
     /// <summary>
     /// the first page of application
     /// </summary>
-    public class MainPageVM:IMainPage, INotifyPropertyChanged
+    internal class MainPageVM: ViewModelBase, IMainPage
     {
         public MainPageVM(IUnitOfWork unitOfWork, INavigation navigation)
         {
@@ -85,11 +77,7 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanges([CallerMemberName] string PropertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-        }
+        
     }
 
    
