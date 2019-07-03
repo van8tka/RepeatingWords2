@@ -23,7 +23,7 @@ namespace RepeatingWords.ViewModel
         public bool IsBusy
         {
             get => _isBusy;
-            set { _isBusy = value; OnPropertyChanges(nameof(IsBusy));s }
+            set { _isBusy = value; OnPropertyChanges(nameof(IsBusy)); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
