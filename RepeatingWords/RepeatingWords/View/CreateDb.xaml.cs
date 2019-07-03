@@ -37,7 +37,7 @@ namespace RepeatingWords
         private   void ClickedHomeCustomButton(object sender, EventArgs e)
         {
             //выход на главную страницу
-            Application.Current.MainPage = new NavigationPage(new MainPage());
+            Application.Current.MainPage = new NavigationPage(new MainView());
         }
 
         private async void CreateDbButtonClick(object sender, System.EventArgs e)

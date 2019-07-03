@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace RepeatingWords.Helpers.Interfaces
 {
-    internal interface INavigationServcie
+    public interface INavigationServcie
     {
         ViewModelBase PreviousPageViewModel { get; }
         Task InitializeAsync();

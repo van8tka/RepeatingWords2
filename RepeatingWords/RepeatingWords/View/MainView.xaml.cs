@@ -3,17 +3,17 @@ using Xamarin.Forms;
 
 namespace RepeatingWords
 {
-    public partial class MainPage : ContentPage
+    public partial class MainView : ContentPage
     {
-        public MainPage()
+        public MainView()
         {
            InitializeComponent();        
         }
 
         [Unity.Dependency]
-        public MainPageVM ViewModel
+        public MainViewModel ViewModel
         {
-            get => BindingContext as MainPageVM;
+            get => BindingContext as MainViewModel;
             set => BindingContext = value;
         }
     }

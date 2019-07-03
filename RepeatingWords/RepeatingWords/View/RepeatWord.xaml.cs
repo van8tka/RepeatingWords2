@@ -401,7 +401,7 @@ namespace RepeatingWords.Pages
         //метод возврата на главную страницу
         private void ComeBack()
         {
-            Application.Current.MainPage = new NavigationPage(new MainPage());
+            Application.Current.MainPage = new NavigationPage(new MainView());
         }
 
 

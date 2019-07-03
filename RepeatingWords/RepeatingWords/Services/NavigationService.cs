@@ -1,25 +1,28 @@
 ﻿using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.View;
 using RepeatingWords.ViewModel;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Services
 {
-    internal class NavigationService : INavigationServcie
+    public class NavigationService : INavigationServcie
     {
 
-        private IReadOnlyList<Page> _navigationStack => Application.Current.MainPage.Navigation.NavigationStack;
+        private RepeatingWordsNavigation  _mainPage => Application.Current.MainPage as RepeatingWordsNavigation;
 
         public ViewModelBase PreviousPageViewModel
         {
-            get => _navigationStack[_navigationStack.Count - 2].BindingContext as ViewModelBase;
+            get => _mainPage.Navigation.NavigationStack[_mainPage.Navigation.NavigationStack.Count - 2].BindingContext as ViewModelBase;
         }
 
         public Task InitializeAsync()
         {
-            return NavigateToAsync<MainPageVM>();
+            return NavigateToAsync<MainViewModel>();
         }
 
         public Task NavigateToAsync<T>() where T : ViewModelBase
@@ -34,17 +37,63 @@ namespace RepeatingWords.Services
 
         public Task RemoveBackStackAsync()
         {
-            throw new NotImplementedException();
+            
+            if(_mainPage!=null)
+            {
+                _mainPage.Navigation.RemovePage(_mainPage.Navigation.NavigationStack[_mainPage.Navigation.NavigationStack.Count - 2]);
+            }
+            return Task.FromResult(true);
         }
 
         public Task RemoveLastFromBackStackAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+               
+                if (_mainPage != null)
+                {
+                    for (int i = 0; i < _mainPage.Navigation.NavigationStack.Count - 1; i++)
+                    {
+                        _mainPage.Navigation.RemovePage(_mainPage.Navigation.NavigationStack[i]);
+                    }
+                }
+                return Task.FromResult(true);
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e);
+                throw;
+            }           
         }
 
-        private Task InternalNavigateToAsync(Type type, object p)
+        private async Task InternalNavigateToAsync(Type viewModelType, object parameter)
         {
-            throw new NotImplementedException();
+            var page = CreatePage(viewModelType, parameter);
+            if(_mainPage != null)
+            {
+                await _mainPage.PushAsync(page);
+            }
+            else
+            {
+                Application.Current.MainPage = new RepeatingWordsNavigation(page);
+            }
+            await (page.BindingContext as ViewModelBase).InitializeAsync(parameter);
+        }
+
+        private Page CreatePage(Type viewModelType, object parameter)
+        {
+            var pageType = GetPageTypeForViewModel(viewModelType);
+            if (pageType == null)
+                throw new Exception($"Can't locate page type to {viewModelType}");
+            return (Activator.CreateInstance(pageType) as Page);
+        }
+
+        private Type GetPageTypeForViewModel(Type viewModelType)
+        {
+            var viewName = viewModelType.FullName.Replace("Model", string.Empty);
+            var viewModelAssemblyName = viewModelType.GetTypeInfo().Assembly.FullName;
+            var viewAssemblyName = string.Format(CultureInfo.InvariantCulture, "{0},{1}", viewName, viewModelAssemblyName);
+            return Type.GetType(viewAssemblyName);
         }
     }
 }

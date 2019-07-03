@@ -49,12 +49,12 @@ namespace RepeatingWords
             _container.RegisterInstance(typeof(IUnitOfWork),new UnitOfWork(sqlitePath.GetDatabasePath(DATABASE_NAME)));
             _container.RegisterType<IInitDefaultDb, InitDefaultDb>();
             _container.RegisterInstance(typeof(INavigation), )
-            _container.RegisterType<IMainPage, MainPageVM>();
+            _container.RegisterType<IMainPage, MainViewModel>();
         }
 
         public  void CleanStackAndGoRootPage()
         {
-          MainPage = new NavigationPage(new MainPage());
+          MainPage = new NavigationPage(new MainView());
         } 
 
 

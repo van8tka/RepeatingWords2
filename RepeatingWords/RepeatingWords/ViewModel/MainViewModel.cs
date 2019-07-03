@@ -14,9 +14,9 @@ namespace RepeatingWords.ViewModel
     /// <summary>
     /// the first page of application
     /// </summary>
-    internal class MainPageVM: ViewModelBase, IMainPage
+    public class MainViewModel: ViewModelBase, IMainPage
     {
-        public MainPageVM(IUnitOfWork unitOfWork, INavigation navigation)
+        public MainViewModel(IUnitOfWork unitOfWork, INavigation navigation)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             ChooseDictionaryCommand = new Command(async() => {await _navigation.PushAsync(new ChooseDb()); });

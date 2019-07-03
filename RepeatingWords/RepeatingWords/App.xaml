@@ -14,8 +14,8 @@
        <Setter Property="FontSize">
          <Setter.Value>
            <OnPlatform x:TypeArguments="x:Double">
-             <OnPlatform.Android>17</OnPlatform.Android>
-             <OnPlatform.WinPhone>17</OnPlatform.WinPhone>
+             <On Platform="Android">17</On>
+             <On Platform="UWP, WinPhone">17</On>
            </OnPlatform>
          </Setter.Value>        
        </Setter>    
@@ -39,8 +39,8 @@
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:Double">
-                            <OnPlatform.Android>21</OnPlatform.Android>
-                            <OnPlatform.WinPhone>18</OnPlatform.WinPhone>
+                            <On Platform="Android">21</On>
+                            <On Platform="WinPhone, UWP">18</On>
                         </OnPlatform>
                     </Setter.Value>
                 </Setter>
@@ -51,9 +51,11 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="FontSize">
                     <Setter.Value>
+
+                        
                         <OnPlatform x:TypeArguments="x:Double">
-                            <OnPlatform.Android>21</OnPlatform.Android>
-                            <OnPlatform.WinPhone>18</OnPlatform.WinPhone>
+                            <On Platform="Android">21</On>
+                            <On Platform="UWP, WinPhone">18</On>
                         </OnPlatform>
                     </Setter.Value>
                 </Setter>
