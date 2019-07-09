@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.View.SettingsView"
+             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             xmlns:behavior="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             Title="{local:Translate TitleSettings}"
+             BackgroundColor="{Binding SettingsBackgroundColor}"
+          >
+    <!--панель управлления-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
+    </ContentPage.ToolbarItems>
+    <Grid Margin="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="{local:Translate LabelChooseTheme}"  Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"/>
+        <Label Text="{local:Translate LabelThemeDark}" Style="{DynamicResource LabelColorWB}" VerticalTextAlignment="Center" FontSize="Medium" Grid.Column="0" Grid.Row="1" HorizontalOptions="Start"/>
+        <Switch x:Name="SwDark" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center"  IsToggled="{Binding IsWhiteThem}"  Grid.Column="1" Grid.Row="1">
+                <Switch.Behaviors>
+                    <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchThemeCommand}"/>
+                </Switch.Behaviors>
+            </Switch>
+        <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource ColorBlue}"/>
+        <BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource ColorBlue}"/>
+        <Label Text="{local:Translate LabelChooseShowKeyboardTrans}"  Style="{DynamicResource LableHeadApp}" HorizontalTextAlignment="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" />
+        <Label Text="{local:Translate LabelShowKeyboard}" Style="{DynamicResource LabelColorWB}" FontSize="Medium" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
+        <Switch x:Name="SwShowKeyboard" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" IsToggled="{Binding IsCustomKeyboardTranscription}" Grid.Column="1" Grid.Row="4">
+                <Switch.Behaviors>
+                    <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchTranskriptionKeyboardCommand}"/>
+                </Switch.Behaviors>
+            </Switch>
+
+        <StackLayout Orientation="Vertical"   Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2">
+            <Label Text="{local:Translate BackupStr}"  Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" />
+            <Button Style="{StaticResource buttonStyle}" Text="{local:Translate BackUpCreateBtn}" Command="{Binding BackUpCommand}"   />
+            <Button Style="{StaticResource buttonStyle}" Text="{local:Translate BackUpRestoreBtn}" Command="{Binding RestoreBackUpCommand}"/>
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>

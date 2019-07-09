@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.App"
+             xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             >
+  <Application.Resources>
+    <ResourceDictionary>
+      <!--BUTTON-->
+  <Style x:Key ="buttonStyle" TargetType="Button">
+       <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#6bafef"/>
+
+       <Setter Property="FontSize">
+         <Setter.Value>
+           <OnPlatform x:TypeArguments="x:Double">
+             <On Platform="Android">17</On>
+             <On Platform="UWP, WinPhone">17</On>
+           </OnPlatform>
+         </Setter.Value>        
+       </Setter>    
+   </Style>
+    
+         <!--CONTENT-->
+        <Style x:Key="TitleAppBlack" TargetType="ContentPage">
+            <Setter Property="Title" Value="{local:Translate TitleMain}"/>
+              <Setter Property="Padding" Value="15,0,15, 0"/> 
+            <Setter Property="BackgroundColor" Value="#363636"/>
+       </Style>
+       <Style x:Key="TitleAppWhite" TargetType="ContentPage">
+                <Setter Property="Title" Value="{local:Translate TitleMain}"/>
+                <Setter Property="Padding" Value="15, 0,15, 0"/>
+                <Setter Property="BackgroundColor" Value="#F5F5F5"/>
+        </Style>
+            <!--LABEL-->
+      <Style x:Key="LableHeadAppWhite" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android">21</On>
+                            <On Platform="WinPhone, UWP">18</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        
+            <Style x:Key="LableHeadAppBlack" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+
+                        
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android">21</On>
+                            <On Platform="UWP, WinPhone">18</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        
+        <!--COLORS LABEL FOR THEME-->
+            <Style x:Key="LabelBlack" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+            <Style x:Key="LabelWhite" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="LabelYellow" TargetType="Label">
+                <Setter Property="TextColor" Value="Yellow"/>
+            </Style>
+            <Style x:Key="LabelNavy" TargetType="Label">
+                <Setter Property="TextColor" Value="Navy"/>
+            </Style>
+
+            <Style x:Key="PickerColorNavy" TargetType="Picker">
+                <Setter Property="TextColor" Value="Navy"/>
+            </Style>
+            <Style x:Key="PickerColorYellow" TargetType="Picker">
+                <Setter Property="TextColor" Value="Yellow"/>
+            </Style>
+
+            <Color x:Key="ColorBlack">Black</Color>
+            <Color x:Key="ColorWhite">White</Color>
+            <Color x:Key="ColorYellow">Yellow</Color>
+            <Color x:Key="ColorBlue">Blue</Color>
+            <Color x:Key="ColorGreen">Lime</Color>
+
+        </ResourceDictionary>
+  </Application.Resources>
+</Application>
