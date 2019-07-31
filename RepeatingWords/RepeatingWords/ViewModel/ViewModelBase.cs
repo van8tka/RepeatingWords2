@@ -15,8 +15,8 @@ namespace RepeatingWords.ViewModel
             DialogService = dialogService;
             NavigationService = navigationServcie;
             GoMainPageCommand = new Command(async () => {
-                await NavigationService.NavigateToAsync<MainViewModel>();
-                await NavigationService.RemoveBackStackAsync(); });
+            await NavigationService.NavigateToAsync<MainViewModel>();
+            await NavigationService.RemoveBackStackAsync(); });
         }
                 
 

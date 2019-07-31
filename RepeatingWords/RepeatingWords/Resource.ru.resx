@@ -565,4 +565,25 @@
     <value>Настройки</value>
     <comment>Заголовок страницы настройки</comment>
   </data>
+  <data name="TitleDictionaries" xml:space="preserve">
+    <value>Словари</value>
+  </data>
+  <data name="TitleLanguages" xml:space="preserve">
+    <value>Выбор языка</value>
+  </data>
+  <data name="TitleChangeWord" xml:space="preserve">
+    <value>Изменить слово</value>
+  </data>
+  <data name="TitleCreateWord" xml:space="preserve">
+    <value>Создать слово</value>
+  </data>
+  <data name="TitleTranscription" xml:space="preserve">
+    <value>Транскрипция</value>
+  </data>
+  <data name="ButtonImport" xml:space="preserve">
+    <value>Импорт</value>
+  </data>
+  <data name="TitleExplorer" xml:space="preserve">
+    <value>Файловый менеджер</value>
+  </data>
 </root>

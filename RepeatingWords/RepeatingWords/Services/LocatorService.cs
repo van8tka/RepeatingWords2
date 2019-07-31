@@ -31,7 +31,8 @@ namespace RepeatingWords.Services
             _container.RegisterType<IBackupService, BackupLocalService>();
             _container.RegisterInstance(typeof(IThemeService), new ThemeChangeService());
             _container.RegisterInstance(typeof(IKeyboardTranscriptionService), new KeyboardTranscriptionChangeService());
-      
+            _container.RegisterType<IWebApiService, OnlineDictionaryService>();
+            _container.RegisterType<IImportFile, ImportFileToDb>();
 
             //register viewmodels
             _container.RegisterType(typeof(MainViewModel));
@@ -39,9 +40,23 @@ namespace RepeatingWords.Services
             _container.RegisterType(typeof(InstructionAddOneWordViewModel));
             _container.RegisterType(typeof(InstructionImportFromFileViewModel));
             _container.RegisterType(typeof(SettingsViewModel));
-          
+            _container.RegisterType(typeof(DictionariesListViewModel));
+            _container.RegisterType(typeof(LanguageFrNetViewModel));
+            _container.RegisterType(typeof(DictionaryFrNetViewModel));
+            _container.RegisterType(typeof(WordsListViewModel));
+            _container.RegisterType(typeof(RepeatingWordsViewModel));
+            _container.RegisterType(typeof(CreateWordViewModel));
+            _container.RegisterType(typeof(EntryTranscriptionViewModel));
+            _container.RegisterType(typeof(ChooseFileViewModel));
 
-            
+
+            //_container.RegisterType(typeof(DictionariesListViewModel));
+            //_container.RegisterType(typeof(DictionariesListViewModel));
+            //_container.RegisterType(typeof(DictionariesListViewModel));
+            //_container.RegisterType(typeof(DictionariesListViewModel));
+            //_container.RegisterType(typeof(DictionariesListViewModel));
+            //_container.RegisterType(typeof(DictionariesListViewModel));
+
             Container = _container;
             return _container;
         }

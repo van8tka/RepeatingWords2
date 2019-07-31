@@ -11,11 +11,13 @@
         <ToolbarItem Name="Like" Icon="toolbarImageLike.png" Command="{Binding LikeCommand}"></ToolbarItem>
         <ToolbarItem Name="Help" Icon="toolbarImageHelp.png" Command="{Binding HelperCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
-    <StackLayout HorizontalOptions="Center" Orientation="Vertical">
-        <local:AdMobView WidthRequest="320" HeightRequest="50"/>
-        <Label Text="{local:Translate HeaderMain}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{DynamicResource LableHeadApp}"/>
-        <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate ButtonAddDictionaryOrWords}" Command="{Binding ChooseDictionaryCommand}"/>
-        <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate ChooseDictionaryForRepeat}" Command="{Binding BegianLearningCommand}"/>
-        <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate Continue}" Command="{Binding ContinueLearningCommand}"/>
+    <StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+            <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate ButtonAddDictionaryOrWords}" Command="{Binding ChooseDictionaryCommand}"/>
+            <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate Continue}" Command="{Binding ContinueLearningCommand}" IsEnabled="{Binding IsEnabledContinue}"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="End">
+            <local:AdMobView HeightRequest="50" />
+        </StackLayout>
     </StackLayout>
-   </ContentPage>
+</ContentPage>

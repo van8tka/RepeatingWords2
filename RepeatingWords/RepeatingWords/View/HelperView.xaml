@@ -11,8 +11,8 @@
         <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
     </ContentPage.ToolbarItems>
     <ScrollView>
-        <StackLayout>
-            <Label Text="{locale:Translate LabelInstruction}" HorizontalTextAlignment="Center" Style="{StaticResource LableHeadApp}" HeightRequest="150"/>
+        <StackLayout VerticalOptions="Center">
+            <!--<Label Text="{locale:Translate LabelInstruction}" HorizontalTextAlignment="Center" Style="{StaticResource LableHeadApp}" HeightRequest="150"/>-->
             <Button Text="{locale:Translate ButtonHowCreateDictAndaddWord}" Style="{StaticResource buttonStyle}" Command="{Binding HowToAddWordCommand}"/>
             <Button Text="{locale:Translate ButtonHowIportFile}" Style="{StaticResource buttonStyle}" Command="{Binding HowToImportFromFileCommand}"/>
             <Button x:Name="BtAbout" Text="{locale:Translate ButtonAbout}" Style="{StaticResource buttonStyle}" Command="{Binding AboutCommand}"/>

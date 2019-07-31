@@ -577,4 +577,25 @@ smartphone or keyboard transcription</value>
   <data name="TitleSettings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="TitleDictionaries" xml:space="preserve">
+    <value>Dictionaries</value>
+  </data>
+  <data name="TitleLanguages" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="TitleCreateWord" xml:space="preserve">
+    <value>Create a word</value>
+  </data>
+  <data name="TitleChangeWord" xml:space="preserve">
+    <value>Change the word</value>
+  </data>
+  <data name="TitleTranscription" xml:space="preserve">
+    <value>Transcription</value>
+  </data>
+  <data name="ButtonImport" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="TitleExplorer" xml:space="preserve">
+    <value>File explorer</value>
+  </data>
 </root>

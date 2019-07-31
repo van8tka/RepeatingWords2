@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.View.DictionariesListView"
+             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             Style="{StaticResource TitleApp}"
+             Title="{local:Translate TitleDictionaries}"
+             >
+    <!--панель управлления-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <StackLayout VerticalOptions="Start">
+            <local:AdMobView HeightRequest="85" />
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand"  Margin="10,5,10,0">
+         
+            <ListView x:Name ="dictionaryList" ItemsSource="{Binding DictionaryList}" SelectedItem ="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout VerticalOptions="Center" >
+                                    <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <StackLayout VerticalOptions="End" Style="{StaticResource BottomToolbarStyle}" >
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Button x:Name="BtAddDict" Style="{StaticResource buttonStyle}" Text="{local:Translate ButtonCreate}" Command="{Binding AddDictionaryCommand}"/>
+                <Button x:Name="BtAddWorFrNet" Style="{StaticResource buttonStyle}" Text="{local:Translate ButtonImport}" Command="{Binding AddWordsFromNetCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

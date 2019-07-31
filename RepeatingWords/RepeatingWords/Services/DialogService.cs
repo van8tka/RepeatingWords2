@@ -21,5 +21,11 @@ namespace RepeatingWords.Services
         {
             return UserDialogs.Instance.AlertAsync(message, title, oktext);
         }
+
+        public async Task<string> ShowInputTextDialog(string message, string title = null, string okText = null, string cancelText = null, string placeholder = "", CancellationToken cancelToken = default)
+        {
+            var result = await UserDialogs.Instance.PromptAsync(message, title, okText, cancelText, placeholder, InputType.Default, cancelToken);
+            return result.Text;
+        }
     }
 }

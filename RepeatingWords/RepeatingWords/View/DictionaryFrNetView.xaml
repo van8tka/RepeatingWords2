@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.View.DictionaryFrNetView"
+             xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             Style="{StaticResource TitleApp}"
+             Title="{Binding LanguageName}"
+             >
+    <!--панель управлления-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout >
+        <StackLayout VerticalOptions="End" >
+            <local:AdMobView HeightRequest="85" />
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand" Margin="10,5,10,0">
+            <ListView x:Name ="dictionaryNetList" ItemsSource="{Binding DictionaryList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

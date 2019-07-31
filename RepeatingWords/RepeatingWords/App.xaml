@@ -9,7 +9,7 @@
       <!--BUTTON-->
   <Style x:Key ="buttonStyle" TargetType="Button">
        <Setter Property="TextColor" Value="White"/>
-                <Setter Property="BackgroundColor" Value="#6bafef"/>
+       <Setter Property="BackgroundColor" Value="#6bafef"/>
 
        <Setter Property="FontSize">
          <Setter.Value>
@@ -20,16 +20,23 @@
          </Setter.Value>        
        </Setter>    
    </Style>
-    
-         <!--CONTENT-->
+
+            <Style x:Key ="BottomToolbarStyle" TargetType="StackLayout">
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="BackgroundColor" Value="LightGray"/>
+                <Setter Property="Padding" Value="5"/>
+            </Style>
+
+
+            <!--CONTENT-->
         <Style x:Key="TitleAppBlack" TargetType="ContentPage">
             <Setter Property="Title" Value="{local:Translate TitleMain}"/>
-              <Setter Property="Padding" Value="15,0,15, 0"/> 
+              <!--<Setter Property="Padding" Value="15,0,15, 0"/>--> 
             <Setter Property="BackgroundColor" Value="#363636"/>
        </Style>
        <Style x:Key="TitleAppWhite" TargetType="ContentPage">
                 <Setter Property="Title" Value="{local:Translate TitleMain}"/>
-                <Setter Property="Padding" Value="15, 0,15, 0"/>
+                <!--<Setter Property="Padding" Value="15, 0,15, 0"/>-->
                 <Setter Property="BackgroundColor" Value="#F5F5F5"/>
         </Style>
             <!--LABEL-->
@@ -87,6 +94,7 @@
             <Color x:Key="ColorYellow">Yellow</Color>
             <Color x:Key="ColorBlue">Blue</Color>
             <Color x:Key="ColorGreen">Lime</Color>
+            <Color x:Key="ColorCustomBackgrountButton">#6bafef</Color>
 
         </ResourceDictionary>
   </Application.Resources>

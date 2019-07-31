@@ -54,7 +54,6 @@ namespace RepeatingWords.Services
                 }
                 else
                 {
-
                     App.Current.Properties.Add(Constants.KEYBOARD_TRANSCRIPTION, Constants.KEYBOARD_TRANSCRIPTION_SHOWED);
                     isShow = true;
                 }

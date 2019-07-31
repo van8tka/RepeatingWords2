@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -20,14 +20,40 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Update="View\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\ChooseFileView.xaml.cs">
+      <DependentUpon>ChooseFileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\CreateWordView.xaml.cs">
+      <DependentUpon>CreateWordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\EntryTranscriptionView.xaml.cs">
+      <DependentUpon>EntryTranscriptionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\WordsListView.xaml.cs">
+      <DependentUpon>WordsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\DictionariesListView.xaml.cs">
+      <DependentUpon>DictionariesListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\DictionaryFrNetView.xaml.cs">
+      <DependentUpon>DictionaryFrNetView.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\InstructionAddOneWordView.xaml.cs">
       <DependentUpon>InstructionAddOneWordView.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\InstructionImportFromFileView.xaml.cs">
       <DependentUpon>InstructionImportFromFileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\LanguageFrNetView.xaml.cs">
+      <DependentUpon>LanguageFrNetView.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -41,6 +67,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\RepeatingWordsNavigation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

@@ -1,47 +1,22 @@
-﻿using System;
+﻿using RepeatingWords.Services;
+using RepeatingWords.ViewModel;
+using System;
 using Xamarin.Forms;
+using Unity;
 
 namespace RepeatingWords.View
 {
-
-
-    public partial class EntryTranscription : ContentPage
+    /// <summary>
+    /// предоставляет поле ввода и клавиатуру для набора транскрипции из спец символов
+    /// </summary>
+    public partial class EntryTranscriptionView : ContentPage
     {
-        private CreateWord createWord;
-
-        //int idDict;
-        //string RusWord;
-        //string EngWord;
-        //int idWord;
-        //public EntryTranscription(int idDict,int idWord ,string RusWord, string EngWord, string Trans)
-        //{
-        //    InitializeComponent();
-        //    this.idDict = idDict;
-        //    this.RusWord = RusWord;
-        //    this.EngWord = EngWord;
-        //    this.idWord = idWord;
-        //    ETransc.Text = Trans;
-        //}
-
-        public EntryTranscription(string Trans)
+       
+        public EntryTranscriptionView()
         {
             InitializeComponent();
-            ETransc.Text = Trans;
-        }
-
-        public EntryTranscription(string Trans, CreateWord createWord) : this(Trans)
-        {
-            this.createWord = createWord;
-        }
-
-
-        //вызов главной страницы и чистка стека страниц
-        private   void ClickedHomeCustomButton(object sender, EventArgs e)
-        {
-            //выход на главную страницу
-            Application.Current.MainPage = new NavigationPage(new MainView());
-        }
-
+            BindingContext = LocatorService.Container.Resolve<EntryTranscriptionViewModel>();
+        }     
 
         #region CLICK_CHAR_TRANSCRIPTION
         private void Clik_ɑ(object sender, EventArgs e)
@@ -204,8 +179,6 @@ namespace RepeatingWords.View
         }
         #endregion
 
-
-
         private void Clik_LeftSquareBracket(object sender, EventArgs e)
         {
             ETransc.Text = ETransc.Text + "[";
@@ -244,29 +217,6 @@ namespace RepeatingWords.View
                 await DisplayAlert("Error", er.Message, "Ok");
             }
 
-        }
-
-        private async void Clik_Enter(object sender, EventArgs e)
-        {
-            try
-            {
-                //  this.Navigation.RemovePage(this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
-
-                ETransc.Text = ETransc.Text;
-                await Navigation.PopModalAsync();
-                //CreateWord cr = new CreateWord(idDict,idWord, RusWord, EngWord, ETransc.Text);
-                createWord.TranscriptionValue = ETransc.Text;
-                await Navigation.PopModalAsync();
-                //await Navigation.PushModalAsync(cr);
-            }
-            catch (Exception er)
-            {
-                await DisplayAlert("Error", er.Message, "Ok");
-            }
-        }
-
-
-    }
-
-  
+        }   
+    } 
 }

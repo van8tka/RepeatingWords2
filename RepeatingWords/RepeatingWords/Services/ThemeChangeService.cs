@@ -73,7 +73,7 @@ namespace RepeatingWords.Services
         {
             Application.Current.Resources["TitleApp"] = Application.Current.Resources["TitleAppWhite"];
             Application.Current.Resources["LableHeadApp"] = Application.Current.Resources["LableHeadAppBlack"];
-            Application.Current.Resources["LabelColor"] = Application.Current.Resources["LabelNavy"];
+            Application.Current.Resources["LabelColor"] = Application.Current.Resources["LabelBlack"];
             Application.Current.Resources["PickerColor"] = Application.Current.Resources["PickerColorNavy"];
             Application.Current.Resources["LabelColorWB"] = Application.Current.Resources["LabelBlack"];
             Application.Current.Resources["ColorWB"] = Application.Current.Resources["ColorBlack"];
@@ -84,7 +84,7 @@ namespace RepeatingWords.Services
         {
             Application.Current.Resources["TitleApp"] = Application.Current.Resources["TitleAppBlack"];
             Application.Current.Resources["LableHeadApp"] = Application.Current.Resources["LableHeadAppWhite"];
-            Application.Current.Resources["LabelColor"] = Application.Current.Resources["LabelYellow"];
+            Application.Current.Resources["LabelColor"] = Application.Current.Resources["LabelWhite"];
             Application.Current.Resources["LabelColorWB"] = Application.Current.Resources["LabelWhite"];
             Application.Current.Resources["PickerColor"] = Application.Current.Resources["PickerColorYellow"];
             Application.Current.Resources["ColorWB"] = Application.Current.Resources["ColorWhite"];

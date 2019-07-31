@@ -5,13 +5,14 @@
              xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"
              xmlns:behavior="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
              Title="{local:Translate TitleSettings}"
-             BackgroundColor="{Binding SettingsBackgroundColor}"
+             Style="{DynamicResource TitleApp}"
+            
           >
     <!--панель управлления-->
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
     </ContentPage.ToolbarItems>
-    <Grid Margin="15">
+    <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -33,8 +34,8 @@
                     <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchThemeCommand}"/>
                 </Switch.Behaviors>
             </Switch>
-        <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource ColorBlue}"/>
-        <BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource ColorBlue}"/>
+        <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
+        <BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
         <Label Text="{local:Translate LabelChooseShowKeyboardTrans}"  Style="{DynamicResource LableHeadApp}" HorizontalTextAlignment="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" />
         <Label Text="{local:Translate LabelShowKeyboard}" Style="{DynamicResource LabelColorWB}" FontSize="Medium" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
         <Switch x:Name="SwShowKeyboard" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" IsToggled="{Binding IsCustomKeyboardTranscription}" Grid.Column="1" Grid.Row="4">

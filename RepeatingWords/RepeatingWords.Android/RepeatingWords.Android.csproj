@@ -34,6 +34,7 @@
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <MandroidI18n />
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidTlsProvider>btls</AndroidTlsProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -98,6 +99,7 @@
     <Compile Include="FolderWorker.cs" />
     <Compile Include="GoogleDriveWorker.cs" />
     <Compile Include="InterstitialAdListener.cs" />
+    <Compile Include="KeyboardService.cs" />
     <Compile Include="KeyButtonRender.cs" />
     <Compile Include="LabelGestureListener.cs" />
     <Compile Include="LabelGestureRendered.cs" />
