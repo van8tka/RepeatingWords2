@@ -19,7 +19,7 @@ namespace RepeatingWords.ViewModel
           AllWordsCount = 0;
           AllShowedWordsCount = 0;
           AllOpenedWordsCount = 0;
-            SwipeWordCommand = new Command<string>((direction)=> { SwipeWord(direction); });        
+          SwipeWordCommand = new Command<string>((direction)=> { SwipeWord(direction); });        
           VoiceActingCommand = new Command(VoiceActing);
           EnterTranslateCommand = new Command(EnterTranslate);
           SelectFromWordsCommand = new Command(SelectFromWords);
@@ -82,6 +82,7 @@ namespace RepeatingWords.ViewModel
         private int _indexWord = 0;
         private void ShowNextWord()
         {
+            //todo check index overflow
             _countOpenedOneWord = 0;
             _currentWord = _wordsCollection.ElementAt(_indexWord);
             SetViewWords(_currentWord, _isFromNative);
@@ -103,7 +104,7 @@ namespace RepeatingWords.ViewModel
 
        
         private void ShowPreviousWord()
-        {
+        { //todo check index overflow
             _indexWord--;
             _currentWord = _wordsCollection.ElementAt(_indexWord);
             SetViewWords(_currentWord, _isFromNative);
