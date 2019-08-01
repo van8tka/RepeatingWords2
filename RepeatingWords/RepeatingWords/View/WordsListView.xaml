@@ -31,11 +31,12 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-        <StackLayout VerticalOptions="End" Style="{StaticResource BottomToolbarStyle}" >
+        <StackLayout VerticalOptions="End" Style="{DynamicResource BottomBarStyle}" >
+            <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-4,-5,0"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Button Style="{StaticResource buttonStyle}" Text="{local:Translate ButtonCreate}"  Command="{Binding AddWordCommand}"/>
-                <Button Style="{StaticResource buttonStyle}" Text="{local:Translate ButtonImport}"  Command="{Binding ImportWordsCommand}"/>
-                <Button Style="{StaticResource buttonStyle}" Text="{local:Translate ChooseDictionaryForRepeat}"  Command="{Binding RepeatingWordsCommand}"/>
+                <ImageButton BackgroundColor="Transparent" Source="icons_import_file.png" Command="{Binding ImportWordsCommand}" />
+                <ImageButton BackgroundColor="Transparent" Source="icons_study.png" Command="{Binding RepeatingWordsCommand}" Margin="20,0,0,0" />
+                <ImageButton BackgroundColor="Transparent" Source="icons_add_box.png" Command="{Binding AddWordCommand}" Margin="20,0,20,0" />
             </StackLayout>
         </StackLayout>
     </StackLayout>

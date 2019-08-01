@@ -291,10 +291,10 @@
     <value>Изменить</value>
   </data>
   <data name="ModalActFromFtoTr" xml:space="preserve">
-    <value>С русского на иностранный</value>
+    <value>С родного языка на иностранный</value>
   </data>
   <data name="ModalActFromTrtoF" xml:space="preserve">
-    <value>С иностранного на русский</value>
+    <value>Первым отображать иностранное слово?</value>
   </data>
   <data name="ModalAddWords" xml:space="preserve">
     <value>Слова добавлены в словарь</value>
@@ -585,5 +585,11 @@
   </data>
   <data name="TitleExplorer" xml:space="preserve">
     <value>Файловый менеджер</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Да</value>
   </data>
 </root>

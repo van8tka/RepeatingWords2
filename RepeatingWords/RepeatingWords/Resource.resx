@@ -312,7 +312,7 @@ smartphone or keyboard transcription</value>
     <value>From the first language</value>
   </data>
   <data name="ModalActFromTrtoF" xml:space="preserve">
-    <value>From the translation</value>
+    <value>Is a foreign word display first?</value>
   </data>
   <data name="ModalAddWords" xml:space="preserve">
     <value>The words are added.</value>
@@ -597,5 +597,11 @@ smartphone or keyboard transcription</value>
   </data>
   <data name="TitleExplorer" xml:space="preserve">
     <value>File explorer</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

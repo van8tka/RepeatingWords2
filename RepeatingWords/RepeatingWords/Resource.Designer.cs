@@ -828,7 +828,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to From the translation.
+        ///   Looks up a localized string similar to Is a foreign word display first?.
         /// </summary>
         public static string ModalActFromTrtoF {
             get {
@@ -1058,6 +1058,15 @@ namespace RepeatingWords {
         public static string ModelWordChange {
             get {
                 return ResourceManager.GetString("ModelWordChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -1346,6 +1355,15 @@ namespace RepeatingWords {
         public static string TitleTranscription {
             get {
                 return ResourceManager.GetString("TitleTranscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

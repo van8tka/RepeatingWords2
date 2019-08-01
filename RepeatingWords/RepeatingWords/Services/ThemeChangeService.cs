@@ -78,6 +78,7 @@ namespace RepeatingWords.Services
             Application.Current.Resources["LabelColorWB"] = Application.Current.Resources["LabelBlack"];
             Application.Current.Resources["ColorWB"] = Application.Current.Resources["ColorBlack"];
             Application.Current.Resources["ColorBlGr"] = Application.Current.Resources["ColorBlue"];
+            Application.Current.Resources["BottomBarStyle"] = Application.Current.Resources["BottomBarStyleLight"];
             return Constants.THEME_WHITE;
         }
         private string SetDarkTheme()
@@ -88,7 +89,7 @@ namespace RepeatingWords.Services
             Application.Current.Resources["LabelColorWB"] = Application.Current.Resources["LabelWhite"];
             Application.Current.Resources["PickerColor"] = Application.Current.Resources["PickerColorYellow"];
             Application.Current.Resources["ColorWB"] = Application.Current.Resources["ColorWhite"];
-            Application.Current.Resources["ColorBlGr"] = Application.Current.Resources["ColorYellow"];
+            Application.Current.Resources["BottomBarStyle"] = Application.Current.Resources["BottomBarStyleDark"];
             return Constants.THEME_DARK;
         }
 

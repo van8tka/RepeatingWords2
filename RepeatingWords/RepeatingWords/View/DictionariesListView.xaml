@@ -15,7 +15,6 @@
             <local:AdMobView HeightRequest="85" />
         </StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand"  Margin="10,5,10,0">
-         
             <ListView x:Name ="dictionaryList" ItemsSource="{Binding DictionaryList}" SelectedItem ="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -30,10 +29,11 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-        <StackLayout VerticalOptions="End" Style="{StaticResource BottomToolbarStyle}" >
+        <StackLayout VerticalOptions="End" Style="{DynamicResource BottomBarStyle}" >
+            <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-4,-5,0"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Button x:Name="BtAddDict" Style="{StaticResource buttonStyle}" Text="{local:Translate ButtonCreate}" Command="{Binding AddDictionaryCommand}"/>
-                <Button x:Name="BtAddWorFrNet" Style="{StaticResource buttonStyle}" Text="{local:Translate ButtonImport}" Command="{Binding AddWordsFromNetCommand}"/>
+                <ImageButton BackgroundColor="Transparent" Source="icons_import_server.png" Command="{Binding AddWordsFromNetCommand}" />
+                <ImageButton BackgroundColor="Transparent" Source="icons_add_box.png" Command="{Binding AddDictionaryCommand}" Margin="20,0,20,0" />
             </StackLayout>
         </StackLayout>
     </StackLayout>

@@ -37,6 +37,9 @@
     <Compile Update="View\EntryTranscriptionView.xaml.cs">
       <DependentUpon>EntryTranscriptionView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\RepeatingWordsView.xaml.cs">
+      <DependentUpon>RepeatingWordsView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\WordsListView.xaml.cs">
       <DependentUpon>WordsListView.xaml</DependentUpon>
     </Compile>

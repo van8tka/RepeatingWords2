@@ -143,17 +143,20 @@ namespace RepeatingWords.Services
         {
             try
             {
-                var client = new CustomWebClient();
-                var request = client.CreateRequest(uri);
-                string data;
-                client.CreateResponse(request, out data);
-                if (!string.IsNullOrEmpty(data))
+               return await Task.Run(() =>
                 {
-                    IEnumerable<T> items = JsonConvert.DeserializeObject<IEnumerable<T>>(data);
-                    return items;
-                }
-                else
-                    return null;
+                    var client = new CustomWebClient();
+                    var request = client.CreateRequest(uri);
+                    string data;
+                    client.CreateResponse(request, out data);
+                    if (!string.IsNullOrEmpty(data))
+                    {
+                        IEnumerable<T> items = JsonConvert.DeserializeObject<IEnumerable<T>>(data);
+                        return items;
+                    }
+                    else
+                        return null;
+                });             
             }
             catch (Exception e)
             {

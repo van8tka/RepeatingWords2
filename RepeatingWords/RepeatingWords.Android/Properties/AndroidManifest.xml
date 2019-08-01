@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="cardsofwords.cardsofwords" android:versionName="2.1" android:versionCode="21">
-	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="28" />
+	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="28" />
 	<application android:label="Cards of words" android:icon="@drawable/icon">
 		<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 	</application>

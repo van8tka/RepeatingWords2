@@ -48,9 +48,10 @@ namespace RepeatingWords.Services
             _container.RegisterType(typeof(CreateWordViewModel));
             _container.RegisterType(typeof(EntryTranscriptionViewModel));
             _container.RegisterType(typeof(ChooseFileViewModel));
+             _container.RegisterType(typeof(RepeatingWordsViewModel));
 
 
-            //_container.RegisterType(typeof(DictionariesListViewModel));
+
             //_container.RegisterType(typeof(DictionariesListViewModel));
             //_container.RegisterType(typeof(DictionariesListViewModel));
             //_container.RegisterType(typeof(DictionariesListViewModel));

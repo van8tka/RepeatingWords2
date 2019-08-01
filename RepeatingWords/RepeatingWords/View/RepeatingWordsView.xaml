@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.View.RepeatingWordsView"
+             xmlns:locale ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             Style="{StaticResource TitleApp}"
+             Title ="{Binding DictionaryName}"
+             >
+    <!--панель управлления-->
+    <ContentPage.ToolbarItems>
+      <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
+    </ContentPage.ToolbarItems>
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,1.0" AbsoluteLayout.LayoutFlags="All">
+        <StackLayout HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,1.0" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout Orientation="Horizontal">
+                <Label  Text="{Binding AllWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Margin="10,15,0,0" WidthRequest="25" />
+                <Label Text="{Binding AllShowedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Margin="10,15,0,0" WidthRequest="25" />
+                <Label Text="{Binding AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Margin="10,15,0,0" WidthRequest="25" />
+                <Label x:Name="Labelpicker" Text="{locale:Translate PickerText}" Style="{DynamicResource LabelColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="End"  Margin="10,15,0,0"/>
+                <Picker x:Name="picker"  SelectedIndexChanged="picker_SelectedIndexChanged"  HorizontalOptions="FillAndExpand"   Style="{DynamicResource PickerColor}" >
+                    <Picker.Items>
+                        <x:String>English</x:String>
+                        <x:String>Русский</x:String>
+                        <x:String>French</x:String>
+                        <x:String>German</x:String>
+                        <x:String>Polish</x:String>
+                        <x:String>Ukrainian</x:String>
+                        <x:String>Italian</x:String>
+                        <x:String>Chinese</x:String>
+                        <x:String>Japanese</x:String>
+                        <x:String>Portuguese</x:String>
+                        <x:String>Spanish</x:String>
+                        <x:String>Turkish</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+
+            <BoxView HeightRequest="100" WidthRequest="100" BackgroundColor="Coral">
+              <BoxView.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Left" Command="{Binding SwipeWordCommand}" CommandParameter="Left"/>
+                <SwipeGestureRecognizer Direction="Right" Command="{Binding SwipeWordCommand}" CommandParameter="Right"/>
+                <SwipeGestureRecognizer Direction="Up" Command="{Binding SwipeWordCommand}" CommandParameter="Up"/>
+                <SwipeGestureRecognizer Direction="Down" Command="{Binding SwipeWordCommand}" CommandParameter="Down"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <Label  x:Name="WordRepeat" Text="{Binding CurrentShowingWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorCustomBackgrountButton}"  >
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>24</OnPlatform.Android>
+                    <OnPlatform.WinPhone>22</OnPlatform.WinPhone>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+
+              <Label  x:Name="TranscriptionRepeat" Text="{Binding CurrentTranscriptWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" HorizontalTextAlignment="Center" >
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>24</OnPlatform.Android>
+                    <OnPlatform.WinPhone>22</OnPlatform.WinPhone>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+    
+            
+        </StackLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds=".0,0.9,1,0.6" AbsoluteLayout.LayoutFlags="All" Orientation="Vertical" >
+            <Button x:Name="ButtonVoice" Command="{Binding VoiceActingCommand}" HorizontalOptions="End"  />
+            <!--<Button Text="{locale:Translate ButtonNextWord}" Clicked="NextWordButtonClick"  Style="{StaticResource buttonStyle}" VerticalOptions="FillAndExpand"  />
+            <Button Text="{locale:Translate ButtonTurnCard}" Clicked="TurnAroundWordButtonClick"  Style="{StaticResource buttonStyle}" VerticalOptions="FillAndExpand" />-->
+            <locale:AdMobView WidthRequest="320" HeightRequest="50"  VerticalOptions="End"/>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

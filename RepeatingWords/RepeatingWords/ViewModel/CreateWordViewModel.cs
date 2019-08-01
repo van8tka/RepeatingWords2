@@ -29,7 +29,7 @@ namespace RepeatingWords.ViewModel
             {
                 if (word.Id > -1)
                     _isChangeWord = true;
-               // TitleEditWord = Resource.TitleChangeWord;
+                TitleEditWord = Resource.TitleChangeWord;
                 NativeWord = word.RusWord;
                 TranslateWord = word.EngWord;
                 TranscriptionWord = word.Transcription;              
@@ -38,7 +38,7 @@ namespace RepeatingWords.ViewModel
             }
             else if (navigationData is Dictionary dictionary)
             {
-                // TitleEditWord = Resource.TitleCreateWord;             
+                 TitleEditWord = Resource.TitleCreateWord;             
                 _dictionary = dictionary;
                 _isChangeWord = false;
             }               
