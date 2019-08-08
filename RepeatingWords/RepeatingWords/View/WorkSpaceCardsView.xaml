@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="RepeatingWords.View.LearningCardsView">
+             x:Class="RepeatingWords.View.WorkSpaceCardsView">
   <ContentView.Content>
         <StackLayout VerticalOptions="FillAndExpand" Padding="50" HorizontalOptions="FillAndExpand" >
             <StackLayout.GestureRecognizers>

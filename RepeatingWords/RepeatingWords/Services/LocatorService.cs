@@ -54,7 +54,10 @@ namespace RepeatingWords.Services
             _container.RegisterType(typeof(EntryTranscriptionViewModel));
             _container.RegisterType(typeof(ChooseFileViewModel));
             //must befor RepeatingWords
-            _container.RegisterType(typeof(LearningCardsViewModel));
+            _container.RegisterType(typeof(WorkSpaceCardsViewModel));
+            _container.RegisterType(typeof(WorkSpaceEnterWordViewModel));
+            _container.RegisterType(typeof(WorkSpaceSelectWordViewModel));
+
 
             _container.RegisterType(typeof(RepeatingWordsViewModel));
             _container.RegisterType(typeof(VolumeLanguagesViewModel));

@@ -10,9 +10,9 @@ using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
-    public class LearningCardsViewModel : INotifyPropertyChanged, ICustomContentViewModel
+    public class WorkSpaceCardsViewModel : INotifyPropertyChanged, ICustomContentViewModel
     {
-        public LearningCardsViewModel()
+        public WorkSpaceCardsViewModel()
         {
             SwipeWordCommand = new Command<string>((direction) => { SwipeWord(direction); });
         }

@@ -84,15 +84,35 @@ namespace RepeatingWords.ViewModel
 
         private void ShowEnterTranslate()
         {
-            Debugger.Break();
+            SetViewWorkSpaceEnterWord();
         }
+
+        private void SetViewWorkSpaceEnterWord()
+        {
+            ICustomContentView view = new WorkSpaceEnterWordView();
+            WorkSpaceView = view as WorkSpaceEnterWordView;
+            _workSpaceVM = view.CustomVM;
+            _workSpaceVM.Model = Model;
+            // (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+        }
+
         private void ShowSelectFromWords()
         {
-            Debugger.Break();
+            SetViewWorkSpaceSelectWord();
         }
+
+        private void SetViewWorkSpaceSelectWord()
+        {
+            ICustomContentView view = new WorkSpaceSelectWordView();
+            WorkSpaceView = view as WorkSpaceSelectWordView;
+            _workSpaceVM = view.CustomVM;
+            _workSpaceVM.Model = Model;
+           // (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+        }
+
         private void ShowLearningCards(object obj)
         {
-            throw new NotImplementedException();
+            SetViewWorkSpaceLearningCards();
         }
 
 
@@ -139,19 +159,19 @@ namespace RepeatingWords.ViewModel
             Model.wordsCollection = await LoadWords(_dictionary.Id);
             Model.AllWordsCount = Model.wordsCollection.Count();
             ShakeWordsCollection(Model.wordsCollection);
-            SetViewWorkSpace();
+            SetViewWorkSpaceLearningCards();
            
             await base.InitializeAsync(navigationData);
 
         }
 
-        private void SetViewWorkSpace()
+        private void SetViewWorkSpaceLearningCards()
         {
-            ICustomContentView view = new LearningCardsView();
-            WorkSpaceView = view as LearningCardsView;
+            ICustomContentView view = new WorkSpaceCardsView();
+            WorkSpaceView = view as WorkSpaceCardsView;
             _workSpaceVM = view.CustomVM;
             _workSpaceVM.Model = Model;
-            (_workSpaceVM as LearningCardsViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+            (_workSpaceVM as WorkSpaceCardsViewModel).ShowNextWord(isFirstShowAfterLoad: true);
         }
 
         /// <summary>

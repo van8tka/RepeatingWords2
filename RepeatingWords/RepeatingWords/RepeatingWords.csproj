@@ -37,6 +37,9 @@
     <Compile Update="View\EntryTranscriptionView.xaml.cs">
       <DependentUpon>EntryTranscriptionView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\WorkSpaceCardsView.xaml.cs">
+      <DependentUpon>WorkSpaceCardsView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\RepeatingWordsView.xaml.cs">
       <DependentUpon>RepeatingWordsView.xaml</DependentUpon>
     </Compile>
@@ -74,13 +77,19 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\LearningCardsView.xaml">
+    <EmbeddedResource Update="View\WorkSpaceCardsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\RepeatingWordsNavigation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\VolumeLanguagesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\WorkSpaceEnterWordView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\WorkSpaceSelectWordView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

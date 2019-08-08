@@ -8,13 +8,13 @@ using Xamarin.Forms.Xaml;
 namespace RepeatingWords.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LearningCardsView : ContentView, ICustomContentView
+    public partial class WorkSpaceCardsView : ContentView, ICustomContentView
     {
-        public LearningCardsView()
+        public WorkSpaceCardsView()
         {
             InitializeComponent();
-            customContentVM = LocatorService.Container.Resolve<LearningCardsViewModel>();
-            BindingContext = CustomVM as LearningCardsViewModel;
+            customContentVM = LocatorService.Container.Resolve<WorkSpaceCardsViewModel>();
+            BindingContext = CustomVM as WorkSpaceCardsViewModel;
         }
         private readonly ICustomContentViewModel customContentVM;
         public ICustomContentViewModel CustomVM => customContentVM;

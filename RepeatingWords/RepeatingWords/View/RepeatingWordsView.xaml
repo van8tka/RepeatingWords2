@@ -40,36 +40,12 @@
             <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Grid.Row="3" Grid.Column="1"/>
         </Grid>
         <ContentView Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="50" HorizontalOptions="FillAndExpand"/>
-              
-        <!--<StackLayout VerticalOptions="FillAndExpand" Padding="50" HorizontalOptions="FillAndExpand" >
-            <StackLayout.GestureRecognizers>
-                    <SwipeGestureRecognizer Direction="Left" Command="{Binding SwipeWordCommand}" CommandParameter="Left"/>
-                    <SwipeGestureRecognizer Direction="Right" Command="{Binding SwipeWordCommand}" CommandParameter="Right"/>
-                    <SwipeGestureRecognizer Direction="Up" Command="{Binding SwipeWordCommand}" CommandParameter="Up"/>
-                    <SwipeGestureRecognizer Direction="Down" Command="{Binding SwipeWordCommand}" CommandParameter="Down"/>
-                </StackLayout.GestureRecognizers>
-                <Label  x:Name="WordRepeat" Text="{Binding CurrentShowingWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorCustomBackgrountButton}"  >
-                    <Label.FontSize>
-                        <OnPlatform x:TypeArguments="x:Double">
-                            <OnPlatform.Android>24</OnPlatform.Android>
-                            <OnPlatform.WinPhone>22</OnPlatform.WinPhone>
-                        </OnPlatform>
-                    </Label.FontSize>
-                </Label>
-            <Label  x:Name="TranscriptionRepeat" IsVisible="{Binding IsTranscriptionShow}" Text="{Binding CurrentTranscriptWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" HorizontalTextAlignment="Center" >
-                <Label.FontSize>
-                    <OnPlatform x:TypeArguments="x:Double">
-                        <OnPlatform.Android>24</OnPlatform.Android>
-                        <OnPlatform.WinPhone>22</OnPlatform.WinPhone>
-                    </OnPlatform>
-                </Label.FontSize>
-            </Label>
-        </StackLayout>-->
+        
         
         <StackLayout VerticalOptions="End" Style="{DynamicResource BottomBarStyle}" >
             <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-4,-5,0"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <ImageButton BackgroundColor="Transparent"  Source="icons_import_file.png"  Command="{Binding LearningCardsCommand}" />
+                <ImageButton BackgroundColor="Transparent"  Source="icons_cardsbutton.png"  Command="{Binding LearningCardsCommand}" />
                 <ImageButton BackgroundColor="Transparent" Source="icons_select_word.png" Command="{Binding SelectFromWordsCommand}" Margin="20,0,20,0" />
                 <ImageButton BackgroundColor="Transparent" Source="icons_keyboard.png" Command="{Binding EnterTranslateCommand}" />
                 <ImageButton BackgroundColor="Transparent"  Source="voice.png"   Command="{Binding VoiceActingCommand}"  Margin="20,0,20,0"  />
