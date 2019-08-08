@@ -39,8 +39,8 @@
             <Label Text="{Binding Model.AllShowedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" Grid.Row="2" Grid.Column="1"/>
             <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Grid.Row="3" Grid.Column="1"/>
         </Grid>
-        <view:LearningCardsView  VerticalOptions="FillAndExpand" Padding="50" HorizontalOptions="FillAndExpand"/>
-        
+        <ContentView Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="50" HorizontalOptions="FillAndExpand"/>
+              
         <!--<StackLayout VerticalOptions="FillAndExpand" Padding="50" HorizontalOptions="FillAndExpand" >
             <StackLayout.GestureRecognizers>
                     <SwipeGestureRecognizer Direction="Left" Command="{Binding SwipeWordCommand}" CommandParameter="Left"/>

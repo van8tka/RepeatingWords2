@@ -1,4 +1,5 @@
 ﻿using RepeatingWords.DataService.Model;
+using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Model;
 using System;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
-    public class LearningCardsViewModel : INotifyPropertyChanged
+    public class LearningCardsViewModel : INotifyPropertyChanged, ICustomContentViewModel
     {
         public LearningCardsViewModel()
         {

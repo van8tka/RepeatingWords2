@@ -4,6 +4,7 @@ using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Model;
+using RepeatingWords.View;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,13 +17,12 @@ namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IDictionaryNameLearningCreator dictionaryNameCreator, IUnlearningWordsManager unlearningWordsManager, LearningCardsViewModel learningCardsVM) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IDictionaryNameLearningCreator dictionaryNameCreator, IUnlearningWordsManager unlearningWordsManager) : base(navigationServcie, dialogService)
         {
             _unitOfWork = unitOfWork;
             _volumeService = volumeService ?? throw new ArgumentNullException(nameof(volumeService));
             _dictionaryNameCreator = dictionaryNameCreator ?? throw new ArgumentNullException(nameof(dictionaryNameCreator));
-            _unlearningWordsManager = unlearningWordsManager ?? throw new ArgumentNullException(nameof(unlearningWordsManager));
-            _learningCardsVM = learningCardsVM ?? throw new ArgumentNullException(nameof(learningCardsVM));
+            _unlearningWordsManager = unlearningWordsManager ?? throw new ArgumentNullException(nameof(unlearningWordsManager));          
             Model = new RepeatingWordsModel();        
             VoiceActingCommand = new Command(VoiceActing);
             EnterTranslateCommand = new Command(ShowEnterTranslate);
@@ -31,9 +31,9 @@ namespace RepeatingWords.ViewModel
             UnloadPageCommand = new Command(UnloadPage);
         }
 
-       
 
-        private readonly LearningCardsViewModel _learningCardsVM;
+
+        private ICustomContentViewModel _workSpaceVM;
         private readonly IVolumeLanguageService _volumeService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDictionaryNameLearningCreator _dictionaryNameCreator;
@@ -55,6 +55,17 @@ namespace RepeatingWords.ViewModel
                 OnPropertyChanged(nameof(DictionaryName));
             }
         }
+
+        private ContentView _workSpaceView;
+        public ContentView WorkSpaceView {
+            get => _workSpaceView;
+            set
+            {
+                _workSpaceView = value;
+                OnPropertyChanged(nameof(WorkSpaceView));
+            }
+        }
+
 
         private RepeatingWordsModel _model;
         public RepeatingWordsModel Model { get => _model; set { _model = value; OnPropertyChanged(nameof(Model)); } }
@@ -128,10 +139,19 @@ namespace RepeatingWords.ViewModel
             Model.wordsCollection = await LoadWords(_dictionary.Id);
             Model.AllWordsCount = Model.wordsCollection.Count();
             ShakeWordsCollection(Model.wordsCollection);
-            _learningCardsVM.Model = Model;
-            _learningCardsVM.ShowNextWord(isFirstShowAfterLoad: true);
+            SetViewWorkSpace();
+           
             await base.InitializeAsync(navigationData);
 
+        }
+
+        private void SetViewWorkSpace()
+        {
+            ICustomContentView view = new LearningCardsView();
+            WorkSpaceView = view as LearningCardsView;
+            _workSpaceVM = view.CustomVM;
+            _workSpaceVM.Model = Model;
+            (_workSpaceVM as LearningCardsViewModel).ShowNextWord(isFirstShowAfterLoad: true);
         }
 
         /// <summary>

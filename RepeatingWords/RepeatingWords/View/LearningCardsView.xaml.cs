@@ -1,4 +1,5 @@
-﻿using RepeatingWords.Services;
+﻿using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using Unity;
 using Xamarin.Forms;
@@ -7,12 +8,15 @@ using Xamarin.Forms.Xaml;
 namespace RepeatingWords.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LearningCardsView : ContentView
+    public partial class LearningCardsView : ContentView, ICustomContentView
     {
         public LearningCardsView()
         {
             InitializeComponent();
-            BindingContext = LocatorService.Container.Resolve<LearningCardsViewModel>();
+            customContentVM = LocatorService.Container.Resolve<LearningCardsViewModel>();
+            BindingContext = CustomVM as LearningCardsViewModel;
         }
+        private readonly ICustomContentViewModel customContentVM;
+        public ICustomContentViewModel CustomVM => customContentVM;
     }
 }
