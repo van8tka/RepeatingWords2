@@ -6,8 +6,34 @@
              mc:Ignorable="d"
              x:Class="RepeatingWords.View.WorkSpaceSelectWordView">
   <ContentView.Content>
-      <StackLayout BackgroundColor="Orange">
-          <Label Text="Select Select Select" />
-      </StackLayout>
-  </ContentView.Content>
+        <StackLayout >
+            <Label  x:Name="WordRepeat" Text="{Binding CurrentShowingWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorCustomBackgrountButton}"  >
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <OnPlatform.Android>24</OnPlatform.Android>
+                        <OnPlatform.WinPhone>22</OnPlatform.WinPhone>
+                    </OnPlatform>
+                </Label.FontSize>
+            </Label>
+            <Grid BackgroundColor="{StaticResource ColorCustomBackgrountButton}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+          
+            <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" />
+            <Label Text="1111111" Grid.Row="0" Grid.Column="0" TextColor="{StaticResource ColorCustomBackgrountButton}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" />
+            <Label Text="22222222" Grid.Row="0" Grid.Column="1" TextColor="{StaticResource ColorCustomBackgrountButton}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent" />
+            <Label Text="33333333333" Grid.Row="1" Grid.Column="0" TextColor="{StaticResource ColorCustomBackgrountButton}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="Transparent" />
+            <Label Text="44444444" Grid.Row="1" Grid.Column="1" TextColor="{StaticResource ColorCustomBackgrountButton}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
 </ContentView>
