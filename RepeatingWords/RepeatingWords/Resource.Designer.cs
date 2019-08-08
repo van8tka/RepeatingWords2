@@ -61,6 +61,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All:.
+        /// </summary>
+        public static string AllWordsCountLabel {
+            get {
+                return ResourceManager.GetString("AllWordsCountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a backup.
         /// </summary>
         public static string BackUpCreateBtn {
@@ -828,7 +837,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Is a foreign word display first?.
+        ///   Looks up a localized string similar to Is foreign words display first?.
         /// </summary>
         public static string ModalActFromTrtoF {
             get {
@@ -1080,6 +1089,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Opened:.
+        /// </summary>
+        public static string OpenedWordsCountLabel {
+            get {
+                return ResourceManager.GetString("OpenedWordsCountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Voice language.
         /// </summary>
         public static string PickerText {
@@ -1242,6 +1260,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Showed:.
+        /// </summary>
+        public static string ShowedWordsCountLabel {
+            get {
+                return ResourceManager.GetString("ShowedWordsCountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success.
         /// </summary>
         public static string SuccessStr {
@@ -1355,6 +1382,15 @@ namespace RepeatingWords {
         public static string TitleTranscription {
             get {
                 return ResourceManager.GetString("TitleTranscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a voice language.
+        /// </summary>
+        public static string TitleVolumeLanguages {
+            get {
+                return ResourceManager.GetString("TitleVolumeLanguages", resourceCulture);
             }
         }
         

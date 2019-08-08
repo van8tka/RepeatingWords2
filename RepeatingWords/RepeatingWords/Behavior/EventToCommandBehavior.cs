@@ -5,10 +5,9 @@ using Xamarin.Forms;
 
 namespace RepeatingWords.Behavior
 {
-    public class EventToCommandBehavior : BehaviorBase<Entry>
+    public class EventToCommandBehavior : BehaviorBase<Element>  
     {
-        Delegate eventHandler;
-
+        Delegate eventHandler;        
         public static readonly BindableProperty EventNameProperty = BindableProperty.Create("EventName", typeof(string), typeof(EventToCommandBehavior), null, propertyChanged: OnEventNameChanged);
         public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(ICommand), typeof(EventToCommandBehavior), null);
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create("CommandParameter", typeof(object), typeof(EventToCommandBehavior), null);
@@ -38,13 +37,13 @@ namespace RepeatingWords.Behavior
             set { SetValue(InputConverterProperty, value); }
         }
 
-        protected override void OnAttachedTo(Entry bindable)
+        protected override void OnAttachedTo(Element bindable)
         {
             base.OnAttachedTo(bindable);
             RegisterEvent(EventName);
         }
 
-        protected override void OnDetachingFrom(Entry bindable)
+        protected override void OnDetachingFrom(Element bindable)
         {
             DeregisterEvent(EventName);
             base.OnDetachingFrom(bindable);

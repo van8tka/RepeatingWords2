@@ -74,7 +74,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="View\LearningCardsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\RepeatingWordsNavigation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\VolumeLanguagesView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -129,6 +135,54 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Pages\ToolsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\AboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\ChooseFileView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\CreateWordView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\DictionariesListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\DictionaryFrNetView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\EntryTranscriptionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\HelperView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\InstructionAddOneWordView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\InstructionImportFromFileView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\LanguageFrNetView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\MainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\RepeatingWordsNavigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\RepeatingWordsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\SettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\VolumeLanguagesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\WordsListView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
   </ItemGroup>

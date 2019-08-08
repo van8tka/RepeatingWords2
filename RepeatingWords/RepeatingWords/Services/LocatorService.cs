@@ -1,6 +1,7 @@
 ﻿using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Repositories;
 using RepeatingWords.Heleprs;
+using RepeatingWords.Helpers;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
@@ -33,6 +34,10 @@ namespace RepeatingWords.Services
             _container.RegisterInstance(typeof(IKeyboardTranscriptionService), new KeyboardTranscriptionChangeService());
             _container.RegisterType<IWebApiService, OnlineDictionaryService>();
             _container.RegisterType<IImportFile, ImportFileToDb>();
+            _container.RegisterInstance(typeof(IVolumeLanguageService), new VolumeLanguageService());
+            _container.RegisterInstance(typeof(IDictionaryNameLearningCreator), new DictionaryNameLearningCreator());
+            _container.RegisterType<IUnlearningWordsManager, UnlerningWordsManager>();
+     
 
             //register viewmodels
             _container.RegisterType(typeof(MainViewModel));
@@ -48,12 +53,13 @@ namespace RepeatingWords.Services
             _container.RegisterType(typeof(CreateWordViewModel));
             _container.RegisterType(typeof(EntryTranscriptionViewModel));
             _container.RegisterType(typeof(ChooseFileViewModel));
-             _container.RegisterType(typeof(RepeatingWordsViewModel));
+            //must befor RepeatingWords
+            _container.RegisterType(typeof(LearningCardsViewModel));
 
+            _container.RegisterType(typeof(RepeatingWordsViewModel));
+            _container.RegisterType(typeof(VolumeLanguagesViewModel));
+          
 
-
-            //_container.RegisterType(typeof(DictionariesListViewModel));
-            //_container.RegisterType(typeof(DictionariesListViewModel));
             //_container.RegisterType(typeof(DictionariesListViewModel));
             //_container.RegisterType(typeof(DictionariesListViewModel));
             //_container.RegisterType(typeof(DictionariesListViewModel));

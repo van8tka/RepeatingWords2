@@ -2,46 +2,47 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RepeatingWords.View.RepeatingWordsView"
-             xmlns:locale ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+              xmlns:view ="clr-namespace:RepeatingWords.View;assembly=RepeatingWords"
+             xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
-             Title ="{Binding DictionaryName}"
+             Title ="{Binding DictionaryName}"    
+                       
              >
     <!--панель управлления-->
     <ContentPage.ToolbarItems>
       <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
     </ContentPage.ToolbarItems>
+    <ContentPage.Behaviors>
+        <behavior:EventToCommandBehavior EventName="Disappearing" Command="{Binding UnloadPageCommand}"/>
+    </ContentPage.Behaviors>
     <StackLayout>
-        <StackLayout VerticalOptions="Start" >
-            <locale:AdMobView  HeightRequest="50" />
-        </StackLayout>
 
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-            <StackLayout Orientation="Horizontal">
-                <Label  Text="{Binding AllWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Margin="10,15,0,0" WidthRequest="25" />
-                <Label Text="{Binding AllShowedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Margin="10,15,0,0" WidthRequest="25" />
-                <Label Text="{Binding AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Margin="10,15,0,0" WidthRequest="25" />
-                <Label x:Name="Labelpicker" Text="{locale:Translate PickerText}" Style="{DynamicResource LabelColor}" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="End"  Margin="10,15,0,0"/>
-                <Picker x:Name="picker" HorizontalOptions="FillAndExpand"   Style="{DynamicResource PickerColor}" >
-                    <!--<Picker x:Name="picker"  SelectedIndexChanged="picker_SelectedIndexChanged"  HorizontalOptions="FillAndExpand"   Style="{DynamicResource PickerColor}" >-->
-                        <Picker.Items>
-                        <x:String>English</x:String>
-                        <x:String>Русский</x:String>
-                        <x:String>French</x:String>
-                        <x:String>German</x:String>
-                        <x:String>Polish</x:String>
-                        <x:String>Ukrainian</x:String>
-                        <x:String>Italian</x:String>
-                        <x:String>Chinese</x:String>
-                        <x:String>Japanese</x:String>
-                        <x:String>Portuguese</x:String>
-                        <x:String>Spanish</x:String>
-                        <x:String>Turkish</x:String>
-                    </Picker.Items>
-                </Picker>
-            </StackLayout>
+        <Grid VerticalOptions="Start">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <StackLayout BackgroundColor="Coral" Padding="20" MinimumHeightRequest="200">
-                <StackLayout.GestureRecognizers>
+            <local:AdMobView Grid.ColumnSpan="3" HeightRequest="50" Grid.Row="0" Grid.Column="0" />
+            <Label Text="{local:Translate AllWordsCountLabel} " Grid.Row="1" Grid.Column="0" Style="{DynamicResource LabelColor}" Margin="10,0,0,0" />
+            <Label Text="{local:Translate ShowedWordsCountLabel}" Grid.Row="2" Grid.Column="0" Style="{DynamicResource LabelColor}"  Margin="10,0,0,0"/>
+            <Label Text="{local:Translate OpenedWordsCountLabel}" Grid.Row="3" Grid.Column="0" Style="{DynamicResource LabelColor}"  Margin="10,0,0,0"/>
+            <Label Text="{Binding Model.AllWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" Grid.Row="1" Grid.Column="1" />
+            <Label Text="{Binding Model.AllShowedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" Grid.Row="2" Grid.Column="1"/>
+            <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Grid.Row="3" Grid.Column="1"/>
+        </Grid>
+        <view:LearningCardsView  VerticalOptions="FillAndExpand" Padding="50" HorizontalOptions="FillAndExpand"/>
+        
+        <!--<StackLayout VerticalOptions="FillAndExpand" Padding="50" HorizontalOptions="FillAndExpand" >
+            <StackLayout.GestureRecognizers>
                     <SwipeGestureRecognizer Direction="Left" Command="{Binding SwipeWordCommand}" CommandParameter="Left"/>
                     <SwipeGestureRecognizer Direction="Right" Command="{Binding SwipeWordCommand}" CommandParameter="Right"/>
                     <SwipeGestureRecognizer Direction="Up" Command="{Binding SwipeWordCommand}" CommandParameter="Up"/>
@@ -55,7 +56,7 @@
                         </OnPlatform>
                     </Label.FontSize>
                 </Label>
-                <Label  x:Name="TranscriptionRepeat" IsVisible="{Binding IsTranscriptionShow}" Text="{Binding CurrentTranscriptWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" HorizontalTextAlignment="Center" >
+            <Label  x:Name="TranscriptionRepeat" IsVisible="{Binding IsTranscriptionShow}" Text="{Binding CurrentTranscriptWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" HorizontalTextAlignment="Center" >
                 <Label.FontSize>
                     <OnPlatform x:TypeArguments="x:Double">
                         <OnPlatform.Android>24</OnPlatform.Android>
@@ -63,15 +64,15 @@
                     </OnPlatform>
                 </Label.FontSize>
             </Label>
-            </StackLayout>
-        </StackLayout>
+        </StackLayout>-->
         
         <StackLayout VerticalOptions="End" Style="{DynamicResource BottomBarStyle}" >
             <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-4,-5,0"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                <ImageButton BackgroundColor="Transparent" Source="icons_import_server.png" Command="{Binding SelectFromWordsCommand}" HorizontalOptions="Start" />
-                <ImageButton BackgroundColor="Transparent" Source="icons_add_box.png" Command="{Binding EnterTranslateCommand}" HorizontalOptions="Center"  />
-                <ImageButton BackgroundColor="Transparent"  Source="voice.png" x:Name="ButtonVoice" Command="{Binding VoiceActingCommand}" HorizontalOptions="End"  />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <ImageButton BackgroundColor="Transparent"  Source="icons_import_file.png"  Command="{Binding LearningCardsCommand}" />
+                <ImageButton BackgroundColor="Transparent" Source="icons_select_word.png" Command="{Binding SelectFromWordsCommand}" Margin="20,0,20,0" />
+                <ImageButton BackgroundColor="Transparent" Source="icons_keyboard.png" Command="{Binding EnterTranslateCommand}" />
+                <ImageButton BackgroundColor="Transparent"  Source="voice.png"   Command="{Binding VoiceActingCommand}"  Margin="20,0,20,0"  />
             </StackLayout>
         </StackLayout>
        

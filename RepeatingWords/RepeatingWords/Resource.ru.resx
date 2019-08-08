@@ -592,4 +592,16 @@
   <data name="Yes" xml:space="preserve">
     <value>Да</value>
   </data>
+  <data name="AllWordsCountLabel" xml:space="preserve">
+    <value>Всего:</value>
+  </data>
+  <data name="OpenedWordsCountLabel" xml:space="preserve">
+    <value>Открытых:</value>
+  </data>
+  <data name="ShowedWordsCountLabel" xml:space="preserve">
+    <value>Показанных:</value>
+  </data>
+  <data name="TitleVolumeLanguages" xml:space="preserve">
+    <value>Выберите язык озвучки</value>
+  </data>
 </root>

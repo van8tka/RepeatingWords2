@@ -312,7 +312,7 @@ smartphone or keyboard transcription</value>
     <value>From the first language</value>
   </data>
   <data name="ModalActFromTrtoF" xml:space="preserve">
-    <value>Is a foreign word display first?</value>
+    <value>Is foreign words display first?</value>
   </data>
   <data name="ModalAddWords" xml:space="preserve">
     <value>The words are added.</value>
@@ -603,5 +603,17 @@ smartphone or keyboard transcription</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="AllWordsCountLabel" xml:space="preserve">
+    <value>All:</value>
+  </data>
+  <data name="OpenedWordsCountLabel" xml:space="preserve">
+    <value>Opened:</value>
+  </data>
+  <data name="ShowedWordsCountLabel" xml:space="preserve">
+    <value>Showed:</value>
+  </data>
+  <data name="TitleVolumeLanguages" xml:space="preserve">
+    <value>Select a voice language</value>
   </data>
 </root>

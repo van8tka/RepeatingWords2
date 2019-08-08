@@ -64,6 +64,6 @@ namespace RepeatingWords.Services
                 Log.Logger.Error(e);
                 throw;
             }
-}
+        }
     }
 }

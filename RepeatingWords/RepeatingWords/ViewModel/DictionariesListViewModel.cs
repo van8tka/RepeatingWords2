@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
+using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using Xamarin.Forms;
@@ -12,11 +13,9 @@ using Xamarin.Forms;
 namespace RepeatingWords.ViewModel
 {
     public class DictionariesListViewModel : ViewModelBase
-    {
-         //имя словаря для продолжения повторения слов(не должно отображаться)
-        string NameDbForContinued = "ContinueDictionary";
-        string NameDbForContinuedLearn = "ContinueDictionary" + Resource.NotLearningPostfics;
+    {     
         private readonly IUnitOfWork _unitOfWork;
+        //string NotLearningWords = Constants.NAME_DB_FOR_CONTINUE + Resource.NotLearningPostfics;
 
         public DictionariesListViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork) : base(navigationServcie, dialogService)
         {
@@ -81,7 +80,8 @@ namespace RepeatingWords.ViewModel
             try
             {
                 var list = new ObservableCollection<Dictionary>();
-                var items = await Task.Run(()=> _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.Equals(NameDbForContinued,StringComparison.OrdinalIgnoreCase)  && !x.Name.Equals(NameDbForContinuedLearn, StringComparison.OrdinalIgnoreCase)).OrderBy(x => x.Name).AsEnumerable());
+                //кроме словарей не законченных и словарей недоученных
+                var items = await Task.Run(()=> _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase)).OrderBy(x => x.Name).AsEnumerable());
                 for (int i = 0; i < items.Count(); i++)
                     list.Add(items.ElementAt(i));
                 DictionaryList = list;

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
+using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using Xamarin.Forms;
@@ -24,7 +25,14 @@ namespace RepeatingWords.ViewModel
         private readonly IUnitOfWork _unitOfWork;
         private Dictionary _dictionary;
         private string _dictionaryName;
-        public string DictionaryName { get => _dictionaryName; set { _dictionaryName = value; OnPropertyChanged(nameof(DictionaryName)); } }
+        public string DictionaryName { get => _dictionaryName;
+            set {
+                _dictionaryName = value;
+                if (_dictionaryName.EndsWith(Constants.NAME_DB_FOR_CONTINUE))
+                    _dictionaryName = _dictionaryName.Replace(Constants.NAME_DB_FOR_CONTINUE, "");
+                if (_dictionaryName.EndsWith(Resource.NotLearningPostfics))
+                    _dictionaryName = _dictionaryName.Replace(Resource.NotLearningPostfics, "");               
+                OnPropertyChanged(nameof(DictionaryName)); } }
         private ObservableCollection<Words> _wordsList;
         public ObservableCollection<Words> WordsList { get => _wordsList; set { _wordsList = value; OnPropertyChanged(nameof(WordsList)); } }
         private Words _selectedItem;
