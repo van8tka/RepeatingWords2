@@ -3,6 +3,7 @@ using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Model;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -72,6 +73,8 @@ namespace RepeatingWords.ViewModel
                 Model.AllShowedWordsCount++;
                 Model.wordsCollectionLeft.Remove(Model.currentWord);
             }
+            else
+                Debugger.Break();
         }
 
         private void SetViewWords(Words word, bool isNative, bool isOpened = false)

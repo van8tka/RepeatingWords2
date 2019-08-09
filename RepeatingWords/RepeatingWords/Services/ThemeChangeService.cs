@@ -17,7 +17,7 @@ namespace RepeatingWords.Services
                 bool isDark = false;
                 if (App.Current.Properties.TryGetValue(Constants.THEME, out propThem))
                 {
-                    if (propThem.Equals(Constants.THEME_WHITE))
+                    if (propThem.ToString().Equals(Constants.THEME_WHITE))
                     {
                         SetWhiteTheme();                       
                     }

@@ -39,9 +39,9 @@
             <Label Text="{Binding Model.AllShowedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" Grid.Row="2" Grid.Column="1"/>
             <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Grid.Row="3" Grid.Column="1"/>
         </Grid>
-        <ContentView Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="50" HorizontalOptions="FillAndExpand"/>
         
-        
+        <ContentView Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="20" HorizontalOptions="FillAndExpand"/>
+               
         <StackLayout VerticalOptions="End" Style="{DynamicResource BottomBarStyle}" >
             <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-4,-5,0"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">

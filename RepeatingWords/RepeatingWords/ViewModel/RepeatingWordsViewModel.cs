@@ -85,6 +85,7 @@ namespace RepeatingWords.ViewModel
         private void ShowEnterTranslate()
         {
             SetViewWorkSpaceEnterWord();
+            Model.ResetModel();
         }
 
         private void SetViewWorkSpaceEnterWord()
@@ -99,6 +100,7 @@ namespace RepeatingWords.ViewModel
         private void ShowSelectFromWords()
         {
             SetViewWorkSpaceSelectWord();
+            Model.ResetModel();
         }
 
         private void SetViewWorkSpaceSelectWord()
@@ -107,12 +109,21 @@ namespace RepeatingWords.ViewModel
             WorkSpaceView = view as WorkSpaceSelectWordView;
             _workSpaceVM = view.CustomVM;
             _workSpaceVM.Model = Model;
-           // (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+            (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
         }
 
-        private void ShowLearningCards(object obj)
+        private void ShowLearningCards()
         {
             SetViewWorkSpaceLearningCards();
+            Model.ResetModel();
+        }
+        private void SetViewWorkSpaceLearningCards()
+        {
+            ICustomContentView view = new WorkSpaceCardsView();
+            WorkSpaceView = view as WorkSpaceCardsView;
+            _workSpaceVM = view.CustomVM;
+            _workSpaceVM.Model = Model;
+            (_workSpaceVM as WorkSpaceCardsViewModel).ShowNextWord(isFirstShowAfterLoad: true);
         }
 
 
@@ -159,20 +170,12 @@ namespace RepeatingWords.ViewModel
             Model.wordsCollection = await LoadWords(_dictionary.Id);
             Model.AllWordsCount = Model.wordsCollection.Count();
             ShakeWordsCollection(Model.wordsCollection);
-            SetViewWorkSpaceLearningCards();
-           
+            SetViewWorkSpaceLearningCards();          
             await base.InitializeAsync(navigationData);
 
         }
 
-        private void SetViewWorkSpaceLearningCards()
-        {
-            ICustomContentView view = new WorkSpaceCardsView();
-            WorkSpaceView = view as WorkSpaceCardsView;
-            _workSpaceVM = view.CustomVM;
-            _workSpaceVM.Model = Model;
-            (_workSpaceVM as WorkSpaceCardsViewModel).ShowNextWord(isFirstShowAfterLoad: true);
-        }
+      
 
         /// <summary>
         /// сохранение невыученных слов и сохранение слов для продолжения 
@@ -196,9 +199,7 @@ namespace RepeatingWords.ViewModel
                 if (Model.AllOpenedWordsCount > 0)
                 {
                     var notStudingDictionary = _dictionaryNameCreator.CreateNameNotLearningDictionary(_dictionary.Name);
-                    for (int i = 0; i < Model.wordsCollectionLeft.Count(); i++)
-                        Model.wordsOpen.Add(Model.wordsCollectionLeft.ElementAt(i));
-                    _unlearningWordsManager.SaveDictionary(notStudingDictionary, Model.wordsOpen);
+                   _unlearningWordsManager.SaveDictionary(notStudingDictionary, Model.wordsOpen);
                 }
             }
             catch (Exception e)

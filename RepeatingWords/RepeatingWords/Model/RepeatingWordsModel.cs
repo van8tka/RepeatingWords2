@@ -1,4 +1,5 @@
 ﻿using RepeatingWords.DataService.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,7 +9,7 @@ namespace RepeatingWords.Model
     public class RepeatingWordsModel : INotifyPropertyChanged
     {
 
-        internal RepeatingWordsModel()
+        public RepeatingWordsModel()
         {
             AllWordsCount = 0;
             AllShowedWordsCount = 0;
@@ -27,13 +28,21 @@ namespace RepeatingWords.Model
         internal Words currentWord { get; set; }
         internal bool isFromNative { get; set; }
         internal IList<Words> wordsOpen { get; set; }
-        internal IEnumerable<Words> wordsCollection { get; set; }
+        public IEnumerable<Words> wordsCollection { get; set; }
         internal IList<Words> wordsCollectionLeft { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName=null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+        }
+
+        internal void ResetModel()
+        {
+            AllShowedWordsCount = 1;
+            AllOpenedWordsCount = 0;
+            wordsOpen.Clear();
+            (wordsCollectionLeft as List<Words>).AddRange(wordsCollection);
         }
     }
 }

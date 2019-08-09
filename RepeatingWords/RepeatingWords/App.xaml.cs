@@ -20,14 +20,13 @@ namespace RepeatingWords
         }
 
         private readonly IUnityContainer _container;
-        private void InitApp(ISQLite sqlitePath)
+        private async void InitApp(ISQLite sqlitePath)
         {
             Log.Logger.Info("Init default settings app");
             if (Device.RuntimePlatform == Device.UWP)
-                InitNavigation();
-            _container.Resolve<IThemeService>().GetCurrentTheme();
-            _container.Resolve<IKeyboardTranscriptionService>().GetCurrentTranscriptionKeyboard();          
-            InitDb();
+               await InitNavigation();
+            await InitDb();
+            _container.Resolve<IThemeService>().GetCurrentTheme();                                
         }
 
         private Task InitNavigation()
@@ -36,10 +35,14 @@ namespace RepeatingWords
            return navService.InitializeAsync();
         }
 
-        private void InitDb()
+        private async Task InitDb()
         {
-            var init = _container.Resolve<IInitDefaultDb>();
-            init.LoadDefaultData();
+           await Task.Run(() =>
+            {
+                var init = _container.Resolve<IInitDefaultDb>();
+                init.LoadDefaultData();
+            });
+          
         }
 
         protected override async void OnStart()
