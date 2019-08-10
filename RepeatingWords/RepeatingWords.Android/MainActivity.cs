@@ -33,6 +33,7 @@ namespace RepeatingWords.Droid
         public static bool HasPermissionToReadWriteExternalStorage = false;
         protected override void OnCreate(Bundle bundle)
         {
+            Android.Support.V7.App.AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
             base.OnCreate(bundle);
             Instance = this;
             Android.Gms.Ads.MobileAds.Initialize(ApplicationContext, "ca-app-pub-5993977371632312~7094124560");

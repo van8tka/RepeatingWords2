@@ -38,17 +38,17 @@
             <Label Text="{Binding Model.AllWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" Grid.Row="1" Grid.Column="1" />
             <Label Text="{Binding Model.AllShowedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" Grid.Row="2" Grid.Column="1"/>
             <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Grid.Row="3" Grid.Column="1"/>
+            <ImageButton BackgroundColor="Transparent"  Source="voice.png"   Command="{Binding VoiceActingCommand}" Grid.Row="2" Grid.Column="3" />
         </Grid>
         
         <ContentView Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="20" HorizontalOptions="FillAndExpand"/>
                
-        <StackLayout VerticalOptions="End" Style="{DynamicResource BottomBarStyle}" >
+        <StackLayout VerticalOptions="End" Style="{DynamicResource BottomBarStyle}" HeightRequest="50" >
             <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-4,-5,0"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <ImageButton BackgroundColor="Transparent"  Source="icons_cardsbutton.png"  Command="{Binding LearningCardsCommand}" />
-                <ImageButton BackgroundColor="Transparent" Source="icons_select_word.png" Command="{Binding SelectFromWordsCommand}" Margin="20,0,20,0" />
-                <ImageButton BackgroundColor="Transparent" Source="icons_keyboard.png" Command="{Binding EnterTranslateCommand}" />
-                <ImageButton BackgroundColor="Transparent"  Source="voice.png"   Command="{Binding VoiceActingCommand}"  Margin="20,0,20,0"  />
+                <ImageButton BackgroundColor="Transparent"  Source="icons_cardsbutton.png"  Command="{Binding LearningCardsCommand}" Margin="20,0,20,0"/>
+                <ImageButton BackgroundColor="Transparent" Source="icons_select_word.png" Command="{Binding SelectFromWordsCommand}"  />
+                <ImageButton BackgroundColor="Transparent" Source="icons_keyboard.png" Command="{Binding EnterTranslateCommand}"  Margin="20,0,20,0" />
             </StackLayout>
         </StackLayout>
        
