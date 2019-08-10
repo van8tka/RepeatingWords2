@@ -21,7 +21,7 @@
         <Grid VerticalOptions="Start">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -30,20 +30,25 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
             <local:AdMobView Grid.ColumnSpan="3" HeightRequest="50" Grid.Row="0" Grid.Column="0" />
-            <Label Text="{local:Translate AllWordsCountLabel} " Grid.Row="1" Grid.Column="0" Style="{DynamicResource LabelColor}" Margin="10,0,0,0" />
-            <Label Text="{local:Translate ShowedWordsCountLabel}" Grid.Row="2" Grid.Column="0" Style="{DynamicResource LabelColor}"  Margin="10,0,0,0"/>
-            <Label Text="{local:Translate OpenedWordsCountLabel}" Grid.Row="3" Grid.Column="0" Style="{DynamicResource LabelColor}"  Margin="10,0,0,0"/>
-            <Label Text="{Binding Model.AllWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" Grid.Row="1" Grid.Column="1" />
-            <Label Text="{Binding Model.AllShowedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" Grid.Row="2" Grid.Column="1"/>
-            <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  Grid.Row="3" Grid.Column="1"/>
-            <ImageButton BackgroundColor="Transparent"  Source="voice.png"   Command="{Binding VoiceActingCommand}" Grid.Row="2" Grid.Column="3" />
+            <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0">
+                <Label Text="{local:Translate AllWordsCountLabel}"  Style="{DynamicResource LabelColor}" />
+                <Label Text="{Binding Model.AllWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"  />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0">
+                <Label Text="{local:Translate ShowedWordsCountLabel}" Style="{DynamicResource LabelColor}" />
+                <Label Text="{Binding Model.AllShowedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0">
+                <Label Text="{local:Translate OpenedWordsCountLabel}"  Style="{DynamicResource LabelColor}"/>
+                <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"/>
+            </StackLayout>
+            <ImageButton BackgroundColor="Transparent"  Source="voice.png"   Command="{Binding VoiceActingCommand}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" />
         </Grid>
         
         <ContentView Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="20" HorizontalOptions="FillAndExpand"/>
                
-        <StackLayout VerticalOptions="End" Style="{DynamicResource BottomBarStyle}" HeightRequest="50" >
+        <StackLayout VerticalOptions="End" Style="{DynamicResource BottomBarStyle}" >
             <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-4,-5,0"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                 <ImageButton BackgroundColor="Transparent"  Source="icons_cardsbutton.png"  Command="{Binding LearningCardsCommand}" Margin="20,0,20,0"/>

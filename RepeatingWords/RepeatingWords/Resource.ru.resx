@@ -604,4 +604,13 @@
   <data name="TitleVolumeLanguages" xml:space="preserve">
     <value>Выберите язык озвучки</value>
   </data>
+  <data name="ButtonCheck" xml:space="preserve">
+    <value>✓  check</value>
+  </data>
+  <data name="ButtonHint" xml:space="preserve">
+    <value>?  hint</value>
+  </data>
+  <data name="EnterAnswer" xml:space="preserve">
+    <value>Enter answer</value>
+  </data>
 </root>

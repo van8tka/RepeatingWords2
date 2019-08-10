@@ -5,28 +5,29 @@
              xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"
              xmlns:behavior="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
              Title="{local:Translate TitleSettings}"
-             Style="{DynamicResource TitleApp}"
-            
+             Style="{DynamicResource TitleApp}"            
           >
     <!--панель управлления-->
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
     </ContentPage.ToolbarItems>
+    <ScrollView>
+          
     <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
         <Label Text="{local:Translate LabelChooseTheme}"  Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"/>
@@ -55,12 +56,11 @@
             <Label Text="{Binding CurrentVoiceLanguage, Mode=TwoWay}" Style="{DynamicResource LabelColorWB}" FontSize="Medium" />
         </StackLayout>
 
-        <StackLayout Orientation="Vertical"   Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2">
-            <Label Text="{local:Translate BackupStr}"  Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" />
-            <Button Style="{StaticResource buttonStyle}" Text="{local:Translate BackUpCreateBtn}" Command="{Binding BackUpCommand}"   />
-            <Button Style="{StaticResource buttonStyle}" Text="{local:Translate BackUpRestoreBtn}" Command="{Binding RestoreBackUpCommand}"/>
-        </StackLayout>
-   
-    </Grid>
-    
+            <StackLayout Orientation="Vertical"   Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2">
+                <Label Text="{local:Translate BackupStr}"  Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" />
+                <Button Style="{StaticResource buttonStyle}" Text="{local:Translate BackUpCreateBtn}" Command="{Binding BackUpCommand}"   />
+                <Button Style="{StaticResource buttonStyle}" Text="{local:Translate BackUpRestoreBtn}" Command="{Binding RestoreBackUpCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

@@ -250,11 +250,29 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ✓  проверить.
+        /// </summary>
+        public static string ButtonCheck {
+            get {
+                return ResourceManager.GetString("ButtonCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string ButtonCreate {
             get {
                 return ResourceManager.GetString("ButtonCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?  подсказать.
+        /// </summary>
+        public static string ButtonHint {
+            get {
+                return ResourceManager.GetString("ButtonHint", resourceCulture);
             }
         }
         
@@ -372,6 +390,15 @@ namespace RepeatingWords {
         public static string Continue {
             get {
                 return ResourceManager.GetString("Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введите ответ.
+        /// </summary>
+        public static string EnterAnswer {
+            get {
+                return ResourceManager.GetString("EnterAnswer", resourceCulture);
             }
         }
         

@@ -18,9 +18,9 @@
  
             <Grid Margin="0,20,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="25"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="25"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -31,7 +31,7 @@
                 <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="1"  BackgroundColor="{StaticResource ColorCustomBackgrountButton}" />
                 <BoxView Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" WidthRequest="1" BackgroundColor="{StaticResource ColorCustomBackgrountButton}" />
 
-                <Label Grid.Row="0" Grid.Column="0" BackgroundColor="{Binding FirstBackgroundColor, Mode=TwoWay}" Text="{Binding FirstWord,Mode=TwoWay}" Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand">
+                <Label Grid.Row="0" Grid.Column="0"  BackgroundColor="{Binding FirstBackgroundColor, Mode=TwoWay}" Text="{Binding FirstWord,Mode=TwoWay}" Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapWordCommand}" CommandParameter="{Binding FirstWord}"/>
                     </Label.GestureRecognizers>

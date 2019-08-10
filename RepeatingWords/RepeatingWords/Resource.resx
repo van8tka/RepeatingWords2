@@ -616,4 +616,13 @@ smartphone or keyboard transcription</value>
   <data name="TitleVolumeLanguages" xml:space="preserve">
     <value>Select a voice language</value>
   </data>
+  <data name="ButtonCheck" xml:space="preserve">
+    <value>✓  проверить</value>
+  </data>
+  <data name="ButtonHint" xml:space="preserve">
+    <value>?  подсказать</value>
+  </data>
+  <data name="EnterAnswer" xml:space="preserve">
+    <value>Введите ответ</value>
+  </data>
 </root>

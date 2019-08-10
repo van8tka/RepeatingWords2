@@ -3,11 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"
              mc:Ignorable="d"
              x:Class="RepeatingWords.View.WorkSpaceEnterWordView">
   <ContentView.Content>
-      <StackLayout BackgroundColor="Aqua">
-          <Label Text="ENTER WORD" />
-      </StackLayout>
+        <StackLayout >
+            <Label  x:Name="WordRepeat" Text="{Binding CurrentShowingWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorCustomBackgrountButton}"  >
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <OnPlatform.Android>24</OnPlatform.Android>
+                        <OnPlatform.WinPhone>22</OnPlatform.WinPhone>
+                    </OnPlatform>
+                </Label.FontSize>
+            </Label>
+            <StackLayout Margin="0,5,5,20" HorizontalOptions="End">
+                <Label Text="{local:Translate ButtonCheck}" TextColor="Gray" FontSize="Small">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CheckWordCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="{local:Translate ButtonHint}" TextColor="Gray" FontSize="Small" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HintWordCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label> 
+            </StackLayout>
+            <StackLayout Margin="20,0,20,0" >
+                <Entry Placeholder="{local:Translate EnterAnswer}" TextColor="Gray" Text="{Binding EnterAnswerWord, Mode=TwoWay}" FontSize="Small" />
+            </StackLayout>
+        </StackLayout>
   </ContentView.Content>
 </ContentView>
