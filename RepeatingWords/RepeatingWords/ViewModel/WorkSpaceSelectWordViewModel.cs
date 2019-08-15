@@ -1,21 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore.Internal;
 using RepeatingWords.DataService.Model;
-using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
-using RepeatingWords.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
-    public class WorkSpaceSelectWordViewModel : INotifyPropertyChanged, ICustomContentViewModel
+    public class WorkSpaceSelectWordViewModel : WorkSpaceBaseViewModel
     {
         public WorkSpaceSelectWordViewModel()
         {
@@ -29,7 +24,8 @@ namespace RepeatingWords.ViewModel
         private async void TapWord(string wordName)
         {
             string compareWord = !Model.isFromNative ? _showingWord.RusWord : _showingWord.EngWord;
-            
+            if (string.IsNullOrEmpty(wordName))
+                return;
             if (compareWord.Equals(wordName, StringComparison.OrdinalIgnoreCase))
             {
                 SetRightMark(wordName, Color.LightBlue);
@@ -42,8 +38,7 @@ namespace RepeatingWords.ViewModel
                 Model.wordsOpen.Add(_showingWord);
                 Model.AllOpenedWordsCount++;
                 await Task.Delay(1800);
-            }
-           
+            }          
             ShowNextWord();
             ClearBackgroundColor();
         }
@@ -94,10 +89,7 @@ namespace RepeatingWords.ViewModel
         private Color _forthbackgroundColor;
         public Color ForthBackgroundColor { get => _forthbackgroundColor; set { _forthbackgroundColor = value; OnPropertyChanged(nameof(ForthBackgroundColor)); } }
  
-        private string _currentShowingWord;
-        public string CurrentShowingWord { get => _currentShowingWord; set { _currentShowingWord = value; OnPropertyChanged(nameof(CurrentShowingWord)); } }
-        private RepeatingWordsModel _model;
-        public RepeatingWordsModel Model { get => _model; set { _model = value; OnPropertyChanged(nameof(Model)); } }
+       
         private string _firstWord;
         public string FirstWord { get => _firstWord; set { _firstWord = value; OnPropertyChanged(nameof(FirstWord)); } }
         private string _secondWord;
@@ -107,30 +99,14 @@ namespace RepeatingWords.ViewModel
         private string _forthWord;
         public string ForthWord { get => _forthWord; set { _forthWord = value; OnPropertyChanged(nameof(ForthWord)); } }
 
-        int _indexWordShowNow = -1;
-        internal void ShowNextWord(bool isFirstShowAfterLoad = false)
-        {
-            if (_indexWordShowNow < Model.wordsCollection.Count() - 1 && _indexWordShowNow >= 0 || isFirstShowAfterLoad)
-            {
-                _indexWordShowNow++;
-                Model.currentWord = Model.wordsCollection.ElementAt(_indexWordShowNow);
-                SetViewWords(Model.currentWord, Model.isFromNative);
-                Model.AllShowedWordsCount++;
-                Model.wordsCollectionLeft.Remove(Model.currentWord);
-            }
-            else
-                Debugger.Break();
-        }
+       
 
         private Words _showingWord;
-        private void SetViewWords(Words word, bool isNative)
+        internal override void SetViewWords(Words currentWord, bool isFromNative)
         {
-            _showingWord = word;
-            if (isNative)
-                CurrentShowingWord = word.RusWord;
-            else
-                CurrentShowingWord = word.EngWord;
-            SetSelectingWords(word, isNative);
+            _showingWord = currentWord;
+            CurrentShowingWord = isFromNative ? currentWord.RusWord : currentWord.EngWord;
+            SetSelectingWords(currentWord, isFromNative);
         }
 
         public void SetSelectingWords(Words word, bool isNative)
@@ -185,13 +161,5 @@ namespace RepeatingWords.ViewModel
                 return listWordsForGrid;
             }            
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-        }
-
-       
     }
 }

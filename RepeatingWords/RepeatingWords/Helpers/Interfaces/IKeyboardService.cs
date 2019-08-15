@@ -7,5 +7,6 @@ namespace RepeatingWords.Helpers.Interfaces
    public interface IKeyboardService
     {
         void HideKeyboard();
+        void ShowKeyboard();
     }
 }

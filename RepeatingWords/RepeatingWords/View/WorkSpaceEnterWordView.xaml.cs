@@ -1,4 +1,5 @@
-﻿using RepeatingWords.Helpers.Interfaces;
+﻿using System;
+using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using Unity;
@@ -12,9 +13,9 @@ namespace RepeatingWords.View
     {
         public WorkSpaceEnterWordView()
         {
-            InitializeComponent();
+            InitializeComponent();         
             _customContentViewModel = LocatorService.Container.Resolve<WorkSpaceEnterWordViewModel>();
-            BindingContext = _customContentViewModel as WorkSpaceEnterWordViewModel;
+            BindingContext = _customContentViewModel as WorkSpaceEnterWordViewModel;             
         }
         private ICustomContentViewModel _customContentViewModel;
         public ICustomContentViewModel CustomVM => _customContentViewModel;

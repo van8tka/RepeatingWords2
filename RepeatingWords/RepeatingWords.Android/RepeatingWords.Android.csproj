@@ -92,6 +92,7 @@
     <Compile Include="AdMobRenderer.cs" />
     <Compile Include="AdMobRendererInterstitial.cs" />
     <Compile Include="CheckConnect.cs" />
+    <Compile Include="EntryRepeatingWordRender.cs" />
     <Compile Include="FileWorker.cs" />
     <Compile Include="FolderWorker.cs" />
     <Compile Include="GoogleDriveWorker.cs" />
@@ -463,6 +464,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icons_cardsbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\entry_cursor.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

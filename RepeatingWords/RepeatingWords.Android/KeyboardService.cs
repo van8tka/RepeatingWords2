@@ -11,16 +11,31 @@ namespace RepeatingWords.Droid
     
     public class KeyboardService : IKeyboardService
     {
+
+    
         public void HideKeyboard()
         {
-            var context =  MainActivity.Instance;
-            var inputManager = context.ApplicationContext.GetSystemService(Context.InputMethodService) as InputMethodManager;
-            if(inputManager !=null && context is Activity activity)
+            MainActivity context;
+            var inputManager = GetInputMethodManager(out context);
+            if (inputManager != null && context is Activity activity)
             {
                 var token = activity.CurrentFocus?.WindowToken;
-                inputManager.HideSoftInputFromInputMethod(token, HideSoftInputFlags.None);
+                inputManager.HideSoftInputFromWindow(token, HideSoftInputFlags.None);
                 activity.Window.DecorView.ClearFocus();
             }
+        }
+
+        private InputMethodManager GetInputMethodManager(out MainActivity context)
+        {
+            context = MainActivity.Instance;
+            return context.ApplicationContext.GetSystemService(Context.InputMethodService) as InputMethodManager;
+        }
+
+        public void ShowKeyboard()
+        {
+            MainActivity context;
+            var inputManager = GetInputMethodManager(out context);          
+            inputManager.ShowSoftInput(context.CurrentFocus, 0);
         }
     }
 }

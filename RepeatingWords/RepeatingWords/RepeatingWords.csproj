@@ -194,5 +194,14 @@
     <None Update="View\WordsListView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="View\WorkSpaceCardsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\WorkSpaceEnterWordView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\WorkSpaceSelectWordView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 </Project>

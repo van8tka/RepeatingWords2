@@ -93,8 +93,8 @@ namespace RepeatingWords.ViewModel
             ICustomContentView view = new WorkSpaceEnterWordView();
             WorkSpaceView = view as WorkSpaceEnterWordView;
             _workSpaceVM = view.CustomVM;
-            _workSpaceVM.Model = Model;
-            // (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+            _workSpaceVM.Model = Model;         
+             (_workSpaceVM as WorkSpaceEnterWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
         }
 
         private void ShowSelectFromWords()

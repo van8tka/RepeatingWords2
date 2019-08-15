@@ -40,5 +40,17 @@ namespace RepeatingWords.NUnitTest
         {
             vm.SetSelectingWords(word, true);
         }
+
+
+        [Test]
+        public void TestTranscriptionEmptyWords()
+        {
+            var vm = new WorkSpaceCardsViewModel();
+            Assert.IsFalse(vm.CheckIsNotEmptyTranscription("") );
+            Assert.IsFalse(vm.CheckIsNotEmptyTranscription("[]"));
+            Assert.IsFalse(vm.CheckIsNotEmptyTranscription("[   ]"));
+            Assert.IsTrue(vm.CheckIsNotEmptyTranscription("[fdgf]"));
+        }
+
     }
 }

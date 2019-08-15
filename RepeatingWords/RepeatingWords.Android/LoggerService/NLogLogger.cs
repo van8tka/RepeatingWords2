@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using NLog;
 using RepeatingWords.Droid.LoggerService;
 using Xamarin.Forms;
@@ -32,6 +33,7 @@ namespace RepeatingWords.Droid.LoggerService
 
         public void Error(Exception e)
         {
+            Debugger.Break();
             log.Error(e);
         }
 
