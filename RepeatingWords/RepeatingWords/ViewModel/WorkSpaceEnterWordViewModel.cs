@@ -1,4 +1,5 @@
 ﻿using RepeatingWords.DataService.Model;
+using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
 using System.Linq;
@@ -11,10 +12,11 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceEnterWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceEnterWordViewModel()
+        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService) : base(_dialogService, _navigationService)
         {
             CheckWordCommand = new Command(async () => await CheckWord());
             HintWordCommand = new Command(async () => await HintWord());
+            ColorEnterWord = Color.LightGray;
         }
 
         private Words _showingWord;     
@@ -140,7 +142,7 @@ namespace RepeatingWords.ViewModel
                     await SetInvalidMarks();
                     _countCheckAvailabel--;
                 }
-                UnavailableCheck();
+                await UnavailableCheck();
             }
             catch (Exception e)
             {
@@ -148,14 +150,21 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private void UnavailableCheck()
+        private async Task UnavailableCheck()
         {
             if (_countCheckAvailabel == 0)
             {
+                await ShowRightWord();
                 IncrementOpenWords();
                 _countCheckAvailabel = 3;
                 ShowNextWord();
             }
+        }
+
+        private async Task ShowRightWord()
+        {
+            EnterAnswerWord = Model.isFromNative ? _showingWord.EngWord : _showingWord.RusWord;
+            await SetValidMarks();
         }
 
         private void IncrementOpenWords()
@@ -165,15 +174,15 @@ namespace RepeatingWords.ViewModel
         }
         private async Task SetInvalidMarks()
         {
-            ColorEnterWord = Color.Red;
+            ColorEnterWord = Color.Red;           
             await Task.Delay(800);
-            ColorEnterWord = Color.Transparent;
+           ColorEnterWord = Color.LightGray;
         }
         private async Task SetValidMarks()
         {
-            ColorEnterWord = Color.LightBlue;
+            ColorEnterWord = new Color(0.42, 0.69, 0.94, 1.0);         
             await Task.Delay(800);
-            ColorEnterWord = Color.Transparent;
+            ColorEnterWord = Color.LightGray;
         }      
     }
 }

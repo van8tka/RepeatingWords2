@@ -76,7 +76,8 @@ namespace RepeatingWords.Services
     {
         private const string Url = "http://devprogram.ru/api/data/";
         private const string UrlLang = "http://devprogram.ru/api/langdata/";
- 
+        private const string UrlVersion = "http://devprogram.ru/api/version/android_cardsofwords";
+
         //получаем список словарей
         public async Task<IEnumerable<Dictionary>> Get()
         {           
@@ -91,6 +92,7 @@ namespace RepeatingWords.Services
             }
         }
 
+                       
       
         //получаем список слов выбранного словаря
         public async Task<IEnumerable<Words>> Get(int idDict)
@@ -164,5 +166,41 @@ namespace RepeatingWords.Services
                 throw;
             }
         }
+
+
+        public async Task<float> GetVersionApp()
+        {           
+            try
+            {
+                return await Task.Run(() =>
+                {
+                    var uri = new Uri(UrlVersion);
+                    var client = new CustomWebClient();
+                    var request = client.CreateRequest(uri);
+                    string data;
+                   var response = client.CreateResponse(request, out data);
+                    if (!string.IsNullOrEmpty(data) && response.StatusCode == HttpStatusCode.OK)
+                    {
+                        float items = JsonConvert.DeserializeObject<float>(data);
+                        return items;
+                    }
+                    else
+                        return -1;
+                });
+            }
+            catch (WebException e)
+            {
+                Log.Logger.Error(e);
+                return -1;
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                throw;
+            }
+        }
+
+       
+
     }
 }

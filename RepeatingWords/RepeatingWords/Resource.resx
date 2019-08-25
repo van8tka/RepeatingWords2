@@ -194,7 +194,7 @@
     <comment>Заголовок Списка файлов для загрузки в БД</comment>
   </data>
   <data name="LabelFirstWord" xml:space="preserve">
-    <value>Entrer the first word</value>
+    <value>Enter the native word</value>
     <comment>Заголовок введите слово на русском(первое слово)</comment>
   </data>
   <data name="LabelForStart" xml:space="preserve">
@@ -560,7 +560,7 @@ smartphone or keyboard transcription</value>
     <value>screen24.jpg</value>
   </data>
   <data name="NotLearningPostfics" xml:space="preserve">
-    <value>- not learned words</value>
+    <value> - not learned words</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
     <value>About</value>
@@ -624,5 +624,17 @@ smartphone or keyboard transcription</value>
   </data>
   <data name="EnterAnswer" xml:space="preserve">
     <value>Введите ответ</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ModalUpdateApp" xml:space="preserve">
+    <value>A new version of the application is available.Do you want to upgrade app?</value>
+  </data>
+  <data name="WaitIndicator" xml:space="preserve">
+    <value>Loading..</value>
+  </data>
+  <data name="ModalFinishWords" xml:space="preserve">
+    <value>Congratulations! You looked at all the words.</value>
   </data>
 </root>

@@ -15,6 +15,7 @@
         internal const string VOLUME_LANGUAGE = "volume";
         internal const string VOLUME_LANGUAGE_DEFAULT = "English";
         
-        internal const string NAME_DB_FOR_CONTINUE = "ContinueDictionary";       
+        internal const string NAME_DB_FOR_CONTINUE = "ContinueDictionary";
+        internal const float NUMBER_VERSION_ANDROID = 2.1f;
     }
 }

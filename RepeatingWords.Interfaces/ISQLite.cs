@@ -1,4 +1,4 @@
-﻿namespace RepeatingWords
+﻿namespace RepeatingWords.Interfaces
 {
     public interface ISQLite
      {

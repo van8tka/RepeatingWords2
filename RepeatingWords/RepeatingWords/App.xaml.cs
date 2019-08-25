@@ -1,5 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Unity;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
@@ -20,36 +19,33 @@ namespace RepeatingWords
         }
 
         private readonly IUnityContainer _container;
-        private async void InitApp(ISQLite sqlitePath)
+        private async Task InitApp(ISQLite sqlitePath)
         {
-            Log.Logger.Info("Init default settings app");
+            Log.Logger.Info("Init default settings app");          
             if (Device.RuntimePlatform == Device.UWP)
                await InitNavigation();
-            await InitDb();
-            _container.Resolve<IThemeService>().GetCurrentTheme();                                
+            await _container.Resolve<INewVersionAppChecker>().CheckNewVersionApp();
+            InitDb();
+            _container.Resolve<IThemeService>().GetCurrentTheme();           
         }
 
+      
         private Task InitNavigation()
         {
            var navService = _container.Resolve<INavigationService>();
            return navService.InitializeAsync();
         }
 
-        private async Task InitDb()
-        {
-           await Task.Run(() =>
-            {
+        private void InitDb()
+        {          
                 var init = _container.Resolve<IInitDefaultDb>();
-                init.LoadDefaultData();
-            });
-          
+                init.LoadDefaultData();          
         }
 
         protected override async void OnStart()
         {
             if (Device.RuntimePlatform != Device.UWP)
                 await InitNavigation();
-
         }
         protected override void OnSleep()
         { }

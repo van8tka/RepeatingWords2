@@ -17,10 +17,12 @@ namespace RepeatingWords.DataService
             Database.EnsureCreated();
         }
 
+       
         private readonly string _dbpath;
         public DbSet<Dictionary> Dictionary { get; set; }
         public DbSet<Words> Words { get; set; }
         public DbSet<LastAction> LastActions { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -8,5 +8,6 @@ namespace RepeatingWords.DataService.Interfaces
         IRepository<Words> WordsRepository { get; }
         IRepository<LastAction> LastActionRepository { get; }
         void Save();
+      
     }
 }

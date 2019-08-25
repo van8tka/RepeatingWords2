@@ -18,9 +18,9 @@
  
             <Grid Margin="0,20,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -31,22 +31,22 @@
                 <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="1"  BackgroundColor="{StaticResource ColorCustomBackgrountButton}" />
                 <BoxView Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" WidthRequest="1" BackgroundColor="{StaticResource ColorCustomBackgrountButton}" />
 
-                <Label Grid.Row="0" Grid.Column="0"  BackgroundColor="{Binding FirstBackgroundColor, Mode=TwoWay}" Text="{Binding FirstWord,Mode=TwoWay}" Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand">
+                <Label Grid.Row="0" Grid.Column="0"  BackgroundColor="{Binding FirstBackgroundColor, Mode=TwoWay}" Text="{Binding FirstWord,Mode=TwoWay}" Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" HeightRequest="65">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapWordCommand}" CommandParameter="{Binding FirstWord}"/>
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Grid.Row="0" Grid.Column="2" BackgroundColor="{Binding SecondBackgroundColor,Mode=TwoWay}" Text="{Binding SecondWord,Mode=TwoWay}"  Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  HorizontalOptions="FillAndExpand">
+                <Label Grid.Row="0" Grid.Column="2" BackgroundColor="{Binding SecondBackgroundColor,Mode=TwoWay}" Text="{Binding SecondWord,Mode=TwoWay}"  Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  HorizontalOptions="FillAndExpand" HeightRequest="65">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapWordCommand}" CommandParameter="{Binding SecondWord}"/>
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Grid.Row="2" Grid.Column="0" BackgroundColor="{Binding ThirdBackgroundColor,Mode=TwoWay}" Text="{Binding ThirdWord,Mode=TwoWay}" Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand">
+                <Label Grid.Row="2" Grid.Column="0" BackgroundColor="{Binding ThirdBackgroundColor,Mode=TwoWay}" Text="{Binding ThirdWord,Mode=TwoWay}" Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" HeightRequest="65">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapWordCommand}" CommandParameter="{Binding ThirdWord}"/>
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Grid.Row="2" Grid.Column="2" BackgroundColor="{Binding ForthBackgroundColor,Mode=TwoWay}" Text="{Binding ForthWord,Mode=TwoWay}"  Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand">
+                <Label Grid.Row="2" Grid.Column="2" BackgroundColor="{Binding ForthBackgroundColor,Mode=TwoWay}" Text="{Binding ForthWord,Mode=TwoWay}"  Style="{DynamicResource LabelColor}" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" HeightRequest="65">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapWordCommand}" CommandParameter="{Binding ForthWord}"/>
                     </Label.GestureRecognizers>

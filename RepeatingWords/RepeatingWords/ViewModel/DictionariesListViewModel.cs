@@ -23,7 +23,7 @@ namespace RepeatingWords.ViewModel
             DictionaryList = new ObservableCollection<Dictionary>();
             LoadData();
             AddDictionaryCommand = new Command(AddDictionary);
-            AddWordsFromNetCommand = new Command(AddWordsFromNet);           
+            AddWordsFromNetCommand = new Command(async()=> { await AddWordsFromNet(); });           
         }
 
         public override Task InitializeAsync(object navigationData)
@@ -40,18 +40,9 @@ namespace RepeatingWords.ViewModel
         private Dictionary _selectedItem;
         public Dictionary SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(nameof(SelectedItem)); if (_selectedItem != null) ShowActions(_selectedItem); }  }
       
-        private async void AddWordsFromNet( )
-        {
-            //проверим состояние сети.. вкл или выкл
-            bool isConnect = DependencyService.Get<ICheckConnect>().CheckTheNet();
-            if (!isConnect)
-            {
-                await DialogService.ShowAlertDialog(Resource.ModalCheckNet, Resource.Continue, Resource.ModalException);
-            }
-            else
-            {
-                await NavigationService.NavigateToAsync<LanguageFrNetViewModel>();
-            }
+        private async Task AddWordsFromNet( )
+        {                     
+            await NavigationService.NavigateToAsync<LanguageFrNetViewModel>();                                  
         }
         private async void AddDictionary( )
         {

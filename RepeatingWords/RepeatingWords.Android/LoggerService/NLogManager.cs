@@ -19,7 +19,9 @@ namespace RepeatingWords.Droid.LoggerService
             var config = new LoggingConfiguration();
             ConsoleConfigurationLogger(config);
             FileConfigurationLogger(config);
-            MailConfigurationLogger(config);
+        #if RELEASE
+                    MailConfigurationLogger(config);
+        #endif
             NLog.LogManager.Configuration = config;
         }
 

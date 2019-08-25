@@ -1,4 +1,5 @@
-﻿using RepeatingWords.Helpers.Interfaces;
+﻿using RepeatingWords.DataService.Interfaces;
+using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Services;
 using System;
@@ -12,22 +13,25 @@ namespace RepeatingWords.ViewModel
     public class SettingsViewModel : ViewModelBase
     {
         //ctor
-        public SettingsViewModel(INavigationService navigationService, IDialogService dialogService, IThemeService themeService, IKeyboardTranscriptionService transcriptKeyboardService, IVolumeLanguageService volumeService) : base(navigationService, dialogService)
+        public SettingsViewModel(INavigationService navigationService, IDialogService dialogService, IThemeService themeService, IKeyboardTranscriptionService transcriptKeyboardService, IVolumeLanguageService volumeService, IUnitOfWork unitOfWork) : base(navigationService, dialogService)
         {
             _themeService = themeService ?? throw new ArgumentNullException(nameof(themeService));
             _transcriptKeyboardService = transcriptKeyboardService ?? throw new ArgumentNullException(nameof(transcriptKeyboardService));
             _volumeService = volumeService ?? throw new ArgumentNullException(nameof(transcriptKeyboardService));
+            _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             SetCurrentSettings();
             SwitchThemeCommand = new Command(SwitchThemeApp);
             SwitchTranskriptionKeyboardCommand = new Command(SwitchTranscriptionKeyboard);
             BackUpCommand = new Command(async () => { await ChoseCreateBackUp(); }); ;
             RestoreBackUpCommand = new Command(async () => { await RestoreBackup(); });
             ChangeVoiceLanguageCommand = new Command(async () => await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>());
+
         }
 
         private readonly IThemeService _themeService;
         private readonly IKeyboardTranscriptionService _transcriptKeyboardService;
         private readonly IVolumeLanguageService _volumeService;
+        private readonly IUnitOfWork _unitOfWork;
         private string _fileNameBackupDef = "backupcardsofwords";
         private string _localFolderBackup = Resource.BackUpInLocal;
         private string _googleDriveFolderBackup = Resource.BackUpOnGoogle;
@@ -94,7 +98,7 @@ namespace RepeatingWords.ViewModel
             {
                 //создание имени файла резервной копии
                 string fileNameBackup = string.Format(_fileNameBackupDef + DateTime.Now.ToString("ddMMyyyy_hhmm") + ".dat");
-                var action = await DialogService.ShowActionSheetAsync(Resource.BackupMethod, Resource.ModalActCancel, null, default, _localFolderBackup, _googleDriveFolderBackup);
+                var action = await DialogService.ShowActionSheetAsync(Resource.BackupMethod,"", Resource.ModalActCancel, default, _localFolderBackup, _googleDriveFolderBackup);
                 bool success;
                 if (action == _localFolderBackup)
                 {
@@ -117,8 +121,8 @@ namespace RepeatingWords.ViewModel
 
         private async Task RestoreBackup()
         {
-            var action = await DialogService.ShowActionSheetAsync(Resource.BackUpSearch, Resource.ModalActCancel, null, default, _localFolderBackup, _googleDriveFolderBackup);
-            bool success;
+            var action = await DialogService.ShowActionSheetAsync(Resource.BackUpSearch, "", Resource.ModalActCancel, default, _localFolderBackup, _googleDriveFolderBackup);
+            bool success = false;
             if (action == _localFolderBackup)
             {
                 var backupService = LocatorService.Container.Resolve<BackupLocalService>();
@@ -129,88 +133,7 @@ namespace RepeatingWords.ViewModel
             {
                 var backupService = LocatorService.Container.Resolve<BackupGoogleService>();
                 success = await backupService.RestoreBackup(_fileNameBackupDef);
-            }
+            }           
         }
-
-
-
-
-        //string localFolder = Resource.BackUpInLocal;
-        //string googleDriveFolder = Resource.BackUpOnGoogle;
-        //string titleSearchBackUp = Resource.BackUpSearch;
-        ////восстановление из backup
-        //private async void RestoreFromBackUpButtonCkick(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-
-        //        
-        //        bool succes = false;
-        //        var action = await DisplayActionSheet(titleSearchBackUp, Resource.ModalActCancel, null, localFolder, googleDriveFolder);
-
-        //        if (action == localFolder)
-        //        {
-        //            //для восстановления данных по умолчанию
-        //            //получим последний файл бэкапа
-        //            string fileBackUp = await DependencyService.Get<IFileWorker>().GetBackUpFilesAsync(folderNameBackUp);
-
-        //            if (!string.IsNullOrEmpty(fileBackUp))
-        //            {
-        //                succes = DependencyService.Get<IFileWorker>().WriteFile(fileBackUp, filePathToDbFull);
-        //                if (succes)
-        //                    await DisplayAlert("", successRestore, "Ок");
-        //                else
-        //                    await DisplayAlert("", ErrorRestore, "Ок");
-        //            }
-        //        }
-        //        else if (action == googleDriveFolder)
-        //        {
-        //            succes = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathToDbFull, fileNameBackupDef, folderNameBackUp, successRestore, ErrorRestore);
-        //        }
-        //    }
-        //    catch (Exception er)
-        //    {
-        //        Log.Logger.Error(er);
-        //    }
-        //}
-
-
-
-
-
-        //public SettingsView()
-        //{
-        //    InitializeComponent();
-
-        //    //fullscreen advertizing
-        //    DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/4024752876");
-
-        //    object propThem = "";
-        //    object propTrKeyb = "";
-        //    if (App.Current.Properties.TryGetValue(Them, out propThem))
-        //    {
-        //        if (propThem.Equals(_blackThem))
-        //        {
-        //            SwDark.IsToggled = true;
-        //        }
-        //        else
-        //        {
-        //            SwDark.IsToggled = false;
-        //            this.BackgroundColor = Color.White;
-        //        }
-        //    }
-        //    if (App.Current.Properties.TryGetValue(TrKeyboard, out propTrKeyb))
-        //    {
-        //        if (propTrKeyb.Equals(showKeyboard))
-        //        {
-        //            SwShowKeyboard.IsToggled = true;
-        //        }
-        //        else
-        //        {
-        //            SwShowKeyboard.IsToggled = false;
-        //        }
-        //    }
-        //}
-
     }
 }

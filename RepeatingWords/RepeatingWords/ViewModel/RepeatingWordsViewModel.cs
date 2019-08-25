@@ -70,6 +70,13 @@ namespace RepeatingWords.ViewModel
         private RepeatingWordsModel _model;
         public RepeatingWordsModel Model { get => _model; set { _model = value; OnPropertyChanged(nameof(Model)); } }
 
+        private Color _cardsButtonBackground;
+        public Color CardsButtonBackground { get => _cardsButtonBackground; set { _cardsButtonBackground = value; OnPropertyChanged(nameof(CardsButtonBackground)); } }
+        private Color _selectButtonBackground;
+        public Color SelectButtonBackground { get => _selectButtonBackground; set { _selectButtonBackground = value; OnPropertyChanged(nameof(SelectButtonBackground)); } }
+        private Color _entryButtonBackground;
+        public Color EntryButtonBackground { get => _entryButtonBackground; set { _entryButtonBackground = value; OnPropertyChanged(nameof(EntryButtonBackground)); } }
+
         public ICommand VoiceActingCommand { get; set; }
         public ICommand EnterTranslateCommand { get; set; }
         public ICommand SelectFromWordsCommand { get; set; }
@@ -86,6 +93,7 @@ namespace RepeatingWords.ViewModel
         {
             SetViewWorkSpaceEnterWord();
             Model.ResetModel();
+            SetBackgroundButton(nameof(EntryButtonBackground));
         }
 
         private void SetViewWorkSpaceEnterWord()
@@ -101,6 +109,7 @@ namespace RepeatingWords.ViewModel
         {
             SetViewWorkSpaceSelectWord();
             Model.ResetModel();
+            SetBackgroundButton(nameof(SelectButtonBackground));
         }
 
         private void SetViewWorkSpaceSelectWord()
@@ -109,14 +118,38 @@ namespace RepeatingWords.ViewModel
             WorkSpaceView = view as WorkSpaceSelectWordView;
             _workSpaceVM = view.CustomVM;
             _workSpaceVM.Model = Model;
-            (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+            (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true );
         }
 
         private void ShowLearningCards()
         {
             SetViewWorkSpaceLearningCards();
             Model.ResetModel();
+            SetBackgroundButton(nameof(CardsButtonBackground));
         }
+
+        private void SetBackgroundButton(string button)
+        {
+            if(button == nameof(CardsButtonBackground))
+            {
+                CardsButtonBackground = Color.LightGray;
+                SelectButtonBackground = Color.Transparent;
+                EntryButtonBackground = Color.Transparent;
+            }
+            if (button == nameof(SelectButtonBackground))
+            {
+                CardsButtonBackground = Color.Transparent;
+                SelectButtonBackground = Color.LightGray;
+                EntryButtonBackground = Color.Transparent;
+            }
+            if (button == nameof(EntryButtonBackground))
+            {
+                CardsButtonBackground = Color.Transparent;
+                SelectButtonBackground = Color.Transparent;
+                EntryButtonBackground = Color.LightGray;
+            }
+        }
+
         private void SetViewWorkSpaceLearningCards()
         {
             ICustomContentView view = new WorkSpaceCardsView();
@@ -151,6 +184,7 @@ namespace RepeatingWords.ViewModel
 
         public override async Task InitializeAsync(object navigationData)
         {
+            SetBackgroundButton(nameof(CardsButtonBackground));
             IsBusy = true;
             if (navigationData is Dictionary dictionary)
             {
@@ -170,7 +204,7 @@ namespace RepeatingWords.ViewModel
             Model.wordsCollection = await LoadWords(_dictionary.Id);
             Model.AllWordsCount = Model.wordsCollection.Count();
             ShakeWordsCollection(Model.wordsCollection);
-            SetViewWorkSpaceLearningCards();          
+            SetViewWorkSpaceLearningCards();         
             await base.InitializeAsync(navigationData);
 
         }

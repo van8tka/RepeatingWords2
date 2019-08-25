@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.DataService.Interfaces;
@@ -146,8 +145,7 @@ namespace RepeatingWords.ViewModel
                 }
             }
              catch(Exception e)
-            {
-                Debugger.Break();
+            {              
                 Log.Logger.Error(e);
             }
         }

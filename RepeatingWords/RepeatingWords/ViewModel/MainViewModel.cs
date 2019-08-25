@@ -23,22 +23,23 @@ namespace RepeatingWords.ViewModel
             ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
             LikeCommand = new Command(LikeApplication);
-            LoadPageCommand = new Command(CheckIsEnabledContinue);
+          
         }
 
         public override async Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;           
+            IsBusy = true;
+            await CheckIsEnabledContinue();
             await base.InitializeAsync(navigationData);
         }
 
 
 
 
-        private async void CheckIsEnabledContinue()
+        private async Task CheckIsEnabledContinue()
         {
             var item = await Task.Run(() => _unitOfWork.LastActionRepository.Get().LastOrDefault());
-            IsEnabledContinue = item != null ? true : false;
+            IsEnabledContinue = item != null ? true : false;          
         }
 
         private readonly IUnitOfWork _unitOfWork;
@@ -52,7 +53,7 @@ namespace RepeatingWords.ViewModel
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
         public ICommand HelperCommand { get; set; }
-        public ICommand LoadPageCommand { get; set; }
+       
         
 
         private async void ContinueLearning()
@@ -80,8 +81,8 @@ namespace RepeatingWords.ViewModel
                 {
                     if (Device.RuntimePlatform == "Android")
                         Device.OpenUri(new Uri("https://play.google.com/store/apps/details?id=cardsofwords.cardsofwords"));
-                    if (Device.RuntimePlatform == "UWP")
-                        Device.OpenUri(new Uri("https://www.microsoft.com/store/apps/9n55bwkgshnf"));
+                    //if (Device.RuntimePlatform == "UWP")
+                    //    Device.OpenUri(new Uri("https://www.microsoft.com/store/apps/9n55bwkgshnf"));
                 }
             }
             catch (Exception e)

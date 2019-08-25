@@ -4,10 +4,9 @@ using System.IO;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System;
-using RepeatingWords.Services;
 using RepeatingWords.LoggerService;
 
-[assembly:Dependency(typeof(RepeatingWords.Droid.FolderWorker))]
+[assembly: Dependency(typeof(RepeatingWords.Droid.FolderWorker))]
 
 namespace RepeatingWords.Droid
 {

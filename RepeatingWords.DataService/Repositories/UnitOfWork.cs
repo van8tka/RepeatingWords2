@@ -1,17 +1,21 @@
 ﻿using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
+using RepeatingWords.Interfaces;
 
 namespace RepeatingWords.DataService.Repositories
 {
     public class UnitOfWork : IUnitOfWork
-    {      
-        //ctor
-        public UnitOfWork(string dbpath)
+    {
+      
+        public UnitOfWork(ISQLite sqlite)
         {
-            _dbContext = new SQLiteContext(dbpath);
+            _dbpath = sqlite.GetDatabasePath(DATABASE_NAME);
+            _dbContext = new SQLiteContext(_dbpath); 
         }
 
-        private readonly SQLiteContext _dbContext;
+        internal const string DATABASE_NAME = "repeatwords.db";
+        private readonly string _dbpath;
+        private SQLiteContext _dbContext;
 
         private IRepository<Dictionary> _dictionaryRepo;
         public IRepository<Dictionary> DictionaryRepository => _dictionaryRepo ?? (_dictionaryRepo = new GenericRepository<Dictionary>(_dbContext));
@@ -24,5 +28,7 @@ namespace RepeatingWords.DataService.Repositories
         {
             _dbContext.SaveChanges();
         }
+
+      
     }
 }

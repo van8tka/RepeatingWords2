@@ -1,5 +1,6 @@
 ﻿using RepeatingWords.DataService.Model;
-using RepeatingWords.Model;
+using RepeatingWords.Helpers;
+using RepeatingWords.Helpers.Interfaces;
 using System;
 using System.Linq;
 using System.Windows.Input;
@@ -9,7 +10,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceCardsViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceCardsViewModel()
+        public WorkSpaceCardsViewModel(IDialogService _dialogService, INavigationService _navigationService) : base(_dialogService, _navigationService)
         {
             SwipeWordCommand = new Command<string>((direction) => { SwipeWord(direction); });
         }
@@ -21,22 +22,13 @@ namespace RepeatingWords.ViewModel
         private string _currentTranscriptWord;
         public string CurrentTranscriptWord { get => _currentTranscriptWord;
             set {
-                if( CheckIsNotEmptyTranscription(value) )
+                if(TranscriptionChecker.CheckIsNotEmptyTranscription(value) )
                     _currentTranscriptWord = value;
                 else
                     _currentTranscriptWord = string.Empty;
                 OnPropertyChanged(nameof(CurrentTranscriptWord)); } }
 
-        public bool CheckIsNotEmptyTranscription(string transcription)
-        {
-            if (string.IsNullOrEmpty(transcription))
-                return false;
-            string temp = transcription.Replace("[", string.Empty).Replace("]", string.Empty);
-
-            if (string.IsNullOrEmpty(temp) || string.IsNullOrWhiteSpace(temp))
-                return false;
-            return true;
-        }
+      
 
         private void SwipeWord(string direction)
         {

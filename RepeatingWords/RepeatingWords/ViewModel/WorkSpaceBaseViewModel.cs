@@ -2,7 +2,6 @@
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Model;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
@@ -15,9 +14,16 @@ namespace RepeatingWords.ViewModel
         private RepeatingWordsModel _model;
         public RepeatingWordsModel Model { get => _model; set { _model = value; OnPropertyChanged(nameof(Model)); } }
 
+        public WorkSpaceBaseViewModel(IDialogService _dialogService, INavigationService _navigationService)
+        {
+            this._dialogService = _dialogService;
+            this._navigationService = _navigationService;
+        }
+        private readonly IDialogService _dialogService;
+        private readonly INavigationService _navigationService;
 
         protected int _indexWordShowNow = -1;
-        internal void ShowNextWord(bool isFirstShowAfterLoad = false)
+        internal async void ShowNextWord(bool isFirstShowAfterLoad = false)
         {
             if(isFirstShowAfterLoad)
                 _indexWordShowNow = -1;
@@ -30,7 +36,11 @@ namespace RepeatingWords.ViewModel
                 Model.wordsCollectionLeft.Remove(Model.currentWord);
             }
             else
-                Debugger.Break();
+            {
+              await  _dialogService.ShowAlertDialog(Resource.ModalFinishWords, Resource.Continue);
+              await  _navigationService.RemoveBackStackAsync();
+              await  _navigationService.InitializeAsync();
+            }
         }
        
 

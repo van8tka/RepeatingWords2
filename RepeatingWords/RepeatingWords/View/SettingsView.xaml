@@ -12,55 +12,61 @@
         <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
     </ContentPage.ToolbarItems>
     <ScrollView>
-          
-    <Grid Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="120"/>
-        </Grid.RowDefinitions>
-
-        <Label Text="{local:Translate LabelChooseTheme}"  Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"/>
-        <Label Text="{local:Translate LabelThemeDark}" Style="{DynamicResource LabelColorWB}" VerticalTextAlignment="Center" FontSize="Medium" Grid.Column="0" Grid.Row="1" HorizontalOptions="Start"/>
-        <Switch x:Name="SwDark" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center"  IsToggled="{Binding IsDarkThem, Mode=TwoWay}"  Grid.Column="1" Grid.Row="1">
-                <Switch.Behaviors>
-                    <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchThemeCommand}"/>
-                </Switch.Behaviors>
-            </Switch>
-        <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
-        <BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
-        <BoxView Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"  HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
-        <Label Text="{local:Translate LabelChooseShowKeyboardTrans}"  Style="{DynamicResource LableHeadApp}" HorizontalTextAlignment="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" />
-        <Label Text="{local:Translate LabelShowKeyboard}" Style="{DynamicResource LabelColorWB}" FontSize="Medium" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
-        <Switch x:Name="SwShowKeyboard" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" IsToggled="{Binding IsCustomKeyboardTranscription, Mode=TwoWay}" Grid.Column="1" Grid.Row="4">
-                <Switch.Behaviors>
-                    <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchTranskriptionKeyboardCommand}"/>
-                </Switch.Behaviors>
-            </Switch>
-
-        <StackLayout Orientation="Vertical"  Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" >
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding ChangeVoiceLanguageCommand}"/>
-            </StackLayout.GestureRecognizers>
-            <Label x:Name="Labelpicker" Text="{local:Translate PickerText}" Style="{DynamicResource LableHeadApp}"/>
-            <Label Text="{Binding CurrentVoiceLanguage, Mode=TwoWay}" Style="{DynamicResource LabelColorWB}" FontSize="Medium" />
-        </StackLayout>
-
-            <StackLayout Orientation="Vertical"   Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2">
-                <Label Text="{local:Translate BackupStr}"  Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" />
-                <Button Style="{StaticResource buttonStyle}" Text="{local:Translate BackUpCreateBtn}" Command="{Binding BackUpCommand}"   />
-                <Button Style="{StaticResource buttonStyle}" Text="{local:Translate BackUpRestoreBtn}" Command="{Binding RestoreBackUpCommand}"/>
+         
+            <!--установка ночной темы-->
+        <StackLayout Padding="10">
+            <StackLayout >
+                <Label Text="{local:Translate LabelChooseTheme}"  FontSize="Small" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="{local:Translate LabelThemeDark}" Style="{DynamicResource LabelColorWB}" FontSize="Small"  HorizontalOptions="StartAndExpand"/>
+                    <Switch HorizontalOptions="End" VerticalOptions="End" IsToggled="{Binding IsDarkThem, Mode=TwoWay}"  >
+                        <Switch.Behaviors>
+                            <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchThemeCommand}"/>
+                        </Switch.Behaviors>
+                    </Switch>
+                </StackLayout>
+                <BoxView HeightRequest="1" VerticalOptions="End" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
             </StackLayout>
-        </Grid>
+            <!--установка клавиатуры транскрипции-->
+            <StackLayout >
+                <Label Text="{local:Translate LabelChooseShowKeyboardTrans}"  FontSize="Small" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="{local:Translate LabelShowKeyboard}" Style="{DynamicResource LabelColorWB}"  FontSize="Small" HorizontalOptions="StartAndExpand"/>
+                    <Switch x:Name="SwShowKeyboard" VerticalOptions="End" HorizontalOptions="End" IsToggled="{Binding IsCustomKeyboardTranscription, Mode=TwoWay}" >
+                        <Switch.Behaviors>
+                            <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchTranskriptionKeyboardCommand}"/>
+                        </Switch.Behaviors>
+                    </Switch>
+                </StackLayout>
+                <BoxView HeightRequest="1" VerticalOptions="End" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
+            </StackLayout>
+            <!--выбор языка озвучки-->
+            <StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,4,0,4">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeVoiceLanguageCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <Label x:Name="Labelpicker" Text="{local:Translate PickerText}" Style="{DynamicResource LableHeadApp}" FontSize="Small" />
+                    <Label Text="{Binding CurrentVoiceLanguage, Mode=TwoWay}" Style="{DynamicResource LabelColorWB}"  FontSize="Small"  />
+                </StackLayout>
+                <BoxView HeightRequest="1" VerticalOptions="End" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
+            </StackLayout>
+            <!--создание резервной копии-->
+            <StackLayout>
+                <Label Text="{local:Translate BackUpCreateBtn}"  FontSize="Small"  Style="{DynamicResource LabelColorWB}" HorizontalOptions="Start"  Margin="0,17,0,17"/>
+                <BoxView HeightRequest="1" VerticalOptions="End" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackUpCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <!--восстановление резервной копии-->
+            <StackLayout>
+                <Label Text="{local:Translate BackUpRestoreBtn}" FontSize="Small"  Style="{DynamicResource LabelColorWB}" HorizontalOptions="Start" Margin="0,17,0,17"/>
+                <BoxView HeightRequest="1" VerticalOptions="End" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RestoreBackUpCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

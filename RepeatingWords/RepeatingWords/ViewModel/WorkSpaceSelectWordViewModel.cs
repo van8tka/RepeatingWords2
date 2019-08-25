@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Internal;
 using RepeatingWords.DataService.Model;
+using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,10 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceSelectWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceSelectWordViewModel()
+        public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService) : base(_dialogService, _navigationService)
         {
             TapWordCommand = new Command<string>(TapWord);
         }
-
         /// <summary>
         /// действие по тапу на квадратик со словом
         /// </summary>

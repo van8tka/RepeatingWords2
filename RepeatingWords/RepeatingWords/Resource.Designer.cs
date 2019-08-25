@@ -349,6 +349,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string ButtonSave {
+            get {
+                return ResourceManager.GetString("ButtonSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Leave a comment.
         /// </summary>
         public static string ButtonSendReview {
@@ -502,7 +511,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrer the first word.
+        ///   Looks up a localized string similar to Enter the native word.
         /// </summary>
         public static string LabelFirstWord {
             get {
@@ -981,6 +990,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You looked at all the words..
+        /// </summary>
+        public static string ModalFinishWords {
+            get {
+                return ResourceManager.GetString("ModalFinishWords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Words aren&apos;t added to the dictionary, perhaps incorrect file..
         /// </summary>
         public static string ModalIncorrectFile {
@@ -1031,6 +1049,15 @@ namespace RepeatingWords {
         public static string ModalRestart {
             get {
                 return ResourceManager.GetString("ModalRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new version of the application is available.Do you want to upgrade app?.
+        /// </summary>
+        public static string ModalUpdateApp {
+            get {
+                return ResourceManager.GetString("ModalUpdateApp", resourceCulture);
             }
         }
         
@@ -1107,7 +1134,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - not learned words.
+        ///   Looks up a localized string similar to  - not learned words.
         /// </summary>
         public static string NotLearningPostfics {
             get {
@@ -1418,6 +1445,15 @@ namespace RepeatingWords {
         public static string TitleVolumeLanguages {
             get {
                 return ResourceManager.GetString("TitleVolumeLanguages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading...
+        /// </summary>
+        public static string WaitIndicator {
+            get {
+                return ResourceManager.GetString("WaitIndicator", resourceCulture);
             }
         }
         

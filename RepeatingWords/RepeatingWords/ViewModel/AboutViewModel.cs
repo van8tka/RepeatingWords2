@@ -1,4 +1,5 @@
-﻿using RepeatingWords.Helpers.Interfaces;
+﻿using RepeatingWords.Heleprs;
+using RepeatingWords.Helpers.Interfaces;
 using System.Threading.Tasks;
 
 namespace RepeatingWords.ViewModel
@@ -10,7 +11,13 @@ namespace RepeatingWords.ViewModel
         public override Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
+            VersionApp = "Cards of words v" + Constants.NUMBER_VERSION_ANDROID;
             return base.InitializeAsync(navigationData);
+        }
+
+        private string _versionApp;
+        public string VersionApp { get => _versionApp;
+            set { _versionApp = value; OnPropertyChanged(nameof(VersionApp)); }
         }
     }
 }

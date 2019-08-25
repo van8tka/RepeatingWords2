@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RepeatingWords.View.WordsListView"
              xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+              xmlns:converter="clr-namespace:RepeatingWords.Converters;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
              Title="{Binding DictionaryName}"
              >
@@ -23,7 +24,7 @@
                                 <StackLayout Orientation="Vertical">
                                     <Label Text="{Binding RusWord}"  FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}"/>
                                     <Label Text="{Binding EngWord}"   FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-                                    <Label Text="{Binding Transcription}"   FontSize="Medium" TextColor="Gray"/>
+                                    <Label Text="{Binding Transcription}" IsVisible="{Binding Transcription,Converter= {converter:TranscriptionEmptyConverter}}" FontSize="Medium" TextColor="Gray"/>
                                 </StackLayout>
                             </ViewCell.View>
                         </ViewCell>

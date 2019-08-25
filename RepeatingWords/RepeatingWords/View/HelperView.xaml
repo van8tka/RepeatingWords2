@@ -10,13 +10,13 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
     </ContentPage.ToolbarItems>
-    <ScrollView>
-        <StackLayout VerticalOptions="Center">
+   
+        <StackLayout VerticalOptions="Center" Padding="10">
             <!--<Label Text="{locale:Translate LabelInstruction}" HorizontalTextAlignment="Center" Style="{StaticResource LableHeadApp}" HeightRequest="150"/>-->
             <Button Text="{locale:Translate ButtonHowCreateDictAndaddWord}" Style="{StaticResource buttonStyle}" Command="{Binding HowToAddWordCommand}"/>
             <Button Text="{locale:Translate ButtonHowIportFile}" Style="{StaticResource buttonStyle}" Command="{Binding HowToImportFromFileCommand}"/>
             <Button x:Name="BtAbout" Text="{locale:Translate ButtonAbout}" Style="{StaticResource buttonStyle}" Command="{Binding AboutCommand}"/>
             <Button x:Name="BtPolicy" Text="{locale:Translate ButtonPolicy}" Style="{StaticResource buttonStyle}" Command="{Binding PolicyCommand}"/>
         </StackLayout>
-    </ScrollView>
+  
 </ContentPage>

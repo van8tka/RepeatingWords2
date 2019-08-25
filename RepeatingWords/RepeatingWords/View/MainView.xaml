@@ -13,10 +13,7 @@
         <ToolbarItem Name="Like" Icon="toolbarImageLike.png" Command="{Binding LikeCommand}"></ToolbarItem>
         <ToolbarItem Name="Help" Icon="toolbarImageHelp.png" Command="{Binding HelperCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
-    <ContentPage.Behaviors>
-        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadPageCommand}"/>
-    </ContentPage.Behaviors>
-    
+  
     
     <StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand" Margin="10,0,10,0">

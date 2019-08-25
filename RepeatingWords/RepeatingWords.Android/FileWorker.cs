@@ -15,9 +15,6 @@ namespace RepeatingWords.Droid
     public class FileWorker : IFileWorker
     {
  
-
-
-
         public async Task<List<string>> LoadTextAsync(string filepath)
         {
             try
@@ -39,12 +36,6 @@ namespace RepeatingWords.Droid
                 throw;
             }
         }
-
-
-     
-      
-
-
 
 
         //создание папки для 
@@ -83,10 +74,6 @@ namespace RepeatingWords.Droid
                 throw;
             }
         }
-
-
-
-
 
 
 

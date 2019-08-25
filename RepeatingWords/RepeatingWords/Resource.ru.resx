@@ -543,7 +543,7 @@
     <value>screen24ru.jpg</value>
   </data>
   <data name="NotLearningPostfics" xml:space="preserve">
-    <value>- перевернутые карточки</value>
+    <value> - перевернутые карточки</value>
   </data>
   <data name="TitleAbout" xml:space="preserve">
     <value>О приложении</value>
@@ -612,5 +612,17 @@
   </data>
   <data name="EnterAnswer" xml:space="preserve">
     <value>Enter answer</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="ModalUpdateApp" xml:space="preserve">
+    <value>Доступна новая версия приложения. Хотите обновить?</value>
+  </data>
+  <data name="WaitIndicator" xml:space="preserve">
+    <value>Загрузка..</value>
+  </data>
+  <data name="ModalFinishWords" xml:space="preserve">
+    <value>Поздравляю! Слова закончились.</value>
   </data>
 </root>
