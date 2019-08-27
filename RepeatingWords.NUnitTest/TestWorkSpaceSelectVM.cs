@@ -20,7 +20,7 @@ namespace RepeatingWords.NUnitTest
         [SetUp]
         public void Begin()
         {
-            vm = new WorkSpaceSelectWordViewModel();
+            vm = new WorkSpaceSelectWordViewModel(null, null);
             model = new RepeatingWordsModel();
             model.wordsCollection = new List<Words>()
             {
@@ -42,15 +42,6 @@ namespace RepeatingWords.NUnitTest
         }
 
 
-        [Test]
-        public void TestTranscriptionEmptyWords()
-        {
-            var vm = new WorkSpaceCardsViewModel();
-            Assert.IsFalse(vm.CheckIsNotEmptyTranscription("") );
-            Assert.IsFalse(vm.CheckIsNotEmptyTranscription("[]"));
-            Assert.IsFalse(vm.CheckIsNotEmptyTranscription("[   ]"));
-            Assert.IsTrue(vm.CheckIsNotEmptyTranscription("[fdgf]"));
-        }
-
+        
     }
 }

@@ -23,18 +23,21 @@ namespace RepeatingWords.ViewModel
             ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
             LikeCommand = new Command(LikeApplication);
-          
+            LoadPageCommand = new Command(AppearingPage);
+        }
+
+        private void AppearingPage( )
+        {
+            CheckIsEnabledContinue();
         }
 
         public override async Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
-            await CheckIsEnabledContinue();
+            IsBusy = true;          
             await base.InitializeAsync(navigationData);
         }
 
-
-
+         
 
         private async Task CheckIsEnabledContinue()
         {
@@ -53,8 +56,10 @@ namespace RepeatingWords.ViewModel
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
         public ICommand HelperCommand { get; set; }
-       
-        
+        public ICommand LoadPageCommand { get; set; }
+
+
+
 
         private async void ContinueLearning()
         {

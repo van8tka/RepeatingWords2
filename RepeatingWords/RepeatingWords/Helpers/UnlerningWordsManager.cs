@@ -8,10 +8,10 @@ using System.Linq;
 
 namespace RepeatingWords.Helpers
 {
-    internal class UnlerningWordsManager:IUnlearningWordsManager
+    public class UnlerningWordsManager:IUnlearningWordsManager
     {
         private readonly IUnitOfWork _unitOfWork;
-        internal UnlerningWordsManager(IUnitOfWork unitOfWork)
+        public UnlerningWordsManager(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }

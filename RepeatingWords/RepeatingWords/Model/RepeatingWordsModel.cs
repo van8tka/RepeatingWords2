@@ -27,9 +27,9 @@ namespace RepeatingWords.Model
 
         internal Words currentWord { get; set; }
         internal bool isFromNative { get; set; }
-        internal IList<Words> wordsOpen { get; set; }
+        public IList<Words> wordsOpen { get; set; }
         public IEnumerable<Words> wordsCollection { get; set; }
-        internal IList<Words> wordsCollectionLeft { get; set; }
+        public IList<Words> wordsCollectionLeft { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName=null)
@@ -37,7 +37,7 @@ namespace RepeatingWords.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
         }
 
-        internal void ResetModel()
+        public void ResetModel()
         {
             AllShowedWordsCount = 1;
             AllOpenedWordsCount = 0;

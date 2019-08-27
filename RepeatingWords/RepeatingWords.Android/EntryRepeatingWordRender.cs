@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Runtime;
+using Android.Text;
 using Android.Util;
 using Android.Widget;
 using RepeatingWords.CustomControls;
@@ -25,7 +26,7 @@ namespace RepeatingWords.Droid
             base.OnElementChanged(e);
             if (e.NewElement != null)
             {
-                var view = (EntryRepeatingWord)Element;
+                var view = (EntryRepeatingWord)Element;                  
                 CreateBorder(view);
                 // my_cursor is the xml file name which we defined above
                 IntPtr IntPtrtextViewClass = JNIEnv.FindClass(typeof(TextView));

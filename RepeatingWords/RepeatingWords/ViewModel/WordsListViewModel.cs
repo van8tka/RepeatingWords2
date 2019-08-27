@@ -18,10 +18,33 @@ namespace RepeatingWords.ViewModel
         public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork) : base(navigationServcie, dialogService)
         {
             _unitOfWork = unitOfWork;
-            AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); });
-            ImportWordsCommand = new Command(async () => { await NavigationService.NavigateToAsync<ChooseFileViewModel>(_dictionary); });
-            RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); });
+            AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
+            ImportWordsCommand = new Command(async () => { await NavigationService.NavigateToAsync<ChooseFileViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
+            RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
+            MenuCommand = new Command(async () => { await ChangeVisibleMenuButtons(); });
+            SetUnVisibleFloatingMenu();
         }
+
+        private void SetUnVisibleFloatingMenu()
+        {
+            LearnVisible = false;
+            ImportVisible = false;
+            AddVisible = false;
+            SourceMenuBtn = menyActive;
+        }
+
+        private async Task ChangeVisibleMenuButtons()
+        {
+            await Task.Delay(350);
+            LearnVisible = !LearnVisible;
+            ImportVisible = !ImportVisible;
+            AddVisible = !AddVisible;             
+            SourceMenuBtn = AddVisible? menuUnActive:menyActive;
+        }
+
+        private readonly string menyActive = "floating_btn_meny.png";
+        private readonly string menuUnActive = "floating_btn_menuGray.png";
+
         private readonly IUnitOfWork _unitOfWork;
         private Dictionary _dictionary;
         private string _dictionaryName;
@@ -37,6 +60,19 @@ namespace RepeatingWords.ViewModel
         public ObservableCollection<Words> WordsList { get => _wordsList; set { _wordsList = value; OnPropertyChanged(nameof(WordsList)); } }
         private Words _selectedItem;
         public Words SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(nameof(SelectedItem));if (_selectedItem != null) ShowActions(_selectedItem); } }
+
+        private bool _learnVisible;
+        public bool LearnVisible { get => _learnVisible; set { _learnVisible = value; OnPropertyChanged(nameof(LearnVisible)); } }
+        private bool _importVisible;
+        public bool ImportVisible { get => _importVisible; set { _importVisible = value; OnPropertyChanged(nameof(ImportVisible)); } }
+        private bool _addVisible;
+        public bool AddVisible { get => _addVisible; set { _addVisible = value; OnPropertyChanged(nameof(AddVisible)); } }
+
+
+        private string _sourceMenuBtn;
+        public string SourceMenuBtn { get => _sourceMenuBtn; set { _sourceMenuBtn = value; OnPropertyChanged(nameof(SourceMenuBtn)); } }
+       
+
 
         private async void ShowActions(Words selectedItem)
         {
@@ -64,6 +100,8 @@ namespace RepeatingWords.ViewModel
         public ICommand AddWordCommand { get; set; }
         public ICommand RepeatingWordsCommand { get; set; }
         public ICommand ImportWordsCommand { get; set; }
+
+        public ICommand MenuCommand { get; set; }
 
         private async Task Remove(Words selectedItem)
         {

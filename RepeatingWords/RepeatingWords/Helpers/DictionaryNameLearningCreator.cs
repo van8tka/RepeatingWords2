@@ -3,7 +3,7 @@ using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords.Helpers
 {
-    internal class DictionaryNameLearningCreator:IDictionaryNameLearningCreator
+    public class DictionaryNameLearningCreator:IDictionaryNameLearningCreator
     {
         public string CreateNameNotLearningDictionary(string name)
         {

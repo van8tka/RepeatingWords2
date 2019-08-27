@@ -214,21 +214,20 @@ namespace RepeatingWords.ViewModel
         /// <summary>
         /// сохранение невыученных слов и сохранение слов для продолжения 
         /// </summary>
-        private void UnloadPage()
+        public void UnloadPage()
         {
             try
             {
-                if (Model.AllWordsCount != Model.AllShowedWordsCount)
+                if (Model.AllWordsCount == Model.AllShowedWordsCount)
                 {
-                    var nameContinueDictionary = _dictionaryNameCreator.CreateNameContinueDictionary(_dictionary.Name);
-                    int newDictionaryId = _unlearningWordsManager.SaveDictionary(nameContinueDictionary, Model.wordsCollectionLeft);
-                    _unlearningWordsManager.CreateLastAction(newDictionaryId, Model.isFromNative);
+                    RemoveContinueDictionary();
                 }
                 else
                 {
-                    var lastAction = _unitOfWork.LastActionRepository.Get().LastOrDefault();
-                    _unitOfWork.LastActionRepository.Delete(lastAction);
-                    _unitOfWork.Save();
+                    RemoveContinueDictionary();
+                    var nameContinueDictionary = _dictionaryNameCreator.CreateNameContinueDictionary(_dictionary.Name);
+                    int newDictionaryId = _unlearningWordsManager.SaveDictionary(nameContinueDictionary, Model.wordsCollectionLeft);
+                    _unlearningWordsManager.CreateLastAction(newDictionaryId, Model.isFromNative);
                 }
                 if (Model.AllOpenedWordsCount > 0)
                 {
@@ -242,5 +241,21 @@ namespace RepeatingWords.ViewModel
             }
         }
 
+        private void RemoveContinueDictionary()
+        {
+            var lastAction = _unitOfWork.LastActionRepository.Get().LastOrDefault();
+            if (lastAction != null)
+            {
+                var dict = _unitOfWork.DictionaryRepository.Get(lastAction.IdDictionary);
+                _unitOfWork.DictionaryRepository.Delete(dict);
+                var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == lastAction.IdDictionary).AsEnumerable();
+                for(int i=0;i<words.Count();i++)
+                {
+                    _unitOfWork.WordsRepository.Delete(words.ElementAt(i));
+                }
+                _unitOfWork.LastActionRepository.Delete(lastAction);
+                _unitOfWork.Save();
+            }
+        }
     }
 }

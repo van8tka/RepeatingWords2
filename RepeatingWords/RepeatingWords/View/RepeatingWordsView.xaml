@@ -2,12 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RepeatingWords.View.RepeatingWordsView"
-             xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
-              xmlns:view ="clr-namespace:RepeatingWords.View;assembly=RepeatingWords"
+             xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"          
              xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
-             Title ="{Binding DictionaryName}"    
-                       
+             Title ="{Binding DictionaryName}"                          
              >
     <!--панель управлления-->
     <ContentPage.ToolbarItems>
@@ -21,7 +19,6 @@
         <Grid VerticalOptions="Start">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -42,7 +39,7 @@
                 <Label Text="{local:Translate OpenedWordsCountLabel}"  Style="{DynamicResource LabelColor}"/>
                 <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"/>
             </StackLayout>
-            <ImageButton BackgroundColor="Transparent"  Source="voice.png"   Command="{Binding VoiceActingCommand}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" />
+            <ImageButton BackgroundColor="Transparent"  Source="voice.png"   Command="{Binding VoiceActingCommand}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" />
         </Grid>
         
         <ContentView Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="20" HorizontalOptions="FillAndExpand"/>
@@ -50,12 +47,17 @@
         <StackLayout VerticalOptions="End">
         <local:AdMobView HeightRequest="50" />
             <StackLayout  Style="{DynamicResource BottomBarStyle}" >
-                <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-4,-5,0"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                    <ImageButton BackgroundColor="{Binding CardsButtonBackground, Mode=TwoWay}"  Source="icons_cardsbutton.png"  Command="{Binding LearningCardsCommand}" Margin="20,0,20,0"/>
-                    <ImageButton BackgroundColor="{Binding SelectButtonBackground, Mode=TwoWay}" Source="icons_select_word.png" Command="{Binding SelectFromWordsCommand}"  />
-                    <ImageButton BackgroundColor="{Binding EntryButtonBackground, Mode=TwoWay}" Source="icons_keyboard.png" Command="{Binding EnterTranslateCommand}"  Margin="20,0,20,0" />
-                </StackLayout>
+                <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-5,-5,0"/>
+                <Grid HorizontalOptions="End">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ImageButton BackgroundColor="{Binding CardsButtonBackground, Mode=TwoWay}"  Source="icons_cardsbutton.png"  Command="{Binding LearningCardsCommand}" Grid.Column="0" HorizontalOptions="Center"/>
+                    <ImageButton BackgroundColor="{Binding SelectButtonBackground, Mode=TwoWay}" Source="icons_select_word.png" Command="{Binding SelectFromWordsCommand}" Grid.Column="1" HorizontalOptions="Center"/>
+                    <ImageButton BackgroundColor="{Binding EntryButtonBackground, Mode=TwoWay}" Source="icons_keyboard.png" Command="{Binding EnterTranslateCommand}" Grid.Column="2" HorizontalOptions="Center" />
+                </Grid>
             </StackLayout>
         </StackLayout>
     </StackLayout>

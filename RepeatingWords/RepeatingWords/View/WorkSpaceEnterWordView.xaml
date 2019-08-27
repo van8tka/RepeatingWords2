@@ -23,7 +23,8 @@
 
                 <custom:EntryRepeatingWord
                     x:Name="EntryWordView"
-                    CornerRadius="18"
+                    CornerRadius="18"                  
+                    IsTextPredictionEnabled="False"                   
                     IsSpellCheckEnabled="False"
                     IsCurvedCornersEnabled="True"                      
                     BorderColor="{Binding ColorEnterWord, Mode=TwoWay}"                  
@@ -31,7 +32,7 @@
                     PlaceholderColor="Gray"
                     TextColor="{DynamicResource ColorWB}"  
                     Text="{Binding EnterAnswerWord, Mode=TwoWay}" 
-                    FontSize="Medium"                                        
+                    FontSize="Medium"                   
                     >
                     <custom:EntryRepeatingWord.Behaviors>
                         <behavior:EventToCommandBehavior EventName="Completed" Command="{Binding CheckWordCommand}"/>

@@ -5,7 +5,7 @@
              xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"    
               xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"    
              Style="{DynamicResource TitleApp}"
-           
+            
             >
     <!--панель управлления-->
     <ContentPage.ToolbarItems>
@@ -13,8 +13,10 @@
         <ToolbarItem Name="Like" Icon="toolbarImageLike.png" Command="{Binding LikeCommand}"></ToolbarItem>
         <ToolbarItem Name="Help" Icon="toolbarImageHelp.png" Command="{Binding HelperCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
-  
-    
+    <ContentPage.Behaviors>
+        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadPageCommand}"/>
+    </ContentPage.Behaviors>
+
     <StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
             <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate ButtonAddDictionaryOrWords}" Command="{Binding ChooseDictionaryCommand}"/>
