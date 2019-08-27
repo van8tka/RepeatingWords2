@@ -42,6 +42,7 @@ namespace RepeatingWords.Model
             AllShowedWordsCount = 1;
             AllOpenedWordsCount = 0;
             wordsOpen.Clear();
+            wordsCollectionLeft.Clear();
             (wordsCollectionLeft as List<Words>).AddRange(wordsCollection);
         }
     }
