@@ -42,6 +42,7 @@ namespace RepeatingWords.Services
             _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = idDefdictionary, RusWord = "стол", EngWord = "table", Transcription = "[teɪb(ə)l]" });
             _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = idDefdictionary, RusWord = "ручка", EngWord = "pen", Transcription = "[pen]" });
             _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = idDefdictionary, RusWord = "примечание", EngWord = "note", Transcription = "[nəut]" });
+            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = idDefdictionary, RusWord = "человек", EngWord = "people", Transcription = "[ˈpi:pl]" });
             _unitOfWork.Save();
         }
 

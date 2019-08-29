@@ -7,7 +7,6 @@ using RepeatingWords.Model;
 using RepeatingWords.View;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,13 +16,14 @@ namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IDictionaryNameLearningCreator dictionaryNameCreator, IUnlearningWordsManager unlearningWordsManager) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IDictionaryNameLearningCreator dictionaryNameCreator, IUnlearningWordsManager unlearningWordsManager, IContinueWordsManager continueWordsManager) : base(navigationServcie, dialogService)
         {
             _unitOfWork = unitOfWork;
             _volumeService = volumeService ?? throw new ArgumentNullException(nameof(volumeService));
             _dictionaryNameCreator = dictionaryNameCreator ?? throw new ArgumentNullException(nameof(dictionaryNameCreator));
-            _unlearningWordsManager = unlearningWordsManager ?? throw new ArgumentNullException(nameof(unlearningWordsManager));          
-            Model = new RepeatingWordsModel();        
+            _unlearningWordsManager = unlearningWordsManager ?? throw new ArgumentNullException(nameof(unlearningWordsManager));
+            _continueWordsManager = continueWordsManager ?? throw new ArgumentNullException(nameof(continueWordsManager));
+            Model = new RepeatingWordsModel();
             VoiceActingCommand = new Command(VoiceActing);
             EnterTranslateCommand = new Command(ShowEnterTranslate);
             SelectFromWordsCommand = new Command(ShowSelectFromWords);
@@ -38,7 +38,7 @@ namespace RepeatingWords.ViewModel
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDictionaryNameLearningCreator _dictionaryNameCreator;
         private readonly IUnlearningWordsManager _unlearningWordsManager;
-
+        private readonly IContinueWordsManager _continueWordsManager;
 
         private Dictionary _dictionary;
         private string _currentVolumeLanguage;
@@ -57,7 +57,8 @@ namespace RepeatingWords.ViewModel
         }
 
         private ContentView _workSpaceView;
-        public ContentView WorkSpaceView {
+        public ContentView WorkSpaceView
+        {
             get => _workSpaceView;
             set
             {
@@ -101,8 +102,8 @@ namespace RepeatingWords.ViewModel
             ICustomContentView view = new WorkSpaceEnterWordView();
             WorkSpaceView = view as WorkSpaceEnterWordView;
             _workSpaceVM = view.CustomVM;
-            _workSpaceVM.Model = Model;         
-             (_workSpaceVM as WorkSpaceEnterWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+            _workSpaceVM.Model = Model;
+            (_workSpaceVM as WorkSpaceEnterWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
         }
 
         private void ShowSelectFromWords()
@@ -118,7 +119,7 @@ namespace RepeatingWords.ViewModel
             WorkSpaceView = view as WorkSpaceSelectWordView;
             _workSpaceVM = view.CustomVM;
             _workSpaceVM.Model = Model;
-            (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true );
+            (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
         }
 
         private void ShowLearningCards()
@@ -130,7 +131,7 @@ namespace RepeatingWords.ViewModel
 
         private void SetBackgroundButton(string button)
         {
-            if(button == nameof(CardsButtonBackground))
+            if (button == nameof(CardsButtonBackground))
             {
                 CardsButtonBackground = Color.LightGray;
                 SelectButtonBackground = Color.Transparent;
@@ -204,12 +205,12 @@ namespace RepeatingWords.ViewModel
             Model.wordsCollection = await LoadWords(_dictionary.Id);
             Model.AllWordsCount = Model.wordsCollection.Count();
             ShakeWordsCollection(Model.wordsCollection);
-            SetViewWorkSpaceLearningCards();         
+            SetViewWorkSpaceLearningCards();
             await base.InitializeAsync(navigationData);
 
         }
 
-      
+
 
         /// <summary>
         /// сохранение невыученных слов и сохранение слов для продолжения 
@@ -219,42 +220,14 @@ namespace RepeatingWords.ViewModel
             try
             {
                 if (Model.AllWordsCount == Model.AllShowedWordsCount)
-                {
-                    RemoveContinueDictionary();
-                }
+                    _continueWordsManager.RemoveContinueDictionary();
                 else
-                {
-                    RemoveContinueDictionary();
-                    var nameContinueDictionary = _dictionaryNameCreator.CreateNameContinueDictionary(_dictionary.Name);
-                    int newDictionaryId = _unlearningWordsManager.SaveDictionary(nameContinueDictionary, Model.wordsCollectionLeft);
-                    _unlearningWordsManager.CreateLastAction(newDictionaryId, Model.isFromNative);
-                }
-                if (Model.AllOpenedWordsCount > 0)
-                {
-                    var notStudingDictionary = _dictionaryNameCreator.CreateNameNotLearningDictionary(_dictionary.Name);
-                   _unlearningWordsManager.SaveDictionary(notStudingDictionary, Model.wordsOpen);
-                }
+                    _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.wordsCollectionLeft, Model.isFromNative);
+                _unlearningWordsManager.SaveUnlearningDictionary(_dictionary.Name, Model.wordsOpen, Model.wordsCollectionLeft, Model.wordsCollection);
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-            }
-        }
-
-        private void RemoveContinueDictionary()
-        {
-            var lastAction = _unitOfWork.LastActionRepository.Get().LastOrDefault();
-            if (lastAction != null)
-            {
-                var dict = _unitOfWork.DictionaryRepository.Get(lastAction.IdDictionary);
-                _unitOfWork.DictionaryRepository.Delete(dict);
-                var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == lastAction.IdDictionary).AsEnumerable();
-                for(int i=0;i<words.Count();i++)
-                {
-                    _unitOfWork.WordsRepository.Delete(words.ElementAt(i));
-                }
-                _unitOfWork.LastActionRepository.Delete(lastAction);
-                _unitOfWork.Save();
             }
         }
     }

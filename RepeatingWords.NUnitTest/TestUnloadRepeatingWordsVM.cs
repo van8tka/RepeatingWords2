@@ -3,7 +3,9 @@ using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Interfaces;
 using RepeatingWords.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Unity;
@@ -13,7 +15,7 @@ namespace RepeatingWords.NUnitTest
     [TestFixture]
     public class TestUnloadRepeatingWordsVM
     {
-        private  RepeatingWordsViewModel _vm;
+        private RepeatingWordsViewModel _vm;
         private IUnitOfWork _unitOfWork;
 
         [SetUp]
@@ -21,7 +23,7 @@ namespace RepeatingWords.NUnitTest
         {
             var container = UnityConfig.Load();
             _vm = container.Resolve<RepeatingWordsViewModel>();
-              _unitOfWork = container.Resolve<IUnitOfWork>();
+            _unitOfWork = container.Resolve<IUnitOfWork>();
             var init = container.Resolve<IInitDefaultDb>();
             init.LoadDefaultData();
             _vm.InitializeAsync(_unitOfWork.DictionaryRepository.Get().FirstOrDefault()).GetAwaiter().GetResult();
@@ -36,7 +38,7 @@ namespace RepeatingWords.NUnitTest
 
             _vm.Model.wordsOpen.Add(_vm.Model.wordsCollection.ElementAt(0));
             _vm.Model.wordsOpen.Add(_vm.Model.wordsCollection.ElementAt(1));
-         
+
             _vm.Model.AllShowedWordsCount = 2;
             _vm.Model.AllOpenedWordsCount = 2;
 
@@ -54,9 +56,11 @@ namespace RepeatingWords.NUnitTest
             _vm.Model.AllShowedWordsCount = 1;
             _vm.Model.AllOpenedWordsCount = 1;
             _vm.UnloadPage();
-             dictionaries = _unitOfWork.DictionaryRepository.Get().ToList();
-             last = _unitOfWork.LastActionRepository.Get().ToList();
-             words = _unitOfWork.WordsRepository.Get().ToList();
+            dictionaries = _unitOfWork.DictionaryRepository.Get().ToList();
+            last = _unitOfWork.LastActionRepository.Get().ToList();
+            words = _unitOfWork.WordsRepository.Get().ToList();
         }
+
+      
     }
 }

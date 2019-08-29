@@ -11,7 +11,7 @@ namespace RepeatingWords.Helpers
                 return name;
             else if (name.EndsWith(Constants.NAME_DB_FOR_CONTINUE))
             {
-                return name.Replace(Constants.NAME_DB_FOR_CONTINUE, "") + Resource.NotLearningPostfics;
+                return CreateNameNotLearningDictionary(name.Replace(Constants.NAME_DB_FOR_CONTINUE, ""));
             }
             else
                 return name + Resource.NotLearningPostfics;
@@ -21,10 +21,6 @@ namespace RepeatingWords.Helpers
         {
             if (name.EndsWith(Constants.NAME_DB_FOR_CONTINUE))
                 return name;
-            else if (name.EndsWith(Resource.NotLearningPostfics))
-            {
-                return name.Replace(Resource.NotLearningPostfics, "") + Constants.NAME_DB_FOR_CONTINUE;
-            }
             else
                 return name + Constants.NAME_DB_FOR_CONTINUE;
         }

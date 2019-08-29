@@ -5,7 +5,6 @@ namespace RepeatingWords.Helpers.Interfaces
 {
     public interface IUnlearningWordsManager
     {
-        int SaveDictionary(string nameDictionary, IEnumerable<Words> words);
-        void CreateLastAction(int idDictionary, bool isFromNative);
+        int SaveUnlearningDictionary(string nameDictionary, IEnumerable<Words> wordsUnlearn, IEnumerable<Words> wordsLeft, IEnumerable<Words> wordsAll);
     }
 }

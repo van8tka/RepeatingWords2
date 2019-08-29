@@ -33,6 +33,7 @@ namespace RepeatingWords.NUnitTest
             container.RegisterType<IDictionaryNameLearningCreator, DictionaryNameLearningCreator>();
             container.RegisterType<IUnlearningWordsManager, UnlerningWordsManager>();
             container.RegisterType<IVolumeLanguageService, TestVolumeService>();
+            container.RegisterType<IContinueWordsManager, ContinueWordsManager>();
 
             container.RegisterType<ViewModelBase, RepeatingWordsViewModel>();
             return container;

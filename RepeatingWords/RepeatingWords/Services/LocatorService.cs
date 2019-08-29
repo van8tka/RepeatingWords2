@@ -39,6 +39,8 @@ namespace RepeatingWords.Services
             _container.RegisterType<IUnlearningWordsManager, UnlerningWordsManager>();
             _container.RegisterType<INewVersionAppChecker, NewVersionAppChecker>();
             _container.RegisterType<ILanguageLoaderFacade, LanguageLoader>();
+            _container.RegisterType<IContinueWordsManager, ContinueWordsManager>();
+            
             //register viewmodels
             _container.RegisterType(typeof(MainViewModel));
             _container.RegisterType(typeof(HelperViewModel));

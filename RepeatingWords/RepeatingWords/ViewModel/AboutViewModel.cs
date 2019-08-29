@@ -10,8 +10,8 @@ namespace RepeatingWords.ViewModel
       
         public override Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
-            VersionApp = "Cards of words v" + Constants.NUMBER_VERSION_ANDROID;
+            IsBusy = true;          
+            VersionApp = ("Cards of words v" + Constants.NUMBER_VERSION_ANDROID).Replace(',', '.');
             return base.InitializeAsync(navigationData);
         }
 
