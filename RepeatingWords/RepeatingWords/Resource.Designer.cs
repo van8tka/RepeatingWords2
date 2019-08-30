@@ -169,15 +169,6 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backup.
-        /// </summary>
-        public static string BackupStr {
-            get {
-                return ResourceManager.GetString("BackupStr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The backup was created successfully.
         /// </summary>
         public static string BackupWasCreatedGoogle {
@@ -219,33 +210,6 @@ namespace RepeatingWords {
         public static string ButtonAddDictionaryOrWords {
             get {
                 return ResourceManager.GetString("ButtonAddDictionaryOrWords", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create word.
-        /// </summary>
-        public static string ButtonAddWord {
-            get {
-                return ResourceManager.GetString("ButtonAddWord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Import words from the file.
-        /// </summary>
-        public static string ButtonAddWorFrFile {
-            get {
-                return ResourceManager.GetString("ButtonAddWorFrFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Add dictionary from the server.
-        /// </summary>
-        public static string ButtonAddWorFrNet {
-            get {
-                return ResourceManager.GetString("ButtonAddWorFrNet", resourceCulture);
             }
         }
         
@@ -295,15 +259,6 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import.
-        /// </summary>
-        public static string ButtonImport {
-            get {
-                return ResourceManager.GetString("ButtonImport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Next card.
         /// </summary>
         public static string ButtonNextWord {
@@ -340,15 +295,6 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Write a review.
-        /// </summary>
-        public static string ButtonReviewText {
-            get {
-                return ResourceManager.GetString("ButtonReviewText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string ButtonSave {
@@ -372,24 +318,6 @@ namespace RepeatingWords {
         public static string ButtonShowWords {
             get {
                 return ResourceManager.GetString("ButtonShowWords", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Turn the card.
-        /// </summary>
-        public static string ButtonTurnCard {
-            get {
-                return ResourceManager.GetString("ButtonTurnCard", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Learning.
-        /// </summary>
-        public static string ChooseDictionaryForRepeat {
-            get {
-                return ResourceManager.GetString("ChooseDictionaryForRepeat", resourceCulture);
             }
         }
         
@@ -421,42 +349,6 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use these cards of words for a learning of foreign language.
-        /// </summary>
-        public static string HeaderMain {
-            get {
-                return ResourceManager.GetString("HeaderMain", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Help.
-        /// </summary>
-        public static string HowUseApp {
-            get {
-                return ResourceManager.GetString("HowUseApp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select the dictionary.
-        /// </summary>
-        public static string LabelChooseDict {
-            get {
-                return ResourceManager.GetString("LabelChooseDict", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select or create  dictionary.
-        /// </summary>
-        public static string LabelChooseDictOrCreate {
-            get {
-                return ResourceManager.GetString("LabelChooseDictOrCreate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select the file to import.
         /// </summary>
         public static string LabelChooseFile {
@@ -480,24 +372,6 @@ namespace RepeatingWords {
         public static string LabelChooseTheme {
             get {
                 return ResourceManager.GetString("LabelChooseTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Turned:.
-        /// </summary>
-        public static string LabelCountTurned {
-            get {
-                return ResourceManager.GetString("LabelCountTurned", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select the dictionary for load into the phone.
-        /// </summary>
-        public static string LabelDictionaryListFromNet {
-            get {
-                return ResourceManager.GetString("LabelDictionaryListFromNet", resourceCulture);
             }
         }
         
@@ -544,33 +418,6 @@ namespace RepeatingWords {
         public static string LabelHeadCreateInstr {
             get {
                 return ResourceManager.GetString("LabelHeadCreateInstr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Instructions of the app.
-        /// </summary>
-        public static string LabelInstruction {
-            get {
-                return ResourceManager.GetString("LabelInstruction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Choose language.
-        /// </summary>
-        public static string LabelLanguageListFromNet {
-            get {
-                return ResourceManager.GetString("LabelLanguageListFromNet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter the dictionary name.
-        /// </summary>
-        public static string LabelNameDict {
-            get {
-                return ResourceManager.GetString("LabelNameDict", resourceCulture);
             }
         }
         
@@ -783,15 +630,6 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
-        /// </summary>
-        public static string LabelSettings {
-            get {
-                return ResourceManager.GetString("LabelSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Suggest.
         /// </summary>
         public static string LabelShowKeyboard {
@@ -806,15 +644,6 @@ namespace RepeatingWords {
         public static string LabelThemeDark {
             get {
                 return ResourceManager.GetString("LabelThemeDark", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Light.
-        /// </summary>
-        public static string LabelThemeLight {
-            get {
-                return ResourceManager.GetString("LabelThemeLight", resourceCulture);
             }
         }
         
@@ -855,56 +684,11 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the keyboard:.
-        /// </summary>
-        public static string ModalActChooseKeyboard {
-            get {
-                return ResourceManager.GetString("ModalActChooseKeyboard", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to From the first language.
-        /// </summary>
-        public static string ModalActFromFtoTr {
-            get {
-                return ResourceManager.GetString("ModalActFromFtoTr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Is foreign words display first?.
         /// </summary>
         public static string ModalActFromTrtoF {
             get {
                 return ResourceManager.GetString("ModalActFromTrtoF", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to List of words.
-        /// </summary>
-        public static string ModalActList {
-            get {
-                return ResourceManager.GetString("ModalActList", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to System keyboard.
-        /// </summary>
-        public static string ModalActSysKeyboard {
-            get {
-                return ResourceManager.GetString("ModalActSysKeyboard", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Transcription keyboard.
-        /// </summary>
-        public static string ModalActTranscKeyboard {
-            get {
-                return ResourceManager.GetString("ModalActTranscKeyboard", resourceCulture);
             }
         }
         
@@ -918,38 +702,11 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All words are passed.
-        /// </summary>
-        public static string ModalAllWordsComplete {
-            get {
-                return ResourceManager.GetString("ModalAllWordsComplete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Check internet connection.
         /// </summary>
         public static string ModalCheckNet {
             get {
                 return ResourceManager.GetString("ModalCheckNet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select the action:.
-        /// </summary>
-        public static string ModalChooceAction {
-            get {
-                return ResourceManager.GetString("ModalChooceAction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select display language:.
-        /// </summary>
-        public static string ModalChooseLang {
-            get {
-                return ResourceManager.GetString("ModalChooseLang", resourceCulture);
             }
         }
         
@@ -963,29 +720,11 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The dictionary or word was deleted!.
-        /// </summary>
-        public static string ModalDictOrWordRemove {
-            get {
-                return ResourceManager.GetString("ModalDictOrWordRemove", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Exception.
         /// </summary>
         public static string ModalException {
             get {
                 return ResourceManager.GetString("ModalException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Finish.
-        /// </summary>
-        public static string ModalFinish {
-            get {
-                return ResourceManager.GetString("ModalFinish", resourceCulture);
             }
         }
         
@@ -999,42 +738,6 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Words aren&apos;t added to the dictionary, perhaps incorrect file..
-        /// </summary>
-        public static string ModalIncorrectFile {
-            get {
-                return ResourceManager.GetString("ModalIncorrectFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Studying of unlearned words.
-        /// </summary>
-        public static string ModalLerningTurnedWords {
-            get {
-                return ResourceManager.GetString("ModalLerningTurnedWords", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The dictionary doesn&apos;t have words..
-        /// </summary>
-        public static string ModalNoWord {
-            get {
-                return ResourceManager.GetString("ModalNoWord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to is deleted..
-        /// </summary>
-        public static string ModalRemove {
-            get {
-                return ResourceManager.GetString("ModalRemove", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string ModalRemoveAct {
@@ -1044,38 +747,11 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Restart.
-        /// </summary>
-        public static string ModalRestart {
-            get {
-                return ResourceManager.GetString("ModalRestart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A new version of the application is available.Do you want to upgrade app?.
         /// </summary>
         public static string ModalUpdateApp {
             get {
                 return ResourceManager.GetString("ModalUpdateApp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The word.
-        /// </summary>
-        public static string ModalWord {
-            get {
-                return ResourceManager.GetString("ModalWord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to is deleted..
-        /// </summary>
-        public static string ModalWordRemove {
-            get {
-                return ResourceManager.GetString("ModalWordRemove", resourceCulture);
             }
         }
         
@@ -1094,15 +770,6 @@ namespace RepeatingWords {
         public static string ModelNoFillFull {
             get {
                 return ResourceManager.GetString("ModelNoFillFull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter name of the dictionary.
-        /// </summary>
-        public static string ModelNoFillFullNameDictionary {
-            get {
-                return ResourceManager.GetString("ModelNoFillFullNameDictionary", resourceCulture);
             }
         }
         

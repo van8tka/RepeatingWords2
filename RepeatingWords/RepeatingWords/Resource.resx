@@ -125,14 +125,6 @@
     <value>Dictionaries</value>
     <comment>Добавление словаря и (или) слов</comment>
   </data>
-  <data name="ButtonAddWord" xml:space="preserve">
-    <value>Create word</value>
-    <comment>Кн добавить слово</comment>
-  </data>
-  <data name="ButtonAddWorFrFile" xml:space="preserve">
-    <value>Import words from the file</value>
-    <comment>Кн загрузки слов из файла</comment>
-  </data>
   <data name="ButtonCreate" xml:space="preserve">
     <value>Create</value>
     <comment>Кнопка создать</comment>
@@ -157,14 +149,6 @@
     <value>Studying of words</value>
     <comment>Кн повторение карточек</comment>
   </data>
-  <data name="ButtonTurnCard" xml:space="preserve">
-    <value>Turn the card</value>
-    <comment>Кн перевернуть карточку</comment>
-  </data>
-  <data name="ChooseDictionaryForRepeat" xml:space="preserve">
-    <value>Learning</value>
-    <comment>Выбор словаря для изучения слов(повторения)</comment>
-  </data>
   <data name="Continue" xml:space="preserve">
     <value>Continue</value>
     <comment>Продолжение повторения слов с того места где остановились прошлый раз</comment>
@@ -172,22 +156,6 @@
   <data name="EntryNameDict" xml:space="preserve">
     <value>Enter the dictionary name</value>
     <comment>Поле ввода Введите название словаря</comment>
-  </data>
-  <data name="HeaderMain" xml:space="preserve">
-    <value>Use these cards of words for a learning of foreign language</value>
-    <comment>Заголовок на главной странице</comment>
-  </data>
-  <data name="HowUseApp" xml:space="preserve">
-    <value>Help</value>
-    <comment>Справочная информация</comment>
-  </data>
-  <data name="LabelChooseDict" xml:space="preserve">
-    <value>Select the dictionary</value>
-    <comment>Заг выберите словарь</comment>
-  </data>
-  <data name="LabelChooseDictOrCreate" xml:space="preserve">
-    <value>Select or create  dictionary</value>
-    <comment>Заголовок выбор словаря или создание нового</comment>
   </data>
   <data name="LabelChooseFile" xml:space="preserve">
     <value>Select the file to import</value>
@@ -209,14 +177,6 @@ Add your dictionary with words and add words individually, add a dictionary from
   <data name="LabelHeadCreateInstr" xml:space="preserve">
     <value>Create the dictionary and add the word</value>
     <comment>Создание словаря и добавление слов</comment>
-  </data>
-  <data name="LabelInstruction" xml:space="preserve">
-    <value>Instructions of the app</value>
-    <comment>Заголовок Инструкция по использованию программы</comment>
-  </data>
-  <data name="LabelNameDict" xml:space="preserve">
-    <value>Enter the dictionary name</value>
-    <comment>Заголовок Введите название нового словаря</comment>
   </data>
   <data name="LabelNeedAddFile" xml:space="preserve">
     <value>You need for import words from the file: </value>
@@ -308,23 +268,11 @@ smartphone or keyboard transcription</value>
   <data name="ModalActChange" xml:space="preserve">
     <value>Change</value>
   </data>
-  <data name="ModalActFromFtoTr" xml:space="preserve">
-    <value>From the first language</value>
-  </data>
   <data name="ModalActFromTrtoF" xml:space="preserve">
     <value>Is foreign words display first?</value>
   </data>
   <data name="ModalAddWords" xml:space="preserve">
     <value>The words are added.</value>
-  </data>
-  <data name="ModalAllWordsComplete" xml:space="preserve">
-    <value>All words are passed</value>
-  </data>
-  <data name="ModalChooceAction" xml:space="preserve">
-    <value>Select the action:</value>
-  </data>
-  <data name="ModalChooseLang" xml:space="preserve">
-    <value>Select display language:</value>
   </data>
   <data name="ModalDict" xml:space="preserve">
     <value>The dictionary</value>
@@ -332,29 +280,8 @@ smartphone or keyboard transcription</value>
   <data name="ModalException" xml:space="preserve">
     <value>Exception</value>
   </data>
-  <data name="ModalFinish" xml:space="preserve">
-    <value>Finish</value>
-  </data>
-  <data name="ModalIncorrectFile" xml:space="preserve">
-    <value>Words aren't added to the dictionary, perhaps incorrect file.</value>
-  </data>
-  <data name="ModalNoWord" xml:space="preserve">
-    <value>The dictionary doesn't have words.</value>
-  </data>
-  <data name="ModalRemove" xml:space="preserve">
-    <value>is deleted.</value>
-  </data>
   <data name="ModalRemoveAct" xml:space="preserve">
     <value>Delete</value>
-  </data>
-  <data name="ModalRestart" xml:space="preserve">
-    <value>Restart</value>
-  </data>
-  <data name="ModalWord" xml:space="preserve">
-    <value>The word</value>
-  </data>
-  <data name="ModalWordRemove" xml:space="preserve">
-    <value>is deleted.</value>
   </data>
   <data name="ModelForAddingWord" xml:space="preserve">
     <value>For adding of the word fill all fields (except a transcription).</value>
@@ -368,9 +295,6 @@ smartphone or keyboard transcription</value>
   <data name="ModelWordChange" xml:space="preserve">
     <value>The word is changed!</value>
   </data>
-  <data name="ModalDictOrWordRemove" xml:space="preserve">
-    <value>The dictionary or word was deleted!</value>
-  </data>
   <data name="ButtonShowWords" xml:space="preserve">
     <value>View the list of words</value>
     <comment>Переход на страницу списка слов словаря</comment>
@@ -379,40 +303,14 @@ smartphone or keyboard transcription</value>
     <value>Voice language</value>
     <comment>Текст в picker - выпадающем списке для выбора языка озвучки.</comment>
   </data>
-  <data name="ButtonAddWorFrNet" xml:space="preserve">
-    <value>Add dictionary from the server</value>
-    <comment>Загрузка словарей из devprogram.ru</comment>
-  </data>
   <data name="ModalCheckNet" xml:space="preserve">
     <value>Check internet connection</value>
-  </data>
-  <data name="LabelDictionaryListFromNet" xml:space="preserve">
-    <value>Select the dictionary for load into the phone</value>
-  </data>
-  <data name="LabelLanguageListFromNet" xml:space="preserve">
-    <value>Choose language</value>
-  </data>
-  <data name="ButtonReviewText" xml:space="preserve">
-    <value>Write a review</value>
-  </data>
-  <data name="LabelCountTurned" xml:space="preserve">
-    <value>Turned:</value>
-    <comment>Количество нажатий на кн Перевернуть карточку</comment>
-  </data>
-  <data name="ModalLerningTurnedWords" xml:space="preserve">
-    <value>Studying of unlearned words</value>
   </data>
   <data name="LabelChooseTheme" xml:space="preserve">
     <value>Choose theme</value>
   </data>
   <data name="LabelThemeDark" xml:space="preserve">
     <value>Dark</value>
-  </data>
-  <data name="LabelThemeLight" xml:space="preserve">
-    <value>Light</value>
-  </data>
-  <data name="LabelSettings" xml:space="preserve">
-    <value>Settings</value>
   </data>
   <data name="ButtonPolicy" xml:space="preserve">
     <value>Privacy</value>
@@ -432,27 +330,11 @@ smartphone or keyboard transcription</value>
   <data name="LabelShowKeyboard" xml:space="preserve">
     <value>Suggest</value>
   </data>
-  <data name="ModalActChooseKeyboard" xml:space="preserve">
-    <value>Select the keyboard:</value>
-  </data>
-  <data name="ModalActSysKeyboard" xml:space="preserve">
-    <value>System keyboard</value>
-  </data>
-  <data name="ModalActTranscKeyboard" xml:space="preserve">
-    <value>Transcription keyboard</value>
-    <comment>Клавиатура транскрипции</comment>
-  </data>
-  <data name="ModalActList" xml:space="preserve">
-    <value>List of words</value>
-  </data>
   <data name="ButtonSendReview" xml:space="preserve">
     <value>Leave a comment</value>
   </data>
   <data name="MessagePleaseReview" xml:space="preserve">
     <value>Please leave the comment about application, your judgement is very important for us.</value>
-  </data>
-  <data name="ModelNoFillFullNameDictionary" xml:space="preserve">
-    <value>Enter name of the dictionary</value>
   </data>
   <data name="BackUpCreateLocal" xml:space="preserve">
     <value>Save backup in the local memory</value>
@@ -483,9 +365,6 @@ smartphone or keyboard transcription</value>
   </data>
   <data name="BackUpSearch" xml:space="preserve">
     <value>Search a backup</value>
-  </data>
-  <data name="BackupStr" xml:space="preserve">
-    <value>Backup</value>
   </data>
   <data name="BackupWasCreatedGoogle" xml:space="preserve">
     <value>The backup was created successfully</value>
@@ -591,9 +470,6 @@ smartphone or keyboard transcription</value>
   </data>
   <data name="TitleTranscription" xml:space="preserve">
     <value>Transcription</value>
-  </data>
-  <data name="ButtonImport" xml:space="preserve">
-    <value>Import</value>
   </data>
   <data name="TitleExplorer" xml:space="preserve">
     <value>File explorer</value>
