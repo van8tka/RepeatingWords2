@@ -8,6 +8,7 @@ using RepeatingWords.LoggerService;
 using RepeatingWords.ViewModel;
  
 using Unity;
+using Unity.Lifetime;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Services
@@ -24,10 +25,10 @@ namespace RepeatingWords.Services
             _container.RegisterInstance(typeof(ILogger), DependencyService.Get<ILogManager>().GetLog());
             _container.RegisterType<ILoggerService, Log>();
             _container.Resolve<ILoggerService>();
-            _container.RegisterType<IUnitOfWork, UnitOfWork>();
+            _container.RegisterType<IUnitOfWork, UnitOfWork>(new ExternallyControlledLifetimeManager());
             _container.RegisterType<IInitDefaultDb, InitDefaultDb>();
             _container.RegisterInstance(typeof(INavigationService), new NavigationService());
-            _container.RegisterType<IDialogService, DialogService>();
+            _container.RegisterType<IDialogService, DialogService>(new ContainerControlledLifetimeManager());
             _container.RegisterType<IBackupService, BackupGoogleService>();
             _container.RegisterType<IBackupService, BackupLocalService>();
             _container.RegisterType<IThemeService, ThemeChangeService>();

@@ -16,16 +16,16 @@
                 <Label  x:Name="WordRepeat" Text="{Binding CurrentShowingWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorCustomBackgrountButton}"  >
                     <Label.FontSize>
                         <OnPlatform x:TypeArguments="x:Double">
-                            <OnPlatform.Android>24</OnPlatform.Android>
-                            <OnPlatform.WinPhone>22</OnPlatform.WinPhone>
+                          <On Platform="Android" Value="24" />
+                          <On Platform="UWP" Value="22" />
                         </OnPlatform>
                     </Label.FontSize>
                 </Label>
             <Label  x:Name="TranscriptionRepeat" IsVisible="{Binding IsTranscriptionShow}" Text="{Binding CurrentTranscriptWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" HorizontalTextAlignment="Center" >
                 <Label.FontSize>
                     <OnPlatform x:TypeArguments="x:Double">
-                        <OnPlatform.Android>24</OnPlatform.Android>
-                        <OnPlatform.WinPhone>22</OnPlatform.WinPhone>
+                      <On Platform="Android" Value="24" />
+                      <On Platform="UWP" Value="22" />
                     </OnPlatform>
                 </Label.FontSize>
             </Label>

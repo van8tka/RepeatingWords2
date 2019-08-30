@@ -7,22 +7,18 @@
   <Application.Resources>
     <ResourceDictionary>
       <!--BUTTON-->
-  <Style x:Key ="buttonStyle" TargetType="Button">
-       <Setter Property="TextColor" Value="White"/>
-       <Setter Property="BackgroundColor" Value="#6bafef"/>
-
-       <Setter Property="FontSize">
-         <Setter.Value>
-           <OnPlatform x:TypeArguments="x:Double">
-             <On Platform="Android">17</On>
-             <On Platform="UWP, WinPhone">17</On>
-           </OnPlatform>
-         </Setter.Value>        
-       </Setter>    
-   </Style>
-
-           
-
+            <Style x:Key ="buttonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#6bafef"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android">17</On>
+                            <On Platform="UWP">17</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <!--CONTENT-->
         <Style x:Key="TitleAppBlack" TargetType="ContentPage">
                 <Setter Property="Title" Value="{local:Translate TitleMain}"/>
@@ -33,64 +29,46 @@
                 <Setter Property="BackgroundColor" Value="#F5F5F5"/>
         </Style>
             <!--LABEL-->
-      <Style x:Key="LableHeadAppWhite" TargetType="Label">
+            <Style x:Key="LableHeadAppWhite" TargetType="Label">
                 <Setter Property="TextColor" Value="LightGray"/>
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:Double">
                             <On Platform="Android">20</On>
-                            <On Platform="WinPhone, UWP">18</On>
+                            <On Platform="UWP">18</On>
                         </OnPlatform>
                     </Setter.Value>
                 </Setter>
             </Style>
-        
             <Style x:Key="LableHeadAppBlack" TargetType="Label">
                 <Setter Property="TextColor" Value="DarkGray"/>
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:Double">
                             <On Platform="Android">20</On>
-                            <On Platform="UWP, WinPhone">18</On>
+                            <On Platform="UWP">18</On>
                         </OnPlatform>
                     </Setter.Value>
                 </Setter>
             </Style>
-        
-        <!--COLORS LABEL FOR THEME-->
+            <!--COLORS LABEL FOR THEME-->
             <Style x:Key="LabelBlack" TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>
             </Style>
             <Style x:Key="LabelWhite" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
             </Style>
-            <Style x:Key="LabelYellow" TargetType="Label">
-                <Setter Property="TextColor" Value="Yellow"/>
-            </Style>
-            <Style x:Key="LabelNavy" TargetType="Label">
-                <Setter Property="TextColor" Value="Navy"/>
-            </Style>
-
-            <Style x:Key="PickerColorNavy" TargetType="Picker">
-                <Setter Property="TextColor" Value="Navy"/>
-            </Style>
-            <Style x:Key="PickerColorYellow" TargetType="Picker">
-                <Setter Property="TextColor" Value="Yellow"/>
-            </Style>
             <Style x:Key="BottomBarStyleLight" TargetType="StackLayout">
                 <Setter Property="BackgroundColor" Value="#E8E8E8"/>
                 <Setter Property="Padding" Value="5"/>
             </Style>
             <Style x:Key="BottomBarStyleDark" TargetType="StackLayout">
-              
                 <Setter Property="Padding" Value="5"/>
                 <Setter Property="BackgroundColor" Value="#828282"/>
             </Style>
             <Color x:Key="ColorBlack">Black</Color>
             <Color x:Key="ColorWhite">White</Color>
-            <Color x:Key="ColorYellow">Yellow</Color>
             <Color x:Key="ColorBlue">Blue</Color>
-            <Color x:Key="ColorGreen">Lime</Color>
             <Color x:Key="ColorCustomBackgrountButton">#6bafef</Color>
         </ResourceDictionary>
   </Application.Resources>

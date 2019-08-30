@@ -121,7 +121,7 @@ namespace RepeatingWords.ViewModel
             {
                 _dictionary = dictionary;
                 DictionaryName = dictionary.Name;
-                await LoadData(dictionary.Id);
+                WordsList = await LoadData(dictionary.Id);
             }
             else
                 throw new Exception("Error load words list, bad parameter navigationData to WordsListViewModel");
@@ -129,19 +129,17 @@ namespace RepeatingWords.ViewModel
             await base.InitializeAsync(navigationData);
         }
 
-        private async Task LoadData(int id)
+        private async Task<ObservableCollection<Words>> LoadData(int id)
         {
             try
             {
-               var data = await Task.Run(()=> _unitOfWork.WordsRepository.Get().Where(x=>x.IdDictionary == id ).OrderBy(x => x.RusWord).AsEnumerable());              
-               var list = new ObservableCollection<Words>();
-               for (int i = 0; i < data.Count(); i++)
-                   list.Add(data.ElementAt(i));
-                WordsList = list;                
+               var data = await Task.Run(()=> _unitOfWork.WordsRepository.Get().Where(x=>x.IdDictionary == id ).OrderBy(x => x.RusWord).AsEnumerable());                            
+               return new ObservableCollection<Words>(data);                
             }
             catch(Exception e)
             {
                 Log.Logger.Error(e);
+                return new ObservableCollection<Words>(); 
             }
         }
       

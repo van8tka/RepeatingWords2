@@ -20,16 +20,16 @@ namespace RepeatingWords.ViewModel
         public DictionariesListViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork) : base(navigationServcie, dialogService)
         {
             _unitOfWork = unitOfWork;
-            DictionaryList = new ObservableCollection<Dictionary>();
-            LoadData();
+            DictionaryList = new ObservableCollection<Dictionary>();             
             AddDictionaryCommand = new Command(AddDictionary);
             AddWordsFromNetCommand = new Command(async()=> { await AddWordsFromNet(); });           
         }
 
-        public override Task InitializeAsync(object navigationData)
+        public override async Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
-            return base.InitializeAsync(navigationData);
+            DictionaryList = await LoadData();
+            await base.InitializeAsync(navigationData);
         }
 
         public ICommand AddDictionaryCommand { get; set; }
@@ -66,20 +66,18 @@ namespace RepeatingWords.ViewModel
             }                        
         }
 
-        private async void LoadData()
+        private async Task<ObservableCollection<Dictionary>> LoadData()
         {
             try
-            {
-                var list = new ObservableCollection<Dictionary>();
+            {             
                 //кроме словарей не законченных и словарей недоученных
                 var items = await Task.Run(()=> _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase)).OrderBy(x => x.Name).AsEnumerable());
-                for (int i = 0; i < items.Count(); i++)
-                    list.Add(items.ElementAt(i));
-                DictionaryList = list;
+                return new ObservableCollection<Dictionary>(items);             
             }
             catch(Exception e)
             {
-                Log.Logger.Error(e);               
+                Log.Logger.Error(e);
+                return new ObservableCollection<Dictionary>();
             }
         }
 

@@ -27,8 +27,6 @@ namespace RepeatingWords.DataService.Repositories
         public void Save()
         {
             _dbContext.SaveChanges();
-        }
-
-      
+        }      
     }
 }

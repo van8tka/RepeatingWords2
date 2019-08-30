@@ -1,25 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Android;
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
-using Android.Gms.Common;
 using Android.Gms.Common.Apis;
 using Android.Gms.Drive;
-using Android.Gms.Drive.Query;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
-
-using Java.IO;
 using Xamarin.Forms;
-using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 
 namespace RepeatingWords.Droid
@@ -41,12 +32,15 @@ namespace RepeatingWords.Droid
             Android.Support.V7.App.AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
             base.OnCreate(bundle);
             Instance = this;
-            Android.Gms.Ads.MobileAds.Initialize(ApplicationContext, ApplicationCode);
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            //проверка наличия разрешения
-            CheckPermissionForStorage();                     
-            LoadApplication(new App( new SQLite_Android()));
-            UserDialogs.Init(() => (Android.App.Activity)Forms.Context);
+            global::Xamarin.Forms.Forms.Init(this, bundle);          
+            Task.Run(() =>
+            {
+                //проверка наличия разрешения
+                CheckPermissionForStorage();
+                Android.Gms.Ads.MobileAds.Initialize(ApplicationContext, ApplicationCode);
+                UserDialogs.Init(() => (Android.App.Activity)Forms.Context);
+            });
+            LoadApplication(new App( new SQLite_Android()));                   
         }
         //переопределение кнопки назад
         public override void OnBackPressed()

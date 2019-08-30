@@ -22,10 +22,9 @@ namespace RepeatingWords.ViewModel
             SetCurrentSettings();
             SwitchThemeCommand = new Command(SwitchThemeApp);
             SwitchTranskriptionKeyboardCommand = new Command(SwitchTranscriptionKeyboard);
-            BackUpCommand = new Command(async () => { await ChoseCreateBackUp(); }); ;
+            BackUpCommand = new Command(async () => { await ChooseCreateBackUp(); }); ;
             RestoreBackUpCommand = new Command(async () => { await RestoreBackup(); });
-            ChangeVoiceLanguageCommand = new Command(async () => await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>());
-
+            ChangeVoiceLanguageCommand = new Command(async () => await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>());           
         }
 
         private readonly IThemeService _themeService;
@@ -81,18 +80,18 @@ namespace RepeatingWords.ViewModel
 
         public override Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;                  
+            IsBusy = true;
             return base.InitializeAsync(navigationData);
         }
       
         private void SetCurrentSettings()
         {           
-            IsCustomKeyboardTranscription = _transcriptKeyboardService.GetCurrentTranscriptionKeyboard();
-            IsDarkThem = _themeService.GetCurrentTheme();
-            CurrentVoiceLanguage = _volumeService.GetVolumeLanguage();
+                IsCustomKeyboardTranscription = _transcriptKeyboardService.GetCurrentTranscriptionKeyboard();
+                IsDarkThem = _themeService.GetCurrentTheme();
+                CurrentVoiceLanguage = _volumeService.GetVolumeLanguage();     
         }
 
-        private async Task ChoseCreateBackUp()
+        private async Task ChooseCreateBackUp()
         {
             try
             {
@@ -132,7 +131,7 @@ namespace RepeatingWords.ViewModel
             else if (action == _googleDriveFolderBackup)
             {
                 var backupService = LocatorService.Container.Resolve<BackupGoogleService>();
-                success = await backupService.RestoreBackup(_fileNameBackupDef);
+                success = await backupService.RestoreBackup(_fileNameBackupDef);             
             }           
         }
     }

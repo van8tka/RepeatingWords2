@@ -1,11 +1,10 @@
 ﻿using Xamarin.Forms;
 using Unity;
 using RepeatingWords.Interfaces;
-using RepeatingWords.LoggerService;
 using RepeatingWords.Helpers.Interfaces;
 using System.Threading.Tasks;
 using RepeatingWords.Services;
-using System.Diagnostics;
+
 
 namespace RepeatingWords
 {
@@ -21,7 +20,9 @@ namespace RepeatingWords
         private IUnityContainer _container;
         private void InitApp(ISQLite sqlitePath)
         {           
-            _container = LocatorService.Boot(sqlitePath);          
+            _container = LocatorService.Boot(sqlitePath);
+            var init = _container.Resolve<IInitDefaultDb>();
+            Task.Run(() => init.LoadDefaultData());
             if (Device.RuntimePlatform == Device.UWP)
                InitNavigation();        
         }
@@ -29,9 +30,12 @@ namespace RepeatingWords
       
         private Task InitNavigation()
         {
-            _container.Resolve<IInitDefaultDb>().LoadDefaultData(); 
-            _container.Resolve<INewVersionAppChecker>().CheckNewVersionApp();
-            _container.Resolve<IThemeService>().GetCurrentTheme();         
+            Task.Run(() =>
+            {
+                _container.Resolve<INewVersionAppChecker>().CheckNewVersionApp();
+            });
+            _container.Resolve<IThemeService>().GetCurrentTheme();
+                           
             var navService = _container.Resolve<INavigationService>();
             return navService.InitializeAsync();
         }
