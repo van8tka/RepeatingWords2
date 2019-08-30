@@ -5,6 +5,7 @@ using RepeatingWords.LoggerService;
 using RepeatingWords.Helpers.Interfaces;
 using System.Threading.Tasks;
 using RepeatingWords.Services;
+using System.Diagnostics;
 
 namespace RepeatingWords
 {
@@ -12,35 +13,29 @@ namespace RepeatingWords
     {
            //ctor   
         public App(ISQLite sqlitePath)
-        {            
+        {           
             InitializeComponent();
-            _container = LocatorService.Boot(sqlitePath);
-            InitApp(sqlitePath);                           
+            InitApp(sqlitePath);           
         }
 
-        private readonly IUnityContainer _container;
-        private async Task InitApp(ISQLite sqlitePath)
-        {
-            Log.Logger.Info("Init default settings app");          
+        private IUnityContainer _container;
+        private void InitApp(ISQLite sqlitePath)
+        {           
+            _container = LocatorService.Boot(sqlitePath);          
             if (Device.RuntimePlatform == Device.UWP)
-               await InitNavigation();
-            await _container.Resolve<INewVersionAppChecker>().CheckNewVersionApp();
-            InitDb();
-            _container.Resolve<IThemeService>().GetCurrentTheme();           
+               InitNavigation();        
         }
 
       
         private Task InitNavigation()
         {
-           var navService = _container.Resolve<INavigationService>();
-           return navService.InitializeAsync();
+            _container.Resolve<IInitDefaultDb>().LoadDefaultData(); 
+            _container.Resolve<INewVersionAppChecker>().CheckNewVersionApp();
+            _container.Resolve<IThemeService>().GetCurrentTheme();         
+            var navService = _container.Resolve<INavigationService>();
+            return navService.InitializeAsync();
         }
-
-        private void InitDb()
-        {          
-                var init = _container.Resolve<IInitDefaultDb>();
-                init.LoadDefaultData();          
-        }
+ 
 
         protected override async void OnStart()
         {

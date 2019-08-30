@@ -30,12 +30,12 @@ namespace RepeatingWords.Services
             _container.RegisterType<IDialogService, DialogService>();
             _container.RegisterType<IBackupService, BackupGoogleService>();
             _container.RegisterType<IBackupService, BackupLocalService>();
-            _container.RegisterInstance(typeof(IThemeService), new ThemeChangeService());
-            _container.RegisterInstance(typeof(IKeyboardTranscriptionService), new KeyboardTranscriptionChangeService());
+            _container.RegisterType<IThemeService, ThemeChangeService>();
+            _container.RegisterType<IKeyboardTranscriptionService, KeyboardTranscriptionChangeService>();
             _container.RegisterType<IWebApiService, OnlineDictionaryService>();
             _container.RegisterType<IImportFile, ImportFileToDb>();
-            _container.RegisterInstance(typeof(IVolumeLanguageService), new VolumeLanguageService());
-            _container.RegisterInstance(typeof(IDictionaryNameLearningCreator), new DictionaryNameLearningCreator());
+            _container.RegisterType<IVolumeLanguageService, VolumeLanguageService>();
+            _container.RegisterType<IDictionaryNameLearningCreator, DictionaryNameLearningCreator>();
             _container.RegisterType<IUnlearningWordsManager, UnlerningWordsManager>();
             _container.RegisterType<INewVersionAppChecker, NewVersionAppChecker>();
             _container.RegisterType<ILanguageLoaderFacade, LanguageLoader>();

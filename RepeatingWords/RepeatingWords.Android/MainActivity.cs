@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
-using Android.Util;
+
 using Java.IO;
 using Xamarin.Forms;
+using RepeatingWords.Interfaces;
+using RepeatingWords.LoggerService;
 
 namespace RepeatingWords.Droid
 {
@@ -43,7 +46,7 @@ namespace RepeatingWords.Droid
             //проверка наличия разрешения
             CheckPermissionForStorage();                     
             LoadApplication(new App( new SQLite_Android()));
-            UserDialogs.Init(() => (Activity)Forms.Context);
+            UserDialogs.Init(() => (Android.App.Activity)Forms.Context);
         }
         //переопределение кнопки назад
         public override void OnBackPressed()
@@ -69,7 +72,7 @@ namespace RepeatingWords.Droid
             }
             catch (Exception er)
             {
-                Log.Error("CheckPermissionForStorage", er.Message);
+                Log.Logger.Error("CheckPermissionForStorage", er.Message);
             }
         }
         //обработка результата установки разрешения
@@ -92,7 +95,7 @@ namespace RepeatingWords.Droid
             }
             catch (Exception er)
             {
-                Log.Error("OnRequestPermissionsResult", er.Message);
+                Log.Logger.Error("OnRequestPermissionsResult", er.Message);
             }
         }
                        
