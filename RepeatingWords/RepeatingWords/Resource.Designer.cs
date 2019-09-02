@@ -828,6 +828,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saving state...
+        /// </summary>
+        public static string SaveState {
+            get {
+                return ResourceManager.GetString("SaveState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to screen1.jpg.
         /// </summary>
         public static string screen1 {

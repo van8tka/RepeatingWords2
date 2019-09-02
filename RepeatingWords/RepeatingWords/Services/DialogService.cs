@@ -28,9 +28,9 @@ namespace RepeatingWords.Services
             return result.Text;
         }
 
-        public void ShowLoadDialog()
+        public void ShowLoadDialog(string loadMsg = null)
         {
-            UserDialogs.Instance.ShowLoading(Resource.WaitIndicator, MaskType.Clear);
+            UserDialogs.Instance.ShowLoading( string.IsNullOrEmpty(loadMsg) ? Resource.WaitIndicator : loadMsg, MaskType.Clear);
         }
         public void HideLoadDialog()
         {

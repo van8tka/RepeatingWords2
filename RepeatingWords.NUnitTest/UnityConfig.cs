@@ -88,7 +88,7 @@ namespace RepeatingWords.NUnitTest
             throw new NotImplementedException();
         }
 
-        public void ShowLoadDialog()
+        public void ShowLoadDialog(string loadmsg = null)
         {
             throw new NotImplementedException();
         }

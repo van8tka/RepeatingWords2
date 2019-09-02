@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace RepeatingWords.Helpers.Interfaces
 {
     public interface IContinueWordsManager
     {
-        int SaveContinueDictionary(string nameDictionary, IList<Words> words, bool isFromNative);
-        bool RemoveContinueDictionary();
+        Task<int> SaveContinueDictionary(string nameDictionary, IList<Words> words, bool isFromNative);
+        Task<bool> RemoveContinueDictionary();
     }
 }

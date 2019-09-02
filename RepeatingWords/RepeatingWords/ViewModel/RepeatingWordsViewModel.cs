@@ -28,7 +28,7 @@ namespace RepeatingWords.ViewModel
             EnterTranslateCommand = new Command(ShowEnterTranslate);
             SelectFromWordsCommand = new Command(ShowSelectFromWords);
             LearningCardsCommand = new Command(ShowLearningCards);
-            UnloadPageCommand = new Command(UnloadPage);
+            UnloadPageCommand = new Command(async () => await UnloadPage()); ;
         }
 
 
@@ -215,19 +215,24 @@ namespace RepeatingWords.ViewModel
         /// <summary>
         /// сохранение невыученных слов и сохранение слов для продолжения 
         /// </summary>
-        public void UnloadPage()
+        public async Task UnloadPage()
         {
             try
             {
+                DialogService.ShowLoadDialog(Resource.SaveState);
                 if (Model.AllWordsCount == Model.AllShowedWordsCount)
-                    _continueWordsManager.RemoveContinueDictionary();
+                   await _continueWordsManager.RemoveContinueDictionary();
                 else
-                    _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.wordsCollectionLeft, Model.isFromNative);
-                _unlearningWordsManager.SaveUnlearningDictionary(_dictionary.Name, Model.wordsOpen, Model.wordsCollectionLeft, Model.wordsCollection);
+                   await _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.wordsCollectionLeft, Model.isFromNative);
+               int id = await _unlearningWordsManager.SaveUnlearningDictionary(_dictionary.Name, Model.wordsOpen, Model.wordsCollectionLeft, Model.wordsCollection);
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
+            }
+            finally
+            {
+                DialogService.HideLoadDialog();
             }
         }
     }

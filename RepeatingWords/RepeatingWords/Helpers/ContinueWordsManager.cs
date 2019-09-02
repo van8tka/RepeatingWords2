@@ -5,6 +5,7 @@ using RepeatingWords.LoggerService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RepeatingWords.Helpers
 {
@@ -18,46 +19,52 @@ namespace RepeatingWords.Helpers
             _dictionaryNameCreator = dictionaryNameCreator;
         }
 
-        public bool RemoveContinueDictionary()
+        public Task<bool> RemoveContinueDictionary()
         {
             try
             {
-                var lastAction = _unitOfWork.LastActionRepository.Get().LastOrDefault();
-                if (lastAction != null)
+                return Task.Run(() =>
                 {
-                    var dict = _unitOfWork.DictionaryRepository.Get(lastAction.IdDictionary);
-                    _unitOfWork.DictionaryRepository.Delete(dict);
-                    var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == lastAction.IdDictionary).AsEnumerable();
-                    for (int i = 0; i < words.Count(); i++)
+                    var lastAction = _unitOfWork.LastActionRepository.Get().LastOrDefault();
+                    if (lastAction != null)
                     {
-                        _unitOfWork.WordsRepository.Delete(words.ElementAt(i));
+                        var dict = _unitOfWork.DictionaryRepository.Get(lastAction.IdDictionary);
+                        _unitOfWork.DictionaryRepository.Delete(dict);
+                        var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == lastAction.IdDictionary).AsEnumerable();
+                        for (int i = 0; i < words.Count(); i++)
+                        {
+                            _unitOfWork.WordsRepository.Delete(words.ElementAt(i));
+                        }
+                        _unitOfWork.LastActionRepository.Delete(lastAction);
+                        _unitOfWork.Save();
                     }
-                    _unitOfWork.LastActionRepository.Delete(lastAction);
-                    _unitOfWork.Save();
-                }
-                return true;
+                    return true;
+                });               
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                return false;
+                return Task.FromResult(false);
             }
         }
 
-        public int SaveContinueDictionary(string nameDictionary, IList<Words> words, bool isFromNative)
+        public Task<int> SaveContinueDictionary(string nameDictionary, IList<Words> words, bool isFromNative)
         {
             try
             {
-                RemoveContinueDictionary();
-                var nameContinueDictionary = _dictionaryNameCreator.CreateNameContinueDictionary(nameDictionary);
-                int newDictionaryId =  SaveDictionary(nameContinueDictionary, words);
-                CreateLastAction(newDictionaryId, isFromNative);
-                return newDictionaryId;
+                return Task.Run(() =>
+                {
+                    RemoveContinueDictionary();
+                    var nameContinueDictionary = _dictionaryNameCreator.CreateNameContinueDictionary(nameDictionary);
+                    int newDictionaryId = SaveDictionary(nameContinueDictionary, words);
+                    CreateLastAction(newDictionaryId, isFromNative);
+                    return newDictionaryId;
+                });                
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                return -1;
+                return Task.FromResult( -1 ) ;
             }
         }
 

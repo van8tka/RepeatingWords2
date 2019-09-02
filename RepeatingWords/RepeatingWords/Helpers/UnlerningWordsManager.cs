@@ -6,6 +6,7 @@ using RepeatingWords.LoggerService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RepeatingWords.Helpers
 {
@@ -19,50 +20,55 @@ namespace RepeatingWords.Helpers
             _dictionaryNameCreator = nameLearningCreator ?? throw new ArgumentNullException(nameof(nameLearningCreator));
         }
 
-        public int SaveUnlearningDictionary(string nameDictionary, IEnumerable<Words> wordsUnlearn, IEnumerable<Words> wordsLeft, IEnumerable<Words> wordsAll)
+        public Task<int> SaveUnlearningDictionary(string nameDictionary, IEnumerable<Words> wordsUnlearn, IEnumerable<Words> wordsLeft, IEnumerable<Words> wordsAll)
         {
             try
             {
-                var nameDictionaryNotLearning = _dictionaryNameCreator.CreateNameNotLearningDictionary(nameDictionary);
-                var existNotLearningDictionary = _unitOfWork.DictionaryRepository.Get().Where(x => x.Name.Equals(nameDictionaryNotLearning)).FirstOrDefault();
+                return Task.Run(() =>
+                {
+                    var nameDictionaryNotLearning = _dictionaryNameCreator.CreateNameNotLearningDictionary(nameDictionary);
+                    var existNotLearningDictionary = _unitOfWork.DictionaryRepository.Get().Where(x => x.Name.Equals(nameDictionaryNotLearning)).FirstOrDefault();
+                    int idDictionaryUnleran;
+                    if ((IsUnlearningDictionary(nameDictionary) && existNotLearningDictionary != null))
+                    {
+                        //тогда удаляем из словаря выученные слова, если словарь пуст удаляем словарь
+                        RemoveLearningWords(wordsUnlearn, wordsLeft, wordsAll);
+                        RemoveDictionary(existNotLearningDictionary);
+                        idDictionaryUnleran = existNotLearningDictionary.Id;
+                    }
+                    else if (IsContinueWithUnlearningDictionary(nameDictionary) && existNotLearningDictionary != null)
+                    {
+                        //тогда удаляем из словаря выученные слова, если словарь пуст удаляем словарь
+                        var allWordsExistDict = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == existNotLearningDictionary.Id).AsEnumerable();
+                        RemoveLearningWordsFromExistDictionary(wordsUnlearn, wordsLeft, allWordsExistDict, wordsAll);
+                        RemoveDictionary(existNotLearningDictionary);
+                        idDictionaryUnleran = existNotLearningDictionary.Id;
+                    }
+                    else if (IsContinueDictionary(nameDictionary) && existNotLearningDictionary != null)
+                    {
+                        //тогда к словарю невыученных слов добавляем еще невыученные
+                        idDictionaryUnleran = AddedUnlearningWords(existNotLearningDictionary, wordsUnlearn);
+                    }
 
-                if ( (IsUnlearningDictionary(nameDictionary) && existNotLearningDictionary != null))
-                {
-                    //тогда удаляем из словаря выученные слова, если словарь пуст удаляем словарь
-                    RemoveLearningWords(wordsUnlearn, wordsLeft, wordsAll);
-                    RemoveDictionary(existNotLearningDictionary);
-                    return existNotLearningDictionary.Id;
-                }
-                 else if(IsContinueWithUnlearningDictionary(nameDictionary) && existNotLearningDictionary != null)
-                {
-                    //тогда удаляем из словаря выученные слова, если словарь пуст удаляем словарь
-                    var allWordsExistDict = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == existNotLearningDictionary.Id).AsEnumerable();
-                    RemoveLearningWordsFromExistDictionary(wordsUnlearn, wordsLeft, allWordsExistDict, wordsAll);
-                    RemoveDictionary(existNotLearningDictionary);
-                    return existNotLearningDictionary.Id;
-                }
-                else if ( IsContinueDictionary(nameDictionary) && existNotLearningDictionary!=null )
-                {
-                    //тогда к словарю невыученных слов добавляем еще невыученные
-                  return AddedUnlearningWords(existNotLearningDictionary, wordsUnlearn);
-                }              
-                
-                else if (existNotLearningDictionary == null)
-                {
-                    //тогда создаем новый словарь невыученных слов
-                    return CreateNewUnlearningDictionary(nameDictionaryNotLearning, wordsUnlearn);
-                }
-                else
-                {//если начали учить заново, удаляем имеющиеся невыученные и создаем новый словарь невыученных слов
-                    RemoveUnlearningWords(existNotLearningDictionary);
-                    RemoveDictionary(existNotLearningDictionary);
-                    return CreateNewUnlearningDictionary(nameDictionaryNotLearning, wordsUnlearn);
-                }
+                    else if (existNotLearningDictionary == null)
+                    {
+                        //тогда создаем новый словарь невыученных слов
+                        idDictionaryUnleran = CreateNewUnlearningDictionary(nameDictionaryNotLearning, wordsUnlearn);
+                    }
+                    else
+                    {//если начали учить заново, удаляем имеющиеся невыученные и создаем новый словарь невыученных слов
+                        RemoveUnlearningWords(existNotLearningDictionary);
+                        RemoveDictionary(existNotLearningDictionary);
+                        idDictionaryUnleran = CreateNewUnlearningDictionary(nameDictionaryNotLearning, wordsUnlearn);
+                    }
+                    return idDictionaryUnleran;
+                });
+              
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                return -1;
+                return Task.FromResult(-1); 
             }
         }
 

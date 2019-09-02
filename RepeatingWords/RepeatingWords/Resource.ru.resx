@@ -500,4 +500,7 @@
   <data name="ModalFinishWords" xml:space="preserve">
     <value>Поздравляю! Слова закончились.</value>
   </data>
+  <data name="SaveState" xml:space="preserve">
+    <value>Сохранение состояния..</value>
+  </data>
 </root>

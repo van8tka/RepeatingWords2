@@ -9,7 +9,7 @@ namespace RepeatingWords.Helpers.Interfaces
         Task<string> ShowActionSheetAsync(string title, string cancel, string destructive, CancellationToken token = default, params string[] buttons);
         Task ShowAlertDialog(string message, string oktext, string title = null);
         Task<string> ShowInputTextDialog(string message, string title = null, string okText = null, string cancelText = null, string placeholder = "", CancellationToken cancelToken = default);
-        void ShowLoadDialog();
+        void ShowLoadDialog(string loadingMsg = null);
 
 
          void HideLoadDialog();

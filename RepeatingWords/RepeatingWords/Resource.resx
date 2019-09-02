@@ -513,4 +513,7 @@ smartphone or keyboard transcription</value>
   <data name="ModalFinishWords" xml:space="preserve">
     <value>Congratulations! You looked at all the words.</value>
   </data>
+  <data name="SaveState" xml:space="preserve">
+    <value>Saving state..</value>
+  </data>
 </root>
