@@ -33,7 +33,6 @@ namespace RepeatingWords.Helpers
                         await AddDictionaryToDb(data.ElementAt(i));
                     }
                 }
-
             }
             catch (Exception e)
             {              
