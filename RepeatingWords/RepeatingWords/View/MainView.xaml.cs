@@ -1,7 +1,7 @@
 ﻿using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using Xamarin.Forms;
-using Unity;
+ 
 namespace RepeatingWords.View
 {
     public partial class MainView : ContentPage
@@ -9,7 +9,7 @@ namespace RepeatingWords.View
         public MainView()
         {
            InitializeComponent();
-           BindingContext = LocatorService.Container.Resolve<MainViewModel>();
+           BindingContext = LocatorService.Container.GetInstance<MainViewModel>();
         }
     }
 }

@@ -20,9 +20,9 @@ namespace RepeatingWords.NUnitTest
         [SetUp]
         public void Begin()
         {
-            vm = new WorkSpaceSelectWordViewModel(null, null);
+            vm = new WorkSpaceSelectWordViewModel(null, null,null);
             model = new RepeatingWordsModel();
-            model.wordsCollection = new List<Words>()
+            model.WordsLearningAll = new List<Words>()
             {
                 new Words{Id=0,IdDictionary=0,EngWord="0",RusWord="0-",Transcription="-0-"},
                  new Words{Id=1,IdDictionary=1,EngWord="1",RusWord="1-",Transcription="-1-"},
@@ -31,7 +31,7 @@ namespace RepeatingWords.NUnitTest
                     new Words{Id=4,IdDictionary=4,EngWord="4",RusWord="4-",Transcription="-4-"}
             };
             vm.Model = model;
-            word = model.wordsCollection.First();
+            word = model.WordsLearningAll.First();
         }
 
 

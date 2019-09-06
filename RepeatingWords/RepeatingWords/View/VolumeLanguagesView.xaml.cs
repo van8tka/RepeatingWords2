@@ -1,6 +1,6 @@
 ﻿using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
-using Unity;
+ 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +12,7 @@ namespace RepeatingWords.View
         public VolumeLanguagesView()
         {
             InitializeComponent();
-            BindingContext = LocatorService.Container.Resolve<VolumeLanguagesViewModel>();
+            BindingContext = LocatorService.Container.GetInstance<VolumeLanguagesViewModel>();
         }
     }
 }

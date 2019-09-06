@@ -1,5 +1,4 @@
 ﻿using RepeatingWords.DataService.Model;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -12,10 +11,11 @@ namespace RepeatingWords.Model
         public RepeatingWordsModel()
         {
             AllWordsCount = 0;
-            AllShowedWordsCount = 0;
+            AllShowedWordsCount = 1;
             AllOpenedWordsCount = 0;
-            wordsOpen = new List<Words>();
-            wordsCollectionLeft = new List<Words>();
+            WordsOpen = new List<Words>();
+            WordsLeft = new List<Words>();
+            IndexWordShowNow = -1;
         }
 
         private int _allWordsCount;
@@ -25,25 +25,19 @@ namespace RepeatingWords.Model
         private int _allOpenedWordsCount;
         public int AllOpenedWordsCount { get => _allOpenedWordsCount; set { _allOpenedWordsCount = value; OnPropertyChanged(nameof(AllOpenedWordsCount)); } }
 
-        internal Words currentWord { get; set; }
-        internal bool isFromNative { get; set; }
-        public IList<Words> wordsOpen { get; set; }
-        public IEnumerable<Words> wordsCollection { get; set; }
-        public IList<Words> wordsCollectionLeft { get; set; }
+        internal bool IsOpenCurrentWord { get; set; }
+        internal Words CurrentWord { get; set; }
+        internal bool IsFromNative { get; set; }
+        public IList<Words> WordsOpen { get; set; }
+        public IList<Words> WordsLearningAll { get; set; }
+        public IList<Words> WordsLeft { get; set; }
+        public Dictionary Dictionary { get; internal set; }
+        internal int IndexWordShowNow;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName=null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-        }
-
-        public void ResetModel()
-        {
-            AllShowedWordsCount = 1;
-            AllOpenedWordsCount = 0;
-            wordsOpen.Clear();
-            wordsCollectionLeft.Clear();
-            (wordsCollectionLeft as List<Words>).AddRange(wordsCollection);
         }
     }
 }

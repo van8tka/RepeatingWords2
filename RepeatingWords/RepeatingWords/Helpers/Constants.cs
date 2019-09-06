@@ -17,5 +17,6 @@
         
         internal const string NAME_DB_FOR_CONTINUE = "ContinueDictionary";
         internal const float NUMBER_VERSION_ANDROID = 2.1f;
+        internal const int CHECK_AVAILABLE_COUNT = 3;
     }
 }

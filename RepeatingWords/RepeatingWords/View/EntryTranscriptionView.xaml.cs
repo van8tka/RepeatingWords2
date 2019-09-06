@@ -2,7 +2,7 @@
 using RepeatingWords.ViewModel;
 using System;
 using Xamarin.Forms;
-using Unity;
+ 
 
 namespace RepeatingWords.View
 {
@@ -15,7 +15,7 @@ namespace RepeatingWords.View
         public EntryTranscriptionView()
         {
             InitializeComponent();
-            BindingContext = LocatorService.Container.Resolve<EntryTranscriptionViewModel>();
+            BindingContext = LocatorService.Container.GetInstance<EntryTranscriptionViewModel>();
         }     
 
         #region CLICK_CHAR_TRANSCRIPTION

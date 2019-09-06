@@ -5,7 +5,6 @@ using RepeatingWords.Services;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Unity;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
@@ -101,13 +100,13 @@ namespace RepeatingWords.ViewModel
                 bool success;
                 if (action == _localFolderBackup)
                 {
-                    var backupService = LocatorService.Container.Resolve<BackupLocalService>();
+                    var backupService = LocatorService.Container.GetInstance<BackupLocalService>();
                     success = await backupService.CreateBackup(fileNameBackup);
                     await DialogService.ShowAlertDialog(success ? Resource.BackupWasCreatedGoogle : Resource.BackUpErrorCreated, Resource.Continue);
                 }
                 else if (action == _googleDriveFolderBackup)
                 {
-                    var backupService = LocatorService.Container.Resolve<BackupGoogleService>();
+                    var backupService = LocatorService.Container.GetInstance<BackupGoogleService>();
                     success = await backupService.CreateBackup(fileNameBackup);
                 }
             }
@@ -124,13 +123,13 @@ namespace RepeatingWords.ViewModel
             bool success = false;
             if (action == _localFolderBackup)
             {
-                var backupService = LocatorService.Container.Resolve<BackupLocalService>();
+                var backupService = LocatorService.Container.GetInstance<BackupLocalService>();
                 success = await backupService.RestoreBackup(_fileNameBackupDef);
                 await DialogService.ShowAlertDialog(success ? Resource.BackupWasCreatedGoogle : Resource.BackUpErrorCreated, Resource.Continue);
             }
             else if (action == _googleDriveFolderBackup)
             {
-                var backupService = LocatorService.Container.Resolve<BackupGoogleService>();
+                var backupService = LocatorService.Container.GetInstance<BackupGoogleService>();
                 success = await backupService.RestoreBackup(_fileNameBackupDef);             
             }           
         }

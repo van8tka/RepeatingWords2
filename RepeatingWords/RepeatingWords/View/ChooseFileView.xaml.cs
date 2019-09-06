@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using RepeatingWords.Services;
-using Unity;
 using RepeatingWords.ViewModel;
 
 namespace RepeatingWords.View
@@ -10,7 +9,7 @@ namespace RepeatingWords.View
         public ChooseFileView()
         {
             InitializeComponent();
-            BindingContext = LocatorService.Container.Resolve<ChooseFileViewModel>();
+            BindingContext = LocatorService.Container.GetInstance<ChooseFileViewModel>();
         }       
     }
 }

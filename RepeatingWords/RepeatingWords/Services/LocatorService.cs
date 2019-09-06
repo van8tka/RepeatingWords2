@@ -1,14 +1,12 @@
 ﻿using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Repositories;
-using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
+using RepeatingWords.Service;
 using RepeatingWords.ViewModel;
- 
-using Unity;
-using Unity.Lifetime;
+using SimpleInjector;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Services
@@ -16,52 +14,50 @@ namespace RepeatingWords.Services
     internal class LocatorService
     {
 
-        public static IUnityContainer Container { get; private set; }
+        public static Container Container { get; private set; }
 
-        internal static IUnityContainer Boot(ISQLite sqlitePath)
+        internal static Container Boot(ISQLite sqlitePath)
         {
-            var _container = new UnityContainer();
-            _container.RegisterInstance(typeof(ISQLite), sqlitePath);
-            _container.RegisterInstance(typeof(ILogger), DependencyService.Get<ILogManager>().GetLog());
-            _container.RegisterType<ILoggerService, Log>();
-            _container.Resolve<ILoggerService>();
-            _container.RegisterType<IUnitOfWork, UnitOfWork>(new ExternallyControlledLifetimeManager());
-            _container.RegisterType<IInitDefaultDb, InitDefaultDb>();
+            var _container = new Container();
+            _container.RegisterInstance(typeof(ISQLite), sqlitePath);     
+            _container.RegisterInstance(typeof(ILoggerService),new Log(DependencyService.Get<ILogManager>().GetLog()));
+          
+            _container.Register<IUnitOfWork, UnitOfWork>();
+            _container.Register<IInitDefaultDb, InitDefaultDb>();
             _container.RegisterInstance(typeof(INavigationService), new NavigationService());
-            _container.RegisterType<IDialogService, DialogService>(new ContainerControlledLifetimeManager());
-            _container.RegisterType<IBackupService, BackupGoogleService>();
-            _container.RegisterType<IBackupService, BackupLocalService>();
-            _container.RegisterType<IThemeService, ThemeChangeService>();
-            _container.RegisterType<IKeyboardTranscriptionService, KeyboardTranscriptionChangeService>();
-            _container.RegisterType<IWebApiService, OnlineDictionaryService>();
-            _container.RegisterType<IImportFile, ImportFileToDb>();
-            _container.RegisterType<IVolumeLanguageService, VolumeLanguageService>();
-            _container.RegisterType<IDictionaryNameLearningCreator, DictionaryNameLearningCreator>();
-            _container.RegisterType<IUnlearningWordsManager, UnlerningWordsManager>();
-            _container.RegisterType<INewVersionAppChecker, NewVersionAppChecker>();
-            _container.RegisterType<ILanguageLoaderFacade, LanguageLoader>();
-            _container.RegisterType<IContinueWordsManager, ContinueWordsManager>();
+            _container.RegisterInstance(typeof(IDialogService), new DialogService());          
+            _container.Register<BackupGoogleService>();
+            _container.Register<BackupLocalService>();
+            _container.Register<IThemeService, ThemeChangeService>();
+            _container.Register<IKeyboardTranscriptionService, KeyboardTranscriptionChangeService>();
+            _container.Register<IWebApiService, OnlineDictionaryService>();
+            _container.Register<IImportFile, ImportFileToDb>();
+            _container.Register<IVolumeLanguageService, VolumeLanguageService>();
+            _container.Register<IDictionaryNameLearningCreator, DictionaryNameLearningCreator>();
+            _container.Register<IDictionaryTypeByName, DictionaryTypeByName>();
+            _container.Register<IUnlearningWordsService, UnlerningWordsService>();
+            _container.Register<INewVersionAppChecker, NewVersionAppChecker>();
+            _container.Register<ILanguageLoaderFacade, LanguageLoader>();
+            _container.Register<IContinueWordsService, ContinueWordsService>();
             
             //register viewmodels
-            _container.RegisterType(typeof(MainViewModel));
-            _container.RegisterType(typeof(HelperViewModel));
-            _container.RegisterType(typeof(InstructionAddOneWordViewModel));
-            _container.RegisterType(typeof(InstructionImportFromFileViewModel));
-            _container.RegisterType(typeof(SettingsViewModel));
-            _container.RegisterType(typeof(DictionariesListViewModel));
-            _container.RegisterType(typeof(LanguageFrNetViewModel));
-            _container.RegisterType(typeof(WordsListViewModel));
-            _container.RegisterType(typeof(RepeatingWordsViewModel));
-            _container.RegisterType(typeof(CreateWordViewModel));
-            _container.RegisterType(typeof(EntryTranscriptionViewModel));
-            _container.RegisterType(typeof(ChooseFileViewModel));
+            _container.Register(typeof(MainViewModel));
+            _container.Register(typeof(HelperViewModel));
+            _container.Register(typeof(InstructionAddOneWordViewModel));
+            _container.Register(typeof(InstructionImportFromFileViewModel));
+            _container.Register(typeof(SettingsViewModel));
+            _container.Register(typeof(DictionariesListViewModel));
+            _container.Register(typeof(LanguageFrNetViewModel));
+            _container.Register(typeof(WordsListViewModel));
+            _container.Register(typeof(RepeatingWordsViewModel));
+            _container.Register(typeof(CreateWordViewModel));
+            _container.Register(typeof(EntryTranscriptionViewModel));
+            _container.Register(typeof(ChooseFileViewModel));
             //must befor RepeatingWords
-            _container.RegisterType(typeof(WorkSpaceCardsViewModel));
-            _container.RegisterType(typeof(WorkSpaceEnterWordViewModel));
-            _container.RegisterType(typeof(WorkSpaceSelectWordViewModel));
-            
-            _container.RegisterType(typeof(RepeatingWordsViewModel));
-            _container.RegisterType(typeof(VolumeLanguagesViewModel));
+            _container.Register(typeof(WorkSpaceCardsViewModel));
+            _container.Register(typeof(WorkSpaceEnterWordViewModel));
+            _container.Register(typeof(WorkSpaceSelectWordViewModel));                     
+            _container.Register(typeof(VolumeLanguagesViewModel));
             Container = _container;
             return _container;
         }

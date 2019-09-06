@@ -1,7 +1,7 @@
 ﻿using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
-using Unity;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +13,7 @@ namespace RepeatingWords.View
         public WorkSpaceSelectWordView()
         {
             InitializeComponent();
-            _customContentViewModel = LocatorService.Container.Resolve<WorkSpaceSelectWordViewModel>();
+            _customContentViewModel = LocatorService.Container.GetInstance<WorkSpaceSelectWordViewModel>();
             BindingContext = _customContentViewModel as WorkSpaceSelectWordViewModel;
         }
         private ICustomContentViewModel _customContentViewModel;

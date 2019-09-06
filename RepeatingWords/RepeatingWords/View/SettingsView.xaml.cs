@@ -1,7 +1,7 @@
 ﻿using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using Xamarin.Forms;
-using Unity;
+ 
 namespace RepeatingWords.View
 {
 
@@ -12,7 +12,7 @@ namespace RepeatingWords.View
             InitializeComponent();
             //fullscreen advertizing
             DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/4024752876");
-            BindingContext = LocatorService.Container.Resolve<SettingsViewModel>();
+            BindingContext = LocatorService.Container.GetInstance<SettingsViewModel>();
         }   
     }
 

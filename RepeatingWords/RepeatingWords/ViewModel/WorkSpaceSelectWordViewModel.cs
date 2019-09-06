@@ -13,7 +13,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceSelectWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService) : base(_dialogService, _navigationService)
+        public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager) : base(_dialogService, _navigationService, unlearningManager)
         {
             TapWordCommand = new Command<string>(TapWord);
         }
@@ -21,26 +21,34 @@ namespace RepeatingWords.ViewModel
         /// действие по тапу на квадратик со словом
         /// </summary>
         /// <param name="wordName">слово выбранное в квадрате</param>
+        private bool isTapAlready;
         private async void TapWord(string wordName)
         {
-            string compareWord = !Model.isFromNative ? _showingWord.RusWord : _showingWord.EngWord;
-            if (string.IsNullOrEmpty(wordName))
-                return;
-            if (compareWord.Equals(wordName, StringComparison.OrdinalIgnoreCase))
+            if(!isTapAlready)
             {
-                SetRightMark(wordName, Color.LightBlue);
-                await Task.Delay(500);
-            }
-            else
-            {
-                SetRightMark(compareWord, Color.LightBlue);
-                SetRightMark(wordName, Color.Red);               
-                Model.wordsOpen.Add(_showingWord);
-                Model.AllOpenedWordsCount++;
-                await Task.Delay(1800);
-            }          
-            ShowNextWord();
-            ClearBackgroundColor();
+                isTapAlready = true;
+                string compareWord = !Model.IsFromNative ? _showingWord.RusWord : _showingWord.EngWord;
+                if (string.IsNullOrEmpty(wordName))
+                    return;
+                if (compareWord.Equals(wordName, StringComparison.OrdinalIgnoreCase))
+                {
+                    Model.IsOpenCurrentWord = false;
+                    SetRightMark(wordName, Color.LightBlue);
+                    await Task.Delay(500);
+                }
+                else
+                {
+                    Model.IsOpenCurrentWord = true;
+                    SetRightMark(compareWord, Color.LightBlue);
+                    SetRightMark(wordName, Color.Red);
+                    Model.WordsOpen.Add(_showingWord);
+                    Model.AllOpenedWordsCount++;
+                    await Task.Delay(1800);
+                }
+                ShowNextWord();
+                ClearBackgroundColor();
+                isTapAlready = false;
+            }           
         }
 
         private void ClearBackgroundColor()
@@ -137,10 +145,10 @@ namespace RepeatingWords.ViewModel
             try
             {             
                 var random = new Random();
-                int border = Model.wordsCollection.Count() - 1;
+                int border = Model.WordsLearningAll.Count() - 1;
                 if (border < 3)
                     return listWordsForGrid;
-                int idCurrent = Model.wordsCollection.IndexOf(word);
+                int idCurrent = Model.WordsLearningAll.IndexOf(word);
                 int id1 = 0, id2 = 0, id3 = 0;
                 while (idCurrent == id1 || idCurrent == id2 || idCurrent == id3 || id1 == id2 || id1==id3 || id3==id2)
                 {
@@ -148,9 +156,9 @@ namespace RepeatingWords.ViewModel
                     id2 = random.Next(0, border);
                     id3 = random.Next(0, border);
                 }
-                listWordsForGrid.Add(Model.wordsCollection.ElementAt(id1));
-                listWordsForGrid.Add(Model.wordsCollection.ElementAt(id2));
-                listWordsForGrid.Add(Model.wordsCollection.ElementAt(id3));
+                listWordsForGrid.Add(Model.WordsLearningAll.ElementAt(id1));
+                listWordsForGrid.Add(Model.WordsLearningAll.ElementAt(id2));
+                listWordsForGrid.Add(Model.WordsLearningAll.ElementAt(id3));
                 int idMainWord = random.Next(0, 3);
                 listWordsForGrid.Insert(idMainWord, word);
                 return listWordsForGrid;

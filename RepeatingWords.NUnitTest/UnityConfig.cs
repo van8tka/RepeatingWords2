@@ -7,6 +7,7 @@ using RepeatingWords.Helpers;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
+using RepeatingWords.Service;
 using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using Unity;
@@ -31,9 +32,9 @@ namespace RepeatingWords.NUnitTest
             container.RegisterType<INavigationService, TestNavigationService>();
             container.RegisterType<IDialogService, TestDialogService>();
             container.RegisterType<IDictionaryNameLearningCreator, DictionaryNameLearningCreator>();
-            container.RegisterType<IUnlearningWordsManager, UnlerningWordsManager>();
+            container.RegisterType<IUnlearningWordsService, UnlerningWordsService>();
             container.RegisterType<IVolumeLanguageService, TestVolumeService>();
-            container.RegisterType<IContinueWordsManager, ContinueWordsManager>();
+            container.RegisterType<IContinueWordsService, ContinueWordsService>();
 
             container.RegisterType<ViewModelBase, RepeatingWordsViewModel>();
             return container;
@@ -41,7 +42,7 @@ namespace RepeatingWords.NUnitTest
     }
 
 
-    // INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IDictionaryNameLearningCreator dictionaryNameCreator, IUnlearningWordsManager unlearningWordsManager
+    // INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IDictionaryNameLearningCreator dictionaryNameCreator, IUnlearningWordsService unlearningWordsManager
 
     internal class TestVolumeService : IVolumeLanguageService
     {

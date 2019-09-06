@@ -5,7 +5,7 @@
              xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"          
              xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
-             Title ="{Binding DictionaryName}"                          
+             Title ="{Binding DictionaryName}"               
              >
     <!--панель управлления-->
     <ContentPage.ToolbarItems>

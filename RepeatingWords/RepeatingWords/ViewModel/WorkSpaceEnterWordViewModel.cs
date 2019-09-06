@@ -1,4 +1,5 @@
 ﻿using RepeatingWords.DataService.Model;
+using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
@@ -12,7 +13,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceEnterWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService) : base(_dialogService, _navigationService)
+        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager) : base(_dialogService, _navigationService, unlearningManager)
         {
             CheckWordCommand = new Command(async () => await CheckWord());
             HintWordCommand = new Command(async () => await HintWord());
@@ -20,7 +21,7 @@ namespace RepeatingWords.ViewModel
         }
 
         private Words _showingWord;     
-        private int _countCheckAvailabel = 3;
+        private int _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
 
         private string _enterAnswerWord;
         public string EnterAnswerWord
@@ -45,17 +46,21 @@ namespace RepeatingWords.ViewModel
             EnterAnswerWord = string.Empty;
         }
 
-
+        /// <summary>
+        /// подсказывать слово
+        /// </summary>
+        /// <returns></returns>
         private async Task HintWord()
         {
             try
             {
-                var checkWord = Model.isFromNative ? _showingWord.EngWord : _showingWord.RusWord;
+                var checkWord = Model.IsFromNative ? _showingWord.EngWord : _showingWord.RusWord;
                 if (string.Equals(EnterAnswerWord, checkWord, StringComparison.OrdinalIgnoreCase))
                 {
                     await SetValidMarks();
-                    _countCheckAvailabel = 3;
+                    _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT; ;
                     IncrementOpenWords();
+                    Model.IsOpenCurrentWord = false;
                     ShowNextWord();
                 }
                 else
@@ -130,11 +135,12 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                var checkWord = Model.isFromNative ? _showingWord.EngWord : _showingWord.RusWord;
+                var checkWord = Model.IsFromNative ? _showingWord.EngWord : _showingWord.RusWord;
                 if (string.Equals(EnterAnswerWord, checkWord, StringComparison.OrdinalIgnoreCase))
-                {
+                {                 
                     await SetValidMarks();
-                    _countCheckAvailabel = 3;
+                    _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
+                    Model.IsOpenCurrentWord = false;
                     ShowNextWord();
                 }
                 else
@@ -153,23 +159,24 @@ namespace RepeatingWords.ViewModel
         private async Task UnavailableCheck()
         {
             if (_countCheckAvailabel == 0)
-            {
+            {             
                 await ShowRightWord();
                 IncrementOpenWords();
-                _countCheckAvailabel = 3;
+                _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
+                Model.IsOpenCurrentWord = true;
                 ShowNextWord();
             }
         }
 
         private async Task ShowRightWord()
         {
-            EnterAnswerWord = Model.isFromNative ? _showingWord.EngWord : _showingWord.RusWord;
+            EnterAnswerWord = Model.IsFromNative ? _showingWord.EngWord : _showingWord.RusWord;
             await SetValidMarks();
         }
 
         private void IncrementOpenWords()
         {
-            Model.wordsOpen.Add(_showingWord);
+            Model.WordsOpen.Add(_showingWord);
             Model.AllOpenedWordsCount++;
         }
         private async Task SetInvalidMarks()

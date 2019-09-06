@@ -47,11 +47,14 @@ namespace RepeatingWords.Helpers
             try
             {                
                 var words = (await _webService.Get(selectedDictionary.Id)).OrderBy(x => x.RusWord);
-                int idNewDictionary = _unitOfWork.DictionaryRepository.Get().Last().Id + 1;
-                var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = idNewDictionary, Name = selectedDictionary.Name });
-                _unitOfWork.Save();
-                CreateWords(words, idNewDictionary);
-                _unitOfWork.Save();
+                await Task.Run(() =>
+                {
+                    int idNewDictionary = _unitOfWork.DictionaryRepository.Get().Last().Id + 1;
+                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = idNewDictionary, Name = selectedDictionary.Name });
+                    _unitOfWork.Save();
+                    CreateWords(words, idNewDictionary);
+                    _unitOfWork.Save();
+                });              
             }
             catch (Exception e)
             {

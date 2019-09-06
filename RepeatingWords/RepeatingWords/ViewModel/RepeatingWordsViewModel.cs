@@ -16,19 +16,17 @@ namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IDictionaryNameLearningCreator dictionaryNameCreator, IUnlearningWordsManager unlearningWordsManager, IContinueWordsManager continueWordsManager) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IContinueWordsService continueWordsManager) : base(navigationServcie, dialogService)
         {
             _unitOfWork = unitOfWork;
             _volumeService = volumeService ?? throw new ArgumentNullException(nameof(volumeService));
-            _dictionaryNameCreator = dictionaryNameCreator ?? throw new ArgumentNullException(nameof(dictionaryNameCreator));
-            _unlearningWordsManager = unlearningWordsManager ?? throw new ArgumentNullException(nameof(unlearningWordsManager));
             _continueWordsManager = continueWordsManager ?? throw new ArgumentNullException(nameof(continueWordsManager));
             Model = new RepeatingWordsModel();
             VoiceActingCommand = new Command(VoiceActing);
             EnterTranslateCommand = new Command(ShowEnterTranslate);
             SelectFromWordsCommand = new Command(ShowSelectFromWords);
             LearningCardsCommand = new Command(ShowLearningCards);
-            UnloadPageCommand = new Command(async () => await UnloadPage()); ;
+            UnloadPageCommand = new Command(UnloadPage);
         }
 
 
@@ -36,9 +34,7 @@ namespace RepeatingWords.ViewModel
         private ICustomContentViewModel _workSpaceVM;
         private readonly IVolumeLanguageService _volumeService;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IDictionaryNameLearningCreator _dictionaryNameCreator;
-        private readonly IUnlearningWordsManager _unlearningWordsManager;
-        private readonly IContinueWordsManager _continueWordsManager;
+        private readonly IContinueWordsService _continueWordsManager;
 
         private Dictionary _dictionary;
         private string _currentVolumeLanguage;
@@ -87,13 +83,12 @@ namespace RepeatingWords.ViewModel
 
         private void VoiceActing()
         {
-            DependencyService.Get<ITextToSpeech>().Speak(Model.currentWord.EngWord, _currentVolumeLanguage);
+            DependencyService.Get<ITextToSpeech>().Speak(Model.CurrentWord.EngWord, _currentVolumeLanguage);
         }
 
         private void ShowEnterTranslate()
         {
             SetViewWorkSpaceEnterWord();
-            Model.ResetModel();
             SetBackgroundButton(nameof(EntryButtonBackground));
         }
 
@@ -103,13 +98,12 @@ namespace RepeatingWords.ViewModel
             WorkSpaceView = view as WorkSpaceEnterWordView;
             _workSpaceVM = view.CustomVM;
             _workSpaceVM.Model = Model;
-            (_workSpaceVM as WorkSpaceEnterWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+             (_workSpaceVM as WorkSpaceEnterWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
         }
 
         private void ShowSelectFromWords()
         {
             SetViewWorkSpaceSelectWord();
-            Model.ResetModel();
             SetBackgroundButton(nameof(SelectButtonBackground));
         }
 
@@ -125,9 +119,19 @@ namespace RepeatingWords.ViewModel
         private void ShowLearningCards()
         {
             SetViewWorkSpaceLearningCards();
-            Model.ResetModel();
             SetBackgroundButton(nameof(CardsButtonBackground));
         }
+
+        private void SetViewWorkSpaceLearningCards()
+        {
+            ICustomContentView view = new WorkSpaceCardsView();
+            WorkSpaceView = view as WorkSpaceCardsView;
+            _workSpaceVM = view.CustomVM;
+            _workSpaceVM.Model = Model;          
+            (_workSpaceVM as WorkSpaceCardsViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+        }
+
+     
 
         private void SetBackgroundButton(string button)
         {
@@ -151,14 +155,7 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private void SetViewWorkSpaceLearningCards()
-        {
-            ICustomContentView view = new WorkSpaceCardsView();
-            WorkSpaceView = view as WorkSpaceCardsView;
-            _workSpaceVM = view.CustomVM;
-            _workSpaceVM.Model = Model;
-            (_workSpaceVM as WorkSpaceCardsViewModel).ShowNextWord(isFirstShowAfterLoad: true);
-        }
+      
 
 
         private void ShakeWordsCollection(IEnumerable<Words> words)
@@ -175,8 +172,8 @@ namespace RepeatingWords.ViewModel
                 tempWords[i] = tempWords[count];
                 tempWords[count] = value;
             }
-            Model.wordsCollection = tempWords.AsEnumerable();
-            Model.wordsCollectionLeft = new List<Words>(Model.wordsCollection);
+            Model.WordsLearningAll = tempWords;
+            Model.WordsLeft = new List<Words>(Model.WordsLearningAll);
         }
 
         private async Task<Dictionary> GetDictionary(int id) => await Task.Run(() => _unitOfWork.DictionaryRepository.Get(id));
@@ -185,54 +182,48 @@ namespace RepeatingWords.ViewModel
 
         public override async Task InitializeAsync(object navigationData)
         {
-            SetBackgroundButton(nameof(CardsButtonBackground));
+            SetBackgroundButton(nameof(CardsButtonBackground));         
             IsBusy = true;
             if (navigationData is Dictionary dictionary)
             {
-                Model.isFromNative = await ShowFromLanguageNative();
+                Model.IsFromNative = await ShowFromLanguageNative();
                 _dictionary = dictionary;
                 DictionaryName = _dictionary.Name;
             }
             else if (navigationData is LastAction lastAct)
             {
-                Model.isFromNative = lastAct.FromRus;
+                Model.IsFromNative = lastAct.FromRus;
                 _dictionary = await GetDictionary(lastAct.IdDictionary);
                 DictionaryName = _dictionary.Name;
             }
             else
                 throw new Exception("Error load RepeatingWordsViewModel, bad params navigationData");
             _currentVolumeLanguage = _volumeService.GetSysAbbreviationVolumeLanguage();
-            Model.wordsCollection = await LoadWords(_dictionary.Id);
-            Model.AllWordsCount = Model.wordsCollection.Count();
-            ShakeWordsCollection(Model.wordsCollection);
-            SetViewWorkSpaceLearningCards();
+            Model.WordsLearningAll = (await LoadWords(_dictionary.Id)).ToList();
+            _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
+            Model.AllWordsCount = Model.WordsLearningAll.Count();
+            Model.Dictionary = _dictionary;
+            ShakeWordsCollection(Model.WordsLearningAll);
+            SetViewWorkSpaceLearningCards();         
             await base.InitializeAsync(navigationData);
-
         }
-
 
 
         /// <summary>
         /// сохранение невыученных слов и сохранение слов для продолжения 
         /// </summary>
-        public async Task UnloadPage()
+        public void UnloadPage()
         {
             try
             {
-                DialogService.ShowLoadDialog(Resource.SaveState);
                 if (Model.AllWordsCount == Model.AllShowedWordsCount)
-                   await _continueWordsManager.RemoveContinueDictionary();
+                    _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
                 else
-                   await _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.wordsCollectionLeft, Model.isFromNative);
-               int id = await _unlearningWordsManager.SaveUnlearningDictionary(_dictionary.Name, Model.wordsOpen, Model.wordsCollectionLeft, Model.wordsCollection);
+                    _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.WordsLeft, Model.IsFromNative);
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-            }
-            finally
-            {
-                DialogService.HideLoadDialog();
             }
         }
     }

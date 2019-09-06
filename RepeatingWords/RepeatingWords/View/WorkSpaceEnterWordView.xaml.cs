@@ -2,7 +2,7 @@
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
-using Unity;
+ 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +14,7 @@ namespace RepeatingWords.View
         public WorkSpaceEnterWordView()
         {
             InitializeComponent();         
-            _customContentViewModel = LocatorService.Container.Resolve<WorkSpaceEnterWordViewModel>();
+            _customContentViewModel = LocatorService.Container.GetInstance<WorkSpaceEnterWordViewModel>();
             BindingContext = _customContentViewModel as WorkSpaceEnterWordViewModel;             
         }
         private ICustomContentViewModel _customContentViewModel;

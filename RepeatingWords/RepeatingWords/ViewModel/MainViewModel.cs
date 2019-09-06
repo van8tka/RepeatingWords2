@@ -26,15 +26,15 @@ namespace RepeatingWords.ViewModel
             LoadPageCommand = new Command(AppearingPage);
         }
 
-        private void AppearingPage( )
+        private async void AppearingPage( )
         {
-            CheckIsEnabledContinue();
+           await CheckIsEnabledContinue();
         }
 
-        public override async Task InitializeAsync(object navigationData)
+        public override Task InitializeAsync(object navigationData)
         {
             IsBusy = true;          
-            await base.InitializeAsync(navigationData);
+            return base.InitializeAsync(navigationData);
         }
 
          
@@ -57,9 +57,6 @@ namespace RepeatingWords.ViewModel
         public ICommand LikeCommand { get; set; }
         public ICommand HelperCommand { get; set; }
         public ICommand LoadPageCommand { get; set; }
-
-
-
 
         private async void ContinueLearning()
         {

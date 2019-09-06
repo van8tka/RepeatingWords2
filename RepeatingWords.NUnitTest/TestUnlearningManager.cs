@@ -14,8 +14,7 @@ namespace RepeatingWords.NUnitTest
     [TestFixture]
    public class TestUnlearningManager
     {
-        private IUnlearningWordsManager _unlearningWordsManager;
-        private IContinueWordsManager _continueWordsManager;
+        private IUnlearningWordsService _unlearningWordsManager;
         private IUnitOfWork _unitOfWork;
         private Dictionary _defaultDictionary;
         private IEnumerable<Words> _wordsAllDefaultCollection;
@@ -24,23 +23,15 @@ namespace RepeatingWords.NUnitTest
         public TestUnlearningManager()
         {
             var container = UnityConfig.Load();           
-            _unitOfWork = container.Resolve<IUnitOfWork>();
-            _continueWordsManager = container.Resolve<IContinueWordsManager>();
-            _unlearningWordsManager = container.Resolve<IUnlearningWordsManager>();          
+            _unitOfWork = container.Resolve<IUnitOfWork>();         
+            _unlearningWordsManager = container.Resolve<IUnlearningWordsService>();          
             var init = container.Resolve<IInitDefaultDb>();
             init.LoadDefaultData();
             _defaultDictionary = _unitOfWork.DictionaryRepository.Get().FirstOrDefault();
             _wordsAllDefaultCollection = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == _defaultDictionary.Id).AsEnumerable();
         }
 
-
-
-        [SetUp]
-        public void Setup()
-        {
-
-        }
-
+  
          [TearDown]
         public void Reset()
         {
@@ -59,77 +50,107 @@ namespace RepeatingWords.NUnitTest
         }
 
 
-       
+        /// <summary>
+        /// при изучении слов, неизученные слова добавляются в словарь невыученных слов
+        /// </summary>
         [Test]
-        public void Test_SaveUnlearningDictionary_UnExistUnlearnedDictionary_IdDictionary()
-        {
-            int countUnlearnedWords = 2;
-            var wordsUnlearn = _wordsAllDefaultCollection.Take(countUnlearnedWords);
+        public void SaveUnlearningDictionary_UnExistUnlearnedDictionary_IdDictionary()
+        {   
+            //added 1 word
+            var wordsUnlearn = _wordsAllDefaultCollection.FirstOrDefault();
             //act
-            int id = _unlearningWordsManager.SaveUnlearningDictionary(_defaultDictionary.Name, wordsUnlearn, null,null);
+            _unlearningWordsManager.SaveUnlearningDictionary(_defaultDictionary.Name, wordsUnlearn).GetAwaiter().GetResult();
             //assert
-            Assert.Greater(id, 0);
-            Assert.AreEqual(_defaultDictionary.Name + Resource.NotLearningPostfics, _unitOfWork.DictionaryRepository.Get(id).Name);
-            Assert.AreEqual(countUnlearnedWords, _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).Count());           
-            CollectionAssert.AreEqual(wordsUnlearn.Select(x=>x.RusWord).OrderByDescending(x=>x), _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).Select(x=>x.RusWord).AsEnumerable().OrderByDescending(x => x));
+            var dictionaries = _unitOfWork.DictionaryRepository.Get();
+            var newDictionary = dictionaries.Where(x => x.Name.Equals(_defaultDictionary.Name + Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase));
+            Assert.AreEqual(2, dictionaries.Count());
+            Assert.IsTrue(newDictionary.Any());
+            int countWords = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == newDictionary.FirstOrDefault().Id).Count();
+            Assert.AreEqual(1,countWords);
+           
+            //added second word
+            wordsUnlearn = _wordsAllDefaultCollection.Skip(1).Take(1).FirstOrDefault();
+            //act
+            _unlearningWordsManager.SaveUnlearningDictionary(_defaultDictionary.Name, wordsUnlearn).GetAwaiter().GetResult();
+            //assert
+            dictionaries = _unitOfWork.DictionaryRepository.Get();
+            newDictionary = dictionaries.Where(x => x.Name.Equals(_defaultDictionary.Name + Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase));
+            Assert.AreEqual(2, dictionaries.Count());          
+            countWords = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == newDictionary.FirstOrDefault().Id).Count();
+            Assert.AreEqual(2, countWords);
+        }
+        /// <summary>
+        /// при продолжении изучении слов, неизученные слова добавляются в словарь невыученных слов
+        /// </summary>
+        [Test]
+        public void SaveUnlearningDictionary_LearnContinueDictionary_WithEmptyUnlearningDictionary()
+        {
+            var nameContinueDictionary = _defaultDictionary.Name + NAME_DB_FOR_CONTINUE;
+            var lastId = _unitOfWork.DictionaryRepository.Get().LastOrDefault().Id;
+            var contUnlDic = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = ++lastId, Name = nameContinueDictionary });                    
+            _unitOfWork.Save();
+            var word1 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "tost" });
+             _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "best" });
+            var word2 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "dron" });
+            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "step" });
+            _unitOfWork.Save();         
+            //act           
+            _unlearningWordsManager.SaveUnlearningDictionary(nameContinueDictionary, word1).GetAwaiter().GetResult();
+            //assert
+            var dictionaries = _unitOfWork.DictionaryRepository.Get();
+            var newDictionary = dictionaries.Where(x => x.Name.Equals(_defaultDictionary.Name + Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase));
+            Assert.AreEqual(3, dictionaries.Count());
+            Assert.IsTrue(newDictionary.Any());
+            var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == newDictionary.FirstOrDefault().Id);
+            Assert.AreEqual(1, words.Count());
+            Assert.AreEqual(word1.RusWord, words.FirstOrDefault().RusWord);
+            //add second word
+            _unlearningWordsManager.SaveUnlearningDictionary(nameContinueDictionary, word2).GetAwaiter().GetResult();
+            //assert
+            dictionaries = _unitOfWork.DictionaryRepository.Get();            
+            Assert.AreEqual(3, dictionaries.Count());            
+            words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == newDictionary.FirstOrDefault().Id);
+            Assert.AreEqual(2, words.Count());
+            Assert.AreEqual(word2.RusWord, words.LastOrDefault().RusWord);
         }
 
+        /// <summary>
+        /// при изучении неизученных ранее слов, слова удаляются по мере их изучения
+        /// </summary>
         [Test]
-        public void Test_SaveUnlearningDictionary_Continue_IdDictionary()
+        public void RemoveUnlearningDictionary_RemoveFromUnlearningDictionary()
         {
-            int countUnlearnedWords = 2;
-            var wordsUnlearn1 = _wordsAllDefaultCollection.Take(countUnlearnedWords);
-            var wordsUnlearn2 = _wordsAllDefaultCollection.Skip(countUnlearnedWords).Take(countUnlearnedWords);
-            var wordsLeft = _wordsAllDefaultCollection.Skip(4).Take(countUnlearnedWords);
-            var wordsAll = _wordsAllDefaultCollection.Skip(2);
-            var nameContinueDictionary = _defaultDictionary.Name + NAME_DB_FOR_CONTINUE;
-            //act
-            _continueWordsManager.SaveContinueDictionary(nameContinueDictionary, wordsAll.ToList(), true);
-            _unlearningWordsManager.SaveUnlearningDictionary(_defaultDictionary.Name, wordsUnlearn1, null, null);
-            int id = _unlearningWordsManager.SaveUnlearningDictionary(nameContinueDictionary, wordsUnlearn2, wordsLeft, wordsAll);
-            //assert
-            Assert.Greater(id, 0);
-            Assert.AreEqual(_defaultDictionary.Name + Resource.NotLearningPostfics, _unitOfWork.DictionaryRepository.Get(id).Name);
-            Assert.AreEqual(3, _unitOfWork.DictionaryRepository.Get().Count());
-            Assert.AreEqual(4, _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).Count());
-            CollectionAssert.AreEqual(wordsUnlearn1.Union(wordsUnlearn2).Select(x => x.RusWord).OrderByDescending(x => x), _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).Select(x => x.RusWord).AsEnumerable().OrderByDescending(x => x));
-        }
-
-
-        [Test]
-        public void Test_SaveUnlearningDictionary_Unlearn_IdDictionary()
-        {
-            int countUnlearnedWords = 2;
-            var wordsUnlearn1 = _wordsAllDefaultCollection.Take(countUnlearnedWords);
-            var wordsUnlearn2 = _wordsAllDefaultCollection.Skip(countUnlearnedWords).Take(countUnlearnedWords);
-            var wordsLeft = _wordsAllDefaultCollection.Skip(4).Take(countUnlearnedWords);
-            var wordsAll = _wordsAllDefaultCollection.Skip(2);
-           
-            var nameContinueDictionary = _defaultDictionary.Name + NAME_DB_FOR_CONTINUE;
-            var nameNotLearn = _defaultDictionary.Name + Resource.NotLearningPostfics;
-           
-            _continueWordsManager.SaveContinueDictionary(nameContinueDictionary, wordsAll.ToList(), true);
-            _unlearningWordsManager.SaveUnlearningDictionary(_defaultDictionary.Name, wordsUnlearn1, null, null);
-            int id = _unlearningWordsManager.SaveUnlearningDictionary(nameContinueDictionary, wordsUnlearn2, wordsLeft, wordsAll);
-            var wordsUnlearnAll3 = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).ToList();
-            wordsLeft = wordsUnlearnAll3.Skip(2); 
-            var wordsUnlearn3 = wordsUnlearnAll3.Take(1); 
+            var nameNotLearn = _defaultDictionary.Name + Resource.NotLearningPostfics;        
+            var lastId = _unitOfWork.DictionaryRepository.Get().LastOrDefault().Id;
+            var unlearnDic = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = ++lastId, Name = nameNotLearn });
+            _unitOfWork.Save();
+            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "fill" });
+            var words1 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "mol" });
+            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "tost" });
+            var words2 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "best" });
+            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "dron" });
+            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "step" });           
+            _unitOfWork.Save();
+            var countBefore = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == unlearnDic.Id).Count();
             //act      
-            id = _unlearningWordsManager.SaveUnlearningDictionary(nameNotLearn, wordsUnlearn3, wordsLeft, wordsUnlearnAll3);        
+            _unlearningWordsManager.RemoveUnlearningDictionary(nameNotLearn, words1).GetAwaiter().GetResult();
             //assert
-            Assert.Greater(id, 0);
-            Assert.AreEqual(nameNotLearn, _unitOfWork.DictionaryRepository.Get(id).Name);
-            Assert.AreEqual(3, _unitOfWork.DictionaryRepository.Get().Count());
-            Assert.AreEqual(3, _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).Count());
-             wordsUnlearnAll3.RemoveAt(1);             
-            CollectionAssert.AreEqual(wordsUnlearnAll3.Select(x=>x.RusWord).OrderByDescending(x => x), _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).Select(x => x.RusWord).AsEnumerable().OrderByDescending(x => x));
+            var countAfter = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == unlearnDic.Id).Count();
+            Assert.AreEqual(countBefore-1, countAfter);
+            //remove second
+            //act      
+            _unlearningWordsManager.RemoveUnlearningDictionary(nameNotLearn, words2).GetAwaiter().GetResult();
+            //assert
+            countAfter = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == unlearnDic.Id).Count();
+            Assert.AreEqual(countBefore - 2, countAfter);
         }
 
-
-
+       /// <summary>
+       /// при продолжении изучении неизученных ранее слов. слова удаляются по мере их изучения
+       /// </summary>
         [Test]
-        public void Test_SaveUnlearningDictionary_UnlearnContinue_IdDictionary()
-        {          
+        public void RemoveUnlearningDictionary_RemoveFromUnlearningContinueDictionary()
+        {
             var nameNotLearn = _defaultDictionary.Name + Resource.NotLearningPostfics;
             var nameContinueUnlearn = nameNotLearn + NAME_DB_FOR_CONTINUE;
             var lastId = _unitOfWork.DictionaryRepository.Get().LastOrDefault().Id;
@@ -144,24 +165,51 @@ namespace RepeatingWords.NUnitTest
             _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "step" });
             _unitOfWork.Save();
             _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "tost" });
-            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "best" });
+            var words1 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "best" });
             _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "dron" });
-            _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "step" });
+            var words2 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = contUnlDic.Id, RusWord = "step" });
             _unitOfWork.Save();
-            var all = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == contUnlDic.Id).ToList();
-            var allUnlearn = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == unlearnDic.Id).AsEnumerable();
-            var unlWords = all.Skip(1).Take(2);
-            var left = all.Skip(3);
-            //act
-            var id = _unlearningWordsManager.SaveUnlearningDictionary(nameContinueUnlearn, unlWords, left, all);
+            var countBefore = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == unlearnDic.Id).Count();
+            //act      
+            _unlearningWordsManager.RemoveUnlearningDictionary(nameNotLearn, words1).GetAwaiter().GetResult();
             //assert
-            Assert.Greater(id, 0);
-            Assert.AreEqual(nameNotLearn, _unitOfWork.DictionaryRepository.Get(id).Name);
-            Assert.AreEqual(3, _unitOfWork.DictionaryRepository.Get().Count());
-            Assert.AreEqual(5, _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).Count());     
-            var listExpect = allUnlearn.Select(x => x.RusWord).ToList();
-            var listActual = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).Select(x => x.RusWord).ToList();
-            CollectionAssert.AreEqual(listExpect, listActual);
+            var countAfter = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == unlearnDic.Id).Count();
+            Assert.AreEqual(countBefore - 1, countAfter);
+            //remove second
+            //act      
+            _unlearningWordsManager.RemoveUnlearningDictionary(nameNotLearn, words2).GetAwaiter().GetResult();
+            //assert
+            countAfter = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == unlearnDic.Id).Count();
+            Assert.AreEqual(countBefore - 2, countAfter);
+        }
+
+
+
+        /// <summary>
+        /// при изучении всех ранее неизученных слов, они удаляются из словаря и словарь удаляется при количестве слов равных 0
+        /// </summary>
+        [Test]
+        public void RemoveUnlearningDictionary_FullRemoveUnlearningDictionary()
+        {
+            var nameNotLearn = _defaultDictionary.Name + Resource.NotLearningPostfics;
+            var lastId = _unitOfWork.DictionaryRepository.Get().LastOrDefault().Id;
+            var unlearnDic = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = ++lastId, Name = nameNotLearn });
+            _unitOfWork.Save();
+            var words1 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "fill" });
+            var words2 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "mol" });
+            var words3 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "tost" });
+            var words4 = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = unlearnDic.Id, RusWord = "best" });
+            _unitOfWork.Save();
+            var countBefore = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == unlearnDic.Id).Count();
+            //act      
+            _unlearningWordsManager.RemoveUnlearningDictionary(nameNotLearn, words1).GetAwaiter().GetResult();
+            _unlearningWordsManager.RemoveUnlearningDictionary(nameNotLearn, words2).GetAwaiter().GetResult();
+            _unlearningWordsManager.RemoveUnlearningDictionary(nameNotLearn, words3).GetAwaiter().GetResult();
+            _unlearningWordsManager.RemoveUnlearningDictionary(nameNotLearn, words4).GetAwaiter().GetResult();
+            //assert
+            var countAfter = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == unlearnDic.Id)?.Count();
+            Assert.AreEqual(0,countAfter);
+            Assert.IsNull(_unitOfWork.DictionaryRepository.Get(unlearnDic.Id));
         }
     }
 }

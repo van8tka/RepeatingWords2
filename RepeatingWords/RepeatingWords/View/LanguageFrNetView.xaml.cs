@@ -1,6 +1,6 @@
 ﻿using RepeatingWords.Services;
 using Xamarin.Forms;
-using Unity;
+
 using RepeatingWords.ViewModel;
 
 namespace RepeatingWords.View
@@ -10,7 +10,7 @@ namespace RepeatingWords.View
         public LanguageFrNetView()
         {
             InitializeComponent();
-            BindingContext = LocatorService.Container.Resolve<LanguageFrNetViewModel>(); 
+            BindingContext = LocatorService.Container.GetInstance<LanguageFrNetViewModel>(); 
         }    
     }
 }

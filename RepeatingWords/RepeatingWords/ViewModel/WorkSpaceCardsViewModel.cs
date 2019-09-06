@@ -10,7 +10,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceCardsViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceCardsViewModel(IDialogService _dialogService, INavigationService _navigationService) : base(_dialogService, _navigationService)
+        public WorkSpaceCardsViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager) : base(_dialogService, _navigationService, unlearningManager)
         {
             SwipeWordCommand = new Command<string>((direction) => { SwipeWord(direction); });
         }
@@ -38,13 +38,14 @@ namespace RepeatingWords.ViewModel
                 case SwipeDirection.Down:
                 case SwipeDirection.Up:
                     {
+                        Model.IsOpenCurrentWord = true;
                         ShowTranslateWord();
                         break;
                     }
                 case SwipeDirection.Left:
-                    {                       
-                        _isOpened = false;
+                    {                                          
                         ShowNextWord();
+                        _isOpened = false;
                         break;
                     }
                 case SwipeDirection.Right:
@@ -61,9 +62,11 @@ namespace RepeatingWords.ViewModel
         }
 
         private void SetViewWords(Words word, bool isNative, bool isOpened)
-        {
+        {         
             if (isOpened)
+            {               
                 isNative = !isNative;
+            }            
             if (isNative)
                 CurrentShowingWord = word.RusWord;
             else
@@ -76,16 +79,16 @@ namespace RepeatingWords.ViewModel
         private void ShowPreviousWord()
         {
             _isOpened = false;
-            if (_indexWordShowNow > 0)
+            if (Model.IndexWordShowNow > 0)
             {
-                _indexWordShowNow--;
-                Model.currentWord = Model.wordsCollection.ElementAt(_indexWordShowNow);
-                SetViewWords(Model.currentWord, Model.isFromNative);
+                Model.IndexWordShowNow--;
+                Model.CurrentWord = Model.WordsLearningAll.ElementAt(Model.IndexWordShowNow);
+                SetViewWords(Model.CurrentWord, Model.IsFromNative);
                 Model.AllShowedWordsCount--;
-                Model.wordsCollectionLeft.Add(Model.currentWord);
+                Model.WordsLeft.Add(Model.CurrentWord);
             }
             else
-                _indexWordShowNow = 0;
+                Model.IndexWordShowNow = 0;
         }
 
       
@@ -93,16 +96,16 @@ namespace RepeatingWords.ViewModel
         {
             SetOpenWordsCount();
             _isOpened = !_isOpened;
-            SetViewWords(Model.currentWord, Model.isFromNative, _isOpened);
+            SetViewWords(Model.CurrentWord, Model.IsFromNative, _isOpened);
 
         }
 
         private void SetOpenWordsCount()
         {
-            if (!Model.wordsOpen.Contains(Model.currentWord))
+            if (!Model.WordsOpen.Contains(Model.CurrentWord))
             {
-                Model.wordsOpen.Add(Model.currentWord);
-                Model.AllOpenedWordsCount++;
+                Model.WordsOpen.Add(Model.CurrentWord);
+                Model.AllOpenedWordsCount++;              
             }
         }
        

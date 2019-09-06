@@ -1,8 +1,6 @@
-﻿
-using RepeatingWords.Services;
+﻿using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using Xamarin.Forms;
-using Unity;
 namespace RepeatingWords.View
 {
 
@@ -11,10 +9,8 @@ namespace RepeatingWords.View
         public AboutView()
         {
             InitializeComponent();
-            BindingContext = LocatorService.Container.Resolve<AboutViewModel>();
-        }
-
-       
+            BindingContext = LocatorService.Container.GetInstance<AboutViewModel>();
+        }      
     }
 
 }
