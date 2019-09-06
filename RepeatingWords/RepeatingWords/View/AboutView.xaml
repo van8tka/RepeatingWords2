@@ -12,7 +12,7 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Image Source="icon.jpg" />
+        <!--<Image Source="mipmap/icon.png" />-->
         <Label Text="{Binding VersionApp}" Style="{StaticResource LabelColorWB}" FontSize="Medium" HorizontalTextAlignment="Center"/>
         <Label Text="Copyright © 2017 devprogram." Style="{StaticResource LabelColorWB}" FontSize="Medium" HorizontalTextAlignment="Center"/>
         <Label Text="{locale:Translate LabelRights}" Style="{StaticResource LabelColorWB}" FontSize="Medium" HorizontalTextAlignment="Center"/>
