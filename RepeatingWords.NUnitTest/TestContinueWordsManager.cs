@@ -148,10 +148,12 @@ namespace RepeatingWords.NUnitTest
 
         [Test]
         public void RemoveContinueDictionary_ReturnTrue()
-        {          
-            _continue.SaveContinueDictionary(_dictionary.Name, _words.Skip(2), false);
+        {        
+            
+            int idDictionary = _continue.SaveContinueDictionary(_dictionary.Name, _words.Skip(2), false);
+            var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == idDictionary).AsEnumerable();
             //act
-            bool success = _continue.RemoveContinueDictionary();
+            bool success = _continue.RemoveContinueDictionary(words);
             //assert
             var dictionaries = _unitOfWork.DictionaryRepository.Get();
             var last = _unitOfWork.LastActionRepository.Get().LastOrDefault();

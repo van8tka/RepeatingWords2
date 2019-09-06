@@ -32,6 +32,7 @@ namespace RepeatingWords.NUnitTest
             container.RegisterType<INavigationService, TestNavigationService>();
             container.RegisterType<IDialogService, TestDialogService>();
             container.RegisterType<IDictionaryNameLearningCreator, DictionaryNameLearningCreator>();
+            container.RegisterType<IDictionaryTypeByName, DictionaryTypeByName>();
             container.RegisterType<IUnlearningWordsService, UnlerningWordsService>();
             container.RegisterType<IVolumeLanguageService, TestVolumeService>();
             container.RegisterType<IContinueWordsService, ContinueWordsService>();
