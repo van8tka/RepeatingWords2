@@ -15,10 +15,10 @@ namespace RepeatingWords.ViewModel
             _volumeService = volumeService;
             Languages = new ObservableCollection<VolumeLanguageModel>();
         }
-        public override Task InitializeAsync(object navigationData)
+        public override async Task InitializeAsync(object navigationData)
         {
             SetLanguages();
-            return base.InitializeAsync(navigationData);
+            await base.InitializeAsync(navigationData);
         }
 
         private void SetLanguages()
@@ -58,21 +58,22 @@ namespace RepeatingWords.ViewModel
             {
                 if(value!=null && !value.IsChecked)
                 {
+                     Languages.First(x => x.IsChecked).IsChecked = false;
                     _selectedItem = value;
                     _selectedItem.IsChecked = true;
                     _volumeService.SetVolumeLanguage(_selectedItem.Name);
                     OnPropertyChanged(nameof(SelectedItem));
                 }
-                BackPage();
+               // BackPage();
             }
         }
 
-        private async void BackPage()
-        {
-            await NavigationService.RemoveLastFromBackStackAsync();
-            await NavigationService.NavigateToAsync<SettingsViewModel>();
-            await NavigationService.RemoveLastFromBackStackAsync();
-        }
+        //private async void BackPage()
+        //{
+        //    await NavigationService.RemoveLastFromBackStackAsync();
+        //    await NavigationService.NavigateToAsync<SettingsViewModel>();
+        //    await NavigationService.RemoveLastFromBackStackAsync();
+        //}
 
         private ObservableCollection<VolumeLanguageModel> _languages;
         public ObservableCollection<VolumeLanguageModel> Languages

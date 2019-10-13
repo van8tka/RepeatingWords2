@@ -23,8 +23,8 @@
                         <ViewCell.View>
                             <StackLayout VerticalOptions="Center" Orientation="Horizontal" >
                                 <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
-                                <Frame HasShadow="True" Padding="5" >
-                                    <BoxView WidthRequest="12" HeightRequest="12" BackgroundColor="{Binding IsChecked,Mode=TwoWay,Converter = {converter:BoolenToColorConverter}}"/>
+                                <Frame HasShadow="True" Padding="5" Margin="0,0,3,0" >
+                                    <BoxView VerticalOptions="Center" WidthRequest="12" HeightRequest="12" MinimumHeightRequest="12" MinimumWidthRequest="12" BackgroundColor="{Binding IsChecked,Mode=TwoWay,Converter = {converter:BoolenToColorConverter}}"/>
                                 </Frame>
                             </StackLayout>
                         </ViewCell.View>
