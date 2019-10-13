@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="SQLite_iOS.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +130,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\RepeatingWords.Interfaces\RepeatingWords.Interfaces.csproj">
+      <Project>{E373E6C9-F821-4EAA-9A5A-BF322FB09226}</Project>
+      <Name>RepeatingWords.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RepeatingWords.LoggerService\RepeatingWords.LoggerService.csproj">
+      <Project>{57d3e0d8-ecd2-44b1-a17d-12d89624ff75}</Project>
+      <Name>RepeatingWords.LoggerService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RepeatingWords\RepeatingWords.csproj">
       <Project>{BDA9851E-9C15-4E2A-8384-AA502002010D}</Project>
       <Name>RepeatingWords</Name>

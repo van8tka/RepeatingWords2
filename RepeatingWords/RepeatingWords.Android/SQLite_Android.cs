@@ -12,7 +12,7 @@ namespace RepeatingWords.Droid
         public SQLite_Android() { }
         public string GetDatabasePath(string filename)
         {
-            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);                    
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);                    
             return Path.Combine(documentsPath, filename); ;
         }
     }

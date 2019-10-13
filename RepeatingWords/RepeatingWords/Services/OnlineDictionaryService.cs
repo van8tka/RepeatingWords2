@@ -3,72 +3,80 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RepeatingWords.Model;
 using System;
+using System.IO;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.LoggerService;
 using System.Net;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
+ 
 using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords.Services
 {
-    internal class CustomWebClient
+   
+
+
+    internal class StandartWebClient
     {
-        public HttpWebRequest CreateRequest(Uri uri)
+        private static HttpClient _client;
+        private static StandartWebClient _instance;
+        private static object _lock = new object();
+
+        private StandartWebClient()
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            request.Method = "GET";
-            request.Timeout = 30000;
-            return request;
+            _client = new HttpClient();
         }
 
-        public HttpWebResponse CreateResponse(HttpWebRequest request)
+
+        public static StandartWebClient GetInstance()
         {
-            HttpWebResponse response = null;
-            try
+            if (_instance != null)
+                return _instance;
+            else
             {
-                response = (HttpWebResponse)request.GetResponse();
-            }
-            catch (WebException ex)
-            {
-                response = (HttpWebResponse)ex.Response;
-                if (response == null)
-                    throw;
-            }
-            finally
-            {
-                if (response != null)
+                lock (_lock)
                 {
-                    if (response.StatusCode != HttpStatusCode.OK)
-                        throw new WebException("Response answer is not OK");
-                    if ((int)response.StatusCode >= 500)
+                    if (_instance != null)
+                        return _instance;
+                    else
                     {
-                        response.Close();
-                        throw new WebException(string.Format("Client received error response from server. Status code: {0}.", response.StatusCode), WebExceptionStatus.ReceiveFailure);
+                        _instance = new StandartWebClient();
+                        return _instance;
                     }
                 }
             }
-            return response;
         }
-        public HttpWebResponse CreateResponse(HttpWebRequest request, out string responseData)
+
+
+        public HttpRequestMessage CreateRequest(Uri uri)
         {
-            HttpWebResponse response = CreateResponse(request);
-            StringBuilder sb = new StringBuilder();
-            using (var stream = response.GetResponseStream())
+            var requestMessage = new HttpRequestMessage();
+            requestMessage.RequestUri = uri;
+            requestMessage.Method = HttpMethod.Get;
+            requestMessage.Headers.Add("Accept","application/json");
+            return requestMessage;
+        }
+ 
+
+        public  HttpResponseMessage CreateResponse(HttpRequestMessage request)
+        {
+          return _client.SendAsync(request).GetAwaiter().GetResult();
+        }
+
+        public HttpResponseMessage CreateResponse(HttpRequestMessage request, out string responseData)
+        {
+            var response = _client.SendAsync(request).GetAwaiter().GetResult();
+            responseData = string.Empty;
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                int readCount;
-                int count = 1024;
-                byte[] buffer = new byte[count];
-                while ((readCount = stream.Read(buffer, 0, buffer.Length)) != 0)
-                {
-                    sb.Append(Encoding.UTF8.GetString(buffer, 0, readCount));
-                }
+                HttpContent responseContent = response.Content;
+                responseData =   responseContent.ReadAsStringAsync().GetAwaiter().GetResult();
             }
-            responseData = sb.ToString();
             return response;
         }
     }
-
-
 
 
 
@@ -147,7 +155,8 @@ namespace RepeatingWords.Services
             {
                return await Task.Run(() =>
                 {
-                    var client = new CustomWebClient();
+                    //var client = new CustomWebClient();
+                    var client = StandartWebClient.GetInstance();
                     var request = client.CreateRequest(uri);
                     string data;
                     client.CreateResponse(request, out data);
@@ -175,7 +184,7 @@ namespace RepeatingWords.Services
                 return await Task.Run(() =>
                 {
                     var uri = new Uri(UrlVersion);
-                    var client = new CustomWebClient();
+                    var client = StandartWebClient.GetInstance();
                     var request = client.CreateRequest(uri);
                     string data;
                    var response = client.CreateResponse(request, out data);
