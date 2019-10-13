@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RepeatingWords.View.WorkSpaceCardsView">
+  <ContentView.Content>
+        <StackLayout x:Name="stlWordContainer" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+            <StackLayout.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Left" Command="{Binding SwipeWordCommand}" CommandParameter="Left"/>
+                    <SwipeGestureRecognizer Direction="Right" Command="{Binding SwipeWordCommand}" CommandParameter="Right"/>
+                    <SwipeGestureRecognizer Direction="Up" Command="{Binding SwipeWordCommand}" CommandParameter="Up"/>
+                    <SwipeGestureRecognizer Direction="Down" Command="{Binding SwipeWordCommand}" CommandParameter="Down"/>
+                </StackLayout.GestureRecognizers>
+                <Label  x:Name="WordRepeat" Text="{Binding CurrentShowingWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorCustomBackgrountButton}"  >
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                          <On Platform="Android" Value="24" />
+                          <On Platform="UWP" Value="22" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
+            <Label  x:Name="TranscriptionRepeat" IsVisible="{Binding IsTranscriptionShow}" Text="{Binding CurrentTranscriptWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" HorizontalTextAlignment="Center" >
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double">
+                      <On Platform="Android" Value="24" />
+                      <On Platform="UWP" Value="22" />
+                    </OnPlatform>
+                </Label.FontSize>
+            </Label>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

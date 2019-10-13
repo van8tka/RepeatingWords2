@@ -125,14 +125,6 @@
     <value>Словари</value>
     <comment>Добавление словаря и (или) слов</comment>
   </data>
-  <data name="ButtonAddWord" xml:space="preserve">
-    <value>Добавить слово</value>
-    <comment>Кн добавить слово</comment>
-  </data>
-  <data name="ButtonAddWorFrFile" xml:space="preserve">
-    <value>Загрузить слова из файла</value>
-    <comment>Кн загрузки слов из файла</comment>
-  </data>
   <data name="ButtonCreate" xml:space="preserve">
     <value>Создать</value>
     <comment>Кнопка создать</comment>
@@ -157,14 +149,6 @@
     <value>Изучение слов</value>
     <comment>Кн повторение карточек</comment>
   </data>
-  <data name="ButtonTurnCard" xml:space="preserve">
-    <value>Перевернуть карточку</value>
-    <comment>Кн перевернуть карточку</comment>
-  </data>
-  <data name="ChooseDictionaryForRepeat" xml:space="preserve">
-    <value>Изучение</value>
-    <comment>Выбор словаря для изучения слов(повторения)</comment>
-  </data>
   <data name="Continue" xml:space="preserve">
     <value>Продолжить</value>
     <comment>Продолжение повторения слов с того места где остановились прошлый раз</comment>
@@ -172,22 +156,6 @@
   <data name="EntryNameDict" xml:space="preserve">
     <value>Введите название словаря</value>
     <comment>Поле ввода Введите название словаря</comment>
-  </data>
-  <data name="HeaderMain" xml:space="preserve">
-    <value>Используйте карточки для изучения иностранных слов и их повторения.</value>
-    <comment>Заголовок на главной странице</comment>
-  </data>
-  <data name="HowUseApp" xml:space="preserve">
-    <value>Помощь</value>
-    <comment>Справочная информация</comment>
-  </data>
-  <data name="LabelChooseDict" xml:space="preserve">
-    <value>Выберите словарь</value>
-    <comment>Заг выберите словарь</comment>
-  </data>
-  <data name="LabelChooseDictOrCreate" xml:space="preserve">
-    <value>Выберите словарь или создайте новый</value>
-    <comment>Заголовок выбор словаря или создание нового</comment>
   </data>
   <data name="LabelChooseFile" xml:space="preserve">
     <value>Выберите файл для загрузки в словарь</value>
@@ -206,14 +174,6 @@
   </data>
   <data name="LabelHeadCreateInstr" xml:space="preserve">
     <value>Создание словаря и добавление слов</value>
-  </data>
-  <data name="LabelInstruction" xml:space="preserve">
-    <value>Инструкция по использованию программы</value>
-    <comment>Заголовок Инструкция по использованию программы</comment>
-  </data>
-  <data name="LabelNameDict" xml:space="preserve">
-    <value>Введите название нового словаря</value>
-    <comment>Заголовок Введите название нового словаря</comment>
   </data>
   <data name="LabelNeedAddFile" xml:space="preserve">
     <value>Для начала работы с программой необходимо:
@@ -290,23 +250,11 @@
   <data name="ModalActChange" xml:space="preserve">
     <value>Изменить</value>
   </data>
-  <data name="ModalActFromFtoTr" xml:space="preserve">
-    <value>С русского на иностранный</value>
-  </data>
   <data name="ModalActFromTrtoF" xml:space="preserve">
-    <value>С иностранного на русский</value>
+    <value>Первым отображать иностранное слово?</value>
   </data>
   <data name="ModalAddWords" xml:space="preserve">
     <value>Слова добавлены в словарь</value>
-  </data>
-  <data name="ModalAllWordsComplete" xml:space="preserve">
-    <value>Пройдены все слова</value>
-  </data>
-  <data name="ModalChooceAction" xml:space="preserve">
-    <value>Выберите действие над словом:</value>
-  </data>
-  <data name="ModalChooseLang" xml:space="preserve">
-    <value>Выберите отображение языка карточки:</value>
   </data>
   <data name="ModalDict" xml:space="preserve">
     <value>Словарь</value>
@@ -314,29 +262,8 @@
   <data name="ModalException" xml:space="preserve">
     <value>Ошибка</value>
   </data>
-  <data name="ModalFinish" xml:space="preserve">
-    <value>Закончить</value>
-  </data>
-  <data name="ModalIncorrectFile" xml:space="preserve">
-    <value>Слова недобавлены в словарь, возможно некорректный файл</value>
-  </data>
-  <data name="ModalNoWord" xml:space="preserve">
-    <value>Словарь не содержит слов</value>
-  </data>
-  <data name="ModalRemove" xml:space="preserve">
-    <value>удален.</value>
-  </data>
   <data name="ModalRemoveAct" xml:space="preserve">
     <value>Удалить</value>
-  </data>
-  <data name="ModalRestart" xml:space="preserve">
-    <value>Начать заново</value>
-  </data>
-  <data name="ModalWord" xml:space="preserve">
-    <value>Слово</value>
-  </data>
-  <data name="ModalWordRemove" xml:space="preserve">
-    <value>удалено.</value>
   </data>
   <data name="ModelForAddingWord" xml:space="preserve">
     <value>Для добавления слова обязательно введите русское значение и перевод(транскрипция не обязательна).</value>
@@ -350,9 +277,6 @@
   <data name="ModelWordChange" xml:space="preserve">
     <value>Слово изменено!</value>
   </data>
-  <data name="ModalDictOrWordRemove" xml:space="preserve">
-    <value>Словарь или слово удалено!</value>
-  </data>
   <data name="ButtonShowWords" xml:space="preserve">
     <value>Просмотр списка слов</value>
     <comment>Переход на страницу списка слов словаря</comment>
@@ -361,41 +285,14 @@
     <value>Язык озвучки</value>
     <comment>Текст в picker - выпадающем списке для выбора языка озвучки.</comment>
   </data>
-  <data name="ButtonAddWorFrNet" xml:space="preserve">
-    <value>Добавить словарь из интернета</value>
-    <comment>Загрузка словарей из devprogram.ru</comment>
-  </data>
   <data name="ModalCheckNet" xml:space="preserve">
     <value>Проверьте наличие интернет соединения</value>
-  </data>
-  <data name="LabelDictionaryListFromNet" xml:space="preserve">
-    <value>Выберите словарь для загрузки в память телефона</value>
-  </data>
-  <data name="LabelLanguageListFromNet" xml:space="preserve">
-    <value>Выберите язык для изучения</value>
-  </data>
-  <data name="ButtonReviewText" xml:space="preserve">
-    <value>Оставить отзыв</value>
-  </data>
-  <data name="LabelCountTurned" xml:space="preserve">
-    <value>Перевернутых:</value>
-    <comment>Количество нажатий на кн Перевернуть карточку</comment>
-  </data>
-  <data name="ModalLerningTurnedWords" xml:space="preserve">
-    <value>Изучение перевернутых слов</value>
-    <comment>Кнопка для изучения перевертышей</comment>
   </data>
   <data name="LabelChooseTheme" xml:space="preserve">
     <value>Выберите тему</value>
   </data>
   <data name="LabelThemeDark" xml:space="preserve">
     <value>Темная</value>
-  </data>
-  <data name="LabelThemeLight" xml:space="preserve">
-    <value>Светлая</value>
-  </data>
-  <data name="LabelSettings" xml:space="preserve">
-    <value>Настройки</value>
   </data>
   <data name="ButtonPolicy" xml:space="preserve">
     <value>Приватность</value>
@@ -415,27 +312,11 @@
   <data name="LabelShowKeyboard" xml:space="preserve">
     <value>Предлагать</value>
   </data>
-  <data name="ModalActChooseKeyboard" xml:space="preserve">
-    <value>Выберите клавиатуру:</value>
-  </data>
-  <data name="ModalActSysKeyboard" xml:space="preserve">
-    <value>Клавиатура системы</value>
-  </data>
-  <data name="ModalActTranscKeyboard" xml:space="preserve">
-    <value>Клавиатура транскрипции</value>
-    <comment>Клавиатура транскрипции</comment>
-  </data>
-  <data name="ModalActList" xml:space="preserve">
-    <value>Список слов</value>
-  </data>
   <data name="ButtonSendReview" xml:space="preserve">
     <value>Оставить отзыв</value>
   </data>
   <data name="MessagePleaseReview" xml:space="preserve">
     <value>Пожалуйста оставьте свой отзыв о приложении, Ваше мнение очень важно для нас.</value>
-  </data>
-  <data name="ModelNoFillFullNameDictionary" xml:space="preserve">
-    <value>Введите название словаря</value>
   </data>
   <data name="BackUpCreateBtn" xml:space="preserve">
     <value>Создать резервную копию</value>
@@ -469,9 +350,6 @@
   </data>
   <data name="BackUpSearch" xml:space="preserve">
     <value>Поиск резервной копии</value>
-  </data>
-  <data name="BackupStr" xml:space="preserve">
-    <value>Резервное копирование</value>
   </data>
   <data name="BackupWasCreatedGoogle" xml:space="preserve">
     <value>Резервная копия создана успешно</value>
@@ -543,6 +421,86 @@
     <value>screen24ru.jpg</value>
   </data>
   <data name="NotLearningPostfics" xml:space="preserve">
-    <value>- перевернутые карточки</value>
+    <value> - перевернутые карточки</value>
+  </data>
+  <data name="TitleAbout" xml:space="preserve">
+    <value>О приложении</value>
+    <comment>Заголовок страницы о приложении</comment>
+  </data>
+  <data name="TitleHelpAddWord" xml:space="preserve">
+    <value>Как добавить слова</value>
+    <comment>Заголовок страницы помощи про добавлении слова</comment>
+  </data>
+  <data name="TitleHelpers" xml:space="preserve">
+    <value>Помощь</value>
+    <comment>Заголовок страницы помощь</comment>
+  </data>
+  <data name="TitleHelpImportFile" xml:space="preserve">
+    <value>Как импортировать слова</value>
+    <comment>Заголовок страницы помощи про импорте слов</comment>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Настройки</value>
+    <comment>Заголовок страницы настройки</comment>
+  </data>
+  <data name="TitleDictionaries" xml:space="preserve">
+    <value>Словари</value>
+  </data>
+  <data name="TitleLanguages" xml:space="preserve">
+    <value>Выбор языка</value>
+  </data>
+  <data name="TitleChangeWord" xml:space="preserve">
+    <value>Изменить слово</value>
+  </data>
+  <data name="TitleCreateWord" xml:space="preserve">
+    <value>Создать слово</value>
+  </data>
+  <data name="TitleTranscription" xml:space="preserve">
+    <value>Транскрипция</value>
+  </data>
+  <data name="TitleExplorer" xml:space="preserve">
+    <value>Файловый менеджер</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="AllWordsCountLabel" xml:space="preserve">
+    <value>Всего:</value>
+  </data>
+  <data name="OpenedWordsCountLabel" xml:space="preserve">
+    <value>Открытых:</value>
+  </data>
+  <data name="ShowedWordsCountLabel" xml:space="preserve">
+    <value>Показанных:</value>
+  </data>
+  <data name="TitleVolumeLanguages" xml:space="preserve">
+    <value>Выберите язык озвучки</value>
+  </data>
+  <data name="ButtonCheck" xml:space="preserve">
+    <value>✓  check</value>
+  </data>
+  <data name="ButtonHint" xml:space="preserve">
+    <value>?  hint</value>
+  </data>
+  <data name="EnterAnswer" xml:space="preserve">
+    <value>Enter answer</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="ModalUpdateApp" xml:space="preserve">
+    <value>Доступна новая версия приложения. Хотите обновить?</value>
+  </data>
+  <data name="WaitIndicator" xml:space="preserve">
+    <value>Загрузка..</value>
+  </data>
+  <data name="ModalFinishWords" xml:space="preserve">
+    <value>Поздравляю! Слова закончились.</value>
+  </data>
+  <data name="SaveState" xml:space="preserve">
+    <value>Сохранение состояния..</value>
   </data>
 </root>

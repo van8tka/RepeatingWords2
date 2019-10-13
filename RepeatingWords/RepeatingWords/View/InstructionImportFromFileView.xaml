@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.View.InstructionImportFromFileView"
+                xmlns:locale ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+              Style="{StaticResource TitleApp}"
+             Title="{locale:Translate TitleHelpImportFile}"
+             >
+    <!--панель управлления-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout  HorizontalOptions="FillAndExpand" Padding="10">
+      <Label Text="{locale:Translate LabelHeadAddFile}" Style="{StaticResource LableHeadApp}" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+
+            <Label Text="{locale:Translate LabelNeedAddFile}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Label Text="{locale:Translate LabelNeedCreate}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Label Text="{locale:Translate LabelScreen21}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+
+            <Image Source="{locale:Translate  screen20}" Margin="20"/>
+            <Label Text="{locale:Translate LabelScreen22}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Image Source="{locale:Translate  screen21}" Margin="20"/>
+            <Label Text="{locale:Translate LabelScreen231}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Label Text="{locale:Translate LabelScreen232}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Image Source="{locale:Translate  screen22}" Margin="20"/>
+            <Label Text="{locale:Translate LabelScreen24}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Image Source="{locale:Translate  screen23}" Margin="20"/>
+            <Label Text="{locale:Translate LabelScreen25}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Image Source="{locale:Translate  screen24}" Margin="20"/>
+     
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

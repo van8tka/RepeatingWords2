@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepeatingWords.View.CreateWordView"
+             xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             xmlns:behavior ="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
+             Style="{StaticResource TitleApp}"
+           Title="{Binding TitleEditWord}"
+             >
+    
+    <!--панель управлления-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+    <StackLayout Margin="10,5,10,0">
+            <Label Text="{local:Translate LabelFirstWord}" VerticalOptions="Center" FontSize="Medium" HorizontalOptions="Center"  Style="{DynamicResource LabelColor}"/>
+            <Entry x:Name="EntryNativeWord" Text="{Binding NativeWord}" Placeholder="{local:Translate LabelFirstWord}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" BackgroundColor="Transparent" PlaceholderColor="Gray"/>
+            <Label Text="{local:Translate LabelSecondWord}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Entry Text="{Binding TranslateWord}" Placeholder="{local:Translate LabelSecondWord}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" BackgroundColor="Transparent" PlaceholderColor="Gray"/>
+            <Label Text="{local:Translate LabelTranscription}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Entry Text="{Binding TranscriptionWord}"  x:Name="EntryTranscription"  IsEnabled="True" Placeholder="{local:Translate LabelTranscription}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" BackgroundColor="Transparent" PlaceholderColor="Gray" >
+                <Entry.Behaviors>
+                    <behavior:EventToCommandBehavior EventName="Focused" Command="{Binding FocusedTranscriptionCommand}"/>
+                </Entry.Behaviors>
+            </Entry>
+            <Button Style="{StaticResource buttonStyle}"  Text="{local:Translate ButtonSave}" Command="{Binding SendCommand}"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

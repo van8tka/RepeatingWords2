@@ -9,7 +9,6 @@ namespace RepeatingWords.Droid
     class AdMobRendererInterstitial : IAdmobInterstitial
     {
         InterstitialAd _ad;
-
         public void Show(string adUnit)
         {
             var context = Android.App.Application.Context;

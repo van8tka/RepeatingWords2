@@ -19,7 +19,7 @@ namespace RepeatingWords.Droid
             if (Control == null)
             {
                 var ad = new AdView(Context);
-                ad.AdSize = AdSize.Banner;
+                ad.AdSize = AdSize.SmartBanner;
                 ad.AdUnitId = "ca-app-pub-5993977371632312/4711503801";
                 var requestbuilder = new AdRequest.Builder();
                 ad.LoadAd(requestbuilder.Build());

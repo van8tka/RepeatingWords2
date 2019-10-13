@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.14.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="Unity" Version="5.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RepeatingWords.DataService\RepeatingWords.DataService.csproj" />
+    <ProjectReference Include="..\RepeatingWords.Interfaces\RepeatingWords.Interfaces.csproj" />
+    <ProjectReference Include="..\RepeatingWords\RepeatingWords\RepeatingWords.csproj" />
+  </ItemGroup>
+
+</Project>

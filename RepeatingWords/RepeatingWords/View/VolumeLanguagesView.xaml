@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RepeatingWords.View.VolumeLanguagesView"
+             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             xmlns:converter="clr-namespace:RepeatingWords.Converters;assembly=RepeatingWords"
+             Title="{local:Translate TitleVolumeLanguages}"
+             Style="{DynamicResource TitleApp}"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
+    </ContentPage.ToolbarItems>
+    
+
+    <StackLayout Margin="10,10,10,0">
+        <ListView ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout VerticalOptions="Center" Orientation="Horizontal" >
+                                <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                <Frame HasShadow="True" Padding="5" Margin="0,0,3,0" >
+                                    <BoxView VerticalOptions="Center" WidthRequest="12" HeightRequest="12" MinimumHeightRequest="12" MinimumWidthRequest="12" BackgroundColor="{Binding IsChecked,Mode=TwoWay,Converter = {converter:BoolenToColorConverter}}"/>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
