@@ -26,7 +26,7 @@
                                     <ViewCell>
                                         <ViewCell.View>
                                             <StackLayout VerticalOptions="Center" >
-                                                <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" />
+                                                <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation"/>
                                             </StackLayout>
                                         </ViewCell.View>
                                     </ViewCell>
