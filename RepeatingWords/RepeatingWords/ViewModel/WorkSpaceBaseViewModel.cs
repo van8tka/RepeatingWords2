@@ -13,17 +13,20 @@ namespace RepeatingWords.ViewModel
         public string CurrentShowingWord { get => _currentShowingWord; set { _currentShowingWord = value; OnPropertyChanged(nameof(CurrentShowingWord)); } }
         private RepeatingWordsModel _model;
         public RepeatingWordsModel Model { get => _model; set { _model = value; OnPropertyChanged(nameof(Model)); } }
+        public Xamarin.Forms.View WordContainer { get; set; }
 
-        public WorkSpaceBaseViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService _unlearningWords)
+        public WorkSpaceBaseViewModel(IDialogService _dialogService, INavigationService _navigationService,
+            IUnlearningWordsService _unlearningWords, IAnimationService _animationService)
         {
             this._dialogService = _dialogService;
             this._navigationService = _navigationService;
             this._unlearningWords = _unlearningWords;
+            this.AnimationService = _animationService;
         }
         private readonly IDialogService _dialogService;
         private readonly INavigationService _navigationService;
         private readonly IUnlearningWordsService _unlearningWords;
-
+        protected readonly IAnimationService AnimationService;
        
         internal async void ShowNextWord(bool isFirstShowAfterLoad = false)
         {

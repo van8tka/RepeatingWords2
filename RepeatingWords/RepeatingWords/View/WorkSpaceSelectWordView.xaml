@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="RepeatingWords.View.WorkSpaceSelectWordView">
   <ContentView.Content>
-        <StackLayout >
+        <StackLayout x:Name="stlWordContainer">
             <Label  x:Name="WordRepeat" Text="{Binding CurrentShowingWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorCustomBackgrountButton}"  >
                 <Label.FontSize>
                     <OnPlatform x:TypeArguments="x:Double">

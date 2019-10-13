@@ -15,6 +15,7 @@ namespace RepeatingWords.View
         {
             InitializeComponent();         
             _customContentViewModel = LocatorService.Container.GetInstance<WorkSpaceEnterWordViewModel>();
+            _customContentViewModel.WordContainer = stlWordContainer;
             BindingContext = _customContentViewModel as WorkSpaceEnterWordViewModel;             
         }
         private ICustomContentViewModel _customContentViewModel;

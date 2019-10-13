@@ -13,9 +13,7 @@ namespace RepeatingWords.View
         {
             InitializeComponent();
             customContentVM = LocatorService.Container.GetInstance<WorkSpaceCardsViewModel>();
-            if (customContentVM is WorkSpaceCardsViewModel cvm)
-                cvm.WordContainer = stlWordContainer;
-             
+            customContentVM.WordContainer = stlWordContainer;
             BindingContext = CustomVM as WorkSpaceCardsViewModel;
         }
         private readonly ICustomContentViewModel customContentVM;

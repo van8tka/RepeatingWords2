@@ -13,7 +13,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceSelectWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager) : base(_dialogService, _navigationService, unlearningManager)
+        public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager, IAnimationService animation) : base(_dialogService, _navigationService, unlearningManager, animation)
         {
             TapWordCommand = new Command<string>(TapWord);
         }
@@ -45,8 +45,10 @@ namespace RepeatingWords.ViewModel
                     Model.AllOpenedWordsCount++;
                     await Task.Delay(1800);
                 }
-                ShowNextWord();
                 ClearBackgroundColor();
+                await AnimationService.AnimationFade(WordContainer, 0);
+                ShowNextWord();
+                await AnimationService.AnimationFade(WordContainer, 1);
                 isTapAlready = false;
             }           
         }

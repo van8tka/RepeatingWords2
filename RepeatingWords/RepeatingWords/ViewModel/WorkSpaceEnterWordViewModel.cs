@@ -13,7 +13,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceEnterWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager) : base(_dialogService, _navigationService, unlearningManager)
+        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager, IAnimationService animation) : base(_dialogService, _navigationService, unlearningManager, animation)
         {
             CheckWordCommand = new Command(async () => await CheckWord());
             HintWordCommand = new Command(async () => await HintWord());
@@ -39,11 +39,13 @@ namespace RepeatingWords.ViewModel
         public ICommand CheckWordCommand { get; set; }
         public ICommand HintWordCommand { get; set; }
 
-        internal override void SetViewWords(Words currentWord, bool isFromNative)
+        internal override async void SetViewWords(Words currentWord, bool isFromNative)
         {
+            await AnimationService.AnimationFade(WordContainer,0);
             _showingWord = currentWord;
             CurrentShowingWord = isFromNative ? currentWord.RusWord : currentWord.EngWord;
             EnterAnswerWord = string.Empty;
+            await AnimationService.AnimationFade(WordContainer, 1);
         }
 
         /// <summary>
