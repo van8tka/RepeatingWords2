@@ -12,12 +12,12 @@ namespace RepeatingWords.Helpers
     public class LanguageLoader: ILanguageLoaderFacade
     {
 
-        public LanguageLoader(IWebApiService _webService, IUnitOfWork _unitOfWork)
+        public LanguageLoader(IWebClient _webService, IUnitOfWork _unitOfWork)
         {
             this._webService = _webService ?? throw new ArgumentNullException(nameof(_webService));
             this._unitOfWork = _unitOfWork ?? throw new ArgumentNullException(nameof(_unitOfWork));
         }
-        private readonly IWebApiService _webService;
+        private readonly IWebClient _webService;
         private readonly IUnitOfWork _unitOfWork;
 
 

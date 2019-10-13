@@ -3,21 +3,14 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RepeatingWords.Model;
 using System;
-using System.IO;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.LoggerService;
 using System.Net;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Text;
- 
 using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords.Services
 {
-   
-
-
     internal class StandartWebClient
     {
         private static HttpClient _client;
@@ -62,25 +55,39 @@ namespace RepeatingWords.Services
 
         public  HttpResponseMessage CreateResponse(HttpRequestMessage request)
         {
-          return _client.SendAsync(request).GetAwaiter().GetResult();
+            try
+            {
+                return _client.SendAsync(request).GetAwaiter().GetResult();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
         public HttpResponseMessage CreateResponse(HttpRequestMessage request, out string responseData)
         {
-            var response = _client.SendAsync(request).GetAwaiter().GetResult();
-            responseData = string.Empty;
-            if (response.StatusCode == HttpStatusCode.OK)
+            try
             {
-                HttpContent responseContent = response.Content;
-                responseData =   responseContent.ReadAsStringAsync().GetAwaiter().GetResult();
+                var response = _client.SendAsync(request).GetAwaiter().GetResult();
+                responseData = string.Empty;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    HttpContent responseContent = response.Content;
+                    responseData = responseContent.ReadAsStringAsync().GetAwaiter().GetResult();
+                }
+                return response;
             }
-            return response;
+            catch (Exception e)
+            {
+                throw;
+            }
         }
     }
 
 
 
-    internal class OnlineDictionaryService : IWebApiService
+    internal class WebClient : IWebClient
     {
         private const string Url = "http://devprogram.ru/api/data/";
         private const string UrlLang = "http://devprogram.ru/api/langdata/";
@@ -208,8 +215,5 @@ namespace RepeatingWords.Services
                 throw;
             }
         }
-
-       
-
     }
 }

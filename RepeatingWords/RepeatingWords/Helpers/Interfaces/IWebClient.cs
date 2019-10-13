@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RepeatingWords.Helpers.Interfaces
 {
-    public interface IWebApiService
+    public interface IWebClient
     {
         /// <summary>
         /// получение списка словарей(устаревший метод)

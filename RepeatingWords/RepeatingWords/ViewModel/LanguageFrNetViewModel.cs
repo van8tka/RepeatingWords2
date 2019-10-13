@@ -13,8 +13,8 @@ namespace RepeatingWords.ViewModel
     public class LanguageFrNetViewModel : ViewModelBase
     {
         //создаем класс для работы с WebApi сайта и получения данных
-        private readonly IWebApiService _webService;
-        public LanguageFrNetViewModel(INavigationService navigationServcie, IDialogService dialogService, IWebApiService webService, ILanguageLoaderFacade languageLoader) : base(navigationServcie, dialogService)
+        private readonly IWebClient _webService;
+        public LanguageFrNetViewModel(INavigationService navigationServcie, IDialogService dialogService, IWebClient webService, ILanguageLoaderFacade languageLoader) : base(navigationServcie, dialogService)
         {
             _webService = webService;
             LanguageList = new ObservableCollection<Language>();

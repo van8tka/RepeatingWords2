@@ -9,11 +9,11 @@ namespace RepeatingWords.Services
 {
     public class NewVersionAppChecker : INewVersionAppChecker
     {
-        private readonly IWebApiService _webService;
+        private readonly IWebClient _webService;
         private readonly IDialogService _dialogService;
 
 
-        public NewVersionAppChecker(IWebApiService webService, IDialogService dialogService)
+        public NewVersionAppChecker(IWebClient webService, IDialogService dialogService)
         {
             _webService = webService;
             _dialogService = dialogService;

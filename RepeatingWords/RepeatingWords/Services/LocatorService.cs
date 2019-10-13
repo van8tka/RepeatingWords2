@@ -30,7 +30,7 @@ namespace RepeatingWords.Services
             _container.Register<BackupLocalService>();
             _container.Register<IThemeService, ThemeChangeService>();
             _container.Register<IKeyboardTranscriptionService, KeyboardTranscriptionChangeService>();
-            _container.Register<IWebApiService, OnlineDictionaryService>();
+            _container.Register<IWebClient, WebClient>();
             _container.Register<IImportFile, ImportFileToDb>();
             _container.Register<IVolumeLanguageService, VolumeLanguageService>();
             _container.Register<IDictionaryNameLearningCreator, DictionaryNameLearningCreator>();
