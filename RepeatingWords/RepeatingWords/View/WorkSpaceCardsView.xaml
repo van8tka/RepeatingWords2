@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="RepeatingWords.View.WorkSpaceCardsView">
   <ContentView.Content>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+        <StackLayout x:Name="stlWordContainer" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
             <StackLayout.GestureRecognizers>
                     <SwipeGestureRecognizer Direction="Left" Command="{Binding SwipeWordCommand}" CommandParameter="Left"/>
                     <SwipeGestureRecognizer Direction="Right" Command="{Binding SwipeWordCommand}" CommandParameter="Right"/>

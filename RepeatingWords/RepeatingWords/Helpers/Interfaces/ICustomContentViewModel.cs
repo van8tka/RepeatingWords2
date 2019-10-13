@@ -1,4 +1,5 @@
 ﻿using RepeatingWords.Model;
+using Xamarin.Forms;
 
 namespace RepeatingWords.Helpers.Interfaces
 {
