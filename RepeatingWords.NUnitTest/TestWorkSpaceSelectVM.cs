@@ -20,7 +20,7 @@ namespace RepeatingWords.NUnitTest
         [SetUp]
         public void Begin()
         {
-            vm = new WorkSpaceSelectWordViewModel(null, null,null);
+            vm = new WorkSpaceSelectWordViewModel(null, null,null, null);
             model = new RepeatingWordsModel();
             model.WordsLearningAll = new List<Words>()
             {
