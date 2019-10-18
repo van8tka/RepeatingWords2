@@ -18,8 +18,11 @@ namespace RepeatingWords.ViewModel
         public override async Task InitializeAsync(object navigationData)
         {
             SetLanguages();
+            _settingsVm = (navigationData as SettingsViewModel);
             await base.InitializeAsync(navigationData);
         }
+
+        private SettingsViewModel _settingsVm;
 
         private void SetLanguages()
         {
@@ -63,17 +66,11 @@ namespace RepeatingWords.ViewModel
                     _selectedItem.IsChecked = true;
                     _volumeService.SetVolumeLanguage(_selectedItem.Name);
                     OnPropertyChanged(nameof(SelectedItem));
+                    _settingsVm.CurrentVoiceLanguage = value.Name;
                 }
-               // BackPage();
             }
         }
 
-        //private async void BackPage()
-        //{
-        //    await NavigationService.RemoveLastFromBackStackAsync();
-        //    await NavigationService.NavigateToAsync<SettingsViewModel>();
-        //    await NavigationService.RemoveLastFromBackStackAsync();
-        //}
 
         private ObservableCollection<VolumeLanguageModel> _languages;
         public ObservableCollection<VolumeLanguageModel> Languages

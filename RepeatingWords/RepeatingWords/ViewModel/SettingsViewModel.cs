@@ -23,7 +23,7 @@ namespace RepeatingWords.ViewModel
             SwitchTranskriptionKeyboardCommand = new Command(SwitchTranscriptionKeyboard);
             BackUpCommand = new Command(async () => { await ChooseCreateBackUp(); }); ;
             RestoreBackUpCommand = new Command(async () => { await RestoreBackup(); });
-            ChangeVoiceLanguageCommand = new Command(async () => await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>());           
+            ChangeVoiceLanguageCommand = new Command(async () => await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>(this));           
         }
 
         private readonly IThemeService _themeService;
