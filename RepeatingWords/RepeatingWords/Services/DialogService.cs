@@ -1,4 +1,5 @@
-﻿using Acr.UserDialogs;
+﻿using System;
+using Acr.UserDialogs;
 using RepeatingWords.Helpers.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,32 +7,42 @@ using System.Threading.Tasks;
 namespace RepeatingWords.Services
 {
     public class DialogService : IDialogService
-    {       
-        public Task<bool> ShowConfirmAsync( string message, string title, string buttonOk, string buttonCancel )
+    {
+        public Task<bool> ShowConfirmAsync(string message, string title, string buttonOk, string buttonCancel)
         {
-            return UserDialogs.Instance.ConfirmAsync( message, title, buttonOk, buttonCancel );
+            return UserDialogs.Instance.ConfirmAsync(message, title, buttonOk, buttonCancel);
         }
 
-        public Task<string> ShowActionSheetAsync( string title, string cancel, string destructive, CancellationToken token=default,params string [] buttons )
+        public Task<string> ShowActionSheetAsync(string title, string cancel, string destructive,
+            CancellationToken token = default, params string[] buttons)
         {
-            return UserDialogs.Instance.ActionSheetAsync( title, cancel, destructive, token, buttons );
+            return UserDialogs.Instance.ActionSheetAsync(title, cancel, destructive, token, buttons);
         }
 
-        public Task ShowAlertDialog(string message,  string oktext, string title = null)
+        public Task ShowAlertDialog(string message, string oktext, string title = null)
         {
             return UserDialogs.Instance.AlertAsync(message, title, oktext);
         }
 
-        public async Task<string> ShowInputTextDialog(string message, string title = null, string okText = null, string cancelText = null, string placeholder = "", CancellationToken cancelToken = default)
+        public async Task<string> ShowInputTextDialog(string message, string title = null, string okText = null,
+            string cancelText = null, string placeholder = "", CancellationToken cancelToken = default)
         {
-            var result = await UserDialogs.Instance.PromptAsync(message, title, okText, cancelText, placeholder, InputType.Default, cancelToken);
+            var result = await UserDialogs.Instance.PromptAsync(message, title, okText, cancelText, placeholder,
+                InputType.Default, cancelToken);
             return result.Text;
         }
 
         public void ShowLoadDialog(string loadMsg = null)
         {
-            UserDialogs.Instance.ShowLoading( string.IsNullOrEmpty(loadMsg) ? Resource.WaitIndicator : loadMsg, MaskType.Clear);
+            UserDialogs.Instance.ShowLoading(string.IsNullOrEmpty(loadMsg) ? Resource.WaitIndicator : loadMsg,
+                MaskType.Clear);
         }
+
+        public void ShowToast(string message)
+        {
+            UserDialogs.Instance.Toast(message, TimeSpan.FromMilliseconds(3500));
+        }
+
         public void HideLoadDialog()
         {
             UserDialogs.Instance.HideLoading();

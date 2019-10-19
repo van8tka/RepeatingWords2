@@ -94,7 +94,7 @@ namespace RepeatingWords.ViewModel
                 }
                 else
                 {
-                    await DialogService.ShowAlertDialog(ModelNoFillFull, Resource.Continue, ModelForAddingWord);
+                      DialogService.ShowToast(ModelNoFillFull);
                 }
             }
             catch (Exception er)

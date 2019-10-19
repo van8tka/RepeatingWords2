@@ -10,7 +10,7 @@ namespace RepeatingWords.Helpers.Interfaces
         Task ShowAlertDialog(string message, string oktext, string title = null);
         Task<string> ShowInputTextDialog(string message, string title = null, string okText = null, string cancelText = null, string placeholder = "", CancellationToken cancelToken = default);
         void ShowLoadDialog(string loadingMsg = null);
-
+        void ShowToast(string message);
 
          void HideLoadDialog();
        

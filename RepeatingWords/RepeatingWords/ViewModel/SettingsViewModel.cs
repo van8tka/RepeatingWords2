@@ -102,7 +102,7 @@ namespace RepeatingWords.ViewModel
                 {
                     var backupService = LocatorService.Container.GetInstance<BackupLocalService>();
                     success = await backupService.CreateBackup(fileNameBackup);
-                    await DialogService.ShowAlertDialog(success ? Resource.BackupWasCreatedGoogle : Resource.BackUpErrorCreated, Resource.Continue);
+                     DialogService.ShowToast(success ? Resource.BackupWasCreatedGoogle : Resource.BackUpErrorCreated);
                 }
                 else if (action == _googleDriveFolderBackup)
                 {
@@ -125,7 +125,7 @@ namespace RepeatingWords.ViewModel
             {
                 var backupService = LocatorService.Container.GetInstance<BackupLocalService>();
                 success = await backupService.RestoreBackup(_fileNameBackupDef);
-                await DialogService.ShowAlertDialog(success ? Resource.BackupRestored : Resource.BackUpErrorCreated, Resource.Continue);
+                DialogService.ShowToast(success ? Resource.BackupRestored : Resource.BackUpErrorCreated);
             }
             else if (action == _googleDriveFolderBackup)
             {

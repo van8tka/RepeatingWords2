@@ -82,7 +82,7 @@ namespace RepeatingWords.ViewModel
                }
                else
                 {
-                    await DialogService.ShowAlertDialog(Resource.ModalCheckNet, Resource.Continue, Resource.ModalException);                   
+                      DialogService.ShowToast(Resource.ModalCheckNet);                   
                 }                 
             }
             catch(Exception e)
