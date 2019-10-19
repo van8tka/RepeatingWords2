@@ -16,7 +16,7 @@
     </ContentPage.Behaviors>
     <StackLayout>
 
-        <Grid VerticalOptions="Start">
+        <Grid VerticalOptions="Start" IsVisible="{Binding IsVisibleScore, Mode=TwoWay}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -39,7 +39,7 @@
                 <Label Text="{local:Translate OpenedWordsCountLabel}"  Style="{DynamicResource LabelColor}"/>
                 <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"/>
             </StackLayout>
-            <ImageButton BackgroundColor="Transparent"  Source="voice.png"   Command="{Binding VoiceActingCommand}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" />
+            <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Source="voice.png" Margin="0,0,10,0"  Command="{Binding VoiceActingCommand}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" />
         </Grid>
         
         <ContentView Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="20" HorizontalOptions="FillAndExpand"/>

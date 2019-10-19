@@ -21,6 +21,7 @@ namespace RepeatingWords.ViewModel
             _unitOfWork = unitOfWork;
             _volumeService = volumeService ?? throw new ArgumentNullException(nameof(volumeService));
             _continueWordsManager = continueWordsManager ?? throw new ArgumentNullException(nameof(continueWordsManager));
+            IsVisibleScore = false;
             Model = new RepeatingWordsModel();
             VoiceActingCommand = new Command(VoiceActing);
             EnterTranslateCommand = new Command(ShowEnterTranslate);
@@ -61,6 +62,13 @@ namespace RepeatingWords.ViewModel
                 _workSpaceView = value;
                 OnPropertyChanged(nameof(WorkSpaceView));
             }
+        }
+
+        private bool _isVisibleScore;
+        public bool IsVisibleScore
+        {
+            get => _isVisibleScore;
+            set { _isVisibleScore = value;OnPropertyChanged(nameof(IsVisibleScore)); }
         }
 
 
@@ -204,7 +212,8 @@ namespace RepeatingWords.ViewModel
             Model.AllWordsCount = Model.WordsLearningAll.Count();
             Model.Dictionary = _dictionary;
             ShakeWordsCollection(Model.WordsLearningAll);
-            SetViewWorkSpaceLearningCards();         
+            SetViewWorkSpaceLearningCards();
+            IsVisibleScore = true;
             await base.InitializeAsync(navigationData);
         }
 
