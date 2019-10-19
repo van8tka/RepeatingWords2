@@ -522,4 +522,7 @@ smartphone or keyboard transcription</value>
   <data name="WordsListIsEmpty" xml:space="preserve">
     <value>The dictionary is empty</value>
   </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>Deleting..</value>
+  </data>
 </root>

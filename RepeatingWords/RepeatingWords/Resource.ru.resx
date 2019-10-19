@@ -509,4 +509,7 @@
   <data name="WordsListIsEmpty" xml:space="preserve">
     <value>Словарь не содержит слов</value>
   </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>Удаление..</value>
+  </data>
 </root>

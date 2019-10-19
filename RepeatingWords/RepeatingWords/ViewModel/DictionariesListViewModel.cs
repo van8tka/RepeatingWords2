@@ -127,6 +127,7 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
+                DialogService.ShowLoadDialog(Resource.Deleting);
                 var words = await Task.Run(() => _unitOfWork.WordsRepository.Get().Where(x=>x.IdDictionary == removeDictionary.Id).AsEnumerable());
                 if(words!=null && words.Any())
                     for(int i=0;i<words.Count();i++)
@@ -139,9 +140,11 @@ namespace RepeatingWords.ViewModel
                 if (success)
                     DictionaryList.Remove(removeDictionary);
                 OnPropertyChanged(nameof(DictionaryList));
+                DialogService.HideLoadDialog();
             }
             catch(Exception e)
             {
+                DialogService.HideLoadDialog();
                 Log.Logger.Error(e);
             }
         }       

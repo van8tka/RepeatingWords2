@@ -100,6 +100,7 @@ namespace RepeatingWords.ViewModel
             {
                 _unitOfWork.Save();
                 WordsList.Remove(selectedItem);
+                SetIsListEmptyLabel();
                 OnPropertyChanged(nameof(WordsList));
             }
         }
