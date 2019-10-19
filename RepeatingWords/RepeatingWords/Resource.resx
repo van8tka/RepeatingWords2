@@ -516,4 +516,7 @@ smartphone or keyboard transcription</value>
   <data name="SaveState" xml:space="preserve">
     <value>Saving state..</value>
   </data>
+  <data name="ErrorImport" xml:space="preserve">
+    <value>An error occurred while importing words</value>
+  </data>
 </root>

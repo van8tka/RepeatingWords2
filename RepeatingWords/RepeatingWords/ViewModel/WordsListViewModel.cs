@@ -3,10 +3,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.FilePicker;
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 using Xamarin.Forms;
 
@@ -15,14 +17,33 @@ namespace RepeatingWords.ViewModel
     public class WordsListViewModel : ViewModelBase
     {
        
-        public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork) : base(navigationServcie, dialogService)
+        public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IImportFile importFile) : base(navigationServcie, dialogService)
         {
             _unitOfWork = unitOfWork;
+            _importFile = importFile ?? throw new ArgumentNullException(nameof(importFile));
             AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
-            ImportWordsCommand = new Command(async () => { await NavigationService.NavigateToAsync<ChooseFileViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
+            //  ImportWordsCommand = new Command(async () => { await NavigationService.NavigateToAsync<ChooseFileViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
+            ImportWordsCommand = new Command(async () => { await ImportFile(); });
             RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
             MenuCommand = new Command(async () => { await ChangeVisibleMenuButtons(); });
             SetUnVisibleFloatingMenu();
+        }
+
+        private readonly IImportFile _importFile;
+
+        private async Task ImportFile()
+        {
+            try
+            {
+                if (!await _importFile.PickFile(_dictionary.Id))
+                   throw new Exception("Error import words from file");
+                await InitializeAsync(_dictionary);
+            }
+            catch (Exception er)
+            {
+               //  DialogService.ShowAlertDialog(Resource.ErrorImport, Resource.Continue);
+                Log.Logger.Error(er);
+            }
         }
 
         private void SetUnVisibleFloatingMenu()

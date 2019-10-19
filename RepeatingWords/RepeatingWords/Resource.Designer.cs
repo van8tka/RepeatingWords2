@@ -349,6 +349,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while importing words.
+        /// </summary>
+        public static string ErrorImport {
+            get {
+                return ResourceManager.GetString("ErrorImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the file to import.
         /// </summary>
         public static string LabelChooseFile {

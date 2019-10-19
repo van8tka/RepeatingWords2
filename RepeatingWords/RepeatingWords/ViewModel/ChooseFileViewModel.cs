@@ -94,11 +94,11 @@ namespace RepeatingWords.ViewModel
                 }
                 else//если файл 
                 {
-                    bool success = await _importFile.StartImport(varPath, _dictionary.Id);
-                    if (success)
-                        await GoToWordsList();
-                    else
-                        await DialogService.ShowAlertDialog(Resource.ModalException, Resource.Continue, Resource.ModalAddWords);
+         //           bool success = await _importFile.StartImport(varPath, _dictionary.Id);
+                    //if (success)
+                    //    await GoToWordsList();
+                    //else
+                    //    await DialogService.ShowAlertDialog(Resource.ModalException, Resource.Continue, Resource.ModalAddWords);
                 }
             }
             catch (Exception e)
