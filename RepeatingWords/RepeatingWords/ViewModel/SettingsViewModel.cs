@@ -125,7 +125,7 @@ namespace RepeatingWords.ViewModel
             {
                 var backupService = LocatorService.Container.GetInstance<BackupLocalService>();
                 success = await backupService.RestoreBackup(_fileNameBackupDef);
-                await DialogService.ShowAlertDialog(success ? Resource.BackupWasCreatedGoogle : Resource.BackUpErrorCreated, Resource.Continue);
+                await DialogService.ShowAlertDialog(success ? Resource.BackupRestored : Resource.BackUpErrorCreated, Resource.Continue);
             }
             else if (action == _googleDriveFolderBackup)
             {
