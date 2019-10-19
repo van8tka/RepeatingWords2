@@ -7,24 +7,47 @@ using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
-    public class DictionariesListViewModel : ViewModelBase
-    {     
-        private readonly IUnitOfWork _unitOfWork;
-        //string NotLearningWords = Constants.NAME_DB_FOR_CONTINUE + Resource.NotLearningPostfics;
-
-        public DictionariesListViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork) : base(navigationServcie, dialogService)
+    public class DictionariesListViewModel : BaseListViewModel
+    {
+        public DictionariesListViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IImportFile importFile) : base(navigationServcie, dialogService,unitOfWork, importFile)
         {
-            _unitOfWork = unitOfWork;
-            DictionaryList = new ObservableCollection<Dictionary>();             
-            AddDictionaryCommand = new Command(AddDictionary);
-            AddWordsFromNetCommand = new Command(async()=> { await AddWordsFromNet(); });
-            MenuCommand = new Command(async () => { await ChangeVisibleMenuButtons(); });
+            DictionaryList = new ObservableCollection<Dictionary>();
+            AddDictionaryCommand = new Command(()=>{ AddDictionary();SetUnVisibleFloatingMenu(); });
+            AddWordsFromNetCommand = new Command(async()=> { await NavigationService.NavigateToAsync<LanguageFrNetViewModel>(); SetUnVisibleFloatingMenu();  });
             SetUnVisibleFloatingMenu();
+        }
+
+        public ICommand AddDictionaryCommand { get; set; }
+        public ICommand AddWordsFromNetCommand { get; set; }
+        private ObservableCollection<Dictionary> _dictionaryList;
+        public ObservableCollection<Dictionary> DictionaryList { get => _dictionaryList; set { _dictionaryList = value; OnPropertyChanged(nameof(DictionaryList)); } }
+        private Dictionary _selectedItem;
+        public Dictionary SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(nameof(SelectedItem)); if (_selectedItem != null) ShowActions(_selectedItem); }  }
+
+        protected override async Task ImportFile()
+        {
+            try
+            {
+                int idDictionary = await AddDictionary(isNotImport: false);
+                if (idDictionary > 0)
+                    if (!await _importFile.PickFile(idDictionary))
+                    {
+                        await InitializeAsync(null);
+                        throw new Exception("Error import words from file");
+                    }
+                await InitializeAsync(null);
+            }
+            catch (Exception er)
+            {
+                DialogService.ShowToast(Resource.ErrorImport);
+                Log.Logger.Error(er);
+            }
         }
 
         public override async Task InitializeAsync(object navigationData)
@@ -34,37 +57,27 @@ namespace RepeatingWords.ViewModel
             await base.InitializeAsync(navigationData);
         }
 
-        public ICommand AddDictionaryCommand { get; set; }
-        public ICommand AddWordsFromNetCommand { get; set; }
-        public ICommand MenuCommand { get; set; }
-        private ObservableCollection<Dictionary> _dictionaryList;
-        public ObservableCollection<Dictionary> DictionaryList { get => _dictionaryList; set { _dictionaryList = value; OnPropertyChanged(nameof(DictionaryList)); } }
-        private Dictionary _selectedItem;
-        public Dictionary SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(nameof(SelectedItem)); if (_selectedItem != null) ShowActions(_selectedItem); }  }
-      
-        private async Task AddWordsFromNet( )
-        {                     
-            await NavigationService.NavigateToAsync<LanguageFrNetViewModel>();                                  
-        }
-        private async void AddDictionary( )
+       private async Task<int> AddDictionary(bool isNotImport = true )
         {
             try
             {
                 var result = await DialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict, Resource.ButtonCreate, Resource.ModalActCancel);
                 if (!string.IsNullOrEmpty(result) || !string.IsNullOrWhiteSpace(result))
                 {
-                    _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = result });
+                   var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = result });
                     _unitOfWork.Save();
-                    var lastDictionary = _unitOfWork.DictionaryRepository.Get().LastOrDefault();
-                    DictionaryList.Add(lastDictionary);
+                    DictionaryList.Add(dictionary);
                     OnPropertyChanged(nameof(DictionaryList));
-                    if (lastDictionary != null)
-                        await NavigationService.NavigateToAsync<WordsListViewModel>(lastDictionary);
+                    if ( isNotImport )
+                        await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary);
+                    return dictionary.Id;
                 }
+                return -1;
             }
             catch(Exception e)
             {
                 Log.Logger.Error(e);
+                throw;
             }                        
         }
 

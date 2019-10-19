@@ -18,9 +18,7 @@ namespace RepeatingWords.ViewModel
             await NavigationService.NavigateToAsync<MainViewModel>();
             await NavigationService.RemoveBackStackAsync(); });
         }
-                
 
-        //todo dialog service
         protected readonly IDialogService DialogService;
         protected readonly INavigationService NavigationService;
 
