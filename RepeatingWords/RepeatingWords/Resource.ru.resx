@@ -504,6 +504,6 @@
     <value>Сохранение состояния..</value>
   </data>
   <data name="ErrorImport" xml:space="preserve">
-    <value>Во время импорта слов произошла ошибка</value>
+    <value>Во время импорта слов произошла ошибка. Возможно некорректные данные в файле.</value>
   </data>
 </root>

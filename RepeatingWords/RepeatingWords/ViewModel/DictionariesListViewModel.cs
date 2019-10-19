@@ -22,7 +22,9 @@ namespace RepeatingWords.ViewModel
             _unitOfWork = unitOfWork;
             DictionaryList = new ObservableCollection<Dictionary>();             
             AddDictionaryCommand = new Command(AddDictionary);
-            AddWordsFromNetCommand = new Command(async()=> { await AddWordsFromNet(); });           
+            AddWordsFromNetCommand = new Command(async()=> { await AddWordsFromNet(); });
+            MenuCommand = new Command(async () => { await ChangeVisibleMenuButtons(); });
+            SetUnVisibleFloatingMenu();
         }
 
         public override async Task InitializeAsync(object navigationData)
@@ -33,8 +35,8 @@ namespace RepeatingWords.ViewModel
         }
 
         public ICommand AddDictionaryCommand { get; set; }
-        public ICommand AddWordsFromNetCommand { get; set; }        
-
+        public ICommand AddWordsFromNetCommand { get; set; }
+        public ICommand MenuCommand { get; set; }
         private ObservableCollection<Dictionary> _dictionaryList;
         public ObservableCollection<Dictionary> DictionaryList { get => _dictionaryList; set { _dictionaryList = value; OnPropertyChanged(nameof(DictionaryList)); } }
         private Dictionary _selectedItem;

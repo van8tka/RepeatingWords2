@@ -349,7 +349,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while importing words.
+        ///   Looks up a localized string similar to An error occurred while importing words. May be bad data in file..
         /// </summary>
         public static string ErrorImport {
             get {

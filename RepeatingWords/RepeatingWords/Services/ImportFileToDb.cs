@@ -70,35 +70,37 @@ namespace RepeatingWords.Services
         {
             bool isImportSuccessed = false;
             char[] delim = {'[', ']'};
-            //переменная для проверки добавления слов
-
-            //проход по списку слов
             for (int i = 0; i < lines.Count; i++)
             {
-                //проверка на наличие разделителей, т.е. транскрипции в строке(символы транскрипции и есть разделители)
-                if (!ValidatorInputLine(lines[i]) && i<lines.Count-1)
+                if(ValidatorInputLine(lines[i]))
+                    isImportSuccessed = InsertWordFromFileToDb(dictionaryId, lines[i].Split(delim));
+                else if(i < lines.Count - 1)
                 {
                     _unitOfWork.Save();
-                    return Task.FromResult(false); 
-                }
-                var badSymbals = new char[] {' ', '\n', '\t', '\r'};
-                isImportSuccessed = true;
-                string[] fileWords = lines[i].Split(delim);
-                if (fileWords.Count() == 3)
-                {
-                    Words item = new Words
-                    {
-                        Id = 0,
-                        IdDictionary = dictionaryId,
-                        RusWord = fileWords[0].Trim(badSymbals),
-                        Transcription = "[" + fileWords[1].Trim(badSymbals) + "]",
-                        EngWord = fileWords[2].Trim(badSymbals)
-                    };
-                    _unitOfWork.WordsRepository.Create(item);
+                    return Task.FromResult(false);
                 }
             }
             _unitOfWork.Save();
             return Task.FromResult(isImportSuccessed);
+        }
+
+        private bool InsertWordFromFileToDb(int dictionaryId, string[] fileWords)
+        {
+            var badSymbals = new char[] { ' ', '\n', '\t', '\r' };
+            if (fileWords.Count() == 3)
+            {
+                Words item = new Words
+                {
+                    Id = 0,
+                    IdDictionary = dictionaryId,
+                    RusWord = fileWords[0].Trim(badSymbals),
+                    Transcription = "[" + fileWords[1].Trim(badSymbals) + "]",
+                    EngWord = fileWords[2].Trim(badSymbals)
+                };
+                _unitOfWork.WordsRepository.Create(item);
+                return true;
+            }
+            return false;
         }
 
         private bool ValidatorInputLine(string inputLine)

@@ -1,0 +1,99 @@
+//--------------------функция меню просмотра------------------
+//void Prosmotr()
+//{
+//	system("cls");
+//	fflush(stdin);
+//	view(Root,level);
+//    _getch();
+//}
+//-------------------функция создания (чтения) дерева из файла---------------------
+//Tree * MakeFile(Tree *Rt)
+//{
+//	system("cls");
+//	Tree *R;
+//	int pas,rp=1,find;
+//	char *fi;
+//
+//	if(!(Der=fopen("derevo.bin","rb")))
+//	{
+//		printf("Невозможно открыть файл!");
+//		_getch();
+//	}
+//	else 
+//	{
+//	  while (fread(&Rt,sizeof(Rt),1,Der))
+//	  {
+//		 if (feof(Der)) break;
+//		 fflush(stdin);
+//		    if (Rt==NULL)
+//	          {
+//		       printf("\n номер пасспорта:%d ",Rt->passport);
+//		       fflush(stdin);
+//			   fi=new char[40];
+//		       printf("\n фамилия: %s",Rt->fio);
+//		       Rt=List(pas,fi);
+//	          }
+//           while(rp)
+//	          {
+//	    	  printf("\n номер пасспорта:%d ",pas);
+//	          fflush(stdin);
+//			  fi=new char[40]; 
+//	    	  printf("\n фамилия: %s",fi);
+//		   	  printf("\n 0-конец ввода.");
+//	    	  scanf_s("%d",&rp);
+//		      t=Rt;
+//	    	  find=0;
+//	        	while ((t)&&(!find))
+//	        	{ 
+//		         Prev=t;
+//		         if(pas==t->passport)
+//		         find=1;
+//		         else if(pas<t->passport)
+//		               t=t->Left;
+//		              else t=t->Right;
+//	            }
+//		    if(!find)
+//		     {
+//		      t=List(pas,fi);
+//		      if(pas<Prev->passport)
+//		      Prev->Left=t;
+//		      else Prev->Right=t;
+//		     }
+//            }
+//      }
+//    }
+//	  return Rt;
+//	  _getch();
+//	  fclose(Der);
+//}
+		  
+//-------------------функция создания  дерева ---------------------
+//-----------------------функция просмотра файла------------------------------
+//void prosmfile()
+//{
+//	   system("cls");
+//	   if(!(Der=fopen("derevo.txt","rb")))
+//	{
+//		printf("Невозможно открыть файл!");
+//		_getch();
+//		return;
+//	}
+//	else 
+//	{ 
+//		bd.c=new char[40];
+//	   printf("\nДанные дерева:\n");	
+//	   while (fread(&bd,sizeof(bd),1,Der))
+//	  {
+//		/*  fflush(stdin);*/
+//		
+//		if (feof(Der)) 
+//		break;
+//
+//			printf("\n%d ",bd.a);
+//		    printf("\n%s",bd.c);
+//	  }
+//	  _getch();
+//	  fclose(Der);
+//	}
+//}
+//-----------------функция записи в файл-------------------

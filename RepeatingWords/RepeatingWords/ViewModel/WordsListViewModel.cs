@@ -7,6 +7,7 @@ using Plugin.FilePicker;
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Heleprs;
+using RepeatingWords.Helpers;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
@@ -21,6 +22,7 @@ namespace RepeatingWords.ViewModel
         {
             _unitOfWork = unitOfWork;
             _importFile = importFile ?? throw new ArgumentNullException(nameof(importFile));
+            FloatingButtonModel = new FloatingButtonHelper();
             AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
             ImportWordsCommand = new Command(async () => { await ImportFile(); });
             RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
@@ -29,6 +31,13 @@ namespace RepeatingWords.ViewModel
         }
 
         private readonly IImportFile _importFile;
+
+        private FloatingButtonHelper _floatingButtonModel;
+        public FloatingButtonHelper FloatingButtonModel
+        {
+            get => _floatingButtonModel;
+            set { _floatingButtonModel = value; OnPropertyChanged(nameof(FloatingButtonModel)); }
+        }
 
         private async Task ImportFile()
         {

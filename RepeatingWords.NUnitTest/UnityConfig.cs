@@ -36,7 +36,7 @@ namespace RepeatingWords.NUnitTest
             container.RegisterType<IUnlearningWordsService, UnlerningWordsService>();
             container.RegisterType<IVolumeLanguageService, TestVolumeService>();
             container.RegisterType<IContinueWordsService, ContinueWordsService>();
-
+            container.RegisterType<IImportFile, ImportFileToDb>();
             container.RegisterType<ViewModelBase, RepeatingWordsViewModel>();
             return container;
         }
@@ -65,6 +65,11 @@ namespace RepeatingWords.NUnitTest
 
     internal class TestDialogService : IDialogService
     {
+        public void ShowToast(string message)
+        {
+            throw new NotImplementedException();
+        }
+
         public void HideLoadDialog()
         {
             throw new NotImplementedException();

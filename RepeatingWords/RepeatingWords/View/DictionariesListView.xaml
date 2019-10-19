@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RepeatingWords.View.DictionariesListView"
-             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"           
+             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"  
+             xmlns:controls="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
              Title="{local:Translate TitleDictionaries}"
              >
@@ -36,23 +37,38 @@
                     </StackLayout>
                 </StackLayout>
             </ContentView>
-            <ImageButton
-                x:Name="FabAddBtn"               
+            <controls:ImageButtonAnimationScale
+                x:Name="FloatBtnMenu"
+                Source="{Binding SourceMenuBtn, Mode=TwoWay}"
                 BackgroundColor="Transparent"
-                Source="floating_btn_add.png"
-                Command="{Binding AddDictionaryCommand}"              
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-60}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
-                />
+                Command="{Binding MenuCommand}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}" >
+            </controls:ImageButtonAnimationScale>
+            <ImageButton
+                x:Name="FloatBtnImportFile"
+                Source="floating_btn_impFile.png"
+                BackgroundColor="Transparent"
+                IsVisible="{Binding ImportVisible, Mode=TwoWay}"
+                Command="{Binding ImportWordsCommand}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-120}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-120}"/>
             <ImageButton
                 x:Name="FabCloudBtn"              
                 BackgroundColor="Transparent"
                 Source="floating_btn_cloud.png"
-                Command="{Binding AddWordsFromNetCommand}"              
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-60}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-130}"
-                />
-
+                Command="{Binding AddWordsFromNetCommand}" 
+                IsVisible="{Binding LearnVisible, Mode=TwoWay}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-140}"/>
+            <ImageButton
+                x:Name="FabAddBtn"               
+                BackgroundColor="Transparent"
+                Source="floating_btn_add.png"
+                Command="{Binding AddDictionaryCommand}" 
+                IsVisible="{Binding AddVisible,Mode=TwoWay}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-140}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}"/>
         </RelativeLayout>
     </ContentPage.Content>
         
