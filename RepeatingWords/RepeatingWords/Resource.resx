@@ -519,4 +519,7 @@ smartphone or keyboard transcription</value>
   <data name="ErrorImport" xml:space="preserve">
     <value>An error occurred while importing words. May be bad data in file.</value>
   </data>
+  <data name="WordsListIsEmpty" xml:space="preserve">
+    <value>The dictionary is empty</value>
+  </data>
 </root>

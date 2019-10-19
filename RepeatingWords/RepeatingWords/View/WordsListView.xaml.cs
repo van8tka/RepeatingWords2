@@ -14,6 +14,8 @@ namespace RepeatingWords.View
             InitializeComponent();
             BindingContext = LocatorService.Container.GetInstance<WordsListViewModel>();
         }
+
+
         public IPageAnimation PageAnimation { get; } = new SlidePageAnimation { Duration = AnimationDuration.Short, Subtype = AnimationSubtype.FromRight };
         public void OnAnimationStarted(bool isPopAnimation) { }
         public void OnAnimationFinished(bool isPopAnimation) { }

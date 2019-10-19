@@ -506,4 +506,7 @@
   <data name="ErrorImport" xml:space="preserve">
     <value>Во время импорта слов произошла ошибка. Возможно некорректные данные в файле.</value>
   </data>
+  <data name="WordsListIsEmpty" xml:space="preserve">
+    <value>Словарь не содержит слов</value>
+  </data>
 </root>

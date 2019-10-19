@@ -1143,6 +1143,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The dictionary is empty.
+        /// </summary>
+        public static string WordsListIsEmpty {
+            get {
+                return ResourceManager.GetString("WordsListIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         public static string Yes {

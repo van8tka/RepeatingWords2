@@ -52,7 +52,21 @@ namespace RepeatingWords.ViewModel
         private ObservableCollection<Words> _wordsList;
         public ObservableCollection<Words> WordsList { get => _wordsList; set { _wordsList = value; OnPropertyChanged(nameof(WordsList)); } }
         private Words _selectedItem;
-        public Words SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(nameof(SelectedItem));if (_selectedItem != null) ShowActions(_selectedItem); } }
+
+        public Words SelectedItem
+        {
+            get => _selectedItem;
+            set { _selectedItem = value; OnPropertyChanged(nameof(SelectedItem));
+                if (_selectedItem != null) ShowActions(_selectedItem); }
+        }
+        private bool _isVisibleListEmpty;
+        public bool IsVisibleListEmpty
+        {
+            get => _isVisibleListEmpty;
+            set { _isVisibleListEmpty = value; OnPropertyChanged(nameof(IsVisibleListEmpty)); }
+        }
+
+
 
         private async void ShowActions(Words selectedItem)
         {
@@ -99,10 +113,16 @@ namespace RepeatingWords.ViewModel
                 _dictionary = dictionary;
                 DictionaryName = dictionary.Name;
                 WordsList = await LoadData(dictionary.Id);
+                SetIsListEmptyLabel();
             }
             else
                 throw new Exception("Error load words list, bad parameter navigationData to WordsListViewModel");
             await base.InitializeAsync(navigationData);
+        }
+
+        private void SetIsListEmptyLabel()
+        {
+            IsVisibleListEmpty = !WordsList.Any();
         }
 
         private async Task<ObservableCollection<Words>> LoadData(int id)
