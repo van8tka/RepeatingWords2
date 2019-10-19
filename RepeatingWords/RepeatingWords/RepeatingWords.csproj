@@ -30,9 +30,6 @@
     <Compile Update="View\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\ChooseFileView.xaml.cs">
-      <DependentUpon>ChooseFileView.xaml</DependentUpon>
-    </Compile>
     <Compile Update="View\CreateWordView.xaml.cs">
       <DependentUpon>CreateWordView.xaml</DependentUpon>
     </Compile>

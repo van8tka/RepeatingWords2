@@ -22,8 +22,7 @@ namespace RepeatingWords.ViewModel
             _unitOfWork = unitOfWork;
             _importFile = importFile ?? throw new ArgumentNullException(nameof(importFile));
             AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
-            //  ImportWordsCommand = new Command(async () => { await NavigationService.NavigateToAsync<ChooseFileViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
-            ImportWordsCommand = new Command(async () => { await ImportFile(); });
+          ImportWordsCommand = new Command(async () => { await ImportFile(); });
             RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
             MenuCommand = new Command(async () => { await ChangeVisibleMenuButtons(); });
             SetUnVisibleFloatingMenu();

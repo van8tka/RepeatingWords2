@@ -21,22 +21,6 @@ namespace RepeatingWords.Services
             _unitOfWork = unitOfWork;
         }
 
-        //public async Task<bool> StartImport(string file, int dictionaryId)
-        //{       
-        //    try
-        //    {
-        //        List<string> lines = await DependencyService.Get<IFileWorker>().LoadTextAsync(file);
-        //        //проходим по списку строк считанных из файла
-        //        if (lines != null && lines.Count > 0 && file.EndsWith(".txt"))
-        //            return await ParseLineAndCreateImportedWords(dictionaryId, lines);
-        //        return false;
-        //    }
-        //    catch (Exception er)
-        //    {
-        //        Log.Logger.Error(er);
-        //        throw;
-        //    }
-        //}
 
         public async Task<bool> PickFile(int dictionaryId)
         {

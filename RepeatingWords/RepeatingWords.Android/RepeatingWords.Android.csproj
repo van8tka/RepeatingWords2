@@ -100,7 +100,6 @@
     <Compile Include="CheckConnect.cs" />
     <Compile Include="EntryRepeatingWordRender.cs" />
     <Compile Include="FileWorker.cs" />
-    <Compile Include="FolderWorker.cs" />
     <Compile Include="GoogleDriveAuth.cs" />
     <Compile Include="GoogleDriveWorker.cs" />
     <Compile Include="InterstitialAdListener.cs" />

@@ -1,11 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.IO;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System;
-using System.Diagnostics;
-using RepeatingWords.Services;
 using RepeatingWords.LoggerService;
 
 [assembly: Dependency(typeof(RepeatingWords.Droid.FileWorker))]
@@ -14,29 +10,6 @@ namespace RepeatingWords.Droid
 {
     public class FileWorker : IFileWorker
     {
- 
-        public async Task<List<string>> LoadTextAsync(string filepath)
-        {
-            try
-            {
-                using (StreamReader reader = File.OpenText(filepath))
-                {
-                    List<string> lines = new List<string>();
-                    string line;
-                    while ((line = await reader.ReadLineAsync()) != null)
-                    {
-                        lines.Add(line);
-                    }
-                    return lines;
-                }
-            }
-          catch(Exception er)
-            {
-                Log.Logger.Error(er);
-                throw;
-            }
-        }
-
 
         //создание папки для 
         public string CreateFolder(string folderName, string fileName = null, string filePath = null)
@@ -50,15 +23,9 @@ namespace RepeatingWords.Droid
                 //созд путь к папке
                 string pathToDir = Path.Combine(filePath, folderName);
                 if (!Directory.Exists(pathToDir))
-                {
                     Directory.CreateDirectory(pathToDir);
-                }
-                else
-                {
-                    if (string.IsNullOrEmpty(fileName))
+                else if (string.IsNullOrEmpty(fileName))
                         return "exist";
-                }
-
                 //созд путь к файлу
                 if (!string.IsNullOrEmpty(fileName))
                 {
@@ -74,8 +41,6 @@ namespace RepeatingWords.Droid
                 throw;
             }
         }
-
-
 
         //запись файла резервной копии
         public bool WriteFile(string filePathSource, string filePathDestin)
@@ -105,7 +70,6 @@ namespace RepeatingWords.Droid
                       {
                           var list = Directory.GetFiles(pathToDir);
                           string lastFile = string.Empty;
-
                           DateTime tempDateTime = DateTime.MinValue;
                           foreach (var i in list)
                           {
@@ -117,18 +81,11 @@ namespace RepeatingWords.Droid
                                   lastFile = i;
                               }
                           }
-
                           return lastFile;
                       }
                       else
                           return null;
                   });
-
-            }
-            catch (UnauthorizedAccessException er)
-            {
-                Log.Logger.Error(er);
-                throw;
             }
             catch (Exception er)
             {
@@ -138,35 +95,6 @@ namespace RepeatingWords.Droid
         }
 
 
-        //получение списка файлов по указанному пути
-        public Task<IEnumerable<string>> GetFilesAsync(string pathFolder)
-        {
-            return Task.Run(() =>
-            {
-                try
-                {
-                    if(string.IsNullOrEmpty(pathFolder))
-                        pathFolder = Android.OS.Environment.ExternalStorageDirectory.ToString();
-                    IEnumerable<string> filenames = from filepath in Directory.EnumerateFiles(pathFolder) select Path.GetFileName(filepath);
-                    return filenames;
-                }
-                catch (Exception er)
-                {
-                    Log.Logger.Error(er);
-                    throw;
-                }
-            });          
-         }
-
-
-        //isfile??? проверяем нажали на файл или на папку
-        public bool IsFile(string path)
-        {
-            if (File.Exists(path))
-                return true;
-            else
-                return false;
-        }
     }
 
 }
