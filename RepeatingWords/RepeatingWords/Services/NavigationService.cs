@@ -13,8 +13,6 @@ namespace RepeatingWords.Services
 {
     public class NavigationService : INavigationService
     {
-
-        // private RepeatingWordsNavigation  _mainPage => Application.Current.MainPage as RepeatingWordsNavigation;
         private AnimationNavigationPage _mainPage => Application.Current.MainPage as AnimationNavigationPage;
         public ViewModelBase PreviousPageViewModel
         {
@@ -76,7 +74,6 @@ namespace RepeatingWords.Services
             }
             else
             {
-                // Application.Current.MainPage = new RepeatingWordsNavigation(page);
                 Application.Current.MainPage = new AnimationNavigationPage(page);
             }
             await (page.BindingContext as ViewModelBase).InitializeAsync(parameter);
