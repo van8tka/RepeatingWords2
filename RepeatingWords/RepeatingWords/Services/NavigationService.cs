@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
+using FormsControls.Base;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Services
@@ -13,8 +14,8 @@ namespace RepeatingWords.Services
     public class NavigationService : INavigationService
     {
 
-        private RepeatingWordsNavigation  _mainPage => Application.Current.MainPage as RepeatingWordsNavigation;
-
+        // private RepeatingWordsNavigation  _mainPage => Application.Current.MainPage as RepeatingWordsNavigation;
+        private AnimationNavigationPage _mainPage => Application.Current.MainPage as AnimationNavigationPage;
         public ViewModelBase PreviousPageViewModel
         {
             get => _mainPage.Navigation.NavigationStack[_mainPage.Navigation.NavigationStack.Count - 2].BindingContext as ViewModelBase;
@@ -75,7 +76,8 @@ namespace RepeatingWords.Services
             }
             else
             {
-                Application.Current.MainPage = new RepeatingWordsNavigation(page);
+                // Application.Current.MainPage = new RepeatingWordsNavigation(page);
+                Application.Current.MainPage = new AnimationNavigationPage(page);
             }
             await (page.BindingContext as ViewModelBase).InitializeAsync(parameter);
         }

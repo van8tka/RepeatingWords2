@@ -40,6 +40,7 @@ namespace RepeatingWords.Droid
                 Android.Gms.Ads.MobileAds.Initialize(ApplicationContext, ApplicationCode);
                 UserDialogs.Init(() => (Android.App.Activity)Forms.Context);
             });
+            FormsControls.Droid.Main.Init(this);
             LoadApplication(new App( new SQLite_Android()));                   
         }
         //переопределение кнопки назад

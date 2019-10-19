@@ -1,6 +1,7 @@
 ﻿using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using System;
+using FormsControls.Base;
 using Xamarin.Forms;
  
 
@@ -9,14 +10,17 @@ namespace RepeatingWords.View
     /// <summary>
     /// предоставляет поле ввода и клавиатуру для набора транскрипции из спец символов
     /// </summary>
-    public partial class EntryTranscriptionView : ContentPage
+    public partial class EntryTranscriptionView : ContentPage, IAnimationPage
     {
        
         public EntryTranscriptionView()
         {
             InitializeComponent();
             BindingContext = LocatorService.Container.GetInstance<EntryTranscriptionViewModel>();
-        }     
+        }
+        public IPageAnimation PageAnimation { get; } = new SlidePageAnimation { Duration = AnimationDuration.Short, Subtype = AnimationSubtype.FromRight };
+        public void OnAnimationStarted(bool isPopAnimation) { }
+        public void OnAnimationFinished(bool isPopAnimation) { }
 
         #region CLICK_CHAR_TRANSCRIPTION
         private void Clik_ɑ(object sender, EventArgs e)
