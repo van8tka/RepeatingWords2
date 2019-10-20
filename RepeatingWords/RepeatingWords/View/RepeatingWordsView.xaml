@@ -4,6 +4,7 @@
              x:Class="RepeatingWords.View.RepeatingWordsView"
              xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"          
              xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
+             xmlns:controls="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
              Title ="{Binding DictionaryName}"               
              >
@@ -39,7 +40,7 @@
                 <Label Text="{local:Translate OpenedWordsCountLabel}"  Style="{DynamicResource LabelColor}"/>
                 <Label Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"/>
             </StackLayout>
-            <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Source="voice.png" Margin="0,0,10,0"  Command="{Binding VoiceActingCommand}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" />
+            <controls:ImageButtonAnimationScale BackgroundColor="Transparent" HorizontalOptions="End" Source="voice.png" Margin="0,0,10,0"  Command="{Binding VoiceActingCommand}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" />
         </Grid>
         
         <ContentView x:Name="cvWorkSpaceContainer" Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="20" HorizontalOptions="FillAndExpand"/>
@@ -54,9 +55,9 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ImageButton BackgroundColor="{Binding CardsButtonBackground, Mode=TwoWay}"  Source="icons_cardsbutton.png"  Command="{Binding LearningCardsCommand}" Grid.Column="0" HorizontalOptions="Center"/>
-                    <ImageButton BackgroundColor="{Binding SelectButtonBackground, Mode=TwoWay}" Source="icons_select_word.png" Command="{Binding SelectFromWordsCommand}" Grid.Column="1" HorizontalOptions="Center"/>
-                    <ImageButton BackgroundColor="{Binding EntryButtonBackground, Mode=TwoWay}" Source="icons_keyboard.png" Command="{Binding EnterTranslateCommand}" Grid.Column="2" HorizontalOptions="Center" />
+                    <controls:ImageButtonAnimationScale BackgroundColor="{Binding CardsButtonBackground, Mode=TwoWay}"  Source="icons_cardsbutton.png"  Command="{Binding LearningCardsCommand}" Grid.Column="0" HorizontalOptions="Center"/>
+                    <controls:ImageButtonAnimationScale BackgroundColor="{Binding SelectButtonBackground, Mode=TwoWay}" Source="icons_select_word.png" Command="{Binding SelectFromWordsCommand}" Grid.Column="1" HorizontalOptions="Center"/>
+                    <controls:ImageButtonAnimationScale BackgroundColor="{Binding EntryButtonBackground, Mode=TwoWay}" Source="icons_keyboard.png" Command="{Binding EnterTranslateCommand}" Grid.Column="2" HorizontalOptions="Center" />
                 </Grid>
             </StackLayout>
         </StackLayout>

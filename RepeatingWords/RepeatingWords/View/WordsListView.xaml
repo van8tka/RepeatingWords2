@@ -62,7 +62,7 @@
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}" >
             </controls:ImageButtonAnimationScale>
-            <ImageButton
+                <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnImportFile"
                 Source="floating_btn_impFile.png"
                 BackgroundColor="Transparent"
@@ -70,7 +70,7 @@
                 Command="{Binding ImportWordsCommand}"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-120}"
                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-120}"/>
-            <ImageButton
+                <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnLearn"
                 Source="floating_btn_learn.png"
                 BackgroundColor="Transparent"
@@ -78,7 +78,7 @@
                 Command="{Binding RepeatingWordsCommand}"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-140}"/>
-            <ImageButton
+                <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnAdd"
                 Source="floating_btn_add.png"
                 BackgroundColor="Transparent"
