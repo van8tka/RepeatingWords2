@@ -480,13 +480,13 @@
     <value>Выберите язык озвучки</value>
   </data>
   <data name="ButtonCheck" xml:space="preserve">
-    <value>✓  check</value>
+    <value>проверить ✓</value>
   </data>
   <data name="ButtonHint" xml:space="preserve">
-    <value>?  hint</value>
+    <value>подсказать ?</value>
   </data>
   <data name="EnterAnswer" xml:space="preserve">
-    <value>Enter answer</value>
+    <value>Введите перевод</value>
   </data>
   <data name="ButtonSave" xml:space="preserve">
     <value>Сохранить</value>

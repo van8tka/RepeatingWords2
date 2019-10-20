@@ -214,7 +214,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ✓  проверить.
+        ///   Looks up a localized string similar to check ✓.
         /// </summary>
         public static string ButtonCheck {
             get {
@@ -232,7 +232,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ?  подсказать.
+        ///   Looks up a localized string similar to hint ?.
         /// </summary>
         public static string ButtonHint {
             get {
