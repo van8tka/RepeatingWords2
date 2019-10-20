@@ -112,11 +112,12 @@ namespace RepeatingWords.ViewModel
        
 
         private Words _showingWord;
-        internal override void SetViewWords(Words currentWord, bool isFromNative)
+        internal override Task SetViewWords(Words currentWord, bool isFromNative)
         {
             _showingWord = currentWord;
             CurrentShowingWord = isFromNative ? currentWord.RusWord : currentWord.EngWord;
             SetSelectingWords(currentWord, isFromNative);
+            return Task.Delay(1);
         }
 
         public void SetSelectingWords(Words word, bool isNative)

@@ -11,7 +11,9 @@ namespace RepeatingWords.View
         public RepeatingWordsView()
         {
             InitializeComponent();
-            BindingContext = LocatorService.Container.GetInstance<RepeatingWordsViewModel>();
+            var VM = LocatorService.Container.GetInstance<RepeatingWordsViewModel>();
+            VM.WorkContainerView = cvWorkSpaceContainer;
+            BindingContext = VM;
         }
 
         public IPageAnimation PageAnimation { get; } = new SlidePageAnimation { Duration = AnimationDuration.Short, Subtype = AnimationSubtype.FromRight };

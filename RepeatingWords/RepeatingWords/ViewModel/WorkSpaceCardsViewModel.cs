@@ -48,7 +48,7 @@ namespace RepeatingWords.ViewModel
                     }
                 case SwipeDirection.Left:
                     {                                          
-                        ShowNextWord();
+                        await ShowNextWord();
                         _isOpened = false;
                         break;
                     }
@@ -61,9 +61,10 @@ namespace RepeatingWords.ViewModel
             await AnimationService.AnimationPositionWordRevert(WordContainer);
         }
 
-        internal override void SetViewWords(Words word, bool isNative)
+        internal override Task SetViewWords(Words word, bool isNative)
         {
             SetViewWords( word, isNative, false);
+            return Task.Delay(1);
         }
 
         private void SetViewWords(Words word, bool isNative, bool isOpened)

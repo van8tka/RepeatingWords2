@@ -7,6 +7,7 @@ namespace RepeatingWords.Helpers.Interfaces
     {
         Task<bool> AnimationPositionWord(SwipeDirection direction, Xamarin.Forms.View view);
         Task<bool> AnimationPositionWordRevert(Xamarin.Forms.View view);
-        Task<bool> AnimationFade(Xamarin.Forms.View view, int fadeValue);
+        Task<bool> AnimationFade(Xamarin.Forms.View view, int opacity);
+        Task<bool> AnimationFade(Xamarin.Forms.View view, int opacity, uint milliseconds);
     }
 }

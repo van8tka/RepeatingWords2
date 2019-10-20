@@ -58,9 +58,14 @@ namespace RepeatingWords.Services
         }
 
 
-        public async Task<bool> AnimationFade(Xamarin.Forms.View view, int fadeValue)
+        public async Task<bool> AnimationFade(Xamarin.Forms.View view, int opacity)
         {
-            return await view.FadeTo(fadeValue, 150);
+             return await AnimationFade(view, opacity, 150);
+        }
+
+        public async Task<bool> AnimationFade(Xamarin.Forms.View view, int opacity, uint milliseconds)
+        {
+            return await view.FadeTo(opacity, milliseconds);
         }
     }
 }

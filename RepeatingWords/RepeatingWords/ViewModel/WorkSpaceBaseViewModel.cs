@@ -4,6 +4,7 @@ using RepeatingWords.Model;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace RepeatingWords.ViewModel
 {
@@ -28,7 +29,7 @@ namespace RepeatingWords.ViewModel
         private readonly IUnlearningWordsService _unlearningWords;
         protected readonly IAnimationService AnimationService;
        
-        internal async void ShowNextWord(bool isFirstShowAfterLoad = false)
+        internal async Task ShowNextWord(bool isFirstShowAfterLoad = false)
         {
             SaveUnlearnedWords(Model.CurrentWord, Model.IsOpenCurrentWord); 
             if (isFirstShowAfterLoad && Model.IndexWordShowNow!=-1)
@@ -37,7 +38,7 @@ namespace RepeatingWords.ViewModel
             {
                 Model.IndexWordShowNow++;
                 Model.CurrentWord = Model.WordsLearningAll.ElementAt(Model.IndexWordShowNow);
-                SetViewWords(Model.CurrentWord, Model.IsFromNative);
+               await SetViewWords(Model.CurrentWord, Model.IsFromNative);
                 if(!isFirstShowAfterLoad)
                     Model.AllShowedWordsCount++;
                 Model.WordsLeft.Remove(Model.CurrentWord);
@@ -61,7 +62,7 @@ namespace RepeatingWords.ViewModel
             Model.IsOpenCurrentWord = false;
         }
   
-        internal abstract void SetViewWords(Words currentWord, bool isFromNative);
+        internal abstract Task SetViewWords(Words currentWord, bool isFromNative);
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)

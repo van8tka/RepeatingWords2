@@ -10,28 +10,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IContinueWordsService continueWordsManager) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IContinueWordsService continueWordsManager, IAnimationService animationService) : base(navigationServcie, dialogService)
         {
+            _animationService = animationService ?? throw new ArgumentNullException(nameof(animationService));
             _unitOfWork = unitOfWork;
             _volumeService = volumeService ?? throw new ArgumentNullException(nameof(volumeService));
             _continueWordsManager = continueWordsManager ?? throw new ArgumentNullException(nameof(continueWordsManager));
             IsVisibleScore = false;
             Model = new RepeatingWordsModel();
             VoiceActingCommand = new Command(VoiceActing);
-            EnterTranslateCommand = new Command(ShowEnterTranslate);
-            SelectFromWordsCommand = new Command(ShowSelectFromWords);
-            LearningCardsCommand = new Command(ShowLearningCards);
+            EnterTranslateCommand = new Command(async ()=>
+            {
+                await _animationService.AnimationFade(WorkContainerView, 0);
+                await ShowEnterTranslate();
+                await _animationService.AnimationFade(WorkContainerView, 1);
+            });
+            SelectFromWordsCommand = new Command(async () =>
+            {
+                await _animationService.AnimationFade(WorkContainerView, 0);
+                await ShowSelectFromWords();
+                await _animationService.AnimationFade(WorkContainerView, 1);
+            });
+            LearningCardsCommand = new Command(async () =>
+            {
+                await _animationService.AnimationFade(WorkContainerView, 0); 
+                await ShowLearningCards();
+                await _animationService.AnimationFade(WorkContainerView, 1);
+            });
             UnloadPageCommand = new Command(UnloadPage);
         }
 
-
-
+        private readonly IAnimationService _animationService;
         private ICustomContentViewModel _workSpaceVM;
         private readonly IVolumeLanguageService _volumeService;
         private readonly IUnitOfWork _unitOfWork;
@@ -52,6 +68,9 @@ namespace RepeatingWords.ViewModel
                 OnPropertyChanged(nameof(DictionaryName));
             }
         }
+
+       
+        public Xamarin.Forms.View WorkContainerView { get; set; }
 
         private ContentView _workSpaceView;
         public ContentView WorkSpaceView
@@ -88,78 +107,84 @@ namespace RepeatingWords.ViewModel
         public ICommand LearningCardsCommand { get; set; }
         public ICommand UnloadPageCommand { get; set; }
 
-
+        private WorkSpaceEnterWordView _enterWordView;
+        private WorkSpaceEnterWordView EnterWordView => _enterWordView ?? (_enterWordView = new WorkSpaceEnterWordView());
+        private WorkSpaceSelectWordView _selectWordView;
+        private WorkSpaceSelectWordView SelectWordView => _selectWordView ?? (_selectWordView = new WorkSpaceSelectWordView());
+        private WorkSpaceCardsView _cardsView;
+        private WorkSpaceCardsView CardsView => _cardsView ?? (_cardsView = new WorkSpaceCardsView());
+       
         private void VoiceActing()
         {
             DependencyService.Get<ITextToSpeech>().Speak(Model.CurrentWord.EngWord, _currentVolumeLanguage);
         }
-
-        private void ShowEnterTranslate()
+       
+        private async Task ShowEnterTranslate()
         {
-            SetViewWorkSpaceEnterWord();
+            await SetViewWorkSpaceEnterWord();
             SetBackgroundButton(nameof(EntryButtonBackground));
         }
-
-        private void SetViewWorkSpaceEnterWord()
+        private async Task SetViewWorkSpaceEnterWord()
         {
-            ICustomContentView view = new WorkSpaceEnterWordView();
-            WorkSpaceView = view as WorkSpaceEnterWordView;
-            _workSpaceVM = view.CustomVM;
-            _workSpaceVM.Model = Model;
-             (_workSpaceVM as WorkSpaceEnterWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+             WorkSpaceView = EnterWordView;
+            _workSpaceVM = EnterWordView.CustomVM;
+            _workSpaceVM.Model = Model; 
+            await (_workSpaceVM as WorkSpaceEnterWordViewModel)?.ShowNextWord(isFirstShowAfterLoad: true);
         }
 
-        private void ShowSelectFromWords()
+        private async Task ShowSelectFromWords()
         {
-            SetViewWorkSpaceSelectWord();
+            await SetViewWorkSpaceSelectWord();
             SetBackgroundButton(nameof(SelectButtonBackground));
         }
-
-        private void SetViewWorkSpaceSelectWord()
+        private async Task SetViewWorkSpaceSelectWord()
         {
-            ICustomContentView view = new WorkSpaceSelectWordView();
-            WorkSpaceView = view as WorkSpaceSelectWordView;
-            _workSpaceVM = view.CustomVM;
+             WorkSpaceView = SelectWordView;
+            _workSpaceVM = SelectWordView.CustomVM;
             _workSpaceVM.Model = Model;
-            (_workSpaceVM as WorkSpaceSelectWordViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+            await (_workSpaceVM as WorkSpaceSelectWordViewModel)?.ShowNextWord(isFirstShowAfterLoad: true);
         }
 
-        private void ShowLearningCards()
-        {
-            SetViewWorkSpaceLearningCards();
+        private async Task ShowLearningCards()
+        { 
+            await SetViewWorkSpaceLearningCards();
             SetBackgroundButton(nameof(CardsButtonBackground));
         }
-
-        private void SetViewWorkSpaceLearningCards()
+        private async Task SetViewWorkSpaceLearningCards()
         {
-            ICustomContentView view = new WorkSpaceCardsView();
-            WorkSpaceView = view as WorkSpaceCardsView;
-            _workSpaceVM = view.CustomVM;
-            _workSpaceVM.Model = Model;          
-            (_workSpaceVM as WorkSpaceCardsViewModel).ShowNextWord(isFirstShowAfterLoad: true);
+             WorkSpaceView = CardsView;
+            _workSpaceVM = CardsView.CustomVM;
+            _workSpaceVM.Model = Model; 
+           await (_workSpaceVM as WorkSpaceCardsViewModel)?.ShowNextWord(isFirstShowAfterLoad: true);
         }
 
      
 
         private void SetBackgroundButton(string button)
         {
-            if (button == nameof(CardsButtonBackground))
+            switch (button)
             {
-                CardsButtonBackground = Color.LightGray;
-                SelectButtonBackground = Color.Transparent;
-                EntryButtonBackground = Color.Transparent;
-            }
-            if (button == nameof(SelectButtonBackground))
-            {
-                CardsButtonBackground = Color.Transparent;
-                SelectButtonBackground = Color.LightGray;
-                EntryButtonBackground = Color.Transparent;
-            }
-            if (button == nameof(EntryButtonBackground))
-            {
-                CardsButtonBackground = Color.Transparent;
-                SelectButtonBackground = Color.Transparent;
-                EntryButtonBackground = Color.LightGray;
+                case nameof(CardsButtonBackground):
+                {
+                    CardsButtonBackground = Color.LightGray;
+                    SelectButtonBackground = Color.Transparent;
+                    EntryButtonBackground = Color.Transparent; 
+                    break;
+                }
+                case nameof(SelectButtonBackground):
+                {
+                    CardsButtonBackground = Color.Transparent;
+                    SelectButtonBackground = Color.LightGray;
+                    EntryButtonBackground = Color.Transparent;
+                    break;
+                }
+                case nameof(EntryButtonBackground):
+                {
+                    CardsButtonBackground = Color.Transparent;
+                    SelectButtonBackground = Color.Transparent;
+                    EntryButtonBackground = Color.LightGray;
+                    break;
+                }
             }
         }
 
