@@ -1,9 +1,12 @@
-﻿using Xamarin.Forms;
+﻿using System.Linq;
+using Xamarin.Forms;
 using SimpleInjector;
 using RepeatingWords.Interfaces;
 using RepeatingWords.Helpers.Interfaces;
 using System.Threading.Tasks;
+using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.Services;
+using RepeatingWords.ViewModel;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -25,22 +28,33 @@ namespace RepeatingWords
             var init = _container.GetInstance<IInitDefaultDb>();
             Task.Run(() => init.LoadDefaultData());
             if (Device.RuntimePlatform == Device.UWP)
-               InitNavigation();        
+               InitNavigation();
         }
 
       
         private Task InitNavigation()
         {
-            Task.Run(() =>
+            _container.GetInstance<IThemeService>().GetCurrentTheme();
+            var navService = _container.GetInstance<INavigationService>(); 
+            navService.InitializeAsync(); 
+            ContinueLearning(navService);
+            return Task.Run(() =>
             {
                 _container.GetInstance<INewVersionAppChecker>().CheckNewVersionApp();
             });
-            _container.GetInstance<IThemeService>().GetCurrentTheme();
-                           
-            var navService = _container.GetInstance<INavigationService>();
-            return navService.InitializeAsync();
         }
- 
+        /// <summary>
+        /// if exist dictionary which started learned and didn't finish, will be loading continue learned
+        /// </summary>
+        /// <param name="navService"></param>
+        /// <returns></returns>
+        private void ContinueLearning(INavigationService navService)
+        {
+            var unitOfWork = _container.GetInstance<IUnitOfWork>();
+            var lastAction = unitOfWork.LastActionRepository.Get().LastOrDefault();
+            if(lastAction!=null)
+                 navService.NavigateToAsync<RepeatingWordsViewModel>(lastAction);
+        }
 
         protected override async void OnStart()
         {
