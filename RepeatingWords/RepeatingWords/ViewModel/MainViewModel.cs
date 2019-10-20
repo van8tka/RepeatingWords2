@@ -194,41 +194,5 @@ namespace RepeatingWords.ViewModel
                     }
                 }
         }
-
-        //private async void AppearingPage( )
-        //{
-        //   await CheckIsEnabledContinue();
-        //}
-        //public override Task InitializeAsync(object navigationData)
-        //{
-        //    IsBusy = true;          
-        //    return base.InitializeAsync(navigationData);
-        //}
-        //private async Task CheckIsEnabledContinue()
-        //{
-        //    var item = await Task.Run(() => _unitOfWork.LastActionRepository.Get().LastOrDefault());
-        //    IsEnabledContinue = item != null ? true : false;          
-        //}
-        //private bool _isEnabledContinue;
-        //public bool IsEnabledContinue { get => _isEnabledContinue; set { _isEnabledContinue = value; OnPropertyChanged(nameof(IsEnabledContinue)); } }
-
-        //public ICommand BegianLearningCommand { get; set; }
-        //public ICommand ChooseDictionaryCommand { get; set; }
-        //public ICommand ContinueLearningCommand { get; set; }
-
-        //    public ICommand LoadPageCommand { get; set; }
-
-        //private async void ContinueLearning()
-        //{
-        //    try
-        //    {
-        //        var lastAction = _unitOfWork.LastActionRepository.Get().LastOrDefault();
-        //        await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(lastAction);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Log.Logger.Error(e);
-        //    }
-        //}
     }
 }

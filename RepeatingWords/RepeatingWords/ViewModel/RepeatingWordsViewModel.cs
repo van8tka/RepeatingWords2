@@ -46,7 +46,7 @@ namespace RepeatingWords.ViewModel
             });
             UnloadPageCommand = new Command(UnloadPage);
         }
-
+        
         private readonly IAnimationService _animationService;
         private ICustomContentViewModel _workSpaceVM;
         private readonly IVolumeLanguageService _volumeService;
@@ -68,8 +68,6 @@ namespace RepeatingWords.ViewModel
                 OnPropertyChanged(nameof(DictionaryName));
             }
         }
-
-       
         public Xamarin.Forms.View WorkContainerView { get; set; }
 
         private ContentView _workSpaceView;
@@ -82,24 +80,28 @@ namespace RepeatingWords.ViewModel
                 OnPropertyChanged(nameof(WorkSpaceView));
             }
         }
-
         private bool _isVisibleScore;
         public bool IsVisibleScore
         {
             get => _isVisibleScore;
             set { _isVisibleScore = value;OnPropertyChanged(nameof(IsVisibleScore)); }
         }
-
-
         private RepeatingWordsModel _model;
         public RepeatingWordsModel Model { get => _model; set { _model = value; OnPropertyChanged(nameof(Model)); } }
+        private string _cardsButtonBackground;
+        public string CardsImage { get => _cardsButtonBackground; set { _cardsButtonBackground = value; OnPropertyChanged(nameof(CardsImage)); } }
+        private string _selectButtonBackground;
+        public string SelectImage { get => _selectButtonBackground; set { _selectButtonBackground = value; OnPropertyChanged(nameof(SelectImage)); } }
+        private string _entryButtonBackground;
+        public string EntryImage { get => _entryButtonBackground; set { _entryButtonBackground = value; OnPropertyChanged(nameof(EntryImage)); } }
 
-        private Color _cardsButtonBackground;
-        public Color CardsButtonBackground { get => _cardsButtonBackground; set { _cardsButtonBackground = value; OnPropertyChanged(nameof(CardsButtonBackground)); } }
-        private Color _selectButtonBackground;
-        public Color SelectButtonBackground { get => _selectButtonBackground; set { _selectButtonBackground = value; OnPropertyChanged(nameof(SelectButtonBackground)); } }
-        private Color _entryButtonBackground;
-        public Color EntryButtonBackground { get => _entryButtonBackground; set { _entryButtonBackground = value; OnPropertyChanged(nameof(EntryButtonBackground)); } }
+        private readonly string cardsActive = "icons_cardsbutton.png";
+        private readonly string cardsUnActive = "icons_cardsbuttonGray.png";
+        private readonly string selectActive = "icons_select_word.png";
+        private readonly string selectUnActive = "icons_select_wordGray.png";
+        private readonly string entryActive = "icons_keyboard.png";
+        private readonly string entryUnActive = " icons_keyboardGray.png";
+
 
         public ICommand VoiceActingCommand { get; set; }
         public ICommand EnterTranslateCommand { get; set; }
@@ -122,7 +124,7 @@ namespace RepeatingWords.ViewModel
         private async Task ShowEnterTranslate()
         {
             await SetViewWorkSpaceEnterWord();
-            SetBackgroundButton(nameof(EntryButtonBackground));
+            SetBackgroundButton(nameof(EntryImage));
         }
         private async Task SetViewWorkSpaceEnterWord()
         {
@@ -135,7 +137,7 @@ namespace RepeatingWords.ViewModel
         private async Task ShowSelectFromWords()
         {
             await SetViewWorkSpaceSelectWord();
-            SetBackgroundButton(nameof(SelectButtonBackground));
+            SetBackgroundButton(nameof(SelectImage));
         }
         private async Task SetViewWorkSpaceSelectWord()
         {
@@ -148,7 +150,7 @@ namespace RepeatingWords.ViewModel
         private async Task ShowLearningCards()
         { 
             await SetViewWorkSpaceLearningCards();
-            SetBackgroundButton(nameof(CardsButtonBackground));
+            SetBackgroundButton(nameof(CardsImage));
         }
         private async Task SetViewWorkSpaceLearningCards()
         {
@@ -164,25 +166,25 @@ namespace RepeatingWords.ViewModel
         {
             switch (button)
             {
-                case nameof(CardsButtonBackground):
+                case nameof(CardsImage):
                 {
-                    CardsButtonBackground = Color.LightGray;
-                    SelectButtonBackground = Color.Transparent;
-                    EntryButtonBackground = Color.Transparent; 
+                    CardsImage = cardsActive;
+                    SelectImage = selectUnActive;
+                    EntryImage = entryUnActive; 
                     break;
                 }
-                case nameof(SelectButtonBackground):
+                case nameof(SelectImage):
                 {
-                    CardsButtonBackground = Color.Transparent;
-                    SelectButtonBackground = Color.LightGray;
-                    EntryButtonBackground = Color.Transparent;
+                    CardsImage = cardsUnActive;
+                    SelectImage = selectActive;
+                    EntryImage = entryUnActive;
                     break;
                 }
-                case nameof(EntryButtonBackground):
+                case nameof(EntryImage):
                 {
-                    CardsButtonBackground = Color.Transparent;
-                    SelectButtonBackground = Color.Transparent;
-                    EntryButtonBackground = Color.LightGray;
+                    CardsImage = cardsUnActive;
+                    SelectImage = selectUnActive;
+                    EntryImage = entryActive;
                     break;
                 }
             }

@@ -55,9 +55,9 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <controls:ImageButtonAnimationScale BackgroundColor="{Binding CardsButtonBackground, Mode=TwoWay}"  Source="icons_cardsbutton.png"  Command="{Binding LearningCardsCommand}" Grid.Column="0" HorizontalOptions="Center"/>
-                    <controls:ImageButtonAnimationScale BackgroundColor="{Binding SelectButtonBackground, Mode=TwoWay}" Source="icons_select_word.png" Command="{Binding SelectFromWordsCommand}" Grid.Column="1" HorizontalOptions="Center"/>
-                    <controls:ImageButtonAnimationScale BackgroundColor="{Binding EntryButtonBackground, Mode=TwoWay}" Source="icons_keyboard.png" Command="{Binding EnterTranslateCommand}" Grid.Column="2" HorizontalOptions="Center" />
+                    <controls:ImageButtonAnimationScale Source="{Binding CardsImage, Mode=TwoWay}"  Command="{Binding LearningCardsCommand}" Grid.Column="0" HorizontalOptions="Center"/>
+                    <controls:ImageButtonAnimationScale Source="{Binding SelectImage, Mode=TwoWay}" Command="{Binding SelectFromWordsCommand}" Grid.Column="1" HorizontalOptions="Center"/>
+                    <controls:ImageButtonAnimationScale Source="{Binding EntryImage, Mode=TwoWay}" Command="{Binding EnterTranslateCommand}" Grid.Column="2" HorizontalOptions="Center" />
                 </Grid>
             </StackLayout>
         </StackLayout>
