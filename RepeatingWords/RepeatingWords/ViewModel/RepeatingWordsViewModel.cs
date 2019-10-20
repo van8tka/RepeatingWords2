@@ -100,7 +100,7 @@ namespace RepeatingWords.ViewModel
         private readonly string selectActive = "icons_select_word.png";
         private readonly string selectUnActive = "icons_select_wordGray.png";
         private readonly string entryActive = "icons_keyboard.png";
-        private readonly string entryUnActive = " icons_keyboardGray.png";
+        private readonly string entryUnActive = "icons_keyboardGray.png";
 
 
         public ICommand VoiceActingCommand { get; set; }
@@ -217,7 +217,7 @@ namespace RepeatingWords.ViewModel
 
         public override async Task InitializeAsync(object navigationData)
         {
-            SetBackgroundButton(nameof(CardsButtonBackground));         
+            SetBackgroundButton(nameof(CardsImage));         
             IsBusy = true;
             if (navigationData is Dictionary dictionary)
             {
@@ -239,7 +239,7 @@ namespace RepeatingWords.ViewModel
             Model.AllWordsCount = Model.WordsLearningAll.Count();
             Model.Dictionary = _dictionary;
             ShakeWordsCollection(Model.WordsLearningAll);
-            SetViewWorkSpaceLearningCards();
+            await SetViewWorkSpaceLearningCards();
             IsVisibleScore = true;
             await base.InitializeAsync(navigationData);
         }
