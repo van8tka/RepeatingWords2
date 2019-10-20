@@ -56,8 +56,12 @@ namespace RepeatingWords.ViewModel
         public Words SelectedItem
         {
             get => _selectedItem;
-            set { _selectedItem = value; OnPropertyChanged(nameof(SelectedItem));
-                if (_selectedItem != null) ShowActions(_selectedItem); }
+            set { _selectedItem = value; 
+                OnPropertyChanged(nameof(SelectedItem));
+                SetUnVisibleFloatingMenu();
+                if (_selectedItem != null) 
+                    ShowActions(_selectedItem);
+            }
         }
         private bool _isVisibleListEmpty;
         public bool IsVisibleListEmpty

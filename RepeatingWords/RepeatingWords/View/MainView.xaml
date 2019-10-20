@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RepeatingWords.View.MainView"
              xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"    
-              xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"    
+             xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"   
+             xmlns:controls="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
              Style="{DynamicResource TitleApp}"
             
             >
@@ -13,11 +14,92 @@
         <ToolbarItem Name="Like" Icon="toolbarImageLike.png" Command="{Binding LikeCommand}"></ToolbarItem>
         <ToolbarItem Name="Help" Icon="toolbarImageHelp.png" Command="{Binding HelperCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
-    <ContentPage.Behaviors>
-        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadPageCommand}"/>
-    </ContentPage.Behaviors>
 
-    <StackLayout>
+    <ContentPage.Content>
+        <RelativeLayout Margin="10,0,10,5">
+            <ContentView RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" 
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                <StackLayout>
+                    <StackLayout VerticalOptions="Start">
+                        <local:AdMobView HeightRequest="60" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <ListView x:Name ="dictionaryList" ItemsSource="{Binding DictionaryList}" SelectedItem ="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout VerticalOptions="Center" >
+                                                <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation"/>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+            <controls:ImageButtonAnimationScale
+                x:Name="FloatBtnMenu"
+                Source="{Binding SourceMenuBtn, Mode=TwoWay}"
+                BackgroundColor="Transparent"
+                Command="{Binding MenuCommand}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}" >
+            </controls:ImageButtonAnimationScale>
+            <ImageButton
+                x:Name="FloatBtnImportFile"
+                Source="floating_btn_impFile.png"
+                BackgroundColor="Transparent"
+                IsVisible="{Binding ImportVisible, Mode=TwoWay}"
+                Command="{Binding ImportWordsCommand}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-120}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-120}"/>
+            <ImageButton
+                x:Name="FabCloudBtn"              
+                BackgroundColor="Transparent"
+                Source="floating_btn_cloud.png"
+                Command="{Binding AddWordsFromNetCommand}" 
+                IsVisible="{Binding LearnVisible, Mode=TwoWay}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-140}"/>
+            <ImageButton
+                x:Name="FabAddBtn"               
+                BackgroundColor="Transparent"
+                Source="floating_btn_add.png"
+                Command="{Binding AddDictionaryCommand}" 
+                IsVisible="{Binding AddVisible,Mode=TwoWay}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-140}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}"/>
+        </RelativeLayout>
+    </ContentPage.Content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--ITS FROM MAIN PAGE-->
+    <!--<ContentPage.Behaviors>
+        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadPageCommand}"/>
+    </ContentPage.Behaviors>-->
+    <!--<StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
             <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate ButtonAddDictionaryOrWords}" Command="{Binding ChooseDictionaryCommand}"/>
             <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate Continue}" Command="{Binding ContinueLearningCommand}" IsEnabled="{Binding IsEnabledContinue, Mode=TwoWay}"/>
@@ -25,5 +107,5 @@
         <StackLayout VerticalOptions="End">
             <local:AdMobView HeightRequest="50" />
         </StackLayout>
-    </StackLayout>
+    </StackLayout>-->
 </ContentPage>

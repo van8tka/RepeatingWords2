@@ -51,9 +51,7 @@ namespace RepeatingWords.ViewModel
             {
                 await _languageLoader.LoadSelectedLanguageToDB(selectedLanguage);
                 DialogService.HideLoadDialog();
-                await NavigationService.RemoveLastFromBackStackAsync();
-                await NavigationService.NavigateToAsync<DictionariesListViewModel>();
-                await NavigationService.RemoveLastFromBackStackAsync();
+               GoMainPageCommand.Execute(null);
             }
             catch(Exception e)
             {
