@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"
              xmlns:custom="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
-               xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
+             xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
              mc:Ignorable="d"
              x:Class="RepeatingWords.View.WorkSpaceEnterWordView"            
              >
@@ -41,16 +41,21 @@
 
             </StackLayout>
             <StackLayout Margin="0,5,20,0" HorizontalOptions="End" Orientation="Horizontal">
-                <Label Text="{local:Translate ButtonHint}" TextColor="Gray" FontSize="17" Margin="10,0,10,0" >
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding HintWordCommand}"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="{local:Translate ButtonCheck}" TextColor="Gray" FontSize="17" Margin="10,0,10,0">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding CheckWordCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+               <custom:ButtonAnimationScale
+                   Text="{local:Translate ButtonHint}" 
+                   Command="{Binding HintWordCommand}"
+                   TextColor="Gray" 
+                   FontSize="12" 
+                   BackgroundColor="Transparent"
+                   />
+
+               <custom:ButtonAnimationScale
+                   Text="{local:Translate ButtonCheck}" 
+                   Command="{Binding CheckWordCommand}"
+                   TextColor="Gray" 
+                   FontSize="12" 
+                   BackgroundColor="Transparent"
+               />
             </StackLayout>
 
         </StackLayout>

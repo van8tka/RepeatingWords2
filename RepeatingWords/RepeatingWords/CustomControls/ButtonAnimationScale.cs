@@ -2,16 +2,16 @@
 
 namespace RepeatingWords.CustomControls
 {
-    public class ImageButtonAnimationScale : ImageButton
+   public class ButtonAnimationScale : Button
     {
-        public ImageButtonAnimationScale():base()
-        {          
+        public ButtonAnimationScale() : base()
+        {
             this.Clicked += async (sender, e) =>
             {
-                var btn = (ImageButtonAnimationScale)sender;
+                var btn = (ButtonAnimationScale)sender;
                 await btn.ScaleTo(1.2, 250, Easing.SpringIn);
                 await btn.ScaleTo(1, 250);
             };
-        }               
-    }                 
+        }
+    }
 }
