@@ -40,7 +40,7 @@ namespace RepeatingWords.Services
             _container.Register<ILanguageLoaderFacade, LanguageLoader>();
             _container.Register<IContinueWordsService, ContinueWordsService>();
             _container.Register<IAnimationService, AnimationService>();
-            
+            _container.Register<IEntryWordValidator, EntryWordValidator>();
             //register viewmodels
             _container.Register(typeof(MainViewModel));
             _container.Register(typeof(HelperViewModel));

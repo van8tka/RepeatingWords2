@@ -13,16 +13,17 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceEnterWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager, IAnimationService animation) : base(_dialogService, _navigationService, unlearningManager, animation)
+        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager, IAnimationService animation, IEntryWordValidator wordValidator) : base(_dialogService, _navigationService, unlearningManager, animation)
         {
             CheckWordCommand = new Command(async () => await CheckWord());
             HintWordCommand = new Command(async () => await HintWord());
             ColorEnterWord = Color.LightGray;
+            _wordValidator = wordValidator ?? throw new ArgumentNullException(nameof(wordValidator));
         }
 
         private Words _showingWord;     
         private int _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
-
+        private readonly IEntryWordValidator _wordValidator;
         private string _enterAnswerWord;
         public string EnterAnswerWord
         {
@@ -138,7 +139,7 @@ namespace RepeatingWords.ViewModel
             try
             {
                 var checkWord = Model.IsFromNative ? _showingWord.EngWord : _showingWord.RusWord;
-                if (string.Equals(EnterAnswerWord, checkWord, StringComparison.OrdinalIgnoreCase))
+                if ( _wordValidator.IsValidWord(EnterAnswerWord, checkWord))
                 {                 
                     await SetValidMarks();
                     _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
