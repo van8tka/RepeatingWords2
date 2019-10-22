@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords.Helpers
@@ -9,7 +7,13 @@ namespace RepeatingWords.Helpers
     {
         public bool IsValidWord(string entryWord, string originalWord)
         {
-            throw new NotImplementedException();
+            entryWord = entryWord.Trim();
+            originalWord = originalWord.Trim();
+
+            if (string.Equals(entryWord, originalWord, StringComparison.OrdinalIgnoreCase))
+                return true;
+            else
+               return false;
         }
     }
 }
