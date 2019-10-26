@@ -221,15 +221,15 @@ namespace RepeatingWords.ViewModel
             IsBusy = true;
             if (navigationData is Dictionary dictionary)
             {
-                Model.IsFromNative = await ShowFromLanguageNative();
                 _dictionary = dictionary;
                 DictionaryName = _dictionary.Name;
+                Model.IsFromNative = await ShowFromLanguageNative();
             }
             else if (navigationData is LastAction lastAct)
             {
-                Model.IsFromNative = lastAct.FromRus;
                 _dictionary = await GetDictionary(lastAct.IdDictionary);
                 DictionaryName = _dictionary.Name;
+                Model.IsFromNative = lastAct.FromRus;
             }
             else
                 throw new Exception("Error load RepeatingWordsViewModel, bad params navigationData");

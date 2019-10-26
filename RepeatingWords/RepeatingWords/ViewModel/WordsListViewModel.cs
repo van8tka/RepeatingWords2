@@ -106,10 +106,22 @@ namespace RepeatingWords.ViewModel
                 WordsList.Remove(selectedItem);
                 SetIsListEmptyLabel();
                 OnPropertyChanged(nameof(WordsList));
+                CountWords--;
             }
         }
-      
-    
+
+        private int _countWords = 0;
+        public int CountWords
+        {
+            get => _countWords;
+            set
+            {
+                _countWords = value;
+                DictionaryName = _dictionary.Name + "(" + CountWords + ")"; 
+                OnPropertyChanged(nameof(CountWords));
+            }
+        }
+
         public override async Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
@@ -118,6 +130,8 @@ namespace RepeatingWords.ViewModel
                 _dictionary = dictionary;
                 DictionaryName = dictionary.Name;
                 WordsList = await LoadData(dictionary.Id);
+                _countWords = WordsList.Count();
+                DictionaryName = dictionary.Name+"("+CountWords+")";
                 SetIsListEmptyLabel();
             }
             else
