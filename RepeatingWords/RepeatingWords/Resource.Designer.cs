@@ -322,6 +322,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unlearned words.
+        /// </summary>
+        public static string ButtonStudyNotLearning {
+            get {
+                return ResourceManager.GetString("ButtonStudyNotLearning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Continue.
         /// </summary>
         public static string Continue {

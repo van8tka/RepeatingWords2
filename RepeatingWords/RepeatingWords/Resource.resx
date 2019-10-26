@@ -525,4 +525,7 @@ smartphone or keyboard transcription</value>
   <data name="Deleting" xml:space="preserve">
     <value>Deleting..</value>
   </data>
+  <data name="ButtonStudyNotLearning" xml:space="preserve">
+    <value>Unlearned words</value>
+  </data>
 </root>

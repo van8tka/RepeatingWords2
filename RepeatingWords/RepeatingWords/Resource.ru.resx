@@ -512,4 +512,7 @@
   <data name="Deleting" xml:space="preserve">
     <value>Удаление..</value>
   </data>
+  <data name="ButtonStudyNotLearning" xml:space="preserve">
+    <value>Повторение невыученных</value>
+  </data>
 </root>

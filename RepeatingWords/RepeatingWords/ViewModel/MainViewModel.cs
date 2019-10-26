@@ -63,7 +63,7 @@ namespace RepeatingWords.ViewModel
             try
             {
                 //кроме словарей не законченных и словарей недоученных
-                var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase)).OrderBy(x => x.Name).AsEnumerable());
+                var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderBy(x => x.Name).AsEnumerable());
                 return new ObservableCollection<Dictionary>(items);
             }
             catch (Exception e)
@@ -100,10 +100,21 @@ namespace RepeatingWords.ViewModel
                 string removeDictionary = Resource.ButtonRemove;
                 string showWords = Resource.ButtonShowWords;
                 string studing = Resource.ButtonRepeatWords;
-                var result = await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: new string[] { showWords, studing, removeDictionary });
+                string studingNotLearning = Resource.ButtonStudyNotLearning;
+                var unlearningDictionary = GetUnlearningDictionary(selectedItem);
+                string[] actionButtons;
+                if (unlearningDictionary != null)
+                    actionButtons = new string[] {studing, studingNotLearning, showWords, removeDictionary};
+                else
+                    actionButtons = new string[] { studing, showWords, removeDictionary };
+                var result = await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
                 if (result.Equals(studing, StringComparison.OrdinalIgnoreCase))
                 {
                     await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(selectedItem);
+                }
+                if (result.Equals(studingNotLearning, StringComparison.OrdinalIgnoreCase))
+                {
+                    await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(unlearningDictionary);
                 }
                 if (result.Equals(showWords, StringComparison.OrdinalIgnoreCase))
                 {
@@ -116,6 +127,11 @@ namespace RepeatingWords.ViewModel
             {
                 Log.Logger.Error(e);
             }
+        }
+
+        private Dictionary GetUnlearningDictionary(Dictionary selected)
+        {
+           return _unitOfWork.DictionaryRepository.Get().FirstOrDefault(x => x.Name.Equals(selected.Name+Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase));
         }
 
         private async Task<int> AddDictionary(bool isNotImport = true)
@@ -147,6 +163,9 @@ namespace RepeatingWords.ViewModel
             try
             {
                 DialogService.ShowLoadDialog(Resource.Deleting);
+                var unlearned = GetUnlearningDictionary(removeDictionary);
+                if (unlearned != null)
+                   await RemoveDictionary(unlearned);
                 var words = await Task.Run(() => _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == removeDictionary.Id).AsEnumerable());
                 if (words != null && words.Any())
                     for (int i = 0; i < words.Count(); i++)
