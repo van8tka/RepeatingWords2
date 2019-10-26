@@ -26,6 +26,11 @@ namespace RepeatingWords.ViewModel
             IsVisibleScore = false;
             Model = new RepeatingWordsModel();
             VoiceActingCommand = new Command(VoiceActing);
+            EditCurrentWordCommand = new Command(async() =>
+            {
+                _isEditing = true;
+                await NavigationService.NavigateToAsync<CreateWordViewModel>(Model.CurrentWord);
+            });
             EnterTranslateCommand = new Command(async ()=>
             {
                 await _animationService.AnimationFade(WorkContainerView, 0);
@@ -45,8 +50,9 @@ namespace RepeatingWords.ViewModel
                 await _animationService.AnimationFade(WorkContainerView, 1);
             });
             UnloadPageCommand = new Command(UnloadPage);
+            AppearingCommand = new Command(AppearingPage);
         }
-        
+ 
         private readonly IAnimationService _animationService;
         private ICustomContentViewModel _workSpaceVM;
         private readonly IVolumeLanguageService _volumeService;
@@ -108,6 +114,8 @@ namespace RepeatingWords.ViewModel
         public ICommand SelectFromWordsCommand { get; set; }
         public ICommand LearningCardsCommand { get; set; }
         public ICommand UnloadPageCommand { get; set; }
+        public ICommand EditCurrentWordCommand { get; set; }
+        public ICommand AppearingCommand { get; set; }
 
         private WorkSpaceEnterWordView _enterWordView;
         private WorkSpaceEnterWordView EnterWordView => _enterWordView ?? (_enterWordView = new WorkSpaceEnterWordView());
@@ -252,15 +260,30 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                if (Model.AllWordsCount == Model.AllShowedWordsCount)
-                    _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
-                else
-                    _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.WordsLeft, Model.IsFromNative);
+                if (!_isEditing)
+                {
+                    if (Model.AllWordsCount == Model.AllShowedWordsCount)
+                        _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
+                    else
+                        _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.WordsLeft, Model.IsFromNative);
+                }
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
             }
+        }
+        //переменная для определения переключения в режим редактирования текущего слова
+        private bool _isEditing;
+
+        private void AppearingPage()
+        {
+            if (_isEditing)
+            {
+                var word = _unitOfWork.WordsRepository.Get(Model.CurrentWord.Id);
+                (_workSpaceVM as WorkSpaceBaseViewModel).SetViewWords(Model.CurrentWord, Model.IsFromNative);
+            }
+            _isEditing = false;
         }
     }
 }

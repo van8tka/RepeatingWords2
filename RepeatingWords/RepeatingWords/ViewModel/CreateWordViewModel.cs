@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using FormsControls.Base;
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers.Interfaces;
@@ -69,11 +70,7 @@ namespace RepeatingWords.ViewModel
         {
             try
             {               
-                string ModelWordAdd = Resource.ModelWordAdd;
-                string ModelWordChange = Resource.ModelWordChange;
                 string ModelNoFillFull = Resource.ModelNoFillFull;
-                string ModelForAddingWord = Resource.ModelForAddingWord;
-
                 if (!String.IsNullOrEmpty(NativeWord) && !String.IsNullOrEmpty(TranslateWord))
                 {
                     if (!String.IsNullOrEmpty(TranscriptionWord))
@@ -88,9 +85,7 @@ namespace RepeatingWords.ViewModel
                         TranscriptionWord = "[]";
                     }
                     var word = CreateWord();                   
-                    await NavigationService.RemoveLastFromBackStackAsync();
-                    await NavigationService.NavigateToAsync<WordsListViewModel>(_dictionary);
-                    await NavigationService.RemoveLastFromBackStackAsync();
+                    await GoBack();
                 }
                 else
                 {
@@ -100,6 +95,21 @@ namespace RepeatingWords.ViewModel
             catch (Exception er)
             {
                 Log.Logger.Error(er);
+            }
+        }
+
+        private async Task GoBack()
+        {
+            var lastPage = NavigationService.PreviousPageViewModel;
+            if (lastPage is WordsListViewModel || lastPage is EntryTranscriptionViewModel)
+            {
+                await NavigationService.RemoveLastFromBackStackAsync();
+                await NavigationService.NavigateToAsync<WordsListViewModel>(_dictionary);
+                await NavigationService.RemoveLastFromBackStackAsync();
+            }
+            else
+            {
+                await NavigationService.GoBackPage();
             }
         }
 

@@ -6,15 +6,17 @@
              xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
              xmlns:controls="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
-             Title ="{Binding DictionaryName}"               
+             Title ="{Binding DictionaryName}"    
+            
              >
     <!--панель управлления-->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Edit" Icon="toolbarImageEdit.png" Command="{Binding GoMainPageCommand}"/>
+        <ToolbarItem Name="Edit" Icon="toolbarImageEdit.png" Command="{Binding EditCurrentWordCommand}"/>
         <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Behaviors>
         <behavior:EventToCommandBehavior EventName="Disappearing" Command="{Binding UnloadPageCommand}"/>
+        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
     <StackLayout>
 

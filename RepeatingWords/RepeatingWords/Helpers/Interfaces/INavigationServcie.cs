@@ -11,5 +11,6 @@ namespace RepeatingWords.Helpers.Interfaces
         Task NavigateToAsync<T>(object param) where T : ViewModelBase;
         Task RemoveLastFromBackStackAsync();
         Task RemoveBackStackAsync();
+        Task GoBackPage();
     }
 }

@@ -19,6 +19,12 @@ namespace RepeatingWords.Services
             get => _mainPage.Navigation.NavigationStack[_mainPage.Navigation.NavigationStack.Count - 2].BindingContext as ViewModelBase;
         }
 
+        public Task GoBackPage()
+        {
+          return _mainPage.Navigation.PopAsync();
+        }
+        
+
         public Task InitializeAsync()
         {
             return NavigateToAsync<MainViewModel>();
