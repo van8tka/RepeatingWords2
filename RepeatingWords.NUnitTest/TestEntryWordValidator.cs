@@ -17,8 +17,16 @@ namespace RepeatingWords.NUnitTest
             _wordValidator = new EntryWordValidator();
         }
 
-
-        
+        [TestCase( @"варенье(тест бол)", "тест бол", true)]
+        [TestCase( @" (ДОм), (тест), (Тест), (ЗДЕСЬ)", "тест", true)]
+        [TestCase( @" (ДОм) (тест) (Тест) (ЗДЕСЬ)", "тест", true)]
+        [TestCase(@" ДОм / тест / Тест / ЗДЕСЬ", "тест", true)]
+        [TestCase( @" ЗДЕСЬ\тест \ Тест \ ДОм", "тест", true)]
+        [TestCase( "тест, ТЕСТ, ЗДЕСЬ, ДОм", "тест", true)]
+        [TestCase( @"тест где-то", "тест где-то", true)]
+        [TestCase("    , табуляция,     пробел", " пробел", true)]
+        [TestCase("    , табуляция,     пробел", " варенье, крем", false)]
+        [TestCase("тест бол", @"варенье(тест бол)", true)]
         [TestCase("тест", @" (ДОм), (тест), (Тест), (ЗДЕСЬ)", true)]
         [TestCase("тест", @" (ДОм) (тест) (Тест) (ЗДЕСЬ)", true)]
         [TestCase("тест", @" ДОм / тест / Тест / ЗДЕСЬ", true)]
@@ -29,7 +37,7 @@ namespace RepeatingWords.NUnitTest
         [TestCase("тест", "notValid",false)]
         [TestCase("тест", "тест", true)]
         [TestCase(" пробел", "   пробел", true)]
-        [TestCase(" пробел", "    табуляция", true)]
+        [TestCase(" пробел", "    пробел, табуляция", true)]
         [Test]
         public void TestWordValidator(string entry, string original, bool resultAssert)
         {
