@@ -340,6 +340,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Top 100 russian words.
+        /// </summary>
+        public static string DefaultDictionaryName {
+            get {
+                return ResourceManager.GetString("DefaultDictionaryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting...
         /// </summary>
         public static string Deleting {
@@ -372,6 +381,15 @@ namespace RepeatingWords {
         public static string ErrorImport {
             get {
                 return ResourceManager.GetString("ErrorImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to en.
+        /// </summary>
+        public static string IsCurrentLang {
+            get {
+                return ResourceManager.GetString("IsCurrentLang", resourceCulture);
             }
         }
         

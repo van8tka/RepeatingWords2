@@ -528,4 +528,10 @@ smartphone or keyboard transcription</value>
   <data name="ButtonStudyNotLearning" xml:space="preserve">
     <value>Unlearned words</value>
   </data>
+  <data name="DefaultDictionaryName" xml:space="preserve">
+    <value>Top 100 russian words</value>
+  </data>
+  <data name="IsCurrentLang" xml:space="preserve">
+    <value>en</value>
+  </data>
 </root>

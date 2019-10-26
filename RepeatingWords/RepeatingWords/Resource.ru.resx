@@ -515,4 +515,10 @@
   <data name="ButtonStudyNotLearning" xml:space="preserve">
     <value>Повторение невыученных</value>
   </data>
+  <data name="DefaultDictionaryName" xml:space="preserve">
+    <value>Топ 100 английских слов</value>
+  </data>
+  <data name="IsCurrentLang" xml:space="preserve">
+    <value>ru</value>
+  </data>
 </root>
