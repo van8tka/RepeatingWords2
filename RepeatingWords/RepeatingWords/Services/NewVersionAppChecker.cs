@@ -29,7 +29,8 @@ namespace RepeatingWords.Services
                if( DependencyService.Get<ICheckConnect>().CheckTheNet() )
                 {
                     float webVersion = await _webService.GetVersionApp();
-                    if (webVersion > Constants.NUMBER_VERSION_ANDROID)
+                    float currentVersion = DependencyService.Get<IVersionApp>().GetVersionApp();
+                    if (webVersion > currentVersion)
                     {
                         var actionUpdate = await _dialogService.ShowConfirmAsync(Resource.ModalUpdateApp, "", Resource.Yes, Resource.No);
                         if (actionUpdate)

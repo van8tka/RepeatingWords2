@@ -2,6 +2,7 @@ using Android.App;
 using Android.Net;
 using Android.Content;
 using System.Net;
+using Android.OS;
 
 [assembly: Xamarin.Forms.Dependency(typeof(RepeatingWords.Droid.CheckConnect))]
 
@@ -30,7 +31,7 @@ namespace RepeatingWords.Droid
             {
                 var url = "https://google.com";
                 var webRequest = (HttpWebRequest)WebRequest.Create(url);
-                webRequest.Timeout = 3000;
+                webRequest.Timeout = 10000;
                 var resp = webRequest.GetResponse();
                 resp.Close();
                 return true;

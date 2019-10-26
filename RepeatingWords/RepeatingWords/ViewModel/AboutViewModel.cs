@@ -1,6 +1,6 @@
-﻿using RepeatingWords.Heleprs;
-using RepeatingWords.Helpers.Interfaces;
+﻿using RepeatingWords.Helpers.Interfaces;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
@@ -11,7 +11,7 @@ namespace RepeatingWords.ViewModel
         public override Task InitializeAsync(object navigationData)
         {
             IsBusy = true;          
-            VersionApp = ("Cards of words v" + Constants.NUMBER_VERSION_ANDROID).Replace(',', '.');
+            VersionApp = ("Cards of words v" + DependencyService.Get<IVersionApp>().GetVersionApp()).Replace(',', '.');
             return base.InitializeAsync(navigationData);
         }
 
