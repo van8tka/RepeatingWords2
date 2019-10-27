@@ -130,11 +130,11 @@
     <comment>Кнопка создать</comment>
   </data>
   <data name="ButtonHowCreateDictAndaddWord" xml:space="preserve">
-    <value>Create the dictionary</value>
+    <value>Adding words</value>
     <comment>Кн Создание словаря и добавление отдельных слов</comment>
   </data>
   <data name="ButtonHowIportFile" xml:space="preserve">
-    <value>Import words from the file</value>
+    <value>Import words from file</value>
     <comment>Кн Как импортировать слова из файла</comment>
   </data>
   <data name="ButtonNextWord" xml:space="preserve">
@@ -166,8 +166,7 @@
     <comment>Заголовок введите слово на русском(первое слово)</comment>
   </data>
   <data name="LabelForStart" xml:space="preserve">
-    <value>To get started with the application, you need:
-Add your dictionary with words and add words individually, add a dictionary from the Internet by selecting the language you want, or add words to the dictionary from the file.</value>
+    <value>To add your own word you need: click on the dictionary where you want to add the word, select [View the list of words]</value>
     <comment>Для начала работы с программой необходимо:</comment>
   </data>
   <data name="LabelHeadAddFile" xml:space="preserve">
@@ -191,11 +190,11 @@ Add your dictionary with words and add words individually, add a dictionary from
     <comment>Заголовок с указанием пути к корню системы</comment>
   </data>
   <data name="LabelScreen1" xml:space="preserve">
-    <value>To add your dictionary, click [DICTIONARIES]</value>
+    <value>Next, click the menu button, then click add button</value>
     <comment>Добавить словарь со словами, для этого нажмем на кнопку [Добавить словарь или слова]</comment>
   </data>
   <data name="LabelScreen2" xml:space="preserve">
-    <value>Then click [CREATE DICTIONARY]</value>
+    <value>Fill in all the fields (transcription is optional) and click the add button</value>
     <comment>Нажать кнопку [Добавить словарь]</comment>
   </data>
   <data name="LabelScreen21" xml:space="preserve">
@@ -223,33 +222,8 @@ Add your dictionary with words and add words individually, add a dictionary from
     <comment>Когда слова загрузятся в словарь, откроется окно со списком слов.</comment>
   </data>
   <data name="LabelScreen3" xml:space="preserve">
-    <value>Enter the name of the dictionary and click the [CREATE]</value>
+    <value>When you click on the field for entering transcription, by default a special transcription keyboard opens (can be changed to standard in the settings)</value>
     <comment>Ввести название словаря и нажать кнопку [Создать]</comment>
-  </data>
-  <data name="LabelScreen4" xml:space="preserve">
-    <value>Click on the created dictionary</value>
-    <comment>Нажать на созданный словарь</comment>
-  </data>
-  <data name="LabelScreen5" xml:space="preserve">
-    <value>Select [Create word]</value>
-    <comment>Нажать на кнопку [Добавить слово]</comment>
-  </data>
-  <data name="LabelScreen6" xml:space="preserve">
-    <value>Enter the word, translate of the word and transcription.Click [Create word]</value>
-    <comment>Ввести слово на русском, его перевод и транскрипцию (поле Транскрипция запонять необязательно). И нажать на кнопку [Добавить слово]</comment>
-  </data>
-  <data name="LabelScreen7" xml:space="preserve">
-    <value>When you click on the transcription input field, you can select a keyboard
-smartphone or keyboard transcription</value>
-    <comment>После добавления слов, можно сразу перейти к изучению, нажав на кнопку [Изучение слов по карточкам]</comment>
-  </data>
-  <data name="LabelScreen8" xml:space="preserve">
-    <value>After adding words click on the created dictionary and select [View the list of words]</value>
-    <comment>Выбираем какой язык будет отображаться первый</comment>
-  </data>
-  <data name="LabelScreen9" xml:space="preserve">
-    <value>Where you can also add words (1), go to the study of words (2)</value>
-    <comment>Для перехода к следующему слову нажимаем кнопку [Следующее слово], для отображения перевода слова нажимаем на кнопку [Перевернуть карточку]</comment>
   </data>
   <data name="LabelSecondWord" xml:space="preserve">
     <value>Enter the translation of the word</value>
@@ -414,15 +388,6 @@ smartphone or keyboard transcription</value>
   <data name="screen9" xml:space="preserve">
     <value>screen9.jpg</value>
   </data>
-  <data name="LabelScreen10" xml:space="preserve">
-    <value>You can also change the word or delete it by calling the context menu by clicking on the word</value>
-  </data>
-  <data name="LabelScreen11" xml:space="preserve">
-    <value>Click the [STUDING OF WORDS] button will open the context menu for selecting the learning language</value>
-  </data>
-  <data name="LabelScreen12" xml:space="preserve">
-    <value>After selecting the language, a study window appears, where the figures show: the total number of words / words displayed / inverted words</value>
-  </data>
   <data name="screen20" xml:space="preserve">
     <value>screen20.jpg</value>
   </data>
@@ -445,13 +410,13 @@ smartphone or keyboard transcription</value>
     <value>About</value>
   </data>
   <data name="TitleHelpAddWord" xml:space="preserve">
-    <value>How to add words</value>
+    <value>Adding words</value>
   </data>
   <data name="TitleHelpers" xml:space="preserve">
     <value>Help</value>
   </data>
   <data name="TitleHelpImportFile" xml:space="preserve">
-    <value>How to import words</value>
+    <value>Import words from file</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Settings</value>

@@ -241,7 +241,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create the dictionary.
+        ///   Looks up a localized string similar to Adding words.
         /// </summary>
         public static string ButtonHowCreateDictAndaddWord {
             get {
@@ -250,7 +250,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import words from the file.
+        ///   Looks up a localized string similar to Import words from file.
         /// </summary>
         public static string ButtonHowIportFile {
             get {
@@ -439,8 +439,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To get started with the application, you need:
-        ///Add your dictionary with words and add words individually, add a dictionary from the Internet by selecting the language you want, or add words to the dictionary from the file..
+        ///   Looks up a localized string similar to To add your own word you need: click on the dictionary where you want to add the word, select [View the list of words].
         /// </summary>
         public static string LabelForStart {
             get {
@@ -503,7 +502,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To add your dictionary, click [DICTIONARIES].
+        ///   Looks up a localized string similar to Next, click the menu button, then click add button.
         /// </summary>
         public static string LabelScreen1 {
             get {
@@ -512,34 +511,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can also change the word or delete it by calling the context menu by clicking on the word.
-        /// </summary>
-        public static string LabelScreen10 {
-            get {
-                return ResourceManager.GetString("LabelScreen10", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click the [STUDING OF WORDS] button will open the context menu for selecting the learning language.
-        /// </summary>
-        public static string LabelScreen11 {
-            get {
-                return ResourceManager.GetString("LabelScreen11", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to After selecting the language, a study window appears, where the figures show: the total number of words / words displayed / inverted words.
-        /// </summary>
-        public static string LabelScreen12 {
-            get {
-                return ResourceManager.GetString("LabelScreen12", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Then click [CREATE DICTIONARY].
+        ///   Looks up a localized string similar to Fill in all the fields (transcription is optional) and click the add button.
         /// </summary>
         public static string LabelScreen2 {
             get {
@@ -602,66 +574,11 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the name of the dictionary and click the [CREATE].
+        ///   Looks up a localized string similar to When you click on the field for entering transcription, by default a special transcription keyboard opens (can be changed to standard in the settings).
         /// </summary>
         public static string LabelScreen3 {
             get {
                 return ResourceManager.GetString("LabelScreen3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click on the created dictionary.
-        /// </summary>
-        public static string LabelScreen4 {
-            get {
-                return ResourceManager.GetString("LabelScreen4", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select [Create word].
-        /// </summary>
-        public static string LabelScreen5 {
-            get {
-                return ResourceManager.GetString("LabelScreen5", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter the word, translate of the word and transcription.Click [Create word].
-        /// </summary>
-        public static string LabelScreen6 {
-            get {
-                return ResourceManager.GetString("LabelScreen6", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to When you click on the transcription input field, you can select a keyboard
-        ///smartphone or keyboard transcription.
-        /// </summary>
-        public static string LabelScreen7 {
-            get {
-                return ResourceManager.GetString("LabelScreen7", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to After adding words click on the created dictionary and select [View the list of words].
-        /// </summary>
-        public static string LabelScreen8 {
-            get {
-                return ResourceManager.GetString("LabelScreen8", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Where you can also add words (1), go to the study of words (2).
-        /// </summary>
-        public static string LabelScreen9 {
-            get {
-                return ResourceManager.GetString("LabelScreen9", resourceCulture);
             }
         }
         
@@ -1098,7 +1015,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to How to add words.
+        ///   Looks up a localized string similar to Adding words.
         /// </summary>
         public static string TitleHelpAddWord {
             get {
@@ -1116,7 +1033,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to How to import words.
+        ///   Looks up a localized string similar to Import words from file.
         /// </summary>
         public static string TitleHelpImportFile {
             get {

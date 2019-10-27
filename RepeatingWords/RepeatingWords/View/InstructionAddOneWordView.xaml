@@ -12,32 +12,15 @@
     </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout  HorizontalOptions="FillAndExpand" Padding="10" >
-            <Label Text="{locale:Translate LabelHeadCreateInstr}" HorizontalTextAlignment="Center" Style="{StaticResource LableHeadApp}"/>
             <Label Text="{locale:Translate LabelForStart}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Image Source="{locale:Translate screen1}" Margin="20" />
             <Label Text="{locale:Translate LabelScreen1}"  HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-                 <Image Source="{locale:Translate screen1}" Margin="20" />
-            <Label Text="{locale:Translate LabelScreen2}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
             <Image Source="{locale:Translate screen2}"  Margin="20"/>
-            <Label Text="{locale:Translate LabelScreen3}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
             <Image Source="{locale:Translate screen3}" Margin="20"/>
-            <Label Text="{locale:Translate LabelScreen4}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Label Text="{locale:Translate LabelScreen2}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
             <Image Source="{locale:Translate screen4}" Margin="20" />
-            <Label Text="{locale:Translate LabelScreen5}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
+            <Label Text="{locale:Translate LabelScreen3}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
             <Image Source="{locale:Translate screen5}" Margin="20" />
-            <Label Text="{locale:Translate LabelScreen6}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-            <Image Source="{locale:Translate screen6}"  Margin="20"/>
-            <Label Text="{locale:Translate LabelScreen7}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-            <Image Source="{locale:Translate screen7}"  Margin="20"/>
-            <Label Text="{locale:Translate LabelScreen8}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-            <Image Source="{locale:Translate screen8}"  Margin="20"/>
-            <Label Text="{locale:Translate LabelScreen9}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-            <Image Source="{locale:Translate screen9}"  Margin="20"/>
-            <Label Text="{locale:Translate LabelScreen10}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-            <Image Source="{locale:Translate screen10}"  Margin="20"/>
-            <Label Text="{locale:Translate LabelScreen11}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-            <Image Source="{locale:Translate screen11}"  Margin="20"/>
-            <Label Text="{locale:Translate LabelScreen12}" HorizontalTextAlignment="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-            <Image Source="{locale:Translate screen12}"  Margin="20"/>
         </StackLayout>
   </ScrollView>
 </ContentPage>

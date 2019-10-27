@@ -130,7 +130,7 @@
     <comment>Кнопка создать</comment>
   </data>
   <data name="ButtonHowCreateDictAndaddWord" xml:space="preserve">
-    <value>Создание словаря </value>
+    <value>Добавление слов</value>
     <comment>Кн Создание словаря и добавление отдельных слов</comment>
   </data>
   <data name="ButtonHowIportFile" xml:space="preserve">
@@ -166,14 +166,13 @@
     <comment>Заголовок введите слово на русском(первое слово)</comment>
   </data>
   <data name="LabelForStart" xml:space="preserve">
-    <value>Для начала работы с приложением необходимо:
-добавить свой словарь со словами и добавлять слова по отдельности или добавить словарь из интернета выбрав нужный язык или добавить слова в словарь из файла.</value>
+    <value>Для добавления своего слова необходимо: нажать на словарь в который хотите добавить слово, выбрать [Просмотр списка слов]</value>
   </data>
   <data name="LabelHeadAddFile" xml:space="preserve">
     <value>Добавление слов из файла</value>
   </data>
   <data name="LabelHeadCreateInstr" xml:space="preserve">
-    <value>Создание словаря и добавление слов</value>
+    <value>Добавление слов</value>
   </data>
   <data name="LabelNeedAddFile" xml:space="preserve">
     <value>Для начала работы с программой необходимо:
@@ -187,10 +186,10 @@
     <comment>Заголовок с указанием пути к корню системы</comment>
   </data>
   <data name="LabelScreen1" xml:space="preserve">
-    <value>Для добавления своего словаря необходимо нажать [СЛОВАРИ]</value>
+    <value>Далее нажимаем кнопку меню, затем кнопку добавить </value>
   </data>
   <data name="LabelScreen2" xml:space="preserve">
-    <value>Нажимаем [ДОБАВИТЬ СЛОВАРЬ]</value>
+    <value>Заполняем все поля (транскрипция не обязательна) и нажимаем кнопку добавить</value>
   </data>
   <data name="LabelScreen21" xml:space="preserve">
     <value>Заполнить файл словами в следующем порядке: слово, транскрипция, перевод. Обязательно транскрипция в центре строки для разделения русского слова и его перевода, и обязательно использование квадратных скобок!</value>
@@ -211,26 +210,7 @@
     <value>Когда слова загрузятся в словарь, откроется окно со списком слов.</value>
   </data>
   <data name="LabelScreen3" xml:space="preserve">
-    <value>Ввести название словаря и нажать кнопку [СОЗДАТЬ]</value>
-  </data>
-  <data name="LabelScreen4" xml:space="preserve">
-    <value>Нажать на созданный словарь</value>
-  </data>
-  <data name="LabelScreen5" xml:space="preserve">
-    <value>Выбрать [Добавить слово]</value>
-  </data>
-  <data name="LabelScreen6" xml:space="preserve">
-    <value>Ввести слово, перевод, транскрипцию(не обязательно) и нажмите кнопку [Добавить слово]</value>
-  </data>
-  <data name="LabelScreen7" xml:space="preserve">
-    <value>При нажатии на поле ввода транскрипции можно выбрать клавиатуру 
-смартфона или клавиатуру транскрипции</value>
-  </data>
-  <data name="LabelScreen8" xml:space="preserve">
-    <value>После добавления слов нажимаем на созданный словарь и выбираем [Просмотр списка слов]</value>
-  </data>
-  <data name="LabelScreen9" xml:space="preserve">
-    <value>Где так же можно добавлять слова(1) или перейти к изучению слов (2)</value>
+    <value>При нажатии на поле для ввода транскрипции, по умолчанию открывается специальная клавиатура транскрипции (можно изменить на стандартную в настройках)</value>
   </data>
   <data name="LabelSecondWord" xml:space="preserve">
     <value>Введите перевод слова</value>
@@ -361,7 +341,7 @@
     <value>Успешно</value>
   </data>
   <data name="screen1" xml:space="preserve">
-    <value>screen1ru.jpg</value>
+    <value>screen1ru.png</value>
   </data>
   <data name="screen10" xml:space="preserve">
     <value>screen10ru.jpg</value>
@@ -373,16 +353,16 @@
     <value>screen12ru.jpg</value>
   </data>
   <data name="screen2" xml:space="preserve">
-    <value>screen2ru.jpg</value>
+    <value>screen2ru.png</value>
   </data>
   <data name="screen3" xml:space="preserve">
-    <value>screen3ru.jpg</value>
+    <value>screen3ru.png</value>
   </data>
   <data name="screen4" xml:space="preserve">
-    <value>screen4ru.jpg</value>
+    <value>screen4ru.png</value>
   </data>
   <data name="screen5" xml:space="preserve">
-    <value>screen5ru.jpg</value>
+    <value>screen5ru.png</value>
   </data>
   <data name="screen6" xml:space="preserve">
     <value>screen6ru.jpg</value>
@@ -395,15 +375,6 @@
   </data>
   <data name="screen9" xml:space="preserve">
     <value>screen9ru.jpg</value>
-  </data>
-  <data name="LabelScreen10" xml:space="preserve">
-    <value>Так же можно изменить слово или удалить его вызвав контекстное меню нажатием на слово</value>
-  </data>
-  <data name="LabelScreen11" xml:space="preserve">
-    <value>При нажатии на кнопку [ИЗУЧЕНИЕ СЛОВ] откроется контекстное меню выбора языка изучения</value>
-  </data>
-  <data name="LabelScreen12" xml:space="preserve">
-    <value>Выбрав язык отобразиться окно изучения, где цифрами показано: общее кол-во слов/показанных слов/перевернутых слов</value>
   </data>
   <data name="screen20" xml:space="preserve">
     <value>screen20ru.jpg</value>
@@ -428,7 +399,7 @@
     <comment>Заголовок страницы о приложении</comment>
   </data>
   <data name="TitleHelpAddWord" xml:space="preserve">
-    <value>Как добавить слова</value>
+    <value>Добавление слов</value>
     <comment>Заголовок страницы помощи про добавлении слова</comment>
   </data>
   <data name="TitleHelpers" xml:space="preserve">
@@ -436,7 +407,7 @@
     <comment>Заголовок страницы помощь</comment>
   </data>
   <data name="TitleHelpImportFile" xml:space="preserve">
-    <value>Как импортировать слова</value>
+    <value>Импорт слов из файла</value>
     <comment>Заголовок страницы помощи про импорте слов</comment>
   </data>
   <data name="TitleSettings" xml:space="preserve">

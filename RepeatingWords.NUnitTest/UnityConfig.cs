@@ -125,6 +125,11 @@ namespace RepeatingWords.NUnitTest
             throw new NotImplementedException();
         }
 
+        public Task GoBackPage()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task RemoveLastFromBackStackAsync()
         {
             throw new NotImplementedException();
