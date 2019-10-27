@@ -1,7 +1,9 @@
-﻿namespace RepeatingWords
+﻿using System.Threading.Tasks;
+
+namespace RepeatingWords
 {
     public interface ITextToSpeech
     {
-        void Speak(string text, string lang);
+        Task Speak(string text);
     }
 }

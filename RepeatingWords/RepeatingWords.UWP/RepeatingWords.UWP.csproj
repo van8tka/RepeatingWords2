@@ -163,6 +163,9 @@
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.6.292</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugins.TextToSpeech">
+      <Version>4.0.0.7</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" />
     <PackageReference Include="Xamarin.Plugin.FilePicker">

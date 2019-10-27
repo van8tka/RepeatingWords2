@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.TextToSpeech;
+using Plugin.TextToSpeech.Abstractions;
 using RepeatingWords.Services;
 using Xamarin.Forms;
 
@@ -17,15 +19,15 @@ namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IVolumeLanguageService volumeService, IContinueWordsService continueWordsManager, IAnimationService animationService) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork,  IContinueWordsService continueWordsManager, IAnimationService animationService, ITextToSpeech speechService) : base(navigationServcie, dialogService)
         {
             _animationService = animationService ?? throw new ArgumentNullException(nameof(animationService));
             _unitOfWork = unitOfWork;
-            _volumeService = volumeService ?? throw new ArgumentNullException(nameof(volumeService));
             _continueWordsManager = continueWordsManager ?? throw new ArgumentNullException(nameof(continueWordsManager));
+            _speechService = speechService ?? throw new ArgumentNullException(nameof(speechService));
             IsVisibleScore = false;
             Model = new RepeatingWordsModel();
-            VoiceActingCommand = new Command(VoiceActing);
+            VoiceActingCommand = new Command(async ()=>await VoiceActing());
             EditCurrentWordCommand = new Command(async() =>
             {
                 _isEditing = true;
@@ -55,9 +57,10 @@ namespace RepeatingWords.ViewModel
  
         private readonly IAnimationService _animationService;
         private ICustomContentViewModel _workSpaceVM;
-        private readonly IVolumeLanguageService _volumeService;
+      
         private readonly IUnitOfWork _unitOfWork;
         private readonly IContinueWordsService _continueWordsManager;
+        private readonly ITextToSpeech _speechService;
 
         private Dictionary _dictionary;
         private string _currentVolumeLanguage;
@@ -124,9 +127,16 @@ namespace RepeatingWords.ViewModel
         private WorkSpaceCardsView _cardsView;
         private WorkSpaceCardsView CardsView => _cardsView ?? (_cardsView = new WorkSpaceCardsView());
        
-        private void VoiceActing()
+        private async Task VoiceActing()
         {
-            DependencyService.Get<ITextToSpeech>().Speak(Model.CurrentWord.EngWord, _currentVolumeLanguage);
+            try
+            {
+                await _speechService.Speak(Model.CurrentWord.EngWord);
+            }
+            catch (Exception e)
+            {
+               Log.Logger.Error(e);
+            }
         }
        
         private async Task ShowEnterTranslate()
@@ -241,7 +251,6 @@ namespace RepeatingWords.ViewModel
             }
             else
                 throw new Exception("Error load RepeatingWordsViewModel, bad params navigationData");
-            _currentVolumeLanguage = _volumeService.GetSysAbbreviationVolumeLanguage();
             Model.WordsLearningAll = (await LoadWords(_dictionary.Id)).ToList();
             _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
             Model.AllWordsCount = Model.WordsLearningAll.Count();
