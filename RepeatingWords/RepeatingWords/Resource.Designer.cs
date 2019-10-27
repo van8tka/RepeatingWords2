@@ -448,38 +448,11 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add words from file.
-        /// </summary>
-        public static string LabelHeadAddFile {
-            get {
-                return ResourceManager.GetString("LabelHeadAddFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Create the dictionary and add the word.
         /// </summary>
         public static string LabelHeadCreateInstr {
             get {
                 return ResourceManager.GetString("LabelHeadCreateInstr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You need for import words from the file: .
-        /// </summary>
-        public static string LabelNeedAddFile {
-            get {
-                return ResourceManager.GetString("LabelNeedAddFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use Notepad.exe create the file with &quot;.txt&quot; format on the computer .
-        /// </summary>
-        public static string LabelNeedCreate {
-            get {
-                return ResourceManager.GetString("LabelNeedCreate", resourceCulture);
             }
         }
         
@@ -520,7 +493,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fill the file as in example:  word  [transcription] translate. You have to use [ ] in every line..
+        ///   Looks up a localized string similar to Using Notepad.exe create a file with &quot;.txt&quot; format on the computer. Fill the file as in example:  native word [transcription] translate. You have to use [ ] in every line. If transcription is epsent use: word[] translate.
         /// </summary>
         public static string LabelScreen21 {
             get {
@@ -529,7 +502,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have to save file in UTF-8..
+        ///   Looks up a localized string similar to You must to save file in UTF-8..
         /// </summary>
         public static string LabelScreen22 {
             get {
@@ -538,7 +511,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Load this file into the phone..
+        ///   Looks up a localized string similar to Load this file into the phone or Google Drive.
         /// </summary>
         public static string LabelScreen231 {
             get {
@@ -547,7 +520,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select dictionary and select  [Import words from the file] in context menu.
+        ///   Looks up a localized string similar to In the application, click the menu button, then the import button from the file.
         /// </summary>
         public static string LabelScreen232 {
             get {
@@ -556,7 +529,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find and select file on smartphone. Wait while import words will be complete..
+        ///   Looks up a localized string similar to Enter a dictionary name and click create.
         /// </summary>
         public static string LabelScreen24 {
             get {
@@ -565,7 +538,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to After that shows the list of words..
+        ///   Looks up a localized string similar to A standard file manager will open, select your file and click on it. Words will be imported from the file into the dictionary..
         /// </summary>
         public static string LabelScreen25 {
             get {
@@ -799,7 +772,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen1.jpg.
+        ///   Looks up a localized string similar to screen1.png.
         /// </summary>
         public static string screen1 {
             get {
@@ -808,34 +781,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen10.jpg.
-        /// </summary>
-        public static string screen10 {
-            get {
-                return ResourceManager.GetString("screen10", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen11.jpg.
-        /// </summary>
-        public static string screen11 {
-            get {
-                return ResourceManager.GetString("screen11", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen12.jpg.
-        /// </summary>
-        public static string screen12 {
-            get {
-                return ResourceManager.GetString("screen12", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen2.jpg.
+        ///   Looks up a localized string similar to screen2.png.
         /// </summary>
         public static string screen2 {
             get {
@@ -862,7 +808,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen22.jpg.
+        ///   Looks up a localized string similar to screen22.png.
         /// </summary>
         public static string screen22 {
             get {
@@ -871,7 +817,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen23.jpg.
+        ///   Looks up a localized string similar to screen23.png.
         /// </summary>
         public static string screen23 {
             get {
@@ -880,7 +826,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen24.jpg.
+        ///   Looks up a localized string similar to screen24.png.
         /// </summary>
         public static string screen24 {
             get {
@@ -889,7 +835,16 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen3.jpg.
+        ///   Looks up a localized string similar to screen25.png.
+        /// </summary>
+        public static string screen25 {
+            get {
+                return ResourceManager.GetString("screen25", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to screen3.png.
         /// </summary>
         public static string screen3 {
             get {
@@ -898,7 +853,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen4.jpg.
+        ///   Looks up a localized string similar to screen4.png.
         /// </summary>
         public static string screen4 {
             get {
@@ -907,47 +862,11 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen5.jpg.
+        ///   Looks up a localized string similar to screen5.png.
         /// </summary>
         public static string screen5 {
             get {
                 return ResourceManager.GetString("screen5", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen6.jpg.
-        /// </summary>
-        public static string screen6 {
-            get {
-                return ResourceManager.GetString("screen6", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen7.jpg.
-        /// </summary>
-        public static string screen7 {
-            get {
-                return ResourceManager.GetString("screen7", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen8.jpg.
-        /// </summary>
-        public static string screen8 {
-            get {
-                return ResourceManager.GetString("screen8", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen9.jpg.
-        /// </summary>
-        public static string screen9 {
-            get {
-                return ResourceManager.GetString("screen9", resourceCulture);
             }
         }
         

@@ -169,21 +169,9 @@
     <value>To add your own word you need: click on the dictionary where you want to add the word, select [View the list of words]</value>
     <comment>Для начала работы с программой необходимо:</comment>
   </data>
-  <data name="LabelHeadAddFile" xml:space="preserve">
-    <value>Add words from file</value>
-    <comment>Добавление слов из файла</comment>
-  </data>
   <data name="LabelHeadCreateInstr" xml:space="preserve">
     <value>Create the dictionary and add the word</value>
     <comment>Создание словаря и добавление слов</comment>
-  </data>
-  <data name="LabelNeedAddFile" xml:space="preserve">
-    <value>You need for import words from the file: </value>
-    <comment>Для добавления слов из файла необходимо:</comment>
-  </data>
-  <data name="LabelNeedCreate" xml:space="preserve">
-    <value>Use Notepad.exe create the file with ".txt" format on the computer </value>
-    <comment>Создать на компьютере через программу Блокнот(Notepad) файл c расширением txt."</comment>
   </data>
   <data name="LabelPathToRoot" xml:space="preserve">
     <value>Path to file:</value>
@@ -198,27 +186,27 @@
     <comment>Нажать кнопку [Добавить словарь]</comment>
   </data>
   <data name="LabelScreen21" xml:space="preserve">
-    <value>Fill the file as in example:  word  [transcription] translate. You have to use [ ] in every line.</value>
+    <value>Using Notepad.exe create a file with ".txt" format on the computer. Fill the file as in example:  native word [transcription] translate. You have to use [ ] in every line. If transcription is epsent use: word[] translate</value>
     <comment>Заполнить файл словами в следующем порядке: слово, транскрипция, перевод. Обязательно транскрипция в центре строки для разделения русского слова и его перевода, и обязательно использование квадратных скобок!</comment>
   </data>
   <data name="LabelScreen22" xml:space="preserve">
-    <value>You have to save file in UTF-8.</value>
+    <value>You must to save file in UTF-8.</value>
     <comment>Далее при сохранении файла указать кодировку UTF-8.</comment>
   </data>
   <data name="LabelScreen231" xml:space="preserve">
-    <value>Load this file into the phone.</value>
+    <value>Load this file into the phone or Google Drive</value>
     <comment>Закинуть созданный файл на телефон в корневую папку.</comment>
   </data>
   <data name="LabelScreen232" xml:space="preserve">
-    <value>Select dictionary and select  [Import words from the file] in context menu</value>
+    <value>In the application, click the menu button, then the import button from the file</value>
     <comment>Запустить программу на телефоне, выбрать словарь и нажать кнопку [Добавить слова из файла]</comment>
   </data>
   <data name="LabelScreen24" xml:space="preserve">
-    <value>Find and select file on smartphone. Wait while import words will be complete.</value>
+    <value>Enter a dictionary name and click create</value>
     <comment>Откроется окно с указанием пути, откуда происходит считывание информации о файлах и список файлов формата .txt. Нажимаем на наш файл и ожидаем пока все слова загрузятся в словарь. Если Вы не можете обнаружить необходимый файл, проверьте путь по которому он расположен.</comment>
   </data>
   <data name="LabelScreen25" xml:space="preserve">
-    <value>After that shows the list of words.</value>
+    <value>A standard file manager will open, select your file and click on it. Words will be imported from the file into the dictionary.</value>
     <comment>Когда слова загрузятся в словарь, откроется окно со списком слов.</comment>
   </data>
   <data name="LabelScreen3" xml:space="preserve">
@@ -353,40 +341,19 @@
     <value>Create a backup</value>
   </data>
   <data name="screen1" xml:space="preserve">
-    <value>screen1.jpg</value>
-  </data>
-  <data name="screen10" xml:space="preserve">
-    <value>screen10.jpg</value>
-  </data>
-  <data name="screen11" xml:space="preserve">
-    <value>screen11.jpg</value>
-  </data>
-  <data name="screen12" xml:space="preserve">
-    <value>screen12.jpg</value>
+    <value>screen1.png</value>
   </data>
   <data name="screen2" xml:space="preserve">
-    <value>screen2.jpg</value>
+    <value>screen2.png</value>
   </data>
   <data name="screen3" xml:space="preserve">
-    <value>screen3.jpg</value>
+    <value>screen3.png</value>
   </data>
   <data name="screen4" xml:space="preserve">
-    <value>screen4.jpg</value>
+    <value>screen4.png</value>
   </data>
   <data name="screen5" xml:space="preserve">
-    <value>screen5.jpg</value>
-  </data>
-  <data name="screen6" xml:space="preserve">
-    <value>screen6.jpg</value>
-  </data>
-  <data name="screen7" xml:space="preserve">
-    <value>screen7.jpg</value>
-  </data>
-  <data name="screen8" xml:space="preserve">
-    <value>screen8.jpg</value>
-  </data>
-  <data name="screen9" xml:space="preserve">
-    <value>screen9.jpg</value>
+    <value>screen5.png</value>
   </data>
   <data name="screen20" xml:space="preserve">
     <value>screen20.jpg</value>
@@ -395,13 +362,13 @@
     <value>screen21.jpg</value>
   </data>
   <data name="screen22" xml:space="preserve">
-    <value>screen22.jpg</value>
+    <value>screen22.png</value>
   </data>
   <data name="screen23" xml:space="preserve">
-    <value>screen23.jpg</value>
+    <value>screen23.png</value>
   </data>
   <data name="screen24" xml:space="preserve">
-    <value>screen24.jpg</value>
+    <value>screen24.png</value>
   </data>
   <data name="NotLearningPostfics" xml:space="preserve">
     <value> - not learned words</value>
@@ -498,5 +465,8 @@
   </data>
   <data name="IsCurrentLang" xml:space="preserve">
     <value>en</value>
+  </data>
+  <data name="screen25" xml:space="preserve">
+    <value>screen25.png</value>
   </data>
 </root>
