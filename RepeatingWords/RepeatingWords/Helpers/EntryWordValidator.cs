@@ -6,6 +6,10 @@ using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords.Helpers
 {
+    /// <summary>
+    /// check entry word with original translate,
+    /// if some original words, check to exist entry word with any original word
+    /// </summary>
    public class EntryWordValidator:IEntryWordValidator
     {
         public bool IsValidWord(string entryWord, string originalWord)
@@ -20,7 +24,7 @@ namespace RepeatingWords.Helpers
             }
             else
             {
-                var separators = new char[] {',', '\\', '/', '(', ')'};
+                var separators = new char[] {',', '\\', '/', '(', ')', ';'};
                 if (ContainsSeparator(entryWord, originalWord, separators))
                 {
                     var originalArray = originalWord.Split(separators);
@@ -51,7 +55,7 @@ namespace RepeatingWords.Helpers
 
         private string TrimSpecialSymbals(string original)
         {
-            var badSymbals = new char[] {' ', '\r', '\n', '\t', '(',')'};
+            var badSymbals = new char[] {' ', '\r', '\n', '\t', '(',')',';'};
             return original.Trim(badSymbals);
         }
 
