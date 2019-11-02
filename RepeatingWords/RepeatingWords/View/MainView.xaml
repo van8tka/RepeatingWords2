@@ -17,14 +17,11 @@
 
     <ContentPage.Content>
         <RelativeLayout Margin="10,0,10,5">
-            <ContentView RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" 
+            <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" 
                          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
-                <StackLayout>
-                    <StackLayout VerticalOptions="Start">
-                        <local:AdMobView HeightRequest="60" />
-                    </StackLayout>
-                    <StackLayout VerticalOptions="CenterAndExpand">
-                        <ListView x:Name ="dictionaryList" ItemsSource="{Binding DictionaryList}" SelectedItem ="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}" >
+                 
+                    <local:AdMobView HeightRequest="60" VerticalOptions="Start"/>
+                    <ListView VerticalOptions="CenterAndExpand" x:Name ="dictionaryList" ItemsSource="{Binding DictionaryList}" SelectedItem ="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -37,9 +34,8 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackLayout>
-                </StackLayout>
-            </ContentView>
+                
+            </StackLayout>
             <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnMenu"
                 Source="{Binding SourceMenuBtn, Mode=TwoWay}"

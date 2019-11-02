@@ -28,14 +28,10 @@
             
 
             <RelativeLayout Margin="10,0,10,5">
-            <ContentView RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1}"
+                <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1}"
                          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1}">
-                <StackLayout>
-                    <StackLayout VerticalOptions="Start" >
-                        <local:AdMobView HeightRequest="60" />
-                    </StackLayout>
-                    <StackLayout VerticalOptions="CenterAndExpand">
-                        <ListView x:Name ="wordsList" ItemsSource="{Binding WordsList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"  HasUnevenRows = "true" RowHeight = "-1" SeparatorColor="{StaticResource ColorCustomBackgrountButton}">
+                    <local:AdMobView HeightRequest="60" VerticalOptions="Start"/>
+                        <ListView x:Name ="wordsList" VerticalOptions="CenterAndExpand" ItemsSource="{Binding WordsList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"  HasUnevenRows = "true" RowHeight = "-1" SeparatorColor="{StaticResource ColorCustomBackgrountButton}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -50,9 +46,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackLayout>
                 </StackLayout>
-            </ContentView>
           
             <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnMenu"

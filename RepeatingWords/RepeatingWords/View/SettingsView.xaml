@@ -12,8 +12,7 @@
         <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
     </ContentPage.ToolbarItems>
     <ScrollView>
-         
-            <!--установка ночной темы-->
+        <!--установка ночной темы-->
         <StackLayout Padding="10">
             <StackLayout >
                 <Label Text="{local:Translate LabelChooseTheme}"  FontSize="Small" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start"/>
