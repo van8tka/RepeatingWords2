@@ -96,7 +96,6 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                SelectedItem = null;
                 string removeDictionary = Resource.ButtonRemove;
                 string showWords = Resource.ButtonShowWords;
                 string studing = Resource.ButtonRepeatWords;
@@ -122,6 +121,7 @@ namespace RepeatingWords.ViewModel
                 }
                 if (result.Equals(removeDictionary, StringComparison.OrdinalIgnoreCase))
                     await RemoveDictionary(selectedItem);
+                SelectedItem = null;
             }
             catch (Exception e)
             {
