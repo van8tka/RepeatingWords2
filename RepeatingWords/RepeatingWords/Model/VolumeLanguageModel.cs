@@ -8,6 +8,8 @@ namespace RepeatingWords.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public string Name { get; set; }
+        public string LanguageCode { get; set; }
+        public string CountryCode { get; set; }
         private bool _isChecked;
         public bool IsChecked { get=> _isChecked; set { _isChecked = value; OnPropertyChanged(nameof(IsChecked)); } }
 

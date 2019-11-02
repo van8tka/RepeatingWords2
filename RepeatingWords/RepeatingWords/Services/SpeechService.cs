@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Plugin.TextToSpeech;
@@ -27,9 +28,10 @@ namespace RepeatingWords.Services
                 var current = _volumeService.GetSysAbbreviationVolumeLanguage().Split('_');
                 var locale = locales.FirstOrDefault(x => x.Language.Equals(current[0], StringComparison.OrdinalIgnoreCase));
                 if (Device.RuntimePlatform == Device.Android)
-                    await CrossTextToSpeech.Current.Speak(text, locale);
-                //  if (Device.RuntimePlatform == Device.iOS)
-                else
+                    await CrossTextToSpeech.Current.Speak(text, locale); 
+                if (Device.RuntimePlatform == Device.iOS)
+                    throw new Exception("Can't set the voice language");
+                if (Device.RuntimePlatform == Device.UWP)
                     throw new Exception("Can't set the voice language");
             }
             catch (Exception e)

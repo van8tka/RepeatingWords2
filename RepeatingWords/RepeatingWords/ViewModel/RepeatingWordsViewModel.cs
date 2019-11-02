@@ -10,9 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Plugin.TextToSpeech;
-using Plugin.TextToSpeech.Abstractions;
-using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
