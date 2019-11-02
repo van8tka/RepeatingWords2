@@ -20,13 +20,13 @@ namespace RepeatingWords.Services
  
 
 
-        public  async Task Speak(string text)
+        public async Task Speak(string text)
         {
             try
             {
                 var locales = await CrossTextToSpeech.Current.GetInstalledLanguages();
-                var current = _volumeService.GetSysAbbreviationVolumeLanguage().Split('_');
-                var locale = locales.FirstOrDefault(x => x.Language.Equals(current[0], StringComparison.OrdinalIgnoreCase));
+                var current = _volumeService.GetVolumeLanguage();
+                var locale = locales.FirstOrDefault(x => x.Language.Equals(current.LanguageCode, StringComparison.OrdinalIgnoreCase));
                 if (Device.RuntimePlatform == Device.Android)
                     await CrossTextToSpeech.Current.Speak(text, locale); 
                 if (Device.RuntimePlatform == Device.iOS)

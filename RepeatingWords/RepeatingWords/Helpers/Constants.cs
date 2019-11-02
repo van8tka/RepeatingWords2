@@ -1,4 +1,6 @@
-﻿namespace RepeatingWords.Heleprs
+﻿using RepeatingWords.Model;
+
+namespace RepeatingWords.Heleprs
 {
     internal class Constants
     {
@@ -13,7 +15,7 @@
         internal const string KEYBOARD_TRANSCRIPTION_SHOWED = "showed";
         internal const string KEYBOARD_TRANSCRIPTION_HIDE = "hide";
         internal const string VOLUME_LANGUAGE = "volume";
-        internal const string VOLUME_LANGUAGE_DEFAULT = "English";
+        internal static VolumeLanguageModel VOLUME_LANGUAGE_DEFAULT = new VolumeLanguageModel() { Name = "English(GB)", CountryCode = "GB", LanguageCode = "en", IsChecked = true };
         
         internal const string NAME_DB_FOR_CONTINUE = "ContinueDictionary";
        

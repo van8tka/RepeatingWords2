@@ -7,6 +7,7 @@ using RepeatingWords.Helpers;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
+using RepeatingWords.Model;
 using RepeatingWords.Service;
 using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
@@ -52,12 +53,12 @@ namespace RepeatingWords.NUnitTest
             return "en-En";
         }
 
-        public string GetVolumeLanguage()
+        public VolumeLanguageModel GetVolumeLanguage()
         {
             throw new NotImplementedException();
         }
 
-        public bool SetVolumeLanguage(string languageName)
+        public bool SetVolumeLanguage(VolumeLanguageModel languageName)
         {
             throw new NotImplementedException();
         }

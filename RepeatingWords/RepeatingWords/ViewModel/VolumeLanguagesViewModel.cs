@@ -29,7 +29,7 @@ namespace RepeatingWords.ViewModel
 
         private void SetLanguages()
         {
-            var currentLanguage = _volumeService.GetVolumeLanguage();
+            var currentLanguage = _volumeService.GetVolumeLanguage().Name;
             var tempLanguages = new ObservableCollection<VolumeLanguageModel>(VolumeLanguageList.VolumeLanguages);
             for (int i = 0; i < tempLanguages.Count(); i++)
             {
@@ -54,7 +54,7 @@ namespace RepeatingWords.ViewModel
                     Languages.First(x => x.IsChecked).IsChecked = false;
                     _selectedItem = value;
                     _selectedItem.IsChecked = true;
-                    _volumeService.SetVolumeLanguage(_selectedItem.Name);
+                    _volumeService.SetVolumeLanguage(_selectedItem);
                     OnPropertyChanged(nameof(SelectedItem));
                     _settingsVm.CurrentVoiceLanguage = value.Name;
                 }
