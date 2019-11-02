@@ -8,11 +8,7 @@ namespace RepeatingWords.Helpers.Interfaces
         /// получение имени языка установленного для озвучки
         /// </summary>     
         VolumeLanguageModel GetVolumeLanguage();
-        /// <summary>
-        /// получение аббревиатуры языка установленного для озвучки
-        /// </summary>     
-      //  string GetSysAbbreviationVolumeLanguage();
-        /// <summary>
+      /// <summary>
         /// установка имени языка для озвучки и сохранение в настройках устройства
         /// </summary>  
         bool SetVolumeLanguage(VolumeLanguageModel languageName);
