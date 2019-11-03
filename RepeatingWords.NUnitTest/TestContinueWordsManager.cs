@@ -63,7 +63,7 @@ namespace RepeatingWords.NUnitTest
             Assert.IsTrue(_unitOfWork.DictionaryRepository.Get().Where(x => x.Name.Equals(dictionaryContinueName, StringComparison.OrdinalIgnoreCase)).Any());
             var wordsContinue = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == iddictionary);
             Assert.IsTrue(wordsContinue.Any());
-            Assert.AreEqual(4, wordsContinue.Count());
+            Assert.AreEqual(98, wordsContinue.Count());
         }
 
 
@@ -73,7 +73,7 @@ namespace RepeatingWords.NUnitTest
             var dictionaryContinueName = _dictionary.Name + NAME_DB_FOR_CONTINUE;
             int iddictionaryNew = _continue.SaveContinueDictionary(_dictionary.Name, _words.Skip(2), false);
             var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == iddictionaryNew).AsEnumerable();
-            Assert.AreEqual(4, words.Count());
+            Assert.AreEqual(98, words.Count());
             //act
             int iddictionaryContinue = _continue.SaveContinueDictionary(dictionaryContinueName, words.Skip(2).ToList(), false);
             //assert
@@ -83,7 +83,7 @@ namespace RepeatingWords.NUnitTest
             Assert.IsTrue(_unitOfWork.DictionaryRepository.Get().Where(x => x.Name.Equals(dictionaryContinueName, StringComparison.OrdinalIgnoreCase)).Any());
             var wordsContinue = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == iddictionaryContinue).AsEnumerable();
             Assert.IsTrue(wordsContinue.Any());
-            Assert.AreEqual(2, wordsContinue.Count());
+            Assert.AreEqual(96, wordsContinue.Count());
         }
 
 
