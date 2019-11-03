@@ -140,6 +140,7 @@ namespace RepeatingWords.Service
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 throw;
             }
         }
@@ -169,6 +170,7 @@ namespace RepeatingWords.Service
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 throw;
             }
         }
@@ -190,6 +192,7 @@ namespace RepeatingWords.Service
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 throw;
             }
         }       

@@ -2,7 +2,8 @@ using Android.App;
 using Android.Net;
 using Android.Content;
 using System.Net;
-using Android.OS;
+using RepeatingWords.LoggerService;
+
 
 [assembly: Xamarin.Forms.Dependency(typeof(RepeatingWords.Droid.CheckConnect))]
 
@@ -10,7 +11,6 @@ namespace RepeatingWords.Droid
 {
     public class CheckConnect : ICheckConnect
     {
-    
         public bool CheckTheNet()
         {
             bool isConnected;
@@ -37,7 +37,8 @@ namespace RepeatingWords.Droid
                 return true;
             }
             catch(WebException e)
-            {
+            { 
+                Log.Logger.Error(e);
                 return false;
             }
         }

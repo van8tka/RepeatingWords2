@@ -134,6 +134,7 @@ namespace RepeatingWords.NUnitTest
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 Debugger.Break();
                 throw;
             }

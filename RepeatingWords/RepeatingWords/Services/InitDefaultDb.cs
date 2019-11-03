@@ -3,6 +3,7 @@ using RepeatingWords.DataService.Model;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace RepeatingWords.Services
@@ -526,6 +527,7 @@ namespace RepeatingWords.Services
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 throw;
             }
         }
@@ -1005,6 +1007,7 @@ namespace RepeatingWords.Services
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 throw;
             }
         }

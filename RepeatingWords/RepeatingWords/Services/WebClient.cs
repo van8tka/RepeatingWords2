@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RepeatingWords.Model;
 using System;
+using System.Diagnostics;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.LoggerService;
 using System.Net;
@@ -61,6 +62,7 @@ namespace RepeatingWords.Services
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 throw;
             }
         }
@@ -80,6 +82,7 @@ namespace RepeatingWords.Services
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 throw;
             }
         }
