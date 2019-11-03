@@ -5,6 +5,6 @@ namespace RepeatingWords.Helpers.Interfaces
 {
     public interface ILanguageLoaderFacade
     {
-        Task LoadSelectedLanguageToDB(Language language);
+        Task LoadSelectedLanguageToDB(int idLanguage);
     }
 }

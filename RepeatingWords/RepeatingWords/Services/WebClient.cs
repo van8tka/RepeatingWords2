@@ -87,10 +87,11 @@ namespace RepeatingWords.Services
 
 
 
-    internal class WebClient : IWebClient
+    public class WebClient : IWebClient
     {
         private const string Url = "http://devprogram.ru/api/data/";
         private const string UrlLang = "http://devprogram.ru/api/langdata/";
+        private const string UrlWords = "http://devprogram.ru/api/words/";
         private const string UrlVersion = "http://devprogram.ru/api/version/android_cardsofwords";
 
         //получаем список словарей
@@ -138,11 +139,18 @@ namespace RepeatingWords.Services
             }
         }
         // получаем список словарей выбранного языка
-        public async Task<IEnumerable<Dictionary>> GetLanguage(int idLang)
+        public async Task<string> GetLanguageWords(int idLang)
         {          
             try
             {
-                return await GetData<Dictionary>(new Uri(UrlLang + idLang));
+                return await Task.Run(() =>
+                {
+                   var client = StandartWebClient.GetInstance();
+                    var request = client.CreateRequest(new Uri(UrlWords+idLang));
+                    string data;
+                    client.CreateResponse(request, out data);
+                    return data;
+                });
             }
             catch (Exception e)
             {

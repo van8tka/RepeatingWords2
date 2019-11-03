@@ -1,11 +1,11 @@
 ﻿using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers.Interfaces;
-using RepeatingWords.Model;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace RepeatingWords.Helpers
 {
@@ -21,65 +21,72 @@ namespace RepeatingWords.Helpers
         private readonly IUnitOfWork _unitOfWork;
 
 
-        public async Task LoadSelectedLanguageToDB(Language selectedLanguage)
+        public async Task LoadSelectedLanguageToDB(int idLanguage)
         {           
             try
             {
-                IEnumerable<Dictionary> data = (await _webService.GetLanguage(selectedLanguage.Id))?.OrderBy(x => x.Name);
-                if (data != null)
+                var dataRaw = await _webService.GetLanguageWords(idLanguage);
+                if (!string.IsNullOrEmpty(dataRaw) && !string.Equals(dataRaw, "[]", StringComparison.OrdinalIgnoreCase))
                 {
-                    for (int i = 0; i < data.Count(); i++)
+                    var jDataRaw = JArray.Parse(dataRaw);
+                    for (int i = 0; i < jDataRaw.Count(); i++)
                     {
-                        await AddDictionaryToDb(data.ElementAt(i));
+                        await AddDictionaryToDb(jDataRaw[i] as JArray);
                     }
                 }
             }
             catch (Exception e)
-            {              
+            {      
+                Debug.WriteLine(e);
                 throw;
             }
         }
 
 
-        private async Task AddDictionaryToDb(Dictionary selectedDictionary)
+        private async Task AddDictionaryToDb(JArray jDictionary)
         {
             try
-            {                
-                var words = (await _webService.Get(selectedDictionary.Id)).OrderBy(x => x.RusWord);
+            {
+                if (jDictionary == null)
+                    throw new Exception("JSon dictionary is empty");
                 await Task.Run(() =>
                 {
                     int idNewDictionary = _unitOfWork.DictionaryRepository.Get().Last().Id + 1;
-                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = idNewDictionary, Name = selectedDictionary.Name });
+                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = idNewDictionary, Name = jDictionary[0].ToString() });
                     _unitOfWork.Save();
-                    CreateWords(words, idNewDictionary);
+                    for(int i=2;i<jDictionary.Count();i++)
+                         CreateWords(jDictionary[i] as JArray, idNewDictionary);
                     _unitOfWork.Save();
                 });              
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 throw;
             }
         }
 
-        private void CreateWords(IEnumerable<Words> words, int idNewDictionary)
+        private void CreateWords(JArray jwords, int idNewDictionary)
         {
             try
             {
-                var badSymbals = new char[] { ' ', '\r', '\n', '\t' };
-                for (int i = 0; i < words.Count(); i++)
+                if (jwords != null && jwords.Count() == 3)
                 {
+                    var badSymbals = new char[] { ' ', '\r', '\n', '\t' };
                     var newWord = new Words();
-                    var netWord = words.ElementAt(i);
                     newWord.Id = 0;
                     newWord.IdDictionary = idNewDictionary;
-                    newWord.RusWord = netWord.RusWord.Trim(badSymbals);
-                    newWord.Transcription = netWord.Transcription.Trim(badSymbals);
-                    newWord.EngWord = netWord.EngWord.Trim(badSymbals);
+                    newWord.RusWord = jwords[0].ToString().Trim(badSymbals);
+                    newWord.Transcription = jwords[2].ToString().Trim(badSymbals);
+                    newWord.EngWord = jwords[1].ToString().Trim(badSymbals);
                     _unitOfWork.WordsRepository.Create(newWord);
                 }
+                else
+                     throw new ArgumentException(nameof(jwords));
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
                 throw;
             }          
         }

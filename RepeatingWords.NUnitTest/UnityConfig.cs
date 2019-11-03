@@ -29,6 +29,7 @@ namespace RepeatingWords.NUnitTest
             container.RegisterType<ILoggerService, Log>();
             container.RegisterInstance(typeof(IUnitOfWork), new UnitOfWork(testPath));
             container.RegisterType<IInitDefaultDb, InitDefaultDb>();
+            container.RegisterType<IWebClient, WebClient>();
 
             container.RegisterType<INavigationService, TestNavigationService>();
             container.RegisterType<IDialogService, TestDialogService>();
@@ -39,6 +40,7 @@ namespace RepeatingWords.NUnitTest
             container.RegisterType<IContinueWordsService, ContinueWordsService>();
             container.RegisterType<IImportFile, ImportFileToDb>();
             container.RegisterType<ViewModelBase, RepeatingWordsViewModel>();
+            container.RegisterType<ILanguageLoaderFacade, LanguageLoader>();
             return container;
         }
     }
