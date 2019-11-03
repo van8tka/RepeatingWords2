@@ -43,13 +43,13 @@ namespace RepeatingWords.Helpers
         }
 
 
-        private async Task AddDictionaryToDb(JArray jDictionary)
+        private Task AddDictionaryToDb(JArray jDictionary)
         {
             try
             {
                 if (jDictionary == null)
                     throw new Exception("JSon dictionary is empty");
-                await Task.Run(() =>
+                return Task.Run(() =>
                 {
                     int idNewDictionary = _unitOfWork.DictionaryRepository.Get().Last().Id + 1;
                     var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = idNewDictionary, Name = jDictionary[0].ToString() });
