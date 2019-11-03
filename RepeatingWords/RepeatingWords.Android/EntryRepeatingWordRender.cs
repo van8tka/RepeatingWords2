@@ -11,7 +11,9 @@ using RepeatingWords.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
+#pragma warning disable CS0612 // Type or member is obsolete
 [assembly: ExportRenderer(typeof(EntryRepeatingWord), typeof(EntryRepeatingWordRender))]
+#pragma warning restore CS0612 // Type or member is obsolete
 namespace RepeatingWords.Droid
 {
 

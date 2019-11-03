@@ -13,9 +13,9 @@ namespace RepeatingWords.CustomControls
 
         public Color BorderColor { get =>(Color)GetValue(BorderColorProperty); set { SetValue(BorderColorProperty, value);  }
         }
-        public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create(nameof(BorderWidth), typeof(int), typeof(EntryRepeatingWord), Device.OnPlatform<int>(1, 2, 2));
+        public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create(nameof(BorderWidth), typeof(int), typeof(EntryRepeatingWord), BorderWidthByDevice());
         public int BorderWidth { get => (int)GetValue(BorderWidthProperty);  set => SetValue(BorderWidthProperty, value);  }
-        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(EntryRepeatingWord), Device.OnPlatform<double>(6, 7, 7));    
+        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(EntryRepeatingWord), CornerRadiusByDevice());    
         public double CornerRadius { get => (double)GetValue(CornerRadiusProperty); set => SetValue(CornerRadiusProperty, value); }
         public static readonly BindableProperty IsCurvedCornersEnabledProperty = BindableProperty.Create(nameof(IsCurvedCornersEnabled), typeof(bool), typeof(EntryRepeatingWord), true);     
         public bool IsCurvedCornersEnabled { get => (bool)GetValue(IsCurvedCornersEnabledProperty); set => SetValue(IsCurvedCornersEnabledProperty, value); }
@@ -36,6 +36,34 @@ namespace RepeatingWords.CustomControls
                 ((EntryRepeatingWord)bindable).BorderColor = (Color)newValue;             
             }
                
+        }
+
+        private static double CornerRadiusByDevice()
+        {
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    return 7;
+                case Device.UWP:
+                    return 7;
+                case Device.iOS:
+                    return 6;
+            }
+            return 7;
+        }
+
+        private static int BorderWidthByDevice()
+        {
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    return 2;
+                case Device.UWP:
+                    return 2;
+                case Device.iOS:
+                    return 1;
+            }
+            return 1;
         }
     }
 }

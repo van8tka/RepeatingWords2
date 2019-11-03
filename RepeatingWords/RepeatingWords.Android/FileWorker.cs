@@ -12,6 +12,7 @@ namespace RepeatingWords.Droid
     {
 
         //создание папки для 
+        [Obsolete]
         public string CreateFolder(string folderName, string fileName = null, string filePath = null)
         {
             try
