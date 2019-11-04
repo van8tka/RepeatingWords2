@@ -69,7 +69,8 @@
             <Color x:Key="ColorBlack">Black</Color>
             <Color x:Key="ColorWhite">White</Color>
             <Color x:Key="ColorBlue">Blue</Color>
-            <Color x:Key="ColorCustomBackgrountButton">#6bafef</Color>
+            <!--<Color x:Key="ColorCustomBackgrountButton">#6bafef</Color>-->
+            <Color x:Key="ColorCustomBackgrountButton">#4badf9</Color>
         </ResourceDictionary>
   </Application.Resources>
 </Application>

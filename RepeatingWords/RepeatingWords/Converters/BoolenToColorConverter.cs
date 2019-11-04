@@ -13,7 +13,8 @@ namespace RepeatingWords.Converters
             {
                 if(isCheckedColor)
                 {
-                    return Color.FromHex("#6bafef");
+                    //  return Color.FromHex("#6bafef");
+                    return Color.FromHex("#4badf9");
                 }           
             }
              return Color.FromHex("#CDC9C9");
