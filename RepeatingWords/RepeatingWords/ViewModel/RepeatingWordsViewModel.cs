@@ -24,13 +24,13 @@ namespace RepeatingWords.ViewModel
             _speechService = speechService ?? throw new ArgumentNullException(nameof(speechService));
             IsVisibleScore = false;
             Model = new RepeatingWordsModel();
-            VoiceActingCommand = new Command(async ()=>await VoiceActing());
-            EditCurrentWordCommand = new Command(async() =>
+            VoiceActingCommand = new Command(async () => await _speechService.Speak(Model.CurrentWord.EngWord));
+            EditCurrentWordCommand = new Command(async () =>
             {
                 _isEditing = true;
                 await NavigationService.NavigateToAsync<CreateWordViewModel>(Model.CurrentWord);
             });
-            EnterTranslateCommand = new Command(async ()=>
+            EnterTranslateCommand = new Command(async () =>
             {
                 await _animationService.AnimationFade(WorkContainerView, 0);
                 await ShowEnterTranslate();
@@ -44,12 +44,12 @@ namespace RepeatingWords.ViewModel
             });
             LearningCardsCommand = new Command(async () =>
             {
-                await _animationService.AnimationFade(WorkContainerView, 0); 
+                await _animationService.AnimationFade(WorkContainerView, 0);
                 await ShowLearningCards();
                 await _animationService.AnimationFade(WorkContainerView, 1);
             });
-            UnloadPageCommand = new Command(UnloadPage);
-            AppearingCommand = new Command(AppearingPage);
+            UnloadPageCommand = new Command(async ()=> await UnloadPage());
+            AppearingCommand = new Command(async () => await AppearingPage());
         }
  
         private readonly IAnimationService _animationService;
@@ -60,7 +60,6 @@ namespace RepeatingWords.ViewModel
         private readonly ITextToSpeech _speechService;
 
         private Dictionary _dictionary;
-        private string _currentVolumeLanguage;
         private string _dictionaryName;
         public string DictionaryName
         {
@@ -124,17 +123,7 @@ namespace RepeatingWords.ViewModel
         private WorkSpaceCardsView _cardsView;
         private WorkSpaceCardsView CardsView => _cardsView ?? (_cardsView = new WorkSpaceCardsView());
        
-        private async Task VoiceActing()
-        {
-            try
-            {
-                await _speechService.Speak(Model.CurrentWord.EngWord);
-            }
-            catch (Exception e)
-            {
-               Log.Logger.Error(e);
-            }
-        }
+       
        
         private async Task ShowEnterTranslate()
         {
@@ -232,27 +221,35 @@ namespace RepeatingWords.ViewModel
 
         public override async Task InitializeAsync(object navigationData)
         {
-            SetBackgroundButton(nameof(CardsImage));         
+            SetBackgroundButton(nameof(CardsImage));
+            List<Words> wordsList = new List<Words>();
+            int count = 0;
             IsBusy = true;
-            if (navigationData is Dictionary dictionary)
+            bool isFromNative = false;
+            await Task.Run(async() =>
             {
-                _dictionary = dictionary;
-                DictionaryName = _dictionary.Name;
-                Model.IsFromNative = await ShowFromLanguageNative();
-            }
-            else if (navigationData is LastAction lastAct)
-            {
-                _dictionary = await GetDictionary(lastAct.IdDictionary);
-                DictionaryName = _dictionary.Name;
-                Model.IsFromNative = lastAct.FromRus;
-            }
-            else
-                throw new Exception("Error load RepeatingWordsViewModel, bad params navigationData");
-            Model.WordsLearningAll = (await LoadWords(_dictionary.Id)).ToList();
-            _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
-            Model.AllWordsCount = Model.WordsLearningAll.Count();
+                var typeData = navigationData.GetType();
+                if (typeData.Name.Equals(nameof(LastAction)))
+                {
+                    var lastAct = navigationData as LastAction;
+                    _dictionary = await GetDictionary(lastAct.IdDictionary);
+                    isFromNative = lastAct.FromRus;
+                }
+                else
+                {
+                    _dictionary = navigationData as Dictionary;
+                    isFromNative = await ShowFromLanguageNative();
+                }
+                wordsList = (await LoadWords(_dictionary.Id)).ToList();
+                _continueWordsManager.RemoveContinueDictionary(wordsList);
+                count = wordsList.Count();
+                ShakeWordsCollection(wordsList);
+            });
             Model.Dictionary = _dictionary;
-            ShakeWordsCollection(Model.WordsLearningAll);
+            DictionaryName = _dictionary.Name;
+            Model.IsFromNative = isFromNative;
+            Model.WordsLearningAll = wordsList;
+            Model.AllWordsCount = count;
             await SetViewWorkSpaceLearningCards();
             IsVisibleScore = true;
             await base.InitializeAsync(navigationData);
@@ -262,32 +259,29 @@ namespace RepeatingWords.ViewModel
         /// <summary>
         /// сохранение невыученных слов и сохранение слов для продолжения 
         /// </summary>
-        public void UnloadPage()
+        public Task UnloadPage()
         {
-            try
-            {
-                if (!_isEditing)
+            return Task.Run(() =>
                 {
-                    if (Model.AllWordsCount == Model.AllShowedWordsCount)
-                        _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
-                    else
-                        _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.WordsLeft, Model.IsFromNative);
-                }
-            }
-            catch (Exception e)
-            {
-                Log.Logger.Error(e);
-            }
+                    if (!_isEditing)
+                    {
+                        if (Model.AllWordsCount == Model.AllShowedWordsCount)
+                            _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
+                        else
+                            _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.WordsLeft,
+                                Model.IsFromNative);
+                    }
+                });
         }
         //переменная для определения переключения в режим редактирования текущего слова
         private bool _isEditing;
 
-        private void AppearingPage()
+        private async Task AppearingPage()
         {
             if (_isEditing)
             {
                 var word = _unitOfWork.WordsRepository.Get(Model.CurrentWord.Id);
-                (_workSpaceVM as WorkSpaceBaseViewModel).SetViewWords(Model.CurrentWord, Model.IsFromNative);
+                await (_workSpaceVM as WorkSpaceBaseViewModel).SetViewWords(Model.CurrentWord, Model.IsFromNative);
             }
             _isEditing = false;
         }
