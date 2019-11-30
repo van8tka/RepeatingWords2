@@ -36,24 +36,11 @@ namespace RepeatingWords
         {
             _container.GetInstance<IThemeService>().GetCurrentTheme();
             var navService = _container.GetInstance<INavigationService>(); 
-            navService.InitializeAsync(); 
-            ContinueLearning(navService);
+            navService.InitializeAsync();
             return Task.Run(() =>
             {
                 _container.GetInstance<INewVersionAppChecker>().CheckNewVersionApp();
             });
-        }
-        /// <summary>
-        /// if exist dictionary which started learned and didn't finish, will be loading continue learned
-        /// </summary>
-        /// <param name="navService"></param>
-        /// <returns></returns>
-        private void ContinueLearning(INavigationService navService)
-        {
-            var unitOfWork = _container.GetInstance<IUnitOfWork>();
-            var lastAction = unitOfWork.LastActionRepository.Get().LastOrDefault();
-            if(lastAction!=null)
-                 navService.NavigateToAsync<RepeatingWordsViewModel>(lastAction);
         }
 
         protected override async void OnStart()

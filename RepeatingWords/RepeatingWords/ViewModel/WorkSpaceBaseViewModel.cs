@@ -38,9 +38,9 @@ namespace RepeatingWords.ViewModel
             {
                 Model.IndexWordShowNow++;
                 Model.CurrentWord = Model.WordsLearningAll.ElementAt(Model.IndexWordShowNow);
-               await SetViewWords(Model.CurrentWord, Model.IsFromNative);
-                if(!isFirstShowAfterLoad)
-                    Model.AllShowedWordsCount++;
+                await SetViewWords(Model.CurrentWord, Model.IsFromNative);
+                if (!isFirstShowAfterLoad)
+                    Model.AllShowedWordsCount = Model.AllWordsCount - Model.AllOpenedWordsCount;
                 Model.WordsLeft.Remove(Model.CurrentWord);
             }
             else

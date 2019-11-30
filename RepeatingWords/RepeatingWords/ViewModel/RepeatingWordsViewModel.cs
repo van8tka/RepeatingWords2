@@ -265,7 +265,7 @@ namespace RepeatingWords.ViewModel
                 {
                     if (!_isEditing)
                     {
-                        if (Model.AllWordsCount == Model.AllShowedWordsCount)
+                        if (Model.AllWordsCount == (Model.AllShowedWordsCount+Model.AllOpenedWordsCount) )
                             _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
                         else
                             _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.WordsLeft,

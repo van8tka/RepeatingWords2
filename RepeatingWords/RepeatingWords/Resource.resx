@@ -416,10 +416,10 @@
     <value>All:</value>
   </data>
   <data name="OpenedWordsCountLabel" xml:space="preserve">
-    <value>Opened:</value>
+    <value>Unlearned:</value>
   </data>
   <data name="ShowedWordsCountLabel" xml:space="preserve">
-    <value>Showed:</value>
+    <value>Learned:</value>
   </data>
   <data name="TitleVolumeLanguages" xml:space="preserve">
     <value>Select a voice language</value>

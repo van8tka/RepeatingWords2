@@ -11,7 +11,7 @@ namespace RepeatingWords.Model
         public RepeatingWordsModel()
         {
             AllWordsCount = 0;
-            AllShowedWordsCount = 1;
+            AllShowedWordsCount = 0;
             AllOpenedWordsCount = 0;
             WordsOpen = new List<Words>();
             WordsLeft = new List<Words>();

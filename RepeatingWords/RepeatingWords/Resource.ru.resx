@@ -411,10 +411,10 @@
     <value>Всего:</value>
   </data>
   <data name="OpenedWordsCountLabel" xml:space="preserve">
-    <value>Открытых:</value>
+    <value>Невыученные:</value>
   </data>
   <data name="ShowedWordsCountLabel" xml:space="preserve">
-    <value>Показанных:</value>
+    <value>Выученные:</value>
   </data>
   <data name="TitleVolumeLanguages" xml:space="preserve">
     <value>Выберите язык озвучки</value>

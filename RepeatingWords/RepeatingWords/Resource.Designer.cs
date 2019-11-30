@@ -745,7 +745,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opened:.
+        ///   Looks up a localized string similar to Unlearned:.
         /// </summary>
         public static string OpenedWordsCountLabel {
             get {
@@ -871,7 +871,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Showed:.
+        ///   Looks up a localized string similar to Learned:.
         /// </summary>
         public static string ShowedWordsCountLabel {
             get {

@@ -25,7 +25,7 @@ namespace RepeatingWords.Services
             try
             {
                 var lastAction = _unitOfWork.LastActionRepository.Get().LastOrDefault();
-                if (lastAction != null && words.Any() && words.LastOrDefault().IdDictionary == lastAction.IdDictionary)
+                if (lastAction != null && words!=null && words.Any() && words.LastOrDefault().IdDictionary == lastAction.IdDictionary)
                 {
                     RemoveWords(words, lastAction);
                 }
