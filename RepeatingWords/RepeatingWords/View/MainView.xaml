@@ -17,11 +17,20 @@
 
     <ContentPage.Content>
         <RelativeLayout Margin="10,0,10,5">
-            <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" 
-                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
-                 
-                    <local:AdMobView HeightRequest="60" VerticalOptions="Start"/>
-                    <ListView VerticalOptions="CenterAndExpand" x:Name ="dictionaryList" ItemsSource="{Binding DictionaryList}" SelectedItem ="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}" >
+                    <local:AdMobView x:Name="AdvertView"
+                          RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
+                          RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
+                          HeightRequest="60"
+                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                    />
+                    <ListView VerticalOptions="CenterAndExpand" 
+                              ItemsSource="{Binding DictionaryList}" 
+                              SelectedItem ="{Binding SelectedItem, Mode=TwoWay}" 
+                              SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, ElementName=AdvertView, Property=Width, Factor=0}" 
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=AdvertView, Property=Height, Factor=1}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
+                              >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -35,7 +44,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                 
-            </StackLayout>
+            <!--</StackLayout>-->
             <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnMenu"
                 Source="{Binding SourceMenuBtn, Mode=TwoWay}"
