@@ -441,9 +441,18 @@ namespace RepeatingWords {
         /// <summary>
         ///   Looks up a localized string similar to Foreign language.
         /// </summary>
-        public static string LabelFirstLanguageIsNative {
+        public static string LabelFirstLanguageForeign {
             get {
-                return ResourceManager.GetString("LabelFirstLanguageIsNative", resourceCulture);
+                return ResourceManager.GetString("LabelFirstLanguageForeign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Native language.
+        /// </summary>
+        public static string LabelFirstLanguageNative {
+            get {
+                return ResourceManager.GetString("LabelFirstLanguageNative", resourceCulture);
             }
         }
         

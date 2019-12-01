@@ -472,7 +472,10 @@
   <data name="LabelChooseFirstLanguage" xml:space="preserve">
     <value>First view word on</value>
   </data>
-  <data name="LabelFirstLanguageIsNative" xml:space="preserve">
+  <data name="LabelFirstLanguageNative" xml:space="preserve">
+    <value>Native language</value>
+  </data>
+  <data name="LabelFirstLanguageForeign" xml:space="preserve">
     <value>Foreign language</value>
   </data>
 </root>

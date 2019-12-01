@@ -21,7 +21,7 @@ namespace RepeatingWords.ViewModel
             SetCurrentSettings();
             SwitchThemeCommand = new Command(SwitchThemeApp);
             SwitchTranskriptionKeyboardCommand = new Command(SwitchTranscriptionKeyboard);
-            SwitchFirstLanguageCommand = new Command(SwitchFirstLanguageShow);
+            ChangeFirstLanguageCommand = new Command(SwitchFirstLanguageShow);
             BackUpCommand = new Command(async () => { await ChooseCreateBackUp(); }); ;
             RestoreBackUpCommand = new Command(async () => { await RestoreBackup(); });
             ChangeVoiceLanguageCommand = new Command(async () => await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>(this));           
@@ -41,8 +41,8 @@ namespace RepeatingWords.ViewModel
         private bool _isDarkThem;
         public bool IsDarkThem { get => _isDarkThem; set { _isDarkThem = value; OnPropertyChanged(nameof(IsDarkThem)); } }
 
-        private bool _currentFirstLanguageNative;
-        public bool CurrentFirstLanguageNative { get => _currentFirstLanguageNative; set { _currentFirstLanguageNative = value; OnPropertyChanged(nameof(CurrentFirstLanguageNative)); } }
+        private string _currentLanguageView;
+        public string CurrentLanguageView { get => _currentLanguageView; set { _currentLanguageView = value; OnPropertyChanged(nameof(CurrentLanguageView)); } }
 
         private string _currentVoiceLanguage; 
         public string CurrentVoiceLanguage { get => _currentVoiceLanguage; set { _currentVoiceLanguage = value; OnPropertyChanged(nameof(CurrentVoiceLanguage)); } }
@@ -52,7 +52,7 @@ namespace RepeatingWords.ViewModel
         public ICommand BackUpCommand { get; set; }
         public ICommand RestoreBackUpCommand { get; set; }
         public ICommand ChangeVoiceLanguageCommand { get; set; }
-        public ICommand SwitchFirstLanguageCommand { get; set; }
+        public ICommand ChangeFirstLanguageCommand { get; set; }
 
 
 
@@ -87,7 +87,7 @@ namespace RepeatingWords.ViewModel
             try
             {
                 Log.Logger.Info("Change first language");
-                _firstLanguageService.ChangeFirstLanguage();
+                SetFirstLanguageView(_firstLanguageService.ChangeFirstLanguage());
             }
             catch (Exception e)
             {
@@ -107,7 +107,12 @@ namespace RepeatingWords.ViewModel
                 IsCustomKeyboardTranscription = _transcriptKeyboardService.GetCurrentTranscriptionKeyboard();
                 IsDarkThem = _themeService.GetCurrentTheme();
                 CurrentVoiceLanguage = _volumeService.GetVolumeLanguage().Name;
-                CurrentFirstLanguageNative = !_firstLanguageService.GetFirstLanguage();
+                SetFirstLanguageView(_firstLanguageService.GetFirstLanguage());
+        }
+
+        private void SetFirstLanguageView(bool isNativeFirst)
+        {
+            CurrentLanguageView = isNativeFirst ? Resource.LabelFirstLanguageNative:Resource.LabelFirstLanguageForeign;
         }
 
         private async Task ChooseCreateBackUp()
