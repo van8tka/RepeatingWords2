@@ -10,23 +10,25 @@
              >
     
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <StackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.9, 0.2" AbsoluteLayout.LayoutFlags="All" >
-                <Label Text="{local:Translate WordsListIsEmpty}" 
-                       FontSize="Medium" 
-                       IsVisible="{Binding IsVisibleListEmpty}" 
-                       Style="{DynamicResource LableHeadApp}"
-                       HorizontalOptions="CenterAndExpand"
-                       HorizontalTextAlignment="Center"
-                        />
-            </StackLayout>
-            
 
             <RelativeLayout Margin="10,0,10,5">
-                <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1}"
-                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1}">
-                    <local:AdMobView HeightRequest="60" VerticalOptions="Start"/>
-                        <ListView x:Name ="wordsList" VerticalOptions="CenterAndExpand" ItemsSource="{Binding WordsList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"  HasUnevenRows = "true" RowHeight = "-1" SeparatorColor="{StaticResource ColorCustomBackgrountButton}">
+
+                <local:AdMobView  x:Name="AdvertView"
+                        RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
+                        RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
+                        HeightRequest="60"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                        />
+                        <ListView x:Name ="wordsList" 
+                                  ItemsSource="{Binding WordsList}" 
+                                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
+                                  HasUnevenRows = "true" 
+                                  RowHeight = "-1" 
+                                  SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
+                                  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, ElementName=AdvertView, Property=Width, Factor=0}" 
+                                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=AdvertView, Property=Height, Factor=1}"
+                                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
+                        >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -41,7 +43,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                </StackLayout>
+                
           
             <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnMenu"
@@ -75,7 +77,16 @@
                 Command="{Binding AddWordCommand}"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-140}"
                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}"/>
+
+                <Label Text="{local:Translate WordsListIsEmpty}" 
+                       FontSize="Medium" 
+                       HorizontalTextAlignment="Center"
+                       IsVisible="{Binding IsVisibleListEmpty}" 
+                       Style="{DynamicResource LableHeadApp}"
+                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=0}"
+                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=0.5 }"
+                       RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                />
         </RelativeLayout>
-        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
