@@ -39,18 +39,23 @@ namespace RepeatingWords.ViewModel
                 Model.IndexWordShowNow++;
                 Model.CurrentWord = Model.WordsLearningAll.ElementAt(Model.IndexWordShowNow);
                 await SetViewWords(Model.CurrentWord, Model.IsFromNative);
-                if (!isFirstShowAfterLoad)
-                {
-                    Model.AllShowedWordsCount++;
-                    Model.AllLearnedWordsCount = Model.AllShowedWordsCount - Model.AllOpenedWordsCount;
-                }
+                CounterShowWord(isFirstShowAfterLoad);
                 Model.WordsLeft.Remove(Model.CurrentWord);
             }
             else
             {
-              await  _dialogService.ShowAlertDialog(Resource.ModalFinishWords, Resource.Continue);
-              await  _navigationService.RemoveBackStackAsync();
-              await  _navigationService.InitializeAsync();
+               CounterShowWord(isFirstShowAfterLoad);
+               await  _dialogService.ShowAlertDialog(Resource.ModalFinishWords, Resource.Continue);
+               await _navigationService.GoBackPage();
+            }
+        }
+
+        private void CounterShowWord(bool isFirstShowAfterLoad)
+        {
+            if (!isFirstShowAfterLoad)
+            {
+                Model.AllShowedWordsCount++;
+                Model.AllLearnedWordsCount = Model.AllShowedWordsCount - Model.AllOpenedWordsCount;
             }
         }
 
