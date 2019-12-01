@@ -6,10 +6,7 @@
              Style="{StaticResource TitleApp}"
              Title="{locale:Translate TitleTranscription}"
              >
-    <!--панель управлления-->
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
-    </ContentPage.ToolbarItems>
+   
 
     <Grid>
 

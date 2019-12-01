@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using RepeatingWords.Helpers.Interfaces;
-using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
@@ -14,15 +12,12 @@ namespace RepeatingWords.ViewModel
         {
             DialogService = dialogService;
             NavigationService = navigationServcie;
-            GoMainPageCommand = new Command(async () => {
-            await NavigationService.NavigateToAsync<MainViewModel>();
-            await NavigationService.RemoveBackStackAsync(); });
         }
 
         protected readonly IDialogService DialogService;
         protected readonly INavigationService NavigationService;
 
-        public ICommand GoMainPageCommand { get; set; }
+       // public ICommand GoMainPageCommand { get; set; }
 
         private bool _isBusy;
         public bool IsBusy

@@ -12,11 +12,9 @@
     <!--панель управлления-->
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Edit" Icon="toolbarImageEdit.png" Command="{Binding EditCurrentWordCommand}"/>
-        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
-    </ContentPage.ToolbarItems>
+     </ContentPage.ToolbarItems>
     <ContentPage.Behaviors>
-        <behavior:EventToCommandBehavior EventName="Disappearing" Command="{Binding UnloadPageCommand}"/>
-        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+       <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
     <StackLayout>
 

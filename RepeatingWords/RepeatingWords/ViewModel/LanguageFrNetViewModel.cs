@@ -51,9 +51,11 @@ namespace RepeatingWords.ViewModel
             {
                 await _languageLoader.LoadSelectedLanguageToDB(selectedLanguage.Id);
                 DialogService.HideLoadDialog();
-               GoMainPageCommand.Execute(null);
+                await NavigationService.NavigateToAsync<MainViewModel>();
+                await NavigationService.RemoveBackStackAsync(); 
+                // GoMainPageCommand.Execute(null);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 DialogService.HideLoadDialog();
                 Log.Logger.Error(e);

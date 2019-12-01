@@ -6,10 +6,7 @@
              Style="{StaticResource TitleApp}"
              Title="{locale:Translate TitleAbout}"
              >
-    <!--панель управлления-->
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
-    </ContentPage.ToolbarItems>
+  
 
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
         <!--<Image Source="mipmap/icon.png" />-->

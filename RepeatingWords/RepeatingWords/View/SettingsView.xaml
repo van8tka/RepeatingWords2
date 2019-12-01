@@ -7,10 +7,7 @@
              Title="{local:Translate TitleSettings}"
              Style="{DynamicResource TitleApp}"            
           >
-    <!--панель управлления-->
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
-    </ContentPage.ToolbarItems>
+   
     <ScrollView>
         <!--установка ночной темы-->
         <StackLayout Padding="10">

@@ -6,10 +6,7 @@
              Style="{StaticResource TitleApp}"
              Title="{locale:Translate TitleHelpers}"
              >
-    <!--панель управлления-->
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
-    </ContentPage.ToolbarItems>
+    
    
         <StackLayout VerticalOptions="Center" Padding="10">
             <Button Text="{locale:Translate ButtonHowCreateDictAndaddWord}" Style="{StaticResource buttonStyle}" Command="{Binding HowToAddWordCommand}"/>

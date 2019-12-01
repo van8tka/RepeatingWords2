@@ -10,11 +10,7 @@
              Title="{local:Translate TitleVolumeLanguages}"
              Style="{DynamicResource TitleApp}"
              >
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
-    </ContentPage.ToolbarItems>
-    
-
+   
     <StackLayout Margin="10,10,10,0">
         <ListView ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}">
             <ListView.ItemTemplate>

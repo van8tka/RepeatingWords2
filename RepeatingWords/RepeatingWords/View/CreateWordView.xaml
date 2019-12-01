@@ -11,7 +11,6 @@
     <!--панель управлления-->
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Add" Icon="toolbarImageAdd.png" Command="{Binding SendCommand}"/>
-        <ToolbarItem Name="Home" Icon="toolbarImageHome.png" Command="{Binding GoMainPageCommand}"/>
     </ContentPage.ToolbarItems>
     <ScrollView>
     <StackLayout Margin="10,5,10,0">
