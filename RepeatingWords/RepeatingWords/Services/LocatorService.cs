@@ -29,6 +29,7 @@ namespace RepeatingWords.Services
             _container.Register<BackupGoogleService>();
             _container.Register<BackupLocalService>();
             _container.Register<IThemeService, ThemeChangeService>();
+            _container.Register<IFirstLanguage, FirstLanguageService>();
             _container.Register<IKeyboardTranscriptionService, KeyboardTranscriptionChangeService>();
             _container.Register<IWebClient, WebClient>();
             _container.Register<IImportFile, ImportFileToDb>();
@@ -52,7 +53,6 @@ namespace RepeatingWords.Services
             _container.Register(typeof(RepeatingWordsViewModel));
             _container.Register(typeof(CreateWordViewModel));
             _container.Register(typeof(EntryTranscriptionViewModel));
-         
             //must befor RepeatingWords
             _container.Register(typeof(WorkSpaceCardsViewModel));
             _container.Register(typeof(WorkSpaceEnterWordViewModel));

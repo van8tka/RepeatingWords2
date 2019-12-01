@@ -20,5 +20,9 @@ namespace RepeatingWords.Heleprs
         internal const string NAME_DB_FOR_CONTINUE = "ContinueDictionary";
        
         internal const int CHECK_AVAILABLE_COUNT = 3;
+
+        internal const string LANGUAGE_FIRST = "language_first";
+        internal const string LANGUAGE_NATIVE = "native";
+        internal const string LANGUAGE_FOREIGN = "foreign";
     }
 }
