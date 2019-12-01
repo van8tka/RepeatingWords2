@@ -61,7 +61,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All:.
+        ///   Looks up a localized string similar to All words:.
         /// </summary>
         public static string AllWordsCountLabel {
             get {

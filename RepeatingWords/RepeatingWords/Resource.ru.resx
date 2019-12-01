@@ -408,7 +408,7 @@
     <value>Да</value>
   </data>
   <data name="AllWordsCountLabel" xml:space="preserve">
-    <value>Всего:</value>
+    <value>Всего слов:</value>
   </data>
   <data name="OpenedWordsCountLabel" xml:space="preserve">
     <value>Невыученные:</value>

@@ -413,7 +413,7 @@
     <value>Yes</value>
   </data>
   <data name="AllWordsCountLabel" xml:space="preserve">
-    <value>All:</value>
+    <value>All words:</value>
   </data>
   <data name="OpenedWordsCountLabel" xml:space="preserve">
     <value>Unlearned:</value>
