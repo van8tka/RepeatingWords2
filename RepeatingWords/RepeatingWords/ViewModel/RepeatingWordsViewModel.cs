@@ -18,11 +18,10 @@ namespace RepeatingWords.ViewModel
     {
         public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IAnimationService animationService, ITextToSpeech speechService, IFirstLanguage firstLanguageService) : base(navigationServcie, dialogService)
         {
-            _animationService = animationService ?? throw new ArgumentNullException(nameof(animationService));
+            _animationService = animationService;
             _unitOfWork = unitOfWork;
-            _firstLanguageService = firstLanguageService ?? throw new ArgumentNullException(nameof(firstLanguageService));
-            _speechService = speechService ?? throw new ArgumentNullException(nameof(speechService));
-            IsVisibleScore = false;
+            _firstLanguageService = firstLanguageService;
+            _speechService = speechService;
             Model = new RepeatingWordsModel();
             VoiceActingCommand = new Command(async () => await _speechService.Speak(Model.CurrentWord.EngWord));
             EditCurrentWordCommand = new Command(async () =>
@@ -50,14 +49,23 @@ namespace RepeatingWords.ViewModel
             });
             AppearingCommand = new Command(async () => await AppearingPage());
         }
- 
+        #region FIELDS
+        //переменная для определения переключения в режим редактирования текущего слова
+        private bool _isEditing;
         private readonly IAnimationService _animationService;
         private ICustomContentViewModel _workSpaceVM;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITextToSpeech _speechService;
         private readonly IFirstLanguage _firstLanguageService;
-
         private Dictionary _dictionary;
+        private readonly string cardsActive = "icons_cardsbutton.png";
+        private readonly string cardsUnActive = "icons_cardsbuttonGray.png";
+        private readonly string selectActive = "icons_select_word.png";
+        private readonly string selectUnActive = "icons_select_wordGray.png";
+        private readonly string entryActive = "icons_keyboard.png";
+        private readonly string entryUnActive = "icons_keyboardGray.png";
+        #endregion
+        #region PROPERTIES
         private string _dictionaryName;
         public string DictionaryName
         {
@@ -83,12 +91,7 @@ namespace RepeatingWords.ViewModel
                 OnPropertyChanged(nameof(WorkSpaceView));
             }
         }
-        private bool _isVisibleScore;
-        public bool IsVisibleScore
-        {
-            get => _isVisibleScore;
-            set { _isVisibleScore = value;OnPropertyChanged(nameof(IsVisibleScore)); }
-        }
+        
         private RepeatingWordsModel _model;
         public RepeatingWordsModel Model { get => _model; set { _model = value; OnPropertyChanged(nameof(Model)); } }
         private string _cardsButtonBackground;
@@ -97,14 +100,7 @@ namespace RepeatingWords.ViewModel
         public string SelectImage { get => _selectButtonBackground; set { _selectButtonBackground = value; OnPropertyChanged(nameof(SelectImage)); } }
         private string _entryButtonBackground;
         public string EntryImage { get => _entryButtonBackground; set { _entryButtonBackground = value; OnPropertyChanged(nameof(EntryImage)); } }
-
-        private readonly string cardsActive = "icons_cardsbutton.png";
-        private readonly string cardsUnActive = "icons_cardsbuttonGray.png";
-        private readonly string selectActive = "icons_select_word.png";
-        private readonly string selectUnActive = "icons_select_wordGray.png";
-        private readonly string entryActive = "icons_keyboard.png";
-        private readonly string entryUnActive = "icons_keyboardGray.png";
-
+        #endregion
 
         public ICommand VoiceActingCommand { get; set; }
         public ICommand EnterTranslateCommand { get; set; }
@@ -120,7 +116,6 @@ namespace RepeatingWords.ViewModel
         private WorkSpaceSelectWordView SelectWordView => _selectWordView ?? (_selectWordView = new WorkSpaceSelectWordView());
         private WorkSpaceCardsView _cardsView;
         private WorkSpaceCardsView CardsView => _cardsView ?? (_cardsView = new WorkSpaceCardsView());
-       
        
        
         private async Task ShowEnterTranslate()
@@ -161,9 +156,6 @@ namespace RepeatingWords.ViewModel
             _workSpaceVM.Model = Model; 
            await (_workSpaceVM as WorkSpaceCardsViewModel)?.ShowNextWord(isFirstShowAfterLoad: true);
         }
-
-     
-
         private void SetBackgroundButton(string button)
         {
             switch (button)
@@ -191,10 +183,6 @@ namespace RepeatingWords.ViewModel
                 }
             }
         }
-
-      
-
-
         private void ShakeWordsCollection(IEnumerable<Words> words)
         {
             var tempWords = new List<Words>(words);
@@ -212,37 +200,29 @@ namespace RepeatingWords.ViewModel
             Model.WordsLearningAll = tempWords;
             Model.WordsLeft = new List<Words>(Model.WordsLearningAll);
         }
-
-        private async Task<Dictionary> GetDictionary(int id) => await Task.Run(() => _unitOfWork.DictionaryRepository.Get(id));
         private async Task<IEnumerable<Words>> LoadWords(int id) => await Task.Run(() => _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).AsEnumerable());
-
         public override async Task InitializeAsync(object navigationData)
         {
+            IsBusy = true;
             SetBackgroundButton(nameof(CardsImage));
             List<Words> wordsList = new List<Words>();
             int count = 0;
-            IsBusy = true;
-            await Task.Run(async() =>
-            {
-               _dictionary = navigationData as Dictionary;
-               wordsList = (await LoadWords(_dictionary.Id)).ToList();
-               count = wordsList.Count();
-                ShakeWordsCollection(wordsList);
-            });
+            _dictionary = navigationData as Dictionary;
             Model.Dictionary = _dictionary;
             DictionaryName = _dictionary.Name;
+            await Task.Run(async() =>
+            {
+                wordsList = (await LoadWords(_dictionary.Id)).ToList();
+                count = wordsList.Count();
+                ShakeWordsCollection(wordsList);
+            });
             Model.IsFromNative = _firstLanguageService.GetFirstLanguage();
             Model.WordsLearningAll = wordsList;
             Model.AllWordsCount = count;
             await SetViewWorkSpaceLearningCards();
-            IsVisibleScore = true;
             await base.InitializeAsync(navigationData);
         }
-
  
-        //переменная для определения переключения в режим редактирования текущего слова
-        private bool _isEditing;
-
         private async Task AppearingPage()
         {
             if (_isEditing)

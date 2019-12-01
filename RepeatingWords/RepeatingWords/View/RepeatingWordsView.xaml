@@ -19,8 +19,7 @@
 
    
     <StackLayout>
-
-        <Grid VerticalOptions="Start" IsVisible="{Binding IsVisibleScore, Mode=TwoWay}">
+        <Grid VerticalOptions="Start">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
