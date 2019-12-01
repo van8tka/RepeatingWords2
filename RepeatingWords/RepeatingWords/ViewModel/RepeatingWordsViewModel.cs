@@ -16,11 +16,10 @@ namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork,  IContinueWordsService continueWordsManager, IAnimationService animationService, ITextToSpeech speechService) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork,   IAnimationService animationService, ITextToSpeech speechService) : base(navigationServcie, dialogService)
         {
             _animationService = animationService ?? throw new ArgumentNullException(nameof(animationService));
             _unitOfWork = unitOfWork;
-            _continueWordsManager = continueWordsManager ?? throw new ArgumentNullException(nameof(continueWordsManager));
             _speechService = speechService ?? throw new ArgumentNullException(nameof(speechService));
             IsVisibleScore = false;
             Model = new RepeatingWordsModel();
@@ -48,15 +47,13 @@ namespace RepeatingWords.ViewModel
                 await ShowLearningCards();
                 await _animationService.AnimationFade(WorkContainerView, 1);
             });
-            UnloadPageCommand = new Command(async ()=> await UnloadPage());
+         //   UnloadPageCommand = new Command(async ()=> await UnloadPage());
             AppearingCommand = new Command(async () => await AppearingPage());
         }
  
         private readonly IAnimationService _animationService;
         private ICustomContentViewModel _workSpaceVM;
-      
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IContinueWordsService _continueWordsManager;
         private readonly ITextToSpeech _speechService;
 
         private Dictionary _dictionary;
@@ -228,21 +225,10 @@ namespace RepeatingWords.ViewModel
             bool isFromNative = false;
             await Task.Run(async() =>
             {
-                var typeData = navigationData.GetType();
-                if (typeData.Name.Equals(nameof(LastAction)))
-                {
-                    var lastAct = navigationData as LastAction;
-                    _dictionary = await GetDictionary(lastAct.IdDictionary);
-                    isFromNative = lastAct.FromRus;
-                }
-                else
-                {
-                    _dictionary = navigationData as Dictionary;
-                    isFromNative = await ShowFromLanguageNative();
-                }
-                wordsList = (await LoadWords(_dictionary.Id)).ToList();
-                _continueWordsManager.RemoveContinueDictionary(wordsList);
-                count = wordsList.Count();
+               _dictionary = navigationData as Dictionary;
+               isFromNative = await ShowFromLanguageNative();
+               wordsList = (await LoadWords(_dictionary.Id)).ToList();
+               count = wordsList.Count();
                 ShakeWordsCollection(wordsList);
             });
             Model.Dictionary = _dictionary;
@@ -255,24 +241,7 @@ namespace RepeatingWords.ViewModel
             await base.InitializeAsync(navigationData);
         }
 
-
-        /// <summary>
-        /// сохранение невыученных слов и сохранение слов для продолжения 
-        /// </summary>
-        public Task UnloadPage()
-        {
-            return Task.Run(() =>
-                {
-                    if (!_isEditing)
-                    {
-                        if (Model.AllWordsCount == Model.AllShowedWordsCount)
-                            _continueWordsManager.RemoveContinueDictionary(Model.WordsLearningAll);
-                        else
-                            _continueWordsManager.SaveContinueDictionary(_dictionary.Name, Model.WordsLeft,
-                                Model.IsFromNative);
-                    }
-                });
-        }
+ 
         //переменная для определения переключения в режим редактирования текущего слова
         private bool _isEditing;
 
