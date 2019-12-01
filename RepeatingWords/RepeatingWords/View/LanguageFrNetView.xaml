@@ -6,13 +6,22 @@
              Style="{StaticResource TitleApp}"
              Title="{local:Translate TitleLanguages}"         
              >
-  
-    <StackLayout>
-        <StackLayout VerticalOptions="End">
-            <local:AdMobView HeightRequest="85" />
-        </StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand" Margin="10,5,10,0">
-            <ListView x:Name ="languageNetList" ItemsSource="{Binding LanguageList}"  SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}">
+<ContentPage.Content>
+    <RelativeLayout Margin="10,0,10,5">
+        <local:AdMobView x:Name="AdvertView"
+                         RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
+                         RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
+                         HeightRequest="60"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+        />
+        <ListView x:Name ="languageNetList" 
+                  ItemsSource="{Binding LanguageList}" 
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
+                  SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
+                  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, ElementName=AdvertView, Property=Width, Factor=0}" 
+                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=AdvertView, Property=Height, Factor=1}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
+            >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -25,6 +34,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
-    </StackLayout>
+    </RelativeLayout>
+</ContentPage.Content>
 </ContentPage>
