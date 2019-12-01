@@ -403,6 +403,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First view word on.
+        /// </summary>
+        public static string LabelChooseFirstLanguage {
+            get {
+                return ResourceManager.GetString("LabelChooseFirstLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suggest keyboard for transcription.
         /// </summary>
         public static string LabelChooseShowKeyboardTrans {
@@ -426,6 +435,15 @@ namespace RepeatingWords {
         public static string LabelFIO {
             get {
                 return ResourceManager.GetString("LabelFIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreign language.
+        /// </summary>
+        public static string LabelFirstLanguageIsNative {
+            get {
+                return ResourceManager.GetString("LabelFirstLanguageIsNative", resourceCulture);
             }
         }
         

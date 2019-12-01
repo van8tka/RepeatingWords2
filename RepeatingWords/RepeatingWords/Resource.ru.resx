@@ -464,4 +464,10 @@
   <data name="screen25ru" xml:space="preserve">
     <value>screen25ru.png</value>
   </data>
+  <data name="LabelChooseFirstLanguage" xml:space="preserve">
+    <value>Первым показывать слова на</value>
+  </data>
+  <data name="LabelFirstLanguageIsNative" xml:space="preserve">
+    <value> Иностранном языке</value>
+  </data>
 </root>

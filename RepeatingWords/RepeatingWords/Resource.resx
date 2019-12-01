@@ -469,4 +469,10 @@
   <data name="screen25" xml:space="preserve">
     <value>screen25.png</value>
   </data>
+  <data name="LabelChooseFirstLanguage" xml:space="preserve">
+    <value>First view word on</value>
+  </data>
+  <data name="LabelFirstLanguageIsNative" xml:space="preserve">
+    <value>Foreign language</value>
+  </data>
 </root>

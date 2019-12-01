@@ -12,15 +12,16 @@ namespace RepeatingWords.ViewModel
     public class SettingsViewModel : ViewModelBase
     {
         //ctor
-        public SettingsViewModel(INavigationService navigationService, IDialogService dialogService, IThemeService themeService, IKeyboardTranscriptionService transcriptKeyboardService, IVolumeLanguageService volumeService, IUnitOfWork unitOfWork) : base(navigationService, dialogService)
+        public SettingsViewModel(INavigationService navigationService, IDialogService dialogService, IThemeService themeService, IKeyboardTranscriptionService transcriptKeyboardService, IVolumeLanguageService volumeService, IFirstLanguage firstLanguageService) : base(navigationService, dialogService)
         {
             _themeService = themeService ?? throw new ArgumentNullException(nameof(themeService));
             _transcriptKeyboardService = transcriptKeyboardService ?? throw new ArgumentNullException(nameof(transcriptKeyboardService));
             _volumeService = volumeService ?? throw new ArgumentNullException(nameof(transcriptKeyboardService));
-            _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+            _firstLanguageService = firstLanguageService ?? throw new ArgumentNullException(nameof(firstLanguageService));
             SetCurrentSettings();
             SwitchThemeCommand = new Command(SwitchThemeApp);
             SwitchTranskriptionKeyboardCommand = new Command(SwitchTranscriptionKeyboard);
+            SwitchFirstLanguageCommand = new Command(SwitchFirstLanguageShow);
             BackUpCommand = new Command(async () => { await ChooseCreateBackUp(); }); ;
             RestoreBackUpCommand = new Command(async () => { await RestoreBackup(); });
             ChangeVoiceLanguageCommand = new Command(async () => await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>(this));           
@@ -29,7 +30,7 @@ namespace RepeatingWords.ViewModel
         private readonly IThemeService _themeService;
         private readonly IKeyboardTranscriptionService _transcriptKeyboardService;
         private readonly IVolumeLanguageService _volumeService;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IFirstLanguage _firstLanguageService;
         private string _fileNameBackupDef = "backupcardsofwords";
         private string _localFolderBackup = Resource.BackUpInLocal;
         private string _googleDriveFolderBackup = Resource.BackUpOnGoogle;
@@ -40,6 +41,9 @@ namespace RepeatingWords.ViewModel
         private bool _isDarkThem;
         public bool IsDarkThem { get => _isDarkThem; set { _isDarkThem = value; OnPropertyChanged(nameof(IsDarkThem)); } }
 
+        private bool _currentFirstLanguageNative;
+        public bool CurrentFirstLanguageNative { get => _currentFirstLanguageNative; set { _currentFirstLanguageNative = value; OnPropertyChanged(nameof(CurrentFirstLanguageNative)); } }
+
         private string _currentVoiceLanguage; 
         public string CurrentVoiceLanguage { get => _currentVoiceLanguage; set { _currentVoiceLanguage = value; OnPropertyChanged(nameof(CurrentVoiceLanguage)); } }
 
@@ -48,6 +52,7 @@ namespace RepeatingWords.ViewModel
         public ICommand BackUpCommand { get; set; }
         public ICommand RestoreBackUpCommand { get; set; }
         public ICommand ChangeVoiceLanguageCommand { get; set; }
+        public ICommand SwitchFirstLanguageCommand { get; set; }
 
 
 
@@ -77,6 +82,20 @@ namespace RepeatingWords.ViewModel
             }
         }
 
+        private void SwitchFirstLanguageShow()
+        {
+            try
+            {
+                Log.Logger.Info("Change first language");
+                _firstLanguageService.ChangeFirstLanguage();
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+            }
+        }
+        
+
         public override Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
@@ -87,7 +106,8 @@ namespace RepeatingWords.ViewModel
         {           
                 IsCustomKeyboardTranscription = _transcriptKeyboardService.GetCurrentTranscriptionKeyboard();
                 IsDarkThem = _themeService.GetCurrentTheme();
-                CurrentVoiceLanguage = _volumeService.GetVolumeLanguage().Name;     
+                CurrentVoiceLanguage = _volumeService.GetVolumeLanguage().Name;
+                CurrentFirstLanguageNative = _firstLanguageService.GetFirstLanguage();
         }
 
         private async Task ChooseCreateBackUp()
