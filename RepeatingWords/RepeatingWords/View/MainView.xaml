@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RepeatingWords.View.MainView"
-             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"    
+             xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords" 
+             xmlns:vm="clr-namespace:RepeatingWords.ViewModel;assembly=RepeatingWords"
+             xmlns:modOut="clr-namespace:RepeatingWords.DataService.Model;assembly=RepeatingWords.DataService"
              xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"   
              xmlns:controls="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
              Style="{DynamicResource TitleApp}"
@@ -15,7 +17,7 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <RelativeLayout Margin="10,0,10,5">
+        <RelativeLayout Margin="10,0,10,5" x:DataType="vm:MainViewModel">
                     <local:AdMobView x:Name="AdvertView"
                           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
                           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
@@ -31,12 +33,10 @@
                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
                               >
                             <ListView.ItemTemplate>
-                                <DataTemplate>
+                            <DataTemplate x:DataType="modOut:Dictionary">
                                     <ViewCell>
                                         <ViewCell.View>
-                                            <StackLayout VerticalOptions="Center" >
-                                                <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation"/>
-                                            </StackLayout>
+                                           <Label HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation"/>
                                         </ViewCell.View>
                                     </ViewCell>
                                 </DataTemplate>
@@ -78,38 +78,4 @@
                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}"/>
         </RelativeLayout>
     </ContentPage.Content>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--ITS FROM MAIN PAGE-->
-    <!--<ContentPage.Behaviors>
-        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadPageCommand}"/>
-    </ContentPage.Behaviors>-->
-    <!--<StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
-            <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate ButtonAddDictionaryOrWords}" Command="{Binding ChooseDictionaryCommand}"/>
-            <Button Style="{StaticResource buttonStyle}" VerticalOptions="Center" Text="{local:Translate Continue}" Command="{Binding ContinueLearningCommand}" IsEnabled="{Binding IsEnabledContinue, Mode=TwoWay}"/>
-        </StackLayout>
-        <StackLayout VerticalOptions="End">
-            <local:AdMobView HeightRequest="50" />
-        </StackLayout>
-    </StackLayout>-->
 </ContentPage>

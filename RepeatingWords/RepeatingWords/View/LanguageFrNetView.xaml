@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RepeatingWords.View.LanguageFrNetView"
              xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
+             xmlns:vm="clr-namespace:RepeatingWords.ViewModel;assembly=RepeatingWords"
+             xmlns:mod="clr-namespace:RepeatingWords.Model;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
              Title="{local:Translate TitleLanguages}"         
              >
 <ContentPage.Content>
-    <RelativeLayout Margin="10,0,10,5">
+    <RelativeLayout Margin="10,0,10,5" x:DataType="vm:LanguageFrNetViewModel">
         <local:AdMobView x:Name="AdvertView"
                          RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
                          RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
@@ -23,12 +25,10 @@
                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
             >
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="mod:Language">
                         <ViewCell>
                             <ViewCell.View>
-                                <StackLayout VerticalOptions="Center">
-                                    <Label Text="{Binding NameLanguage}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-                                </StackLayout>
+                                <Label HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding NameLanguage}" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>

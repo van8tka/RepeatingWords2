@@ -11139,10 +11139,10 @@ namespace RepeatingWords.Droid
 			public const int floating_btn_learn = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int floating_btn_menuGray = 2131165306;
+			public const int floating_btn_menu = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int floating_btn_meny = 2131165307;
+			public const int floating_btn_menuGray = 2131165307;
 			
 			// aapt resource value: 0x7F07007C
 			public const int googleg_disabled_color_18 = 2131165308;
@@ -11313,22 +11313,19 @@ namespace RepeatingWords.Droid
 			public const int toolbarImageHelp = 2131165363;
 			
 			// aapt resource value: 0x7F0700B4
-			public const int toolbarImageHome = 2131165364;
+			public const int toolbarImageLike = 2131165364;
 			
 			// aapt resource value: 0x7F0700B5
-			public const int toolbarImageLike = 2131165365;
+			public const int toolbarImageTools = 2131165365;
 			
 			// aapt resource value: 0x7F0700B6
-			public const int toolbarImageTools = 2131165366;
+			public const int tooltip_frame_dark = 2131165366;
 			
 			// aapt resource value: 0x7F0700B7
-			public const int tooltip_frame_dark = 2131165367;
+			public const int tooltip_frame_light = 2131165367;
 			
 			// aapt resource value: 0x7F0700B8
-			public const int tooltip_frame_light = 2131165368;
-			
-			// aapt resource value: 0x7F0700B9
-			public const int voice = 2131165369;
+			public const int voice = 2131165368;
 			
 			static Drawable()
 			{

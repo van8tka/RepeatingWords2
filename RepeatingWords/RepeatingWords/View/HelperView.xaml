@@ -6,9 +6,23 @@
              Style="{StaticResource TitleApp}"
              Title="{locale:Translate TitleHelpers}"
              >
+    <ContentPage.Resources>
+        <Style x:Key ="buttonStyle" TargetType="Button">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="#6bafef"/>
+            <Setter Property="FontSize">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android">17</On>
+                        <On Platform="UWP">17</On>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     
    
-        <StackLayout VerticalOptions="Center" Padding="10">
+    <StackLayout VerticalOptions="Center" Padding="10">
             <Button Text="{locale:Translate ButtonHowCreateDictAndaddWord}" Style="{StaticResource buttonStyle}" Command="{Binding HowToAddWordCommand}"/>
             <Button Text="{locale:Translate ButtonHowIportFile}" Style="{StaticResource buttonStyle}" Command="{Binding HowToImportFromFileCommand}"/>
             <Button x:Name="BtAbout" Text="{locale:Translate ButtonAbout}" Style="{StaticResource buttonStyle}" Command="{Binding AboutCommand}"/>

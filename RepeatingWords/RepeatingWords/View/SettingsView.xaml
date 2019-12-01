@@ -4,6 +4,7 @@
              x:Class="RepeatingWords.View.SettingsView"
              xmlns:local="clr-namespace:RepeatingWords;assembly=RepeatingWords"
              xmlns:behavior="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             xmlns:vm="clr-namespace:RepeatingWords.ViewModel;assembly=RepeatingWords"
              Title="{local:Translate TitleSettings}"
              Style="{DynamicResource TitleApp}"            
           >
@@ -18,7 +19,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <!--установка ночной темы-->
-        <StackLayout Padding="10">
+        <StackLayout Padding="10" x:DataType="vm:SettingsViewModel">
             <Label Text="{local:Translate LabelChooseTheme}"  FontSize="Small" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Label Text="{local:Translate LabelThemeDark}" Style="{DynamicResource LabelColorWB}" FontSize="Small"  HorizontalOptions="StartAndExpand"/>

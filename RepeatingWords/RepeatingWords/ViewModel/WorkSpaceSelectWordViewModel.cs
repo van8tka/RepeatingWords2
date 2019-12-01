@@ -36,13 +36,13 @@ namespace RepeatingWords.ViewModel
                 if (compareWord.Equals(wordName, StringComparison.OrdinalIgnoreCase))
                 {
                     Model.IsOpenCurrentWord = false;
-                    SetRightMark(wordName, Color.LightBlue);
+                    SetRightMark(wordName, Color.FromHex("#6bafef"));
                     await Task.Delay(_timeShowRightWord);
                 }
                 else
                 {
                     Model.IsOpenCurrentWord = true;
-                    SetRightMark(compareWord, Color.LightBlue);
+                    SetRightMark(compareWord, Color.FromHex("#6bafef"));
                     SetRightMark(wordName, Color.Red);
                     Model.WordsOpen.Add(_showingWord);
                     Model.AllOpenedWordsCount++;

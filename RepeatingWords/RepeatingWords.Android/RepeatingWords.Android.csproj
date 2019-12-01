@@ -16,6 +16,7 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+    <AndroidExplicitCrunch>true</AndroidExplicitCrunch>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -48,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <AotAssemblies>false</AotAssemblies>
+    <AotAssemblies>true</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
@@ -57,6 +58,7 @@
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <MandroidI18n />
+    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -247,7 +249,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\floating_btn_learn.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\floating_btn_add.png" />
@@ -262,7 +264,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\floating_btn_learn.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\floating_btn_add.png" />
@@ -277,7 +279,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\floating_btn_learn.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\floating_btn_add.png" />
@@ -292,7 +294,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\floating_btn_learn.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\floating_btn_menuGray.png" />
@@ -370,13 +372,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\toolbarImageEdit.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\toolbarImageHome.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\toolbarImageAdd.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\toolbarImageHome.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\toolbarImageAdd.png" />
@@ -385,13 +381,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\toolbarImageAdd.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\toolbarImageHome.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\toolbarImageAdd.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\toolbarImageHome.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\floating_btn_add.png" />
@@ -409,7 +399,7 @@
     <AndroidResource Include="Resources\drawable-mdpi\floating_btn_menuGray.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\icons_cardsbutton.png" />
@@ -494,9 +484,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\toolbarImageHelp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\toolbarImageHome.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\toolbarImageLike.png" />

@@ -2,6 +2,7 @@
 using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using Xamarin.Forms;
+using RepeatingWords.DataService.Model;
  
 namespace RepeatingWords.View
 {

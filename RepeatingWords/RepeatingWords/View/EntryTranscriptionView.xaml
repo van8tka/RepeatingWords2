@@ -6,7 +6,9 @@
              Style="{StaticResource TitleApp}"
              Title="{locale:Translate TitleTranscription}"
              >
-   
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Add" Icon="toolbarImageAdd.png" Command="{Binding SendCommand}"/>
+    </ContentPage.ToolbarItems>
 
     <Grid>
 

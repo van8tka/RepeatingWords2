@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RepeatingWords.View.RepeatingWordsView"
-             xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"          
+             xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"  
+             xmlns:vm="clr-namespace:RepeatingWords.ViewModel;assembly=RepeatingWords"
              xmlns:behavior="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
              xmlns:controls="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
@@ -17,8 +18,8 @@
     </ContentPage.Behaviors>
     <ContentPage.Content>
 
-   
-    <StackLayout>
+
+        <StackLayout x:DataType="vm:RepeatingWordsViewModel">
         <Grid VerticalOptions="Start">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
