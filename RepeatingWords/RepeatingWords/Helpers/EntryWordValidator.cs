@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords.Helpers
@@ -18,7 +19,7 @@ namespace RepeatingWords.Helpers
                 return false;
             entryWord = TrimSpecialSymbals( entryWord );
             originalWord = TrimSpecialSymbals( originalWord );
-            if (CompareWords(entryWord, originalWord))
+            if (string.Equals(entryWord, originalWord, StringComparison.OrdinalIgnoreCase))
             {
                 return true;
             }
@@ -39,6 +40,25 @@ namespace RepeatingWords.Helpers
                 }
             }
             return false;
+        }
+
+        public string ClearEntryWord(string entryWord, string originalWord)
+        {
+            if (string.IsNullOrEmpty(entryWord) || string.IsNullOrWhiteSpace(entryWord))
+                return string.Empty;
+            entryWord = TrimSpecialSymbals(entryWord);
+            originalWord = TrimSpecialSymbals(originalWord);
+            StringBuilder newEntryWord = new StringBuilder();
+            for (int i = 0; i < entryWord.Length && i< originalWord.Length; i++)
+            {
+                Char entry = Char.ToLowerInvariant(entryWord[i]);
+                Char origin = Char.ToLowerInvariant(originalWord[i]);
+                if (entry.Equals(origin))
+                    newEntryWord.Append(entry);
+                else
+                    return newEntryWord.ToString();
+            }
+            return newEntryWord.ToString();
         }
 
         private IEnumerable<string> ArrayTrimSpecialSymbals(string []original)
@@ -69,7 +89,6 @@ namespace RepeatingWords.Helpers
             return false;
         }
 
-        private bool CompareWords(string entryWord, string originalWord) =>
-            string.Equals(entryWord, originalWord, StringComparison.OrdinalIgnoreCase);
+       
     }
 }

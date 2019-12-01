@@ -148,6 +148,7 @@ namespace RepeatingWords.ViewModel
                 }
                 else
                 {
+                    EnterAnswerWord = _wordValidator.ClearEntryWord(EnterAnswerWord, checkWord);
                     await SetInvalidMarks();
                     _countCheckAvailabel--;
                 }
