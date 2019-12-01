@@ -1,5 +1,4 @@
-﻿using RepeatingWords.DataService.Interfaces;
-using RepeatingWords.Helpers.Interfaces;
+﻿using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Services;
 using System;
@@ -14,17 +13,25 @@ namespace RepeatingWords.ViewModel
         //ctor
         public SettingsViewModel(INavigationService navigationService, IDialogService dialogService, IThemeService themeService, IKeyboardTranscriptionService transcriptKeyboardService, IVolumeLanguageService volumeService, IFirstLanguage firstLanguageService) : base(navigationService, dialogService)
         {
-            _themeService = themeService ?? throw new ArgumentNullException(nameof(themeService));
-            _transcriptKeyboardService = transcriptKeyboardService ?? throw new ArgumentNullException(nameof(transcriptKeyboardService));
-            _volumeService = volumeService ?? throw new ArgumentNullException(nameof(transcriptKeyboardService));
-            _firstLanguageService = firstLanguageService ?? throw new ArgumentNullException(nameof(firstLanguageService));
+            _themeService = themeService;
+            _transcriptKeyboardService = transcriptKeyboardService;
+            _volumeService = volumeService;
+            _firstLanguageService = firstLanguageService;
             SetCurrentSettings();
             SwitchThemeCommand = new Command(SwitchThemeApp);
             SwitchTranskriptionKeyboardCommand = new Command(SwitchTranscriptionKeyboard);
             ChangeFirstLanguageCommand = new Command(SwitchFirstLanguageShow);
             BackUpCommand = new Command(async () => { await ChooseCreateBackUp(); }); ;
             RestoreBackUpCommand = new Command(async () => { await RestoreBackup(); });
-            ChangeVoiceLanguageCommand = new Command(async () => await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>(this));           
+            ChangeVoiceLanguageCommand = new Command(async () => await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>(this));
+        }
+
+        public override Task InitializeAsync(object navigationData)
+        {
+            IsBusy = true;
+            CurrentVoiceLanguage = _volumeService.GetVolumeLanguage().Name;
+            SetFirstLanguageView(_firstLanguageService.GetFirstLanguage());
+            return base.InitializeAsync(navigationData);
         }
 
         private readonly IThemeService _themeService;
@@ -96,18 +103,12 @@ namespace RepeatingWords.ViewModel
         }
         
 
-        public override Task InitializeAsync(object navigationData)
-        {
-            IsBusy = true;
-            return base.InitializeAsync(navigationData);
-        }
+       
       
         private void SetCurrentSettings()
         {           
-                IsCustomKeyboardTranscription = _transcriptKeyboardService.GetCurrentTranscriptionKeyboard();
-                IsDarkThem = _themeService.GetCurrentTheme();
-                CurrentVoiceLanguage = _volumeService.GetVolumeLanguage().Name;
-                SetFirstLanguageView(_firstLanguageService.GetFirstLanguage());
+            IsCustomKeyboardTranscription = _transcriptKeyboardService.GetCurrentTranscriptionKeyboard();
+            IsDarkThem = _themeService.GetCurrentTheme();
         }
 
         private void SetFirstLanguageView(bool isNativeFirst)
