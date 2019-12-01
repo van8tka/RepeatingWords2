@@ -10,8 +10,8 @@
             <Label  x:Name="WordRepeat" Text="{Binding CurrentShowingWord, Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorCustomBackgrountButton}"  >
                 <Label.FontSize>
                     <OnPlatform x:TypeArguments="x:Double">
-                      <On Platform="Android" Value="24" />
-                      <On Platform="UWP" Value="22" />
+                      <On Platform="Android" Value="22" />
+                      <On Platform="UWP" Value="20" />
                     </OnPlatform>
                 </Label.FontSize>
             </Label>
