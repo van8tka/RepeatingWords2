@@ -16,10 +16,11 @@ namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork,   IAnimationService animationService, ITextToSpeech speechService) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IAnimationService animationService, ITextToSpeech speechService, IFirstLanguage firstLanguageService) : base(navigationServcie, dialogService)
         {
             _animationService = animationService ?? throw new ArgumentNullException(nameof(animationService));
             _unitOfWork = unitOfWork;
+            _firstLanguageService = firstLanguageService ?? throw new ArgumentNullException(nameof(firstLanguageService));
             _speechService = speechService ?? throw new ArgumentNullException(nameof(speechService));
             IsVisibleScore = false;
             Model = new RepeatingWordsModel();
@@ -47,7 +48,6 @@ namespace RepeatingWords.ViewModel
                 await ShowLearningCards();
                 await _animationService.AnimationFade(WorkContainerView, 1);
             });
-         //   UnloadPageCommand = new Command(async ()=> await UnloadPage());
             AppearingCommand = new Command(async () => await AppearingPage());
         }
  
@@ -55,6 +55,7 @@ namespace RepeatingWords.ViewModel
         private ICustomContentViewModel _workSpaceVM;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITextToSpeech _speechService;
+        private readonly IFirstLanguage _firstLanguageService;
 
         private Dictionary _dictionary;
         private string _dictionaryName;
@@ -213,7 +214,6 @@ namespace RepeatingWords.ViewModel
         }
 
         private async Task<Dictionary> GetDictionary(int id) => await Task.Run(() => _unitOfWork.DictionaryRepository.Get(id));
-        private async Task<bool> ShowFromLanguageNative() => !await DialogService.ShowConfirmAsync(message: Resource.ModalActFromTrtoF, title: "", buttonOk: Resource.Yes, buttonCancel: Resource.No);
         private async Task<IEnumerable<Words>> LoadWords(int id) => await Task.Run(() => _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).AsEnumerable());
 
         public override async Task InitializeAsync(object navigationData)
@@ -222,18 +222,16 @@ namespace RepeatingWords.ViewModel
             List<Words> wordsList = new List<Words>();
             int count = 0;
             IsBusy = true;
-            bool isFromNative = false;
             await Task.Run(async() =>
             {
                _dictionary = navigationData as Dictionary;
-               isFromNative = await ShowFromLanguageNative();
                wordsList = (await LoadWords(_dictionary.Id)).ToList();
                count = wordsList.Count();
                 ShakeWordsCollection(wordsList);
             });
             Model.Dictionary = _dictionary;
             DictionaryName = _dictionary.Name;
-            Model.IsFromNative = isFromNative;
+            Model.IsFromNative = _firstLanguageService.GetFirstLanguage();
             Model.WordsLearningAll = wordsList;
             Model.AllWordsCount = count;
             await SetViewWorkSpaceLearningCards();

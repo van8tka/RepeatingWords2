@@ -26,21 +26,7 @@
                 </StackLayout>
                 <BoxView HeightRequest="1" VerticalOptions="End" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
             </StackLayout>
-        <!--установка языка отображения при изучении(первый родной или иностранный)-->
-            <StackLayout >
-                <Label Text="{local:Translate LabelChooseFirstLanguage}"  FontSize="Small" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                    <Label Text="{local:Translate LabelFirstLanguageIsNative}" Style="{DynamicResource LabelColorWB}" FontSize="Small"  HorizontalOptions="StartAndExpand"/>
-                    <Switch HorizontalOptions="End" VerticalOptions="End" IsToggled="{Binding IsDarkThem, Mode=TwoWay}"  >
-                        <Switch.Behaviors>
-                            <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchFirstLanguageCommand}"/>
-                        </Switch.Behaviors>
-                    </Switch>
-                </StackLayout>
-                <BoxView HeightRequest="1" VerticalOptions="End" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
-            </StackLayout>
-
-            <!--установка клавиатуры транскрипции-->
+      <!--установка клавиатуры транскрипции-->
             <StackLayout >
                 <Label Text="{local:Translate LabelChooseShowKeyboardTrans}"  FontSize="Small" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start"/>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
@@ -53,6 +39,19 @@
                 </StackLayout>
                 <BoxView HeightRequest="1" VerticalOptions="End" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
             </StackLayout>
+          <!--установка языка отображения при изучении(первый родной или иностранный)-->
+          <StackLayout >
+              <Label Text="{local:Translate LabelChooseFirstLanguage}"  FontSize="Small" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start"/>
+              <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                  <Label Text="{local:Translate LabelFirstLanguageIsNative}" Style="{DynamicResource LabelColorWB}" FontSize="Small"  HorizontalOptions="StartAndExpand"/>
+                  <Switch HorizontalOptions="End" VerticalOptions="End" IsToggled="{Binding CurrentFirstLanguageNative, Mode=TwoWay}"  >
+                      <Switch.Behaviors>
+                          <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchFirstLanguageCommand}"/>
+                      </Switch.Behaviors>
+                  </Switch>
+              </StackLayout>
+              <BoxView HeightRequest="1" VerticalOptions="End" BackgroundColor="{StaticResource ColorCustomBackgrountButton}"/>
+          </StackLayout>
             <!--выбор языка озвучки-->
             <StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,4,0,4">

@@ -107,7 +107,7 @@ namespace RepeatingWords.ViewModel
                 IsCustomKeyboardTranscription = _transcriptKeyboardService.GetCurrentTranscriptionKeyboard();
                 IsDarkThem = _themeService.GetCurrentTheme();
                 CurrentVoiceLanguage = _volumeService.GetVolumeLanguage().Name;
-                CurrentFirstLanguageNative = _firstLanguageService.GetFirstLanguage();
+                CurrentFirstLanguageNative = !_firstLanguageService.GetFirstLanguage();
         }
 
         private async Task ChooseCreateBackUp()
