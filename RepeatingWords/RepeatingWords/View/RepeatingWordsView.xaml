@@ -37,7 +37,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0">
                 <Label Text="{local:Translate ShowedWordsCountLabel}" Style="{DynamicResource LabelColor}" />
-                <Label Text="{Binding Model.AllShowedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" />
+                <Label Text="{Binding Model.AllLearnedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" />
             </StackLayout>
             <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0">
                 <Label Text="{local:Translate OpenedWordsCountLabel}"  Style="{DynamicResource LabelColor}"/>

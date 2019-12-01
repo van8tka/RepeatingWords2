@@ -12,6 +12,7 @@ namespace RepeatingWords.Model
         {
             AllWordsCount = 0;
             AllShowedWordsCount = 0;
+            AllLearnedWordsCount = 0;
             AllOpenedWordsCount = 0;
             WordsOpen = new List<Words>();
             WordsLeft = new List<Words>();
@@ -22,6 +23,8 @@ namespace RepeatingWords.Model
         public int AllWordsCount { get => _allWordsCount; set { _allWordsCount = value; OnPropertyChanged(nameof(AllWordsCount)); } }
         private int _allShowedWordsCount;
         public int AllShowedWordsCount { get => _allShowedWordsCount; set { _allShowedWordsCount = value; OnPropertyChanged(nameof(AllShowedWordsCount)); } }
+        private int _allLearnedWordsCount;
+        public int AllLearnedWordsCount { get => _allLearnedWordsCount; set { _allLearnedWordsCount = value; OnPropertyChanged(nameof(AllLearnedWordsCount)); } }
         private int _allOpenedWordsCount;
         public int AllOpenedWordsCount { get => _allOpenedWordsCount; set { _allOpenedWordsCount = value; OnPropertyChanged(nameof(AllOpenedWordsCount)); } }
 

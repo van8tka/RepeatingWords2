@@ -17,6 +17,9 @@ namespace RepeatingWords.ViewModel
         {
             TapWordCommand = new Command<string>(TapWord);
         }
+
+        private int _timeShowRightWord = 800;
+        private int _timeShowMistakeWord = 3500;
         /// <summary>
         /// действие по тапу на квадратик со словом
         /// </summary>
@@ -34,7 +37,7 @@ namespace RepeatingWords.ViewModel
                 {
                     Model.IsOpenCurrentWord = false;
                     SetRightMark(wordName, Color.LightBlue);
-                    await Task.Delay(500);
+                    await Task.Delay(_timeShowRightWord);
                 }
                 else
                 {
@@ -43,7 +46,7 @@ namespace RepeatingWords.ViewModel
                     SetRightMark(wordName, Color.Red);
                     Model.WordsOpen.Add(_showingWord);
                     Model.AllOpenedWordsCount++;
-                    await Task.Delay(1800);
+                    await Task.Delay(_timeShowMistakeWord);
                 }
                 ClearBackgroundColor();
                 await AnimationService.AnimationFade(WordContainer, 0);
