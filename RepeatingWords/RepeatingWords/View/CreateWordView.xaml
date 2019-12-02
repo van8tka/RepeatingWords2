@@ -4,6 +4,7 @@
              x:Class="RepeatingWords.View.CreateWordView"
              xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
              xmlns:behavior ="clr-namespace:RepeatingWords.Behavior;assembly=RepeatingWords"
+             xmlns:vm="clr-namespace:RepeatingWords.ViewModel;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
            Title="{Binding TitleEditWord}"
              >
@@ -13,7 +14,7 @@
         <ToolbarItem Name="Add" Icon="toolbarImageAdd.png" Command="{Binding SendCommand}"/>
     </ContentPage.ToolbarItems>
     <ScrollView>
-    <StackLayout Margin="10,5,10,0">
+    <StackLayout Margin="10,5,10,0" x:DataType="vm:CreateWordViewModel">
             <Entry x:Name="EntryNativeWord" Text="{Binding NativeWord}" Placeholder="{local:Translate LabelFirstWord}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" BackgroundColor="Transparent" PlaceholderColor="Gray"/>
             <Entry Text="{Binding TranslateWord}" Placeholder="{local:Translate LabelSecondWord}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" BackgroundColor="Transparent" PlaceholderColor="Gray"/>
             <Entry Text="{Binding TranscriptionWord}"  x:Name="EntryTranscription"  IsEnabled="True" Placeholder="{local:Translate LabelTranscription}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" BackgroundColor="Transparent" PlaceholderColor="Gray" >

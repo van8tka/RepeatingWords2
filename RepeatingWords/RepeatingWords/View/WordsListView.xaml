@@ -5,11 +5,13 @@
              xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
               xmlns:converter="clr-namespace:RepeatingWords.Converters;assembly=RepeatingWords"
              xmlns:controls="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
+             xmlns:vm="clr-namespace:RepeatingWords.ViewModel;assembly=RepeatingWords"
+             xmlns:modOut="clr-namespace:RepeatingWords.DataService.Model;assembly=RepeatingWords.DataService"
              Style="{StaticResource TitleApp}"
              Title="{Binding DictionaryName}"
              >
     <ContentPage.Content>
-        <RelativeLayout Margin="10,0,10,5">
+        <RelativeLayout Margin="10,0,10,5" x:DataType="vm:WordsListViewModel">
                 <local:AdMobView  x:Name="AdvertView"
                         RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
                         RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
@@ -27,7 +29,7 @@
                                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
                         >
                             <ListView.ItemTemplate>
-                                <DataTemplate>
+                                <DataTemplate x:DataType="modOut:Words">
                                     <ViewCell>
                                         <ViewCell.View>
                                             <StackLayout Orientation="Vertical">
