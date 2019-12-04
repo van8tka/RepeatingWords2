@@ -11139,10 +11139,10 @@ namespace RepeatingWords.Droid
 			public const int floating_btn_learn = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int floating_btn_menuGray = 2131165306;
+			public const int floating_btn_menu = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int floating_btn_meny = 2131165307;
+			public const int floating_btn_menuGray = 2131165307;
 			
 			// aapt resource value: 0x7F07007C
 			public const int googleg_disabled_color_18 = 2131165308;

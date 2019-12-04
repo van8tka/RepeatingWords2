@@ -28,7 +28,7 @@ namespace RepeatingWords.ViewModel
 
         protected readonly IUnitOfWork _unitOfWork;
         protected readonly IImportFile _importFile;
-        private readonly string menyActive = "floating_btn_meny.png";
+        private readonly string menyActive = "floating_btn_menu.png";
         private readonly string menuUnActive = "floating_btn_menuGray.png";
 
         protected abstract Task ImportFile();

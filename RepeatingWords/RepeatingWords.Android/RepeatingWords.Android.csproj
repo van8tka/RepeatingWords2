@@ -249,7 +249,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\floating_btn_learn.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\floating_btn_add.png" />
@@ -264,7 +264,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\floating_btn_learn.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\floating_btn_add.png" />
@@ -279,7 +279,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\floating_btn_learn.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\floating_btn_add.png" />
@@ -294,7 +294,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\floating_btn_learn.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\floating_btn_menuGray.png" />
@@ -399,7 +399,7 @@
     <AndroidResource Include="Resources\drawable-mdpi\floating_btn_menuGray.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\floating_btn_meny.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\floating_btn_menu.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\icons_cardsbutton.png" />
