@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace RepeatingWords.DataService.Model
@@ -9,5 +10,8 @@ namespace RepeatingWords.DataService.Model
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public int IdDictionary { get; set; }
+        public int PercentOfLearned { get; set; }
+        public DateTime LastUpdated { get; set; }
     }
 }

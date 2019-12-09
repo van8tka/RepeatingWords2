@@ -21,7 +21,7 @@ namespace RepeatingWords.DataService
         private readonly string _dbpath;
         public DbSet<Dictionary> Dictionary { get; set; }
         public DbSet<Words> Words { get; set; }
-        public DbSet<LastAction> LastActions { get; set; }
+        public DbSet<Language> Languages { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -21,8 +21,8 @@ namespace RepeatingWords.DataService.Repositories
         public IRepository<Dictionary> DictionaryRepository => _dictionaryRepo ?? (_dictionaryRepo = new GenericRepository<Dictionary>(_dbContext));
         private IRepository<Words> _wordsRepo;
         public IRepository<Words> WordsRepository => _wordsRepo ?? (_wordsRepo = new GenericRepository<Words>(_dbContext));
-        private IRepository<LastAction> _lastAction;
-        public IRepository<LastAction> LastActionRepository => _lastAction ?? (_lastAction = new GenericRepository<LastAction>(_dbContext));
+        private IRepository<Language> _languageRepo;
+        public IRepository<Language> LanguageRepository => _languageRepo ?? (_languageRepo = new GenericRepository<Language>(_dbContext));
 
         public void Save()
         {

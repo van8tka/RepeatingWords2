@@ -170,9 +170,6 @@ namespace RepeatingWords.ViewModel
                 if (words != null && words.Any())
                     for (int i = 0; i < words.Count(); i++)
                         await Task.Run(() => _unitOfWork.WordsRepository.Delete(words.ElementAt(i)));
-                var lastRepeat = _unitOfWork.LastActionRepository.Get().LastOrDefault();
-                if (lastRepeat != null && lastRepeat.IdDictionary == removeDictionary.Id)
-                    await Task.Run(() => _unitOfWork.LastActionRepository.Delete(lastRepeat));
                 bool success = await Task.Run(() => _unitOfWork.DictionaryRepository.Delete(removeDictionary));
                 _unitOfWork.Save();
                 if (success)

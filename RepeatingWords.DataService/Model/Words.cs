@@ -12,5 +12,6 @@ namespace RepeatingWords.DataService.Model
         public string RusWord { get; set; }
         public string EngWord { get; set; }
         public string Transcription { get; set; }
+        public bool IsLearned { get; set; }
     }
 }
