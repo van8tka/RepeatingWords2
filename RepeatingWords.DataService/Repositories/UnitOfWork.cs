@@ -13,7 +13,7 @@ namespace RepeatingWords.DataService.Repositories
             _dbContext = new SQLiteContext(_dbpath); 
         }
 
-        internal const string DATABASE_NAME = "repeatwords.db";
+        internal const string DATABASE_NAME = "repeatwords_v_1.db";
         private readonly string _dbpath;
         private SQLiteContext _dbContext;
 
