@@ -37,7 +37,6 @@ namespace RepeatingWords.NUnitTest
             container.RegisterType<IDictionaryTypeByName, DictionaryTypeByName>();
             container.RegisterType<IUnlearningWordsService, UnlerningWordsService>();
             container.RegisterType<IVolumeLanguageService, TestVolumeService>();
-            container.RegisterType<IContinueWordsService, ContinueWordsService>();
             container.RegisterType<IImportFile, ImportFileToDb>();
             container.RegisterType<ViewModelBase, RepeatingWordsViewModel>();
             container.RegisterType<ILanguageLoaderFacade, LanguageLoader>();
