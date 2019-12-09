@@ -4,7 +4,7 @@
              x:Class="RepeatingWords.View.LanguageFrNetView"
              xmlns:local ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
              xmlns:vm="clr-namespace:RepeatingWords.ViewModel;assembly=RepeatingWords"
-             xmlns:mod="clr-namespace:RepeatingWords.Model;assembly=RepeatingWords"
+             xmlns:mod="clr-namespace:RepeatingWords.DataService.Model;assembly=RepeatingWords.DataService"
              Style="{StaticResource TitleApp}"
              Title="{local:Translate TitleLanguages}"         
              >
