@@ -349,6 +349,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English-Russian vocabulary.
+        /// </summary>
+        public static string DefaultLanguage {
+            get {
+                return ResourceManager.GetString("DefaultLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting...
         /// </summary>
         public static string Deleting {

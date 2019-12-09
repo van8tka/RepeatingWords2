@@ -95,7 +95,8 @@ namespace RepeatingWords.Services
                     IdDictionary = dictionaryId,
                     RusWord = fileWords[0].Trim(badSymbals),
                     Transcription = "[" + fileWords[1].Trim(badSymbals) + "]",
-                    EngWord = fileWords[2].Trim(badSymbals)
+                    EngWord = fileWords[2].Trim(badSymbals),
+                    IsLearned = false
                 };
                 _unitOfWork.WordsRepository.Create(item);
                 return true;

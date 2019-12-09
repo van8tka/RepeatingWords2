@@ -478,4 +478,7 @@
   <data name="LabelFirstLanguageForeign" xml:space="preserve">
     <value>Foreign language</value>
   </data>
+  <data name="DefaultLanguage" xml:space="preserve">
+    <value>English-Russian vocabulary</value>
+  </data>
 </root>
