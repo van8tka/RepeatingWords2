@@ -2,6 +2,7 @@
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using System.Windows.Input;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Heleprs;
 using RepeatingWords.Interfaces;
+using RepeatingWords.Model;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
@@ -21,12 +23,13 @@ namespace RepeatingWords.ViewModel
     {
         public MainViewModel( INavigationService navService, IDialogService dialogService, IUnitOfWork unitOfWork, IImportFile importFile) : base(navService, dialogService, unitOfWork, importFile)
         {
-            DictionaryList = new ObservableCollection<Dictionary>();
+            DictionaryList = new ObservableCollection<DictionaryModel>();
             ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
             LikeCommand = new Command(LikeApplication);
             AddDictionaryCommand = new Command(() => { AddDictionary(); SetUnVisibleFloatingMenu(); });
             AddWordsFromNetCommand = new Command(async () => { await NavigationService.NavigateToAsync<LanguageFrNetViewModel>(); SetUnVisibleFloatingMenu(); });
+            AppearingCommand = new Command(async () => await LoadData());
             SetUnVisibleFloatingMenu();
         }
 
@@ -35,11 +38,12 @@ namespace RepeatingWords.ViewModel
         public ICommand HelperCommand { get; set; }
         public ICommand AddDictionaryCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
-        private ObservableCollection<Dictionary> _dictionaryList;
-        public ObservableCollection<Dictionary> DictionaryList { get => _dictionaryList; set { _dictionaryList = value; OnPropertyChanged(nameof(DictionaryList)); } }
-        private Dictionary _selectedItem;
+        public ICommand AppearingCommand { get; set; }
+        private ObservableCollection<DictionaryModel> _dictionaryList;
+        public ObservableCollection<DictionaryModel> DictionaryList { get => _dictionaryList; set { _dictionaryList = value; OnPropertyChanged(nameof(DictionaryList)); } }
+        private DictionaryModel _selectedItem;
 
-        public Dictionary SelectedItem
+        public DictionaryModel SelectedItem
         {
             get => _selectedItem;
             set
@@ -48,29 +52,27 @@ namespace RepeatingWords.ViewModel
                 OnPropertyChanged(nameof(SelectedItem));
                 SetUnVisibleFloatingMenu();
                 if (_selectedItem != null) 
-                    ContextMenuDictionary(_selectedItem);
+                    ContextMenuDictionary(_selectedItem.Id);
             }
         }
 
         public override async Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
-            DictionaryList = await LoadData();
             await base.InitializeAsync(navigationData);
         }
-        private async Task<ObservableCollection<Dictionary>> LoadData()
+        private async Task LoadData()
         {
-            try
-            {
-                //кроме словарей не законченных и словарей недоученных
-                var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderBy(x => x.Name).AsEnumerable());
-                return new ObservableCollection<Dictionary>(items);
-            }
-            catch (Exception e)
-            {
-                Log.Logger.Error(e);
-                return new ObservableCollection<Dictionary>();
-            }
+            //кроме словарей не законченных и словарей недоученных
+                var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderBy(x => x.LastUpdated).AsEnumerable());
+                var tempList = new List<DictionaryModel>();
+                for (int i = 0; i < items.Count(); i++)
+                {
+                    var item = items.ElementAt(i);
+                    tempList.Add(new DictionaryModel(item));
+
+                }
+                DictionaryList = new ObservableCollection<DictionaryModel>(tempList);
         }
         protected override async Task ImportFile()
         {
@@ -92,10 +94,11 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private async void ContextMenuDictionary(Dictionary selectedItem)
+        private async void ContextMenuDictionary(int idDictionary)
         {
             try
             {
+                var selectedItem = _unitOfWork.DictionaryRepository.Get(idDictionary);
                 string removeDictionary = Resource.ButtonRemove;
                 string showWords = Resource.ButtonShowWords;
                 string studing = Resource.ButtonRepeatWords;
@@ -143,7 +146,7 @@ namespace RepeatingWords.ViewModel
                 {
                     var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = result });
                     _unitOfWork.Save();
-                    DictionaryList.Add(dictionary);
+                    DictionaryList.Add(new DictionaryModel(dictionary));
                     OnPropertyChanged(nameof(DictionaryList));
                     if (isNotImport)
                         await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary);
@@ -173,7 +176,11 @@ namespace RepeatingWords.ViewModel
                 bool success = await Task.Run(() => _unitOfWork.DictionaryRepository.Delete(removeDictionary));
                 _unitOfWork.Save();
                 if (success)
-                    DictionaryList.Remove(removeDictionary);
+                {
+                    var removed = DictionaryList.Where(x => x.Id == removeDictionary.Id).FirstOrDefault();
+                    DictionaryList.Remove(removed);
+                }
+                   
                 OnPropertyChanged(nameof(DictionaryList));
                 DialogService.HideLoadDialog();
             }

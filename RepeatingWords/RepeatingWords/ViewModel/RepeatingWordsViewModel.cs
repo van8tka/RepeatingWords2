@@ -48,6 +48,7 @@ namespace RepeatingWords.ViewModel
                 await _animationService.AnimationFade(WorkContainerView, 1);
             });
             AppearingCommand = new Command(async () => await AppearingPage());
+            DisappearingCommand = new Command(async()=>await Disappearing());
         }
         #region FIELDS
         //переменная для определения переключения в режим редактирования текущего слова
@@ -109,7 +110,7 @@ namespace RepeatingWords.ViewModel
         public ICommand UnloadPageCommand { get; set; }
         public ICommand EditCurrentWordCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
-
+        public ICommand DisappearingCommand { get; set; }
         private WorkSpaceEnterWordView _enterWordView;
         private WorkSpaceEnterWordView EnterWordView => _enterWordView ?? (_enterWordView = new WorkSpaceEnterWordView());
         private WorkSpaceSelectWordView _selectWordView;
@@ -231,6 +232,15 @@ namespace RepeatingWords.ViewModel
                 await (_workSpaceVM as WorkSpaceBaseViewModel).SetViewWords(Model.CurrentWord, Model.IsFromNative);
             }
             _isEditing = false;
+        }
+        const int PERSENT = 100;
+        private async Task Disappearing()
+        {
+            _dictionary.LastUpdated = DateTime.UtcNow;
+            float proportion = (float)Model.AllLearnedWordsCount / (float)Model.AllWordsCount;
+            _dictionary.PercentOfLearned = (int)(proportion * PERSENT);
+            _unitOfWork.DictionaryRepository.Update(_dictionary);
+            _unitOfWork.Save();
         }
     }
 }
