@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using RepeatingWords.Helpers.Interfaces;
-using RepeatingWords.Model;
 using System.Linq;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.LoggerService;
@@ -50,11 +49,10 @@ namespace RepeatingWords.ViewModel
             SelectedItem = null;
             try
             {
-                await _languageLoader.LoadSelectedLanguageToDB(selectedLanguage.Id);
+                await _languageLoader.LoadSelectedLanguageToDB(selectedLanguage.Id, selectedLanguage.NameLanguage);
                 DialogService.HideLoadDialog();
                 await NavigationService.NavigateToAsync<MainViewModel>();
-                await NavigationService.RemoveBackStackAsync(); 
-                // GoMainPageCommand.Execute(null);
+                await NavigationService.RemoveBackStackAsync();
             }
             catch (Exception e)
             {
@@ -81,10 +79,10 @@ namespace RepeatingWords.ViewModel
                         LanguageList = list;
                     }
                }
-               else
-                {
+               else 
+               {
                       DialogService.ShowToast(Resource.ModalCheckNet);                   
-                }                 
+               }                 
             }
             catch(Exception e)
             {
@@ -94,7 +92,6 @@ namespace RepeatingWords.ViewModel
 
         public override async Task InitializeAsync(object navigationData)
         {
-                   
             IsBusy = true;
             await LoadData();
             await base.InitializeAsync(navigationData);

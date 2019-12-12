@@ -21,17 +21,25 @@ namespace RepeatingWords.Helpers
         private readonly IUnitOfWork _unitOfWork;
 
 
-        public async Task LoadSelectedLanguageToDB(int idLanguage)
+        public async Task LoadSelectedLanguageToDB(int idLanguage, string nameLanguage)
         {           
             try
             {
-                var dataRaw = await _webService.GetLanguageWords(idLanguage);
-                if (!string.IsNullOrEmpty(dataRaw) && !string.Equals(dataRaw, "[]", StringComparison.OrdinalIgnoreCase))
+                var isExist = _unitOfWork.LanguageRepository.Get().Any(x =>
+                    x.NameLanguage.Equals(nameLanguage, StringComparison.OrdinalIgnoreCase));
+                if (!isExist)
                 {
-                    var jDataRaw = JArray.Parse(dataRaw);
-                    for (int i = 0; i < jDataRaw.Count(); i++)
+                    var lang = _unitOfWork.LanguageRepository.Create(new Language()
+                        { Id = 0, NameLanguage = nameLanguage, PercentOfLearned = 0 });
+                    _unitOfWork.Save();
+                    var dataRaw = await _webService.GetLanguageWords(idLanguage);
+                    if (!string.IsNullOrEmpty(dataRaw) && !string.Equals(dataRaw, "[]", StringComparison.OrdinalIgnoreCase))
                     {
-                        await AddDictionaryToDb(jDataRaw[i] as JArray);
+                        var jDataRaw = JArray.Parse(dataRaw);
+                        for (int i = 0; i < jDataRaw.Count(); i++)
+                        {
+                            await AddDictionaryToDb(jDataRaw[i] as JArray, lang.Id);
+                        }
                     }
                 }
             }
@@ -43,7 +51,7 @@ namespace RepeatingWords.Helpers
         }
 
 
-        private Task AddDictionaryToDb(JArray jDictionary)
+        private Task AddDictionaryToDb(JArray jDictionary, int langId)
         {
             try
             {
@@ -51,11 +59,11 @@ namespace RepeatingWords.Helpers
                     throw new Exception("JSon dictionary is empty");
                 return Task.Run(() =>
                 {
-                    int idNewDictionary = _unitOfWork.DictionaryRepository.Get().Last().Id + 1;
-                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = idNewDictionary, Name = jDictionary[0].ToString() });
+                 //   int idNewDictionary = _unitOfWork.DictionaryRepository.Get().Last().Id + 1;
+                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = jDictionary[0].ToString(), IdLanguage = langId, LastUpdated = DateTime.UtcNow, PercentOfLearned = 0});
                     _unitOfWork.Save();
                     for(int i=2;i<jDictionary.Count();i++)
-                         CreateWords(jDictionary[i] as JArray, idNewDictionary);
+                         CreateWords(jDictionary[i] as JArray, dictionary.Id);
                     _unitOfWork.Save();
                 });              
             }
@@ -79,6 +87,7 @@ namespace RepeatingWords.Helpers
                     newWord.RusWord = jwords[0].ToString().Trim(badSymbals);
                     newWord.Transcription = jwords[2].ToString().Trim(badSymbals);
                     newWord.EngWord = jwords[1].ToString().Trim(badSymbals);
+                    newWord.IsLearned = false;
                     _unitOfWork.WordsRepository.Create(newWord);
                 }
                 else
