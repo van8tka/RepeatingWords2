@@ -64,7 +64,7 @@ namespace RepeatingWords.ViewModel
         private async Task LoadData()
         {
             //кроме словарей не законченных и словарей недоученных
-                var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderBy(x => x.LastUpdated).AsEnumerable());
+                var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderByDescending(x => x.LastUpdated).AsEnumerable());
                 var tempList = new List<DictionaryModel>();
                 for (int i = 0; i < items.Count(); i++)
                 {
