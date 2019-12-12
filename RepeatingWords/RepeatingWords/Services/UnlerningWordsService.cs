@@ -162,7 +162,7 @@ namespace RepeatingWords.Service
             try
             {
                 int newIdDictionary = _unitOfWork.DictionaryRepository.Get().LastOrDefault().Id + 1;
-                var unlerningDictionary = new Dictionary() { Id = newIdDictionary, Name = nameDictionaryNotLearning };
+                var unlerningDictionary = new Dictionary() { Id = newIdDictionary, Name = nameDictionaryNotLearning, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow};
                 _unitOfWork.DictionaryRepository.Create(unlerningDictionary);
                 _unitOfWork.Save();
                 CreateWords(words, newIdDictionary);

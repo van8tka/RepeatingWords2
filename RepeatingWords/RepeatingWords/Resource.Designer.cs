@@ -349,7 +349,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English-Russian vocabulary.
+        ///   Looks up a localized string similar to My dictionary.
         /// </summary>
         public static string DefaultLanguage {
             get {

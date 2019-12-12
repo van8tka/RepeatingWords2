@@ -144,7 +144,7 @@ namespace RepeatingWords.ViewModel
                 var result = await DialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict, Resource.ButtonCreate, Resource.ModalActCancel);
                 if (!string.IsNullOrEmpty(result) || !string.IsNullOrWhiteSpace(result))
                 {
-                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = result });
+                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = result, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow});
                     _unitOfWork.Save();
                     DictionaryList.Add(new DictionaryModel(dictionary));
                     OnPropertyChanged(nameof(DictionaryList));

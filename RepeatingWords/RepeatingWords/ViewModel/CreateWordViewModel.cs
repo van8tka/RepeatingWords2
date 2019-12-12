@@ -127,6 +127,8 @@ namespace RepeatingWords.ViewModel
                     SetDataToChangeWord();
                     word = _unitOfWork.WordsRepository.Update(_wordChange);
                 }
+                _dictionary.LastUpdated = DateTime.UtcNow;
+                _unitOfWork.DictionaryRepository.Update(_dictionary);
                 _unitOfWork.Save();
                 return word;
             }
