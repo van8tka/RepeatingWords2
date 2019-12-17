@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Input;
 using RepeatingWords.Annotations;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers;
+using Xamarin.Forms;
 
 namespace RepeatingWords.Model
 {
-   public class LanguageModel:INotifyPropertyChanged
+   public class LanguageModel:ObservableCollection<DictionaryModel>,INotifyPropertyChanged
     {
        
 
@@ -20,13 +23,27 @@ namespace RepeatingWords.Model
         {
             Id = language.Id;
             Name = language.NameLanguage;
-            Dictionaries = new ObservableCollection<DictionaryModel>();
             foreach (var dictionary in dictionaries)
             {
                 _dictionariesCash.Add(new DictionaryModel( dictionary ));
             }
-            if(expanded)
-                Dictionaries = _dictionariesCash;
+            AddRangeToCollection();
+            ExpandCommand = new Command( ExpandChange);
+        }
+
+        private void ExpandChange()
+        {
+            Expanded = !Expanded;
+        }
+
+        public ICommand ExpandCommand { get; set; }
+
+        private void AddRangeToCollection()
+        {
+            for (int i = 0; i < _dictionariesCash.Count(); i++)
+            {
+                this.Add(_dictionariesCash.ElementAt(i));
+            }
         }
 
         private ObservableCollection<DictionaryModel> _dictionariesCash = new ObservableCollection<DictionaryModel>();
@@ -43,16 +60,7 @@ namespace RepeatingWords.Model
             set { _name = value; OnPropertyChanged(nameof(Name));}
         }
 
-        private ObservableCollection<DictionaryModel> _dictionariesOfLang;
-        public ObservableCollection<DictionaryModel> Dictionaries
-        {
-            get => _dictionariesOfLang;
-            set
-            {
-                _dictionariesOfLang = value;
-                OnPropertyChanged(nameof(Dictionaries));
-            }
-        }
+       
 
         private bool _expanded;
 
@@ -67,10 +75,10 @@ namespace RepeatingWords.Model
                     OnPropertyChanged(nameof(StateIcon));
                 }
                 if(_expanded)
-                    Dictionaries = _dictionariesCash;
+                   AddRangeToCollection();
                 else
-                    Dictionaries.Clear();
-                OnPropertyChanged(nameof(Dictionaries));
+                    this.Clear();
+                _expanded = value;
             }
         }
 
@@ -81,8 +89,7 @@ namespace RepeatingWords.Model
             {
                 if (_expanded)
                     return "arrow_up.png";
-                else
-                    return "arrow_down.png";
+                return "arrow_down.png";
             }
         }
 

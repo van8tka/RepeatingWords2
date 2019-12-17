@@ -28,7 +28,48 @@
                           HeightRequest="60"
                           RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                     />
-                    <ListView VerticalOptions="CenterAndExpand" 
+
+                    <!--
+                              SelectedItem ="{Binding SelectedItem, Mode=TwoWay}"-->
+
+            <ListView VerticalOptions="CenterAndExpand" 
+                             ItemsSource="{Binding DictionaryList}" 
+                              SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, ElementName=AdvertView, Property=Width, Factor=0}" 
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=AdvertView, Property=Height, Factor=1}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
+                              IsGroupingEnabled="True"
+                              >
+                            <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="modOut:DictionaryModel">
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation"/>
+                                                <Label HorizontalOptions="End" FontSize="13" WidthRequest="50" VerticalTextAlignment="Center" Text="{Binding PercentOfLearned}" Style="{DynamicResource LableHeadApp}"/>
+                                            </StackLayout>
+                                           </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        <ListView.GroupHeaderTemplate>
+                            <DataTemplate x:DataType="modOut:LanguageModel">
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical" BackgroundColor="Aquamarine" Padding="5">
+                                        <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation"/>
+                                        <Image Source="{Binding StateIcon}" />
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ExpandCommand}" NumberOfTapsRequired="1"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.GroupHeaderTemplate>
+                        </ListView>
+
+
+
+            <!--<ListView VerticalOptions="CenterAndExpand" 
                               ItemsSource="{Binding DictionaryList}" 
                               SelectedItem ="{Binding SelectedItem, Mode=TwoWay}" 
                               SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
@@ -48,7 +89,7 @@
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>
+                        </ListView>-->
                 
             <!--</StackLayout>-->
             <controls:ImageButtonAnimationScale

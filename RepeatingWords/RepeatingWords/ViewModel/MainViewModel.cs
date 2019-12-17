@@ -23,15 +23,22 @@ namespace RepeatingWords.ViewModel
     {
         public MainViewModel( INavigationService navService, IDialogService dialogService, IUnitOfWork unitOfWork, IImportFile importFile) : base(navService, dialogService, unitOfWork, importFile)
         {
-            DictionaryList = new ObservableCollection<DictionaryModel>();
+            DictionaryList = new ObservableCollection<LanguageModel>();
             ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
             LikeCommand = new Command(LikeApplication);
             AddDictionaryCommand = new Command(() => { AddDictionary(); SetUnVisibleFloatingMenu(); });
             AddWordsFromNetCommand = new Command(async () => { await NavigationService.NavigateToAsync<LanguageFrNetViewModel>(); SetUnVisibleFloatingMenu(); });
             AppearingCommand = new Command(async () => await LoadData());
+         
             SetUnVisibleFloatingMenu();
         }
+
+        //private void ExpandSelectedLanguage(int id)
+        //{
+        //    bool isExpanded = DictionaryList.Where(x => x.Id == id).FirstOrDefault().Expanded;
+        //    DictionaryList.Where(x => x.Id == id).FirstOrDefault().Expanded = !isExpanded;
+        //}
 
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
@@ -39,8 +46,11 @@ namespace RepeatingWords.ViewModel
         public ICommand AddDictionaryCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
-        private ObservableCollection<DictionaryModel> _dictionaryList;
-        public ObservableCollection<DictionaryModel> DictionaryList { get => _dictionaryList; set { _dictionaryList = value; OnPropertyChanged(nameof(DictionaryList)); } }
+
+       
+
+        private ObservableCollection<LanguageModel> _dictionaryList;
+        public ObservableCollection<LanguageModel> DictionaryList { get => _dictionaryList; set { _dictionaryList = value; OnPropertyChanged(nameof(DictionaryList)); } }
         private DictionaryModel _selectedItem;
 
         public DictionaryModel SelectedItem
@@ -64,15 +74,13 @@ namespace RepeatingWords.ViewModel
         private async Task LoadData()
         {
             //кроме словарей не законченных и словарей недоученных
-                var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x => !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderByDescending(x => x.LastUpdated).AsEnumerable());
-                var tempList = new List<DictionaryModel>();
-                for (int i = 0; i < items.Count(); i++)
-                {
-                    var item = items.ElementAt(i);
-                    tempList.Add(new DictionaryModel(item));
-
-                }
-                DictionaryList = new ObservableCollection<DictionaryModel>(tempList);
+            var langs = _unitOfWork.LanguageRepository.Get();
+            foreach (var lang in langs)
+            {
+                var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x =>x.IdLanguage==lang.Id && !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderByDescending(x => x.LastUpdated).AsEnumerable());
+                var langModel = new LanguageModel(lang, items, false);
+                DictionaryList.Add(langModel);
+            }
         }
         protected override async Task ImportFile()
         {
@@ -146,7 +154,8 @@ namespace RepeatingWords.ViewModel
                 {
                     var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = result, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow});
                     _unitOfWork.Save();
-                    DictionaryList.Add(new DictionaryModel(dictionary));
+                    //fixme added dictionary in list language
+                 //   DictionaryList.Add(new DictionaryModel(dictionary));
                     OnPropertyChanged(nameof(DictionaryList));
                     if (isNotImport)
                         await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary);
