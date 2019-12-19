@@ -56,11 +56,15 @@ namespace RepeatingWords.Model
         private string _name;
         public string Name
         {
-            get => Name;
+            get => _name;
             set { _name = value; OnPropertyChanged(nameof(Name));}
         }
 
        
+        public string Title
+        {
+            get => _name+" % ";
+        }
 
         private bool _expanded;
 

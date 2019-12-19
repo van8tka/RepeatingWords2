@@ -30,15 +30,8 @@ namespace RepeatingWords.ViewModel
             AddDictionaryCommand = new Command(() => { AddDictionary(); SetUnVisibleFloatingMenu(); });
             AddWordsFromNetCommand = new Command(async () => { await NavigationService.NavigateToAsync<LanguageFrNetViewModel>(); SetUnVisibleFloatingMenu(); });
             AppearingCommand = new Command(async () => await LoadData());
-         
             SetUnVisibleFloatingMenu();
         }
-
-        //private void ExpandSelectedLanguage(int id)
-        //{
-        //    bool isExpanded = DictionaryList.Where(x => x.Id == id).FirstOrDefault().Expanded;
-        //    DictionaryList.Where(x => x.Id == id).FirstOrDefault().Expanded = !isExpanded;
-        //}
 
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
@@ -46,8 +39,6 @@ namespace RepeatingWords.ViewModel
         public ICommand AddDictionaryCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
-
-       
 
         private ObservableCollection<LanguageModel> _dictionaryList;
         public ObservableCollection<LanguageModel> DictionaryList { get => _dictionaryList; set { _dictionaryList = value; OnPropertyChanged(nameof(DictionaryList)); } }
@@ -73,7 +64,7 @@ namespace RepeatingWords.ViewModel
         }
         private async Task LoadData()
         {
-            //кроме словарей не законченных и словарей недоученных
+            DictionaryList.Clear();
             var langs = _unitOfWork.LanguageRepository.Get();
             foreach (var lang in langs)
             {
