@@ -50,10 +50,7 @@
                                             <StackLayout Orientation="Horizontal">
                                                 <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation"/>
                                                 <Label HorizontalOptions="End" FontSize="13" WidthRequest="50" VerticalTextAlignment="Center" Text="{Binding PercentOfLearned}" Style="{DynamicResource LableHeadApp}"/>
-                                                <!--<StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding SelectedDictionaryCommand}"   NumberOfTapsRequired="1"/>
-                                                </StackLayout.GestureRecognizers>-->
-                                            </StackLayout>
+                                              </StackLayout>
                                            </ViewCell.View>
                                     </ViewCell>
                                 </DataTemplate>
@@ -61,8 +58,8 @@
                         <ListView.GroupHeaderTemplate>
                     <DataTemplate  x:DataType="modOut:LanguageModel">
                                 <ViewCell>
-                            <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource ColorCustomBackgrountButton}">
-                                        <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LableHeadApp}" MaxLines="1" LineBreakMode="TailTruncation"/>
+                            <StackLayout Orientation="Horizontal" Padding ="0,5,10,5">
+                                        <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" MaxLines="1" LineBreakMode="TailTruncation"/>
                                         <Image HorizontalOptions="End" VerticalOptions="Center" Source="{Binding StateIcon}" Margin="0,0,10,0" />
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding ExpandCommand}"  NumberOfTapsRequired="1"/>
