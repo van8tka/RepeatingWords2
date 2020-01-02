@@ -31,6 +31,7 @@ namespace RepeatingWords.ViewModel
             AddLanguageCommand = new Command(() => { AddLanguage(); SetUnVisibleFloatingMenu(); });
             AddWordsFromNetCommand = new Command(async () => { await NavigationService.NavigateToAsync<LanguageFrNetViewModel>(); SetUnVisibleFloatingMenu(); });
             AppearingCommand = new Command(async () => await LoadData());
+            ContextMenuLanguageCommand = new Command<int>(async(id)=>await ContextMenuLanguage(id));
             SetUnVisibleFloatingMenu();
         }
 
@@ -38,6 +39,7 @@ namespace RepeatingWords.ViewModel
         public ICommand LikeCommand { get; set; }
         public ICommand HelperCommand { get; set; }
         public ICommand AddLanguageCommand { get; set; }
+        public ICommand ContextMenuLanguageCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
 
@@ -74,18 +76,28 @@ namespace RepeatingWords.ViewModel
                 DictionaryList.Add(langModel);
             }
         }
-        protected override async Task ImportFile()
+
+        protected override async Task ImportFile( )
+        {
+            throw new NotImplementedException();
+        }
+        protected async Task ImportFromFile(int idLanguage)
         {
             try
             {
-                int idDictionary = await AddLanguage(isNotImport: false);
-                if (idDictionary > 0)
-                    if (!await _importFile.PickFile(idDictionary))
-                    {
-                        await InitializeAsync(null);
-                        throw new Exception("Error import words from file");
-                    }
-                await InitializeAsync(null);
+                var lang = DictionaryList.Where(x => x.Id == idLanguage).FirstOrDefault();
+                var isAddDictionary = await DictionaryList.Where(x => x.Id == idLanguage).FirstOrDefault().AddDictionaryToLanguage();
+                if (isAddDictionary)
+                {
+                    int idDictionary = _unitOfWork.DictionaryRepository.Get().Where(x => x.IdLanguage == idLanguage).OrderByDescending(x => x.LastUpdated).FirstOrDefault().Id;
+                    if (idDictionary > 0)
+                        if (!await _importFile.PickFile(idDictionary))
+                        {
+                            await InitializeAsync(null);
+                            throw new Exception("Error import words from file");
+                        }
+                    await InitializeAsync(null);
+                }
             }
             catch (Exception er)
             {
@@ -126,6 +138,32 @@ namespace RepeatingWords.ViewModel
             }
         }
 
+        private async Task<bool> ContextMenuLanguage(int idLanguage)
+        {
+            try
+            {
+                string removeLanguage = Resource.ButtonRemoveLanguage;
+                string addDictionary = Resource.ButtonAddDict;
+                string addFromFile = Resource.ButtonImport;
+
+                string[] actionButtons = new string[] { removeLanguage, addDictionary, addFromFile };
+                var result = await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
+                if (result.Equals(removeLanguage, StringComparison.OrdinalIgnoreCase))
+                    await RemoveLanguage(idLanguage);
+                else if (result.Equals(addDictionary, StringComparison.OrdinalIgnoreCase))
+                    await DictionaryList.Where(x => x.Id == idLanguage).FirstOrDefault().AddDictionaryToLanguage();
+                else if (result.Equals(addFromFile, StringComparison.OrdinalIgnoreCase))
+                    await ImportFromFile(idLanguage);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                return false;
+            }
+        }
+
+
         private Dictionary GetUnlearningDictionary(Dictionary selected)
         {
            return _unitOfWork.DictionaryRepository.Get().FirstOrDefault(x => x.Name.Equals(selected.Name+Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase));
@@ -158,7 +196,7 @@ namespace RepeatingWords.ViewModel
             try
             {
                 DialogService.ShowLoadDialog(Resource.Deleting);
-                var removed = await DictionaryList.Where(x => x.Id == removeDictionary.IdLanguage).FirstOrDefault().RemoveDictionaryFromLanguage(removeDictionary);
+                await DictionaryList.Where(x => x.Id == removeDictionary.IdLanguage).FirstOrDefault().RemoveDictionaryFromLanguage(removeDictionary);
                 OnPropertyChanged(nameof(DictionaryList));
                 DialogService.HideLoadDialog();
             }
@@ -169,7 +207,31 @@ namespace RepeatingWords.ViewModel
             }
         }
 
+        private async Task RemoveLanguage(int idlanguage)
+        {
+            try
+            {
+                    DialogService.ShowLoadDialog(Resource.Deleting);
+                    var removedLanguage = DictionaryList.Where(x => x.Id == idlanguage).FirstOrDefault();
+                    if (removedLanguage != null)
+                    {
+                        var dictionaries = _unitOfWork.DictionaryRepository.Get().Where(x => x.IdLanguage == idlanguage).AsEnumerable();
+                        foreach (var item in dictionaries)
+                            await removedLanguage.RemoveDictionaryFromLanguage(item);
+                        var language = _unitOfWork.LanguageRepository.Get(removedLanguage.Id);
+                        _unitOfWork.LanguageRepository.Delete(language);
+                        _unitOfWork.Save();
+                        DictionaryList.Remove(removedLanguage);
+                    }
+                    OnPropertyChanged(nameof(DictionaryList));
+                    DialogService.HideLoadDialog();
+            }
+            catch (Exception e)
+            {
+                DialogService.HideLoadDialog();
+                Log.Logger.Error(e);
+            }
+        }
 
-       
     }
 }

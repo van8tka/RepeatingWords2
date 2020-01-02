@@ -21,7 +21,7 @@
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
-        <RelativeLayout Margin="10,0,10,5" x:DataType="vm:MainViewModel">
+        <RelativeLayout Margin="10,0,10,5" x:DataType="vm:MainViewModel" x:Name="RelativeLayoutContext">
                     <local:AdMobView x:Name="AdvertView"
                           RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
                           RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
@@ -55,17 +55,15 @@
                     <DataTemplate  x:DataType="modOut:LanguageModel">
                                 <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding ="0,5,10,5">
-                                        <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" MaxLines="1" LineBreakMode="TailTruncation"/>
-                                        <Image HorizontalOptions="End" VerticalOptions="Center" Source="{Binding StateIcon}" Margin="0,0,10,0" >
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding ExpandCommand}"  NumberOfTapsRequired="1"/>
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                         <Image HorizontalOptions="End" VerticalOptions="Center"  Source="plus.png" Margin="0,0,10,0" >
-                                            <Image.GestureRecognizers>
-                                               <TapGestureRecognizer Command="{Binding AddCommand}"  NumberOfTapsRequired="1"/>
-                                          </Image.GestureRecognizers>
-                                   </Image>
+                                <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" MaxLines="1" LineBreakMode="TailTruncation"/>
+                                <Image HorizontalOptions="End" VerticalOptions="Center" Source="{Binding StateIcon}" Margin="0,0,10,0" >
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ExpandCommand}"  NumberOfTapsRequired="1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference RelativeLayoutContext}, Path=BindingContext.ContextMenuLanguageCommand}" NumberOfTapsRequired="1" CommandParameter="{Binding Id}"/>
+                                </StackLayout.GestureRecognizers>
                             </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

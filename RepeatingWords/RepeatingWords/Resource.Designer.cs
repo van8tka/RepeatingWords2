@@ -259,6 +259,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import from file.
+        /// </summary>
+        public static string ButtonImport {
+            get {
+                return ResourceManager.GetString("ButtonImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next card.
         /// </summary>
         public static string ButtonNextWord {
@@ -282,6 +291,15 @@ namespace RepeatingWords {
         public static string ButtonRemove {
             get {
                 return ResourceManager.GetString("ButtonRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove the language.
+        /// </summary>
+        public static string ButtonRemoveLanguage {
+            get {
+                return ResourceManager.GetString("ButtonRemoveLanguage", resourceCulture);
             }
         }
         

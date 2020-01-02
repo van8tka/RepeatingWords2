@@ -476,4 +476,10 @@
   <data name="DefaultLanguage" xml:space="preserve">
     <value>Мой словарь</value>
   </data>
+  <data name="ButtonImport" xml:space="preserve">
+    <value>Импорт из файла</value>
+  </data>
+  <data name="ButtonRemoveLanguage" xml:space="preserve">
+    <value>Удалить язык</value>
+  </data>
 </root>

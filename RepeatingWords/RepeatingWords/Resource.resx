@@ -481,4 +481,10 @@
   <data name="DefaultLanguage" xml:space="preserve">
     <value>My dictionary</value>
   </data>
+  <data name="ButtonImport" xml:space="preserve">
+    <value>Import from file</value>
+  </data>
+  <data name="ButtonRemoveLanguage" xml:space="preserve">
+    <value>Remove the language</value>
+  </data>
 </root>
