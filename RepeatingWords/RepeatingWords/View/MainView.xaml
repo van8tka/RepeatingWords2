@@ -28,10 +28,6 @@
                           HeightRequest="60"
                           RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                     />
-
-                    <!--
-                              SelectedItem ="{Binding SelectedItem, Mode=TwoWay}"-->
-
             <ListView VerticalOptions="CenterAndExpand" 
                              ItemsSource="{Binding DictionaryList}" 
                               SeparatorColor="{StaticResource ColorCustomBackgrountButton}"

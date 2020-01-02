@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Heleprs;
+using RepeatingWords.Helpers;
 using RepeatingWords.Interfaces;
 using RepeatingWords.Model;
 using Xamarin.Forms;
@@ -26,7 +27,7 @@ namespace RepeatingWords.ViewModel
             DictionaryList = new ObservableCollection<LanguageModel>();
             ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
-            LikeCommand = new Command(LikeApplication);
+            LikeCommand = new Command(async ()=> { await LikeApplication.Like(DialogService); });
             AddDictionaryCommand = new Command(() => { AddDictionary(); SetUnVisibleFloatingMenu(); });
             AddWordsFromNetCommand = new Command(async () => { await NavigationService.NavigateToAsync<LanguageFrNetViewModel>(); SetUnVisibleFloatingMenu(); });
             AppearingCommand = new Command(async () => await LoadData());
@@ -110,18 +111,12 @@ namespace RepeatingWords.ViewModel
                     actionButtons = new string[] { studing, showWords, removeDictionary };
                 var result = await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
                 if (result.Equals(studing, StringComparison.OrdinalIgnoreCase))
-                {
                     await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(selectedItem);
-                }
-                if (result.Equals(studingNotLearning, StringComparison.OrdinalIgnoreCase))
-                {
+                else if (result.Equals(studingNotLearning, StringComparison.OrdinalIgnoreCase))
                     await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(unlearningDictionary);
-                }
-                if (result.Equals(showWords, StringComparison.OrdinalIgnoreCase))
-                {
+                else if (result.Equals(showWords, StringComparison.OrdinalIgnoreCase))
                     await NavigationService.NavigateToAsync<WordsListViewModel>(selectedItem);
-                }
-                if (result.Equals(removeDictionary, StringComparison.OrdinalIgnoreCase))
+                else if (result.Equals(removeDictionary, StringComparison.OrdinalIgnoreCase))
                     await RemoveDictionary(selectedItem);
                 SelectedItem = null;
             }
@@ -140,13 +135,13 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
+                var selDict = SelectedItem;
                 var result = await DialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict, Resource.ButtonCreate, Resource.ModalActCancel);
                 if (!string.IsNullOrEmpty(result) || !string.IsNullOrWhiteSpace(result))
                 {
                     var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = result, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow});
                     _unitOfWork.Save();
-                    //fixme added dictionary in list language
-                 //   DictionaryList.Add(new DictionaryModel(dictionary));
+                    //DictionaryList.Add(new DictionaryModel(dictionary));
                     OnPropertyChanged(nameof(DictionaryList));
                     if (isNotImport)
                         await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary);
@@ -192,30 +187,6 @@ namespace RepeatingWords.ViewModel
         }
 
 
-        private async void LikeApplication()
-        {
-            bool action = await DialogService.ShowConfirmAsync(Resource.MessagePleaseReview, "", Resource.ButtonSendReview, Resource.ModalActCancel);
-                if (action)
-                {
-                    switch (Device.RuntimePlatform)
-                    {
-                        case Device.Android:
-                        {
-                            Device.OpenUri(new Uri("https://play.google.com/store/apps/details?id=cardsofwords.cardsofwords"));
-                            break;
-                        }
-                        case Device.UWP:
-                        {
-                            Device.OpenUri(new Uri("https://www.microsoft.com/store/apps/9n55bwkgshnf"));
-                            break;
-                        }
-                        case Device.iOS:
-                        {
-                           // Device.OpenUri(new Uri("https://play.google.com/store/apps/details?id=cardsofwords.cardsofwords"));
-                            break;
-                        }
-                    }
-                }
-        }
+       
     }
 }
