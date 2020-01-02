@@ -28,7 +28,7 @@ namespace RepeatingWords.ViewModel
             ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
             LikeCommand = new Command(async ()=> { await LikeApplication.Like(DialogService); });
-            AddDictionaryCommand = new Command(() => { AddDictionary(); SetUnVisibleFloatingMenu(); });
+            AddLanguageCommand = new Command(() => { AddLanguage(); SetUnVisibleFloatingMenu(); });
             AddWordsFromNetCommand = new Command(async () => { await NavigationService.NavigateToAsync<LanguageFrNetViewModel>(); SetUnVisibleFloatingMenu(); });
             AppearingCommand = new Command(async () => await LoadData());
             SetUnVisibleFloatingMenu();
@@ -37,7 +37,7 @@ namespace RepeatingWords.ViewModel
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
         public ICommand HelperCommand { get; set; }
-        public ICommand AddDictionaryCommand { get; set; }
+        public ICommand AddLanguageCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
 
@@ -78,7 +78,7 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                int idDictionary = await AddDictionary(isNotImport: false);
+                int idDictionary = await AddLanguage(isNotImport: false);
                 if (idDictionary > 0)
                     if (!await _importFile.PickFile(idDictionary))
                     {
@@ -131,7 +131,7 @@ namespace RepeatingWords.ViewModel
            return _unitOfWork.DictionaryRepository.Get().FirstOrDefault(x => x.Name.Equals(selected.Name+Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase));
         }
 
-        private async Task<int> AddDictionary(bool isNotImport = true)
+        private async Task<int> AddLanguage(bool isNotImport = true)
         {
             try
             {
@@ -140,7 +140,7 @@ namespace RepeatingWords.ViewModel
                 {
                     var language = _unitOfWork.LanguageRepository.Create(new Language() { Id = 0, NameLanguage = result, PercentOfLearned = 0 });
                     _unitOfWork.Save();
-                    DictionaryList.Add(new LanguageModel(DialogService, _unitOfWork));
+                    DictionaryList.Add(new LanguageModel(DialogService, _unitOfWork, language));
                     OnPropertyChanged(nameof(DictionaryList));
                     return language.Id;
                 }
@@ -149,7 +149,7 @@ namespace RepeatingWords.ViewModel
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                throw;
+                return -1;
             }
         }
 
@@ -158,7 +158,7 @@ namespace RepeatingWords.ViewModel
             try
             {
                 DialogService.ShowLoadDialog(Resource.Deleting);
-                var removed = DictionaryList.Where(x => x.Id == removeDictionary.IdLanguage).FirstOrDefault().RemoveDictionaryFromLanguage(removeDictionary);
+                var removed = await DictionaryList.Where(x => x.Id == removeDictionary.IdLanguage).FirstOrDefault().RemoveDictionaryFromLanguage(removeDictionary);
                 OnPropertyChanged(nameof(DictionaryList));
                 DialogService.HideLoadDialog();
             }

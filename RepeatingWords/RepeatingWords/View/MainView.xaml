@@ -99,7 +99,7 @@
                 x:Name="FabAddBtn"               
                 BackgroundColor="Transparent"
                 Source="floating_btn_add.png"
-                Command="{Binding AddDictionaryCommand}" 
+                Command="{Binding AddLanguageCommand}" 
                 IsVisible="{Binding AddVisible,Mode=TwoWay}"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-140}"
                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}"/>

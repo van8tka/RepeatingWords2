@@ -23,27 +23,27 @@ namespace RepeatingWords.Model
    {
        private IDialogService _dialogService;
        private IUnitOfWork _unitOfWork;
-
-        public LanguageModel(IDialogService dialogService, IUnitOfWork unitOfWork)
+ 
+        public LanguageModel(IDialogService dialogService, IUnitOfWork unitOfWork ,Language language, IEnumerable<Dictionary> dictionaries = null, bool expanded = false)
         {
             _dialogService = dialogService;
             _unitOfWork = unitOfWork;
-        }
-
-        public LanguageModel(IDialogService dialogService, IUnitOfWork unitOfWork ,Language language, IEnumerable<Dictionary> dictionaries, bool expanded = false):this(dialogService, unitOfWork)
-        {
             Id = language.Id;
             Name = language.NameLanguage;
-            foreach (var dictionary in dictionaries)
-            {
-                _dictionariesCash.Add(new DictionaryModel( dictionary ));
-            }
+            AddDictionariesToCash(dictionaries);
             AddRangeToCollection();
             ExpandCommand = new Command( ExpandChange);
             AddCommand = new Command(async()=>
             {
                 await AddDictionaryToLanguage();
             });
+        }
+
+        private void AddDictionariesToCash(IEnumerable<Dictionary> dictionaries)
+        {
+            if (dictionaries != null && dictionaries.Any())
+                foreach (var dictionary in dictionaries)
+                    _dictionariesCash.Add(new DictionaryModel(dictionary));
         }
 
         private void ExpandChange()
@@ -57,9 +57,7 @@ namespace RepeatingWords.Model
         private void AddRangeToCollection()
         {
             for (int i = 0; i < _dictionariesCash.Count(); i++)
-            {
                 this.Add(_dictionariesCash.ElementAt(i));
-            }
         }
 
         private ObservableCollection<DictionaryModel> _dictionariesCash = new ObservableCollection<DictionaryModel>();
