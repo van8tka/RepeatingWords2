@@ -487,4 +487,10 @@
   <data name="ButtonRemoveLanguage" xml:space="preserve">
     <value>Remove the language</value>
   </data>
+  <data name="BtnAddLang" xml:space="preserve">
+    <value>Add language</value>
+  </data>
+  <data name="EntryNameLang" xml:space="preserve">
+    <value>Enter the language name</value>
+  </data>
 </root>

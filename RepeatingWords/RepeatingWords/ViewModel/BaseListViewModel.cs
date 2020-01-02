@@ -31,7 +31,7 @@ namespace RepeatingWords.ViewModel
         private readonly string menyActive = "floating_btn_menu.png";
         private readonly string menuUnActive = "floating_btn_menuGray.png";
 
-        protected abstract Task ImportFile();
+        protected abstract Task ImportFile(int id = -1);
 
         private string _sourceMenuBtn;
         public string SourceMenuBtn { get => _sourceMenuBtn; set { _sourceMenuBtn = value; OnPropertyChanged(nameof(SourceMenuBtn)); } }

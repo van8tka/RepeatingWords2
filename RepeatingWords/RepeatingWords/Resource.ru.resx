@@ -482,4 +482,10 @@
   <data name="ButtonRemoveLanguage" xml:space="preserve">
     <value>Удалить язык</value>
   </data>
+  <data name="BtnAddLang" xml:space="preserve">
+    <value>Добавить язык</value>
+  </data>
+  <data name="EntryNameLang" xml:space="preserve">
+    <value>Введите название изучаемого языка</value>
+  </data>
 </root>

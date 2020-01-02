@@ -77,11 +77,8 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        protected override async Task ImportFile( )
-        {
-            throw new NotImplementedException();
-        }
-        protected async Task ImportFromFile(int idLanguage)
+       
+        protected override async Task ImportFile(int idLanguage)
         {
             try
             {
@@ -153,7 +150,7 @@ namespace RepeatingWords.ViewModel
                 else if (result.Equals(addDictionary, StringComparison.OrdinalIgnoreCase))
                     await DictionaryList.Where(x => x.Id == idLanguage).FirstOrDefault().AddDictionaryToLanguage();
                 else if (result.Equals(addFromFile, StringComparison.OrdinalIgnoreCase))
-                    await ImportFromFile(idLanguage);
+                    await ImportFile(idLanguage);
                 return true;
             }
             catch (Exception e)
@@ -173,7 +170,7 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                var result = await DialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict, Resource.ButtonCreate, Resource.ModalActCancel);
+                var result = await DialogService.ShowInputTextDialog(Resource.EntryNameLang, Resource.BtnAddLang, Resource.ButtonCreate, Resource.ModalActCancel);
                 if (!string.IsNullOrEmpty(result) || !string.IsNullOrWhiteSpace(result))
                 {
                     var language = _unitOfWork.LanguageRepository.Create(new Language() { Id = 0, NameLanguage = result, PercentOfLearned = 0 });

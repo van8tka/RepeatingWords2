@@ -187,6 +187,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add language.
+        /// </summary>
+        public static string BtnAddLang {
+            get {
+                return ResourceManager.GetString("BtnAddLang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About app.
         /// </summary>
         public static string ButtonAbout {
@@ -399,6 +408,15 @@ namespace RepeatingWords {
         public static string EntryNameDict {
             get {
                 return ResourceManager.GetString("EntryNameDict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the language name.
+        /// </summary>
+        public static string EntryNameLang {
+            get {
+                return ResourceManager.GetString("EntryNameLang", resourceCulture);
             }
         }
         

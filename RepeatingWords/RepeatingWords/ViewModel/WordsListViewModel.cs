@@ -24,7 +24,7 @@ namespace RepeatingWords.ViewModel
             SetUnVisibleFloatingMenu();
         }
 
-        protected override async Task ImportFile()
+        protected override async Task ImportFile(int idLanguage = -1)
         {
             try
             {
