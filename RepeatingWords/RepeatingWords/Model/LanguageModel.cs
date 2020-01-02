@@ -123,7 +123,9 @@ namespace RepeatingWords.Model
                 {
                     var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, IdLanguage = Id,Name = result, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow });
                     _unitOfWork.Save();
-                    _dictionariesCash.Add(new DictionaryModel(dictionary));
+                    var modelDict = new DictionaryModel(dictionary);
+                    _dictionariesCash.Add(modelDict);
+                    this.Add(modelDict);
                 }
                 return true;
             }
