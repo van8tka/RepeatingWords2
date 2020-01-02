@@ -135,17 +135,14 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                var selDict = SelectedItem;
                 var result = await DialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict, Resource.ButtonCreate, Resource.ModalActCancel);
                 if (!string.IsNullOrEmpty(result) || !string.IsNullOrWhiteSpace(result))
                 {
-                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = result, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow});
+                    var language = _unitOfWork.LanguageRepository.Create(new Language() { Id = 0, NameLanguage = result, PercentOfLearned = 0 });
                     _unitOfWork.Save();
-                    //DictionaryList.Add(new DictionaryModel(dictionary));
+                    DictionaryList.Add(new LanguageModel(DialogService, _unitOfWork));
                     OnPropertyChanged(nameof(DictionaryList));
-                    if (isNotImport)
-                        await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary);
-                    return dictionary.Id;
+                    return language.Id;
                 }
                 return -1;
             }
@@ -161,21 +158,7 @@ namespace RepeatingWords.ViewModel
             try
             {
                 DialogService.ShowLoadDialog(Resource.Deleting);
-                var unlearned = GetUnlearningDictionary(removeDictionary);
-                if (unlearned != null)
-                   await RemoveDictionary(unlearned);
-                var words = await Task.Run(() => _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == removeDictionary.Id).AsEnumerable());
-                if (words != null && words.Any())
-                    for (int i = 0; i < words.Count(); i++)
-                        await Task.Run(() => _unitOfWork.WordsRepository.Delete(words.ElementAt(i)));
-                bool success = await Task.Run(() => _unitOfWork.DictionaryRepository.Delete(removeDictionary));
-                _unitOfWork.Save();
-                if (success)
-                {
-                    var removed = DictionaryList.Where(x => x.Id == removeDictionary.Id).FirstOrDefault();
-                    DictionaryList.Remove(removed);
-                }
-                   
+                var removed = DictionaryList.Where(x => x.Id == removeDictionary.IdLanguage).FirstOrDefault().RemoveDictionaryFromLanguage(removeDictionary);
                 OnPropertyChanged(nameof(DictionaryList));
                 DialogService.HideLoadDialog();
             }
