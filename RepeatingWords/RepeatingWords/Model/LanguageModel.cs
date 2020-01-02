@@ -5,21 +5,32 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.Annotations;
+using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers;
+using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.LoggerService;
+using RepeatingWords.Services;
+using RepeatingWords.ViewModel;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Model
 {
    public class LanguageModel:ObservableCollection<DictionaryModel>,INotifyPropertyChanged
-    {
-       
+   {
+       private IDialogService _dialogService;
+       private IUnitOfWork _unitOfWork;
 
-        public LanguageModel(){}
+        public LanguageModel(IDialogService dialogService, IUnitOfWork unitOfWork)
+        {
+            _dialogService = dialogService;
+            _unitOfWork = unitOfWork;
+        }
 
-        public LanguageModel(Language language, IEnumerable<Dictionary> dictionaries, bool expanded = false)
+        public LanguageModel(IDialogService dialogService, IUnitOfWork unitOfWork ,Language language, IEnumerable<Dictionary> dictionaries, bool expanded = false):this(dialogService, unitOfWork)
         {
             Id = language.Id;
             Name = language.NameLanguage;
@@ -29,6 +40,10 @@ namespace RepeatingWords.Model
             }
             AddRangeToCollection();
             ExpandCommand = new Command( ExpandChange);
+            AddCommand = new Command(async()=>
+            {
+                await AddDictionaryToLanguage();
+            });
         }
 
         private void ExpandChange()
@@ -37,6 +52,7 @@ namespace RepeatingWords.Model
         }
 
         public ICommand ExpandCommand { get; set; }
+        public ICommand AddCommand { get; set; }
 
         private void AddRangeToCollection()
         {
@@ -98,9 +114,24 @@ namespace RepeatingWords.Model
         }
 
 
-        public void AddDictionaryToLanguage(Dictionary newDictionary)
+        public async Task<bool> AddDictionaryToLanguage()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = await _dialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict, Resource.ButtonCreate, Resource.ModalActCancel);
+                if (!string.IsNullOrEmpty(result) || !string.IsNullOrWhiteSpace(result))
+                {
+                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, IdLanguage = Id,Name = result, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow });
+                    _unitOfWork.Save();
+                    _dictionariesCash.Add(new DictionaryModel(dictionary));
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                return false;
+            }
         }
 
         public void RemoveDictionaryFromLanguage(int idDictionary)

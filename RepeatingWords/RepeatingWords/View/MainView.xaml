@@ -56,11 +56,17 @@
                                 <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding ="0,5,10,5">
                                         <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" MaxLines="1" LineBreakMode="TailTruncation"/>
-                                        <Image HorizontalOptions="End" VerticalOptions="Center" Source="{Binding StateIcon}" Margin="0,0,10,0" />
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding ExpandCommand}"  NumberOfTapsRequired="1"/>
-                                        </StackLayout.GestureRecognizers>
-                                    </StackLayout>
+                                        <Image HorizontalOptions="End" VerticalOptions="Center" Source="{Binding StateIcon}" Margin="0,0,10,0" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ExpandCommand}"  NumberOfTapsRequired="1"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                         <Image HorizontalOptions="End" VerticalOptions="Center"  Source="plus.png" Margin="0,0,10,0" >
+                                            <Image.GestureRecognizers>
+                                               <TapGestureRecognizer Command="{Binding AddCommand}"  NumberOfTapsRequired="1"/>
+                                          </Image.GestureRecognizers>
+                                   </Image>
+                            </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.GroupHeaderTemplate>

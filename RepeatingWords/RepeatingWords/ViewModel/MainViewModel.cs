@@ -70,7 +70,7 @@ namespace RepeatingWords.ViewModel
             foreach (var lang in langs)
             {
                 var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x =>x.IdLanguage==lang.Id && !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderByDescending(x => x.LastUpdated).AsEnumerable());
-                var langModel = new LanguageModel(lang, items, false);
+                var langModel = new LanguageModel(DialogService,_unitOfWork,lang, items, false);
                 DictionaryList.Add(langModel);
             }
         }
