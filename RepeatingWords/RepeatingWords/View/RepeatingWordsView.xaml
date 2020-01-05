@@ -40,7 +40,11 @@
                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Model.AllLearnedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}" />
                 <Label Margin="5,0,0,0" Grid.Row="2" Grid.Column="0" Text="{local:Translate OpenedWordsCountLabel}"  Style="{DynamicResource LabelColor}"/>
                 <Label Grid.Row="2" Grid.Column="1" Text="{Binding Model.AllOpenedWordsCount, Mode=TwoWay}" Style="{DynamicResource LabelColor}"/>
-                <controls:ImageButtonAnimationScale BackgroundColor="Transparent" HorizontalOptions="End" Source="voice.png" Margin="0,0,10,0"  Command="{Binding VoiceActingCommand}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" />
+                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" HorizontalOptions="Center" >
+                    <controls:ImageButtonAnimationScale BackgroundColor="Transparent" Source="voice.png" Margin="0,3,0,0"  Command="{Binding VoiceActingCommand}" />
+                    <Label Text="{Binding SpeackerLang, Mode=TwoWay}"   FontSize="Small" Margin="0,-3,0,0" TextColor="{StaticResource ColorCustomBackgrountButton}"/>
+                </StackLayout>
+               
         </Grid>
         
         <ContentView x:Name="cvWorkSpaceContainer" Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="20" HorizontalOptions="FillAndExpand"/>

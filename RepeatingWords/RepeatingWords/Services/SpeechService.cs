@@ -22,11 +22,13 @@ namespace RepeatingWords.Services
         {
             var locales = await CrossTextToSpeech.Current.GetInstalledLanguages();
             var current = _volumeService.GetVolumeLanguage();
+            _language = current.Name;
             _locale = locales.FirstOrDefault(x => x.Language.Equals(current.LanguageCode, StringComparison.OrdinalIgnoreCase));
         }
 
         private CrossLocale _locale;
-
+        private string _language;
+        public string Language => _language.ToLower();
 
         public async Task Speak(string text)
         {

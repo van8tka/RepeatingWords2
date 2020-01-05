@@ -102,6 +102,9 @@ namespace RepeatingWords.ViewModel
         public string SelectImage { get => _selectButtonBackground; set { _selectButtonBackground = value; OnPropertyChanged(nameof(SelectImage)); } }
         private string _entryButtonBackground;
         public string EntryImage { get => _entryButtonBackground; set { _entryButtonBackground = value; OnPropertyChanged(nameof(EntryImage)); } }
+
+        private string _speackerLang;
+        public string SpeackerLang { get => _speackerLang; set { _speackerLang = value; OnPropertyChanged(nameof(SpeackerLang)); } }
         #endregion
 
         public ICommand VoiceActingCommand { get; set; }
@@ -222,6 +225,7 @@ namespace RepeatingWords.ViewModel
             Model.WordsLearningAll = wordsList;
             Model.AllWordsCount = count;
             await SetViewWorkSpaceLearningCards();
+            SpeackerLang = _speechService.Language;
             await base.InitializeAsync(navigationData);
         }
 
