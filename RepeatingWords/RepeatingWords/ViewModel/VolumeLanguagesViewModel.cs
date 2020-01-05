@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using RepeatingWords.LoggerService;
 
 namespace RepeatingWords.ViewModel
 {
@@ -11,11 +12,11 @@ namespace RepeatingWords.ViewModel
     {
         private readonly IVolumeLanguageService _volumeService;
 
-        public VolumeLanguagesViewModel(INavigationService navigationServcie, IDialogService dialogService,
-            IVolumeLanguageService volumeService) : base(navigationServcie, dialogService)
+        public VolumeLanguagesViewModel(INavigationService navigationServcie, IDialogService dialogService, IVolumeLanguageService volumeService) : base(navigationServcie, dialogService)
         {
             _volumeService = volumeService;
             Languages = new ObservableCollection<VolumeLanguageModel>();
+            _volumeLangList = new VolumeLanguageList();
         }
 
         public override async Task InitializeAsync(object navigationData)
@@ -25,17 +26,20 @@ namespace RepeatingWords.ViewModel
             await base.InitializeAsync(navigationData);
         }
 
+     
         private SettingsViewModel _settingsVm;
+        private VolumeLanguageList _volumeLangList;
 
         private void SetLanguages()
         {
             var currentLanguage = _volumeService.GetVolumeLanguage().Name;
-            var tempLanguages = new ObservableCollection<VolumeLanguageModel>(VolumeLanguageList.VolumeLanguages);
+
+            var tempLanguages = new ObservableCollection<VolumeLanguageModel>(_volumeLangList.VolumeLanguages);
             for (int i = 0; i < tempLanguages.Count(); i++)
             {
                 if (tempLanguages[i].Name.Equals(currentLanguage, StringComparison.OrdinalIgnoreCase))
                 {
-                    tempLanguages[i].IsChecked = true;
+                    tempLanguages[i].IsChecked = _volumeLangList.CheckedColor;
                     break;
                 }
             }
@@ -49,15 +53,28 @@ namespace RepeatingWords.ViewModel
             get => _selectedItem;
             set
             {
-                if (value != null && !value.IsChecked)
+                if (value != null)
                 {
-                    Languages.First(x => x.IsChecked).IsChecked = false;
+                    Languages.First(x => x.IsChecked.Equals(_volumeLangList.CheckedColor)).IsChecked = _volumeLangList.UncheckedColor;
                     _selectedItem = value;
-                    _selectedItem.IsChecked = true;
-                    _volumeService.SetVolumeLanguage(_selectedItem);
+                    _selectedItem.IsChecked = _volumeLangList.CheckedColor;
+                    Log.Logger.Info("Set language voice "+value.Name+" "+value.CountryCode+" " +value.LanguageCode);
                     OnPropertyChanged(nameof(SelectedItem));
-                    _settingsVm.CurrentVoiceLanguage = value.Name;
+                    SetVoiceLangToSettings();
                 }
+            }
+        }
+
+        private void SetVoiceLangToSettings()
+        {
+            try
+            {
+                _volumeService.SetVolumeLanguage(SelectedItem);
+                _settingsVm.CurrentVoiceLanguage = SelectedItem.Name;
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
             }
         }
 

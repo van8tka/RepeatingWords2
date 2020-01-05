@@ -13,8 +13,12 @@
              Style="{DynamicResource TitleApp}"
              >
 
-     
-        <ListView  Margin="10,10,10,0" x:DataType="vm:VolumeLanguagesViewModel" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorColor="{StaticResource ColorCustomBackgrountButton}">
+
+    <ListView
+              Margin="10,10,10,0" x:DataType="vm:VolumeLanguagesViewModel" 
+              ItemsSource="{Binding Languages}" 
+              SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
+              SeparatorColor="{StaticResource ColorCustomBackgrountButton}">
             <ListView.ItemTemplate>
             <DataTemplate x:DataType="mod:VolumeLanguageModel">
                     <ViewCell>
@@ -22,7 +26,7 @@
                             <StackLayout VerticalOptions="Center" Orientation="Horizontal" >
                             <Label Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                                 <Frame HasShadow="True" Padding="5" Margin="0,0,3,0" >
-                                    <BoxView VerticalOptions="Center" WidthRequest="12" HeightRequest="12" MinimumHeightRequest="12" MinimumWidthRequest="12" BackgroundColor="{Binding IsChecked,Mode=TwoWay,Converter = {converter:BoolenToColorConverter}}"/>
+                                    <BoxView VerticalOptions="Center" WidthRequest="12" HeightRequest="12" MinimumHeightRequest="12" MinimumWidthRequest="12" BackgroundColor="{Binding IsChecked}"/>
                                 </Frame>
                             </StackLayout>
                         </ViewCell.View>

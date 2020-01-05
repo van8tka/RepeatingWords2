@@ -1,4 +1,5 @@
 ﻿using RepeatingWords.Model;
+using Xamarin.Forms;
 
 namespace RepeatingWords.Heleprs
 {
@@ -16,7 +17,7 @@ namespace RepeatingWords.Heleprs
         internal const string KEYBOARD_TRANSCRIPTION_SHOWED = "showed";
         internal const string KEYBOARD_TRANSCRIPTION_HIDE = "hide";
         internal const string VOLUME_LANGUAGE = "volume";
-        internal static VolumeLanguageModel VOLUME_LANGUAGE_DEFAULT = new VolumeLanguageModel() { Name = "English(GB)", CountryCode = "GB", LanguageCode = "en", IsChecked = true };
+        internal static VolumeLanguageModel VOLUME_LANGUAGE_DEFAULT = new VolumeLanguageModel() { Name = "English(GB)", CountryCode = "GB", LanguageCode = "en", IsChecked = Color.Blue };
         
         internal const string NAME_DB_FOR_CONTINUE = "ContinueDictionary";
        
