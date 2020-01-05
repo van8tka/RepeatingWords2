@@ -59,6 +59,7 @@ namespace RepeatingWords.ViewModel
         private readonly ITextToSpeech _speechService;
         private readonly IFirstLanguage _firstLanguageService;
         private Dictionary _dictionary;
+      
         private readonly string cardsActive = "icons_cardsbutton.png";
         private readonly string cardsUnActive = "icons_cardsbuttonGray.png";
         private readonly string selectActive = "icons_select_word.png";
@@ -223,7 +224,9 @@ namespace RepeatingWords.ViewModel
             await SetViewWorkSpaceLearningCards();
             await base.InitializeAsync(navigationData);
         }
- 
+
+       
+
         private async Task AppearingPage()
         {
             if (_isEditing)
