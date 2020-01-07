@@ -15,10 +15,10 @@ namespace RepeatingWords.Services
         public SpeechService(IVolumeLanguageService volumeService)
         {
             _volumeService = volumeService ?? throw new ArgumentNullException(nameof(volumeService));
-            SetSpeachLocale();
+            SetSpeechLocale();
         }
 
-        private async Task SetSpeachLocale()
+        private async Task SetSpeechLocale()
         {
             var locales = await CrossTextToSpeech.Current.GetInstalledLanguages();
             var current = _volumeService.GetVolumeLanguage();

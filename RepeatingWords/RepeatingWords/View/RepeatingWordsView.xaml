@@ -18,7 +18,6 @@
        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
         <behavior:EventToCommandBehavior EventName="Disappearing" Command="{Binding DisappearingCommand}"/>
     </ContentPage.Behaviors>
-   
     <ContentPage.Content>
 
 
