@@ -1,42 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.Annotations;
-using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
-using RepeatingWords.Helpers;
-using RepeatingWords.Helpers.Interfaces;
-using RepeatingWords.LoggerService;
-using RepeatingWords.Services;
-using RepeatingWords.ViewModel;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Model
 {
    public class LanguageModel:ObservableCollection<DictionaryModel>,INotifyPropertyChanged
    {
-       private IDialogService _dialogService;
-       private IUnitOfWork _unitOfWork;
- 
-        public LanguageModel(IDialogService dialogService, IUnitOfWork unitOfWork ,Language language, IEnumerable<Dictionary> dictionaries = null, bool expanded = false)
+       
+        public LanguageModel( Language language, IEnumerable<Dictionary> dictionaries = null, bool expanded = false)
         {
-            _dialogService = dialogService;
-            _unitOfWork = unitOfWork;
+            
             Id = language.Id;
             Name = language.NameLanguage;
             AddDictionariesToCash(dictionaries);
             AddRangeToCollection();
             ExpandCommand = new Command( ExpandChange);
-            AddCommand = new Command(async()=>
-            {
-                await AddDictionaryToLanguage();
-            });
+            
         }
 
         private void AddDictionariesToCash(IEnumerable<Dictionary> dictionaries)
@@ -112,52 +97,7 @@ namespace RepeatingWords.Model
         }
 
 
-        public async Task<bool> AddDictionaryToLanguage()
-        {
-            try
-            {
-                var result = await _dialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict, Resource.ButtonCreate, Resource.ModalActCancel);
-                if (!string.IsNullOrEmpty(result) || !string.IsNullOrWhiteSpace(result))
-                {
-                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, IdLanguage = Id,Name = result, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow });
-                    _unitOfWork.Save();
-                    AddDictionary(dictionary);
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                Log.Logger.Error(e);
-                return false;
-            }
-        }
-
-      
-
-        public async Task<bool> RemoveDictionaryFromLanguage(Dictionary dictionary)
-        {
-            try
-            {
-                var unlearned = GetUnlearningDictionary(dictionary.Name);
-                if (unlearned != null)
-                   await RemoveDictionaryFromLanguage(unlearned);
-                var words = await Task.Run(() => _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == dictionary.Id).AsEnumerable());
-                if (words != null && words.Any())
-                    for (int i = 0; i < words.Count(); i++)
-                        await Task.Run(() => _unitOfWork.WordsRepository.Delete(words.ElementAt(i)));
-                bool success = await Task.Run(() => _unitOfWork.DictionaryRepository.Delete(dictionary));
-                _unitOfWork.Save();
-                RemoveDictionary(dictionary);
-                return true;
-            }
-            catch (Exception e)
-            {
-                Log.Logger.Error(e);
-                return false;
-            }
-        }
-
-        private void RemoveDictionary(Dictionary dictionary)
+        public void RemoveDictionary(Dictionary dictionary)
         {
             var dictionaryModel = _dictionariesCash.Where(x => x.Id == dictionary.Id).FirstOrDefault();
             if (dictionaryModel != null)
@@ -166,17 +106,15 @@ namespace RepeatingWords.Model
                 this.Remove(dictionaryModel);
             }
         }
-        private void AddDictionary(Dictionary dictionary)
+        public DictionaryModel AddDictionary(Dictionary dictionary)
         {
             var modelDict = new DictionaryModel(dictionary);
             _dictionariesCash.Add(modelDict);
             this.Add(modelDict);
+            return modelDict;
         }
 
-        private Dictionary GetUnlearningDictionary(string name)
-        {
-            return _unitOfWork.DictionaryRepository.Get().FirstOrDefault(x => x.Name.Equals(name + Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase));
-        }
+       
 
         public event PropertyChangedEventHandler PropertyChanged;
 

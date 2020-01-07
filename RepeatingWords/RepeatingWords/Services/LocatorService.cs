@@ -42,6 +42,7 @@ namespace RepeatingWords.Services
             _container.Register<IAnimationService, AnimationService>();
             _container.Register<IEntryWordValidator, EntryWordValidator>();
             _container.Register<ITextToSpeech, SpeechService>();
+            _container.Register<IDictionaryStudyService, DictionaryStudyService>();
             //register viewmodels
             _container.Register(typeof(MainViewModel));
             _container.Register(typeof(HelperViewModel));

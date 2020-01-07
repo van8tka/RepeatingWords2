@@ -15,11 +15,7 @@
         <ToolbarItem Name="Like" Icon="toolbarImageLike.png" Command="{Binding LikeCommand}"></ToolbarItem>
         <ToolbarItem Name="Help" Icon="toolbarImageHelp.png" Command="{Binding HelperCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
-
-    <ContentPage.Behaviors>
-        <behavior:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
-    </ContentPage.Behaviors>
-
+ 
     <ContentPage.Content>
         <RelativeLayout Margin="10,0,10,5" x:DataType="vm:MainViewModel" x:Name="RelativeLayoutContext">
                     <local:AdMobView x:Name="AdvertView"
@@ -77,7 +73,7 @@
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}" >
             </controls:ImageButtonAnimationScale>
-                    <controls:ImageButtonAnimationScale
+            <controls:ImageButtonAnimationScale
                 x:Name="FabCloudBtn"              
                 BackgroundColor="Transparent"
                 Source="floating_btn_cloud.png"

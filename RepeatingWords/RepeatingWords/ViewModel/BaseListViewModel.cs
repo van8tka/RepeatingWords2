@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
+using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
@@ -15,9 +15,9 @@ namespace RepeatingWords.ViewModel
     public abstract class BaseListViewModel : ViewModelBase
     {
         //ctor
-        protected BaseListViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IImportFile importFile) : base(navigationServcie, dialogService)
+        protected BaseListViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IImportFile importFile) : base(navigationServcie, dialogService)
         {
-            _unitOfWork = unitOfWork;
+            _studyService = studyService;
             _importFile = importFile ?? throw new ArgumentNullException(nameof(_importFile));
             MenuCommand = new Command(async () => { await ChangeVisibleMenuButtons(); });
             ImportWordsCommand = new Command(async () => { await ImportFile(); SetUnVisibleFloatingMenu(); });
@@ -26,7 +26,7 @@ namespace RepeatingWords.ViewModel
         public ICommand ImportWordsCommand { get; set; }
         public ICommand MenuCommand { get; set; }
 
-        protected readonly IUnitOfWork _unitOfWork;
+        protected readonly IDictionaryStudyService _studyService;
         protected readonly IImportFile _importFile;
         private readonly string menyActive = "floating_btn_menu.png";
         private readonly string menuUnActive = "floating_btn_menuGray.png";

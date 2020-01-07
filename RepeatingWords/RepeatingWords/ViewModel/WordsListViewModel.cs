@@ -10,6 +10,7 @@ using RepeatingWords.Model;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
+using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
@@ -17,7 +18,7 @@ namespace RepeatingWords.ViewModel
     public class WordsListViewModel : BaseListViewModel
     {
        
-        public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IImportFile importFile) : base(navigationServcie, dialogService, unitOfWork, importFile)
+        public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IImportFile importFile) : base(navigationServcie, dialogService, studyService, importFile)
         {
             AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
             RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); });
@@ -100,14 +101,11 @@ namespace RepeatingWords.ViewModel
         
         private async Task Remove(Words selectedItem)
         {
-            if ( await Task.Run(() => _unitOfWork.WordsRepository.Delete(selectedItem)) )
-            {
-                _unitOfWork.Save();
-                WordsList.Remove(selectedItem);
-                SetIsListEmptyLabel();
-                OnPropertyChanged(nameof(WordsList));
-                CountWords--;
-            }
+            _studyService.RemoveWord(selectedItem);
+            WordsList.Remove(selectedItem); 
+            SetIsListEmptyLabel();
+            OnPropertyChanged(nameof(WordsList));
+            CountWords--;
         }
 
         private int _countWords = 0;
@@ -129,7 +127,7 @@ namespace RepeatingWords.ViewModel
             {
                 _dictionary = dictionary;
                 DictionaryName = dictionary.Name;
-                WordsList = await LoadData(dictionary.Id);
+                WordsList = LoadData(dictionary.Id);
                 _countWords = WordsList.Count();
                 DictionaryName = dictionary.Name+"("+CountWords+")";
                 SetIsListEmptyLabel();
@@ -144,18 +142,10 @@ namespace RepeatingWords.ViewModel
             IsVisibleListEmpty = !WordsList.Any();
         }
 
-        private async Task<ObservableCollection<Words>> LoadData(int id)
+        private ObservableCollection<Words> LoadData(int id)
         {
-            try
-            {
-               var data = await Task.Run(()=> _unitOfWork.WordsRepository.Get().Where(x=>x.IdDictionary == id ).OrderBy(x => x.RusWord).AsEnumerable());                            
-               return new ObservableCollection<Words>(data);                
-            }
-            catch(Exception e)
-            {
-                Log.Logger.Error(e);
-                return new ObservableCollection<Words>(); 
-            }
+            var data = _studyService.GetWordsByDictionary(id);                          
+            return new ObservableCollection<Words>(data);
         }
       
     }

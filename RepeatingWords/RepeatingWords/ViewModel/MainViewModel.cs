@@ -2,7 +2,6 @@
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +11,7 @@ using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers;
 using RepeatingWords.Interfaces;
 using RepeatingWords.Model;
+using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
@@ -22,16 +22,27 @@ namespace RepeatingWords.ViewModel
     /// </summary>
     public class MainViewModel : BaseListViewModel
     {
-        public MainViewModel( INavigationService navService, IDialogService dialogService, IUnitOfWork unitOfWork, IImportFile importFile) : base(navService, dialogService, unitOfWork, importFile)
+        public MainViewModel(INavigationService navService, IDialogService dialogService,
+            IDictionaryStudyService _dictionaryStudyService, IImportFile importFile) : base(navService, dialogService,
+            _dictionaryStudyService, importFile)
         {
             DictionaryList = new ObservableCollection<LanguageModel>();
-            ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
+            ShowToolsCommand =
+                new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
-            LikeCommand = new Command(async ()=> { await LikeApplication.Like(DialogService); });
-            AddLanguageCommand = new Command(() => { AddLanguage(); SetUnVisibleFloatingMenu(); });
-            AddWordsFromNetCommand = new Command(async () => { await NavigationService.NavigateToAsync<LanguageFrNetViewModel>(); SetUnVisibleFloatingMenu(); });
-            AppearingCommand = new Command(async () => await LoadData());
-            ContextMenuLanguageCommand = new Command<int>(async(id)=>await ContextMenuLanguage(id));
+            LikeCommand = new Command(async () => { await LikeApplication.Like(DialogService); });
+            AddLanguageCommand = new Command(async() =>
+            {
+              await AddLanguage();
+                SetUnVisibleFloatingMenu();
+            });
+            AddWordsFromNetCommand = new Command(async () =>
+            {
+                await NavigationService.NavigateToAsync<LanguageFrNetViewModel>();
+                SetUnVisibleFloatingMenu();
+            });
+            //  AppearingCommand = new Command(async () => await LoadData());
+            ContextMenuLanguageCommand = new Command<int>(async (id) => await ContextMenuLanguage(id));
             SetUnVisibleFloatingMenu();
         }
 
@@ -40,11 +51,22 @@ namespace RepeatingWords.ViewModel
         public ICommand HelperCommand { get; set; }
         public ICommand AddLanguageCommand { get; set; }
         public ICommand ContextMenuLanguageCommand { get; set; }
+        public ICommand AddDictionaryCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
-        public ICommand AppearingCommand { get; set; }
+       
 
         private ObservableCollection<LanguageModel> _dictionaryList;
-        public ObservableCollection<LanguageModel> DictionaryList { get => _dictionaryList; set { _dictionaryList = value; OnPropertyChanged(nameof(DictionaryList)); } }
+
+        public ObservableCollection<LanguageModel> DictionaryList
+        {
+            get => _dictionaryList;
+            set
+            {
+                _dictionaryList = value;
+                OnPropertyChanged(nameof(DictionaryList));
+            }
+        }
+
         private DictionaryModel _selectedItem;
 
         public DictionaryModel SelectedItem
@@ -52,47 +74,39 @@ namespace RepeatingWords.ViewModel
             get => _selectedItem;
             set
             {
-                _selectedItem = value; 
+                _selectedItem = value;
                 OnPropertyChanged(nameof(SelectedItem));
                 SetUnVisibleFloatingMenu();
-                if (_selectedItem != null) 
+                if (_selectedItem != null)
                     ContextMenuDictionary(_selectedItem.Id);
             }
         }
 
         public override async Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
+            IsBusy = true; 
+            LoadData();
             await base.InitializeAsync(navigationData);
         }
-        private async Task LoadData()
+
+        private void LoadData()
         {
-            DictionaryList.Clear();
-            var langs = _unitOfWork.LanguageRepository.Get();
-            foreach (var lang in langs)
-            {
-                var items = await Task.Run(() => _unitOfWork.DictionaryRepository.Get().Where(x =>x.IdLanguage==lang.Id && !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderByDescending(x => x.LastUpdated).AsEnumerable());
-                var langModel = new LanguageModel(DialogService,_unitOfWork,lang, items, false);
-                DictionaryList.Add(langModel);
-            }
+            DictionaryList = _studyService.DictionaryList;
         }
 
-       
+
         protected override async Task ImportFile(int idLanguage)
         {
             try
             {
-                var lang = DictionaryList.Where(x => x.Id == idLanguage).FirstOrDefault();
-                var isAddDictionary = await DictionaryList.Where(x => x.Id == idLanguage).FirstOrDefault().AddDictionaryToLanguage();
-                if (isAddDictionary)
+                int idDictionary = await AddDictionary(idLanguage);
+                if (idDictionary > 0)
                 {
-                    int idDictionary = _unitOfWork.DictionaryRepository.Get().Where(x => x.IdLanguage == idLanguage).OrderByDescending(x => x.LastUpdated).FirstOrDefault().Id;
-                    if (idDictionary > 0)
-                        if (!await _importFile.PickFile(idDictionary))
-                        {
-                            await InitializeAsync(null);
-                            throw new Exception("Error import words from file");
-                        }
+                    if (!await _importFile.PickFile(idDictionary))
+                    {
+                        await InitializeAsync(null);
+                        throw new Exception("Error import words from file");
+                    }
                     await InitializeAsync(null);
                 }
             }
@@ -107,18 +121,19 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                var selectedItem = _unitOfWork.DictionaryRepository.Get(idDictionary);
+                var selectedItem = _studyService.GetDictionary(idDictionary);
                 string removeDictionary = Resource.ButtonRemove;
                 string showWords = Resource.ButtonShowWords;
                 string studing = Resource.ButtonRepeatWords;
                 string studingNotLearning = Resource.ButtonStudyNotLearning;
-                var unlearningDictionary = GetUnlearningDictionary(selectedItem);
+                var unlearningDictionary = _studyService.GetUnlearningDictionary(selectedItem.Name);
                 string[] actionButtons;
                 if (unlearningDictionary != null)
                     actionButtons = new string[] {studing, studingNotLearning, showWords, removeDictionary};
                 else
-                    actionButtons = new string[] { studing, showWords, removeDictionary };
-                var result = await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
+                    actionButtons = new string[] {studing, showWords, removeDictionary};
+                var result =
+                    await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
                 if (result.Equals(studing, StringComparison.OrdinalIgnoreCase))
                     await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(selectedItem);
                 else if (result.Equals(studingNotLearning, StringComparison.OrdinalIgnoreCase))
@@ -143,12 +158,13 @@ namespace RepeatingWords.ViewModel
                 string addDictionary = Resource.ButtonAddDict;
                 string addFromFile = Resource.ButtonImport;
 
-                string[] actionButtons = new string[] { removeLanguage, addDictionary, addFromFile };
-                var result = await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
+                string[] actionButtons = new string[] {removeLanguage, addDictionary, addFromFile};
+                var result =
+                    await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
                 if (result.Equals(removeLanguage, StringComparison.OrdinalIgnoreCase))
                     await RemoveLanguage(idLanguage);
                 else if (result.Equals(addDictionary, StringComparison.OrdinalIgnoreCase))
-                    await DictionaryList.Where(x => x.Id == idLanguage).FirstOrDefault().AddDictionaryToLanguage();
+                    await AddDictionary(idLanguage);
                 else if (result.Equals(addFromFile, StringComparison.OrdinalIgnoreCase))
                     await ImportFile(idLanguage);
                 return true;
@@ -161,73 +177,39 @@ namespace RepeatingWords.ViewModel
         }
 
 
-        private Dictionary GetUnlearningDictionary(Dictionary selected)
+        public async Task<int> AddDictionary(int idLanguage)
         {
-           return _unitOfWork.DictionaryRepository.Get().FirstOrDefault(x => x.Name.Equals(selected.Name+Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase));
+          
+            var dictionaryName = await DialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict, Resource.ButtonCreate, Resource.ModalActCancel); 
+            return _studyService.AddDictionary(dictionaryName, idLanguage);
         }
 
-        private async Task<int> AddLanguage(bool isNotImport = true)
+
+
+        private async Task<int> AddLanguage()
         {
-            try
-            {
-                var result = await DialogService.ShowInputTextDialog(Resource.EntryNameLang, Resource.BtnAddLang, Resource.ButtonCreate, Resource.ModalActCancel);
-                if (!string.IsNullOrEmpty(result) || !string.IsNullOrWhiteSpace(result))
-                {
-                    var language = _unitOfWork.LanguageRepository.Create(new Language() { Id = 0, NameLanguage = result, PercentOfLearned = 0 });
-                    _unitOfWork.Save();
-                    DictionaryList.Add(new LanguageModel(DialogService, _unitOfWork, language));
-                    OnPropertyChanged(nameof(DictionaryList));
-                    return language.Id;
-                }
-                return -1;
-            }
-            catch (Exception e)
-            {
-                Log.Logger.Error(e);
-                return -1;
-            }
+            var nameLang =  await DialogService.ShowInputTextDialog(Resource.EntryNameLang, Resource.BtnAddLang,
+                Resource.ButtonCreate, Resource.ModalActCancel);
+            int idLang = _studyService.AddLanguage(nameLang);
+            OnPropertyChanged(nameof(DictionaryList));
+            return idLang;
         }
 
         private async Task RemoveDictionary(Dictionary removeDictionary)
         {
-            try
-            {
-                DialogService.ShowLoadDialog(Resource.Deleting);
-                await DictionaryList.Where(x => x.Id == removeDictionary.IdLanguage).FirstOrDefault().RemoveDictionaryFromLanguage(removeDictionary);
-                OnPropertyChanged(nameof(DictionaryList));
-                DialogService.HideLoadDialog();
-            }
-            catch (Exception e)
-            {
-                DialogService.HideLoadDialog();
-                Log.Logger.Error(e);
-            }
+            DialogService.ShowLoadDialog(Resource.Deleting);
+            await _studyService.RemoveDictionaryFromLanguage(removeDictionary,
+                DictionaryList.FirstOrDefault(x => x.Id == removeDictionary.IdLanguage));
+            OnPropertyChanged(nameof(DictionaryList));
+            DialogService.HideLoadDialog();
         }
 
         private async Task RemoveLanguage(int idlanguage)
         {
-            try
-            {
-                    DialogService.ShowLoadDialog(Resource.Deleting);
-                    var removedLanguage = DictionaryList.Where(x => x.Id == idlanguage).FirstOrDefault();
-                    if (removedLanguage != null)
-                    {
-                        var dictionaries = _unitOfWork.DictionaryRepository.Get().Where(x => x.IdLanguage == idlanguage).AsEnumerable();
-                        foreach (var item in dictionaries)
-                            await removedLanguage.RemoveDictionaryFromLanguage(item);
-                        var language = _unitOfWork.LanguageRepository.Get(removedLanguage.Id);
-                        _unitOfWork.LanguageRepository.Delete(language);
-                        _unitOfWork.Save();
-                        DictionaryList.Remove(removedLanguage);
-                    }
-                    OnPropertyChanged(nameof(DictionaryList));
-                    DialogService.HideLoadDialog();
-            }
-            catch (Exception e)
-            {
-                DialogService.HideLoadDialog();
-                Log.Logger.Error(e);
-            }
+            DialogService.ShowLoadDialog(Resource.Deleting);
+            await _studyService.RemoveLanguage(idlanguage);
+            OnPropertyChanged(nameof(DictionaryList));
+            DialogService.HideLoadDialog();
         }
 
     }
