@@ -43,6 +43,7 @@ namespace RepeatingWords.Services
             _container.Register<IEntryWordValidator, EntryWordValidator>();
             _container.Register<ITextToSpeech, SpeechService>();
             _container.Register<IDictionaryStudyService, DictionaryStudyService>();
+
             //register viewmodels
             _container.Register(typeof(MainViewModel));
             _container.Register(typeof(HelperViewModel));
@@ -59,6 +60,10 @@ namespace RepeatingWords.Services
             _container.Register(typeof(WorkSpaceEnterWordViewModel));
             _container.Register(typeof(WorkSpaceSelectWordViewModel));                     
             _container.Register(typeof(VolumeLanguagesViewModel));
+
+          
+
+
             Container = _container;
             return _container;
         }

@@ -10,16 +10,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IAnimationService animationService, ITextToSpeech speechService, IFirstLanguage firstLanguageService) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IAnimationService animationService, ITextToSpeech speechService, IFirstLanguage firstLanguageService) : base(navigationServcie, dialogService)
         {
             _animationService = animationService;
-            _unitOfWork = unitOfWork;
+            _studyService = studyService;
             _firstLanguageService = firstLanguageService;
             _speechService = speechService;
             Model = new RepeatingWordsModel();
@@ -55,7 +56,7 @@ namespace RepeatingWords.ViewModel
         private bool _isEditing;
         private readonly IAnimationService _animationService;
         private ICustomContentViewModel _workSpaceVM;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IDictionaryStudyService _studyService;
         private readonly ITextToSpeech _speechService;
         private readonly IFirstLanguage _firstLanguageService;
         private Dictionary _dictionary;
@@ -205,7 +206,8 @@ namespace RepeatingWords.ViewModel
             Model.WordsLearningAll = tempWords;
             Model.WordsLeft = new List<Words>(Model.WordsLearningAll);
         }
-        private async Task<IEnumerable<Words>> LoadWords(int id) => await Task.Run(() => _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == id).AsEnumerable());
+
+        private IEnumerable<Words> LoadWords(int id) => _studyService.GetWordsByDictionary(id);
         public override async Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
@@ -215,12 +217,9 @@ namespace RepeatingWords.ViewModel
             _dictionary = navigationData as Dictionary;
             Model.Dictionary = _dictionary;
             DictionaryName = _dictionary.Name;
-            await Task.Run(async() =>
-            {
-                wordsList = (await LoadWords(_dictionary.Id)).ToList();
-                count = wordsList.Count();
-                ShakeWordsCollection(wordsList);
-            });
+            wordsList = LoadWords(_dictionary.Id).ToList();
+            count = wordsList.Count();
+            ShakeWordsCollection(wordsList);
             Model.IsFromNative = _firstLanguageService.GetFirstLanguage();
             Model.WordsLearningAll = wordsList;
             Model.AllWordsCount = count;
@@ -235,19 +234,19 @@ namespace RepeatingWords.ViewModel
         {
             if (_isEditing)
             {
-                var word = _unitOfWork.WordsRepository.Get(Model.CurrentWord.Id);
+                //var word = _studyService.GetWord(Model.CurrentWord.Id);
                 await (_workSpaceVM as WorkSpaceBaseViewModel).SetViewWords(Model.CurrentWord, Model.IsFromNative);
             }
             _isEditing = false;
         }
-        const int PERSENT = 100;
-        private async Task Disappearing()
+        private const int PERSENT = 100;
+        private Task Disappearing()
         {
             _dictionary.LastUpdated = DateTime.UtcNow;
             float proportion = (float)Model.AllLearnedWordsCount / (float)Model.AllWordsCount;
             _dictionary.PercentOfLearned = (int)(proportion * PERSENT);
-            _unitOfWork.DictionaryRepository.Update(_dictionary);
-            _unitOfWork.Save();
+            _studyService.UpdateDictionary(_dictionary);
+            return null;
         }
     }
 }

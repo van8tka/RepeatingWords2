@@ -8,8 +8,10 @@ using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Model;
+using Xamarin.Forms;
 
 namespace RepeatingWords.Services
 {
@@ -23,35 +25,37 @@ namespace RepeatingWords.Services
         Task<bool> RemoveDictionaryFromLanguage(Dictionary dictionary, LanguageModel removedLanguage);
         int AddDictionary(string dictionaryName, int idLang);
         void RemoveWord(Words selectedItem);
-        IEnumerable<Words> GetWordsByDictionary(int id);
+        IEnumerable<Words> GetWordsByDictionary(int idDictionary);
+        Words GetWord(int wordId);
+        void UpdateDictionary(Dictionary dictionary);
     }
-
-
-
 
 
    public class DictionaryStudyService:IDictionaryStudyService
     {
-        public DictionaryStudyService(IUnitOfWork unitOfWork, IDialogService dialogService)
+        public DictionaryStudyService(IUnitOfWork unitOfWork, IDialogService dialogService, IInitDefaultDb initDb)
         {
             _dialogService = dialogService;
             _unitOfWork = unitOfWork;
+            _initDb = initDb;
             InitData();
         }
 
         private void InitData()
         {
-            //_loadDataTask = Task.Run(() =>
-            //{
+            _loadDataTask = Task.Run(() =>
+            {
+                _initDb.LoadDefaultData();
                 _languages = _unitOfWork.LanguageRepository.Get().AsEnumerable().ToList();
                 _dictionaries = _unitOfWork.DictionaryRepository.Get().AsEnumerable().ToList();
-            _words = _unitOfWork.WordsRepository.Get().AsEnumerable().ToList();
-            // });
+                _words = _unitOfWork.WordsRepository.Get().AsEnumerable().ToList();
+            });
         }
 
-      //  private Task _loadDataTask;
+        private Task _loadDataTask;
         private readonly IDialogService _dialogService;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IInitDefaultDb _initDb;
 
         private IList<Language> _languages;
         private IList<Dictionary> _dictionaries;
@@ -70,7 +74,7 @@ namespace RepeatingWords.Services
             {
 
                 var dictionaryList = new ObservableCollection<LanguageModel>();
-                //_loadDataTask.Wait();
+                _loadDataTask.Wait();
                 foreach (var lang in _languages)
                 {
                     var items = _dictionaries.Where(x => x.IdLanguage == lang.Id && !x.Name.EndsWith(Constants.NAME_DB_FOR_CONTINUE, StringComparison.OrdinalIgnoreCase) && !x.Name.EndsWith(Resource.NotLearningPostfics, StringComparison.OrdinalIgnoreCase)).OrderByDescending(x => x.LastUpdated).AsEnumerable();
@@ -180,6 +184,7 @@ namespace RepeatingWords.Services
                 {
                     var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, IdLanguage = idLang, Name = dictionaryName, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow });
                     _unitOfWork.Save();
+                    _dictionaries.Add(dictionary);
                     return  _dictionaryList.FirstOrDefault(x=>x.Id == idLang).AddDictionary(dictionary).Id;
                 }
                 return -1;
@@ -210,6 +215,41 @@ namespace RepeatingWords.Services
         public IEnumerable<Words> GetWordsByDictionary(int id)
         {
            return _words.Where(x => x.IdDictionary == id).OrderBy(x => x.RusWord).AsEnumerable();
+        }
+
+        public Words GetWord(int wordId)
+        {
+            return _words.FirstOrDefault(x => x.Id == wordId);
+        }
+
+        public void UpdateDictionary(Dictionary dictionary)
+        {
+            try
+            {
+               var updatedDictionary = updateLocalDictionaryList(dictionary);
+               _unitOfWork.DictionaryRepository.Update(updatedDictionary);
+               _unitOfWork.Save(); 
+              // _dictionaryList.FirstOrDefault(x => x.Id == dictionary.IdLanguage)?.UpdateDictionary(updatedDictionary);
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                _dialogService.ShowToast("DictionaryService. Error Update Dictionary");
+            }
+        }
+
+        private Dictionary updateLocalDictionaryList(Dictionary dictionary)
+        {
+            var oldDictionary = _dictionaries.FirstOrDefault(x => x.Id == dictionary.Id);
+            if (oldDictionary == null)
+                throw new ArgumentNullException(nameof(oldDictionary));
+            int index = _dictionaries.IndexOf(oldDictionary);
+            _dictionaries.ElementAt(index).IdLanguage = dictionary.IdLanguage;
+            _dictionaries.ElementAt(index).IsBeginLearned = dictionary.IsBeginLearned;
+            _dictionaries.ElementAt(index).LastUpdated = dictionary.LastUpdated;
+            _dictionaries.ElementAt(index).Name = dictionary.Name;
+            _dictionaries.ElementAt(index).PercentOfLearned = dictionary.PercentOfLearned;
+            return _dictionaries.ElementAt(index);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using RepeatingWords.Annotations;
 using RepeatingWords.DataService.Model;
+using RepeatingWords.LoggerService;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Model
@@ -37,8 +39,7 @@ namespace RepeatingWords.Model
         }
 
         public ICommand ExpandCommand { get; set; }
-        public ICommand AddCommand { get; set; }
-
+      
         private void AddRangeToCollection()
         {
             for (int i = 0; i < _dictionariesCash.Count(); i++)
@@ -114,7 +115,23 @@ namespace RepeatingWords.Model
             return modelDict;
         }
 
-       
+        public void UpdateDictionary(Dictionary dictionary)
+        {
+            try
+            {
+                var dictionaryToUpdate = _dictionariesCash.FirstOrDefault(x => x.Id == dictionary.Id);
+                int index = _dictionariesCash.IndexOf(dictionaryToUpdate);
+                _dictionariesCash.ElementAt(index).Id = dictionary.Id;
+                _dictionariesCash.ElementAt(index).Name = dictionary.Name;
+                _dictionariesCash.ElementAt(index).PercentOfLearned = dictionary.PercentOfLearned.ToString();
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                throw;
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -123,5 +140,7 @@ namespace RepeatingWords.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
+
+       
+   }
 }

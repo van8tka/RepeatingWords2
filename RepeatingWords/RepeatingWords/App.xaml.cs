@@ -25,8 +25,6 @@ namespace RepeatingWords
         private void InitApp(ISQLite sqlitePath)
         {           
             _container = LocatorService.Boot(sqlitePath);
-            var init = _container.GetInstance<IInitDefaultDb>();
-            Task.Run(() => init.LoadDefaultData());
             if (Device.RuntimePlatform == Device.UWP)
                InitNavigation();
         }

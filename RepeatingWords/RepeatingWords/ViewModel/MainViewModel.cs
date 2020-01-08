@@ -23,8 +23,8 @@ namespace RepeatingWords.ViewModel
     public class MainViewModel : BaseListViewModel
     {
         public MainViewModel(INavigationService navService, IDialogService dialogService,
-            IDictionaryStudyService _dictionaryStudyService, IImportFile importFile) : base(navService, dialogService,
-            _dictionaryStudyService, importFile)
+            IDictionaryStudyService studyService, IImportFile importFile) : base(navService, dialogService,
+            studyService, importFile)
         {
             DictionaryList = new ObservableCollection<LanguageModel>();
             ShowToolsCommand =
@@ -51,7 +51,6 @@ namespace RepeatingWords.ViewModel
         public ICommand HelperCommand { get; set; }
         public ICommand AddLanguageCommand { get; set; }
         public ICommand ContextMenuLanguageCommand { get; set; }
-        public ICommand AddDictionaryCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
        
 
