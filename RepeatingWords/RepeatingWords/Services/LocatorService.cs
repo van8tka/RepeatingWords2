@@ -22,8 +22,11 @@ namespace RepeatingWords.Services
             _container.RegisterInstance(typeof(ISQLite), sqlitePath);     
             _container.RegisterInstance(typeof(ILoggerService),new Log(DependencyService.Get<ILogManager>().GetLog()));
           
-            _container.Register<IUnitOfWork, UnitOfWork>();
-            _container.Register<IInitDefaultDb, InitDefaultDb>();
+            var unitOfWork = new UnitOfWork(sqlitePath);
+            var initDb = new InitDefaultDb(unitOfWork);
+            _container.RegisterInstance(typeof(IUnitOfWork), unitOfWork);
+            //_container.Register<IUnitOfWork, UnitOfWork>();
+            //_container.Register<IInitDefaultDb, InitDefaultDb>();
             _container.RegisterInstance(typeof(INavigationService), new NavigationService());
             _container.RegisterInstance(typeof(IDialogService), new DialogService());          
             _container.Register<BackupGoogleService>();
@@ -42,7 +45,9 @@ namespace RepeatingWords.Services
             _container.Register<IAnimationService, AnimationService>();
             _container.Register<IEntryWordValidator, EntryWordValidator>();
             _container.Register<ITextToSpeech, SpeechService>();
-            _container.Register<IDictionaryStudyService, DictionaryStudyService>();
+
+            _container.RegisterInstance(typeof(IDictionaryStudyService), new DictionaryStudyService(unitOfWork, initDb));
+        //   _container.Register<IDictionaryStudyService, DictionaryStudyService>();
 
             //register viewmodels
             _container.Register(typeof(MainViewModel));
@@ -60,9 +65,6 @@ namespace RepeatingWords.Services
             _container.Register(typeof(WorkSpaceEnterWordViewModel));
             _container.Register(typeof(WorkSpaceSelectWordViewModel));                     
             _container.Register(typeof(VolumeLanguagesViewModel));
-
-          
-
 
             Container = _container;
             return _container;

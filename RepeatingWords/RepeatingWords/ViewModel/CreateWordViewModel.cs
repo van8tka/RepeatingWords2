@@ -6,18 +6,19 @@ using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
+using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
     public class CreateWordViewModel : ViewModelBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IDictionaryStudyService _studyService;
         private readonly IKeyboardTranscriptionService _keyboardService;
-        public CreateWordViewModel(INavigationService navigationServcie, IDialogService dialogService, IUnitOfWork unitOfWork, IKeyboardTranscriptionService keyboardService) : base(navigationServcie, dialogService)
+        public CreateWordViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IKeyboardTranscriptionService keyboardService) : base(navigationServcie, dialogService)
         {
             _keyboardService = keyboardService;
-            _unitOfWork = unitOfWork;
+            _studyService = studyService;
             SendCommand = new Command(SendWord);
             FocusedTranscriptionCommand = new Command(FocusedTranscription);
         }
@@ -28,13 +29,20 @@ namespace RepeatingWords.ViewModel
             if (navigationData is Words word)
             {
                 if (word.Id > -1)
+                {
                     _isChangeWord = true;
-                TitleEditWord = Resource.TitleChangeWord;
+                    TitleEditWord = Resource.TitleChangeWord;
+                }
+                else
+                {
+                    _isChangeWord = false;
+                    TitleEditWord = Resource.TitleCreateWord;
+                }
                 NativeWord = word.RusWord;
                 TranslateWord = word.EngWord;
                 TranscriptionWord = word.Transcription;              
                 _wordChange = word;
-                _dictionary = _unitOfWork.DictionaryRepository.Get(word.IdDictionary);
+                _dictionary = _studyService.GetDictionary(word.IdDictionary);
             }
             else if (navigationData is Dictionary dictionary)
             {
@@ -117,20 +125,22 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                Words word;
-                if(!_isChangeWord)
+                if (!_isChangeWord)
                 {
-                    word = _unitOfWork.WordsRepository.Create(new Words() { Id = 0, IdDictionary = _dictionary.Id, RusWord = NativeWord, EngWord = TranslateWord, Transcription = TranscriptionWord });
+                    var word = new Words()
+                    {
+                        Id = 0,
+                        IdDictionary = _dictionary.Id,
+                        RusWord = NativeWord,
+                        EngWord = TranslateWord,
+                        Transcription = TranscriptionWord
+                    };
+                    word = _studyService.AddWord(word);
+                    return word;
                 }
-                else
-                {
-                    SetDataToChangeWord();
-                    word = _unitOfWork.WordsRepository.Update(_wordChange);
-                }
-                _dictionary.LastUpdated = DateTime.UtcNow;
-                _unitOfWork.DictionaryRepository.Update(_dictionary);
-                _unitOfWork.Save();
-                return word;
+                SetDataToChangeWord();
+                _studyService.UpdateWord(_wordChange);
+                return _wordChange;
             }
             catch (Exception e)
             {
@@ -156,7 +166,7 @@ namespace RepeatingWords.ViewModel
                         await NavigationService.NavigateToAsync<EntryTranscriptionViewModel>(new Words() { Id = -1, Transcription = TranscriptionWord, RusWord = NativeWord, EngWord = TranslateWord, IdDictionary = _dictionary.Id });                  
                 }
             }
-             catch(Exception e)
+            catch(Exception e)
             {              
                 Log.Logger.Error(e);
             }

@@ -24,6 +24,8 @@ namespace RepeatingWords.Services
         Task<bool> RemoveLanguage(int idlanguage);
         Task<bool> RemoveDictionaryFromLanguage(Dictionary dictionary, LanguageModel removedLanguage);
         int AddDictionary(string dictionaryName, int idLang);
+        Words AddWord(Words word);
+        bool UpdateWord(Words word);
         void RemoveWord(Words selectedItem);
         IEnumerable<Words> GetWordsByDictionary(int idDictionary);
         Words GetWord(int wordId);
@@ -33,9 +35,8 @@ namespace RepeatingWords.Services
 
    public class DictionaryStudyService:IDictionaryStudyService
     {
-        public DictionaryStudyService(IUnitOfWork unitOfWork, IDialogService dialogService, IInitDefaultDb initDb)
+        public DictionaryStudyService(IUnitOfWork unitOfWork, IInitDefaultDb initDb)
         {
-            _dialogService = dialogService;
             _unitOfWork = unitOfWork;
             _initDb = initDb;
             InitData();
@@ -53,7 +54,6 @@ namespace RepeatingWords.Services
         }
 
         private Task _loadDataTask;
-        private readonly IDialogService _dialogService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IInitDefaultDb _initDb;
 
@@ -86,8 +86,7 @@ namespace RepeatingWords.Services
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                _dialogService.ShowToast("DictionaryService. Error load data!");
-                return new ObservableCollection<LanguageModel>();
+                throw;
             }
         }
 
@@ -114,8 +113,7 @@ namespace RepeatingWords.Services
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                _dialogService.ShowToast("DictionaryService. Error load language");
-                return -1;
+                throw;
             }
         }
 
@@ -142,8 +140,7 @@ namespace RepeatingWords.Services
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                _dialogService.ShowToast("DictionaryService. Error remove language");
-                return false;
+                throw;
             }
         }
 
@@ -171,7 +168,6 @@ namespace RepeatingWords.Services
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                _dialogService.ShowToast("DictionaryService. Error remove dictionary");
                 throw;
             }
         }
@@ -192,8 +188,55 @@ namespace RepeatingWords.Services
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                _dialogService.ShowToast("DictionaryService. Error add dictionary");
-                return -1;
+                throw;
+            }
+        }
+
+
+        public Words AddWord(Words wordNew)
+        {
+            try
+            {
+                wordNew.Id = 0;
+                var word = _unitOfWork.WordsRepository.Create(wordNew);
+                SetDictionaryUpdate(word.IdDictionary);
+                _unitOfWork.Save();
+                _words.Add(word);
+                return word;
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                throw;
+            }
+        }
+
+        private void SetDictionaryUpdate(int idDictionary)
+        {
+            var dictionary = GetDictionary(idDictionary);
+            dictionary.LastUpdated = DateTime.UtcNow;
+            _unitOfWork.DictionaryRepository.Update(dictionary);
+        }
+
+        public bool UpdateWord(Words word)
+        {
+            try
+            {
+                _unitOfWork.WordsRepository.Update(word);
+                SetDictionaryUpdate(word.IdDictionary);
+                _unitOfWork.Save();
+                var oldWord = _words.FirstOrDefault(x => x.Id == word.Id);
+                int index = _words.IndexOf(oldWord);
+                _words.ElementAt(index).EngWord = word.EngWord;
+                _words.ElementAt(index).IsLearned = word.IsLearned;
+                _words.ElementAt(index).RusWord = word.RusWord;
+                _words.ElementAt(index).Transcription = word.Transcription;
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                throw;
             }
         }
 
@@ -208,7 +251,7 @@ namespace RepeatingWords.Services
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                _dialogService.ShowToast("DictionaryService. Error remove word");
+                throw;
             }
         }
 
@@ -234,7 +277,7 @@ namespace RepeatingWords.Services
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                _dialogService.ShowToast("DictionaryService. Error Update Dictionary");
+                throw;
             }
         }
 
