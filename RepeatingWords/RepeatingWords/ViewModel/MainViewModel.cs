@@ -107,16 +107,18 @@ namespace RepeatingWords.ViewModel
                 int idDictionary = await AddDictionary(idLanguage);
                 if (idDictionary > 0)
                 {
-                    if (!await _importFile.PickFile(idDictionary))
+                    using (var filePiker = await _importFile.PickFile())
                     {
-                        await InitializeAsync(null);
-                        throw new Exception("Error import words from file");
+                        if (filePiker.DataArray != null)
+                            await Task.Run(() => { _importFile.StartImport(filePiker.DataArray, filePiker.FileName, idDictionary); });
                     }
+                    DialogService.HideLoadDialog();
                     await InitializeAsync(null);
                 }
             }
             catch (Exception er)
             {
+                DialogService.HideLoadDialog();
                 DialogService.ShowToast(Resource.ErrorImport);
                 Log.Logger.Error(er);
             }
@@ -171,7 +173,10 @@ namespace RepeatingWords.ViewModel
                 else if (result.Equals(addDictionary, StringComparison.OrdinalIgnoreCase))
                     await AddDictionary(idLanguage);
                 else if (result.Equals(addFromFile, StringComparison.OrdinalIgnoreCase))
+                {
+                    DialogService.ShowLoadDialog();
                     await ImportFile(idLanguage);
+                }
                 return true;
             }
             catch (Exception e)

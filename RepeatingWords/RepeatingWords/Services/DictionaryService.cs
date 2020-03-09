@@ -42,6 +42,7 @@ namespace RepeatingWords.Services
             InitData();
         }
 
+        
         private void InitData()
         {
             _loadDataTask = Task.Run(() =>
@@ -200,7 +201,7 @@ namespace RepeatingWords.Services
                 wordNew.Id = 0;
                 var word = _unitOfWork.WordsRepository.Create(wordNew);
                 SetDictionaryUpdate(word.IdDictionary);
-                _unitOfWork.Save();
+               _unitOfWork.Save();
                 _words.Add(word);
                 return word;
             }

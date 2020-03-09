@@ -1,4 +1,5 @@
-﻿using RepeatingWords.DataService.Model;
+﻿using System.Threading.Tasks;
+using RepeatingWords.DataService.Model;
 
 namespace RepeatingWords.DataService.Interfaces
 {
@@ -8,6 +9,5 @@ namespace RepeatingWords.DataService.Interfaces
         IRepository<Words> WordsRepository { get; }
         IRepository<Language> LanguageRepository { get; }
         void Save();
-      
     }
 }

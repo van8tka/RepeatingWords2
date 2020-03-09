@@ -5,7 +5,7 @@ using Microsoft.Data.Sqlite;
 
 namespace RepeatingWords.DataService
 {
-    public class SQLiteContext:DbContext 
+    public sealed class SQLiteContext:DbContext 
     {
         //ctor
         public SQLiteContext(string dbpath)

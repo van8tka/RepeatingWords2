@@ -29,8 +29,12 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                if (!await _importFile.PickFile(_dictionary.Id))
-                   throw new Exception("Error import words from file");
+                using (var filePiker = await _importFile.PickFile())
+                {
+                    if (filePiker.DataArray != null)
+                        await Task.Run(() => { _importFile.StartImport(filePiker.DataArray, filePiker.FileName, _dictionary.Id); });
+                }
+                DialogService.HideLoadDialog();
                 await InitializeAsync(_dictionary);
             }
             catch (Exception er)

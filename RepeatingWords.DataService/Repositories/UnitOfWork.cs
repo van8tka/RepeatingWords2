@@ -1,4 +1,5 @@
-﻿using RepeatingWords.DataService.Interfaces;
+﻿using System.Threading.Tasks;
+using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Interfaces;
 
@@ -24,9 +25,12 @@ namespace RepeatingWords.DataService.Repositories
         private IRepository<Language> _languageRepo;
         public IRepository<Language> LanguageRepository => _languageRepo ?? (_languageRepo = new GenericRepository<Language>(_dbContext));
 
+       
         public void Save()
         {
             _dbContext.SaveChanges();
-        }      
+        }
+
+      
     }
 }

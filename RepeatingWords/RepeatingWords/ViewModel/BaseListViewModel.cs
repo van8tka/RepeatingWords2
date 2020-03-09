@@ -20,7 +20,7 @@ namespace RepeatingWords.ViewModel
             _studyService = studyService;
             _importFile = importFile ?? throw new ArgumentNullException(nameof(_importFile));
             MenuCommand = new Command(async () => { await ChangeVisibleMenuButtons(); });
-            ImportWordsCommand = new Command(async () => { await ImportFile(); SetUnVisibleFloatingMenu(); });
+            ImportWordsCommand = new Command(async () => { DialogService.ShowLoadDialog(); await ImportFile(); SetUnVisibleFloatingMenu(); });
         }
 
         public ICommand ImportWordsCommand { get; set; }
