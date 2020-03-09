@@ -272,7 +272,8 @@ namespace RepeatingWords.Services
                var updatedDictionary = updateLocalDictionaryList(dictionary);
                _unitOfWork.DictionaryRepository.Update(updatedDictionary);
                _unitOfWork.Save(); 
-              // _dictionaryList.FirstOrDefault(x => x.Id == dictionary.IdLanguage)?.UpdateDictionary(updatedDictionary);
+              var oldDictionary =  _dictionaryList.FirstOrDefault(x => x.Id == dictionary.IdLanguage);
+              oldDictionary.UpdateDictionary(updatedDictionary);
             }
             catch (Exception e)
             {

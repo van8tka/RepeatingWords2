@@ -1,8 +1,11 @@
-﻿using RepeatingWords.DataService.Model;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using RepeatingWords.Annotations;
+using RepeatingWords.DataService.Model;
 
 namespace RepeatingWords.Model
 {
-   public class DictionaryModel
+   public class DictionaryModel:INotifyPropertyChanged
     {
         public DictionaryModel(Dictionary dictionary)
         {
@@ -24,7 +27,16 @@ namespace RepeatingWords.Model
                     _percent = string.Empty;
                 else
                     _percent = value + "%";
+                OnPropertyChanged(nameof(PercentOfLearned));
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

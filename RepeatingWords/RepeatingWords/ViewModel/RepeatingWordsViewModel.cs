@@ -28,7 +28,8 @@ namespace RepeatingWords.ViewModel
             EditCurrentWordCommand = new Command(async () =>
             {
                 _isEditing = true;
-                await NavigationService.NavigateToAsync<CreateWordViewModel>(Model.CurrentWord);
+                var item = Model.CurrentWord;
+                await NavigationService.NavigateToAsync<CreateWordViewModel>(item);
             });
             EnterTranslateCommand = new Command(async () =>
             {
@@ -240,13 +241,21 @@ namespace RepeatingWords.ViewModel
             _isEditing = false;
         }
         private const int PERSENT = 100;
-        private Task Disappearing()
+        private async Task<bool> Disappearing()
         {
-            _dictionary.LastUpdated = DateTime.UtcNow;
-            float proportion = (float)Model.AllLearnedWordsCount / (float)Model.AllWordsCount;
-            _dictionary.PercentOfLearned = (int)(proportion * PERSENT);
-            _studyService.UpdateDictionary(_dictionary);
-            return null;
+            try
+            {
+                _dictionary.LastUpdated = DateTime.UtcNow;
+                float proportion = (float)Model.AllLearnedWordsCount / (float)Model.AllWordsCount;
+                _dictionary.PercentOfLearned = (int)(proportion * PERSENT);
+                _studyService.UpdateDictionary(_dictionary);
+                return await Task.FromResult(true);
+            }
+            catch (Exception e)
+            {
+               Log.Logger.Error(e);
+               return await Task.FromResult(false);
+            }
         }
     }
 }

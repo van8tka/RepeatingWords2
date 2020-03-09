@@ -22,7 +22,7 @@ namespace RepeatingWords.Model
             Name = language.NameLanguage;
             AddDictionariesToCash(dictionaries);
             AddRangeToCollection();
-            ExpandCommand = new Command( ExpandChange);
+            ExpandCommand = new Command(ExpandChange);
             
         }
 

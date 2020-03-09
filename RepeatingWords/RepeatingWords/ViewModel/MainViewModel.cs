@@ -41,9 +41,14 @@ namespace RepeatingWords.ViewModel
                 await NavigationService.NavigateToAsync<LanguageFrNetViewModel>();
                 SetUnVisibleFloatingMenu();
             });
-            //  AppearingCommand = new Command(async () => await LoadData());
+            AppearingCommand = new Command(Appearing);
             ContextMenuLanguageCommand = new Command<int>(async (id) => await ContextMenuLanguage(id));
             SetUnVisibleFloatingMenu();
+        }
+
+        public void Appearing()
+        {
+            LoadData();
         }
 
         public ICommand ShowToolsCommand { get; set; }
@@ -52,6 +57,7 @@ namespace RepeatingWords.ViewModel
         public ICommand AddLanguageCommand { get; set; }
         public ICommand ContextMenuLanguageCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
+        public ICommand AppearingCommand { get; set; }
        
 
         private ObservableCollection<LanguageModel> _dictionaryList;
