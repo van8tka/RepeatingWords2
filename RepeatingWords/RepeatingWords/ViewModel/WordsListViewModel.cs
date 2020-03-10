@@ -31,7 +31,7 @@ namespace RepeatingWords.ViewModel
             {
                 using (var filePiker = await _importFile.PickFile())
                 {
-                    if (filePiker.DataArray != null)
+                    if (filePiker!=null && filePiker.DataArray != null)
                         await Task.Run(() => { _importFile.StartImport(filePiker.DataArray, filePiker.FileName, _dictionary.Id); });
                 }
                 DialogService.HideLoadDialog();
@@ -39,6 +39,7 @@ namespace RepeatingWords.ViewModel
             }
             catch (Exception er)
             {
+                DialogService.HideLoadDialog();
                 DialogService.ShowToast(Resource.ErrorImport);
                 Log.Logger.Error(er);
             }

@@ -29,7 +29,9 @@ namespace RepeatingWords.Services
         {
             var result = await UserDialogs.Instance.PromptAsync(message, title, okText, cancelText, placeholder,
                 InputType.Default, cancelToken);
-            return result.Text;
+            if(result.Ok)
+                return result.Text;
+            return string.Empty;
         }
 
         public void ShowLoadDialog(string loadMsg = null)
