@@ -32,7 +32,9 @@ namespace RepeatingWords.NUnitTest
         {
             _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 1, Name = "Test" });
             _unitOfWork.Save();
-            _languageLoader.LoadSelectedLanguageToDB(6).GetAwaiter().GetResult();
+            //fixme: change id language
+            Assert.True(false);
+            _languageLoader.LoadSelectedLanguageToDB(6,"Test").GetAwaiter().GetResult();
             var dict = _unitOfWork.DictionaryRepository.Get().ToList();
             var words = _unitOfWork.WordsRepository.Get().Where(x=>x.IdDictionary == 6).ToList();
             Assert.IsNotNull(dict);
