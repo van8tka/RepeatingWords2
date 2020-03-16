@@ -82,7 +82,7 @@ namespace RepeatingWords.Services
             {
                 Application.Current.MainPage = new AnimationNavigationPage(page);
             }
-            await (page.BindingContext as ViewModelBase).InitializeAsync(parameter);
+            await (page.BindingContext as ViewModelBase)?.InitializeAsync(parameter);
         }
 
         private Page CreatePage(Type viewModelType, object parameter)

@@ -18,33 +18,23 @@ namespace RepeatingWords
         public App(ISQLite sqlitePath)
         {           
             InitializeComponent();
-            InitApp(sqlitePath);           
+            _container = LocatorService.Boot(sqlitePath);
         }
 
         private Container _container;
-        private void InitApp(ISQLite sqlitePath)
-        {           
-            _container = LocatorService.Boot(sqlitePath);
-            if (Device.RuntimePlatform == Device.UWP)
-               InitNavigation();
-        }
-
+        
       
-        private Task InitNavigation()
+        private void InitNavigation()
         {
             _container.GetInstance<IThemeService>().GetCurrentTheme();
             var navService = _container.GetInstance<INavigationService>(); 
             navService.InitializeAsync();
-            return Task.Run(() =>
-            {
-                _container.GetInstance<INewVersionAppChecker>().CheckNewVersionApp();
-            });
+            _container.GetInstance<INewVersionAppChecker>().CheckNewVersionApp();
         }
 
-        protected override async void OnStart()
+        protected override void OnStart()
         {
-            if (Device.RuntimePlatform != Device.UWP)
-                await InitNavigation();
+            InitNavigation();
         }
         protected override void OnSleep()
         { }

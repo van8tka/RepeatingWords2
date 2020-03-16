@@ -20,13 +20,14 @@ namespace RepeatingWords.ViewModel
     /// <summary>
     /// the first page of application
     /// </summary>
-    public class MainViewModel : BaseListViewModel
+    public class MainViewModel : ViewModelBase
     {
         public MainViewModel(INavigationService navService, IDialogService dialogService,
-            IDictionaryStudyService studyService, IImportFile importFile) : base(navService, dialogService,
-            studyService, importFile)
+            IDictionaryStudyService studyService, IImportFile importFile) : base(navService, dialogService)
         {
-            DictionaryList = new ObservableCollection<LanguageModel>();
+            _studyService = studyService;
+            _importFile = importFile;
+           DictionaryList = new ObservableCollection<LanguageModel>();
             ShowToolsCommand =
                 new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
@@ -34,22 +35,27 @@ namespace RepeatingWords.ViewModel
             AddLanguageCommand = new Command(async() =>
             {
               await AddLanguage();
-                SetUnVisibleFloatingMenu();
+               
             });
             AddWordsFromNetCommand = new Command(async () =>
             {
                 await NavigationService.NavigateToAsync<LanguageFrNetViewModel>();
-                SetUnVisibleFloatingMenu();
+               
             });
             AppearingCommand = new Command(Appearing);
             ContextMenuLanguageCommand = new Command<int>(async (id) => await ContextMenuLanguage(id));
-            SetUnVisibleFloatingMenu();
+            
         }
+
+        private readonly IDictionaryStudyService _studyService;
+        private readonly IImportFile _importFile;
 
         public void Appearing()
         {
             LoadData();
         }
+
+    
 
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
@@ -81,7 +87,7 @@ namespace RepeatingWords.ViewModel
             {
                 _selectedItem = value;
                 OnPropertyChanged(nameof(SelectedItem));
-                SetUnVisibleFloatingMenu();
+              
                 if (_selectedItem != null)
                     ContextMenuDictionary(_selectedItem.Id);
             }
@@ -100,7 +106,7 @@ namespace RepeatingWords.ViewModel
         }
 
 
-        protected override async Task ImportFile(int idLanguage)
+        protected async Task ImportFile(int idLanguage)
         {
             try
             {

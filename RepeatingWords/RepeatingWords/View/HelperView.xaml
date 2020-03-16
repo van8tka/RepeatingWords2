@@ -10,14 +10,7 @@
         <Style x:Key ="buttonStyle" TargetType="Button">
             <Setter Property="TextColor" Value="White"/>
             <Setter Property="BackgroundColor" Value="#6bafef"/>
-            <Setter Property="FontSize">
-                <Setter.Value>
-                    <OnPlatform x:TypeArguments="x:Double">
-                        <On Platform="Android">17</On>
-                        <On Platform="UWP">17</On>
-                    </OnPlatform>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="FontSize" Value="17"/>
         </Style>
     </ContentPage.Resources>
     

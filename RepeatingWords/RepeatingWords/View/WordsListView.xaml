@@ -12,21 +12,15 @@
              >
     <ContentPage.Content>
         <RelativeLayout Margin="10,0,10,5" x:DataType="vm:WordsListViewModel">
-                <local:AdMobView  x:Name="AdvertView"
-                        RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
-                        RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
-                        HeightRequest="60"
-                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
-                        />
-                        <ListView x:Name ="wordsList" 
+            <ListView x:Name ="wordsList" 
                                   ItemsSource="{Binding WordsList}" 
                                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
                                   HasUnevenRows = "true" 
                                   RowHeight = "-1" 
                                   SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
-                                  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, ElementName=AdvertView, Property=Width, Factor=0}" 
-                                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=AdvertView, Property=Height, Factor=1}"
-                                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
+                                  RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
+                                  RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
+                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                         >
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="modOut:Words">

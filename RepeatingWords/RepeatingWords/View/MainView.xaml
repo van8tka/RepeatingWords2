@@ -20,19 +20,13 @@
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
-        <RelativeLayout Margin="10,0,10,5" x:DataType="vm:MainViewModel" x:Name="RelativeLayoutContext">
-                    <local:AdMobView x:Name="AdvertView"
-                          RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
-                          RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
-                          HeightRequest="60"
-                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
-                    />
-            <ListView VerticalOptions="CenterAndExpand" 
+        <RelativeLayout x:Name="RelativeLayoutContext">
+            <ListView VerticalOptions="CenterAndExpand"  Margin="10,0,10,5" x:DataType="vm:MainViewModel"
                              ItemsSource="{Binding DictionaryList}" 
                               SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
-                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, ElementName=AdvertView, Property=Width, Factor=0}" 
-                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=AdvertView, Property=Height, Factor=1}"
-                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
+                             RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
+                             RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
+                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                               IsGroupingEnabled="True"
                              SelectedItem ="{Binding SelectedItem, Mode=TwoWay}"
                              GroupDisplayBinding="{Binding Title}"
@@ -69,29 +63,19 @@
                         </ListView.GroupHeaderTemplate>
                         </ListView>
             <controls:ImageButtonAnimationScale
-                x:Name="FloatBtnMenu"
-                Source="{Binding SourceMenuBtn, Mode=TwoWay}"
-                BackgroundColor="Transparent"
-                Command="{Binding MenuCommand}"
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}" >
-            </controls:ImageButtonAnimationScale>
-            <controls:ImageButtonAnimationScale
                 x:Name="FabCloudBtn"              
                 BackgroundColor="Transparent"
                 Source="floating_btn_cloud.png"
                 Command="{Binding AddWordsFromNetCommand}" 
-                IsVisible="{Binding LearnVisible, Mode=TwoWay}"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-120}"/>
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}"/>
             <controls:ImageButtonAnimationScale
                 x:Name="FabAddBtn"               
                 BackgroundColor="Transparent"
                 Source="floating_btn_add.png"
                 Command="{Binding AddLanguageCommand}" 
-                IsVisible="{Binding AddVisible,Mode=TwoWay}"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-180}"/>
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-120}"/>
         </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
