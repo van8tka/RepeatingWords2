@@ -80,7 +80,11 @@ namespace RepeatingWords.Services
             }
             else
             {
-                Application.Current.MainPage = new AnimationNavigationPage(page);
+                Application.Current.MainPage = new AnimationNavigationPage(page)
+                {
+                    BarBackgroundColor = Color.FromHex("#6bafef"),
+                    BarTextColor = Color.White
+                };
             }
             await (page.BindingContext as ViewModelBase)?.InitializeAsync(parameter);
         }

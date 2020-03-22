@@ -7,7 +7,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.DataService.Model;
-using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers;
 using RepeatingWords.Interfaces;
 using RepeatingWords.Model;
