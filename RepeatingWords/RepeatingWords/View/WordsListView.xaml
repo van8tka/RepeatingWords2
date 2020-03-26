@@ -36,40 +36,28 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                
-          
-            <controls:ImageButtonAnimationScale
-                x:Name="FloatBtnMenu"
-                Source="{Binding SourceMenuBtn, Mode=TwoWay}"
-                BackgroundColor="Transparent"
-                Command="{Binding MenuCommand}"
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}" >
-            </controls:ImageButtonAnimationScale>
+
                 <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnImportFile"
                 Source="floating_btn_impFile.png"
                 BackgroundColor="Transparent"
-                IsVisible="{Binding ImportVisible, Mode=TwoWay}"
                 Command="{Binding ImportWordsCommand}"
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-120}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-120}"/>
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}"/>
                 <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnLearn"
                 Source="floating_btn_learn.png"
                 BackgroundColor="Transparent"
-                IsVisible="{Binding LearnVisible, Mode=TwoWay}"
                 Command="{Binding RepeatingWordsCommand}"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-140}"/>
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-120}"/>
                 <controls:ImageButtonAnimationScale
                 x:Name="FloatBtnAdd"
                 Source="floating_btn_add.png"
                 BackgroundColor="Transparent"
-                IsVisible="{Binding AddVisible,Mode=TwoWay}"
                 Command="{Binding AddWordCommand}"
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-140}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-60}"/>
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1, Constant=-60}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1, Constant=-180}"/>
 <!--заголовок который указывает что слова отсутствуют-->
                 <Label Text="{local:Translate WordsListIsEmpty}" 
                        FontSize="Medium" 

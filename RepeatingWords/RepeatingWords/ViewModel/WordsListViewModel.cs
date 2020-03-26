@@ -15,35 +15,23 @@ using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
-    public class WordsListViewModel : BaseListViewModel
+    public class WordsListViewModel:ViewModelBase
     {
-       
-        public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IImportFile importFile) : base(navigationServcie, dialogService, studyService, importFile)
+ //ctor      
+        public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IImportFile importFile) : base(navigationServcie, dialogService)
         {
-            AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); SetUnVisibleFloatingMenu(); });
+            _studyService = studyService ?? throw new ArgumentNullException(nameof(studyService));
+            _importFile = importFile ?? throw new ArgumentNullException(nameof(importFile));
+            AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); });
             RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); });
-            SetUnVisibleFloatingMenu();
+            ImportWordsCommand = new Command(async () => { DialogService.ShowLoadDialog(); await ImportFile(); });
         }
+        public ICommand AddWordCommand { get; set; }
+        public ICommand RepeatingWordsCommand { get; set; }
+        public ICommand ImportWordsCommand { get; set; }
 
-        protected override async Task ImportFile(int idLanguage = -1)
-        {
-            try
-            {
-                using (var filePiker = await _importFile.PickFile())
-                {
-                    if (filePiker!=null && filePiker.DataArray != null)
-                        await Task.Run(() => { _importFile.StartImport(filePiker.DataArray, filePiker.FileName, _dictionary.Id); });
-                }
-                DialogService.HideLoadDialog();
-                await InitializeAsync(_dictionary);
-            }
-            catch (Exception er)
-            {
-                DialogService.HideLoadDialog();
-                DialogService.ShowToast(Resource.ErrorImport);
-                Log.Logger.Error(er);
-            }
-        }
+        private readonly IDictionaryStudyService _studyService;
+        private readonly IImportFile _importFile;
 
         private Dictionary _dictionary;
         private string _dictionaryName;
@@ -64,7 +52,6 @@ namespace RepeatingWords.ViewModel
             get => _selectedItem;
             set { _selectedItem = value; 
                 OnPropertyChanged(nameof(SelectedItem));
-                SetUnVisibleFloatingMenu();
                 if (_selectedItem != null) 
                     ShowActions(_selectedItem);
             }
@@ -75,8 +62,6 @@ namespace RepeatingWords.ViewModel
             get => _isVisibleListEmpty;
             set { _isVisibleListEmpty = value; OnPropertyChanged(nameof(IsVisibleListEmpty)); }
         }
-
-
 
         private async void ShowActions(Words selectedItem)
         {
@@ -101,9 +86,6 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        public ICommand AddWordCommand { get; set; }
-        public ICommand RepeatingWordsCommand { get; set; }
-        
         private async Task Remove(Words selectedItem)
         {
             _studyService.RemoveWord(selectedItem);
@@ -140,6 +122,26 @@ namespace RepeatingWords.ViewModel
             else
                 throw new Exception("Error load words list, bad parameter navigationData to WordsListViewModel");
             await base.InitializeAsync(navigationData);
+        }
+
+        protected async Task ImportFile()
+        {
+            try
+            {
+                using (var filePiker = await _importFile.PickFile())
+                {
+                    if (filePiker != null && filePiker.DataArray != null)
+                        await Task.Run(() => { _importFile.StartImport(filePiker.DataArray, filePiker.FileName, _dictionary.Id); });
+                }
+                DialogService.HideLoadDialog();
+                await InitializeAsync(_dictionary);
+            }
+            catch (Exception er)
+            {
+                DialogService.HideLoadDialog();
+                DialogService.ShowToast(Resource.ErrorImport);
+                Log.Logger.Error(er);
+            }
         }
 
         private void SetIsListEmptyLabel()

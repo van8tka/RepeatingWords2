@@ -1,7 +1,6 @@
 ﻿using FormsControls.Base;
 using Xamarin.Forms;
 using RepeatingWords.Services;
- 
 using RepeatingWords.ViewModel;
 
 namespace RepeatingWords.View
