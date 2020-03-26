@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Heleprs;
-using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Model;
-using Xamarin.Forms;
 
 namespace RepeatingWords.Services
 {
@@ -140,18 +137,20 @@ namespace RepeatingWords.Services
             }
         }
 
-        public async Task<bool> RemoveLanguage(int idlanguage)
+        public Task<bool> RemoveLanguage(int idlanguage)
         {
-            try
+            return Task.Run(() =>
             {
                 var removedLanguage = _dictionaryList.FirstOrDefault(x => x.Id == idlanguage);
                 if (removedLanguage != null)
                 {
-                    var dictionaries = _unitOfWork.DictionaryRepository.Get().Where(x => x.IdLanguage == idlanguage).AsEnumerable();
-                    foreach (var item in dictionaries)
+                    var dictionaries = _unitOfWork.DictionaryRepository.Get().Where(x => x.IdLanguage == idlanguage)
+                        .AsEnumerable();
+                    for (int i = 0; i < dictionaries.Count(); i++)
                     {
-                        await RemoveDictionaryFromLanguage(item, removedLanguage);
+                        removeDictionaryFromLanguage(dictionaries.ElementAt(i), removedLanguage);
                     }
+
                     var language = _unitOfWork.LanguageRepository.Get(removedLanguage.Id);
                     _unitOfWork.LanguageRepository.Delete(language);
                     _unitOfWork.Save();
@@ -159,30 +158,32 @@ namespace RepeatingWords.Services
                     _languages.Remove(language);
                 }
                 return true;
-            }
-            catch (Exception e)
-            {
-                Log.Logger.Error(e);
-                throw;
-            }
+            });
         }
 
-        public async Task<bool> RemoveDictionaryFromLanguage(Dictionary dictionary, LanguageModel removedLanguage)
+        public Task<bool> RemoveDictionaryFromLanguage(Dictionary dictionary, LanguageModel removedLanguage)
+        {
+            return Task.Run(() => { return removeDictionaryFromLanguage(dictionary, removedLanguage); });
+        }
+
+        private bool removeDictionaryFromLanguage(Dictionary dictionary, LanguageModel removedLanguage)
         {
             try
             {
                 var unlearned = GetUnlearningDictionary(dictionary.Name);
                 if (unlearned != null)
-                    await RemoveDictionaryFromLanguage(unlearned, removedLanguage);
-                var words = await Task.Run(() => _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == dictionary.Id).AsEnumerable());
+                    RemoveDictionaryFromLanguage(unlearned, removedLanguage);
+                var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == dictionary.Id).AsEnumerable();
                 if (words != null && words.Any())
+                {
                     for (int i = 0; i < words.Count(); i++)
                     {
                         var word = words.ElementAt(i);
-                        await Task.Run(() => _unitOfWork.WordsRepository.Delete(word));
+                        _unitOfWork.WordsRepository.Delete(word);
                         _words.Remove(word);
                     }
-                bool success = await Task.Run(() => _unitOfWork.DictionaryRepository.Delete(dictionary));
+                }
+                bool success = _unitOfWork.DictionaryRepository.Delete(dictionary);
                 _dictionaries.Remove(dictionary);
                 _unitOfWork.Save();
                 removedLanguage.RemoveDictionary(dictionary);
@@ -191,9 +192,11 @@ namespace RepeatingWords.Services
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                throw;
+                return false;
             }
         }
+
+
 
         public int AddDictionary(string dictionaryName, int idLang)
         {

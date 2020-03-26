@@ -220,7 +220,9 @@ namespace RepeatingWords.ViewModel
         private async Task RemoveLanguage(int idlanguage)
         {
             DialogService.ShowLoadDialog(Resource.Deleting);
+            _studyService.BeginTransaction();
             await _studyService.RemoveLanguage(idlanguage);
+            _studyService.CommitTransaction();
             OnPropertyChanged(nameof(DictionaryList));
             DialogService.HideLoadDialog();
         }

@@ -14025,7 +14025,7 @@ namespace RepeatingWords.Droid
 			public const int floating_btn_menu = 2131165320;
 			
 			// aapt resource value: 0x7F070089
-			public const int floating_btn_menuGray = 2131165321;
+			public const int floating_btn_menugray = 2131165321;
 			
 			// aapt resource value: 0x7F07008F
 			public const int icons_cardsbutton = 2131165327;
