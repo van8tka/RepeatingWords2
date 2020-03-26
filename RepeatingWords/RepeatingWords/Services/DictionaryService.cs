@@ -29,11 +29,16 @@ namespace RepeatingWords.Services
         void RemoveWord(Words selectedItem);
         IEnumerable<Words> GetWordsByDictionary(int idDictionary);
         Words GetWord(int wordId);
+        Language GetLanguage(string name);
         void UpdateDictionary(Dictionary dictionary);
+        void AddWords(IEnumerable<Words> listWords);
+        void BeginTransaction();
+        void CommitTransaction();
+        void RollBackTransaction();
     }
 
 
-   public class DictionaryStudyService:IDictionaryStudyService
+    public class DictionaryStudyService:IDictionaryStudyService
     {
         public DictionaryStudyService(IUnitOfWork unitOfWork, IInitDefaultDb initDb)
         {
@@ -42,7 +47,24 @@ namespace RepeatingWords.Services
             InitData();
         }
 
-        
+
+        public void BeginTransaction()
+        {
+            _unitOfWork.BeginTransaction();
+        }
+
+        public void CommitTransaction()
+        {
+            _unitOfWork.CommitTransaction();
+        }
+
+        public void RollBackTransaction()
+        {
+            _unitOfWork.RollBackTransaction();
+        }
+
+
+
         private void InitData()
         {
             _loadDataTask = Task.Run(() =>
@@ -194,6 +216,14 @@ namespace RepeatingWords.Services
         }
 
 
+        public void AddWords(IEnumerable<Words> listWords)
+        {
+            _unitOfWork.WordsRepository.Create(listWords);
+            _unitOfWork.Save();
+            (_words as List<Words>).AddRange(listWords);
+        }
+
+
         public Words AddWord(Words wordNew)
         {
             try
@@ -201,7 +231,7 @@ namespace RepeatingWords.Services
                 wordNew.Id = 0;
                 var word = _unitOfWork.WordsRepository.Create(wordNew);
                 SetDictionaryUpdate(word.IdDictionary);
-               _unitOfWork.Save();
+                _unitOfWork.Save();
                 _words.Add(word);
                 return word;
             }
@@ -264,6 +294,11 @@ namespace RepeatingWords.Services
         public Words GetWord(int wordId)
         {
             return _words.FirstOrDefault(x => x.Id == wordId);
+        }
+
+        public Language GetLanguage(string name)
+        {
+           return _languages.FirstOrDefault(x => x.NameLanguage.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
 
         public void UpdateDictionary(Dictionary dictionary)

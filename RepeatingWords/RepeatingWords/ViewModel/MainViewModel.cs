@@ -27,8 +27,7 @@ namespace RepeatingWords.ViewModel
             _studyService = studyService;
             _importFile = importFile;
            DictionaryList = new ObservableCollection<LanguageModel>();
-            ShowToolsCommand =
-                new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
+            ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
             LikeCommand = new Command(async () => { await LikeApplication.Like(DialogService); });
             AddLanguageCommand = new Command(async() =>
@@ -39,7 +38,6 @@ namespace RepeatingWords.ViewModel
             AddWordsFromNetCommand = new Command(async () =>
             {
                 await NavigationService.NavigateToAsync<LanguageFrNetViewModel>();
-               
             });
             AppearingCommand = new Command(Appearing);
             ContextMenuLanguageCommand = new Command<int>(async (id) => await ContextMenuLanguage(id));
@@ -54,8 +52,6 @@ namespace RepeatingWords.ViewModel
             LoadData();
         }
 
-    
-
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
         public ICommand HelperCommand { get; set; }
@@ -63,8 +59,7 @@ namespace RepeatingWords.ViewModel
         public ICommand ContextMenuLanguageCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
-       
-
+        
         private ObservableCollection<LanguageModel> _dictionaryList;
 
         public ObservableCollection<LanguageModel> DictionaryList

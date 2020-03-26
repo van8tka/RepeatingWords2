@@ -34,7 +34,7 @@ namespace RepeatingWords.NUnitTest
             _unitOfWork.Save();
             //fixme: change id language
             Assert.True(false);
-            _languageLoader.LoadSelectedLanguageToDB(6,"Test").GetAwaiter().GetResult();
+            _languageLoader.LoadLanguageFromApi(6,"Test").GetAwaiter().GetResult();
             var dict = _unitOfWork.DictionaryRepository.Get().ToList();
             var words = _unitOfWork.WordsRepository.Get().Where(x=>x.IdDictionary == 6).ToList();
             Assert.IsNotNull(dict);

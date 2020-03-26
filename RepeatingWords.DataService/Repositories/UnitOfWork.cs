@@ -24,8 +24,22 @@ namespace RepeatingWords.DataService.Repositories
         public IRepository<Words> WordsRepository => _wordsRepo ?? (_wordsRepo = new GenericRepository<Words>(_dbContext));
         private IRepository<Language> _languageRepo;
         public IRepository<Language> LanguageRepository => _languageRepo ?? (_languageRepo = new GenericRepository<Language>(_dbContext));
+        public void BeginTransaction()
+        {
+            _dbContext.Database.BeginTransaction();
+        }
 
-       
+        public void CommitTransaction()
+        {
+            _dbContext.Database.CommitTransaction();
+        }
+
+        public void RollBackTransaction()
+        {
+            _dbContext.Database.RollbackTransaction();
+        }
+
+
         public void Save()
         {
             _dbContext.SaveChanges();

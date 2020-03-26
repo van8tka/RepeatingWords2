@@ -49,7 +49,7 @@ namespace RepeatingWords.ViewModel
             SelectedItem = null;
             try
             {
-                await _languageLoader.LoadSelectedLanguageToDB(selectedLanguage.Id, selectedLanguage.NameLanguage);
+                await _languageLoader.LoadLanguageFromApi(selectedLanguage.Id, selectedLanguage.NameLanguage);
                 DialogService.HideLoadDialog();
                 await NavigationService.NavigateToAsync<MainViewModel>();
                 await NavigationService.RemoveBackStackAsync();

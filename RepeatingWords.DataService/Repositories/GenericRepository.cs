@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RepeatingWords.DataService.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
  
@@ -28,6 +29,11 @@ namespace RepeatingWords.DataService.Model
         public T Create(T item)
         {
             return _dbContext.Set<T>().Add(item).Entity;
+        }
+
+        public void Create(IEnumerable<T> items)
+        {
+            _dbContext.Set<T>().AddRange(items);
         }
 
         public T Update(T item)

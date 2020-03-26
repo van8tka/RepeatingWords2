@@ -1,103 +1,83 @@
-﻿using RepeatingWords.DataService.Interfaces;
-using RepeatingWords.DataService.Model;
+﻿using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using RepeatingWords.Services;
 
 namespace RepeatingWords.Helpers
 {
-    public class LanguageLoader: ILanguageLoaderFacade
+    public class LanguageLoader : ILanguageLoaderFacade
     {
 
-        public LanguageLoader(IWebClient _webService, IUnitOfWork _unitOfWork)
+        public LanguageLoader(IWebClient webService, IDictionaryStudyService studyService)
         {
-            this._webService = _webService ?? throw new ArgumentNullException(nameof(_webService));
-            this._unitOfWork = _unitOfWork ?? throw new ArgumentNullException(nameof(_unitOfWork));
+            this._webService = webService ?? throw new ArgumentNullException(nameof(webService));
+            this._studyService = studyService ?? throw new ArgumentNullException(nameof(studyService));
         }
+
         private readonly IWebClient _webService;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IDictionaryStudyService _studyService;
 
 
-        public async Task LoadSelectedLanguageToDB(int idLanguage, string nameLanguage)
-        {           
+        public async Task LoadLanguageFromApi(int idLanguageServer, string nameLanguage)
+        {
             try
             {
-                var isExist = _unitOfWork.LanguageRepository.Get().Any(x =>
-                    x.NameLanguage.Equals(nameLanguage, StringComparison.OrdinalIgnoreCase));
+                _studyService.BeginTransaction();
+                var isExist = _studyService.GetLanguage(nameLanguage) != null;
                 if (!isExist)
                 {
-                    var lang = _unitOfWork.LanguageRepository.Create(new Language()
-                        { Id = 0, NameLanguage = nameLanguage, PercentOfLearned = 0 });
-                    _unitOfWork.Save();
-                    var dataRaw = await _webService.GetLanguageWords(idLanguage);
-                    if (!string.IsNullOrEmpty(dataRaw) && !string.Equals(dataRaw, "[]", StringComparison.OrdinalIgnoreCase))
-                    {
-                        var jDataRaw = JArray.Parse(dataRaw);
-                        for (int i = 0; i < jDataRaw.Count(); i++)
-                        {
-                            await AddDictionaryToDb(jDataRaw[i] as JArray, lang.Id);
-                        }
-                    }
+                    int newLanguageId = _studyService.AddLanguage(nameLanguage);
+                    await GetWordsByLanguage(idLanguageServer, newLanguageId);
                 }
+                _studyService.CommitTransaction();
             }
             catch (Exception e)
-            {      
+            {
                 Debug.WriteLine(e);
-                throw;
+                _studyService.RollBackTransaction();
             }
         }
 
-
-        private Task AddDictionaryToDb(JArray jDictionary, int langId)
+        private async Task GetWordsByLanguage(int idLanguageServer, int newLanguageId)
         {
-            try
+            var dataRaw = await _webService.GetLanguageWords(idLanguageServer);
+            await Task.Run(() =>
             {
-                if (jDictionary == null)
-                    throw new Exception("JSon dictionary is empty");
-                return Task.Run(() =>
+                if (!string.IsNullOrEmpty(dataRaw) && !string.Equals(dataRaw, "[]", StringComparison.OrdinalIgnoreCase))
                 {
-                 //   int idNewDictionary = _unitOfWork.DictionaryRepository.Get().Last().Id + 1;
-                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, Name = jDictionary[0].ToString(), IdLanguage = langId, LastUpdated = DateTime.UtcNow, PercentOfLearned = 0});
-                    _unitOfWork.Save();
-                    for(int i=2;i<jDictionary.Count();i++)
-                         CreateWords(jDictionary[i] as JArray, dictionary.Id);
-                    _unitOfWork.Save();
-                });              
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                throw;
-            }
+                    var jDataRaw = JArray.Parse(dataRaw);
+                    int count = jDataRaw.Count();
+                    var listWords = new List<Words>();
+                    for (int i = 0; i < count; i++)
+                        AddDictionaryToDb(jDataRaw[i] as JArray, newLanguageId, listWords);
+                    _studyService.AddWords(listWords.AsEnumerable());
+                }
+            });
         }
 
-        private void CreateWords(JArray jwords, int idNewDictionary)
+        private void AddDictionaryToDb(JArray jDictionary, int langId, IList<Words> listWords)
         {
-            try
-            {
-                if (jwords != null && jwords.Count() == 3)
-                {
-                    var badSymbals = new char[] { ' ', '\r', '\n', '\t' };
-                    var newWord = new Words();
-                    newWord.Id = 0;
-                    newWord.IdDictionary = idNewDictionary;
-                    newWord.RusWord = jwords[0].ToString().Trim(badSymbals);
-                    newWord.Transcription = jwords[2].ToString().Trim(badSymbals);
-                    newWord.EngWord = jwords[1].ToString().Trim(badSymbals);
-                    newWord.IsLearned = false;
-                    _unitOfWork.WordsRepository.Create(newWord);
-                }
-                else
-                     throw new ArgumentException(nameof(jwords));
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                throw;
-            }          
+            int idDictionary = _studyService.AddDictionary(jDictionary[0].ToString(), langId);
+            int count = jDictionary.Count();
+            var badSymbals = new char[] {' ', '\r', '\n', '\t'};
+            for (int i = 2; i < count; i++)
+                listWords.Add(CreateWords(jDictionary[i] as JArray, idDictionary, badSymbals));
+        }
+
+        private Words CreateWords(JArray jwords, int idNewDictionary, char[] badSymbals)
+        {
+            var newWord = new Words();
+            newWord.IdDictionary = idNewDictionary;
+            newWord.RusWord = jwords[0].ToString().Trim(badSymbals);
+            newWord.Transcription = jwords[2].ToString().Trim(badSymbals);
+            newWord.EngWord = jwords[1].ToString().Trim(badSymbals);
+            newWord.IsLearned = false;
+            return newWord;
         }
     }
 }

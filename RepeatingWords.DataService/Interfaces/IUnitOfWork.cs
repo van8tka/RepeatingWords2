@@ -8,6 +8,10 @@ namespace RepeatingWords.DataService.Interfaces
         IRepository<Dictionary> DictionaryRepository { get; }
         IRepository<Words> WordsRepository { get; }
         IRepository<Language> LanguageRepository { get; }
+
+        void BeginTransaction();
+        void CommitTransaction();
+        void RollBackTransaction();
         void Save();
     }
 }
