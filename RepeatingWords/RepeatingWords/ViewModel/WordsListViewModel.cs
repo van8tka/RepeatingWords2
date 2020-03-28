@@ -130,8 +130,11 @@ namespace RepeatingWords.ViewModel
             {
                 using (var filePiker = await _importFile.PickFile())
                 {
+                    bool success = false;
                     if (filePiker != null && filePiker.DataArray != null)
-                        await Task.Run(() => { _importFile.StartImport(filePiker.DataArray, filePiker.FileName, _dictionary.Id); });
+                        success = await _importFile.StartImport(filePiker.DataArray, filePiker.FileName, _dictionary.Id);
+                    if(!success)
+                        DialogService.ShowToast(Resource.ErrorImport);
                 }
                 DialogService.HideLoadDialog();
                 await InitializeAsync(_dictionary);

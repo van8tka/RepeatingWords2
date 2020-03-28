@@ -44,41 +44,38 @@ namespace RepeatingWords.Services
 
         public Task<bool> StartImport(byte[] data, string file, int dictionaryId)
         {
-            try
-            {
-                var stringData = Encoding.UTF8.GetString(data, 0, data.Length);
-                List<string> lines = stringData.Split('\n').ToList();
-                //проходим по списку строк считанных из файла
-                if (lines != null && lines.Count > 0 && file.EndsWith(".txt"))
-                    return ParseLineAndCreateImportedWords(dictionaryId, lines);
-                return Task.FromResult<bool>(false);
+            return Task.Run(() =>
+                {
+                    var stringData = Encoding.UTF8.GetString(data, 0, data.Length);
+                    List<string> lines = stringData.Split('\n').ToList();
+                    //проходим по списку строк считанных из файла
+                    if (lines != null && lines.Count > 0 && file.EndsWith(".txt"))
+                        return ParseLineAndCreateImportedWords(dictionaryId, lines);
+                    return false;
+                });
             }
-            catch (Exception er)
-            {
-                Log.Logger.Error(er);
-                throw;
-            }
-        }
 
-        private Task<bool> ParseLineAndCreateImportedWords(int dictionaryId, List<string> lines)
+        private  bool ParseLineAndCreateImportedWords(int dictionaryId, List<string> lines)
         {
             char[] delim = {'[', ']'};
+            IList<Words> createdWords = new List<Words>();
             for (int i = 0; i < lines.Count; i++)
             {
                 if(ValidatorInputLine(lines[i])) 
-                     InsertWordFromFileToDb(dictionaryId, lines[i].Split(delim));
-                else if(i < lines.Count - 1)
-                    return Task.FromResult<bool>(false);
+                     InsertWordFromFileToDb(dictionaryId, lines[i].Split(delim), createdWords);
+                else if (i < lines.Count - 1)
+                    return false;
             }
-            return Task.FromResult<bool>(true);
+            _studyService.AddWords(createdWords);
+            return true;
         }
 
-        private Task<bool> InsertWordFromFileToDb(int dictionaryId, string[] fileWords)
+        private bool InsertWordFromFileToDb(int dictionaryId, string[] fileWords, IList<Words> createdWords)
         {
             var badSymbals = new char[] { ' ', '\n', '\t', '\r' };
             if (fileWords.Count() == 3)
             {
-                Words item =new Words
+                Words item = new Words
                     {
                         Id = 0,
                         IdDictionary = dictionaryId,
@@ -87,11 +84,10 @@ namespace RepeatingWords.Services
                         EngWord = fileWords[2].Trim(badSymbals),
                         IsLearned = false
                     };
-                _studyService.AddWord(item);
-                return Task.FromResult(true);
-
+                createdWords.Add(item);
+                return true;
             }
-            return Task.FromResult(false);
+            return  false;
         }
 
         private bool ValidatorInputLine(string inputLine)
