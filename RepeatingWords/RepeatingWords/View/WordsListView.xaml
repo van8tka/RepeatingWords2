@@ -18,9 +18,7 @@
                                   HasUnevenRows = "true" 
                                   RowHeight = "-1" 
                                   SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
-                                  RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
-                                  RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
-                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}" 
                         >
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="modOut:Words">

@@ -20,17 +20,15 @@
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
-        <RelativeLayout x:Name="RelativeLayoutContext">
-            <ListView VerticalOptions="CenterAndExpand"  Margin="10,0,10,5" x:DataType="vm:MainViewModel"
+        <RelativeLayout x:Name="RelativeLayoutContext"  Margin="10,0,10,5">
+            <ListView VerticalOptions="EndAndExpand"  x:DataType="vm:MainViewModel"
                              ItemsSource="{Binding DictionaryList}" 
-                              SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
-                             RelativeLayout.XConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
-                             RelativeLayout.YConstraint ="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0 }"
-                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
-                              IsGroupingEnabled="True"
+                             SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
+                             IsGroupingEnabled="True"
                              SelectedItem ="{Binding SelectedItem, Mode=TwoWay}"
                              GroupDisplayBinding="{Binding Title}"
                              GroupShortNameBinding="{Binding Name}"
+                             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}" 
                               >
                             <ListView.ItemTemplate>
                             <DataTemplate x:DataType="modOut:DictionaryModel">
@@ -45,7 +43,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         <ListView.GroupHeaderTemplate>
-                    <DataTemplate  x:DataType="modOut:LanguageModel">
+                          <DataTemplate  x:DataType="modOut:LanguageModel">
                                 <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding ="0,5,10,5">
                                 <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" MaxLines="1" LineBreakMode="TailTruncation"/>
