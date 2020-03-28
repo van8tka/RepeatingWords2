@@ -13,7 +13,7 @@ namespace RepeatingWords.ViewModel
     {
         public WorkSpaceCardsViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager, IAnimationService animation) : base(_dialogService, _navigationService, unlearningManager, animation)
         {
-            SwipeWordCommand = new Command<string>((direction) => { SwipeWord(direction); });
+            SwipeWordCommand = new Command<string>(async (direction) => await SwipeWord(direction));
         }
  
 
@@ -32,7 +32,7 @@ namespace RepeatingWords.ViewModel
 
       
 
-        private async void SwipeWord(string direction)
+        private async Task SwipeWord(string direction)
         {
             var enumDirection = (SwipeDirection)Enum.Parse(typeof(SwipeDirection), direction);
             await AnimationService.AnimationPositionWord(enumDirection, WordContainer);

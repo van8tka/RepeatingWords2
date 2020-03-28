@@ -7,7 +7,7 @@ using RepeatingWords.LoggerService;
 
 namespace RepeatingWords.Services
 {
-   public class FirstLanguageService:IFirstLanguage
+   public class ShowLanguageService:IShowLanguage
     {
         public bool GetFirstLanguage()
         {

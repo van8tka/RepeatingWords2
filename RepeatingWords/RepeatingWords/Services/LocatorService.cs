@@ -21,18 +21,15 @@ namespace RepeatingWords.Services
             var _container = new Container();
             _container.RegisterInstance(typeof(ISQLite), sqlitePath);     
             _container.RegisterInstance(typeof(ILoggerService),new Log(DependencyService.Get<ILogManager>().GetLog()));
-          
             var unitOfWork = new UnitOfWork(sqlitePath);
             var initDb = new InitDefaultDb(unitOfWork);
             _container.RegisterInstance(typeof(IUnitOfWork), unitOfWork);
-            //_container.Register<IUnitOfWork, UnitOfWork>();
-            //_container.Register<IInitDefaultDb, InitDefaultDb>();
             _container.RegisterInstance(typeof(INavigationService), new NavigationService());
             _container.RegisterInstance(typeof(IDialogService), new DialogService());          
             _container.Register<BackupGoogleService>();
             _container.Register<BackupLocalService>();
             _container.Register<IThemeService, ThemeChangeService>();
-            _container.Register<IFirstLanguage, FirstLanguageService>();
+            _container.Register<IShowLanguage, ShowLanguageService>();
             _container.Register<IKeyboardTranscriptionService, KeyboardTranscriptionChangeService>();
             _container.Register<IWebClient, WebClient>();
             _container.Register<IImportFile, ImportFileToDb>();

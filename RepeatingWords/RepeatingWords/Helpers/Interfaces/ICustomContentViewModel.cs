@@ -1,4 +1,5 @@
-﻿using RepeatingWords.Model;
+﻿using System.Threading.Tasks;
+using RepeatingWords.Model;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Helpers.Interfaces
@@ -7,5 +8,6 @@ namespace RepeatingWords.Helpers.Interfaces
     {
           RepeatingWordsModel Model { get; set; }
           Xamarin.Forms.View WordContainer { get; set; }
+          Task ShowNextWord(bool isFirstShowAfterLoad = false);
     }
 }

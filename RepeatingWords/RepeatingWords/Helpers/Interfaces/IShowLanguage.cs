@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RepeatingWords.Helpers.Interfaces
+﻿namespace RepeatingWords.Helpers.Interfaces
 {
-    public interface IFirstLanguage
+    public interface IShowLanguage
     {
         /// <summary>
         /// get first language name(native or foreign) which will show first when begin to study 

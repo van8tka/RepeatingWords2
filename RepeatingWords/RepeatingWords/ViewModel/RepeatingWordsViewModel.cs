@@ -17,38 +17,23 @@ namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IAnimationService animationService, ITextToSpeech speechService, IFirstLanguage firstLanguageService) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IAnimationService animationService, ITextToSpeech speechService, IShowLanguage showLanguageService) : base(navigationServcie, dialogService)
         {
             _animationService = animationService;
             _studyService = studyService;
-            _firstLanguageService = firstLanguageService;
+            _showLanguageService = showLanguageService;
             _speechService = speechService;
             Model = new RepeatingWordsModel();
             VoiceActingCommand = new Command(async () => await _speechService.Speak(Model.CurrentWord.EngWord));
             EditCurrentWordCommand = new Command(async () =>
             {
                 _isEditing = true;
-                var item = Model.CurrentWord;
-                await NavigationService.NavigateToAsync<CreateWordViewModel>(item);
+                if (Model.CurrentWord != null) 
+                    await NavigationService.NavigateToAsync<CreateWordViewModel>(Model.CurrentWord);
             });
-            EnterTranslateCommand = new Command(async () =>
-            {
-                await _animationService.AnimationFade(WorkContainerView, 0);
-                await ShowEnterTranslate();
-                await _animationService.AnimationFade(WorkContainerView, 1);
-            });
-            SelectFromWordsCommand = new Command(async () =>
-            {
-                await _animationService.AnimationFade(WorkContainerView, 0);
-                await ShowSelectFromWords();
-                await _animationService.AnimationFade(WorkContainerView, 1);
-            });
-            LearningCardsCommand = new Command(async () =>
-            {
-                await _animationService.AnimationFade(WorkContainerView, 0);
-                await ShowLearningCards();
-                await _animationService.AnimationFade(WorkContainerView, 1);
-            });
+            EnterTranslateCommand = new Command(async () =>await ShowEnterTranslate());
+            SelectFromWordsCommand = new Command(async () =>await ShowSelectFromWords());
+            LearningCardsCommand = new Command(async () =>await ShowLearningCards());
             AppearingCommand = new Command(async () => await AppearingPage());
             DisappearingCommand = new Command(async()=>await Disappearing());
         }
@@ -59,7 +44,7 @@ namespace RepeatingWords.ViewModel
         private ICustomContentViewModel _workSpaceVM;
         private readonly IDictionaryStudyService _studyService;
         private readonly ITextToSpeech _speechService;
-        private readonly IFirstLanguage _firstLanguageService;
+        private readonly IShowLanguage _showLanguageService;
         private Dictionary _dictionary;
       
         private readonly string cardsActive = "icons_cardsbutton.png";
@@ -104,7 +89,6 @@ namespace RepeatingWords.ViewModel
         public string SelectImage { get => _selectButtonBackground; set { _selectButtonBackground = value; OnPropertyChanged(nameof(SelectImage)); } }
         private string _entryButtonBackground;
         public string EntryImage { get => _entryButtonBackground; set { _entryButtonBackground = value; OnPropertyChanged(nameof(EntryImage)); } }
-
         private string _speackerLang;
         public string SpeackerLang { get => _speackerLang; set { _speackerLang = value; OnPropertyChanged(nameof(SpeackerLang)); } }
         #endregion
@@ -113,7 +97,6 @@ namespace RepeatingWords.ViewModel
         public ICommand EnterTranslateCommand { get; set; }
         public ICommand SelectFromWordsCommand { get; set; }
         public ICommand LearningCardsCommand { get; set; }
-        public ICommand UnloadPageCommand { get; set; }
         public ICommand EditCurrentWordCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
         public ICommand DisappearingCommand { get; set; }
@@ -123,46 +106,24 @@ namespace RepeatingWords.ViewModel
         private WorkSpaceSelectWordView SelectWordView => _selectWordView ?? (_selectWordView = new WorkSpaceSelectWordView());
         private WorkSpaceCardsView _cardsView;
         private WorkSpaceCardsView CardsView => _cardsView ?? (_cardsView = new WorkSpaceCardsView());
-       
-       
-        private async Task ShowEnterTranslate()
-        {
-            await SetViewWorkSpaceEnterWord();
-            SetBackgroundButton(nameof(EntryImage));
-        }
-        private async Task SetViewWorkSpaceEnterWord()
-        {
-             WorkSpaceView = EnterWordView;
-            _workSpaceVM = EnterWordView.CustomVM;
-            _workSpaceVM.Model = Model; 
-            await (_workSpaceVM as WorkSpaceEnterWordViewModel)?.ShowNextWord(isFirstShowAfterLoad: true);
-        }
 
-        private async Task ShowSelectFromWords()
+
+        private async Task WorkSurface(string nameSurface, ICustomContentView viewSurface)
         {
-            await SetViewWorkSpaceSelectWord();
-            SetBackgroundButton(nameof(SelectImage));
-        }
-        private async Task SetViewWorkSpaceSelectWord()
-        {
-             WorkSpaceView = SelectWordView;
-            _workSpaceVM = SelectWordView.CustomVM;
+            if(Model.AllWordsCount==0)
+                return;
+            await _animationService.AnimationFade(WorkContainerView, 0);
+            WorkSpaceView = viewSurface as ContentView ?? throw new Exception("Error SurfaceView is null");
+            _workSpaceVM = viewSurface.CustomVM;
             _workSpaceVM.Model = Model;
-            await (_workSpaceVM as WorkSpaceSelectWordViewModel)?.ShowNextWord(isFirstShowAfterLoad: true);
+            await _workSpaceVM.ShowNextWord(isFirstShowAfterLoad: true);
+            SetBackgroundButton(nameSurface);
+            await _animationService.AnimationFade(WorkContainerView, 1);
         }
-
-        private async Task ShowLearningCards()
-        { 
-            await SetViewWorkSpaceLearningCards();
-            SetBackgroundButton(nameof(CardsImage));
-        }
-        private async Task SetViewWorkSpaceLearningCards()
-        {
-             WorkSpaceView = CardsView;
-            _workSpaceVM = CardsView.CustomVM;
-            _workSpaceVM.Model = Model; 
-           await (_workSpaceVM as WorkSpaceCardsViewModel)?.ShowNextWord(isFirstShowAfterLoad: true);
-        }
+        private async Task ShowEnterTranslate() => await WorkSurface(nameof(EntryImage), EnterWordView);
+        private async Task ShowSelectFromWords() => await WorkSurface(nameof(SelectImage), SelectWordView);
+        private async Task ShowLearningCards() => await WorkSurface(nameof(CardsImage), CardsView);
+        
         private void SetBackgroundButton(string button)
         {
             switch (button)
@@ -208,25 +169,31 @@ namespace RepeatingWords.ViewModel
             Model.WordsLeft = new List<Words>(Model.WordsLearningAll);
         }
 
-        private IEnumerable<Words> LoadWords(int id) => _studyService.GetWordsByDictionary(id);
         public override async Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
-            SetBackgroundButton(nameof(CardsImage));
-            List<Words> wordsList = new List<Words>();
-            int count = 0;
-            _dictionary = navigationData as Dictionary;
-            Model.Dictionary = _dictionary;
-            DictionaryName = _dictionary.Name;
-            wordsList = LoadWords(_dictionary.Id).ToList();
-            count = wordsList.Count();
-            ShakeWordsCollection(wordsList);
-            Model.IsFromNative = _firstLanguageService.GetFirstLanguage();
-            Model.WordsLearningAll = wordsList;
-            Model.AllWordsCount = count;
-            await SetViewWorkSpaceLearningCards();
-            SpeackerLang = _speechService.Language;
-            await base.InitializeAsync(navigationData);
+            try
+            {
+                IsBusy = true;
+                SetBackgroundButton(nameof(CardsImage));
+                List<Words> wordsList = new List<Words>();
+                int count = 0;
+                _dictionary = navigationData as Dictionary;
+                Model.Dictionary = _dictionary;
+                DictionaryName = _dictionary.Name;
+                wordsList = _studyService.GetWordsByDictionary(_dictionary.Id).ToList();
+                count = wordsList.Count();
+                ShakeWordsCollection(wordsList);
+                Model.IsFromNative = _showLanguageService.GetFirstLanguage();
+                Model.WordsLearningAll = wordsList;
+                Model.AllWordsCount = count;
+                await ShowLearningCards();
+                SpeackerLang = _speechService.Language;
+                await base.InitializeAsync(navigationData);
+            }
+            catch (Exception e)
+            {
+                DialogService.ShowToast("Error loading words to study");
+            }
         }
 
        
@@ -235,8 +202,7 @@ namespace RepeatingWords.ViewModel
         {
             if (_isEditing)
             {
-                //var word = _studyService.GetWord(Model.CurrentWord.Id);
-                await (_workSpaceVM as WorkSpaceBaseViewModel).SetViewWords(Model.CurrentWord, Model.IsFromNative);
+               await (_workSpaceVM as WorkSpaceBaseViewModel).SetViewWords(Model.CurrentWord, Model.IsFromNative);
             }
             _isEditing = false;
         }

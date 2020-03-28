@@ -11,12 +11,12 @@ namespace RepeatingWords.ViewModel
     public class SettingsViewModel : ViewModelBase
     {
         //ctor
-        public SettingsViewModel(INavigationService navigationService, IDialogService dialogService, IThemeService themeService, IKeyboardTranscriptionService transcriptKeyboardService, IVolumeLanguageService volumeService, IFirstLanguage firstLanguageService) : base(navigationService, dialogService)
+        public SettingsViewModel(INavigationService navigationService, IDialogService dialogService, IThemeService themeService, IKeyboardTranscriptionService transcriptKeyboardService, IVolumeLanguageService volumeService, IShowLanguage showLanguageService) : base(navigationService, dialogService)
         {
             _themeService = themeService;
             _transcriptKeyboardService = transcriptKeyboardService;
             _volumeService = volumeService;
-            _firstLanguageService = firstLanguageService;
+            _showLanguageService = showLanguageService;
             SetCurrentSettings();
             SwitchThemeCommand = new Command(SwitchThemeApp);
             SwitchTranskriptionKeyboardCommand = new Command(SwitchTranscriptionKeyboard);
@@ -30,14 +30,14 @@ namespace RepeatingWords.ViewModel
         {
             IsBusy = true; 
             CurrentVoiceLanguage = _volumeService.GetVolumeLanguage().Name; 
-            SetFirstLanguageView(_firstLanguageService.GetFirstLanguage()); 
+            SetFirstLanguageView(_showLanguageService.GetFirstLanguage()); 
             return base.InitializeAsync(navigationData);
         }
 
         private readonly IThemeService _themeService;
         private readonly IKeyboardTranscriptionService _transcriptKeyboardService;
         private readonly IVolumeLanguageService _volumeService;
-        private readonly IFirstLanguage _firstLanguageService;
+        private readonly IShowLanguage _showLanguageService;
         private string _fileNameBackupDef = "backupcardsofwords";
         private string _localFolderBackup = Resource.BackUpInLocal;
         private string _googleDriveFolderBackup = Resource.BackUpOnGoogle;
@@ -94,7 +94,7 @@ namespace RepeatingWords.ViewModel
             try
             {
                 Log.Logger.Info("Change first language");
-                SetFirstLanguageView(_firstLanguageService.ChangeFirstLanguage());
+                SetFirstLanguageView(_showLanguageService.ChangeFirstLanguage());
             }
             catch (Exception e)
             {
