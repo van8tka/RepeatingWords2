@@ -20,18 +20,15 @@ namespace RepeatingWords.ViewModel
         public Xamarin.Forms.View WordContainer { get; set; }
        
 
-        public WorkSpaceBaseViewModel(IDialogService _dialogService, INavigationService _navigationService,
-            IUnlearningWordsService _unlearningWords, IAnimationService _animationService)
+        public WorkSpaceBaseViewModel(IDialogService _dialogService, INavigationService _navigationService,IAnimationService _animationService)
         {
             this._dialogService = _dialogService;
             this._navigationService = _navigationService;
-            this._unlearningWords = _unlearningWords;
-            this.AnimationService = _animationService;
+         this.AnimationService = _animationService;
         }
         private readonly IDialogService _dialogService;
         private readonly INavigationService _navigationService;
-        private readonly IUnlearningWordsService _unlearningWords;
-        protected readonly IAnimationService AnimationService;
+      protected readonly IAnimationService AnimationService;
 
         public async Task ShowNextWord(bool isFirstShowAfterLoad = false)
         {
@@ -71,17 +68,7 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        /// <summary>
-        /// если слово было открыто, не написано, выбрано не правильно то сохраняем его в словаре не выученных(или не удаляем его от туда)
-        /// иначе если слово было написано правильно, выбрано правильно или пролистано, то удаляем его из не выученных слов
-        /// </summary>    
-        //private async Task SaveUnlearnedWords(Words word,bool isOpenCurrentWord)
-        //{
-        //    if (word != null)
-        //       await Task.Run(() => { _unlearningWords.CheckSaveOrRemoveWord(word, isOpenCurrentWord, Model.Dictionary.Name); });
-        //    Model.IsOpenCurrentWord = false;
-        //}
-  
+      
         public abstract Task SetViewWords(Words currentWord, bool isFromNative);
 
         public event PropertyChangedEventHandler PropertyChanged;

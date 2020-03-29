@@ -11,7 +11,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceCardsViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceCardsViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager, IAnimationService animation) : base(_dialogService, _navigationService, unlearningManager, animation)
+        public WorkSpaceCardsViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation) : base(_dialogService, _navigationService, animation)
         {
             SwipeWordCommand = new Command<string>(async (direction) => await SwipeWord(direction));
         }

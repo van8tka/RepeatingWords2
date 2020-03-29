@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-using RepeatingWords.DataService.Model;
+﻿using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
@@ -13,7 +12,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceSelectWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager, IAnimationService animation) : base(_dialogService, _navigationService, unlearningManager, animation)
+        public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation) : base(_dialogService, _navigationService, animation)
         {
             TapWordCommand = new Command<string>(TapWord);
         }

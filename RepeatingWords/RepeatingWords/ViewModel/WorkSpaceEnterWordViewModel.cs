@@ -13,7 +13,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceEnterWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IUnlearningWordsService unlearningManager, IAnimationService animation, IEntryWordValidator wordValidator) : base(_dialogService, _navigationService, unlearningManager, animation)
+        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation, IEntryWordValidator wordValidator) : base(_dialogService, _navigationService, animation)
         {
             CheckWordCommand = new Command(async () => await CheckWord());
             HintWordCommand = new Command(async () => await HintWord());

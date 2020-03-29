@@ -8,7 +8,6 @@ using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Model;
-using RepeatingWords.Service;
 using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using Unity;
@@ -35,7 +34,6 @@ namespace RepeatingWords.NUnitTest
             container.RegisterType<IDialogService, TestDialogService>();
             container.RegisterType<IDictionaryNameLearningCreator, DictionaryNameLearningCreator>();
             container.RegisterType<IDictionaryTypeByName, DictionaryTypeByName>();
-            container.RegisterType<IUnlearningWordsService, UnlerningWordsService>();
             container.RegisterType<IVolumeLanguageService, TestVolumeService>();
             container.RegisterType<IImportFile, ImportFileToDb>();
             container.RegisterType<ViewModelBase, RepeatingWordsViewModel>();

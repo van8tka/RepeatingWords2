@@ -4,7 +4,6 @@ using RepeatingWords.Helpers;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
-using RepeatingWords.Service;
 using RepeatingWords.ViewModel;
 using SimpleInjector;
 using Xamarin.Forms;
@@ -36,7 +35,6 @@ namespace RepeatingWords.Services
             _container.Register<IVolumeLanguageService, VolumeLanguageService>();
             _container.Register<IDictionaryNameLearningCreator, DictionaryNameLearningCreator>();
             _container.Register<IDictionaryTypeByName, DictionaryTypeByName>();
-            _container.Register<IUnlearningWordsService, UnlerningWordsService>();
             _container.Register<INewVersionAppChecker, NewVersionAppChecker>();
             _container.Register<ILanguageLoaderFacade, LanguageLoader>();
             _container.Register<IAnimationService, AnimationService>();
