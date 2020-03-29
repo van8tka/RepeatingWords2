@@ -1,11 +1,14 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using RepeatingWords.Annotations;
 using RepeatingWords.DataService.Model;
 
 namespace RepeatingWords.Model
 {
-   public class DictionaryModel:INotifyPropertyChanged
+   public class DictionaryModel:BaseModel
     {
         public DictionaryModel(Dictionary dictionary)
         {
@@ -14,16 +17,19 @@ namespace RepeatingWords.Model
             PercentOfLearned = dictionary.PercentOfLearned.ToString();
         }
 
+     
 
-        public int Id { get; set; }
-        public string Name { get; set; }
+        private string _name;
+        public string Name { get=>_name;
+            set { _name = value;OnPropertyChanged(nameof(Name));}
+        }
         private string _percent;
         public string PercentOfLearned
         {
             get => _percent;
             set
             {
-                if (int.Parse(value) == 0)
+                if (int.Parse(value) <= 0)
                     _percent = string.Empty;
                 else
                     _percent = value + "%";
@@ -31,12 +37,15 @@ namespace RepeatingWords.Model
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private ObservableCollection<WordsModel> _words;
 
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public ObservableCollection<WordsModel> WordsCollection
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get => _words;
+            set { _words = value; OnPropertyChanged(nameof(WordsCollection)); }
         }
+
+        public int CountWords => WordsCollection.Count();
+        public int CountUnlearned => WordsCollection.Count(x => x.IsLearned==false);
     }
 }
