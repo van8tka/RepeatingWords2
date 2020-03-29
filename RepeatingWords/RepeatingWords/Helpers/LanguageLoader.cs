@@ -13,14 +13,14 @@ namespace RepeatingWords.Helpers
     public class LanguageLoader : ILanguageLoaderFacade
     {
 
-        public LanguageLoader(IWebClient webService, IDictionaryStudyService studyService)
+        public LanguageLoader(IWebClient webService, IStudyService studyService)
         {
             this._webService = webService ?? throw new ArgumentNullException(nameof(webService));
             this._studyService = studyService ?? throw new ArgumentNullException(nameof(studyService));
         }
 
         private readonly IWebClient _webService;
-        private readonly IDictionaryStudyService _studyService;
+        private readonly IStudyService _studyService;
 
 
         public async Task LoadLanguageFromApi(int idLanguageServer, string nameLanguage)

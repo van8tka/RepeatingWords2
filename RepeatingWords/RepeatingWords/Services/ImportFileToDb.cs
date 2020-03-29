@@ -16,9 +16,9 @@ namespace RepeatingWords.Services
 {
     public class ImportFileToDb : IImportFile
     {
-        private readonly IDictionaryStudyService _studyService;
+        private readonly IStudyService _studyService;
 
-        public ImportFileToDb(IDictionaryStudyService studyService)
+        public ImportFileToDb(IStudyService studyService)
         {
             _studyService = studyService;
         }

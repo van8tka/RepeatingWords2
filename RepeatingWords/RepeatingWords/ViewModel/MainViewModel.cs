@@ -22,7 +22,7 @@ namespace RepeatingWords.ViewModel
     public class MainViewModel : ViewModelBase
     {
         public MainViewModel(INavigationService navService, IDialogService dialogService,
-            IDictionaryStudyService studyService, IImportFile importFile) : base(navService, dialogService)
+            IStudyService studyService, IImportFile importFile) : base(navService, dialogService)
         {
             _studyService = studyService;
             _importFile = importFile;
@@ -44,7 +44,7 @@ namespace RepeatingWords.ViewModel
             
         }
 
-        private readonly IDictionaryStudyService _studyService;
+        private readonly IStudyService _studyService;
         private readonly IImportFile _importFile;
 
         public void Appearing()

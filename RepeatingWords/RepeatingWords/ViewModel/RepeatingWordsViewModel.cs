@@ -17,7 +17,7 @@ namespace RepeatingWords.ViewModel
 {
     public class RepeatingWordsViewModel : ViewModelBase
     {
-        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IAnimationService animationService, ITextToSpeech speechService, IShowLanguage showLanguageService) : base(navigationServcie, dialogService)
+        public RepeatingWordsViewModel(INavigationService navigationServcie, IDialogService dialogService, IStudyService studyService, IAnimationService animationService, ITextToSpeech speechService, IShowLanguage showLanguageService) : base(navigationServcie, dialogService)
         {
             _animationService = animationService;
             _studyService = studyService;
@@ -42,7 +42,7 @@ namespace RepeatingWords.ViewModel
         private bool _isEditing;
         private readonly IAnimationService _animationService;
         private ICustomContentViewModel _workSpaceVM;
-        private readonly IDictionaryStudyService _studyService;
+        private readonly IStudyService _studyService;
         private readonly ITextToSpeech _speechService;
         private readonly IShowLanguage _showLanguageService;
         private Dictionary _dictionary;
@@ -61,10 +61,6 @@ namespace RepeatingWords.ViewModel
             get => _dictionaryName; set
             {
                 _dictionaryName = value;
-                if (_dictionaryName.EndsWith(Constants.NAME_DB_FOR_CONTINUE))
-                    _dictionaryName = _dictionaryName.Replace(Constants.NAME_DB_FOR_CONTINUE, "");
-                if (_dictionaryName.EndsWith(Resource.NotLearningPostfics))
-                    _dictionaryName = _dictionaryName.Replace(Resource.NotLearningPostfics, "");
                 OnPropertyChanged(nameof(DictionaryName));
             }
         }

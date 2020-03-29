@@ -13,9 +13,9 @@ namespace RepeatingWords.ViewModel
 {
     public class CreateWordViewModel : ViewModelBase
     {
-        private readonly IDictionaryStudyService _studyService;
+        private readonly IStudyService _studyService;
         private readonly IKeyboardTranscriptionService _keyboardService;
-        public CreateWordViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IKeyboardTranscriptionService keyboardService) : base(navigationServcie, dialogService)
+        public CreateWordViewModel(INavigationService navigationServcie, IDialogService dialogService, IStudyService studyService, IKeyboardTranscriptionService keyboardService) : base(navigationServcie, dialogService)
         {
             _keyboardService = keyboardService;
             _studyService = studyService;

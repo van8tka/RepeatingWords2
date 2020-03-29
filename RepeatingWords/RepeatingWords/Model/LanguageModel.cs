@@ -15,7 +15,7 @@ namespace RepeatingWords.Model
    public class LanguageModel:ObservableCollection<DictionaryModel>,INotifyPropertyChanged
    {
        
-        public LanguageModel( Language language, IEnumerable<Dictionary> dictionaries = null, bool expanded = false)
+        public LanguageModel( Language language, IEnumerable<DictionaryModel> dictionaries = null, bool expanded = false)
         {
             
             Id = language.Id;
@@ -26,11 +26,14 @@ namespace RepeatingWords.Model
             
         }
 
-        private void AddDictionariesToCash(IEnumerable<Dictionary> dictionaries)
+        private void AddDictionariesToCash(IEnumerable<DictionaryModel> dictionaries)
         {
             if (dictionaries != null && dictionaries.Any())
-                foreach (var dictionary in dictionaries)
-                    _dictionariesCash.Add(new DictionaryModel(dictionary));
+            {
+                int count = dictionaries.Count();
+                for (int i = 0; i < count; i++)
+                    _dictionariesCash.Add(dictionaries.ElementAt(i));
+            }
         }
 
         private void ExpandChange()
@@ -42,12 +45,12 @@ namespace RepeatingWords.Model
       
         private void AddRangeToCollection()
         {
-            for (int i = 0; i < _dictionariesCash.Count(); i++)
+            int count = _dictionariesCash.Count();
+            for (int i = 0; i < count ; i++)
                 this.Add(_dictionariesCash.ElementAt(i));
         }
 
         private ObservableCollection<DictionaryModel> _dictionariesCash = new ObservableCollection<DictionaryModel>();
-
         private int _id;
         public int Id { get=>_id;
             set { _id = value;OnPropertyChanged(nameof(Id)); }
@@ -61,10 +64,8 @@ namespace RepeatingWords.Model
         }
 
        
-        public string Title
-        {
-            get => _name+" % ";
-        }
+        public string Title => _name+" % ";
+        
 
         private bool _expanded;
 
@@ -98,41 +99,21 @@ namespace RepeatingWords.Model
         }
 
 
-        public void RemoveDictionary(Dictionary dictionary)
+        public void RemoveDictionary(int id)
         {
-            var dictionaryModel = _dictionariesCash.Where(x => x.Id == dictionary.Id).FirstOrDefault();
+            var dictionaryModel = _dictionariesCash.FirstOrDefault(x => x.Id ==id);
             if (dictionaryModel != null)
             {
                 _dictionariesCash.Remove(dictionaryModel);
                 this.Remove(dictionaryModel);
             }
         }
-        public DictionaryModel AddDictionary(Dictionary dictionary)
+        public void AddDictionary(DictionaryModel dictionary)
         {
-            var modelDict = new DictionaryModel(dictionary);
-            _dictionariesCash.Add(modelDict);
-            this.Add(modelDict);
-            return modelDict;
+            _dictionariesCash.Add(dictionary);
+            this.Add(dictionary);
         }
-
-        public void UpdateDictionary(Dictionary dictionary)
-        {
-            try
-            {
-                var dictionaryToUpdate = _dictionariesCash.FirstOrDefault(x => x.Id == dictionary.Id);
-                int index = _dictionariesCash.IndexOf(dictionaryToUpdate);
-                _dictionariesCash.ElementAt(index).Id = dictionary.Id;
-                _dictionariesCash.ElementAt(index).Name = dictionary.Name;
-                _dictionariesCash.ElementAt(index).PercentOfLearned = dictionary.PercentOfLearned.ToString();
-            }
-            catch (Exception e)
-            {
-                Log.Logger.Error(e);
-                throw;
-            }
-        }
-
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -140,7 +121,5 @@ namespace RepeatingWords.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-       
    }
 }

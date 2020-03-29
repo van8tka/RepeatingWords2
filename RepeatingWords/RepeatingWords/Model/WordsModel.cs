@@ -1,7 +1,19 @@
-﻿namespace RepeatingWords.Model
+﻿using RepeatingWords.DataService.Model;
+
+namespace RepeatingWords.Model
 {
    public class WordsModel:BaseModel
    {
+       public WordsModel(DictionaryModel dictionaryParent, Words wordDb)
+       {
+           DictionaryParent = dictionaryParent;
+           Id = wordDb.Id;
+           RusWord = wordDb.RusWord;
+           EngWord = wordDb.EngWord;
+           Transcription = wordDb.Transcription;
+           IsLearned = wordDb.IsLearned;
+       }
+
        private DictionaryModel _dictionary;
        public DictionaryModel DictionaryParent { get=>_dictionary;
            set { _dictionary = value; OnPropertyChanged(nameof(DictionaryParent)); }

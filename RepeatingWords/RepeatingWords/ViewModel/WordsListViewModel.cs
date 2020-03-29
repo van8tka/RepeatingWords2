@@ -18,7 +18,7 @@ namespace RepeatingWords.ViewModel
     public class WordsListViewModel:ViewModelBase
     {
  //ctor      
-        public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IDictionaryStudyService studyService, IImportFile importFile) : base(navigationServcie, dialogService)
+        public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IStudyService studyService, IImportFile importFile) : base(navigationServcie, dialogService)
         {
             _studyService = studyService ?? throw new ArgumentNullException(nameof(studyService));
             _importFile = importFile ?? throw new ArgumentNullException(nameof(importFile));
@@ -30,7 +30,7 @@ namespace RepeatingWords.ViewModel
         public ICommand RepeatingWordsCommand { get; set; }
         public ICommand ImportWordsCommand { get; set; }
 
-        private readonly IDictionaryStudyService _studyService;
+        private readonly IStudyService _studyService;
         private readonly IImportFile _importFile;
 
         private Dictionary _dictionary;
@@ -38,10 +38,6 @@ namespace RepeatingWords.ViewModel
         public string DictionaryName { get => _dictionaryName;
             set {
                 _dictionaryName = value;
-                if (_dictionaryName.EndsWith(Constants.NAME_DB_FOR_CONTINUE))
-                    _dictionaryName = _dictionaryName.Replace(Constants.NAME_DB_FOR_CONTINUE, "");
-                if (_dictionaryName.EndsWith(Resource.NotLearningPostfics))
-                    _dictionaryName = _dictionaryName.Replace(Resource.NotLearningPostfics, "");               
                 OnPropertyChanged(nameof(DictionaryName)); } }
         private ObservableCollection<Words> _wordsList;
         public ObservableCollection<Words> WordsList { get => _wordsList; set { _wordsList = value; OnPropertyChanged(nameof(WordsList)); } }
