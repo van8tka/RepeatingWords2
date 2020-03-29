@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using RepeatingWords.Annotations;
 using RepeatingWords.DataService.Model;
 
 namespace RepeatingWords.Model
@@ -16,8 +12,6 @@ namespace RepeatingWords.Model
             Name = dictionary.Name;
             PercentOfLearned = dictionary.PercentOfLearned.ToString();
         }
-
-     
 
         private string _name;
         public string Name { get=>_name;
