@@ -133,18 +133,18 @@ namespace RepeatingWords.ViewModel
                 string showWords = Resource.ButtonShowWords;
                 string studing = Resource.ButtonRepeatWords;
                 string studingNotLearning = Resource.ButtonStudyNotLearning;
-                var unlearningDictionary = _studyService.GetUnlearningDictionary(selectedItem.Name);
+              //  var unlearningDictionary = _studyService.GetUnlearningDictionary(selectedItem.Name);
                 string[] actionButtons;
-                if (unlearningDictionary != null)
-                    actionButtons = new string[] {studing, studingNotLearning, showWords, removeDictionary};
-                else
+                //if (unlearningDictionary != null)
+                //    actionButtons = new string[] {studing, studingNotLearning, showWords, removeDictionary};
+               // else
                     actionButtons = new string[] {studing, showWords, removeDictionary};
                 var result =
                     await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
                 if (result.Equals(studing, StringComparison.OrdinalIgnoreCase))
                     await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(selectedItem);
-                else if (result.Equals(studingNotLearning, StringComparison.OrdinalIgnoreCase))
-                    await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(unlearningDictionary);
+                //else if (result.Equals(studingNotLearning, StringComparison.OrdinalIgnoreCase))
+                //    await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(unlearningDictionary);
                 else if (result.Equals(showWords, StringComparison.OrdinalIgnoreCase))
                     await NavigationService.NavigateToAsync<WordsListViewModel>(selectedItem);
                 else if (result.Equals(removeDictionary, StringComparison.OrdinalIgnoreCase))
@@ -208,12 +208,12 @@ namespace RepeatingWords.ViewModel
             return idLang;
         }
 
-        private async Task RemoveDictionary(Dictionary removeDictionary)
+        private async Task RemoveDictionary(DictionaryModel removeDictionary)
         {
             DialogService.ShowLoadDialog(Resource.Deleting);
-            await _studyService.RemoveDictionaryFromLanguage(removeDictionary,
-                DictionaryList.FirstOrDefault(x => x.Id == removeDictionary.IdLanguage));
+            DictionaryList.FirstOrDefault(x => x.Id == removeDictionary.IdLanguage)?.RemoveDictionary(removeDictionary.Id);
             OnPropertyChanged(nameof(DictionaryList));
+            await _studyService.RemoveDictionaryFromLanguage(removeDictionary.Id);
             DialogService.HideLoadDialog();
         }
 

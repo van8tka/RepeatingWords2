@@ -28,7 +28,7 @@ namespace RepeatingWords.Services
     public interface IDictionaryStudyService
     {
         DictionaryModel GetDictionary(int idDictionary);
-        Task<bool> RemoveDictionaryFromLanguage(int dictionaryId, LanguageModel removedLanguage);
+        Task<bool> RemoveDictionaryFromLanguage(int dictionaryId);
         int AddDictionary(string dictionaryName, int idLang);
     }
     public interface ITransactionService
@@ -165,7 +165,7 @@ namespace RepeatingWords.Services
                         .AsEnumerable();
                     for (int i = 0; i < dictionaries.Count(); i++)
                     {
-                        removeDictionaryFromLanguage(dictionaries.ElementAt(i).Id, removedLanguage);
+                        removeDictionaryFromLanguage(dictionaries.ElementAt(i).Id);
                     }
 
                     var language = _unitOfWork.LanguageRepository.Get(removedLanguage.Id);
@@ -177,16 +177,16 @@ namespace RepeatingWords.Services
             });
         }
 
-        public Task<bool> RemoveDictionaryFromLanguage(int dictionaryId, LanguageModel removedLanguage)
+        public Task<bool> RemoveDictionaryFromLanguage(int dictionaryId)
         {
-            return Task.Run(() => { return removeDictionaryFromLanguage(dictionaryId, removedLanguage); });
+            return Task.Run(() => { return removeDictionaryFromLanguage(dictionaryId); });
         }
 
-        private bool removeDictionaryFromLanguage(int dictionaryId, LanguageModel removedLanguage)
+        private bool removeDictionaryFromLanguage(int dictionaryId)
         {
             try
             {
-                removedLanguage.RemoveDictionary(dictionaryId);
+
                 var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == dictionaryId).AsEnumerable();
                 if (words != null && words.Any())
                 {

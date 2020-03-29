@@ -15,6 +15,7 @@ namespace RepeatingWords.Model
             Name = dictionary.Name;
             PercentOfLearned = dictionary.PercentOfLearned.ToString();
             LastUpdated = dictionary.LastUpdated;
+            IdLanguage = dictionary.IdLanguage;
             WordsCollection = GetCollectionWordsFromRawData(wordsDb);
         }
 
@@ -52,6 +53,14 @@ namespace RepeatingWords.Model
                 OnPropertyChanged(nameof(PercentOfLearned));
             }
         }
+
+        private int _idLanguage;
+        public int IdLanguage
+        {
+            get => _idLanguage;
+            set { _idLanguage = value;OnPropertyChanged(nameof(IdLanguage)); }
+        }
+
 
         private DateTime _lastUpdated;
         public DateTime LastUpdated

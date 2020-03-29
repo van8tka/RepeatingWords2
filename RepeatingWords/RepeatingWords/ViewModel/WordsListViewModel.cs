@@ -33,17 +33,16 @@ namespace RepeatingWords.ViewModel
         private readonly IStudyService _studyService;
         private readonly IImportFile _importFile;
 
-        private Dictionary _dictionary;
+        private DictionaryModel _dictionary;
         private string _dictionaryName;
         public string DictionaryName { get => _dictionaryName;
             set {
                 _dictionaryName = value;
                 OnPropertyChanged(nameof(DictionaryName)); } }
-        private ObservableCollection<Words> _wordsList;
-        public ObservableCollection<Words> WordsList { get => _wordsList; set { _wordsList = value; OnPropertyChanged(nameof(WordsList)); } }
-        private Words _selectedItem;
-
-        public Words SelectedItem
+        private ObservableCollection<WordsModel> _wordsList;
+        public ObservableCollection<WordsModel> WordsList { get => _wordsList; set { _wordsList = value; OnPropertyChanged(nameof(WordsList)); } }
+        private WordsModel _selectedItem;
+        public WordsModel SelectedItem
         {
             get => _selectedItem;
             set { _selectedItem = value; 
@@ -59,7 +58,7 @@ namespace RepeatingWords.ViewModel
             set { _isVisibleListEmpty = value; OnPropertyChanged(nameof(IsVisibleListEmpty)); }
         }
 
-        private async void ShowActions(Words selectedItem)
+        private async void ShowActions(WordsModel selectedItem)
         {
             try
             {
@@ -82,7 +81,7 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private async Task Remove(Words selectedItem)
+        private async Task Remove(WordsModel selectedItem)
         {
             _studyService.RemoveWord(selectedItem);
             WordsList.Remove(selectedItem); 
@@ -106,12 +105,12 @@ namespace RepeatingWords.ViewModel
         public override async Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
-            if (navigationData is Dictionary dictionary)
+            if (navigationData is DictionaryModel dictionary)
             {
                 _dictionary = dictionary;
                 DictionaryName = dictionary.Name;
-                WordsList = LoadData(dictionary.Id);
-                _countWords = WordsList.Count();
+                WordsList = dictionary.WordsCollection;
+                _countWords = dictionary.CountWords;
                 DictionaryName = dictionary.Name+"("+CountWords+")";
                 SetIsListEmptyLabel();
             }
@@ -148,11 +147,5 @@ namespace RepeatingWords.ViewModel
             IsVisibleListEmpty = !WordsList.Any();
         }
 
-        private ObservableCollection<Words> LoadData(int id)
-        {
-            var data = _studyService.GetWordsByDictionary(id);                          
-            return new ObservableCollection<Words>(data);
-        }
-      
     }
 }
