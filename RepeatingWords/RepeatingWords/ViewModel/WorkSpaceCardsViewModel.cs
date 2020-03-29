@@ -61,7 +61,7 @@ namespace RepeatingWords.ViewModel
             await AnimationService.AnimationPositionWordRevert(WordContainer);
         }
 
-        internal override Task SetViewWords(Words word, bool isNative)
+        public override Task SetViewWords(Words word, bool isNative)
         {
             SetViewWords( word, isNative, false);
             return Task.Delay(1);

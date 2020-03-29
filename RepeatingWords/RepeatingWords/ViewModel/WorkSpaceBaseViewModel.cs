@@ -37,7 +37,8 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                await SaveUnlearnedWords(Model.CurrentWord, Model.IsOpenCurrentWord);
+                // await SaveUnlearnedWords(Model.CurrentWord, Model.IsOpenCurrentWord);
+                Model.IsOpenCurrentWord = false;
                 if (isFirstShowAfterLoad && Model.IndexWordShowNow != -1)
                     Model.IndexWordShowNow--;
                 if ((Model.IndexWordShowNow < Model.AllWordsCount - 1 && Model.IndexWordShowNow >= 0) ||isFirstShowAfterLoad)
@@ -74,14 +75,14 @@ namespace RepeatingWords.ViewModel
         /// если слово было открыто, не написано, выбрано не правильно то сохраняем его в словаре не выученных(или не удаляем его от туда)
         /// иначе если слово было написано правильно, выбрано правильно или пролистано, то удаляем его из не выученных слов
         /// </summary>    
-        private async Task SaveUnlearnedWords(Words word,bool isOpenCurrentWord)
-        {
-            if (word != null)
-               await Task.Run(() => { _unlearningWords.CheckSaveOrRemoveWord(word, isOpenCurrentWord, Model.Dictionary.Name); });
-            Model.IsOpenCurrentWord = false;
-        }
+        //private async Task SaveUnlearnedWords(Words word,bool isOpenCurrentWord)
+        //{
+        //    if (word != null)
+        //       await Task.Run(() => { _unlearningWords.CheckSaveOrRemoveWord(word, isOpenCurrentWord, Model.Dictionary.Name); });
+        //    Model.IsOpenCurrentWord = false;
+        //}
   
-        internal abstract Task SetViewWords(Words currentWord, bool isFromNative);
+        public abstract Task SetViewWords(Words currentWord, bool isFromNative);
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)

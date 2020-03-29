@@ -40,7 +40,7 @@ namespace RepeatingWords.ViewModel
         public ICommand CheckWordCommand { get; set; }
         public ICommand HintWordCommand { get; set; }
 
-        internal override async Task SetViewWords(Words currentWord, bool isFromNative)
+        public override async Task SetViewWords(Words currentWord, bool isFromNative)
         {
             await AnimationService.AnimationFade(WordContainer,0);
             _showingWord = currentWord;
@@ -144,7 +144,7 @@ namespace RepeatingWords.ViewModel
                     await SetValidMarks();
                     _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
                     Model.IsOpenCurrentWord = false;
-                    ShowNextWord();
+                    await ShowNextWord();
                 }
                 else
                 {

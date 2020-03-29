@@ -192,17 +192,15 @@ namespace RepeatingWords.ViewModel
             }
             catch (Exception e)
             {
-                DialogService.ShowToast("Error loading words to study");
+                DialogService.ShowToast("Error loading words to study"+e.Message);
             }
         }
-
-       
 
         private async Task AppearingPage()
         {
             if (_isEditing)
             {
-               await (_workSpaceVM as WorkSpaceBaseViewModel).SetViewWords(Model.CurrentWord, Model.IsFromNative);
+               await _workSpaceVM.SetViewWords(Model.CurrentWord, Model.IsFromNative);
             }
             _isEditing = false;
         }
@@ -214,7 +212,7 @@ namespace RepeatingWords.ViewModel
                 _dictionary.LastUpdated = DateTime.UtcNow;
                 float proportion = (float)Model.AllLearnedWordsCount / (float)Model.AllWordsCount;
                 _dictionary.PercentOfLearned = (int)(proportion * PERSENT);
-                _studyService.UpdateDictionary(_dictionary);
+              //  _studyService.UpdateDictionary(_dictionary);
                 return await Task.FromResult(true);
             }
             catch (Exception e)
