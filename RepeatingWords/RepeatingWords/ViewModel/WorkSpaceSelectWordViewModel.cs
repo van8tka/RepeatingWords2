@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using RepeatingWords.Model;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
@@ -113,8 +114,8 @@ namespace RepeatingWords.ViewModel
 
        
 
-        private Words _showingWord;
-        public override Task SetViewWords(Words currentWord, bool isFromNative)
+        private WordsModel _showingWord;
+        public override Task SetViewWords(WordsModel currentWord, bool isFromNative)
         {
             _showingWord = currentWord;
             CurrentShowingWord = isFromNative ? currentWord.RusWord : currentWord.EngWord;
@@ -122,7 +123,7 @@ namespace RepeatingWords.ViewModel
             return Task.Delay(1);
         }
 
-        public void SetSelectingWords(Words word, bool isNative)
+        public void SetSelectingWords(WordsModel word, bool isNative)
         {
            var otherWords = GetThreeWords(word); 
            if(otherWords.Any())
@@ -144,9 +145,9 @@ namespace RepeatingWords.ViewModel
             }           
         }
 
-        private IList<Words> GetThreeWords(Words word)
+        private IList<WordsModel> GetThreeWords(WordsModel word)
         {
-            var listWordsForGrid = new List<Words>(4);
+            var listWordsForGrid = new List<WordsModel>(4);
             try
             {             
                 var random = new Random();

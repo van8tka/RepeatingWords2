@@ -22,23 +22,23 @@ namespace RepeatingWords.NUnitTest
         {
             vm = new WorkSpaceSelectWordViewModel(null, null, null);
             model = new RepeatingWordsModel();
-            model.WordsLearningAll = new List<Words>()
+            model.WordsLearningAll = new List<WordsModel>()
             {
-                new Words{Id=0,IdDictionary=0,EngWord="0",RusWord="0-",Transcription="-0-"},
-                 new Words{Id=1,IdDictionary=1,EngWord="1",RusWord="1-",Transcription="-1-"},
-                  new Words{Id=2,IdDictionary=2,EngWord="2",RusWord="2-",Transcription="-2-"},
-                   new Words{Id=3,IdDictionary=3,EngWord="3",RusWord="3-",Transcription="-3-"},
-                    new Words{Id=4,IdDictionary=4,EngWord="4",RusWord="4-",Transcription="-4-"}
+                //new WordsModel{Id=0,IdDictionary=0,EngWord="0",RusWord="0-",Transcription="-0-"},
+                // new Words{Id=1,IdDictionary=1,EngWord="1",RusWord="1-",Transcription="-1-"},
+                //  new Words{Id=2,IdDictionary=2,EngWord="2",RusWord="2-",Transcription="-2-"},
+                //   new Words{Id=3,IdDictionary=3,EngWord="3",RusWord="3-",Transcription="-3-"},
+                //    new Words{Id=4,IdDictionary=4,EngWord="4",RusWord="4-",Transcription="-4-"}
             };
             vm.Model = model;
-            word = model.WordsLearningAll.First();
+          //  word = model.WordsLearningAll.First();
         }
 
 
         [Test]
         public void TestSetSelectingWords( )
         {
-            vm.SetSelectingWords(word, true);
+          //  vm.SetSelectingWords(word, true);
         }
 
 

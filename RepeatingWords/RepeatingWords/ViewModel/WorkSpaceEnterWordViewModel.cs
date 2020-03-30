@@ -2,6 +2,7 @@
 using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
+using RepeatingWords.Model;
 using System;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace RepeatingWords.ViewModel
             _wordValidator = wordValidator ?? throw new ArgumentNullException(nameof(wordValidator));
         }
 
-        private Words _showingWord;     
+        private WordsModel _showingWord;     
         private int _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
         private readonly IEntryWordValidator _wordValidator;
         private string _enterAnswerWord;
@@ -40,7 +41,7 @@ namespace RepeatingWords.ViewModel
         public ICommand CheckWordCommand { get; set; }
         public ICommand HintWordCommand { get; set; }
 
-        public override async Task SetViewWords(Words currentWord, bool isFromNative)
+        public override async Task SetViewWords(WordsModel currentWord, bool isFromNative)
         {
             await AnimationService.AnimationFade(WordContainer,0);
             _showingWord = currentWord;

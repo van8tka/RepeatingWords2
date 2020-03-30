@@ -17,7 +17,7 @@ namespace RepeatingWords.ViewModel
 {
     public class WordsListViewModel:ViewModelBase
     {
- //ctor      
+       //ctor
         public WordsListViewModel(INavigationService navigationServcie, IDialogService dialogService, IStudyService studyService, IImportFile importFile) : base(navigationServcie, dialogService)
         {
             _studyService = studyService ?? throw new ArgumentNullException(nameof(studyService));

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.Model;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
@@ -13,7 +13,7 @@ namespace RepeatingWords.ViewModel
         {
             SendCommand = new Command(Send);
         }
-        private Words _word;
+        private WordsModel _word;
         public ICommand SendCommand { get; set; }
         private string _textTranscription;
         public string TextTranscription { get => _textTranscription; set { _textTranscription = value; OnPropertyChanged(nameof(TextTranscription)); } }
@@ -28,7 +28,7 @@ namespace RepeatingWords.ViewModel
 
         public override Task InitializeAsync(object navigationData)
         {
-            if (navigationData is Words word)
+            if (navigationData is WordsModel word)
             {
                 _word = word;
             }

@@ -1,4 +1,5 @@
-﻿using FormsControls.Base;
+﻿using System.Threading.Tasks;
+using FormsControls.Base;
 using Xamarin.Forms;
 using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
@@ -12,9 +13,10 @@ namespace RepeatingWords.View
             InitializeComponent();
             BindingContext = LocatorService.Container.GetInstance<CreateWordViewModel>();
         }
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+            await Task.Delay(1);
             EntryNativeWord.Focus();
         }
 

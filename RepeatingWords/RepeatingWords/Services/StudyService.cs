@@ -167,7 +167,6 @@ namespace RepeatingWords.Services
                     {
                         removeDictionaryFromLanguage(dictionaries.ElementAt(i).Id);
                     }
-
                     var language = _unitOfWork.LanguageRepository.Get(removedLanguage.Id);
                     _unitOfWork.LanguageRepository.Delete(language);
                     _unitOfWork.Save();
@@ -186,7 +185,6 @@ namespace RepeatingWords.Services
         {
             try
             {
-
                 var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == dictionaryId).AsEnumerable();
                 if (words != null && words.Any())
                 {
@@ -264,7 +262,6 @@ namespace RepeatingWords.Services
                 word.IdDictionary = wordNew.DictionaryParent.Id;
                 var wordDb = _unitOfWork.WordsRepository.Create(word);
                 SetDictionaryUpdate(word.IdDictionary);
-                _unitOfWork.Save();
                 _words.Add(word);
                 wordNew.Id = wordDb.Id;
                 return wordNew;
@@ -290,15 +287,18 @@ namespace RepeatingWords.Services
             try
             {
                 var wordDb = _words.FirstOrDefault(x => x.Id == word.Id);
-                _unitOfWork.WordsRepository.Update(wordDb);
-                SetDictionaryUpdate(wordDb.IdDictionary);
-                _unitOfWork.Save();
-                var oldWord = _words.FirstOrDefault(x => x.Id == word.Id);
-                int index = _words.IndexOf(oldWord);
+                int index = _words.IndexOf(wordDb);
                 _words.ElementAt(index).EngWord = word.EngWord;
                 _words.ElementAt(index).IsLearned = word.IsLearned;
                 _words.ElementAt(index).RusWord = word.RusWord;
                 _words.ElementAt(index).Transcription = word.Transcription;
+                wordDb.EngWord = word.EngWord;
+                wordDb.IsLearned = word.IsLearned;
+                wordDb.RusWord = word.RusWord;
+                wordDb.Transcription = word.Transcription;
+                _unitOfWork.WordsRepository.Update(wordDb);
+                SetDictionaryUpdate(word.DictionaryParent.Id);
+                _unitOfWork.Save();
                 return true;
             }
             catch (Exception e)
@@ -314,8 +314,6 @@ namespace RepeatingWords.Services
             _unitOfWork.WordsRepository.Delete(wordDb);
             _unitOfWork.Save();
         }
-
-  
 
         public Language GetLanguage(string name)
         {

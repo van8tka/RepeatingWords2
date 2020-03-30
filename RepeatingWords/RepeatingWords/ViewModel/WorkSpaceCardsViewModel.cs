@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using RepeatingWords.Model;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
@@ -61,13 +62,13 @@ namespace RepeatingWords.ViewModel
             await AnimationService.AnimationPositionWordRevert(WordContainer);
         }
 
-        public override Task SetViewWords(Words word, bool isNative)
+        public override Task SetViewWords(WordsModel word, bool isNative)
         {
             SetViewWords( word, isNative, false);
             return Task.Delay(1);
         }
 
-        private void SetViewWords(Words word, bool isNative, bool isOpened)
+        private void SetViewWords(WordsModel word, bool isNative, bool isOpened)
         {         
             if (isOpened)
             {               

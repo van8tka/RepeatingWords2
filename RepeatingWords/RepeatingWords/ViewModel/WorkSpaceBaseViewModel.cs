@@ -69,7 +69,7 @@ namespace RepeatingWords.ViewModel
         }
 
       
-        public abstract Task SetViewWords(Words currentWord, bool isFromNative);
+        public abstract Task SetViewWords(WordsModel currentWord, bool isFromNative);
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)

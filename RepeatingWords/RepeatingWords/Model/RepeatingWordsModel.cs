@@ -14,8 +14,8 @@ namespace RepeatingWords.Model
             AllShowedWordsCount = 0;
             AllLearnedWordsCount = 0;
             AllOpenedWordsCount = 0;
-            WordsOpen = new List<Words>();
-            WordsLeft = new List<Words>();
+            WordsOpen = new List<WordsModel>();
+            WordsLeft = new List<WordsModel>();
             IndexWordShowNow = -1;
         }
 
@@ -29,12 +29,12 @@ namespace RepeatingWords.Model
         public int AllOpenedWordsCount { get => _allOpenedWordsCount; set { _allOpenedWordsCount = value; OnPropertyChanged(nameof(AllOpenedWordsCount)); } }
 
         internal bool IsOpenCurrentWord { get; set; }
-        internal Words CurrentWord { get; set; }
+        internal WordsModel CurrentWord { get; set; }
         internal bool IsFromNative { get; set; }
-        public IList<Words> WordsOpen { get; set; }
-        public IList<Words> WordsLearningAll { get; set; }
-        public IList<Words> WordsLeft { get; set; }
-        public Dictionary Dictionary { get; internal set; }
+        public IList<WordsModel> WordsOpen { get; set; }
+        public IList<WordsModel> WordsLearningAll { get; set; }
+        public IList<WordsModel> WordsLeft { get; set; }
+        public DictionaryModel Dictionary { get; internal set; }
         internal int IndexWordShowNow;
 
         public event PropertyChangedEventHandler PropertyChanged;

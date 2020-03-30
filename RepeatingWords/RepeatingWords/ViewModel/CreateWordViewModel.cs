@@ -6,6 +6,7 @@ using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
+using RepeatingWords.Model;
 using RepeatingWords.Services;
 using Xamarin.Forms;
 
@@ -20,13 +21,13 @@ namespace RepeatingWords.ViewModel
             _keyboardService = keyboardService;
             _studyService = studyService;
             SendCommand = new Command(SendWord);
-            FocusedTranscriptionCommand = new Command(FocusedTranscription);
+            FocusedTranscriptionCommand = new Command( async()=> await FocusedTranscription());
         }
       
         public override Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
-            if (navigationData is Words word)
+            if (navigationData is WordsModel word)
             {
                 if (word.Id > -1)
                 {
@@ -40,24 +41,22 @@ namespace RepeatingWords.ViewModel
                 }
                 NativeWord = word.RusWord;
                 TranslateWord = word.EngWord;
-                TranscriptionWord = word.Transcription;              
+                TranscriptionWord = word.Transcription;
                 _wordChange = word;
-                _dictionary = _studyService.GetDictionary(word.IdDictionary);
+                _dictionary = word.DictionaryParent;
             }
-            else if (navigationData is Dictionary dictionary)
-            {
-                 TitleEditWord = Resource.TitleCreateWord;             
-                _dictionary = dictionary;
-                _isChangeWord = false;
-            }               
             else
-                throw new Exception("Can't initialize CreateWordViewModel, bad input parameter");
+            {
+                TitleEditWord = Resource.TitleCreateWord;             
+                _dictionary = navigationData as DictionaryModel;
+                _isChangeWord = false;
+            }
             return base.InitializeAsync(navigationData);
         }
 
         private bool _isChangeWord { get; set; }
-        private Dictionary _dictionary;
-        private Words _wordChange;
+        private DictionaryModel _dictionary;
+        private WordsModel _wordChange;
 
 
 
@@ -74,7 +73,7 @@ namespace RepeatingWords.ViewModel
         public ICommand SendCommand { get; set; }
         public ICommand FocusedTranscriptionCommand { get; set; }
 
-        private async void SendWord()
+        private void SendWord()
         {
             try
             {               
@@ -92,8 +91,8 @@ namespace RepeatingWords.ViewModel
                     {
                         TranscriptionWord = "[]";
                     }
-                    var word = CreateWord();                   
-                    await GoBack();
+                    CreateWord(); 
+                    GoBack();
                 }
                 else
                 {
@@ -121,54 +120,42 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private Words CreateWord()
+        private WordsModel CreateWord()
         {
-            try
+            if (!_isChangeWord)
             {
-                if (!_isChangeWord)
-                {
-                    var word = new Words()
-                    {
-                        Id = 0,
-                        IdDictionary = _dictionary.Id,
-                        RusWord = NativeWord,
-                        EngWord = TranslateWord,
-                        Transcription = TranscriptionWord
-                    };
-                    word = _studyService.AddWord(word);
-                    return word;
-                }
-                SetDataToChangeWord();
-                _studyService.UpdateWord(_wordChange);
-                return _wordChange;
+                Log.Logger.Info("\n Create new WordsModel");
+                var model = new WordsModel();
+                model.DictionaryParent = _dictionary;
+                model.RusWord = NativeWord;
+                model.EngWord = TranslateWord;
+                model.Transcription = TranscriptionWord; 
+              //  model = _studyService.AddWord(model);
+                _dictionary.WordsCollection.Add(model);
+                return model;
             }
-            catch (Exception e)
-            {
-                Log.Logger.Error(e);
-                throw;
-            }            
+            Log.Logger.Info("\n Update WordsModel");
+            SetDataToChangeWord();
+            _studyService.UpdateWord(_wordChange);
+            return _wordChange;
         }
 
-        private async void FocusedTranscription()
+        private async Task FocusedTranscription()
         {
-            try
+            if (_keyboardService.GetCurrentTranscriptionKeyboard())
             {
-                if (_keyboardService.GetCurrentTranscriptionKeyboard())
+                DependencyService.Get<IKeyboardService>().HideKeyboard();
+                if (_isChangeWord)
                 {
-                    DependencyService.Get<IKeyboardService>().HideKeyboard();
-                    if (_isChangeWord)
-                    {
-                        SetDataToChangeWord();
-                        _wordChange.IdDictionary = _dictionary.Id;
-                        await NavigationService.NavigateToAsync<EntryTranscriptionViewModel>(_wordChange);
-                    }
-                    else
-                        await NavigationService.NavigateToAsync<EntryTranscriptionViewModel>(new Words() { Id = -1, Transcription = TranscriptionWord, RusWord = NativeWord, EngWord = TranslateWord, IdDictionary = _dictionary.Id });                  
+                    SetDataToChangeWord();
+                    await NavigationService.NavigateToAsync<EntryTranscriptionViewModel>(_wordChange);
                 }
-            }
-            catch(Exception e)
-            {              
-                Log.Logger.Error(e);
+                else
+                    await NavigationService.NavigateToAsync<EntryTranscriptionViewModel>(new WordsModel()
+                    {
+                        Id = -1, Transcription = TranscriptionWord, RusWord = NativeWord, EngWord = TranslateWord,
+                        DictionaryParent = _dictionary
+                    });
             }
         }
 
@@ -177,6 +164,7 @@ namespace RepeatingWords.ViewModel
             _wordChange.RusWord = NativeWord;
             _wordChange.EngWord = TranslateWord;
             _wordChange.Transcription = TranscriptionWord;
+            _wordChange.DictionaryParent = _dictionary;
         }
     }
 }

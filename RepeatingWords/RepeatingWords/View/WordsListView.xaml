@@ -6,7 +6,7 @@
               xmlns:converter="clr-namespace:RepeatingWords.Converters;assembly=RepeatingWords"
              xmlns:controls="clr-namespace:RepeatingWords.CustomControls;assembly=RepeatingWords"
              xmlns:vm="clr-namespace:RepeatingWords.ViewModel;assembly=RepeatingWords"
-             xmlns:modOut="clr-namespace:RepeatingWords.DataService.Model;assembly=RepeatingWords.DataService"
+             xmlns:modOut="clr-namespace:RepeatingWords.Model;assembly=RepeatingWords"
              Style="{StaticResource TitleApp}"
              Title="{Binding DictionaryName}"
              >
@@ -21,7 +21,7 @@
                                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}" 
                         >
                             <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="modOut:Words">
+                                <DataTemplate x:DataType="modOut:WordsModel">
                                     <ViewCell>
                                         <ViewCell.View>
                                             <StackLayout Orientation="Vertical">
