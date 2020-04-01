@@ -12,12 +12,15 @@ namespace RepeatingWords.View
         {
             InitializeComponent();
             BindingContext = LocatorService.Container.GetInstance<CreateWordViewModel>();
+            SetFocus();
         }
-        protected override async void OnAppearing()
+        private void SetFocus()
         {
-            base.OnAppearing();
-            await Task.Delay(1);
-            EntryNativeWord.Focus();
+           MessagingCenter.Subscribe<CreateWordViewModel>(this,"SetFocus", async (sender) =>
+           {
+               await Task.Delay(10);
+               EntryNativeWord.Focus();
+           });
         }
 
         public IPageAnimation PageAnimation { get; } = new SlidePageAnimation { Duration = AnimationDuration.Short, Subtype = AnimationSubtype.FromRight };

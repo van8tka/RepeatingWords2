@@ -13,6 +13,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Add" Icon="toolbarImageAdd.png" Command="{Binding SendCommand}"/>
     </ContentPage.ToolbarItems>
+  
     <ScrollView>
     <StackLayout Margin="10,5,10,0" x:DataType="vm:CreateWordViewModel">
             <Entry x:Name="EntryNativeWord" Text="{Binding NativeWord}" Placeholder="{local:Translate LabelFirstWord}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" BackgroundColor="Transparent" PlaceholderColor="Gray"/>

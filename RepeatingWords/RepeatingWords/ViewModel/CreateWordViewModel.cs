@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using FormsControls.Base;
-using RepeatingWords.DataService.Interfaces;
-using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Model;
@@ -51,6 +48,7 @@ namespace RepeatingWords.ViewModel
                 _dictionary = navigationData as DictionaryModel;
                 _isChangeWord = false;
             }
+            MessagingCenter.Send<CreateWordViewModel>(this, "SetFocus");
             return base.InitializeAsync(navigationData);
         }
 

@@ -3,9 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using RepeatingWords.DataService.Interfaces;
-using RepeatingWords.DataService.Model;
-using RepeatingWords.Heleprs;
 using RepeatingWords.Model;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
@@ -25,10 +22,15 @@ namespace RepeatingWords.ViewModel
             AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); });
             RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); });
             ImportWordsCommand = new Command(async () => { DialogService.ShowLoadDialog(); await ImportFile(); });
+            ChangeWordCommand = new Command<WordsModel>(async(selectedItem)=>await NavigationService.NavigateToAsync<CreateWordViewModel>(selectedItem));
+            RemoveWordCommand = new Command<WordsModel>(Remove);
         }
         public ICommand AddWordCommand { get; set; }
         public ICommand RepeatingWordsCommand { get; set; }
         public ICommand ImportWordsCommand { get; set; }
+        public ICommand ChangeWordCommand { get; set; }
+        public ICommand RemoveWordCommand { get; set; }
+
 
         private readonly IStudyService _studyService;
         private readonly IImportFile _importFile;
@@ -67,13 +69,9 @@ namespace RepeatingWords.ViewModel
                 string change = Resource.ModalActChange;               
                 var result = await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: new string[] { change, remove });
                 if (result.Equals(change, StringComparison.OrdinalIgnoreCase))
-                {
-                    await NavigationService.NavigateToAsync<CreateWordViewModel>(selectedItem);
-                }
+                    ChangeWordCommand.Execute(selectedItem);
                 if (result.Equals(remove, StringComparison.OrdinalIgnoreCase))
-                {
-                    await Remove(selectedItem);
-                }
+                    RemoveWordCommand.Execute(selectedItem);
             }
             catch (Exception e)
             {
@@ -81,7 +79,7 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private async Task Remove(WordsModel selectedItem)
+        private void Remove(WordsModel selectedItem)
         {
             _studyService.RemoveWord(selectedItem);
             WordsList.Remove(selectedItem); 
@@ -105,17 +103,10 @@ namespace RepeatingWords.ViewModel
         public override async Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
-            if (navigationData is DictionaryModel dictionary)
-            {
-                _dictionary = dictionary;
-                DictionaryName = dictionary.Name;
-                WordsList = dictionary.WordsCollection;
-                _countWords = dictionary.CountWords;
-                DictionaryName = dictionary.Name+"("+CountWords+")";
-                SetIsListEmptyLabel();
-            }
-            else
-                throw new Exception("Error load words list, bad parameter navigationData to WordsListViewModel");
+            _dictionary = navigationData as DictionaryModel;
+            CountWords = _dictionary.CountWords;
+            WordsList = _dictionary.WordsCollection;
+            SetIsListEmptyLabel();
             await base.InitializeAsync(navigationData);
         }
 
