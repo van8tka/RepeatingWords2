@@ -51,7 +51,7 @@ namespace RepeatingWords.ViewModel
         {
             for (;;)
             {
-                await Task.Delay(700);
+                await Task.Delay(600);
                 VisibleStateCursor = !VisibleStateCursor;
             }
         }

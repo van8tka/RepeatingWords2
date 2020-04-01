@@ -128,7 +128,7 @@ namespace RepeatingWords.ViewModel
                 model.RusWord = NativeWord;
                 model.EngWord = TranslateWord;
                 model.Transcription = TranscriptionWord; 
-              //  model = _studyService.AddWord(model);
+                model = _studyService.AddWord(model);
                 _dictionary.WordsCollection.Add(model);
                 return model;
             }
@@ -140,6 +140,7 @@ namespace RepeatingWords.ViewModel
 
         private async Task FocusedTranscription()
         {
+            Log.Logger.Info("\n Transcripton field get focus");
             if (_keyboardService.GetCurrentTranscriptionKeyboard())
             {
                 DependencyService.Get<IKeyboardService>().HideKeyboard();

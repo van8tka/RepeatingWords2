@@ -19,23 +19,23 @@
 
         <StackLayout  Grid.Row="0" Margin="10,0,10,0">
             <Label Text="{locale:Translate LabelTranscription}" HorizontalOptions="Center" FontSize="Medium" Style="{DynamicResource LabelColor}"/>
-            <RelativeLayout BackgroundColor="Gray">
+            <RelativeLayout>
                 <Label x:Name="ETransc" 
                        FontSize="Medium"
-                       TextColor="White" 
-                       BackgroundColor="Gray" 
+                       TextColor="{StaticResource ColorCustomBackgrountButton}"
+                     
                        Text="{Binding TextTranscription, Mode=TwoWay }" 
                        Margin="6,6,6,0"
                        MaxLines="1"
                 />
                 <BoxView BackgroundColor="{StaticResource ColorCustomBackgrountButton}"
-                         HeightRequest="1"
+                         HeightRequest="2"
                          Margin="6,2,6,0"
                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ETransc, Property=Height, Factor=1, Constant=5}"
                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                          />
                 <BoxView IsVisible="{Binding VisibleStateCursor, Mode=TwoWay}"
-                         BackgroundColor="White"
+                         BackgroundColor="{StaticResource ColorCustomBackgrountButton}"
                          WidthRequest="2"
                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ETransc, Property=Y, Factor=1, Constant=0}"
                          RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ETransc, Property=Width, Factor=1, Constant=6}"
