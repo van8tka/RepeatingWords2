@@ -11,31 +11,49 @@ namespace RepeatingWords.ViewModel
     {
         public EntryTranscriptionViewModel(INavigationService navigationServcie, IDialogService dialogService) : base(navigationServcie, dialogService)
         {
-            SendCommand = new Command(Send);
+            SendCommand = new Command(async()=>await Send());
         }
         private WordsModel _word;
         public ICommand SendCommand { get; set; }
         private string _textTranscription;
         public string TextTranscription { get => _textTranscription; set { _textTranscription = value; OnPropertyChanged(nameof(TextTranscription)); } }
 
-        private async void Send()
+        private bool isVisibleCursor;
+
+        public bool VisibleStateCursor
         {
-            _word.Transcription = TextTranscription;
-            await NavigationService.RemoveLastFromBackStackAsync();
-            await NavigationService.NavigateToAsync<CreateWordViewModel>(_word);
-            await NavigationService.RemoveLastFromBackStackAsync();
+            get => isVisibleCursor;
+            set
+            {
+                isVisibleCursor = value;
+                OnPropertyChanged(nameof(VisibleStateCursor));
+            }
         }
 
-        public override Task InitializeAsync(object navigationData)
+
+        private async Task Send()
         {
-            if (navigationData is WordsModel word)
-            {
-                _word = word;
-            }
-            else
-                throw new Exception("Error load EntryTranscriptionVM, bad parameter navigationData");           
+            _word.Transcription = TextTranscription;
+           await NavigationService.RemoveLastFromBackStackAsync();
+           await NavigationService.NavigateToAsync<CreateWordViewModel>(_word);
+           await NavigationService.RemoveLastFromBackStackAsync();
+        }
+
+        public override async Task InitializeAsync(object navigationData)
+        {
+            _word = navigationData as WordsModel;
             TextTranscription = _word.Transcription;
-            return base.InitializeAsync(navigationData);
-        }        
+            await CursorBlink();
+            await base.InitializeAsync(navigationData);
+        }
+
+        private async Task CursorBlink()
+        {
+            for (;;)
+            {
+                await Task.Delay(700);
+                VisibleStateCursor = !VisibleStateCursor;
+            }
+        }
     }
 }
