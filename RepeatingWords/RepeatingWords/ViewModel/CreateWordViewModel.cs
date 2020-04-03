@@ -118,7 +118,7 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private WordsModel CreateWord()
+        private async Task<WordsModel> CreateWord()
         {
             if (!_isChangeWord)
             {
@@ -128,13 +128,13 @@ namespace RepeatingWords.ViewModel
                 model.RusWord = NativeWord;
                 model.EngWord = TranslateWord;
                 model.Transcription = TranscriptionWord; 
-                model = _studyService.AddWord(model);
+                model = await Task.Run(async () => { return _studyService.AddWord(model);});
                 _dictionary.WordsCollection.Add(model);
                 return model;
             }
             Log.Logger.Info("\n Update WordsModel");
             SetDataToChangeWord();
-            _studyService.UpdateWord(_wordChange);
+            await Task.Run(async () => { _studyService.UpdateWord(_wordChange); });
             return _wordChange;
         }
 
