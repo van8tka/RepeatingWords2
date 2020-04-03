@@ -18,7 +18,7 @@ namespace RepeatingWords.View
         {
            MessagingCenter.Subscribe<CreateWordViewModel>(this,"SetFocus", async (sender) =>
            {
-               await Task.Yield();
+               await Task.Delay(100);
                EntryNativeWord.Focus();
            });
         }

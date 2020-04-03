@@ -205,22 +205,14 @@ namespace RepeatingWords.View
             ETransc.Text = ETransc.Text + " ";
         }
 
-        private async void Clik_Del(object sender, EventArgs e)
+        private void Clik_Delete(object sender, EventArgs e)
         {
-           try
+            string g = ETransc.Text;
+            int Lenght = g.Length;
+            if (Lenght != 0)
             {
-                string g = ETransc.Text;
-                int Lenght = g.Length;
-                if (Lenght != 0)
-                {
-                    ETransc.Text = g.Remove(Lenght - 1);
-                }
+                ETransc.Text = g.Remove(Lenght - 1);
             }
-            catch (Exception er)
-            {
-                await DisplayAlert("Error", er.Message, "Ok");
-            }
-
-        }   
+        }
     } 
 }

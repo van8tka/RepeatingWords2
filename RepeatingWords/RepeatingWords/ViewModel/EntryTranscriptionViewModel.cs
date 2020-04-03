@@ -12,6 +12,7 @@ namespace RepeatingWords.ViewModel
         public EntryTranscriptionViewModel(INavigationService navigationServcie, IDialogService dialogService) : base(navigationServcie, dialogService)
         {
             SendCommand = new Command(async()=>await Send());
+            CursorBlink();
         }
         private WordsModel _word;
         public ICommand SendCommand { get; set; }
@@ -33,20 +34,19 @@ namespace RepeatingWords.ViewModel
 
         private async Task Send()
         {
-            IsBusy = true;
-            _word.Transcription = TextTranscription;
+          _word.Transcription = TextTranscription;
            await NavigationService.RemoveLastFromBackStackAsync();
            await NavigationService.NavigateToAsync<CreateWordViewModel>(_word);
            await NavigationService.RemoveLastFromBackStackAsync();
         }
 
 
-        public override async Task InitializeAsync(object navigationData)
+        public override Task InitializeAsync(object navigationData)
         {
+            IsBusy = true;
             _word = navigationData as WordsModel;
             TextTranscription = _word?.Transcription??string.Empty;
-            await CursorBlink();
-            await base.InitializeAsync(navigationData);
+            return base.InitializeAsync(navigationData);
         }
 
         private async Task CursorBlink()

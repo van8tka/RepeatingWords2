@@ -33,13 +33,12 @@ namespace RepeatingWords.Services
             _container.Register<IWebClient, WebClient>();
             _container.Register<IImportFile, ImportFileToDb>();
             _container.Register<IVolumeLanguageService, VolumeLanguageService>();
-             _container.Register<INewVersionAppChecker, NewVersionAppChecker>();
+            _container.Register<INewVersionAppChecker, NewVersionAppChecker>();
             _container.Register<ILanguageLoaderFacade, LanguageLoader>();
             _container.Register<IAnimationService, AnimationService>();
             _container.Register<IEntryWordValidator, EntryWordValidator>();
             _container.Register<ITextToSpeech, SpeechService>();
             _container.RegisterInstance(typeof(IStudyService), new StudyService(unitOfWork, initDb));
-      
             //register viewmodels
             _container.Register(typeof(MainViewModel));
             _container.Register(typeof(HelperViewModel));

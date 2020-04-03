@@ -17,8 +17,6 @@ namespace RepeatingWords.ViewModel
         protected readonly IDialogService DialogService;
         protected readonly INavigationService NavigationService;
 
-       // public ICommand GoMainPageCommand { get; set; }
-
         private bool _isBusy;
         public bool IsBusy
         {
