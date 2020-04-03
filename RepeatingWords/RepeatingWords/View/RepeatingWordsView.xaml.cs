@@ -6,7 +6,7 @@ using RepeatingWords.ViewModel;
 
 namespace RepeatingWords.View
 {
-    public partial class RepeatingWordsView : ContentPage, IAnimationPage
+    public partial class RepeatingWordsView : IAnimationPage
     {
         public RepeatingWordsView()
         {

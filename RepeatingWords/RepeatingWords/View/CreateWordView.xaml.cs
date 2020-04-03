@@ -6,7 +6,7 @@ using RepeatingWords.ViewModel;
 
 namespace RepeatingWords.View
 {
-    public partial class CreateWordView : ContentPage, IAnimationPage
+    public partial class CreateWordView : IAnimationPage
     {
         public CreateWordView( )
         {
@@ -18,7 +18,7 @@ namespace RepeatingWords.View
         {
            MessagingCenter.Subscribe<CreateWordViewModel>(this,"SetFocus", async (sender) =>
            {
-               await Task.Delay(10);
+               await Task.Yield();
                EntryNativeWord.Focus();
            });
         }

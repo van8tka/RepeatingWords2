@@ -6,7 +6,7 @@ using RepeatingWords.DataService.Model;
  
 namespace RepeatingWords.View
 {
-    public partial class MainView : ContentPage,IAnimationPage 
+    public partial class MainView : IAnimationPage 
     {
         public MainView()
         {

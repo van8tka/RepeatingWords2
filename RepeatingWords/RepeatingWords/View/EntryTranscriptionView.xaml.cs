@@ -10,7 +10,7 @@ namespace RepeatingWords.View
     /// <summary>
     /// предоставляет поле ввода и клавиатуру для набора транскрипции из спец символов
     /// </summary>
-    public partial class EntryTranscriptionView : ContentPage, IAnimationPage
+    public partial class EntryTranscriptionView : IAnimationPage
     {
        
         public EntryTranscriptionView()

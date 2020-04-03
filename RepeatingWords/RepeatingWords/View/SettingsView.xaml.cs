@@ -6,7 +6,7 @@ using Xamarin.Forms;
 namespace RepeatingWords.View
 {
 
-    public partial class SettingsView : ContentPage, IAnimationPage
+    public partial class SettingsView : IAnimationPage
     {
         public SettingsView()
         {

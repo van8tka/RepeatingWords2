@@ -8,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace RepeatingWords.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WorkSpaceSelectWordView : ContentView, ICustomContentView
+    public partial class WorkSpaceSelectWordView : ICustomContentView
     {
         public WorkSpaceSelectWordView()
         {

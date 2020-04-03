@@ -18,14 +18,14 @@ namespace RepeatingWords.ViewModel
         private string _textTranscription;
         public string TextTranscription { get => _textTranscription; set { _textTranscription = value; OnPropertyChanged(nameof(TextTranscription)); } }
 
-        private bool isVisibleCursor;
+        private bool _isVisibleCursor;
 
         public bool VisibleStateCursor
         {
-            get => isVisibleCursor;
+            get => _isVisibleCursor;
             set
             {
-                isVisibleCursor = value;
+                _isVisibleCursor = value;
                 OnPropertyChanged(nameof(VisibleStateCursor));
             }
         }
@@ -33,16 +33,18 @@ namespace RepeatingWords.ViewModel
 
         private async Task Send()
         {
+            IsBusy = true;
             _word.Transcription = TextTranscription;
            await NavigationService.RemoveLastFromBackStackAsync();
            await NavigationService.NavigateToAsync<CreateWordViewModel>(_word);
            await NavigationService.RemoveLastFromBackStackAsync();
         }
 
+
         public override async Task InitializeAsync(object navigationData)
         {
             _word = navigationData as WordsModel;
-            TextTranscription = _word.Transcription;
+            TextTranscription = _word?.Transcription??string.Empty;
             await CursorBlink();
             await base.InitializeAsync(navigationData);
         }
@@ -51,7 +53,7 @@ namespace RepeatingWords.ViewModel
         {
             for (;;)
             {
-                await Task.Delay(600);
+                await Task.Delay(500);
                 VisibleStateCursor = !VisibleStateCursor;
             }
         }

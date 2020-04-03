@@ -8,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace RepeatingWords.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class VolumeLanguagesView : ContentPage, IAnimationPage
+    public partial class VolumeLanguagesView : IAnimationPage
     {
         public VolumeLanguagesView()
         {
