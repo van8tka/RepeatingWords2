@@ -26,7 +26,7 @@ namespace RepeatingWords.ViewModel
         {
             _studyService = studyService;
             _importFile = importFile;
-           DictionaryList = new ObservableCollection<LanguageModel>();
+            DictionaryList = new ObservableCollection<LanguageModel>();
             ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
             LikeCommand = new Command(async () => { await LikeApplication.Like(DialogService); });
@@ -81,7 +81,6 @@ namespace RepeatingWords.ViewModel
             {
                 _selectedItem = value;
                 OnPropertyChanged(nameof(SelectedItem));
-              
                 if (_selectedItem != null)
                     ContextMenuDictionary(_selectedItem.Id);
             }
@@ -210,21 +209,45 @@ namespace RepeatingWords.ViewModel
 
         private async Task RemoveDictionary(DictionaryModel removeDictionary)
         {
-            DialogService.ShowLoadDialog(Resource.Deleting);
-            DictionaryList.FirstOrDefault(x => x.Id == removeDictionary.IdLanguage)?.RemoveDictionary(removeDictionary.Id);
-            OnPropertyChanged(nameof(DictionaryList));
-            await _studyService.RemoveDictionaryFromLanguage(removeDictionary.Id);
-            DialogService.HideLoadDialog();
+            try
+            {
+                Log.Logger.Info("remove dictionary");
+                DialogService.ShowLoadDialog(Resource.Deleting);
+                OnPropertyChanged(nameof(DictionaryList));
+                _studyService.BeginTransaction();
+                await _studyService.RemoveDictionaryFromLanguage(removeDictionary.Id);
+                _studyService.CommitTransaction();
+                DictionaryList.FirstOrDefault(x => x.Id == removeDictionary.IdLanguage)?.RemoveDictionary(removeDictionary.Id);
+                DialogService.HideLoadDialog();
+            }
+            catch (Exception e)
+            {
+                _studyService.RollBackTransaction();
+                DialogService.HideLoadDialog();
+                DialogService.ShowToast("Error remove dictionary");
+                Log.Logger.Error(e);
+            }
         }
 
         private async Task RemoveLanguage(int idlanguage)
         {
-            DialogService.ShowLoadDialog(Resource.Deleting);
-            _studyService.BeginTransaction();
-            await _studyService.RemoveLanguage(idlanguage);
-            _studyService.CommitTransaction();
-            OnPropertyChanged(nameof(DictionaryList));
-            DialogService.HideLoadDialog();
+            try
+            {
+                Log.Logger.Info($"remove language with id = {idlanguage}");
+                DialogService.ShowLoadDialog(Resource.Deleting);
+                _studyService.BeginTransaction();
+                await _studyService.RemoveLanguage(idlanguage);
+                _studyService.CommitTransaction();
+                OnPropertyChanged(nameof(DictionaryList));
+                DialogService.HideLoadDialog();
+            }
+            catch (Exception e)
+            {
+                _studyService.RollBackTransaction();
+                DialogService.HideLoadDialog();
+                DialogService.ShowToast("Error remove language");
+                Log.Logger.Error(e);
+            }
         }
 
     }

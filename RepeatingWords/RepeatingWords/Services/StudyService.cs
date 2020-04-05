@@ -158,27 +158,25 @@ namespace RepeatingWords.Services
             return Task.Run(() =>
             {
                 var removedLanguage = _dictionaryList.FirstOrDefault(x => x.Id == idlanguage);
-                _dictionaryList.Remove(removedLanguage);
-                if (removedLanguage != null)
+                var dictionaries = _unitOfWork.DictionaryRepository.Get().Where(x => x.IdLanguage == idlanguage)
+                    .AsEnumerable();
+                int count = dictionaries.Count();
+                for (int i = 0; i < count; i++)
                 {
-                    var dictionaries = _unitOfWork.DictionaryRepository.Get().Where(x => x.IdLanguage == idlanguage)
-                        .AsEnumerable();
-                    for (int i = 0; i < dictionaries.Count(); i++)
-                    {
-                        removeDictionaryFromLanguage(dictionaries.ElementAt(i).Id);
-                    }
-                    var language = _unitOfWork.LanguageRepository.Get(removedLanguage.Id);
-                    _unitOfWork.LanguageRepository.Delete(language);
-                    _unitOfWork.Save();
-                    _languages.Remove(language);
+                    removeDictionaryFromLanguage(dictionaries.ElementAt(i).Id);
                 }
+                var language = _unitOfWork.LanguageRepository.Get(removedLanguage.Id);
+                _unitOfWork.LanguageRepository.Delete(language);
+                _unitOfWork.Save();
+                _languages.Remove(language);
+                _dictionaryList.Remove(removedLanguage);
                 return true;
             });
         }
 
         public Task<bool> RemoveDictionaryFromLanguage(int dictionaryId)
         {
-            return Task.Run(() => { return removeDictionaryFromLanguage(dictionaryId); });
+            return Task.Run(() => { return removeDictionaryFromLanguage(dictionaryId); _unitOfWork.Save(); });
         }
 
         private bool removeDictionaryFromLanguage(int dictionaryId)
@@ -186,19 +184,16 @@ namespace RepeatingWords.Services
             try
             {
                 var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == dictionaryId).AsEnumerable();
-                if (words != null && words.Any())
+                int count = words.Count();
+                for (int i = 0; i < count; i++)
                 {
-                    for (int i = 0; i < words.Count(); i++)
-                    {
-                        var word = words.ElementAt(i);
-                        _unitOfWork.WordsRepository.Delete(word);
-                        _words.Remove(word);
-                    }
+                    var word = words.ElementAt(i);
+                    _unitOfWork.WordsRepository.Delete(word);
+                    _words.Remove(word);
                 }
                 var dictionary = _dictionaries.FirstOrDefault(x => x.Id == dictionaryId);
                 bool success = _unitOfWork.DictionaryRepository.Delete(dictionary);
                 _dictionaries.Remove(dictionary);
-                _unitOfWork.Save();
                 return true;
             }
             catch (Exception e)
@@ -207,8 +202,6 @@ namespace RepeatingWords.Services
                 return false;
             }
         }
-
-
 
         public int AddDictionary(string dictionaryName, int idLang)
         {
@@ -239,15 +232,11 @@ namespace RepeatingWords.Services
             _unitOfWork.Save();
             (_words as List<Words>).AddRange(listWords);
             var dictModel = GetDictionary(listWords.FirstOrDefault().IdDictionary);
-            var temp = dictModel.WordsCollection;
-            for (int i = 0; i < _words.Count(); i++)
+            for (int i = 0; i < listWords.Count(); i++)
             {
-               temp.Add(new WordsModel(dictModel, _words.ElementAt(i)));
+                dictModel.WordsCollection.Add(new WordsModel(dictModel, listWords.ElementAt(i)));
             }
-            dictModel.WordsCollection.Clear();
-            dictModel.WordsCollection = temp;
         }
-
 
         public WordsModel AddWord(WordsModel wordNew)
         {

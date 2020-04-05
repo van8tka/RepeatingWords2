@@ -75,7 +75,9 @@ namespace RepeatingWords.Model
         public ObservableCollection<WordsModel> WordsCollection
         {
             get => _words;
-            set { _words = value; OnPropertyChanged(nameof(WordsCollection)); }
+            set { _words = value;
+                OnPropertyChanged(nameof(WordsCollection));
+            }
         }
 
         public int CountWords => WordsCollection.Count();

@@ -23,7 +23,7 @@ namespace RepeatingWords.ViewModel
             RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); });
             ImportWordsCommand = new Command(async () => { DialogService.ShowLoadDialog(); await ImportFile(); });
             ChangeWordCommand = new Command<WordsModel>(async(selectedItem)=>await NavigationService.NavigateToAsync<CreateWordViewModel>(selectedItem));
-            RemoveWordCommand = new Command<WordsModel>(Remove);
+            RemoveWordCommand = new Command<WordsModel>(async(s)=>await Remove(s));
         }
         public ICommand AddWordCommand { get; set; }
         public ICommand RepeatingWordsCommand { get; set; }
@@ -79,10 +79,10 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private void Remove(WordsModel selectedItem)
+        private async Task Remove(WordsModel selectedItem)
         {
-            _studyService.RemoveWord(selectedItem);
-            WordsList.Remove(selectedItem); 
+            WordsList.Remove(selectedItem);
+            await Task.Run(()=>_studyService.RemoveWord(selectedItem));
             SetIsListEmptyLabel();
             OnPropertyChanged(nameof(WordsList));
             CountWords--;
