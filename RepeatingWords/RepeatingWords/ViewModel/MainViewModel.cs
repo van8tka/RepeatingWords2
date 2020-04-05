@@ -132,18 +132,23 @@ namespace RepeatingWords.ViewModel
                 string showWords = Resource.ButtonShowWords;
                 string studing = Resource.ButtonRepeatWords;
                 string studingNotLearning = Resource.ButtonStudyNotLearning;
-              //  var unlearningDictionary = _studyService.GetUnlearningDictionary(selectedItem.Name);
                 string[] actionButtons;
-                //if (unlearningDictionary != null)
-                //    actionButtons = new string[] {studing, studingNotLearning, showWords, removeDictionary};
-               // else
+                if (selectedItem.CountLearned > 0)
+                    actionButtons = new string[] { studing, studingNotLearning, showWords, removeDictionary };
+                else
                     actionButtons = new string[] {studing, showWords, removeDictionary};
                 var result =
                     await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
                 if (result.Equals(studing, StringComparison.OrdinalIgnoreCase))
+                {
+                    selectedItem.IsStudyUnlearnedWords = false;
                     await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(selectedItem);
-                //else if (result.Equals(studingNotLearning, StringComparison.OrdinalIgnoreCase))
-                //    await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(unlearningDictionary);
+                }
+                else if (result.Equals(studingNotLearning, StringComparison.OrdinalIgnoreCase))
+                {
+                    selectedItem.IsStudyUnlearnedWords = true;
+                    await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(selectedItem);
+                }
                 else if (result.Equals(showWords, StringComparison.OrdinalIgnoreCase))
                     await NavigationService.NavigateToAsync<WordsListViewModel>(selectedItem);
                 else if (result.Equals(removeDictionary, StringComparison.OrdinalIgnoreCase))

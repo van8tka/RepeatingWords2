@@ -243,17 +243,13 @@ namespace RepeatingWords.ViewModel
             {
                 IsBusy = true;
                 SetBackgroundButton(nameof(CardsImage));
-                var wordsList = new List<WordsModel>();
-                int count = 0;
                 _dictionary = navigationData as DictionaryModel;
                 Model.Dictionary = _dictionary;
                 DictionaryName = _dictionary.Name;
-                wordsList = _dictionary.WordsCollection.ToList();
-                count = _dictionary.CountWords;
+                var wordsList = GetWordsCollection(_dictionary);
                 ShakeWordsCollection(wordsList);
                 Model.IsFromNative = _showLanguageService.GetFirstLanguage();
-                Model.WordsLearningAll = wordsList;
-                Model.AllWordsCount = count;
+                Model.WordsLearningAll = wordsList.ToList();
                 await ShowLearningCards();
                 SpeackerLang = _speechService.Language;
                 await base.InitializeAsync(navigationData);
@@ -261,6 +257,19 @@ namespace RepeatingWords.ViewModel
             catch (Exception e)
             {
                 DialogService.ShowToast("Error loading words to study" + e.Message);
+            }
+        }
+
+        private IEnumerable<WordsModel> GetWordsCollection(DictionaryModel dictionary){
+            if (_dictionary.IsStudyUnlearnedWords)
+            {
+                Model.AllWordsCount = _dictionary.CountUnlearned;
+                return _dictionary.WordsUnlearnedCollection;
+            }
+            else
+            {
+                Model.AllWordsCount = _dictionary.CountWords;
+                return _dictionary.WordsCollection;
             }
         }
 
@@ -275,7 +284,7 @@ namespace RepeatingWords.ViewModel
         private void Disappearing()
         {
             _dictionary.LastUpdated = DateTime.UtcNow;
-            float proportion = (float) Model.AllLearnedWordsCount / (float) Model.AllWordsCount;
+            float proportion = (float)_dictionary.CountLearned / (float) _dictionary.CountWords;
             _dictionary.PercentOfLearned = ((int)(proportion * PERSENT)).ToString();
             _studyService.UpdateDictionary(_dictionary);
         }
