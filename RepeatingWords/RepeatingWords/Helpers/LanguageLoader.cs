@@ -70,7 +70,6 @@ namespace RepeatingWords.Helpers
         {
             int idDictionary = _studyService.AddDictionary(jDictionary[0].ToString(), langId);
             int count = jDictionary.Count();
-          //  var badSymbals = new char[] {' ', '\r', '\n', '\t'};
             for (int i = 2; i < count; i++)
                 listWords.Add(CreateWords(jDictionary[i] as JArray, idDictionary));
         }

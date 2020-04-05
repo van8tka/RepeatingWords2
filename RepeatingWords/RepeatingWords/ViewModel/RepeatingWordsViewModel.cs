@@ -37,7 +37,7 @@ namespace RepeatingWords.ViewModel
             SelectFromWordsCommand = new Command(async () => await ShowSelectFromWords());
             LearningCardsCommand = new Command(async () => await ShowLearningCards());
             AppearingCommand = new Command(async () => await AppearingPage());
-            DisappearingCommand = new Command(()=>Disappearing());
+            DisappearingCommand = new Command( Disappearing);
         }
 
         #region FIELDS
@@ -267,22 +267,17 @@ namespace RepeatingWords.ViewModel
         private async Task AppearingPage()
         {
             if (_isEditing)
-            {
                 await _workSpaceVM.SetViewWords(Model.CurrentWord, Model.IsFromNative);
-            }
-
             _isEditing = false;
         }
 
         private const int PERSENT = 100;
-
-        private bool Disappearing()
+        private void Disappearing()
         {
             _dictionary.LastUpdated = DateTime.UtcNow;
             float proportion = (float) Model.AllLearnedWordsCount / (float) Model.AllWordsCount;
             _dictionary.PercentOfLearned = ((int)(proportion * PERSENT)).ToString();
-            //  _studyService.UpdateDictionary(_dictionary);
-            return true;
+          _studyService.UpdateDictionary(_dictionary);
         }
     }
 }

@@ -30,6 +30,7 @@ namespace RepeatingWords.Services
         DictionaryModel GetDictionary(int idDictionary);
         Task<bool> RemoveDictionaryFromLanguage(int dictionaryId);
         int AddDictionary(string dictionaryName, int idLang);
+        Task UpdateDictionary(DictionaryModel dictionary);
     }
     public interface ITransactionService
     {
@@ -38,8 +39,10 @@ namespace RepeatingWords.Services
         void RollBackTransaction();
     }
 
-    public interface IStudyService: ILanguageStudyService, ITransactionService , IWordStudyService, IDictionaryStudyService
-    {  }
+    public interface IStudyService : ILanguageStudyService, ITransactionService, IWordStudyService, IDictionaryStudyService
+    {
+       
+    }
 
 
     public class StudyService:IStudyService
@@ -262,11 +265,20 @@ namespace RepeatingWords.Services
             }
         }
 
+        public Task UpdateDictionary(DictionaryModel dictionary)
+        {
+           return Task.Run(()=>SetDictionaryUpdate(dictionary.Id));
+        }
+
         private void SetDictionaryUpdate(int idDictionary)
         {
             var dictionary = GetDictionary(idDictionary);
             dictionary.LastUpdated = DateTime.UtcNow;
             var dbDictionary = _dictionaries.FirstOrDefault(x => x.Id == idDictionary);
+            int perc;
+            if (int.TryParse(dictionary.PercentOfLearned.TrimEnd('%'), out perc))
+                dbDictionary.PercentOfLearned = perc;
+            dbDictionary.LastUpdated = dictionary.LastUpdated;
             _unitOfWork.DictionaryRepository.Update(dbDictionary);
             _unitOfWork.Save();
         }
