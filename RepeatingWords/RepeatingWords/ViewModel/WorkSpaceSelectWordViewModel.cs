@@ -7,13 +7,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.Model;
+using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceSelectWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation) : base(_dialogService, _navigationService, animation)
+        public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation , IStudyService studyService) : base(_dialogService, _navigationService, animation, studyService)
         {
             TapWordCommand = new Command<string>(TapWord);
         }

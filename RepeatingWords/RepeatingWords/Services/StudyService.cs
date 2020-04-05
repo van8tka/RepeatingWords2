@@ -267,7 +267,8 @@ namespace RepeatingWords.Services
 
         public Task UpdateDictionary(DictionaryModel dictionary)
         {
-           return Task.Run(()=>SetDictionaryUpdate(dictionary.Id));
+            Log.Logger.Info($"\n Update dictionary id={dictionary.Id}; name={dictionary.Name}");
+            return Task.Run(()=>SetDictionaryUpdate(dictionary.Id));
         }
 
         private void SetDictionaryUpdate(int idDictionary)
@@ -287,6 +288,7 @@ namespace RepeatingWords.Services
         {
             try
             {
+                Log.Logger.Info($"\n Update word id={word.Id}; rusWord={word.RusWord}");
                 var wordDb = _words.FirstOrDefault(x => x.Id == word.Id);
                 int index = _words.IndexOf(wordDb);
                 _words.ElementAt(index).EngWord = word.EngWord;

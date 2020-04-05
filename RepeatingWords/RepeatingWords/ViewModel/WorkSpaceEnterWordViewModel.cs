@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceEnterWordViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation, IEntryWordValidator wordValidator) : base(_dialogService, _navigationService, animation)
+        public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation, IStudyService studyService, IEntryWordValidator wordValidator) : base(_dialogService, _navigationService, animation, studyService)
         {
             CheckWordCommand = new Command(async () => await CheckWord());
             HintWordCommand = new Command(async () => await HintWord());

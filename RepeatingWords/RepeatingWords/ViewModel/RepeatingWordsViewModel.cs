@@ -277,7 +277,7 @@ namespace RepeatingWords.ViewModel
             _dictionary.LastUpdated = DateTime.UtcNow;
             float proportion = (float) Model.AllLearnedWordsCount / (float) Model.AllWordsCount;
             _dictionary.PercentOfLearned = ((int)(proportion * PERSENT)).ToString();
-          _studyService.UpdateDictionary(_dictionary);
+            _studyService.UpdateDictionary(_dictionary);
         }
     }
 }

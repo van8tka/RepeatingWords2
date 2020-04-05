@@ -6,13 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.Model;
+using RepeatingWords.Services;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel
 {
     public class WorkSpaceCardsViewModel : WorkSpaceBaseViewModel
     {
-        public WorkSpaceCardsViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation) : base(_dialogService, _navigationService, animation)
+        public WorkSpaceCardsViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation, IStudyService studyService) : base(_dialogService, _navigationService, animation, studyService)
         {
             SwipeWordCommand = new Command<string>(async (direction) => await SwipeWord(direction));
         }

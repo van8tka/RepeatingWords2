@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using RepeatingWords.Services;
 using Log = RepeatingWords.LoggerService.Log;
 
 
@@ -20,21 +21,23 @@ namespace RepeatingWords.ViewModel
         public Xamarin.Forms.View WordContainer { get; set; }
        
 
-        public WorkSpaceBaseViewModel(IDialogService _dialogService, INavigationService _navigationService,IAnimationService _animationService)
+        public WorkSpaceBaseViewModel(IDialogService _dialogService, INavigationService _navigationService,IAnimationService _animationService, IWordStudyService studyService)
         {
             this._dialogService = _dialogService;
             this._navigationService = _navigationService;
          this.AnimationService = _animationService;
+         this._studyService = studyService;
         }
         private readonly IDialogService _dialogService;
         private readonly INavigationService _navigationService;
-      protected readonly IAnimationService AnimationService;
+        private readonly IWordStudyService _studyService;
+        protected readonly IAnimationService AnimationService;
 
         public async Task ShowNextWord(bool isFirstShowAfterLoad = false)
         {
             try
             {
-                // await SaveUnlearnedWords(Model.CurrentWord, Model.IsOpenCurrentWord);
+                MarkLearnedWord(Model.CurrentWord, Model.IsOpenCurrentWord);
                 Model.IsOpenCurrentWord = false;
                 if (isFirstShowAfterLoad && Model.IndexWordShowNow != -1)
                     Model.IndexWordShowNow--;
@@ -57,6 +60,16 @@ namespace RepeatingWords.ViewModel
             {
                 Log.Logger.Error(e);
             }
+        }
+
+        private Task MarkLearnedWord(WordsModel modelCurrentWord, bool modelIsOpenCurrentWord)
+        {
+            if (!modelIsOpenCurrentWord && modelCurrentWord!=null)
+            {
+                modelCurrentWord.IsLearned = true;
+                return Task.Run(() => _studyService.UpdateWord(modelCurrentWord));
+            }
+            return Task.CompletedTask;
         }
 
         private void CounterShowWord(bool isFirstShowAfterLoad)
