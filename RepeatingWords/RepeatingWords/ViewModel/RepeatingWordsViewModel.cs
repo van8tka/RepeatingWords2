@@ -38,6 +38,7 @@ namespace RepeatingWords.ViewModel
             LearningCardsCommand = new Command(async () => await ShowLearningCards());
             AppearingCommand = new Command(async () => await AppearingPage());
             DisappearingCommand = new Command( Disappearing);
+            _resetLearnedTask = null;
         }
 
         #region FIELDS
@@ -170,7 +171,6 @@ namespace RepeatingWords.ViewModel
         private WorkSpaceCardsView _cardsView;
         private WorkSpaceCardsView CardsView => _cardsView ?? (_cardsView = new WorkSpaceCardsView());
 
-
         private async Task WorkSurface(string nameSurface, ICustomContentView viewSurface)
         {
             if (Model.AllWordsCount == 0)
@@ -199,7 +199,6 @@ namespace RepeatingWords.ViewModel
                     EntryImage = entryUnActive;
                     break;
                 }
-
                 case nameof(SelectImage):
                 {
                     CardsImage = cardsUnActive;
@@ -207,7 +206,6 @@ namespace RepeatingWords.ViewModel
                     EntryImage = entryUnActive;
                     break;
                 }
-
                 case nameof(EntryImage):
                 {
                     CardsImage = cardsUnActive;
@@ -232,7 +230,6 @@ namespace RepeatingWords.ViewModel
                 tempWords[i] = tempWords[count];
                 tempWords[count] = value;
             }
-
             Model.WordsLearningAll = tempWords;
             Model.WordsLeft = new List<WordsModel>(Model.WordsLearningAll);
         }
@@ -241,6 +238,7 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
+                _studyService.BeginTransaction();
                 IsBusy = true;
                 SetBackgroundButton(nameof(CardsImage));
                 _dictionary = navigationData as DictionaryModel;
@@ -256,21 +254,36 @@ namespace RepeatingWords.ViewModel
             }
             catch (Exception e)
             {
+                _studyService.RollBackTransaction();
                 DialogService.ShowToast("Error loading words to study" + e.Message);
             }
         }
 
-        private IEnumerable<WordsModel> GetWordsCollection(DictionaryModel dictionary){
+        private IEnumerable<WordsModel> GetWordsCollection(DictionaryModel dictionary) {
             if (_dictionary.IsStudyUnlearnedWords)
             {
                 Model.AllWordsCount = _dictionary.CountUnlearned;
                 return _dictionary.WordsUnlearnedCollection;
             }
-            else
+            Model.AllWordsCount = _dictionary.CountWords;
+            ResetLearnedWords(_dictionary.WordsLearnedCollection);
+            return _dictionary.WordsCollection;
+        }
+
+        private Task _resetLearnedTask;
+        /// <summary>
+        /// reset words from islearned=true to false
+        /// </summary>
+        /// <param name="learnedCollection"></param>
+        private void ResetLearnedWords(IEnumerable<WordsModel> learnedCollection)
+        {
+            Parallel.ForEach(learnedCollection, (w) => { w.IsLearned = false; });
+            _resetLearnedTask = Task.Run(() =>
             {
-                Model.AllWordsCount = _dictionary.CountWords;
-                return _dictionary.WordsCollection;
-            }
+                int count = learnedCollection.Count();
+                for (int i = 0; i < count; i++)
+                    _studyService.UpdateWord(learnedCollection.ElementAtOrDefault(i));
+            });
         }
 
         private async Task AppearingPage()
@@ -283,10 +296,13 @@ namespace RepeatingWords.ViewModel
         private const int PERSENT = 100;
         private void Disappearing()
         {
+            if(_resetLearnedTask!=null)
+                _resetLearnedTask.Wait();
             _dictionary.LastUpdated = DateTime.UtcNow;
             float proportion = (float)_dictionary.CountLearned / (float) _dictionary.CountWords;
             _dictionary.PercentOfLearned = ((int)(proportion * PERSENT)).ToString();
             _studyService.UpdateDictionary(_dictionary);
+            _studyService.CommitTransaction();
         }
     }
 }

@@ -133,7 +133,7 @@ namespace RepeatingWords.ViewModel
                 string studing = Resource.ButtonRepeatWords;
                 string studingNotLearning = Resource.ButtonStudyNotLearning;
                 string[] actionButtons;
-                if (selectedItem.CountLearned > 0)
+                if (selectedItem.CountLearned > 0 && selectedItem.CountLearned < selectedItem.CountWords)
                     actionButtons = new string[] { studing, studingNotLearning, showWords, removeDictionary };
                 else
                     actionButtons = new string[] {studing, showWords, removeDictionary};

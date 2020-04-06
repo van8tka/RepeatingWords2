@@ -84,7 +84,11 @@ namespace RepeatingWords.Model
         {
             get=> WordsCollection.Where(x => x.IsLearned == false);
         }
-
+        public IEnumerable<WordsModel> WordsLearnedCollection
+        {
+            get => WordsCollection.Where(x => x.IsLearned == true);
+        }
+        
         public bool IsStudyUnlearnedWords { get; set; }
 
         public int CountWords => WordsCollection.Count();

@@ -301,7 +301,6 @@ namespace RepeatingWords.Services
                 wordDb.Transcription = word.Transcription;
                 _unitOfWork.WordsRepository.Update(wordDb);
                 SetDictionaryUpdate(word.DictionaryParent.Id);
-                _unitOfWork.Save();
                 return true;
             }
             catch (Exception e)
