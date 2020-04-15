@@ -35,8 +35,8 @@
                                     <ViewCell>
                                         <ViewCell.View>
                                             <StackLayout Orientation="Horizontal">
-                                                <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation"/>
-                                                <Label HorizontalOptions="End" FontSize="13" WidthRequest="50" VerticalTextAlignment="Center" Text="{Binding PercentOfLearned}" Style="{DynamicResource LableHeadApp}"/>
+                                                <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation" />
+                                                <Label HorizontalOptions="End" HorizontalTextAlignment="End" MinimumWidthRequest="55" FontSize="13" VerticalTextAlignment="Center" Text="{Binding PercentOfLearned}" Style="{DynamicResource LableHeadApp}" Margin="0,0,25,0"/>
                                               </StackLayout>
                                            </ViewCell.View>
                                     </ViewCell>
