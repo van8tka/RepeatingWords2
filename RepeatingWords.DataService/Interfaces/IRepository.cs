@@ -11,6 +11,7 @@ namespace RepeatingWords.DataService.Interfaces
         T Create(T item);
         void Create(IEnumerable<T> items);
         T Update(T item);
+        void Update(IEnumerable<T> items);
         bool Delete(T item);
     }
 }

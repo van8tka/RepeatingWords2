@@ -266,7 +266,7 @@ namespace RepeatingWords.ViewModel
                 return _dictionary.WordsUnlearnedCollection;
             }
             Model.AllWordsCount = _dictionary.CountWords;
-            ResetLearnedWords(_dictionary.WordsLearnedCollection);
+            ResetLearnedWords(_dictionary.WordsLearnedCollection.ToList());
             return _dictionary.WordsCollection;
         }
 
@@ -275,14 +275,14 @@ namespace RepeatingWords.ViewModel
         /// reset words from islearned=true to false
         /// </summary>
         /// <param name="learnedCollection"></param>
-        private void ResetLearnedWords(IEnumerable<WordsModel> learnedCollection)
+        private void ResetLearnedWords(IList<WordsModel> learnedCollection)
         {
-            Parallel.ForEach(learnedCollection, (w) => { w.IsLearned = false; });
-            _resetLearnedTask = Task.Run(() =>
+            var items = learnedCollection.Where(x => x.IsLearned);
+            Parallel.ForEach(items, (w) => { w.IsLearned = false; });
+            _dictionary.PercentOfLearned = "0";
+           _resetLearnedTask = Task.Run(() =>
             {
-                int count = learnedCollection.Count();
-                for (int i = 0; i < count; i++)
-                    _studyService.UpdateWord(learnedCollection.ElementAtOrDefault(i));
+                _studyService.ResetStudiedWords(_dictionary.Id);
             });
         }
 

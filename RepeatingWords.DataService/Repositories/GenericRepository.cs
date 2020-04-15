@@ -36,6 +36,11 @@ namespace RepeatingWords.DataService.Model
             _dbContext.Set<T>().AddRange(items);
         }
 
+        public void Update(IEnumerable<T> items)
+        {
+            _dbContext.Set<T>().UpdateRange(items);
+        }
+
         public T Update(T item)
         {
            _dbContext.Entry(item).State = EntityState.Modified;

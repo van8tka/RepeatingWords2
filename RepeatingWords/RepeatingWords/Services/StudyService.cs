@@ -22,6 +22,7 @@ namespace RepeatingWords.Services
     {
         WordsModel AddWord(WordsModel word);
         bool UpdateWord(WordsModel word);
+        void ResetStudiedWords(int iddictonary);
         void RemoveWord(WordsModel selectedItem);
         void AddWords(IEnumerable<Words> listWords);
     }
@@ -308,6 +309,15 @@ namespace RepeatingWords.Services
                 Log.Logger.Error(e);
                 throw;
             }
+        }
+
+        public void ResetStudiedWords(int iddictonary)
+        {
+            Log.Logger.Info($"\n Reset studies words in idDictionary={iddictonary}");
+            var words = _words.Where(x => x.IdDictionary == iddictonary && x.IsLearned);
+            Parallel.ForEach(words, (w) => { w.IsLearned = false; });
+            _unitOfWork.WordsRepository.Update(words);
+            SetDictionaryUpdate(iddictonary);
         }
 
         public void RemoveWord(WordsModel word)
