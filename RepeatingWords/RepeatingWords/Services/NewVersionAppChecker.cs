@@ -3,6 +3,7 @@ using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Services
@@ -12,6 +13,8 @@ namespace RepeatingWords.Services
         private readonly IWebClient _webService;
         private readonly IDialogService _dialogService;
 
+        private readonly string uriAndroidVersion =
+            "https://play.google.com/store/apps/details?id=cardsofwords.cardsofwords";
 
         public NewVersionAppChecker(IWebClient webService, IDialogService dialogService)
         {
@@ -25,9 +28,9 @@ namespace RepeatingWords.Services
         public async Task CheckNewVersionApp()
         {
             try
-            {               
+            {
                if( DependencyService.Get<ICheckConnect>().CheckTheNet() )
-                {
+               {
                     float webVersion = await _webService.GetVersionApp();
                     float currentVersion = DependencyService.Get<IVersionApp>().GetVersionApp();
                     if (webVersion > currentVersion)
@@ -35,13 +38,14 @@ namespace RepeatingWords.Services
                         var actionUpdate = await _dialogService.ShowConfirmAsync(Resource.ModalUpdateApp, "", Resource.Yes, Resource.No);
                         if (actionUpdate)
                         {
-                            if (Device.RuntimePlatform == "Android")
-                                Device.OpenUri(new Uri("https://play.google.com/store/apps/details?id=cardsofwords.cardsofwords"));
+                            if (Device.RuntimePlatform == Device.Android)
+                                if (await Launcher.CanOpenAsync(uriAndroidVersion))
+                                    await Launcher.OpenAsync(uriAndroidVersion);
                             //if (Device.RuntimePlatform == "UWP")
                             //    Device.OpenUri(new Uri("https://www.microsoft.com/store/apps/9n55bwkgshnf"));
                         }
                     }
-                }               
+               }
             }
             catch (Exception e)
             {
