@@ -27,6 +27,7 @@ namespace RepeatingWords.Services
             _container.RegisterInstance(typeof(IDialogService), new DialogService());          
             _container.Register<BackupGoogleService>();
             _container.Register<BackupLocalService>();
+            _container.Register<ICheckConnect, CheckConnect>();
             _container.Register<IThemeService, ThemeChangeService>();
             _container.Register<IShowLanguage, ShowLanguageService>();
             _container.Register<IKeyboardTranscriptionService, KeyboardTranscriptionChangeService>();
@@ -39,6 +40,8 @@ namespace RepeatingWords.Services
             _container.Register<IEntryWordValidator, EntryWordValidator>();
             _container.Register<ITextToSpeech, SpeechService>();
             _container.RegisterInstance(typeof(IStudyService), new StudyService(unitOfWork, initDb));
+          
+       
             //register viewmodels
             _container.Register(typeof(MainViewModel));
             _container.Register(typeof(HelperViewModel));

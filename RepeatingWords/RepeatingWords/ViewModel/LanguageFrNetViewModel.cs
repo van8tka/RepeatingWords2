@@ -14,14 +14,16 @@ namespace RepeatingWords.ViewModel
     {
         //создаем класс для работы с WebApi сайта и получения данных
         private readonly IWebClient _webService;
-        public LanguageFrNetViewModel(INavigationService navigationServcie, IDialogService dialogService, IWebClient webService, ILanguageLoaderFacade languageLoader) : base(navigationServcie, dialogService)
+        public LanguageFrNetViewModel(INavigationService navigationServcie, IDialogService dialogService, IWebClient webService, ILanguageLoaderFacade languageLoader, ICheckConnect checkConnect) : base(navigationServcie, dialogService)
         {
             _webService = webService;
             LanguageList = new ObservableCollection<Language>();
             DialogService.ShowLoadDialog();
             _languageLoader = languageLoader ?? throw new ArgumentNullException(nameof(languageLoader));
+            _checkConnect = checkConnect;
         }
 
+        private readonly ICheckConnect _checkConnect;
         private readonly ILanguageLoaderFacade _languageLoader;
 
         private ObservableCollection<Language> _languageList;
@@ -66,8 +68,8 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                bool isNet = await Task.Run(() => DependencyService.Get<ICheckConnect>().CheckTheNet());
-               if(isNet)
+              
+               if(await _checkConnect.CheckTheNet())
                {
                     //получаем данные в формате Json, Диссериализуем их и получаем языки
                     IEnumerable<Language> langList = (await _webService.GetLanguage())?.OrderBy(x => x.NameLanguage);
@@ -81,7 +83,7 @@ namespace RepeatingWords.ViewModel
                }
                else 
                {
-                      DialogService.ShowToast(Resource.ModalCheckNet);                   
+                   DialogService.ShowToast(Resource.ModalCheckNet);                   
                }                 
             }
             catch(Exception e)

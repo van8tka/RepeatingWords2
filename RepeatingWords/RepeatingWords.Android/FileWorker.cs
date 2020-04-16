@@ -94,8 +94,5 @@ namespace RepeatingWords.Droid
                 throw;
             }
         }
-
-
     }
-
 }

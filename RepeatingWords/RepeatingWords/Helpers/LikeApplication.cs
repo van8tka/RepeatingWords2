@@ -22,9 +22,9 @@ namespace RepeatingWords.Helpers
                     case Device.Android:
                     {
                         if (await Launcher.CanOpenAsync(uriAndroidLike))
-                        {
-                           await Launcher.OpenAsync(uriAndroidLike);
-                        }
+                            await Launcher.OpenAsync(uriAndroidLike);
+                        else
+                            _dialogService.ShowToast(Resource.ModalCheckNet);
                         break;
                     }
                     //case Device.UWP:

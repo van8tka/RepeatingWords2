@@ -1,7 +1,9 @@
-﻿namespace RepeatingWords
+﻿using System.Threading.Tasks;
+
+namespace RepeatingWords
 {
     public interface ICheckConnect
     {
-       bool CheckTheNet();
+       Task<bool> CheckTheNet();
     }
 }

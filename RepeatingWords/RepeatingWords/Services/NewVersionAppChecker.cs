@@ -12,14 +12,16 @@ namespace RepeatingWords.Services
     {
         private readonly IWebClient _webService;
         private readonly IDialogService _dialogService;
+        private readonly ICheckConnect _checkConnect;
 
         private readonly string uriAndroidVersion =
             "https://play.google.com/store/apps/details?id=cardsofwords.cardsofwords";
 
-        public NewVersionAppChecker(IWebClient webService, IDialogService dialogService)
+        public NewVersionAppChecker(IWebClient webService, IDialogService dialogService, ICheckConnect checkConnect)
         {
             _webService = webService;
             _dialogService = dialogService;
+            _checkConnect = checkConnect;
         }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace RepeatingWords.Services
         {
             try
             {
-               if( DependencyService.Get<ICheckConnect>().CheckTheNet() )
+               if(await _checkConnect.CheckTheNet() )
                {
                     float webVersion = await _webService.GetVersionApp();
                     float currentVersion = DependencyService.Get<IVersionApp>().GetVersionApp();

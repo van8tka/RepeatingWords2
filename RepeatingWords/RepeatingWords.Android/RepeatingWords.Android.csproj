@@ -110,7 +110,6 @@
   <ItemGroup>
     <Compile Include="AdMobRenderer.cs" />
     <Compile Include="AdMobRendererInterstitial.cs" />
-    <Compile Include="CheckConnect.cs" />
     <Compile Include="EntryRepeatingWordRender.cs" />
     <Compile Include="FileWorker.cs" />
     <Compile Include="GoogleDriveAuth.cs" />
