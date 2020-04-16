@@ -4,6 +4,7 @@ using System.Text;
 using RepeatingWords.Heleprs;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
+using Xamarin.Essentials;
 
 namespace RepeatingWords.Services
 {
@@ -13,11 +14,12 @@ namespace RepeatingWords.Services
         {
             try
             {
-                object propThem;
+               
                 bool isFromNative = false;
-                if (App.Current.Properties.TryGetValue(Constants.LANGUAGE_FIRST, out propThem))
+                if (Preferences.ContainsKey(Constants.LANGUAGE_FIRST))
                 {
-                    if (propThem.ToString().Equals(Constants.LANGUAGE_FOREIGN))
+                    string propThem = Preferences.Get(Constants.LANGUAGE_FIRST, "");
+                    if (propThem.Equals(Constants.LANGUAGE_FOREIGN))
                         isFromNative = false;
                     else
                         isFromNative = true;
@@ -25,7 +27,7 @@ namespace RepeatingWords.Services
                 else
                 {
                     isFromNative = false;
-                    App.Current.Properties.Add(Constants.LANGUAGE_FIRST, Constants.LANGUAGE_FOREIGN);
+                    Preferences.Set(Constants.LANGUAGE_FIRST, Constants.LANGUAGE_FOREIGN);
                 }
                 return isFromNative;
             }
@@ -41,15 +43,15 @@ namespace RepeatingWords.Services
             if (GetFirstLanguage())
             {
                 //set foreign
-                App.Current.Properties.Remove(Constants.LANGUAGE_FIRST);
-                App.Current.Properties.Add(Constants.LANGUAGE_FIRST, Constants.LANGUAGE_FOREIGN);
+                Preferences.Remove(Constants.LANGUAGE_FIRST);
+                Preferences.Set(Constants.LANGUAGE_FIRST, Constants.LANGUAGE_FOREIGN);
                 return false;
             }
             else
             {
                 //set native
-                App.Current.Properties.Remove(Constants.LANGUAGE_FIRST);
-                App.Current.Properties.Add(Constants.LANGUAGE_FIRST, Constants.LANGUAGE_NATIVE);
+                Preferences.Remove(Constants.LANGUAGE_FIRST);
+                Preferences.Set(Constants.LANGUAGE_FIRST, Constants.LANGUAGE_NATIVE);
                 return true;
             }
         }

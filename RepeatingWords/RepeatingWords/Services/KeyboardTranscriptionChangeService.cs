@@ -2,6 +2,7 @@
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
+using Xamarin.Essentials;
 
 
 namespace RepeatingWords.Services
@@ -12,11 +13,12 @@ namespace RepeatingWords.Services
         {
             try
             {
-                object propTrKeyb;
+              
                 string setKeyboard = string.Empty;
                 bool isShow;
-                if (App.Current.Properties.TryGetValue(Constants.KEYBOARD_TRANSCRIPTION, out propTrKeyb))
+                if (Preferences.ContainsKey(Constants.KEYBOARD_TRANSCRIPTION))
                 {
+                    string propTrKeyb = Preferences.Get(Constants.KEYBOARD_TRANSCRIPTION, "");
                     if (propTrKeyb.Equals(Constants.KEYBOARD_TRANSCRIPTION_SHOWED))
                     {
                         setKeyboard = Constants.KEYBOARD_TRANSCRIPTION_HIDE;
@@ -30,8 +32,8 @@ namespace RepeatingWords.Services
                 }
                 else
                     throw new ArgumentException("Transcription keyboard change wasn't set");
-                App.Current.Properties.Remove(Constants.KEYBOARD_TRANSCRIPTION);
-                App.Current.Properties.Add(Constants.KEYBOARD_TRANSCRIPTION, setKeyboard);
+                Preferences.Remove(Constants.KEYBOARD_TRANSCRIPTION);
+                Preferences.Set(Constants.KEYBOARD_TRANSCRIPTION, setKeyboard);
                 return isShow;
             }
             catch(Exception e)
@@ -45,16 +47,17 @@ namespace RepeatingWords.Services
         {
             try
             {
-                object propTrKeyb;
+              
                 bool isShow = false;
-                if (App.Current.Properties.TryGetValue(Constants.KEYBOARD_TRANSCRIPTION, out propTrKeyb))
+                if (Preferences.ContainsKey(Constants.KEYBOARD_TRANSCRIPTION))
                 {
+                    string propTrKeyb = Preferences.Get(Constants.KEYBOARD_TRANSCRIPTION, "");
                     if (propTrKeyb.Equals(Constants.KEYBOARD_TRANSCRIPTION_SHOWED))
                         isShow = true;
                 }
                 else
                 {
-                    App.Current.Properties.Add(Constants.KEYBOARD_TRANSCRIPTION, Constants.KEYBOARD_TRANSCRIPTION_SHOWED);
+                     Preferences.Set(Constants.KEYBOARD_TRANSCRIPTION, Constants.KEYBOARD_TRANSCRIPTION_SHOWED);
                     isShow = true;
                 }
                 return isShow;

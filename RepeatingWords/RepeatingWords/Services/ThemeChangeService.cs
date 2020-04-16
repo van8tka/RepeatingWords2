@@ -2,6 +2,7 @@
 using System;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Heleprs;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Services
@@ -13,11 +14,11 @@ namespace RepeatingWords.Services
         {
             try
             {
-                object propThem;
                 bool isDark = false;
-                if (App.Current.Properties.TryGetValue(Constants.THEME, out propThem))
+                if (Preferences.ContainsKey(Constants.THEME))
                 {
-                    if (propThem.ToString().Equals(Constants.THEME_WHITE))
+                    string propThem = Preferences.Get(Constants.THEME, "");
+                    if (propThem.Equals(Constants.THEME_WHITE))
                     {
                         SetWhiteTheme();                       
                     }
@@ -30,7 +31,7 @@ namespace RepeatingWords.Services
                 else
                 {                 
                     SetWhiteTheme();
-                    App.Current.Properties.Add(Constants.THEME, Constants.THEME_WHITE);
+                    Preferences.Set(Constants.THEME, Constants.THEME_WHITE);
                 }
                 return isDark;
             }
@@ -46,10 +47,10 @@ namespace RepeatingWords.Services
         {
             try
             {
-                object propThem;
                 string nameTheme = string.Empty;
-                if (App.Current.Properties.TryGetValue(Constants.THEME, out propThem))
+                if ( Preferences.ContainsKey(Constants.THEME) )
                 {
+                    string propThem = Preferences.Get(Constants.THEME, "");
                     if (propThem.Equals(Constants.THEME_WHITE))
                         nameTheme = SetDarkTheme();
                     else
@@ -57,8 +58,8 @@ namespace RepeatingWords.Services
                 }
                 else
                     throw new ArgumentException("Theme wasn't set");
-                App.Current.Properties.Remove(Constants.THEME);
-                App.Current.Properties.Add(Constants.THEME, nameTheme);
+                Preferences.Remove(Constants.THEME);
+                Preferences.Set(Constants.THEME, nameTheme);
                 return nameTheme.Equals(Constants.THEME_DARK) ? true : false;
             }
             catch (Exception er)

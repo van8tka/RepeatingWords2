@@ -20,7 +20,7 @@ namespace RepeatingWords.Services
 
         private async Task SetSpeechLocale()
         {
-            var locales = await TextToSpeech.GetLocalesAsync();
+            var locales = VolumeLanguageService.Locales;
             var current = _volumeService.GetVolumeLanguage();
             _language = current.Name;
             _settings = new SpeechOptions()
