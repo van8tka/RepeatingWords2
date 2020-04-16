@@ -6,7 +6,7 @@
              xmlns:behavior="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
              xmlns:vm="clr-namespace:RepeatingWords.ViewModel;assembly=RepeatingWords"
              Title="{local:Translate TitleSettings}"
-             Style="{DynamicResource TitleApp}"            
+             Style="{DynamicResource TitleApp}"
           >
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -20,9 +20,9 @@
     <ContentPage.Content>
         <!--установка ночной темы-->
         <StackLayout Padding="10" x:DataType="vm:SettingsViewModel">
-            <Label Text="{local:Translate LabelChooseTheme}"  FontSize="Small" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start"/>
+            <Label Text="{local:Translate LabelChooseTheme}" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" FontSize="Medium"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Label Text="{local:Translate LabelThemeDark}" Style="{DynamicResource LabelColorWB}" FontSize="Small"  HorizontalOptions="StartAndExpand"/>
+                <Label Text="{local:Translate LabelThemeDark}" Style="{DynamicResource LabelColorWB}" HorizontalOptions="StartAndExpand"/>
                 <Switch HorizontalOptions="End" VerticalOptions="End" IsToggled="{Binding IsDarkThem, Mode=TwoWay}"  >
                     <Switch.Behaviors>
                         <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchThemeCommand}"/>
@@ -31,9 +31,9 @@
             </StackLayout>
             <BoxView Style="{StaticResource BoxViewStyle}"/>
             <!--установка клавиатуры транскрипции-->
-            <Label Text="{local:Translate LabelChooseShowKeyboardTrans}"  FontSize="Small" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start"/>
+            <Label Text="{local:Translate LabelChooseShowKeyboardTrans}" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" FontSize="Medium"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Label Text="{local:Translate LabelShowKeyboard}" Style="{DynamicResource LabelColorWB}"  FontSize="Small" HorizontalOptions="StartAndExpand"/>
+                <Label Text="{local:Translate LabelShowKeyboard}" Style="{DynamicResource LabelColorWB}" HorizontalOptions="StartAndExpand"/>
                 <Switch x:Name="SwShowKeyboard" VerticalOptions="End" HorizontalOptions="End" IsToggled="{Binding IsCustomKeyboardTranscription, Mode=TwoWay}" >
                     <Switch.Behaviors>
                         <behavior:EventToCommandBehavior EventName="Toggled" Command="{Binding SwitchTranskriptionKeyboardCommand}"/>
@@ -47,8 +47,8 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ChangeFirstLanguageCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="{local:Translate LabelChooseFirstLanguage}" Style="{DynamicResource LableHeadApp}" FontSize="Small" />
-                <Label Text="{Binding CurrentLanguageView, Mode=TwoWay}" Style="{DynamicResource LabelColorWB}"  FontSize="Small"  />
+                <Label Text="{local:Translate LabelChooseFirstLanguage}" Style="{DynamicResource LableHeadApp}" FontSize="Medium"/>
+                <Label Text="{Binding CurrentLanguageView, Mode=TwoWay}" Style="{DynamicResource LabelColorWB}"/>
             </StackLayout>
             <BoxView Style="{StaticResource BoxViewStyle}"/>
 
@@ -58,14 +58,14 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ChangeVoiceLanguageCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="{local:Translate PickerText}" Style="{DynamicResource LableHeadApp}" FontSize="Small" />
-                <Label Text="{Binding CurrentVoiceLanguage, Mode=TwoWay}" Style="{DynamicResource LabelColorWB}"  FontSize="Small"  />
+                <Label Text="{local:Translate PickerText}" Style="{DynamicResource LableHeadApp}" FontSize="Medium"/>
+                <Label Text="{Binding CurrentVoiceLanguage, Mode=TwoWay}" Style="{DynamicResource LabelColorWB}"/>
             </StackLayout>
             <BoxView Style="{StaticResource BoxViewStyle}"/>
 
             <!--создание резервной копии-->
             <StackLayout>
-                <Label Text="{local:Translate BackUpCreateBtn}"  FontSize="Small"  Style="{DynamicResource LabelColorWB}" HorizontalOptions="Start"  Margin="0,17,0,17"/>
+                <Label Text="{local:Translate BackUpCreateBtn}" Style="{DynamicResource LabelColorWB}" HorizontalOptions="Start"  Margin="0,17,0,17"/>
                 <BoxView Style="{StaticResource BoxViewStyle}"/>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackUpCommand}"/>
@@ -73,7 +73,7 @@
             </StackLayout>
             <!--восстановление резервной копии-->
             <StackLayout>
-                <Label Text="{local:Translate BackUpRestoreBtn}" FontSize="Small"  Style="{DynamicResource LabelColorWB}" HorizontalOptions="Start" Margin="0,17,0,17"/>
+                <Label Text="{local:Translate BackUpRestoreBtn}" Style="{DynamicResource LabelColorWB}" HorizontalOptions="Start" Margin="0,17,0,17"/>
                 <BoxView Style="{StaticResource BoxViewStyle}"/>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding RestoreBackUpCommand}"/>

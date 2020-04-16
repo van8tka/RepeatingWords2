@@ -15,15 +15,14 @@ namespace RepeatingWords.Model
    public class LanguageModel:ObservableCollection<DictionaryModel>,INotifyPropertyChanged
    {
        
-        public LanguageModel( Language language, IEnumerable<DictionaryModel> dictionaries = null, bool expanded = false)
+        public LanguageModel( Language language, IEnumerable<DictionaryModel> dictionaries = null, bool expanded = true)
         {
-            
             Id = language.Id;
             Name = language.NameLanguage;
             AddDictionariesToCash(dictionaries);
             AddRangeToCollection();
             ExpandCommand = new Command(ExpandChange);
-            
+            Expanded = expanded;
         }
 
         private void AddDictionariesToCash(IEnumerable<DictionaryModel> dictionaries)
