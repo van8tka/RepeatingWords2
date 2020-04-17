@@ -5,15 +5,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Newtonsoft.Json.Linq;
 using RepeatingWords.Annotations;
 using RepeatingWords.DataService.Model;
-using RepeatingWords.LoggerService;
+using RepeatingWords.Helpers.Interfaces;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Model
 {
-   public class LanguageModel:ObservableCollection<DictionaryModel>,INotifyPropertyChanged
-   {
+   public class LanguageModel:ObservableCollection<DictionaryModel>,INotifyPropertyChanged, ISerializebleJson
+    {
        
         public LanguageModel( Language language, IEnumerable<DictionaryModel> dictionaries = null, bool expanded = true)
         {
@@ -120,5 +121,28 @@ namespace RepeatingWords.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-   }
+
+        public JObject ToJson()
+        {
+            var item = new JObject();
+            item.Add("id", Id);
+            item.Add("name", Name);
+            var jarray = new JArray();
+            int count = _dictionariesCash.Count();
+            for (int i = 0; i < count; i++)
+            {
+                jarray.Add(_dictionariesCash.ElementAt(i).ToJson());
+            }
+            item.Add("dictionaries", jarray);
+            return item;
+        }
+
+        public T FromJson<T>(JObject jItem) where T : class
+        {
+            var item = new Language();
+            item.Id = int.Parse(jItem["id"].ToString());
+            item.NameLanguage = jItem["name"].ToString();
+            return item as T;
+        }
+    }
 }

@@ -1,8 +1,10 @@
-﻿using RepeatingWords.DataService.Model;
+﻿using Newtonsoft.Json.Linq;
+using RepeatingWords.DataService.Model;
+using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords.Model
 {
-   public class WordsModel:BaseModel
+   public class WordsModel:BaseModel, ISerializebleJson
    {
        public WordsModel()
        {
@@ -47,5 +49,27 @@ namespace RepeatingWords.Model
        public bool IsLearned { get=>_isLearned;
            set { _isLearned = value;OnPropertyChanged(nameof(IsLearned)); }
        }
-    }
+
+       public JObject ToJson()
+       {
+           var item = new JObject();
+           item.Add("id", Id);
+           item.Add("is_learned", IsLearned);
+           item.Add("native", RusWord);
+           item.Add("foreign",EngWord);
+           item.Add("transcript", string.IsNullOrEmpty(Transcription) ? string.Empty : Transcription);
+           return item;
+       }
+
+       public T FromJson<T>(JObject jItem) where T : class
+       {
+           var item = new Words();
+           item.Id = int.Parse(jItem["id"].ToString());
+           item.IsLearned = bool.Parse(jItem["is_learned"].ToString());
+           item.RusWord = jItem["native"].ToString();
+           item.EngWord = jItem["foreign"].ToString();
+           item.Transcription = jItem["transcript"]?.ToString() ?? string.Empty;
+           return item as T;
+       }
+   }
 }

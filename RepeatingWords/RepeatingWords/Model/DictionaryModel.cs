@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 using RepeatingWords.DataService.Model;
+using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords.Model
 {
-   public class DictionaryModel:BaseModel
+   public class DictionaryModel:BaseModel, ISerializebleJson
     {
         public DictionaryModel(Dictionary dictionary, IEnumerable<Words> wordsDb)
         {
@@ -94,5 +96,31 @@ namespace RepeatingWords.Model
         public int CountWords => WordsCollection.Count();
         public int CountUnlearned => WordsCollection.Count(x => x.IsLearned==false);
         public int CountLearned => WordsCollection.Count(x => x.IsLearned == true);
+        public JObject ToJson()
+        {
+            var item = new JObject();
+            item.Add("id", Id);
+            item.Add("name", Name);
+            item.Add("percent", string.IsNullOrEmpty(PercentOfLearned) ? string.Empty : PercentOfLearned.TrimEnd('%'));
+            item.Add("updated", LastUpdated.ToString());
+            var jarray = new JArray();
+            for (int i = 0; i < CountWords; i++)
+            {
+                jarray.Add(WordsCollection.ElementAt(i).ToJson());
+            }
+            item.Add("words",jarray);
+        }
+
+        public T FromJson<T>(JObject jItem) where T : class
+        {
+            var item = new Dictionary();
+            item.Id = int.Parse(jItem["id"].ToString());
+            item.Name = jItem["name"].ToString();
+            item.LastUpdated = DateTime.Parse(jItem["updated"].ToString());
+            int percent = 0;
+            int.TryParse(jItem["percent"].ToString(), out percent);
+            item.PercentOfLearned = percent;
+            return item as T;
+        }
     }
 }
