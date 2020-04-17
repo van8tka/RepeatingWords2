@@ -33,7 +33,7 @@ namespace RepeatingWords.Services
             _container.Register<IKeyboardTranscriptionService, KeyboardTranscriptionChangeService>();
             _container.Register<IWebClient, WebClient>();
             _container.Register<IImportFile, ImportFileToDb>();
-            _container.Register<IVolumeLanguageService, VolumeLanguageService>();
+            _container.RegisterInstance(typeof(IVolumeLanguageService),new VolumeLanguageService());
             _container.Register<INewVersionAppChecker, NewVersionAppChecker>();
             _container.Register<ILanguageLoaderFacade, LanguageLoader>();
             _container.Register<IAnimationService, AnimationService>();

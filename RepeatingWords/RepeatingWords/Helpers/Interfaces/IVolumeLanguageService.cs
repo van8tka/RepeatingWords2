@@ -1,6 +1,4 @@
-﻿using RepeatingWords.Model;
-
-namespace RepeatingWords.Helpers.Interfaces
+﻿namespace RepeatingWords.Helpers.Interfaces
 {
     public interface IVolumeLanguageService
     {

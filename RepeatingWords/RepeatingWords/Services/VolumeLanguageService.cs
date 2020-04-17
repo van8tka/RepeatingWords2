@@ -5,9 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RepeatingWords.Model;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 
 
 namespace RepeatingWords.Services
@@ -19,12 +17,23 @@ namespace RepeatingWords.Services
             GetLocales();
         }
 
-        private async void GetLocales()
+        private static async Task GetLocales()
         {
-            Locales = await TextToSpeech.GetLocalesAsync();
+            var temp = await TextToSpeech.GetLocalesAsync();
+            Locales = temp.ToList();
         }
 
-        public static IEnumerable<Locale> Locales;
+        private static IList<Locale> _locale;
+        public static IList<Locale> Locales
+        {
+            get
+            {
+                if (_locale == null)
+                     GetLocales();
+                return _locale;
+            }
+            private set { _locale = value; }
+        }
          
 
         public string GetVolumeLanguage()

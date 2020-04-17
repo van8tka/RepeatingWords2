@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using RepeatingWords.Helpers.Interfaces;
@@ -18,16 +19,19 @@ namespace RepeatingWords.Services
             SetSpeechLocale();
         }
 
-        private void SetSpeechLocale()
+        private Task SetSpeechLocale()
         {
-            var locales = VolumeLanguageService.Locales;
-            _language = _volumeService.GetVolumeLanguage();
-            _settings = new SpeechOptions()
+            return Task.Run(() =>
             {
-                Volume = .75f,
-                Pitch = 1.0f,
-                Locale = locales.FirstOrDefault(x =>x.Name.Equals(_language, StringComparison.OrdinalIgnoreCase))
-            };
+                var locales = VolumeLanguageService.Locales;
+                _language = _volumeService.GetVolumeLanguage();
+                _settings = new SpeechOptions()
+                {
+                    Volume = .75f,
+                    Pitch = 1.0f,
+                    Locale = locales.FirstOrDefault(x => x.Name.Equals(_language, StringComparison.OrdinalIgnoreCase))
+                };
+            });
         }
 
         private SpeechOptions _settings;
@@ -37,6 +41,7 @@ namespace RepeatingWords.Services
         public async Task Speak(string text)
         {
             Log.Logger.Info($"SpeechService Speak - {text} +language- {_language}");
+            Debug.Assert(_settings!=null);
             await TextToSpeech.SpeakAsync(text, _settings);
         }
     }

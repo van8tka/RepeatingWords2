@@ -139,7 +139,7 @@ namespace RepeatingWords.Droid
                     if (isCreateBackUp)
                         CreateBackUpFolderAndFile(contentResults);
                     else
-                      await GetBackUpFile(contentResults);
+                       await GetBackUpFile(contentResults);
                     _googleApiClient.Disconnect();
                 });
             }
@@ -200,11 +200,8 @@ namespace RepeatingWords.Droid
                         byte[] bytes = Convert.FromBase64String(contentFile.ToString());
                         System.IO.File.WriteAllBytes(pathToDb, bytes);
                         CreateAlertDialog("", successMessage);
-
                     }
-
                 }
-
             }
             catch (Exception er)
             {
