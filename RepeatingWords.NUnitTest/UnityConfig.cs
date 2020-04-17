@@ -45,17 +45,13 @@ namespace RepeatingWords.NUnitTest
 
     internal class TestVolumeService : IVolumeLanguageService
     {
-        public string GetSysAbbreviationVolumeLanguage()
-        {
-            return "en-En";
-        }
-
-        public VolumeLanguageModel GetVolumeLanguage()
+       
+        public string GetVolumeLanguage()
         {
             throw new NotImplementedException();
         }
 
-        public bool SetVolumeLanguage(VolumeLanguageModel languageName)
+        public bool SetVolumeLanguage(string languageName)
         {
             throw new NotImplementedException();
         }

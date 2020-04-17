@@ -11,6 +11,7 @@ namespace RepeatingWords.Model
 {
    public class DictionaryModel:BaseModel, ISerializebleJson
     {
+        public DictionaryModel() { }
         public DictionaryModel(Dictionary dictionary, IEnumerable<Words> wordsDb)
         {
             Id = dictionary.Id;
@@ -109,6 +110,7 @@ namespace RepeatingWords.Model
                 jarray.Add(WordsCollection.ElementAt(i).ToJson());
             }
             item.Add("words",jarray);
+            return item;
         }
 
         public T FromJson<T>(JObject jItem) where T : class

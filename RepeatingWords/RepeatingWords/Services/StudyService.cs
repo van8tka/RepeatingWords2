@@ -16,6 +16,7 @@ namespace RepeatingWords.Services
         ObservableCollection<LanguageModel> DictionaryList { get; }
         Language GetLanguage(string name);
         int AddLanguage(string nameLanguage);
+        int AddLanguage(Language language);
         Task<bool> RemoveLanguage(int idlanguage);
     }
     public interface IWordStudyService
@@ -31,6 +32,7 @@ namespace RepeatingWords.Services
         DictionaryModel GetDictionary(int idDictionary);
         Task<bool> RemoveDictionaryFromLanguage(int dictionaryId);
         int AddDictionary(string dictionaryName, int idLang);
+        int AddDictionary(Dictionary dictionary);
         Task UpdateDictionary(DictionaryModel dictionary);
     }
     public interface ITransactionService
@@ -133,7 +135,22 @@ namespace RepeatingWords.Services
             }
         }
 
-
+        public int AddLanguage(Language language)
+        {
+            try
+            {
+                var languageNew = _unitOfWork.LanguageRepository.Create(language);
+                _unitOfWork.Save();
+                _languages.Add(languageNew);
+                _dictionaryList.Add(new LanguageModel(languageNew));
+                 return languageNew.Id;
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                throw;
+            }
+        }
 
 
         public int AddLanguage(string nameLanguage)
@@ -142,11 +159,8 @@ namespace RepeatingWords.Services
             {
                 if (!string.IsNullOrEmpty(nameLanguage) || !string.IsNullOrWhiteSpace(nameLanguage))
                 {
-                    var language = _unitOfWork.LanguageRepository.Create(new Language() { Id = 0, NameLanguage = nameLanguage, PercentOfLearned = 0 });
-                    _unitOfWork.Save();
-                    _languages.Add(language);
-                    _dictionaryList.Add(new LanguageModel(language));
-                    return language.Id;
+                    var language = new Language() { Id = 0, NameLanguage = nameLanguage, PercentOfLearned = 0 };
+                   return AddLanguage(language);
                 }
                 return -1;
             }
@@ -207,18 +221,32 @@ namespace RepeatingWords.Services
             }
         }
 
+        public int AddDictionary(Dictionary dictionary)
+        {
+            try
+            {
+                var dictionaryNew = _unitOfWork.DictionaryRepository.Create(dictionary);
+                _unitOfWork.Save();
+                _dictionaries.Add(dictionaryNew);
+                var dictModel = new DictionaryModel(dictionaryNew, new List<Words>());
+                _dictionaryList.FirstOrDefault(x => x.Id == dictionaryNew.IdLanguage).AddDictionary(dictModel);
+                return dictionaryNew.Id;
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                throw;
+            }
+        }
+
         public int AddDictionary(string dictionaryName, int idLang)
         {
             try
             {
                 if (!string.IsNullOrEmpty(dictionaryName) || !string.IsNullOrWhiteSpace(dictionaryName))
                 {
-                    var dictionary = _unitOfWork.DictionaryRepository.Create(new Dictionary() { Id = 0, IdLanguage = idLang, Name = dictionaryName, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow });
-                    _unitOfWork.Save();
-                    _dictionaries.Add(dictionary);
-                    var dictModel = new DictionaryModel(dictionary, new List<Words>());
-                    _dictionaryList.FirstOrDefault(x => x.Id == idLang).AddDictionary(dictModel);
-                    return dictionary.Id;
+                    var dictionary = new Dictionary() { Id = 0, IdLanguage = idLang, Name = dictionaryName, PercentOfLearned = 0, LastUpdated = DateTime.UtcNow };
+                    return AddDictionary(dictionary);
                 }
                 return -1;
             }

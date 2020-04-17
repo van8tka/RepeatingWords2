@@ -15,7 +15,7 @@ namespace RepeatingWords.Model
 {
    public class LanguageModel:ObservableCollection<DictionaryModel>,INotifyPropertyChanged, ISerializebleJson
     {
-       
+       public LanguageModel() { }
         public LanguageModel( Language language, IEnumerable<DictionaryModel> dictionaries = null, bool expanded = true)
         {
             Id = language.Id;
