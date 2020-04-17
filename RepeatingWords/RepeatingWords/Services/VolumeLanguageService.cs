@@ -27,31 +27,28 @@ namespace RepeatingWords.Services
         public static IEnumerable<Locale> Locales;
          
 
-        public VolumeLanguageModel GetVolumeLanguage()
+        public string GetVolumeLanguage()
         {
-            object volumeLanguage;
-            if (App.Current.Properties.TryGetValue(Constants.VOLUME_LANGUAGE, out volumeLanguage))
+            if (Preferences.ContainsKey(Constants.VOLUME_LANGUAGE))
             {
-                if(volumeLanguage is VolumeLanguageModel languageSpeaker)
-                    return languageSpeaker;
+                return Preferences.Get(Constants.VOLUME_LANGUAGE,"");
             }
             var currentLocale = Locales?.Where(x => x.Country == "GB").FirstOrDefault();
             if (currentLocale == null)
                 throw new ArgumentNullException(nameof(currentLocale));
-            var lang = new VolumeLanguageModel() { Name = currentLocale.Name, CountryCode = currentLocale.Country, LanguageCode = currentLocale.Language, IsChecked = Color.FromHex("#6bafef") };
-            App.Current.Properties.Add(Constants.VOLUME_LANGUAGE, lang);
-            return lang;
+            Preferences.Set(Constants.VOLUME_LANGUAGE, currentLocale.Name);
+            return currentLocale.Name;
         }
 
-        public bool SetVolumeLanguage(VolumeLanguageModel languageSpeaker)
+        public bool SetVolumeLanguage(string languageName)
         {
             try
             {
-                if (App.Current.Properties.ContainsKey(Constants.VOLUME_LANGUAGE))
+                if (Preferences.ContainsKey(Constants.VOLUME_LANGUAGE))
                 {
-                    App.Current.Properties.Remove(Constants.VOLUME_LANGUAGE);
+                    Preferences.Remove(Constants.VOLUME_LANGUAGE);
                 }
-                App.Current.Properties.Add(Constants.VOLUME_LANGUAGE, languageSpeaker);
+                Preferences.Set(Constants.VOLUME_LANGUAGE, languageName);
                 return true;
             }
             catch(Exception e)

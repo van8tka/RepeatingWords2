@@ -18,17 +18,15 @@ namespace RepeatingWords.Services
             SetSpeechLocale();
         }
 
-        private async Task SetSpeechLocale()
+        private void SetSpeechLocale()
         {
             var locales = VolumeLanguageService.Locales;
-            var current = _volumeService.GetVolumeLanguage();
-            _language = current.Name;
+            _language = _volumeService.GetVolumeLanguage();
             _settings = new SpeechOptions()
             {
                 Volume = .75f,
                 Pitch = 1.0f,
-                Locale = locales.FirstOrDefault(x =>
-                    x.Language.Equals(current.LanguageCode, StringComparison.OrdinalIgnoreCase))
+                Locale = locales.FirstOrDefault(x =>x.Name.Equals(_language, StringComparison.OrdinalIgnoreCase))
             };
         }
 
@@ -38,13 +36,8 @@ namespace RepeatingWords.Services
 
         public async Task Speak(string text)
         {
-            Log.Logger.Info($"SpeechService Speak - {text} +language- {_settings.Locale.Language}");
-            if (Device.RuntimePlatform == Device.Android)
-                await TextToSpeech.SpeakAsync(text, _settings);
-            //else if (Device.RuntimePlatform == Device.iOS)
-            //    throw new Exception("Can't set the voice language");
-            //else if (Device.RuntimePlatform == Device.UWP)
-            //    throw new Exception("Can't set the voice language");
+            Log.Logger.Info($"SpeechService Speak - {text} +language- {_language}");
+            await TextToSpeech.SpeakAsync(text, _settings);
         }
     }
 }

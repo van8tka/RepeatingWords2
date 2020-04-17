@@ -29,7 +29,7 @@ namespace RepeatingWords.ViewModel
         public override Task InitializeAsync(object navigationData)
         {
             IsBusy = true; 
-            CurrentVoiceLanguage = _volumeService.GetVolumeLanguage().Name; 
+            CurrentVoiceLanguage = _volumeService.GetVolumeLanguage(); 
             SetFirstLanguageView(_showLanguageService.GetFirstLanguage()); 
             return base.InitializeAsync(navigationData);
         }

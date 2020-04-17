@@ -7,10 +7,10 @@ namespace RepeatingWords.Helpers.Interfaces
         /// <summary>
         /// получение имени языка установленного для озвучки
         /// </summary>     
-        VolumeLanguageModel GetVolumeLanguage();
+        string GetVolumeLanguage();
       /// <summary>
         /// установка имени языка для озвучки и сохранение в настройках устройства
         /// </summary>  
-        bool SetVolumeLanguage(VolumeLanguageModel languageName);
+        bool SetVolumeLanguage(string languageName);
     }
 }

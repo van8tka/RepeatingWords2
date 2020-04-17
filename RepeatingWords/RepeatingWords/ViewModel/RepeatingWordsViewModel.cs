@@ -288,15 +288,20 @@ namespace RepeatingWords.ViewModel
 
         private async Task AppearingPage()
         {
+            if(_disappiaring)
+                _studyService.BeginTransaction();
             if (_isEditing)
                 await _workSpaceVM.SetViewWords(Model.CurrentWord, Model.IsFromNative);
             _isEditing = false;
+            _disappiaring = false;
         }
 
+        private bool _disappiaring;
         private const int PERSENT = 100;
         private void Disappearing()
         {
-            if(_resetLearnedTask!=null)
+            _disappiaring = true;
+            if (_resetLearnedTask!=null)
                 _resetLearnedTask.Wait();
             _dictionary.LastUpdated = DateTime.UtcNow;
             float proportion = (float)_dictionary.CountLearned / (float) _dictionary.CountWords;
