@@ -15,12 +15,17 @@
                 <Setter Property="VerticalOptions" Value="End"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource ColorCustomBackgrountButton}"/>
             </Style>
+            <Style x:Key="HeaderSettings" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="{StaticResource ColorCustomBackgrountButton}"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <!--установка ночной темы-->
         <StackLayout Padding="10" x:DataType="vm:SettingsViewModel">
-            <Label Text="{local:Translate LabelChooseTheme}" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" FontSize="Medium"/>
+            <Label Text="{local:Translate LabelChooseTheme}" Style="{StaticResource HeaderSettings}" HorizontalOptions="Start" FontSize="Medium"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Label Text="{local:Translate LabelThemeDark}" Style="{DynamicResource LabelColorWB}" HorizontalOptions="StartAndExpand"/>
                 <Switch HorizontalOptions="End" VerticalOptions="End" IsToggled="{Binding IsDarkThem, Mode=TwoWay}"  >
@@ -31,7 +36,7 @@
             </StackLayout>
             <BoxView Style="{StaticResource BoxViewStyle}"/>
             <!--установка клавиатуры транскрипции-->
-            <Label Text="{local:Translate LabelChooseShowKeyboardTrans}" Style="{DynamicResource LableHeadApp}" HorizontalOptions="Start" FontSize="Medium"/>
+            <Label Text="{local:Translate LabelChooseShowKeyboardTrans}" Style="{StaticResource HeaderSettings}" HorizontalOptions="Start" FontSize="Medium"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Label Text="{local:Translate LabelShowKeyboard}" Style="{DynamicResource LabelColorWB}" HorizontalOptions="StartAndExpand"/>
                 <Switch x:Name="SwShowKeyboard" VerticalOptions="End" HorizontalOptions="End" IsToggled="{Binding IsCustomKeyboardTranscription, Mode=TwoWay}" >
@@ -47,7 +52,7 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ChangeFirstLanguageCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="{local:Translate LabelChooseFirstLanguage}" Style="{DynamicResource LableHeadApp}" FontSize="Medium"/>
+                <Label Text="{local:Translate LabelChooseFirstLanguage}" Style="{StaticResource HeaderSettings}" FontSize="Medium"/>
                 <Label Text="{Binding CurrentLanguageView, Mode=TwoWay}" Style="{DynamicResource LabelColorWB}"/>
             </StackLayout>
             <BoxView Style="{StaticResource BoxViewStyle}"/>
@@ -58,7 +63,7 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ChangeVoiceLanguageCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="{local:Translate PickerText}" Style="{DynamicResource LableHeadApp}" FontSize="Medium"/>
+                <Label Text="{local:Translate PickerText}" Style="{StaticResource HeaderSettings}" FontSize="Medium"/>
                 <Label Text="{Binding CurrentVoiceLanguage, Mode=TwoWay}" Style="{DynamicResource LabelColorWB}"/>
             </StackLayout>
             <BoxView Style="{StaticResource BoxViewStyle}"/>
