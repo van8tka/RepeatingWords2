@@ -43,21 +43,6 @@ namespace RepeatingWords.Droid
             }
         }
 
-        //запись файла резервной копии
-        public bool WriteFile(string filePathSource, string filePathDestin)
-        {
-            try
-            {
-                File.Copy(filePathSource, filePathDestin, true);
-                return true;
-            }
-            catch (Exception er)
-            {
-                Log.Logger.Error(er);
-                throw;
-            }
-        }
-
         //получение списка файлов бэкапа
         public Task<string> GetBackUpFilesAsync(string folder)
         {

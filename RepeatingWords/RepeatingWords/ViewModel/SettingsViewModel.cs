@@ -61,8 +61,6 @@ namespace RepeatingWords.ViewModel
         public ICommand ChangeVoiceLanguageCommand { get; set; }
         public ICommand ChangeFirstLanguageCommand { get; set; }
 
-
-
         private void SwitchTranscriptionKeyboard()
         {
             try
@@ -102,9 +100,6 @@ namespace RepeatingWords.ViewModel
             }
         }
         
-
-       
-      
         private void SetCurrentSettings()
         {           
             IsCustomKeyboardTranscription = _transcriptKeyboardService.GetCurrentTranscriptionKeyboard();
@@ -121,14 +116,14 @@ namespace RepeatingWords.ViewModel
             try
             {
                 //создание имени файла резервной копии
-                string fileNameBackup = string.Format(_fileNameBackupDef + DateTime.Now.ToString("ddMMyyyy_hhmm") + ".dat");
+                string fileNameBackup = string.Format(_fileNameBackupDef + DateTime.Now.ToString("ddMMyyyy_hhmm") + ".json");
                 var action = await DialogService.ShowActionSheetAsync(Resource.BackupMethod,"", Resource.ModalActCancel, default, _localFolderBackup, _googleDriveFolderBackup);
                 bool success;
                 if (action == _localFolderBackup)
                 {
                     var backupService = LocatorService.Container.GetInstance<BackupLocalService>();
                     success = await backupService.CreateBackup(fileNameBackup);
-                     DialogService.ShowToast(success ? Resource.BackupWasCreatedGoogle : Resource.BackUpErrorCreated);
+                    DialogService.ShowToast(success ? Resource.BackupWasCreatedGoogle : Resource.BackUpErrorCreated);
                 }
                 else if (action == _googleDriveFolderBackup)
                 {
@@ -150,7 +145,7 @@ namespace RepeatingWords.ViewModel
             if (action == _localFolderBackup)
             {
                 var backupService = LocatorService.Container.GetInstance<BackupLocalService>();
-                success = await backupService.RestoreBackup(_fileNameBackupDef);
+                success = await backupService.RestoreBackup(string.Empty);
                 DialogService.ShowToast(success ? Resource.BackupRestored : Resource.BackUpErrorCreated);
             }
             else if (action == _googleDriveFolderBackup)

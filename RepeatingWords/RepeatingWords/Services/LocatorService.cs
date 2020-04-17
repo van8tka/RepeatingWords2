@@ -24,9 +24,9 @@ namespace RepeatingWords.Services
             var initDb = new InitDefaultDb(unitOfWork);
             _container.RegisterInstance(typeof(IUnitOfWork), unitOfWork);
             _container.RegisterInstance(typeof(INavigationService), new NavigationService());
-            _container.RegisterInstance(typeof(IDialogService), new DialogService());          
-            _container.Register<BackupGoogleService>();
+            _container.RegisterInstance(typeof(IDialogService), new DialogService());
             _container.Register<BackupLocalService>();
+            _container.Register<BackupGoogleService>();
             _container.Register<ICheckConnect, CheckConnect>();
             _container.Register<IThemeService, ThemeChangeService>();
             _container.Register<IShowLanguage, ShowLanguageService>();
@@ -40,8 +40,8 @@ namespace RepeatingWords.Services
             _container.Register<IEntryWordValidator, EntryWordValidator>();
             _container.Register<ITextToSpeech, SpeechService>();
             _container.RegisterInstance(typeof(IStudyService), new StudyService(unitOfWork, initDb));
-          
-       
+            _container.Register<IExport, ExportJsonDb>();
+            _container.Register<IImport, ImportJsonDb>();
             //register viewmodels
             _container.Register(typeof(MainViewModel));
             _container.Register(typeof(HelperViewModel));
@@ -58,7 +58,6 @@ namespace RepeatingWords.Services
             _container.Register(typeof(WorkSpaceEnterWordViewModel));
             _container.Register(typeof(WorkSpaceSelectWordViewModel));                     
             _container.Register(typeof(VolumeLanguagesViewModel));
-
             Container = _container;
             return _container;
         }

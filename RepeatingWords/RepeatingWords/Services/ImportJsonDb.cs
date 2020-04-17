@@ -32,7 +32,6 @@ namespace RepeatingWords.Services
                     var version = jobject["version_json"].ToString();
                     Log.Logger.Info($"version of json import: {version}");
                     JArray jarrayall = jobject["languages"] as JArray;
-                    Debug.Assert(jarrayall == null);
                     int count = jarrayall.Count;
                     _studyService.BeginTransaction();
                     var languageModel = new LanguageModel();
@@ -42,14 +41,10 @@ namespace RepeatingWords.Services
                     {
                         //languages
                         var jobj_language = jarrayall.ElementAt(i) as JObject;
-                        if(jobj_language == null)
-                            Debugger.Break();
                         var language = languageModel.FromJson<Language>(jobj_language);
                         int id_language = _studyService.AddLanguage(language);
                         //dictionaries
                         var jarr_dictionary = jobj_language["dictionaries"] as JArray;
-                        if (jarr_dictionary == null)
-                            Debugger.Break();
                         int count_dict = jarr_dictionary.Count;
                         for (int j = 0; j < count_dict; j++)
                         {
@@ -68,7 +63,8 @@ namespace RepeatingWords.Services
                                 word.IdDictionary = id_dictionary;
                                 listWords.Add(word);
                             }
-                            _studyService.AddWords(listWords);
+                            if(listWords.Any())
+                                _studyService.AddWords(listWords);
                         }
                     }
                     _studyService.CommitTransaction();
