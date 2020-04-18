@@ -33,9 +33,10 @@ namespace RepeatingWords.Droid
         bool isCreateBackUp = true;
         string successMessage;
         string errorMessage;
+        private Func<string, Task<bool>> restoreFunc;
 
         //авторизация Google
-        public void GoogleCustomAuthorithation(bool isCreateBackUp, string folderName = null, string fileName = null, string pathToDb = null, string successMessage = "Excelent", string errorMessage = "Error")
+        public void GoogleCustomAuthorithation(bool isCreateBackUp, string folderName = null, string fileName = null, string pathToDb = null, string successMessage = "Excelent", string errorMessage = "Error", Func<string,Task<bool>> restoreFunc = null)
         {
             this.folderName = folderName;
             this.filename = fileName;
@@ -43,6 +44,7 @@ namespace RepeatingWords.Droid
             this.isCreateBackUp = isCreateBackUp;
             this.successMessage = successMessage;
             this.errorMessage = errorMessage;
+            this.restoreFunc = restoreFunc;
             CreateGoogleClient();
             RunBackupOrRestore();
         }
@@ -184,9 +186,7 @@ namespace RepeatingWords.Droid
                                 }
                             }
                         }
-
                         //чтение файла из Google drive и получение строки в BAse64       
-
                         var readFile = await driveFile.OpenAsync(_googleApiClient, DriveFile.ModeReadOnly, null);
                         using (var inpstr = readFile.DriveContents.InputStream)
                         using (var streamReade = new StreamReader(inpstr))
@@ -199,7 +199,12 @@ namespace RepeatingWords.Droid
                         //конвертируем строку из base64 и записываем в файл БД(переписываем)
                         byte[] bytes = Convert.FromBase64String(contentFile.ToString());
                         System.IO.File.WriteAllBytes(pathToDb, bytes);
-                        CreateAlertDialog("", successMessage);
+                        //restore backup local
+                        if(await restoreFunc.Invoke(pathToDb) )
+                            CreateAlertDialog("", successMessage);
+                         else
+                            throw new Exception("Error restore backup");
+
                     }
                 }
             }

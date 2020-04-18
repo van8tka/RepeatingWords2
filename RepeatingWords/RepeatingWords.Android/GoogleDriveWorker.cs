@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 
 [assembly: Dependency(typeof(RepeatingWords.Droid.GoogleDriveWorker))]
@@ -17,13 +19,13 @@ namespace RepeatingWords.Droid
             return true;
         }
 
-        public bool RestoreBackupGoogleDriveFile(string filePathToDbFull,string partOfFileNameBackup,string folderName, string successMessage, string errorMessage)
+        public bool RestoreBackupGoogleDriveFile(string filePathToDbFull,string partOfFileNameBackup,string folderName, string successMessage, string errorMessage, Func<string, Task<bool>> restoreLocaleFunc)
         {
                 bool isCreateBackUp = false;
 #pragma warning disable CS0618 // Type or member is obsolete
             var activity = (MainActivity)Forms.Context;
 #pragma warning restore CS0618 // Type or member is obsolete
-            activity.GoogleCustomAuthorithation(isCreateBackUp,folderName:folderName, fileName:partOfFileNameBackup, pathToDb: filePathToDbFull, successMessage: successMessage, errorMessage: errorMessage);
+            activity.GoogleCustomAuthorithation(isCreateBackUp,folderName:folderName, fileName:partOfFileNameBackup, pathToDb: filePathToDbFull, successMessage: successMessage, errorMessage: errorMessage, restoreLocaleFunc);
                 return true;
            
         }

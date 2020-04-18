@@ -43,9 +43,8 @@ namespace RepeatingWords.Services
                     Constants.LOCAL_FOLDER_BACKUP,
                     "fromGDrivebackup" + DateTime.Now.ToString("ddMMyyyy_hhmm") + ".json");
                 //копируем бэкап из GooglDrive в локальную папку
-                bool success = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathDefault, file, Constants.LOCAL_FOLDER_BACKUP, Resource.BackupRestored, Resource.BackUpErrorRestored);
-                //делаем бэкап из локального файла
-                await _localBaclupService.RestoreBackup(filePathDefault);
+                Func<string, Task<bool>> restoreFunc = (str) => _localBaclupService.RestoreBackup(str);
+                bool success = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathDefault, file, Constants.LOCAL_FOLDER_BACKUP, Resource.BackupRestored, Resource.BackUpErrorRestored, restoreFunc);
                 return true;
             }
             catch (Exception e)
