@@ -250,15 +250,6 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adding words.
-        /// </summary>
-        public static string ButtonHowCreateDictAndaddWord {
-            get {
-                return ResourceManager.GetString("ButtonHowCreateDictAndaddWord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Import words from file.
         /// </summary>
         public static string ButtonHowIportFile {
@@ -511,15 +502,6 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To add your own word you need: click on the dictionary where you want to add the word, select [View the list of words].
-        /// </summary>
-        public static string LabelForStart {
-            get {
-                return ResourceManager.GetString("LabelForStart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Create the dictionary and add the word.
         /// </summary>
         public static string LabelHeadCreateInstr {
@@ -543,24 +525,6 @@ namespace RepeatingWords {
         public static string LabelRights {
             get {
                 return ResourceManager.GetString("LabelRights", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Next, click the menu button, then click add button.
-        /// </summary>
-        public static string LabelScreen1 {
-            get {
-                return ResourceManager.GetString("LabelScreen1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fill in all the fields (transcription is optional) and click the add button.
-        /// </summary>
-        public static string LabelScreen2 {
-            get {
-                return ResourceManager.GetString("LabelScreen2", resourceCulture);
             }
         }
         
@@ -615,15 +579,6 @@ namespace RepeatingWords {
         public static string LabelScreen25 {
             get {
                 return ResourceManager.GetString("LabelScreen25", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to When you click on the field for entering transcription, by default a special transcription keyboard opens (can be changed to standard in the settings).
-        /// </summary>
-        public static string LabelScreen3 {
-            get {
-                return ResourceManager.GetString("LabelScreen3", resourceCulture);
             }
         }
         
@@ -844,24 +799,6 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen1.png.
-        /// </summary>
-        public static string screen1 {
-            get {
-                return ResourceManager.GetString("screen1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen2.png.
-        /// </summary>
-        public static string screen2 {
-            get {
-                return ResourceManager.GetString("screen2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to screen20.jpg.
         /// </summary>
         public static string screen20 {
@@ -912,33 +849,6 @@ namespace RepeatingWords {
         public static string screen25 {
             get {
                 return ResourceManager.GetString("screen25", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen3.png.
-        /// </summary>
-        public static string screen3 {
-            get {
-                return ResourceManager.GetString("screen3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen4.png.
-        /// </summary>
-        public static string screen4 {
-            get {
-                return ResourceManager.GetString("screen4", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen5.png.
-        /// </summary>
-        public static string screen5 {
-            get {
-                return ResourceManager.GetString("screen5", resourceCulture);
             }
         }
         
@@ -1002,15 +912,6 @@ namespace RepeatingWords {
         public static string TitleExplorer {
             get {
                 return ResourceManager.GetString("TitleExplorer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Adding words.
-        /// </summary>
-        public static string TitleHelpAddWord {
-            get {
-                return ResourceManager.GetString("TitleHelpAddWord", resourceCulture);
             }
         }
         

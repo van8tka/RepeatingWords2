@@ -129,10 +129,6 @@
     <value>Создать</value>
     <comment>Кнопка создать</comment>
   </data>
-  <data name="ButtonHowCreateDictAndaddWord" xml:space="preserve">
-    <value>Добавление слов</value>
-    <comment>Кн Создание словаря и добавление отдельных слов</comment>
-  </data>
   <data name="ButtonHowIportFile" xml:space="preserve">
     <value>Импорт слов из файла</value>
     <comment>Кн Как импортировать слова из файла</comment>
@@ -165,21 +161,12 @@
     <value>Введите слово на русском</value>
     <comment>Заголовок введите слово на русском(первое слово)</comment>
   </data>
-  <data name="LabelForStart" xml:space="preserve">
-    <value>Для добавления своего слова необходимо: нажать на словарь в который хотите добавить слово, выбрать [Просмотр списка слов]</value>
-  </data>
   <data name="LabelHeadCreateInstr" xml:space="preserve">
     <value>Добавление слов</value>
   </data>
   <data name="LabelPathToRoot" xml:space="preserve">
     <value>Путь к файлу:</value>
     <comment>Заголовок с указанием пути к корню системы</comment>
-  </data>
-  <data name="LabelScreen1" xml:space="preserve">
-    <value>Далее нажимаем кнопку меню, затем кнопку добавить </value>
-  </data>
-  <data name="LabelScreen2" xml:space="preserve">
-    <value>Заполняем все поля (транскрипция не обязательна) и нажимаем кнопку добавить</value>
   </data>
   <data name="LabelScreen21" xml:space="preserve">
     <value>Для импорта слов из файла необходимо создать на компьютере, ипользуя программу Блокнот(Notepad) файл c расширением ".txt". Заполнить файл словами в следующем порядке: слово[ транскрипция] перевод. Обязательно транскрипция в центре строки для разделения русского слова и его перевода, и обязательно использование квадратных скобок! Если нет транскрипции ставьте пустые квадратные скобки: слово [] перевод.</value>
@@ -198,9 +185,6 @@
   </data>
   <data name="LabelScreen25" xml:space="preserve">
     <value>Откроется стандартный файловый менеджер, выберите свой файл и кликните по нему. Слова будут импортированы из файла в словарь.</value>
-  </data>
-  <data name="LabelScreen3" xml:space="preserve">
-    <value>При нажатии на поле для ввода транскрипции, по умолчанию открывается специальная клавиатура транскрипции (можно изменить на стандартную в настройках)</value>
   </data>
   <data name="LabelSecondWord" xml:space="preserve">
     <value>Введите перевод слова</value>
@@ -330,21 +314,6 @@
   <data name="SuccessStr" xml:space="preserve">
     <value>Успешно</value>
   </data>
-  <data name="screen1" xml:space="preserve">
-    <value>screen1ru.png</value>
-  </data>
-  <data name="screen2" xml:space="preserve">
-    <value>screen2ru.png</value>
-  </data>
-  <data name="screen3" xml:space="preserve">
-    <value>screen3ru.png</value>
-  </data>
-  <data name="screen4" xml:space="preserve">
-    <value>screen4ru.png</value>
-  </data>
-  <data name="screen5" xml:space="preserve">
-    <value>screen5ru.png</value>
-  </data>
   <data name="screen20" xml:space="preserve">
     <value>screen20ru.jpg</value>
   </data>
@@ -366,10 +335,6 @@
   <data name="TitleAbout" xml:space="preserve">
     <value>О приложении</value>
     <comment>Заголовок страницы о приложении</comment>
-  </data>
-  <data name="TitleHelpAddWord" xml:space="preserve">
-    <value>Добавление слов</value>
-    <comment>Заголовок страницы помощи про добавлении слова</comment>
   </data>
   <data name="TitleHelpers" xml:space="preserve">
     <value>Помощь</value>

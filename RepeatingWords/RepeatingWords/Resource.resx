@@ -129,10 +129,6 @@
     <value>Create</value>
     <comment>Кнопка создать</comment>
   </data>
-  <data name="ButtonHowCreateDictAndaddWord" xml:space="preserve">
-    <value>Adding words</value>
-    <comment>Кн Создание словаря и добавление отдельных слов</comment>
-  </data>
   <data name="ButtonHowIportFile" xml:space="preserve">
     <value>Import words from file</value>
     <comment>Кн Как импортировать слова из файла</comment>
@@ -165,10 +161,6 @@
     <value>Enter the native word</value>
     <comment>Заголовок введите слово на русском(первое слово)</comment>
   </data>
-  <data name="LabelForStart" xml:space="preserve">
-    <value>To add your own word you need: click on the dictionary where you want to add the word, select [View the list of words]</value>
-    <comment>Для начала работы с программой необходимо:</comment>
-  </data>
   <data name="LabelHeadCreateInstr" xml:space="preserve">
     <value>Create the dictionary and add the word</value>
     <comment>Создание словаря и добавление слов</comment>
@@ -176,14 +168,6 @@
   <data name="LabelPathToRoot" xml:space="preserve">
     <value>Path to file:</value>
     <comment>Заголовок с указанием пути к корню системы</comment>
-  </data>
-  <data name="LabelScreen1" xml:space="preserve">
-    <value>Next, click the menu button, then click add button</value>
-    <comment>Добавить словарь со словами, для этого нажмем на кнопку [Добавить словарь или слова]</comment>
-  </data>
-  <data name="LabelScreen2" xml:space="preserve">
-    <value>Fill in all the fields (transcription is optional) and click the add button</value>
-    <comment>Нажать кнопку [Добавить словарь]</comment>
   </data>
   <data name="LabelScreen21" xml:space="preserve">
     <value>Using Notepad.exe create a file with ".txt" format on the computer. Fill the file as in example:  native word [transcription] translate. You have to use [ ] in every line. If transcription is epsent use: word[] translate</value>
@@ -208,10 +192,6 @@
   <data name="LabelScreen25" xml:space="preserve">
     <value>A standard file manager will open, select your file and click on it. Words will be imported from the file into the dictionary.</value>
     <comment>Когда слова загрузятся в словарь, откроется окно со списком слов.</comment>
-  </data>
-  <data name="LabelScreen3" xml:space="preserve">
-    <value>When you click on the field for entering transcription, by default a special transcription keyboard opens (can be changed to standard in the settings)</value>
-    <comment>Ввести название словаря и нажать кнопку [Создать]</comment>
   </data>
   <data name="LabelSecondWord" xml:space="preserve">
     <value>Enter the translation of the word</value>
@@ -340,21 +320,6 @@
   <data name="BackUpCreateBtn" xml:space="preserve">
     <value>Create a backup</value>
   </data>
-  <data name="screen1" xml:space="preserve">
-    <value>screen1.png</value>
-  </data>
-  <data name="screen2" xml:space="preserve">
-    <value>screen2.png</value>
-  </data>
-  <data name="screen3" xml:space="preserve">
-    <value>screen3.png</value>
-  </data>
-  <data name="screen4" xml:space="preserve">
-    <value>screen4.png</value>
-  </data>
-  <data name="screen5" xml:space="preserve">
-    <value>screen5.png</value>
-  </data>
   <data name="screen20" xml:space="preserve">
     <value>screen20.jpg</value>
   </data>
@@ -375,9 +340,6 @@
   </data>
   <data name="TitleAbout" xml:space="preserve">
     <value>About</value>
-  </data>
-  <data name="TitleHelpAddWord" xml:space="preserve">
-    <value>Adding words</value>
   </data>
   <data name="TitleHelpers" xml:space="preserve">
     <value>Help</value>

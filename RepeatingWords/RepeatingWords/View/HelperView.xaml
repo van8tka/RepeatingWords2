@@ -16,7 +16,6 @@
     
    
     <StackLayout VerticalOptions="Center" Padding="10">
-            <Button Text="{locale:Translate ButtonHowCreateDictAndaddWord}" Style="{StaticResource buttonStyle}" Command="{Binding HowToAddWordCommand}"/>
             <Button Text="{locale:Translate ButtonHowIportFile}" Style="{StaticResource buttonStyle}" Command="{Binding HowToImportFromFileCommand}"/>
             <Button x:Name="BtAbout" Text="{locale:Translate ButtonAbout}" Style="{StaticResource buttonStyle}" Command="{Binding AboutCommand}"/>
             <Button x:Name="BtPolicy" Text="{locale:Translate ButtonPolicy}" Style="{StaticResource buttonStyle}" Command="{Binding PolicyCommand}"/>

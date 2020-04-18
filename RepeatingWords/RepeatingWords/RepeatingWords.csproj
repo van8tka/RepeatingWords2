@@ -46,9 +46,6 @@
     <Compile Update="View\WordsListView.xaml.cs">
       <DependentUpon>WordsListView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\InstructionAddOneWordView.xaml.cs">
-      <DependentUpon>InstructionAddOneWordView.xaml</DependentUpon>
-    </Compile>
     <Compile Update="View\InstructionImportFromFileView.xaml.cs">
       <DependentUpon>InstructionImportFromFileView.xaml</DependentUpon>
     </Compile>

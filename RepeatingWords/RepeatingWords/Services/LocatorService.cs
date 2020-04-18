@@ -45,7 +45,6 @@ namespace RepeatingWords.Services
             //register viewmodels
             _container.Register(typeof(MainViewModel));
             _container.Register(typeof(HelperViewModel));
-            _container.Register(typeof(InstructionAddOneWordViewModel));
             _container.Register(typeof(InstructionImportFromFileViewModel));
             _container.Register(typeof(SettingsViewModel));
             _container.Register(typeof(LanguageFrNetViewModel));
