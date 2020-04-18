@@ -2,6 +2,7 @@ using System.IO;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System;
+using System.Linq;
 using RepeatingWords.LoggerService;
 
 [assembly: Dependency(typeof(RepeatingWords.Droid.FileWorker))]
@@ -12,29 +13,26 @@ namespace RepeatingWords.Droid
     {
 
         //создание папки для 
-        [Obsolete]
         public string CreateFolder(string folderName, string fileName = null, string filePath = null)
         {
             try
             {//если не передается путь к папке где создать резервную копию
                 if (string.IsNullOrEmpty(filePath))
-                {//то создаем по умолчанию
-                    filePath = Android.OS.Environment.ExternalStorageDirectory.ToString();
+                {
+                    //то создаем по умолчанию
+                    filePath = FilePathToBackupFolder(folderName);
                 }
-                //созд путь к папке
-                string pathToDir = Path.Combine(filePath, folderName);
-                if (!Directory.Exists(pathToDir))
-                    Directory.CreateDirectory(pathToDir);
+                if (!Directory.Exists(filePath))
+                    Directory.CreateDirectory(filePath);
                 else if (string.IsNullOrEmpty(fileName))
                         return "exist";
                 //созд путь к файлу
                 if (!string.IsNullOrEmpty(fileName))
                 {
-                    string pathToFile = Path.Combine(pathToDir, fileName);
+                    string pathToFile = Path.Combine(filePath, fileName);
                     return pathToFile;
                 }
-                else
-                    return pathToDir;
+                return filePath;
             }
             catch (Exception er)
             {
@@ -43,15 +41,24 @@ namespace RepeatingWords.Droid
             }
         }
 
+        private static string FilePathToBackupFolder(string folderName)
+        {
+            string filePath;
+            filePath = MainActivity.Instance.ApplicationContext.GetExternalFilesDirs(null).FirstOrDefault()?.Parent;
+            int ind = filePath.LastIndexOf('/');
+            filePath = filePath.Remove(ind);
+            filePath = Path.Combine(filePath, folderName);
+            return filePath;
+        }
+
         //получение списка файлов бэкапа
         public Task<string> GetBackUpFilesAsync(string folder)
         {
             try
             {
                 return Task.Run(() =>
-                  {
-                      string path = Android.OS.Environment.ExternalStorageDirectory.ToString();
-                      string pathToDir = Path.Combine(path, folder);
+                {
+                    string pathToDir = FilePathToBackupFolder(folder);
                       if (Directory.Exists(pathToDir))
                       {
                           var list = Directory.GetFiles(pathToDir);
@@ -69,8 +76,7 @@ namespace RepeatingWords.Droid
                           }
                           return lastFile;
                       }
-                      else
-                          return null;
+                      return null;
                   });
             }
             catch (Exception er)

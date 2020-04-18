@@ -1,6 +1,4 @@
-using System;
 using RepeatingWords.Droid;
-using System.IO;
 using Xamarin.Forms;
 using RepeatingWords.Interfaces;
 
@@ -9,11 +7,9 @@ namespace RepeatingWords.Droid
 {
     public class SQLite_Android : ISQLite
     {
-        public SQLite_Android() { }
         public string GetDatabasePath(string filename)
         {
-            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);                    
-            return Path.Combine(documentsPath, filename); ;
+            return MainActivity.Instance.GetDatabasePath(filename).AbsolutePath;
         }
     }
  }
