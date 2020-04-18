@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Model;
 using RepeatingWords.Services;

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using RepeatingWords.Interfaces;
 using RepeatingWords.Services;
 using Log = RepeatingWords.LoggerService.Log;
 

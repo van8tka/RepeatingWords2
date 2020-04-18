@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace RepeatingWords.Helpers.Interfaces
+namespace RepeatingWords.Interfaces
 {
     public interface IDialogService
     {
@@ -11,8 +11,6 @@ namespace RepeatingWords.Helpers.Interfaces
         Task<string> ShowInputTextDialog(string message, string title = null, string okText = null, string cancelText = null, string placeholder = "", CancellationToken cancelToken = default);
         void ShowLoadDialog(string loadingMsg = null);
         void ShowToast(string message);
-
-         void HideLoadDialog();
-       
+        void HideLoadDialog();
     }
 }

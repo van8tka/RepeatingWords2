@@ -1,5 +1,6 @@
 ﻿using RepeatingWords.Helpers.Interfaces;
 using System.Threading.Tasks;
+using RepeatingWords.Interfaces;
 using Xamarin.Forms;
 
 namespace RepeatingWords.ViewModel

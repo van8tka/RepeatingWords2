@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.Interfaces;
 
 namespace RepeatingWords.ViewModel
 {

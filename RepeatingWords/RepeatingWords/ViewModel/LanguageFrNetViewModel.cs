@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using RepeatingWords.Helpers.Interfaces;
 using System.Linq;
 using RepeatingWords.DataService.Model;
+using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 using Xamarin.Forms;
 

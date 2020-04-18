@@ -13,7 +13,7 @@ namespace RepeatingWords.Services
 {
     public interface IImport
     {
-        Task import(JObject jobject);
+        Task<bool> import(JObject jobject);
     }
     public class ImportJsonDb:IImport
     {
@@ -23,9 +23,11 @@ namespace RepeatingWords.Services
         }
 
         private readonly IStudyService _studyService;
-        public Task import(JObject jobject)
+        public async Task<bool> import(JObject jobject)
         {
-            return Task.Run(() =>
+            if (! await _studyService.ClearDB())
+                throw new Exception(Environment.NewLine + "Error clear Db");
+            return await Task.Run(() =>
             {
                 try
                 {
@@ -68,11 +70,13 @@ namespace RepeatingWords.Services
                         }
                     }
                     _studyService.CommitTransaction();
+                    return true;
                 }
                 catch (Exception e)
                 {
                     _studyService.RollBackTransaction();
                     Log.Logger.Error(e);
+                    return false;
                 }
             });
         }

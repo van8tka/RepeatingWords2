@@ -1,6 +1,6 @@
 ﻿using System;
 using Acr.UserDialogs;
-using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 

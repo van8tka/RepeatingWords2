@@ -12,6 +12,7 @@ using Android.Gms.Drive.Query;
 using Android.OS;
 using Android.Runtime;
 using Java.IO;
+using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
 
 namespace RepeatingWords.Droid
@@ -34,9 +35,9 @@ namespace RepeatingWords.Droid
         string successMessage;
         string errorMessage;
         private Func<string, Task<bool>> restoreFunc;
-
+        private IDialogService _dialogService;
         //авторизация Google
-        public void GoogleCustomAuthorithation(bool isCreateBackUp, string folderName = null, string fileName = null, string pathToDb = null, string successMessage = "Excelent", string errorMessage = "Error", Func<string,Task<bool>> restoreFunc = null)
+        public void GoogleCustomAuthorithation(bool isCreateBackUp, IDialogService dialogService ,string folderName = null, string fileName = null, string pathToDb = null, string successMessage = "Excelent", string errorMessage = "Error", Func<string,Task<bool>> restoreFunc = null)
         {
             this.folderName = folderName;
             this.filename = fileName;
@@ -45,6 +46,7 @@ namespace RepeatingWords.Droid
             this.successMessage = successMessage;
             this.errorMessage = errorMessage;
             this.restoreFunc = restoreFunc;
+            _dialogService = dialogService;
             CreateGoogleClient();
             RunBackupOrRestore();
         }
@@ -132,6 +134,7 @@ namespace RepeatingWords.Droid
 
         private void DoWorkBackupOrRestore(IDriveApiDriveContentsResult contentResults)
         {
+            _dialogService.ShowLoadDialog();
             if (contentResults != null)
             {
                 if (!contentResults.Status.IsSuccess) // handle the error
@@ -146,7 +149,8 @@ namespace RepeatingWords.Droid
                 });
             }
             else
-                CreateAlertDialog("", errorMessage);           
+                CreateAlertDialog("", errorMessage);   
+            _dialogService.HideLoadDialog();
         }
 
  
@@ -204,7 +208,6 @@ namespace RepeatingWords.Droid
                             CreateAlertDialog("", successMessage);
                          else
                             throw new Exception("Error restore backup");
-
                     }
                 }
             }
@@ -217,16 +220,18 @@ namespace RepeatingWords.Droid
 
         private void CreateAlertDialog(string title, string message)
         {
-            RunOnUiThread(() =>
-            {
-                AlertDialog.Builder builder;
-                builder = new AlertDialog.Builder(this);
-                builder.SetTitle(title);
-                builder.SetMessage(message);
-                builder.SetCancelable(false);
-                builder.SetPositiveButton("OK", delegate { });
-                builder.Show();
-            });
+
+            _dialogService.ShowToast(message);
+            //RunOnUiThread(() =>
+            //{
+            //    AlertDialog.Builder builder;
+            //    builder = new AlertDialog.Builder(this);
+            //    builder.SetTitle(title);
+            //    builder.SetMessage(message);
+            //    builder.SetCancelable(false);
+            //    builder.SetPositiveButton("OK", delegate { });
+            //    builder.Show();
+            //});
         }
 
 
@@ -252,7 +257,6 @@ namespace RepeatingWords.Droid
             {
                 Log.Logger.Error(er.Message, er.StackTrace);
             }
-
         }
 
 

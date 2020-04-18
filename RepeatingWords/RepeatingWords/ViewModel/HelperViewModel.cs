@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using RepeatingWords.Interfaces;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 

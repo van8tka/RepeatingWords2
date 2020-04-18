@@ -53,7 +53,7 @@ namespace RepeatingWords.Services
                 if (!string.IsNullOrEmpty(fileBackUp))
                 {
                     string jsonStr = File.ReadAllText(fileBackUp);
-                    await _importJson.import(JObject.Parse(jsonStr));
+                    return await _importJson.import(JObject.Parse(jsonStr));
                 }
                 return true;
             }
