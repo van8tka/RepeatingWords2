@@ -34,8 +34,9 @@ namespace RepeatingWords.Droid
         bool isCreateBackUp = true;
         string successMessage;
         string errorMessage;
-        private Func<string, Task<bool>> restoreFunc;
+        private Func<string, Task<bool>> _restoreFunc;
         private IDialogService _dialogService;
+        private IDriveApiDriveContentsResult _contentResults;
         //авторизация Google
         public void GoogleCustomAuthorithation(bool isCreateBackUp, IDialogService dialogService ,string folderName = null, string fileName = null, string pathToDb = null, string successMessage = "Excelent", string errorMessage = "Error", Func<string,Task<bool>> restoreFunc = null)
         {
@@ -45,7 +46,7 @@ namespace RepeatingWords.Droid
             this.isCreateBackUp = isCreateBackUp;
             this.successMessage = successMessage;
             this.errorMessage = errorMessage;
-            this.restoreFunc = restoreFunc;
+            this._restoreFunc = restoreFunc;
             _dialogService = dialogService;
             CreateGoogleClient();
             RunBackupOrRestore();
@@ -64,12 +65,12 @@ namespace RepeatingWords.Droid
             }           
         }
 
-        private void RunBackupOrRestore()
+        private async void RunBackupOrRestore()
         {
             if (!_googleApiClient.IsConnected)
                 _googleApiClient.Connect();
             else
-                DoWorkBackupOrRestore(contentResults);
+              await DoWorkBackupOrRestore(_contentResults);
         }
 
 
@@ -122,35 +123,43 @@ namespace RepeatingWords.Droid
             }
         }
 
-
-        private IDriveApiDriveContentsResult contentResults;
-
         //если удачно авторизовались 
         void IResultCallback.OnResult(Java.Lang.Object result)
         {
-            contentResults = (result).JavaCast<IDriveApiDriveContentsResult>();
-            DoWorkBackupOrRestore(contentResults);
+            _contentResults = (result).JavaCast<IDriveApiDriveContentsResult>();
+            DoWorkBackupOrRestore(_contentResults);
         }
 
-        private void DoWorkBackupOrRestore(IDriveApiDriveContentsResult contentResults)
+        private async Task DoWorkBackupOrRestore(IDriveApiDriveContentsResult contentResults)
         {
-            _dialogService.ShowLoadDialog();
-            if (contentResults != null)
+            try
             {
-                if (!contentResults.Status.IsSuccess) // handle the error
-                    return;
-                Task.Run(async() =>
+                _dialogService.ShowLoadDialog();
+                if (contentResults != null)
                 {
-                    if (isCreateBackUp)
-                        CreateBackUpFolderAndFile(contentResults);
-                    else
-                       await GetBackUpFile(contentResults);
-                    _googleApiClient.Disconnect();
-                });
+                    if (!contentResults.Status.IsSuccess) // handle the error
+                        return;
+                    await Task.Run(async () =>
+                    {
+                        if (isCreateBackUp)
+                            CreateBackUpFolderAndFile(contentResults);
+                        else
+                            await GetBackUpFile(contentResults);
+                        _googleApiClient.Disconnect();
+                    });
+                }
+                else
+                    CreateAlertDialog("", errorMessage);
             }
-            else
-                CreateAlertDialog("", errorMessage);   
-            _dialogService.HideLoadDialog();
+            catch (Exception e)
+            {
+                CreateAlertDialog("", errorMessage);
+                Log.Logger.Error(e);
+            }
+            finally
+            {
+                _dialogService.HideLoadDialog();
+            }
         }
 
  
@@ -204,9 +213,9 @@ namespace RepeatingWords.Droid
                         byte[] bytes = Convert.FromBase64String(contentFile.ToString());
                         System.IO.File.WriteAllBytes(pathToDb, bytes);
                         //restore backup local
-                        if(await restoreFunc.Invoke(pathToDb) )
+                        if(await _restoreFunc.Invoke(pathToDb) )
                             CreateAlertDialog("", successMessage);
-                         else
+                        else
                             throw new Exception("Error restore backup");
                     }
                 }
@@ -240,7 +249,6 @@ namespace RepeatingWords.Droid
         {
             try
             {
-                // string filenameCreate = filename + DateTime.Now.ToString("ddMMyyyy") + ".dat";
                 //поиск папки с файлом резервной копии
                 DriveId folderBackUpId = FindItems(folderName).Result;
                 //если папка не найдена создаем папку в Google диске
@@ -258,7 +266,6 @@ namespace RepeatingWords.Droid
                 Log.Logger.Error(er.Message, er.StackTrace);
             }
         }
-
 
         //поиск папки для backup
         private async Task<DriveId> FindItems(string folderName)
@@ -288,8 +295,6 @@ namespace RepeatingWords.Droid
                 return folderId;
             }
         }
-
-
 
         //создаем папку в Google
         private void CreateFolder(string folderName)
@@ -335,7 +340,6 @@ namespace RepeatingWords.Droid
                     var s = driveFolder.CreateFile(_googleApiClient, changeSet, content.DriveContents);
                     CreateAlertDialog("", successMessage);
                 }
-
             }
             catch (Exception er)
             {

@@ -2,7 +2,6 @@
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using RepeatingWords.Interfaces;
 using Xamarin.Forms;
@@ -37,7 +36,7 @@ namespace RepeatingWords.Services
             }
         }
 
-        public async Task<bool> RestoreBackup(string file)
+        public Task<bool> RestoreBackup(string file)
         {
             try
             {
@@ -46,12 +45,12 @@ namespace RepeatingWords.Services
                 //копируем бэкап из GooglDrive в локальную папку
                 Func<string, Task<bool>> restoreFunc = (str) => _localBaclupService.RestoreBackup(str);
                 bool success = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathDefault, file, Constants.LOCAL_FOLDER_BACKUP, Resource.BackupRestored, Resource.BackUpErrorRestored, restoreFunc, _dialogService);
-                return true;
+                return Task.FromResult(true);
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                return false;
+                return Task.FromResult(false);
             }
         }
     }

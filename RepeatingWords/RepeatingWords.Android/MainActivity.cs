@@ -25,7 +25,7 @@ namespace RepeatingWords.Droid
      
 
         public static bool HasPermissionToReadWriteExternalStorage = false;
-        private const string ApplicationCode = "ca-app-pub-5993977371632312~7094124560";
+        private const string APPLICATION_CODE = "ca-app-pub-5993977371632312~7094124560";
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -37,17 +37,13 @@ namespace RepeatingWords.Droid
             {
                 //проверка наличия разрешения
                 CheckPermissionForStorage();
-                Android.Gms.Ads.MobileAds.Initialize(ApplicationContext, ApplicationCode);
+                Android.Gms.Ads.MobileAds.Initialize(ApplicationContext, APPLICATION_CODE);
                 UserDialogs.Init(() => (Android.App.Activity)Forms.Context);
             });
             FormsControls.Droid.Main.Init(this);
             LoadApplication(new App( new SQLite_Android()));                   
         }
-        //переопределение кнопки назад
-        public override void OnBackPressed()
-        {
-            base.OnBackPressed();
-        }
+        
         //код получения разрешения
         const int REQUEST_STORAGE = 1010;
         //проверка наличия разрешения на доступ к памяти смартфона
@@ -93,7 +89,6 @@ namespace RepeatingWords.Droid
                 Log.Logger.Error("OnRequestPermissionsResult", er.Message);
             }
         }
-                       
     }
 }
 
