@@ -385,7 +385,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Введите ответ.
+        ///   Looks up a localized string similar to Enter the answer.
         /// </summary>
         public static string EnterAnswer {
             get {

@@ -391,7 +391,7 @@
     <value>подсказать ?</value>
   </data>
   <data name="EnterAnswer" xml:space="preserve">
-    <value>Введите перевод</value>
+    <value>Введите ответ</value>
   </data>
   <data name="ButtonSave" xml:space="preserve">
     <value>Сохранить</value>

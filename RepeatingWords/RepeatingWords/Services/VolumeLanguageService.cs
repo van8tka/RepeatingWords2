@@ -38,15 +38,23 @@ namespace RepeatingWords.Services
 
         public string GetVolumeLanguage()
         {
-            if (Preferences.ContainsKey(Constants.VOLUME_LANGUAGE))
+            try
             {
-                return Preferences.Get(Constants.VOLUME_LANGUAGE,"");
+                if (Preferences.ContainsKey(Constants.VOLUME_LANGUAGE))
+                {
+                    return Preferences.Get(Constants.VOLUME_LANGUAGE, "");
+                }
+                var currentLocale = Locales?.Where(x => x.Country == "GB").FirstOrDefault();
+                if (currentLocale == null)
+                    throw new ArgumentNullException(nameof(currentLocale));
+                Preferences.Set(Constants.VOLUME_LANGUAGE, currentLocale.Name);
+                return currentLocale.Name;
             }
-            var currentLocale = Locales?.Where(x => x.Country == "GB").FirstOrDefault();
-            if (currentLocale == null)
-                throw new ArgumentNullException(nameof(currentLocale));
-            Preferences.Set(Constants.VOLUME_LANGUAGE, currentLocale.Name);
-            return currentLocale.Name;
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                throw;
+            }
         }
 
         public bool SetVolumeLanguage(string languageName)

@@ -393,7 +393,7 @@
     <value>hint ?</value>
   </data>
   <data name="EnterAnswer" xml:space="preserve">
-    <value>Введите ответ</value>
+    <value>Enter the answer</value>
   </data>
   <data name="ButtonSave" xml:space="preserve">
     <value>Save</value>

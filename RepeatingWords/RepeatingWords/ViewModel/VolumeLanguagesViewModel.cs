@@ -56,7 +56,9 @@ namespace RepeatingWords.ViewModel
             {
                 if (value != null)
                 {
-                    Languages.First(x => x.IsChecked.Equals(_volumeLangList.CheckedColor)).IsChecked = _volumeLangList.UncheckedColor;
+                    var model = Languages.FirstOrDefault(x => x.IsChecked.Equals(_volumeLangList.CheckedColor)); 
+                     if(model !=null) 
+                         model.IsChecked = _volumeLangList.UncheckedColor ;
                     _selectedItem = value;
                     _selectedItem.IsChecked = _volumeLangList.CheckedColor;
                     Log.Logger.Info("Set language voice "+value.Name+" "+value.CountryCode+" " +value.LanguageCode);
