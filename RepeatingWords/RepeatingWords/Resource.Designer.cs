@@ -556,7 +556,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In the application, click the menu button, then the import button from the file.
+        ///   Looks up a localized string similar to Option 1. Select [Import from file] in the language context menu.
         /// </summary>
         public static string LabelScreen232 {
             get {
@@ -565,11 +565,29 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter a dictionary name and click create.
+        ///   Looks up a localized string similar to Enter a name for the new dictionary and click [Create].
         /// </summary>
-        public static string LabelScreen24 {
+        public static string LabelScreen233 {
             get {
-                return ResourceManager.GetString("LabelScreen24", resourceCulture);
+                return ResourceManager.GetString("LabelScreen233", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Option 2. Select [View Word List] in the dictionary context menu.
+        /// </summary>
+        public static string LabelScreen234 {
+            get {
+                return ResourceManager.GetString("LabelScreen234", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click the [Import from file] button.
+        /// </summary>
+        public static string LabelScreen235 {
+            get {
+                return ResourceManager.GetString("LabelScreen235", resourceCulture);
             }
         }
         
@@ -799,6 +817,24 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to screen1en.png.
+        /// </summary>
+        public static string screen1 {
+            get {
+                return ResourceManager.GetString("screen1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to screen2en.png.
+        /// </summary>
+        public static string screen2 {
+            get {
+                return ResourceManager.GetString("screen2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to screen20.jpg.
         /// </summary>
         public static string screen20 {
@@ -817,38 +853,29 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen22.png.
-        /// </summary>
-        public static string screen22 {
-            get {
-                return ResourceManager.GetString("screen22", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen23.png.
-        /// </summary>
-        public static string screen23 {
-            get {
-                return ResourceManager.GetString("screen23", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to screen24.png.
-        /// </summary>
-        public static string screen24 {
-            get {
-                return ResourceManager.GetString("screen24", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to screen25.png.
         /// </summary>
         public static string screen25 {
             get {
                 return ResourceManager.GetString("screen25", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to screen3png.png.
+        /// </summary>
+        public static string screen3 {
+            get {
+                return ResourceManager.GetString("screen3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to screen4en.png.
+        /// </summary>
+        public static string screen4 {
+            get {
+                return ResourceManager.GetString("screen4", resourceCulture);
             }
         }
         

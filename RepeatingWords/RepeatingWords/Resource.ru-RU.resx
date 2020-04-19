@@ -178,10 +178,10 @@
     <value>Далее необходимо скопировать созданный файл на телефон в любое удобное место или на Google диск.</value>
   </data>
   <data name="LabelScreen232" xml:space="preserve">
-    <value>В приложении нажмите кнопку меню, далее кнопку импорт из файла</value>
+    <value>Вариант 1. Выберите [Импорт из файла] в контекстном меню языка</value>
   </data>
-  <data name="LabelScreen24" xml:space="preserve">
-    <value>Введите имя словаря и нажмите создать</value>
+  <data name="LabelScreen233" xml:space="preserve">
+    <value>Введите имя нового словаря и нажмите [Создать]</value>
   </data>
   <data name="LabelScreen25" xml:space="preserve">
     <value>Откроется стандартный файловый менеджер, выберите свой файл и кликните по нему. Слова будут импортированы из файла в словарь.</value>
@@ -320,14 +320,14 @@
   <data name="screen21" xml:space="preserve">
     <value>screen21ru.jpg</value>
   </data>
-  <data name="screen22" xml:space="preserve">
-    <value>screen22ru.png</value>
+  <data name="screen1" xml:space="preserve">
+    <value>screen1ru.png</value>
   </data>
-  <data name="screen23" xml:space="preserve">
-    <value>screen23ru.png</value>
+  <data name="screen2" xml:space="preserve">
+    <value>screen2ru.png</value>
   </data>
-  <data name="screen24" xml:space="preserve">
-    <value>screen24ru.png</value>
+  <data name="screen3" xml:space="preserve">
+    <value>screen3ru.png</value>
   </data>
   <data name="NotLearningPostfics" xml:space="preserve">
     <value> - перевернутые карточки</value>
@@ -452,5 +452,14 @@
   </data>
   <data name="EntryNameLang" xml:space="preserve">
     <value>Введите название изучаемого языка</value>
+  </data>
+  <data name="LabelScreen234" xml:space="preserve">
+    <value>Вариант 2. Выберите [Просмотр списка слов] в контекстном меню словаря</value>
+  </data>
+  <data name="LabelScreen235" xml:space="preserve">
+    <value>Нажмите кнопку [Импорт из файла]</value>
+  </data>
+  <data name="screen4" xml:space="preserve">
+    <value>screen4ru.png</value>
   </data>
 </root>

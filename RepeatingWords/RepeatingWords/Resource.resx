@@ -182,11 +182,11 @@
     <comment>Закинуть созданный файл на телефон в корневую папку.</comment>
   </data>
   <data name="LabelScreen232" xml:space="preserve">
-    <value>In the application, click the menu button, then the import button from the file</value>
+    <value>Option 1. Select [Import from file] in the language context menu</value>
     <comment>Запустить программу на телефоне, выбрать словарь и нажать кнопку [Добавить слова из файла]</comment>
   </data>
-  <data name="LabelScreen24" xml:space="preserve">
-    <value>Enter a dictionary name and click create</value>
+  <data name="LabelScreen233" xml:space="preserve">
+    <value>Enter a name for the new dictionary and click [Create]</value>
     <comment>Откроется окно с указанием пути, откуда происходит считывание информации о файлах и список файлов формата .txt. Нажимаем на наш файл и ожидаем пока все слова загрузятся в словарь. Если Вы не можете обнаружить необходимый файл, проверьте путь по которому он расположен.</comment>
   </data>
   <data name="LabelScreen25" xml:space="preserve">
@@ -326,14 +326,14 @@
   <data name="screen21" xml:space="preserve">
     <value>screen21.jpg</value>
   </data>
-  <data name="screen22" xml:space="preserve">
-    <value>screen22.png</value>
+  <data name="screen1" xml:space="preserve">
+    <value>screen1en.png</value>
   </data>
-  <data name="screen23" xml:space="preserve">
-    <value>screen23.png</value>
+  <data name="screen2" xml:space="preserve">
+    <value>screen2en.png</value>
   </data>
-  <data name="screen24" xml:space="preserve">
-    <value>screen24.png</value>
+  <data name="screen3" xml:space="preserve">
+    <value>screen3png.png</value>
   </data>
   <data name="NotLearningPostfics" xml:space="preserve">
     <value> - not learned words</value>
@@ -454,5 +454,14 @@
   </data>
   <data name="EntryNameLang" xml:space="preserve">
     <value>Enter the language name</value>
+  </data>
+  <data name="LabelScreen234" xml:space="preserve">
+    <value>Option 2. Select [View Word List] in the dictionary context menu</value>
+  </data>
+  <data name="LabelScreen235" xml:space="preserve">
+    <value>Click the [Import from file] button</value>
+  </data>
+  <data name="screen4" xml:space="preserve">
+    <value>screen4en.png</value>
   </data>
 </root>
