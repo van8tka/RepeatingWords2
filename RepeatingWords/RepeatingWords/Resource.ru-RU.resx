@@ -321,13 +321,13 @@
     <value>screen21ru.jpg</value>
   </data>
   <data name="screen1" xml:space="preserve">
-    <value>screen1ru.png</value>
+    <value>picture1ru.png</value>
   </data>
   <data name="screen2" xml:space="preserve">
-    <value>screen2ru.png</value>
+    <value>picture2ru.png</value>
   </data>
   <data name="screen3" xml:space="preserve">
-    <value>screen3ru.png</value>
+    <value>picture3ru.png</value>
   </data>
   <data name="NotLearningPostfics" xml:space="preserve">
     <value> - перевернутые карточки</value>
@@ -460,6 +460,6 @@
     <value>Нажмите кнопку [Импорт из файла]</value>
   </data>
   <data name="screen4" xml:space="preserve">
-    <value>screen4ru.png</value>
+    <value>picture4ru.png</value>
   </data>
 </root>

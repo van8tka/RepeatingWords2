@@ -327,13 +327,13 @@
     <value>screen21.jpg</value>
   </data>
   <data name="screen1" xml:space="preserve">
-    <value>screen1en.png</value>
+    <value>picture1en.png</value>
   </data>
   <data name="screen2" xml:space="preserve">
-    <value>screen2en.png</value>
+    <value>picture2en.png</value>
   </data>
   <data name="screen3" xml:space="preserve">
-    <value>screen3png.png</value>
+    <value>picture3en.png</value>
   </data>
   <data name="NotLearningPostfics" xml:space="preserve">
     <value> - not learned words</value>
@@ -462,6 +462,6 @@
     <value>Click the [Import from file] button</value>
   </data>
   <data name="screen4" xml:space="preserve">
-    <value>screen4en.png</value>
+    <value>picture4en.png</value>
   </data>
 </root>

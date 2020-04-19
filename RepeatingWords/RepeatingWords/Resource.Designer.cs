@@ -817,7 +817,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen1en.png.
+        ///   Looks up a localized string similar to picture1en.png.
         /// </summary>
         public static string screen1 {
             get {
@@ -826,7 +826,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen2en.png.
+        ///   Looks up a localized string similar to picture2en.png.
         /// </summary>
         public static string screen2 {
             get {
@@ -862,7 +862,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen3png.png.
+        ///   Looks up a localized string similar to picture3en.png.
         /// </summary>
         public static string screen3 {
             get {
@@ -871,7 +871,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to screen4en.png.
+        ///   Looks up a localized string similar to picture4en.png.
         /// </summary>
         public static string screen4 {
             get {
