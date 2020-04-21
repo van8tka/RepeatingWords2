@@ -38,7 +38,7 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                await MarkLearnedWord(Model.CurrentWord, Model.IsOpenCurrentWord);
+                MarkLearnedWord(Model.CurrentWord, Model.IsOpenCurrentWord);
                 Model.IsOpenCurrentWord = false;
                 if (isFirstShowAfterLoad && Model.IndexWordShowNow != -1)
                     Model.IndexWordShowNow--;
@@ -63,14 +63,13 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private Task MarkLearnedWord(WordsModel modelCurrentWord, bool modelIsOpenCurrentWord)
+        private void MarkLearnedWord(WordsModel modelCurrentWord, bool modelIsOpenCurrentWord)
         {
             if (!modelIsOpenCurrentWord && modelCurrentWord!=null)
             {
                 modelCurrentWord.IsLearned = true;
-                return Task.Run(() => _studyService.UpdateWord(modelCurrentWord));
+                Task.Run(() => _studyService.UpdateWord(modelCurrentWord));
             }
-            return Task.CompletedTask;
         }
 
         private void CounterShowWord(bool isFirstShowAfterLoad)
