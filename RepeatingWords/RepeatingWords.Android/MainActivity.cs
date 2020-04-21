@@ -10,6 +10,7 @@ using Android.Gms.Drive;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
+using Android.Support.V7.Widget;
 using Xamarin.Forms;
 using RepeatingWords.LoggerService;
 
@@ -88,6 +89,17 @@ namespace RepeatingWords.Droid
             catch (Exception er)
             {
                 Log.Logger.Error("OnRequestPermissionsResult", er.Message);
+            }
+        }
+
+
+        //this fake method for include 
+        static bool falseflag = false;
+        static void LinkerPleaseInclude()
+        {
+            if (falseflag)
+            {
+                var ignore = new FitWindowsLinearLayout(Android.App.Application.Context);
             }
         }
     }

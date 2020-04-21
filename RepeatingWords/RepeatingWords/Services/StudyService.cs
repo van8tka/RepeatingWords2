@@ -182,42 +182,57 @@ namespace RepeatingWords.Services
         {
             return Task.Run(() =>
             {
-                var removedLanguage = _dictionaryList.FirstOrDefault(x => x.Id == idlanguage);
-                var dictionaries = _unitOfWork.DictionaryRepository.Get().Where(x => x.IdLanguage == idlanguage)
-                    .AsEnumerable();
-                int count = dictionaries.Count();
-                for (int i = 0; i < count; i++)
+                try
                 {
-                    removeDictionaryFromLanguage(dictionaries.ElementAt(i).Id);
+                    var removedLanguage = _dictionaryList.FirstOrDefault(x => x.Id == idlanguage);
+                    var dictionaries = _dictionaries.Where(x => x.IdLanguage == idlanguage).AsEnumerable();
+                    int count = dictionaries.Count();
+                    for (int i = count-1; i >=0 ; i--)
+                    {
+                        RemoveDictionary(dictionaries.ElementAtOrDefault(i).Id);
+                    }
+                    var language = _unitOfWork.LanguageRepository.Get(idlanguage);
+                    _unitOfWork.LanguageRepository.Delete(language);
+                    _unitOfWork.Save();
+                    _languages.Remove(language);
+                    _dictionaryList.Remove(removedLanguage);
+                    return true;
                 }
-
-                var language = _unitOfWork.LanguageRepository.Get(removedLanguage.Id);
-                _unitOfWork.LanguageRepository.Delete(language);
-                _unitOfWork.Save();
-                _languages.Remove(language);
-                _dictionaryList.Remove(removedLanguage);
-                return true;
+                catch (Exception e)
+                {
+                    Log.Logger.Error(e);
+                    return false;
+                }
             });
         }
 
         public Task<bool> RemoveDictionaryFromLanguage(int dictionaryId)
         {
-            return Task.Run(() => removeDictionaryFromLanguage(dictionaryId));
+            return Task.Run(() => {
+                try
+                {
+                    return RemoveDictionary(dictionaryId);
+                }
+                catch (Exception e)
+                {
+                    Log.Logger.Error(e);
+                    return false;
+                }
+            });
         }
 
-        private bool removeDictionaryFromLanguage(int dictionaryId)
+        private bool RemoveDictionary(int dictionaryId)
         {
             try
             {
-                var words = _unitOfWork.WordsRepository.Get().Where(x => x.IdDictionary == dictionaryId).AsEnumerable();
+                var words = _words.Where(x => x.IdDictionary == dictionaryId).AsEnumerable();
                 int count = words.Count();
-                for (int i = 0; i < count; i++)
+                for (int i = count-1; i >= 0; i--)
                 {
-                    var word = words.ElementAt(i);
+                    var word = words.ElementAtOrDefault(i);
                     _unitOfWork.WordsRepository.Delete(word);
                     _words.Remove(word);
                 }
-
                 var dictionary = _dictionaries.FirstOrDefault(x => x.Id == dictionaryId);
                 bool success = _unitOfWork.DictionaryRepository.Delete(dictionary);
                 _dictionaries.Remove(dictionary);
@@ -227,7 +242,7 @@ namespace RepeatingWords.Services
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                return false;
+                throw ;
             }
         }
 

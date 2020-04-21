@@ -27,21 +27,18 @@ namespace RepeatingWords.ViewModel
             _studyService = studyService;
             _importFile = importFile;
             DictionaryList = new ObservableCollection<LanguageModel>();
-            ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
+            ShowToolsCommand =
+                new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
             LikeCommand = new Command(async () => { await LikeApplication.Like(DialogService); });
-            AddLanguageCommand = new Command(async() =>
-            {
-              await AddLanguage();
-               
-            });
+            AddLanguageCommand = new Command(async () => { await AddLanguage(); });
             AddWordsFromNetCommand = new Command(async () =>
             {
                 await NavigationService.NavigateToAsync<LanguageFrNetViewModel>();
             });
             AppearingCommand = new Command(Appearing);
             ContextMenuLanguageCommand = new Command<int>(async (id) => await ContextMenuLanguage(id));
-            
+
         }
 
         private readonly IStudyService _studyService;
@@ -59,7 +56,7 @@ namespace RepeatingWords.ViewModel
         public ICommand ContextMenuLanguageCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
-        
+
         private ObservableCollection<LanguageModel> _dictionaryList;
 
         public ObservableCollection<LanguageModel> DictionaryList
@@ -88,7 +85,7 @@ namespace RepeatingWords.ViewModel
 
         public override async Task InitializeAsync(object navigationData)
         {
-            IsBusy = true; 
+            IsBusy = true;
             LoadData();
             await base.InitializeAsync(navigationData);
         }
@@ -108,11 +105,16 @@ namespace RepeatingWords.ViewModel
                 {
                     using (var filePiker = await _importFile.PickFile())
                     {
-                        if (filePiker!=null && filePiker.DataArray != null)
-                            await Task.Run(() => { _importFile.StartImport(filePiker.DataArray, filePiker.FileName, idDictionary); });
+                        if (filePiker != null && filePiker.DataArray != null)
+                            await Task.Run(() =>
+                            {
+                                _importFile.StartImport(filePiker.DataArray, filePiker.FileName, idDictionary);
+                            });
                     }
+
                     await InitializeAsync(null);
                 }
+
                 DialogService.HideLoadDialog();
             }
             catch (Exception er)
@@ -134,7 +136,7 @@ namespace RepeatingWords.ViewModel
                 string studingNotLearning = Resource.ButtonStudyNotLearning;
                 string[] actionButtons;
                 if (selectedItem.CountLearned > 0 && selectedItem.CountLearned < selectedItem.CountWords)
-                    actionButtons = new string[] { studing, studingNotLearning, showWords, removeDictionary };
+                    actionButtons = new string[] {studing, studingNotLearning, showWords, removeDictionary};
                 else
                     actionButtons = new string[] {studing, showWords, removeDictionary};
                 var result =
@@ -153,6 +155,7 @@ namespace RepeatingWords.ViewModel
                     await NavigationService.NavigateToAsync<WordsListViewModel>(selectedItem);
                 else if (result.Equals(removeDictionary, StringComparison.OrdinalIgnoreCase))
                     await RemoveDictionary(selectedItem);
+
                 SelectedItem = null;
             }
             catch (Exception e)
@@ -181,6 +184,7 @@ namespace RepeatingWords.ViewModel
                     DialogService.ShowLoadDialog();
                     await ImportFile(idLanguage);
                 }
+
                 DialogService.HideLoadDialog();
                 return true;
             }
@@ -195,8 +199,9 @@ namespace RepeatingWords.ViewModel
 
         public async Task<int> AddDictionary(int idLanguage)
         {
-            var dictionaryName = await DialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict, Resource.ButtonCreate, Resource.ModalActCancel); 
-            if(!string.IsNullOrEmpty(dictionaryName))
+            var dictionaryName = await DialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict,
+                Resource.ButtonCreate, Resource.ModalActCancel);
+            if (!string.IsNullOrEmpty(dictionaryName))
                 return _studyService.AddDictionary(dictionaryName, idLanguage);
             return -1;
         }
@@ -205,7 +210,7 @@ namespace RepeatingWords.ViewModel
 
         private async Task<int> AddLanguage()
         {
-            var nameLang =  await DialogService.ShowInputTextDialog(Resource.EntryNameLang, Resource.BtnAddLang,
+            var nameLang = await DialogService.ShowInputTextDialog(Resource.EntryNameLang, Resource.BtnAddLang,
                 Resource.ButtonCreate, Resource.ModalActCancel);
             int idLang = _studyService.AddLanguage(nameLang);
             OnPropertyChanged(nameof(DictionaryList));
@@ -222,7 +227,8 @@ namespace RepeatingWords.ViewModel
                 _studyService.BeginTransaction();
                 await _studyService.RemoveDictionaryFromLanguage(removeDictionary.Id);
                 _studyService.CommitTransaction();
-                DictionaryList.FirstOrDefault(x => x.Id == removeDictionary.IdLanguage)?.RemoveDictionary(removeDictionary.Id);
+                DictionaryList.FirstOrDefault(x => x.Id == removeDictionary.IdLanguage)
+                    ?.RemoveDictionary(removeDictionary.Id);
                 DialogService.HideLoadDialog();
             }
             catch (Exception e)
@@ -236,23 +242,15 @@ namespace RepeatingWords.ViewModel
 
         private async Task RemoveLanguage(int idlanguage)
         {
-            try
-            {
-                Log.Logger.Info($"remove language with id = {idlanguage}");
-                DialogService.ShowLoadDialog(Resource.Deleting);
-                _studyService.BeginTransaction();
-                await _studyService.RemoveLanguage(idlanguage);
+            Log.Logger.Info($"remove language with id = {idlanguage}");
+            DialogService.ShowLoadDialog(Resource.Deleting);
+            _studyService.BeginTransaction();
+            if (await _studyService.RemoveLanguage(idlanguage))
                 _studyService.CommitTransaction();
-                OnPropertyChanged(nameof(DictionaryList));
-                DialogService.HideLoadDialog();
-            }
-            catch (Exception e)
-            {
+            else
                 _studyService.RollBackTransaction();
-                DialogService.HideLoadDialog();
-                DialogService.ShowToast("Error remove language");
-                Log.Logger.Error(e);
-            }
+            OnPropertyChanged(nameof(DictionaryList));
+            DialogService.HideLoadDialog();
         }
 
     }
