@@ -38,7 +38,8 @@ namespace RepeatingWords.Droid
                 //проверка наличия разрешения
                 CheckPermissionForStorage();
                 Android.Gms.Ads.MobileAds.Initialize(ApplicationContext, APPLICATION_CODE);
-                UserDialogs.Init(() => (Android.App.Activity)Forms.Context);
+                UserDialogs.Init(this);
+                //UserDialogs.Init(() => (Android.App.Activity)Forms.Context);
             });
             FormsControls.Droid.Main.Init(this);
             LoadApplication(new App( new SQLite_Android()));                   

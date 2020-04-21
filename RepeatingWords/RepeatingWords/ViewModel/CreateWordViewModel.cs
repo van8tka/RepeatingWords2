@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.Helpers.Interfaces;
@@ -72,7 +73,7 @@ namespace RepeatingWords.ViewModel
         public ICommand SendCommand { get; set; }
         public ICommand FocusedTranscriptionCommand { get; set; }
 
-        private void SendWord()
+        private async void SendWord()
         {
             try
             {               
@@ -90,8 +91,8 @@ namespace RepeatingWords.ViewModel
                     {
                         TranscriptionWord = "[]";
                     }
-                    CreateWord(); 
-                    GoBack();
+                   await CreateWord(); 
+                   await GoBack();
                 }
                 else
                 {

@@ -44,7 +44,7 @@ namespace RepeatingWords.Services
 
     public interface IStudyService : ILanguageStudyService, ITransactionService, IWordStudyService, IDictionaryStudyService
     {
-        Task<bool> ClearDB();
+         bool ClearDB();
     }
 
 
@@ -202,11 +202,7 @@ namespace RepeatingWords.Services
 
         public Task<bool> RemoveDictionaryFromLanguage(int dictionaryId)
         {
-            return Task.Run(() =>
-            {
-                return removeDictionaryFromLanguage(dictionaryId);
-                _unitOfWork.Save();
-            });
+            return Task.Run(() => removeDictionaryFromLanguage(dictionaryId));
         }
 
         private bool removeDictionaryFromLanguage(int dictionaryId)
@@ -225,6 +221,7 @@ namespace RepeatingWords.Services
                 var dictionary = _dictionaries.FirstOrDefault(x => x.Id == dictionaryId);
                 bool success = _unitOfWork.DictionaryRepository.Delete(dictionary);
                 _dictionaries.Remove(dictionary);
+                _unitOfWork.Save();
                 return true;
             }
             catch (Exception e)
@@ -378,10 +375,10 @@ namespace RepeatingWords.Services
             return _languages.FirstOrDefault(x => x.NameLanguage.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
 
-        public async Task<bool> ClearDB()
+        public bool ClearDB()
         {
             try
-            {
+            { 
                 Log.Logger.Info(Environment.NewLine + "Clear DB");
                 BeginTransaction();
                 int count = _words.Count;
@@ -409,7 +406,6 @@ namespace RepeatingWords.Services
                 Log.Logger.Error(e);
                 return false;
             }
-
         }
 
         private void ResetLocalData()

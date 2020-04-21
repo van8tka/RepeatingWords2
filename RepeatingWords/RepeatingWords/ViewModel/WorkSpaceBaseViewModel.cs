@@ -38,7 +38,7 @@ namespace RepeatingWords.ViewModel
         {
             try
             {
-                MarkLearnedWord(Model.CurrentWord, Model.IsOpenCurrentWord);
+                await MarkLearnedWord(Model.CurrentWord, Model.IsOpenCurrentWord);
                 Model.IsOpenCurrentWord = false;
                 if (isFirstShowAfterLoad && Model.IndexWordShowNow != -1)
                     Model.IndexWordShowNow--;

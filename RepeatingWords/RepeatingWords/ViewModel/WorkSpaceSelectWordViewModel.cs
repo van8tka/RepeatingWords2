@@ -52,7 +52,7 @@ namespace RepeatingWords.ViewModel
                 }
                 ClearBackgroundColor();
                 await AnimationService.AnimationFade(WordContainer, 0);
-                ShowNextWord();
+                await ShowNextWord();
                 await AnimationService.AnimationFade(WordContainer, 1);
                 isTapAlready = false;
             }           

@@ -171,7 +171,7 @@ namespace RepeatingWords.ViewModel
                 IncrementOpenWords();
                 _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
                 Model.IsOpenCurrentWord = true;
-                ShowNextWord();
+                await ShowNextWord();
             }
         }
 

@@ -17,7 +17,7 @@ namespace RepeatingWords.Services
             GetLocales();
         }
 
-        private static async Task GetLocales()
+        private static async void GetLocales()
         {
             var temp = await TextToSpeech.GetLocalesAsync();
             Locales = temp.ToList();
@@ -32,7 +32,7 @@ namespace RepeatingWords.Services
                      GetLocales();
                 return _locale;
             }
-            private set { _locale = value; }
+            private set => _locale = value;
         }
          
 

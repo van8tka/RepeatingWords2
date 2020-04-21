@@ -25,7 +25,7 @@ namespace RepeatingWords.Services
         private readonly IStudyService _studyService;
         public async Task<bool> import(JObject jobject)
         {
-            if (! await _studyService.ClearDB())
+            if (! _studyService.ClearDB())
                 throw new Exception(Environment.NewLine + "Error clear Db");
             return await Task.Run(() =>
             {

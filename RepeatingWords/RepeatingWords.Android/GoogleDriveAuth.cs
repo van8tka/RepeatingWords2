@@ -65,12 +65,12 @@ namespace RepeatingWords.Droid
             }           
         }
 
-        private async void RunBackupOrRestore()
+        private void RunBackupOrRestore()
         {
             if (!_googleApiClient.IsConnected)
                 _googleApiClient.Connect();
             else
-              await DoWorkBackupOrRestore(_contentResults);
+                DoWorkBackupOrRestore(_contentResults);
         }
 
 
@@ -130,7 +130,7 @@ namespace RepeatingWords.Droid
             DoWorkBackupOrRestore(_contentResults);
         }
 
-        private async Task DoWorkBackupOrRestore(IDriveApiDriveContentsResult contentResults)
+        private async void DoWorkBackupOrRestore(IDriveApiDriveContentsResult contentResults)
         {
             try
             {

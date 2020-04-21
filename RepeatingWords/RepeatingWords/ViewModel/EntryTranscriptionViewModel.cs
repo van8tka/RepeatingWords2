@@ -50,7 +50,7 @@ namespace RepeatingWords.ViewModel
             return base.InitializeAsync(navigationData);
         }
 
-        private async Task CursorBlink()
+        private async void CursorBlink()
         {
             for (;;)
             {
