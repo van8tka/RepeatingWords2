@@ -42,7 +42,8 @@ namespace RepeatingWords.Services
 
         public void ShowToast(string message)
         {
-            UserDialogs.Instance.Toast(message, TimeSpan.FromMilliseconds(3500));
+            //UserDialogs.Instance.Toast(message, TimeSpan.FromMilliseconds(3500));
+            UserDialogs.Instance.Toast(message, TimeSpan.FromMilliseconds(1000));
         }
 
         public void HideLoadDialog()

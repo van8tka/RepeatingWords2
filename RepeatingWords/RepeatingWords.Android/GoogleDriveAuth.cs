@@ -2,9 +2,11 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Gms.Auth.Api.SignIn;
 using Android.Gms.Common;
 using Android.Gms.Common.Apis;
 using Android.Gms.Drive;
@@ -20,8 +22,9 @@ namespace RepeatingWords.Droid
     public partial class MainActivity
     {
         ///WORK WITH GOOGLE DRIVE
-        //для версии release and debug необходимо разные версии регистрации в googleApis (cardsofwordsV21  - debug, CardsOfWords - release )
-        //возможно необходима регистрация OAuth2 для каждой новой версии(надо разобраться)
+        //разные версии регистрации в googleApis в зависимости от sha1 
+        //для debug - учетка в gooleApis с именем: debugAndroidV28
+        //для release - clientcardsofwordsandroid
 
 
         const int REQUEST_CODE_RESOLUTION = 3;
@@ -37,40 +40,68 @@ namespace RepeatingWords.Droid
         private Func<string, Task<bool>> _restoreFunc;
         private IDialogService _dialogService;
         private IDriveApiDriveContentsResult _contentResults;
+
+ 
+
+
         //авторизация Google
         public void GoogleCustomAuthorithation(bool isCreateBackUp, IDialogService dialogService ,string folderName = null, string fileName = null, string pathToDb = null, string successMessage = "Excelent", string errorMessage = "Error", Func<string,Task<bool>> restoreFunc = null)
         {
-            this.folderName = folderName;
-            this.filename = fileName;
-            this.pathToDb = pathToDb;
-            this.isCreateBackUp = isCreateBackUp;
-            this.successMessage = successMessage;
-            this.errorMessage = errorMessage;
-            this._restoreFunc = restoreFunc;
-            _dialogService = dialogService;
-            CreateGoogleClient();
-            RunBackupOrRestore();
+            try {
+                this.folderName = folderName;
+                this.filename = fileName;
+                this.pathToDb = pathToDb;
+                this.isCreateBackUp = isCreateBackUp;
+                this.successMessage = successMessage;
+                this.errorMessage = errorMessage;
+                this._restoreFunc = restoreFunc;
+                _dialogService = dialogService;
+                CreateGoogleClient();
+                RunBackupOrRestore();
+            }
+            catch (Exception e){ CreateAlertDialog("", "58 Error GoogleCustomAuthorithation: " + e.Message);}
         }
 
         private void CreateGoogleClient()
         {
-            if (_googleApiClient == null)
+            try
             {
-                _googleApiClient = new GoogleApiClient.Builder(this)
-                  .AddApi(DriveClass.API)
-                  .AddScope(DriveClass.ScopeFile)
-                  .AddConnectionCallbacks(this)
-                  .AddOnConnectionFailedListener(onConnectionFailed)
-                  .Build();
-            }           
+                if (_googleApiClient == null)
+                {
+                    CreateAlertDialog("", "63 CreateGoogleClient");
+                    _googleApiClient = new GoogleApiClient.Builder(this)
+                        .AddApi(DriveClass.API)
+                        .AddScope(DriveClass.ScopeFile)
+                        .AddConnectionCallbacks(this)
+                        .AddOnConnectionFailedListener(onConnectionFailed)
+                        .Build();
+                }
+            }
+            catch (Exception e)
+            {
+                CreateAlertDialog("", "74 Error create google client: "+e.Message);
+            }
         }
 
         private void RunBackupOrRestore()
         {
-            if (!_googleApiClient.IsConnected)
-                _googleApiClient.Connect();
-            else
-                DoWorkBackupOrRestore(_contentResults);
+            try
+            {
+                if (!_googleApiClient.IsConnected)
+                {
+                    CreateAlertDialog("", "85 RunBackupOrRestore _googleApiClient.Connect()");
+                    _googleApiClient.Connect();
+                }
+                else
+                {
+                    CreateAlertDialog("", "90 RunBackupOrRestore DoWorkBackupOrRestore");
+                    DoWorkBackupOrRestore(_contentResults);
+                }
+            }
+            catch (Exception e)
+            {
+                CreateAlertDialog("", "96 Error run backup or restore: " + e.Message);
+            }
         }
 
 
@@ -78,13 +109,16 @@ namespace RepeatingWords.Droid
         //если ошибка подключения
         private void onConnectionFailed(ConnectionResult result)
         {
+            CreateAlertDialog("", "105 onConnectionFailed ");
             if (!result.HasResolution)
             {
+                CreateAlertDialog("", "108 ConnectionResult "+result.ErrorMessage);
                 GoogleApiAvailability.Instance.GetErrorDialog(this, result.ErrorCode, 0).Show();
                 return;
             }
             try
             {
+                CreateAlertDialog("", "114 StartResolutionForResult");
                 result.StartResolutionForResult(this, REQUEST_CODE_RESOLUTION);
             }
             catch (IntentSender.SendIntentException e)
@@ -97,27 +131,32 @@ namespace RepeatingWords.Droid
         //подключаемся к Google диску
         public void OnConnected(Bundle connectionHint)
         {
+            CreateAlertDialog("", "127 OnConnected");
             DriveClass.DriveApi.NewDriveContents(_googleApiClient).SetResultCallback(this);
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
+            CreateAlertDialog("", $"133 OnActivityResult resultCode = {resultCode.ToString()} (must = 3)");
             base.OnActivityResult(requestCode, resultCode, data);
             if (requestCode == REQUEST_CODE_RESOLUTION)
             {
                 switch (resultCode)
                 {
                     case Result.Ok:
+                        CreateAlertDialog("", "140 Ok");
                         _googleApiClient.Connect();
                         break;
                     case Result.Canceled:
-                        CreateAlertDialog("", errorMessage);
+                        CreateAlertDialog("", "144 Canceled");
+                      //  CreateAlertDialog("", errorMessage);
                         break;
                     case Result.FirstUser:
-                        CreateAlertDialog("", errorMessage);
+                        CreateAlertDialog("", "148 FirstUser");
+                      //  CreateAlertDialog("", errorMessage);
                         break;
                     default:
-                        CreateAlertDialog("", errorMessage);
+                        CreateAlertDialog("", "152 Error" + errorMessage);
                         return;
                 }
             }
@@ -126,6 +165,7 @@ namespace RepeatingWords.Droid
         //если удачно авторизовались 
         void IResultCallback.OnResult(Java.Lang.Object result)
         {
+            CreateAlertDialog("", "161 IResultCallback.OnResult - invoke DoWork..");
             _contentResults = (result).JavaCast<IDriveApiDriveContentsResult>();
             DoWorkBackupOrRestore(_contentResults);
         }
@@ -231,16 +271,17 @@ namespace RepeatingWords.Droid
         {
 
             _dialogService.ShowToast(message);
-            //RunOnUiThread(() =>
-            //{
-            //    AlertDialog.Builder builder;
-            //    builder = new AlertDialog.Builder(this);
-            //    builder.SetTitle(title);
-            //    builder.SetMessage(message);
-            //    builder.SetCancelable(false);
-            //    builder.SetPositiveButton("OK", delegate { });
-            //    builder.Show();
-            //});
+             Thread.Sleep(1000);
+             //RunOnUiThread(() =>
+             //{
+             //    AlertDialog.Builder builder;
+             //    builder = new AlertDialog.Builder(this);
+             //    builder.SetTitle(title);
+             //    builder.SetMessage(message);
+             //    builder.SetCancelable(false);
+             //    builder.SetPositiveButton("OK", delegate { });
+             //    builder.Show();
+             //});
         }
 
 

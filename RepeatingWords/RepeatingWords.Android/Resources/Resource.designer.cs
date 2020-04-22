@@ -38,6 +38,18 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Animation.abc_slide_out_top = global::RepeatingWords.Droid.Resource.Animation.abc_slide_out_top;
 			global::Acr.UserDialogs.Resource.Animation.abc_tooltip_enter = global::RepeatingWords.Droid.Resource.Animation.abc_tooltip_enter;
 			global::Acr.UserDialogs.Resource.Animation.abc_tooltip_exit = global::RepeatingWords.Droid.Resource.Animation.abc_tooltip_exit;
+			global::Acr.UserDialogs.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation = global::RepeatingWords.Droid.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_checkbox_to_checked_box_outer_merged_animation = global::RepeatingWords.Droid.Resource.Animation.btn_checkbox_to_checked_box_outer_merged_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_checkbox_to_checked_icon_null_animation = global::RepeatingWords.Droid.Resource.Animation.btn_checkbox_to_checked_icon_null_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_checkbox_to_unchecked_box_inner_merged_animation = global::RepeatingWords.Droid.Resource.Animation.btn_checkbox_to_unchecked_box_inner_merged_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_checkbox_to_unchecked_check_path_merged_animation = global::RepeatingWords.Droid.Resource.Animation.btn_checkbox_to_unchecked_check_path_merged_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_checkbox_to_unchecked_icon_null_animation = global::RepeatingWords.Droid.Resource.Animation.btn_checkbox_to_unchecked_icon_null_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_radio_to_off_mtrl_dot_group_animation = global::RepeatingWords.Droid.Resource.Animation.btn_radio_to_off_mtrl_dot_group_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_animation = global::RepeatingWords.Droid.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_path_animation = global::RepeatingWords.Droid.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_path_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_radio_to_on_mtrl_dot_group_animation = global::RepeatingWords.Droid.Resource.Animation.btn_radio_to_on_mtrl_dot_group_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_animation = global::RepeatingWords.Droid.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_animation;
+			global::Acr.UserDialogs.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_path_animation = global::RepeatingWords.Droid.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_path_animation;
 			global::Acr.UserDialogs.Resource.Animation.design_bottom_sheet_slide_in = global::RepeatingWords.Droid.Resource.Animation.design_bottom_sheet_slide_in;
 			global::Acr.UserDialogs.Resource.Animation.design_bottom_sheet_slide_out = global::RepeatingWords.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::Acr.UserDialogs.Resource.Animation.design_snackbar_in = global::RepeatingWords.Droid.Resource.Animation.design_snackbar_in;
@@ -145,6 +157,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Attribute.buttonBarNeutralButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
 			global::Acr.UserDialogs.Resource.Attribute.buttonBarPositiveButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
 			global::Acr.UserDialogs.Resource.Attribute.buttonBarStyle = global::RepeatingWords.Droid.Resource.Attribute.buttonBarStyle;
+			global::Acr.UserDialogs.Resource.Attribute.buttonCompat = global::RepeatingWords.Droid.Resource.Attribute.buttonCompat;
 			global::Acr.UserDialogs.Resource.Attribute.buttonGravity = global::RepeatingWords.Droid.Resource.Attribute.buttonGravity;
 			global::Acr.UserDialogs.Resource.Attribute.buttonIconDimen = global::RepeatingWords.Droid.Resource.Attribute.buttonIconDimen;
 			global::Acr.UserDialogs.Resource.Attribute.buttonPanelSideLayout = global::RepeatingWords.Droid.Resource.Attribute.buttonPanelSideLayout;
@@ -238,7 +251,15 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Attribute.dividerHorizontal = global::RepeatingWords.Droid.Resource.Attribute.dividerHorizontal;
 			global::Acr.UserDialogs.Resource.Attribute.dividerPadding = global::RepeatingWords.Droid.Resource.Attribute.dividerPadding;
 			global::Acr.UserDialogs.Resource.Attribute.dividerVertical = global::RepeatingWords.Droid.Resource.Attribute.dividerVertical;
+			global::Acr.UserDialogs.Resource.Attribute.drawableBottomCompat = global::RepeatingWords.Droid.Resource.Attribute.drawableBottomCompat;
+			global::Acr.UserDialogs.Resource.Attribute.drawableEndCompat = global::RepeatingWords.Droid.Resource.Attribute.drawableEndCompat;
+			global::Acr.UserDialogs.Resource.Attribute.drawableLeftCompat = global::RepeatingWords.Droid.Resource.Attribute.drawableLeftCompat;
+			global::Acr.UserDialogs.Resource.Attribute.drawableRightCompat = global::RepeatingWords.Droid.Resource.Attribute.drawableRightCompat;
 			global::Acr.UserDialogs.Resource.Attribute.drawableSize = global::RepeatingWords.Droid.Resource.Attribute.drawableSize;
+			global::Acr.UserDialogs.Resource.Attribute.drawableStartCompat = global::RepeatingWords.Droid.Resource.Attribute.drawableStartCompat;
+			global::Acr.UserDialogs.Resource.Attribute.drawableTint = global::RepeatingWords.Droid.Resource.Attribute.drawableTint;
+			global::Acr.UserDialogs.Resource.Attribute.drawableTintMode = global::RepeatingWords.Droid.Resource.Attribute.drawableTintMode;
+			global::Acr.UserDialogs.Resource.Attribute.drawableTopCompat = global::RepeatingWords.Droid.Resource.Attribute.drawableTopCompat;
 			global::Acr.UserDialogs.Resource.Attribute.drawerArrowStyle = global::RepeatingWords.Droid.Resource.Attribute.drawerArrowStyle;
 			global::Acr.UserDialogs.Resource.Attribute.dropdownListPreferredItemHeight = global::RepeatingWords.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
 			global::Acr.UserDialogs.Resource.Attribute.dropDownListViewStyle = global::RepeatingWords.Droid.Resource.Attribute.dropDownListViewStyle;
@@ -345,6 +366,8 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Attribute.lineHeight = global::RepeatingWords.Droid.Resource.Attribute.lineHeight;
 			global::Acr.UserDialogs.Resource.Attribute.lineSpacing = global::RepeatingWords.Droid.Resource.Attribute.lineSpacing;
 			global::Acr.UserDialogs.Resource.Attribute.listChoiceBackgroundIndicator = global::RepeatingWords.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::Acr.UserDialogs.Resource.Attribute.listChoiceIndicatorMultipleAnimated = global::RepeatingWords.Droid.Resource.Attribute.listChoiceIndicatorMultipleAnimated;
+			global::Acr.UserDialogs.Resource.Attribute.listChoiceIndicatorSingleAnimated = global::RepeatingWords.Droid.Resource.Attribute.listChoiceIndicatorSingleAnimated;
 			global::Acr.UserDialogs.Resource.Attribute.listDividerAlertDialog = global::RepeatingWords.Droid.Resource.Attribute.listDividerAlertDialog;
 			global::Acr.UserDialogs.Resource.Attribute.listItemLayout = global::RepeatingWords.Droid.Resource.Attribute.listItemLayout;
 			global::Acr.UserDialogs.Resource.Attribute.listLayout = global::RepeatingWords.Droid.Resource.Attribute.listLayout;
@@ -353,8 +376,10 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Attribute.listPreferredItemHeight = global::RepeatingWords.Droid.Resource.Attribute.listPreferredItemHeight;
 			global::Acr.UserDialogs.Resource.Attribute.listPreferredItemHeightLarge = global::RepeatingWords.Droid.Resource.Attribute.listPreferredItemHeightLarge;
 			global::Acr.UserDialogs.Resource.Attribute.listPreferredItemHeightSmall = global::RepeatingWords.Droid.Resource.Attribute.listPreferredItemHeightSmall;
+			global::Acr.UserDialogs.Resource.Attribute.listPreferredItemPaddingEnd = global::RepeatingWords.Droid.Resource.Attribute.listPreferredItemPaddingEnd;
 			global::Acr.UserDialogs.Resource.Attribute.listPreferredItemPaddingLeft = global::RepeatingWords.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
 			global::Acr.UserDialogs.Resource.Attribute.listPreferredItemPaddingRight = global::RepeatingWords.Droid.Resource.Attribute.listPreferredItemPaddingRight;
+			global::Acr.UserDialogs.Resource.Attribute.listPreferredItemPaddingStart = global::RepeatingWords.Droid.Resource.Attribute.listPreferredItemPaddingStart;
 			global::Acr.UserDialogs.Resource.Attribute.logo = global::RepeatingWords.Droid.Resource.Attribute.logo;
 			global::Acr.UserDialogs.Resource.Attribute.logoDescription = global::RepeatingWords.Droid.Resource.Attribute.logoDescription;
 			global::Acr.UserDialogs.Resource.Attribute.materialButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.materialButtonStyle;
@@ -396,6 +421,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Attribute.ratingBarStyle = global::RepeatingWords.Droid.Resource.Attribute.ratingBarStyle;
 			global::Acr.UserDialogs.Resource.Attribute.ratingBarStyleIndicator = global::RepeatingWords.Droid.Resource.Attribute.ratingBarStyleIndicator;
 			global::Acr.UserDialogs.Resource.Attribute.ratingBarStyleSmall = global::RepeatingWords.Droid.Resource.Attribute.ratingBarStyleSmall;
+			global::Acr.UserDialogs.Resource.Attribute.recyclerViewStyle = global::RepeatingWords.Droid.Resource.Attribute.recyclerViewStyle;
 			global::Acr.UserDialogs.Resource.Attribute.reverseLayout = global::RepeatingWords.Droid.Resource.Attribute.reverseLayout;
 			global::Acr.UserDialogs.Resource.Attribute.rippleColor = global::RepeatingWords.Droid.Resource.Attribute.rippleColor;
 			global::Acr.UserDialogs.Resource.Attribute.scrimAnimationDuration = global::RepeatingWords.Droid.Resource.Attribute.scrimAnimationDuration;
@@ -496,6 +522,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Attribute.textColorSearchUrl = global::RepeatingWords.Droid.Resource.Attribute.textColorSearchUrl;
 			global::Acr.UserDialogs.Resource.Attribute.textEndPadding = global::RepeatingWords.Droid.Resource.Attribute.textEndPadding;
 			global::Acr.UserDialogs.Resource.Attribute.textInputStyle = global::RepeatingWords.Droid.Resource.Attribute.textInputStyle;
+			global::Acr.UserDialogs.Resource.Attribute.textLocale = global::RepeatingWords.Droid.Resource.Attribute.textLocale;
 			global::Acr.UserDialogs.Resource.Attribute.textStartPadding = global::RepeatingWords.Droid.Resource.Attribute.textStartPadding;
 			global::Acr.UserDialogs.Resource.Attribute.theme = global::RepeatingWords.Droid.Resource.Attribute.theme;
 			global::Acr.UserDialogs.Resource.Attribute.thickness = global::RepeatingWords.Droid.Resource.Attribute.thickness;
@@ -720,6 +747,9 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::RepeatingWords.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
 			global::Acr.UserDialogs.Resource.Dimension.abc_edit_text_inset_top_material = global::RepeatingWords.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
 			global::Acr.UserDialogs.Resource.Dimension.abc_floating_window_z = global::RepeatingWords.Droid.Resource.Dimension.abc_floating_window_z;
+			global::Acr.UserDialogs.Resource.Dimension.abc_list_item_height_large_material = global::RepeatingWords.Droid.Resource.Dimension.abc_list_item_height_large_material;
+			global::Acr.UserDialogs.Resource.Dimension.abc_list_item_height_material = global::RepeatingWords.Droid.Resource.Dimension.abc_list_item_height_material;
+			global::Acr.UserDialogs.Resource.Dimension.abc_list_item_height_small_material = global::RepeatingWords.Droid.Resource.Dimension.abc_list_item_height_small_material;
 			global::Acr.UserDialogs.Resource.Dimension.abc_list_item_padding_horizontal_material = global::RepeatingWords.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
 			global::Acr.UserDialogs.Resource.Dimension.abc_panel_menu_list_width = global::RepeatingWords.Droid.Resource.Dimension.abc_panel_menu_list_width;
 			global::Acr.UserDialogs.Resource.Dimension.abc_progress_bar_height_material = global::RepeatingWords.Droid.Resource.Dimension.abc_progress_bar_height_material;
@@ -891,11 +921,13 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Drawable.abc_action_bar_item_background_material = global::RepeatingWords.Droid.Resource.Drawable.abc_action_bar_item_background_material;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_borderless_material = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_borderless_material;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_check_material = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_check_material;
+			global::Acr.UserDialogs.Resource.Drawable.abc_btn_check_material_anim = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_check_material_anim;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_colored_material = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_colored_material;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_default_mtrl_shape = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_radio_material = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_radio_material;
+			global::Acr.UserDialogs.Resource.Drawable.abc_btn_radio_material_anim = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_radio_material_anim;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
 			global::Acr.UserDialogs.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::RepeatingWords.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
@@ -973,6 +1005,14 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Drawable.abc_vector_test = global::RepeatingWords.Droid.Resource.Drawable.abc_vector_test;
 			global::Acr.UserDialogs.Resource.Drawable.avd_hide_password = global::RepeatingWords.Droid.Resource.Drawable.avd_hide_password;
 			global::Acr.UserDialogs.Resource.Drawable.avd_show_password = global::RepeatingWords.Droid.Resource.Drawable.avd_show_password;
+			global::Acr.UserDialogs.Resource.Drawable.btn_checkbox_checked_mtrl = global::RepeatingWords.Droid.Resource.Drawable.btn_checkbox_checked_mtrl;
+			global::Acr.UserDialogs.Resource.Drawable.btn_checkbox_checked_to_unchecked_mtrl_animation = global::RepeatingWords.Droid.Resource.Drawable.btn_checkbox_checked_to_unchecked_mtrl_animation;
+			global::Acr.UserDialogs.Resource.Drawable.btn_checkbox_unchecked_mtrl = global::RepeatingWords.Droid.Resource.Drawable.btn_checkbox_unchecked_mtrl;
+			global::Acr.UserDialogs.Resource.Drawable.btn_checkbox_unchecked_to_checked_mtrl_animation = global::RepeatingWords.Droid.Resource.Drawable.btn_checkbox_unchecked_to_checked_mtrl_animation;
+			global::Acr.UserDialogs.Resource.Drawable.btn_radio_off_mtrl = global::RepeatingWords.Droid.Resource.Drawable.btn_radio_off_mtrl;
+			global::Acr.UserDialogs.Resource.Drawable.btn_radio_off_to_on_mtrl_animation = global::RepeatingWords.Droid.Resource.Drawable.btn_radio_off_to_on_mtrl_animation;
+			global::Acr.UserDialogs.Resource.Drawable.btn_radio_on_mtrl = global::RepeatingWords.Droid.Resource.Drawable.btn_radio_on_mtrl;
+			global::Acr.UserDialogs.Resource.Drawable.btn_radio_on_to_off_mtrl_animation = global::RepeatingWords.Droid.Resource.Drawable.btn_radio_on_to_off_mtrl_animation;
 			global::Acr.UserDialogs.Resource.Drawable.design_bottom_navigation_item_background = global::RepeatingWords.Droid.Resource.Drawable.design_bottom_navigation_item_background;
 			global::Acr.UserDialogs.Resource.Drawable.design_fab_background = global::RepeatingWords.Droid.Resource.Drawable.design_fab_background;
 			global::Acr.UserDialogs.Resource.Drawable.design_ic_visibility = global::RepeatingWords.Droid.Resource.Drawable.design_ic_visibility;
@@ -1003,6 +1043,39 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Drawable.roundedbgdark = global::RepeatingWords.Droid.Resource.Drawable.roundedbgdark;
 			global::Acr.UserDialogs.Resource.Drawable.tooltip_frame_dark = global::RepeatingWords.Droid.Resource.Drawable.tooltip_frame_dark;
 			global::Acr.UserDialogs.Resource.Drawable.tooltip_frame_light = global::RepeatingWords.Droid.Resource.Drawable.tooltip_frame_light;
+			global::Acr.UserDialogs.Resource.Id.accessibility_action_clickable_span = global::RepeatingWords.Droid.Resource.Id.accessibility_action_clickable_span;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_0 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_0;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_1 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_1;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_10 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_10;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_11 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_11;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_12 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_12;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_13 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_13;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_14 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_14;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_15 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_15;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_16 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_16;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_17 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_17;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_18 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_18;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_19 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_19;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_2 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_2;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_20 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_20;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_21 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_21;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_22 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_22;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_23 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_23;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_24 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_24;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_25 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_25;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_26 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_26;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_27 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_27;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_28 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_28;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_29 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_29;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_3 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_3;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_30 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_30;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_31 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_31;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_4 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_4;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_5 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_5;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_6 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_6;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_7 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_7;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_8 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_8;
+			global::Acr.UserDialogs.Resource.Id.accessibility_custom_action_9 = global::RepeatingWords.Droid.Resource.Id.accessibility_custom_action_9;
 			global::Acr.UserDialogs.Resource.Id.actions = global::RepeatingWords.Droid.Resource.Id.actions;
 			global::Acr.UserDialogs.Resource.Id.action_bar = global::RepeatingWords.Droid.Resource.Id.action_bar;
 			global::Acr.UserDialogs.Resource.Id.action_bar_activity_content = global::RepeatingWords.Droid.Resource.Id.action_bar_activity_content;
@@ -1037,6 +1110,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Id.center_horizontal = global::RepeatingWords.Droid.Resource.Id.center_horizontal;
 			global::Acr.UserDialogs.Resource.Id.center_vertical = global::RepeatingWords.Droid.Resource.Id.center_vertical;
 			global::Acr.UserDialogs.Resource.Id.checkbox = global::RepeatingWords.Droid.Resource.Id.checkbox;
+			global::Acr.UserDialogs.Resource.Id.@checked = global::RepeatingWords.Droid.Resource.Id.@checked;
 			global::Acr.UserDialogs.Resource.Id.chronometer = global::RepeatingWords.Droid.Resource.Id.chronometer;
 			global::Acr.UserDialogs.Resource.Id.clip_horizontal = global::RepeatingWords.Droid.Resource.Id.clip_horizontal;
 			global::Acr.UserDialogs.Resource.Id.clip_vertical = global::RepeatingWords.Droid.Resource.Id.clip_vertical;
@@ -1055,6 +1129,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Id.design_menu_item_action_area_stub = global::RepeatingWords.Droid.Resource.Id.design_menu_item_action_area_stub;
 			global::Acr.UserDialogs.Resource.Id.design_menu_item_text = global::RepeatingWords.Droid.Resource.Id.design_menu_item_text;
 			global::Acr.UserDialogs.Resource.Id.design_navigation_view = global::RepeatingWords.Droid.Resource.Id.design_navigation_view;
+			global::Acr.UserDialogs.Resource.Id.dialog_button = global::RepeatingWords.Droid.Resource.Id.dialog_button;
 			global::Acr.UserDialogs.Resource.Id.disableHome = global::RepeatingWords.Droid.Resource.Id.disableHome;
 			global::Acr.UserDialogs.Resource.Id.edit_query = global::RepeatingWords.Droid.Resource.Id.edit_query;
 			global::Acr.UserDialogs.Resource.Id.end = global::RepeatingWords.Droid.Resource.Id.end;
@@ -1071,6 +1146,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Id.forever = global::RepeatingWords.Droid.Resource.Id.forever;
 			global::Acr.UserDialogs.Resource.Id.FUNCTION = global::RepeatingWords.Droid.Resource.Id.FUNCTION;
 			global::Acr.UserDialogs.Resource.Id.ghost_view = global::RepeatingWords.Droid.Resource.Id.ghost_view;
+			global::Acr.UserDialogs.Resource.Id.ghost_view_holder = global::RepeatingWords.Droid.Resource.Id.ghost_view_holder;
 			global::Acr.UserDialogs.Resource.Id.group_divider = global::RepeatingWords.Droid.Resource.Id.group_divider;
 			global::Acr.UserDialogs.Resource.Id.home = global::RepeatingWords.Droid.Resource.Id.home;
 			global::Acr.UserDialogs.Resource.Id.homeAsUp = global::RepeatingWords.Droid.Resource.Id.homeAsUp;
@@ -1106,6 +1182,8 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Id.notification_background = global::RepeatingWords.Droid.Resource.Id.notification_background;
 			global::Acr.UserDialogs.Resource.Id.notification_main_column = global::RepeatingWords.Droid.Resource.Id.notification_main_column;
 			global::Acr.UserDialogs.Resource.Id.notification_main_column_container = global::RepeatingWords.Droid.Resource.Id.notification_main_column_container;
+			global::Acr.UserDialogs.Resource.Id.off = global::RepeatingWords.Droid.Resource.Id.off;
+			global::Acr.UserDialogs.Resource.Id.on = global::RepeatingWords.Droid.Resource.Id.on;
 			global::Acr.UserDialogs.Resource.Id.outline = global::RepeatingWords.Droid.Resource.Id.outline;
 			global::Acr.UserDialogs.Resource.Id.parallax = global::RepeatingWords.Droid.Resource.Id.parallax;
 			global::Acr.UserDialogs.Resource.Id.parentPanel = global::RepeatingWords.Droid.Resource.Id.parentPanel;
@@ -1118,6 +1196,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Id.right_icon = global::RepeatingWords.Droid.Resource.Id.right_icon;
 			global::Acr.UserDialogs.Resource.Id.right_side = global::RepeatingWords.Droid.Resource.Id.right_side;
 			global::Acr.UserDialogs.Resource.Id.save_non_transition_alpha = global::RepeatingWords.Droid.Resource.Id.save_non_transition_alpha;
+			global::Acr.UserDialogs.Resource.Id.save_overlay_view = global::RepeatingWords.Droid.Resource.Id.save_overlay_view;
 			global::Acr.UserDialogs.Resource.Id.screen = global::RepeatingWords.Droid.Resource.Id.screen;
 			global::Acr.UserDialogs.Resource.Id.scroll = global::RepeatingWords.Droid.Resource.Id.scroll;
 			global::Acr.UserDialogs.Resource.Id.scrollable = global::RepeatingWords.Droid.Resource.Id.scrollable;
@@ -1157,6 +1236,11 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Id.submit_area = global::RepeatingWords.Droid.Resource.Id.submit_area;
 			global::Acr.UserDialogs.Resource.Id.SYM = global::RepeatingWords.Droid.Resource.Id.SYM;
 			global::Acr.UserDialogs.Resource.Id.tabMode = global::RepeatingWords.Droid.Resource.Id.tabMode;
+			global::Acr.UserDialogs.Resource.Id.tag_accessibility_actions = global::RepeatingWords.Droid.Resource.Id.tag_accessibility_actions;
+			global::Acr.UserDialogs.Resource.Id.tag_accessibility_clickable_spans = global::RepeatingWords.Droid.Resource.Id.tag_accessibility_clickable_spans;
+			global::Acr.UserDialogs.Resource.Id.tag_accessibility_heading = global::RepeatingWords.Droid.Resource.Id.tag_accessibility_heading;
+			global::Acr.UserDialogs.Resource.Id.tag_accessibility_pane_title = global::RepeatingWords.Droid.Resource.Id.tag_accessibility_pane_title;
+			global::Acr.UserDialogs.Resource.Id.tag_screen_reader_focusable = global::RepeatingWords.Droid.Resource.Id.tag_screen_reader_focusable;
 			global::Acr.UserDialogs.Resource.Id.tag_transition_group = global::RepeatingWords.Droid.Resource.Id.tag_transition_group;
 			global::Acr.UserDialogs.Resource.Id.tag_unhandled_key_event_manager = global::RepeatingWords.Droid.Resource.Id.tag_unhandled_key_event_manager;
 			global::Acr.UserDialogs.Resource.Id.tag_unhandled_key_listeners = global::RepeatingWords.Droid.Resource.Id.tag_unhandled_key_listeners;
@@ -1182,6 +1266,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Id.transition_position = global::RepeatingWords.Droid.Resource.Id.transition_position;
 			global::Acr.UserDialogs.Resource.Id.transition_scene_layoutid_cache = global::RepeatingWords.Droid.Resource.Id.transition_scene_layoutid_cache;
 			global::Acr.UserDialogs.Resource.Id.transition_transform = global::RepeatingWords.Droid.Resource.Id.transition_transform;
+			global::Acr.UserDialogs.Resource.Id.@unchecked = global::RepeatingWords.Droid.Resource.Id.@unchecked;
 			global::Acr.UserDialogs.Resource.Id.uniform = global::RepeatingWords.Droid.Resource.Id.uniform;
 			global::Acr.UserDialogs.Resource.Id.unlabeled = global::RepeatingWords.Droid.Resource.Id.unlabeled;
 			global::Acr.UserDialogs.Resource.Id.up = global::RepeatingWords.Droid.Resource.Id.up;
@@ -1205,6 +1290,13 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Integer.mtrl_tab_indicator_anim_duration_ms = global::RepeatingWords.Droid.Resource.Integer.mtrl_tab_indicator_anim_duration_ms;
 			global::Acr.UserDialogs.Resource.Integer.show_password_duration = global::RepeatingWords.Droid.Resource.Integer.show_password_duration;
 			global::Acr.UserDialogs.Resource.Integer.status_bar_notification_info_maxnum = global::RepeatingWords.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Acr.UserDialogs.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_0 = global::RepeatingWords.Droid.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_0;
+			global::Acr.UserDialogs.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_1 = global::RepeatingWords.Droid.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_1;
+			global::Acr.UserDialogs.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_0 = global::RepeatingWords.Droid.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_0;
+			global::Acr.UserDialogs.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_1 = global::RepeatingWords.Droid.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_1;
+			global::Acr.UserDialogs.Resource.Interpolator.btn_radio_to_off_mtrl_animation_interpolator_0 = global::RepeatingWords.Droid.Resource.Interpolator.btn_radio_to_off_mtrl_animation_interpolator_0;
+			global::Acr.UserDialogs.Resource.Interpolator.btn_radio_to_on_mtrl_animation_interpolator_0 = global::RepeatingWords.Droid.Resource.Interpolator.btn_radio_to_on_mtrl_animation_interpolator_0;
+			global::Acr.UserDialogs.Resource.Interpolator.fast_out_slow_in = global::RepeatingWords.Droid.Resource.Interpolator.fast_out_slow_in;
 			global::Acr.UserDialogs.Resource.Interpolator.mtrl_fast_out_linear_in = global::RepeatingWords.Droid.Resource.Interpolator.mtrl_fast_out_linear_in;
 			global::Acr.UserDialogs.Resource.Interpolator.mtrl_fast_out_slow_in = global::RepeatingWords.Droid.Resource.Interpolator.mtrl_fast_out_slow_in;
 			global::Acr.UserDialogs.Resource.Interpolator.mtrl_linear = global::RepeatingWords.Droid.Resource.Interpolator.mtrl_linear;
@@ -1237,6 +1329,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Layout.abc_search_view = global::RepeatingWords.Droid.Resource.Layout.abc_search_view;
 			global::Acr.UserDialogs.Resource.Layout.abc_select_dialog_material = global::RepeatingWords.Droid.Resource.Layout.abc_select_dialog_material;
 			global::Acr.UserDialogs.Resource.Layout.abc_tooltip = global::RepeatingWords.Droid.Resource.Layout.abc_tooltip;
+			global::Acr.UserDialogs.Resource.Layout.custom_dialog = global::RepeatingWords.Droid.Resource.Layout.custom_dialog;
 			global::Acr.UserDialogs.Resource.Layout.design_bottom_navigation_item = global::RepeatingWords.Droid.Resource.Layout.design_bottom_navigation_item;
 			global::Acr.UserDialogs.Resource.Layout.design_bottom_sheet_dialog = global::RepeatingWords.Droid.Resource.Layout.design_bottom_sheet_dialog;
 			global::Acr.UserDialogs.Resource.Layout.design_layout_snackbar = global::RepeatingWords.Droid.Resource.Layout.design_layout_snackbar;
@@ -1496,6 +1589,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
 			global::Acr.UserDialogs.Resource.Style.Base_Widget_AppCompat_Spinner = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
 			global::Acr.UserDialogs.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::Acr.UserDialogs.Resource.Style.Base_Widget_AppCompat_TextView = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_TextView;
 			global::Acr.UserDialogs.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
 			global::Acr.UserDialogs.Resource.Style.Base_Widget_AppCompat_Toolbar = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
 			global::Acr.UserDialogs.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
@@ -1620,6 +1714,8 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
 			global::Acr.UserDialogs.Resource.Style.ThemeOverlay_AppCompat_Dark = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
 			global::Acr.UserDialogs.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::Acr.UserDialogs.Resource.Style.ThemeOverlay_AppCompat_DayNight = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_DayNight;
+			global::Acr.UserDialogs.Resource.Style.ThemeOverlay_AppCompat_DayNight_ActionBar = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_DayNight_ActionBar;
 			global::Acr.UserDialogs.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog;
 			global::Acr.UserDialogs.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
 			global::Acr.UserDialogs.Resource.Style.ThemeOverlay_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
@@ -1752,6 +1848,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
 			global::Acr.UserDialogs.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
 			global::Acr.UserDialogs.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::Acr.UserDialogs.Resource.Style.Widget_AppCompat_TextView = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_TextView;
 			global::Acr.UserDialogs.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
 			global::Acr.UserDialogs.Resource.Style.Widget_AppCompat_Toolbar = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Toolbar;
 			global::Acr.UserDialogs.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
@@ -1913,11 +2010,21 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_drawableBottomCompat = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_drawableBottomCompat;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_drawableEndCompat = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_drawableEndCompat;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_drawableLeftCompat = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_drawableLeftCompat;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_drawableRightCompat = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_drawableRightCompat;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_drawableStartCompat = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_drawableStartCompat;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_drawableTint = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_drawableTint;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_drawableTintMode = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_drawableTintMode;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_drawableTopCompat = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_drawableTopCompat;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_fontFamily = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_fontFamily;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_fontVariationSettings = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_fontVariationSettings;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_lineHeight = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_lineHeight;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_textAllCaps = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTextView_textLocale = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_textLocale;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_actionBarDivider = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
@@ -1991,14 +2098,18 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listChoiceIndicatorMultipleAnimated = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listChoiceIndicatorMultipleAnimated;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listChoiceIndicatorSingleAnimated = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listChoiceIndicatorSingleAnimated;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingEnd = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingEnd;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingStart = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingStart;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_panelBackground = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
 			global::Acr.UserDialogs.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
@@ -2147,6 +2258,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Styleable.ColorStateListItem_android_color = global::RepeatingWords.Droid.Resource.Styleable.ColorStateListItem_android_color;
 			global::Acr.UserDialogs.Resource.Styleable.CompoundButton = global::RepeatingWords.Droid.Resource.Styleable.CompoundButton;
 			global::Acr.UserDialogs.Resource.Styleable.CompoundButton_android_button = global::RepeatingWords.Droid.Resource.Styleable.CompoundButton_android_button;
+			global::Acr.UserDialogs.Resource.Styleable.CompoundButton_buttonCompat = global::RepeatingWords.Droid.Resource.Styleable.CompoundButton_buttonCompat;
 			global::Acr.UserDialogs.Resource.Styleable.CompoundButton_buttonTint = global::RepeatingWords.Droid.Resource.Styleable.CompoundButton_buttonTint;
 			global::Acr.UserDialogs.Resource.Styleable.CompoundButton_buttonTintMode = global::RepeatingWords.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
 			global::Acr.UserDialogs.Resource.Styleable.CoordinatorLayout = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout;
@@ -2377,6 +2489,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::RepeatingWords.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
 			global::Acr.UserDialogs.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::RepeatingWords.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
 			global::Acr.UserDialogs.Resource.Styleable.RecyclerView = global::RepeatingWords.Droid.Resource.Styleable.RecyclerView;
+			global::Acr.UserDialogs.Resource.Styleable.RecyclerView_android_clipToPadding = global::RepeatingWords.Droid.Resource.Styleable.RecyclerView_android_clipToPadding;
 			global::Acr.UserDialogs.Resource.Styleable.RecyclerView_android_descendantFocusability = global::RepeatingWords.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
 			global::Acr.UserDialogs.Resource.Styleable.RecyclerView_android_orientation = global::RepeatingWords.Droid.Resource.Styleable.RecyclerView_android_orientation;
 			global::Acr.UserDialogs.Resource.Styleable.RecyclerView_fastScrollEnabled = global::RepeatingWords.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled;
@@ -2486,11 +2599,14 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_android_textColor = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_android_textColor;
 			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_android_textColorHint = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_android_textColorHint;
 			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_android_textColorLink = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_android_textColorLink;
+			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_android_textFontWeight = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_android_textFontWeight;
 			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_android_textSize = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_android_textSize;
 			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_android_textStyle = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_android_textStyle;
 			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_android_typeface = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_android_typeface;
 			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_fontFamily = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_fontFamily;
+			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_fontVariationSettings = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_fontVariationSettings;
 			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_textAllCaps = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_textAllCaps;
+			global::Acr.UserDialogs.Resource.Styleable.TextAppearance_textLocale = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_textLocale;
 			global::Acr.UserDialogs.Resource.Styleable.TextInputLayout = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout;
 			global::Acr.UserDialogs.Resource.Styleable.TextInputLayout_android_hint = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_android_hint;
 			global::Acr.UserDialogs.Resource.Styleable.TextInputLayout_android_textColorHint = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
@@ -2539,6 +2655,7 @@ namespace RepeatingWords.Droid
 			global::Acr.UserDialogs.Resource.Styleable.Toolbar_logo = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_logo;
 			global::Acr.UserDialogs.Resource.Styleable.Toolbar_logoDescription = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_logoDescription;
 			global::Acr.UserDialogs.Resource.Styleable.Toolbar_maxButtonHeight = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::Acr.UserDialogs.Resource.Styleable.Toolbar_menu = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_menu;
 			global::Acr.UserDialogs.Resource.Styleable.Toolbar_navigationContentDescription = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
 			global::Acr.UserDialogs.Resource.Styleable.Toolbar_navigationIcon = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_navigationIcon;
 			global::Acr.UserDialogs.Resource.Styleable.Toolbar_popupTheme = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_popupTheme;
@@ -2615,11 +2732,19 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Animation.abc_slide_in_top = global::RepeatingWords.Droid.Resource.Animation.abc_slide_in_top;
 			global::FormsControls.Droid.Resource.Animation.abc_slide_out_bottom = global::RepeatingWords.Droid.Resource.Animation.abc_slide_out_bottom;
 			global::FormsControls.Droid.Resource.Animation.abc_slide_out_top = global::RepeatingWords.Droid.Resource.Animation.abc_slide_out_top;
+			global::FormsControls.Droid.Resource.Animation.abc_tooltip_enter = global::RepeatingWords.Droid.Resource.Animation.abc_tooltip_enter;
+			global::FormsControls.Droid.Resource.Animation.abc_tooltip_exit = global::RepeatingWords.Droid.Resource.Animation.abc_tooltip_exit;
 			global::FormsControls.Droid.Resource.Animation.design_bottom_sheet_slide_in = global::RepeatingWords.Droid.Resource.Animation.design_bottom_sheet_slide_in;
 			global::FormsControls.Droid.Resource.Animation.design_bottom_sheet_slide_out = global::RepeatingWords.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::FormsControls.Droid.Resource.Animation.design_snackbar_in = global::RepeatingWords.Droid.Resource.Animation.design_snackbar_in;
 			global::FormsControls.Droid.Resource.Animation.design_snackbar_out = global::RepeatingWords.Droid.Resource.Animation.design_snackbar_out;
+			global::FormsControls.Droid.Resource.Animation.EnterFromLeft = global::RepeatingWords.Droid.Resource.Animation.EnterFromLeft;
+			global::FormsControls.Droid.Resource.Animation.EnterFromRight = global::RepeatingWords.Droid.Resource.Animation.EnterFromRight;
+			global::FormsControls.Droid.Resource.Animation.ExitToLeft = global::RepeatingWords.Droid.Resource.Animation.ExitToLeft;
+			global::FormsControls.Droid.Resource.Animation.ExitToRight = global::RepeatingWords.Droid.Resource.Animation.ExitToRight;
 			global::FormsControls.Droid.Resource.Animator.design_appbar_state_list_animator = global::RepeatingWords.Droid.Resource.Animator.design_appbar_state_list_animator;
+			global::FormsControls.Droid.Resource.Animator.design_fab_hide_motion_spec = global::RepeatingWords.Droid.Resource.Animator.design_fab_hide_motion_spec;
+			global::FormsControls.Droid.Resource.Animator.design_fab_show_motion_spec = global::RepeatingWords.Droid.Resource.Animator.design_fab_show_motion_spec;
 			global::FormsControls.Droid.Resource.Animator.empty_Animation = global::RepeatingWords.Droid.Resource.Animator.empty_Animation;
 			global::FormsControls.Droid.Resource.Animator.empty_Animation_long = global::RepeatingWords.Droid.Resource.Animator.empty_Animation_long;
 			global::FormsControls.Droid.Resource.Animator.empty_Animation_short = global::RepeatingWords.Droid.Resource.Animator.empty_Animation_short;
@@ -2842,6 +2967,13 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Animator.exit_to_top_long_bounce = global::RepeatingWords.Droid.Resource.Animator.exit_to_top_long_bounce;
 			global::FormsControls.Droid.Resource.Animator.exit_to_top_short = global::RepeatingWords.Droid.Resource.Animator.exit_to_top_short;
 			global::FormsControls.Droid.Resource.Animator.exit_to_top_short_bounce = global::RepeatingWords.Droid.Resource.Animator.exit_to_top_short_bounce;
+			global::FormsControls.Droid.Resource.Animator.mtrl_btn_state_list_anim = global::RepeatingWords.Droid.Resource.Animator.mtrl_btn_state_list_anim;
+			global::FormsControls.Droid.Resource.Animator.mtrl_btn_unelevated_state_list_anim = global::RepeatingWords.Droid.Resource.Animator.mtrl_btn_unelevated_state_list_anim;
+			global::FormsControls.Droid.Resource.Animator.mtrl_chip_state_list_anim = global::RepeatingWords.Droid.Resource.Animator.mtrl_chip_state_list_anim;
+			global::FormsControls.Droid.Resource.Animator.mtrl_fab_hide_motion_spec = global::RepeatingWords.Droid.Resource.Animator.mtrl_fab_hide_motion_spec;
+			global::FormsControls.Droid.Resource.Animator.mtrl_fab_show_motion_spec = global::RepeatingWords.Droid.Resource.Animator.mtrl_fab_show_motion_spec;
+			global::FormsControls.Droid.Resource.Animator.mtrl_fab_transformation_sheet_collapse_spec = global::RepeatingWords.Droid.Resource.Animator.mtrl_fab_transformation_sheet_collapse_spec;
+			global::FormsControls.Droid.Resource.Animator.mtrl_fab_transformation_sheet_expand_spec = global::RepeatingWords.Droid.Resource.Animator.mtrl_fab_transformation_sheet_expand_spec;
 			global::FormsControls.Droid.Resource.Attribute.actionBarDivider = global::RepeatingWords.Droid.Resource.Attribute.actionBarDivider;
 			global::FormsControls.Droid.Resource.Attribute.actionBarItemBackground = global::RepeatingWords.Droid.Resource.Attribute.actionBarItemBackground;
 			global::FormsControls.Droid.Resource.Attribute.actionBarPopupTheme = global::RepeatingWords.Droid.Resource.Attribute.actionBarPopupTheme;
@@ -2898,20 +3030,33 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.backgroundTintMode = global::RepeatingWords.Droid.Resource.Attribute.backgroundTintMode;
 			global::FormsControls.Droid.Resource.Attribute.barLength = global::RepeatingWords.Droid.Resource.Attribute.barLength;
 			global::FormsControls.Droid.Resource.Attribute.behavior_autoHide = global::RepeatingWords.Droid.Resource.Attribute.behavior_autoHide;
+			global::FormsControls.Droid.Resource.Attribute.behavior_fitToContents = global::RepeatingWords.Droid.Resource.Attribute.behavior_fitToContents;
 			global::FormsControls.Droid.Resource.Attribute.behavior_hideable = global::RepeatingWords.Droid.Resource.Attribute.behavior_hideable;
 			global::FormsControls.Droid.Resource.Attribute.behavior_overlapTop = global::RepeatingWords.Droid.Resource.Attribute.behavior_overlapTop;
 			global::FormsControls.Droid.Resource.Attribute.behavior_peekHeight = global::RepeatingWords.Droid.Resource.Attribute.behavior_peekHeight;
 			global::FormsControls.Droid.Resource.Attribute.behavior_skipCollapsed = global::RepeatingWords.Droid.Resource.Attribute.behavior_skipCollapsed;
-			global::FormsControls.Droid.Resource.Attribute.borderWidth = global::RepeatingWords.Droid.Resource.Attribute.borderWidth;
 			global::FormsControls.Droid.Resource.Attribute.borderlessButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.borderlessButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.borderWidth = global::RepeatingWords.Droid.Resource.Attribute.borderWidth;
+			global::FormsControls.Droid.Resource.Attribute.bottomAppBarStyle = global::RepeatingWords.Droid.Resource.Attribute.bottomAppBarStyle;
+			global::FormsControls.Droid.Resource.Attribute.bottomNavigationStyle = global::RepeatingWords.Droid.Resource.Attribute.bottomNavigationStyle;
 			global::FormsControls.Droid.Resource.Attribute.bottomSheetDialogTheme = global::RepeatingWords.Droid.Resource.Attribute.bottomSheetDialogTheme;
 			global::FormsControls.Droid.Resource.Attribute.bottomSheetStyle = global::RepeatingWords.Droid.Resource.Attribute.bottomSheetStyle;
+			global::FormsControls.Droid.Resource.Attribute.boxBackgroundColor = global::RepeatingWords.Droid.Resource.Attribute.boxBackgroundColor;
+			global::FormsControls.Droid.Resource.Attribute.boxBackgroundMode = global::RepeatingWords.Droid.Resource.Attribute.boxBackgroundMode;
+			global::FormsControls.Droid.Resource.Attribute.boxCollapsedPaddingTop = global::RepeatingWords.Droid.Resource.Attribute.boxCollapsedPaddingTop;
+			global::FormsControls.Droid.Resource.Attribute.boxCornerRadiusBottomEnd = global::RepeatingWords.Droid.Resource.Attribute.boxCornerRadiusBottomEnd;
+			global::FormsControls.Droid.Resource.Attribute.boxCornerRadiusBottomStart = global::RepeatingWords.Droid.Resource.Attribute.boxCornerRadiusBottomStart;
+			global::FormsControls.Droid.Resource.Attribute.boxCornerRadiusTopEnd = global::RepeatingWords.Droid.Resource.Attribute.boxCornerRadiusTopEnd;
+			global::FormsControls.Droid.Resource.Attribute.boxCornerRadiusTopStart = global::RepeatingWords.Droid.Resource.Attribute.boxCornerRadiusTopStart;
+			global::FormsControls.Droid.Resource.Attribute.boxStrokeColor = global::RepeatingWords.Droid.Resource.Attribute.boxStrokeColor;
+			global::FormsControls.Droid.Resource.Attribute.boxStrokeWidth = global::RepeatingWords.Droid.Resource.Attribute.boxStrokeWidth;
 			global::FormsControls.Droid.Resource.Attribute.buttonBarButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.buttonBarButtonStyle;
 			global::FormsControls.Droid.Resource.Attribute.buttonBarNegativeButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
 			global::FormsControls.Droid.Resource.Attribute.buttonBarNeutralButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
 			global::FormsControls.Droid.Resource.Attribute.buttonBarPositiveButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
 			global::FormsControls.Droid.Resource.Attribute.buttonBarStyle = global::RepeatingWords.Droid.Resource.Attribute.buttonBarStyle;
 			global::FormsControls.Droid.Resource.Attribute.buttonGravity = global::RepeatingWords.Droid.Resource.Attribute.buttonGravity;
+			global::FormsControls.Droid.Resource.Attribute.buttonIconDimen = global::RepeatingWords.Droid.Resource.Attribute.buttonIconDimen;
 			global::FormsControls.Droid.Resource.Attribute.buttonPanelSideLayout = global::RepeatingWords.Droid.Resource.Attribute.buttonPanelSideLayout;
 			global::FormsControls.Droid.Resource.Attribute.buttonStyle = global::RepeatingWords.Droid.Resource.Attribute.buttonStyle;
 			global::FormsControls.Droid.Resource.Attribute.buttonStyleSmall = global::RepeatingWords.Droid.Resource.Attribute.buttonStyleSmall;
@@ -2923,14 +3068,43 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.cardMaxElevation = global::RepeatingWords.Droid.Resource.Attribute.cardMaxElevation;
 			global::FormsControls.Droid.Resource.Attribute.cardPreventCornerOverlap = global::RepeatingWords.Droid.Resource.Attribute.cardPreventCornerOverlap;
 			global::FormsControls.Droid.Resource.Attribute.cardUseCompatPadding = global::RepeatingWords.Droid.Resource.Attribute.cardUseCompatPadding;
+			global::FormsControls.Droid.Resource.Attribute.cardViewStyle = global::RepeatingWords.Droid.Resource.Attribute.cardViewStyle;
 			global::FormsControls.Droid.Resource.Attribute.checkboxStyle = global::RepeatingWords.Droid.Resource.Attribute.checkboxStyle;
+			global::FormsControls.Droid.Resource.Attribute.checkedChip = global::RepeatingWords.Droid.Resource.Attribute.checkedChip;
+			global::FormsControls.Droid.Resource.Attribute.checkedIcon = global::RepeatingWords.Droid.Resource.Attribute.checkedIcon;
+			global::FormsControls.Droid.Resource.Attribute.checkedIconEnabled = global::RepeatingWords.Droid.Resource.Attribute.checkedIconEnabled;
+			global::FormsControls.Droid.Resource.Attribute.checkedIconVisible = global::RepeatingWords.Droid.Resource.Attribute.checkedIconVisible;
 			global::FormsControls.Droid.Resource.Attribute.checkedTextViewStyle = global::RepeatingWords.Droid.Resource.Attribute.checkedTextViewStyle;
+			global::FormsControls.Droid.Resource.Attribute.chipBackgroundColor = global::RepeatingWords.Droid.Resource.Attribute.chipBackgroundColor;
+			global::FormsControls.Droid.Resource.Attribute.chipCornerRadius = global::RepeatingWords.Droid.Resource.Attribute.chipCornerRadius;
+			global::FormsControls.Droid.Resource.Attribute.chipEndPadding = global::RepeatingWords.Droid.Resource.Attribute.chipEndPadding;
+			global::FormsControls.Droid.Resource.Attribute.chipGroupStyle = global::RepeatingWords.Droid.Resource.Attribute.chipGroupStyle;
+			global::FormsControls.Droid.Resource.Attribute.chipIcon = global::RepeatingWords.Droid.Resource.Attribute.chipIcon;
+			global::FormsControls.Droid.Resource.Attribute.chipIconEnabled = global::RepeatingWords.Droid.Resource.Attribute.chipIconEnabled;
+			global::FormsControls.Droid.Resource.Attribute.chipIconSize = global::RepeatingWords.Droid.Resource.Attribute.chipIconSize;
+			global::FormsControls.Droid.Resource.Attribute.chipIconTint = global::RepeatingWords.Droid.Resource.Attribute.chipIconTint;
+			global::FormsControls.Droid.Resource.Attribute.chipIconVisible = global::RepeatingWords.Droid.Resource.Attribute.chipIconVisible;
+			global::FormsControls.Droid.Resource.Attribute.chipMinHeight = global::RepeatingWords.Droid.Resource.Attribute.chipMinHeight;
+			global::FormsControls.Droid.Resource.Attribute.chipSpacing = global::RepeatingWords.Droid.Resource.Attribute.chipSpacing;
+			global::FormsControls.Droid.Resource.Attribute.chipSpacingHorizontal = global::RepeatingWords.Droid.Resource.Attribute.chipSpacingHorizontal;
+			global::FormsControls.Droid.Resource.Attribute.chipSpacingVertical = global::RepeatingWords.Droid.Resource.Attribute.chipSpacingVertical;
+			global::FormsControls.Droid.Resource.Attribute.chipStandaloneStyle = global::RepeatingWords.Droid.Resource.Attribute.chipStandaloneStyle;
+			global::FormsControls.Droid.Resource.Attribute.chipStartPadding = global::RepeatingWords.Droid.Resource.Attribute.chipStartPadding;
+			global::FormsControls.Droid.Resource.Attribute.chipStrokeColor = global::RepeatingWords.Droid.Resource.Attribute.chipStrokeColor;
+			global::FormsControls.Droid.Resource.Attribute.chipStrokeWidth = global::RepeatingWords.Droid.Resource.Attribute.chipStrokeWidth;
+			global::FormsControls.Droid.Resource.Attribute.chipStyle = global::RepeatingWords.Droid.Resource.Attribute.chipStyle;
 			global::FormsControls.Droid.Resource.Attribute.closeIcon = global::RepeatingWords.Droid.Resource.Attribute.closeIcon;
+			global::FormsControls.Droid.Resource.Attribute.closeIconEnabled = global::RepeatingWords.Droid.Resource.Attribute.closeIconEnabled;
+			global::FormsControls.Droid.Resource.Attribute.closeIconEndPadding = global::RepeatingWords.Droid.Resource.Attribute.closeIconEndPadding;
+			global::FormsControls.Droid.Resource.Attribute.closeIconSize = global::RepeatingWords.Droid.Resource.Attribute.closeIconSize;
+			global::FormsControls.Droid.Resource.Attribute.closeIconStartPadding = global::RepeatingWords.Droid.Resource.Attribute.closeIconStartPadding;
+			global::FormsControls.Droid.Resource.Attribute.closeIconTint = global::RepeatingWords.Droid.Resource.Attribute.closeIconTint;
+			global::FormsControls.Droid.Resource.Attribute.closeIconVisible = global::RepeatingWords.Droid.Resource.Attribute.closeIconVisible;
 			global::FormsControls.Droid.Resource.Attribute.closeItemLayout = global::RepeatingWords.Droid.Resource.Attribute.closeItemLayout;
 			global::FormsControls.Droid.Resource.Attribute.collapseContentDescription = global::RepeatingWords.Droid.Resource.Attribute.collapseContentDescription;
-			global::FormsControls.Droid.Resource.Attribute.collapseIcon = global::RepeatingWords.Droid.Resource.Attribute.collapseIcon;
 			global::FormsControls.Droid.Resource.Attribute.collapsedTitleGravity = global::RepeatingWords.Droid.Resource.Attribute.collapsedTitleGravity;
 			global::FormsControls.Droid.Resource.Attribute.collapsedTitleTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.collapsedTitleTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.collapseIcon = global::RepeatingWords.Droid.Resource.Attribute.collapseIcon;
 			global::FormsControls.Droid.Resource.Attribute.color = global::RepeatingWords.Droid.Resource.Attribute.color;
 			global::FormsControls.Droid.Resource.Attribute.colorAccent = global::RepeatingWords.Droid.Resource.Attribute.colorAccent;
 			global::FormsControls.Droid.Resource.Attribute.colorBackgroundFloating = global::RepeatingWords.Droid.Resource.Attribute.colorBackgroundFloating;
@@ -2941,6 +3115,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.colorError = global::RepeatingWords.Droid.Resource.Attribute.colorError;
 			global::FormsControls.Droid.Resource.Attribute.colorPrimary = global::RepeatingWords.Droid.Resource.Attribute.colorPrimary;
 			global::FormsControls.Droid.Resource.Attribute.colorPrimaryDark = global::RepeatingWords.Droid.Resource.Attribute.colorPrimaryDark;
+			global::FormsControls.Droid.Resource.Attribute.colorSecondary = global::RepeatingWords.Droid.Resource.Attribute.colorSecondary;
 			global::FormsControls.Droid.Resource.Attribute.colorSwitchThumbNormal = global::RepeatingWords.Droid.Resource.Attribute.colorSwitchThumbNormal;
 			global::FormsControls.Droid.Resource.Attribute.commitIcon = global::RepeatingWords.Droid.Resource.Attribute.commitIcon;
 			global::FormsControls.Droid.Resource.Attribute.contentDescription = global::RepeatingWords.Droid.Resource.Attribute.contentDescription;
@@ -2957,12 +3132,15 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.contentPaddingTop = global::RepeatingWords.Droid.Resource.Attribute.contentPaddingTop;
 			global::FormsControls.Droid.Resource.Attribute.contentScrim = global::RepeatingWords.Droid.Resource.Attribute.contentScrim;
 			global::FormsControls.Droid.Resource.Attribute.controlBackground = global::RepeatingWords.Droid.Resource.Attribute.controlBackground;
+			global::FormsControls.Droid.Resource.Attribute.coordinatorLayoutStyle = global::RepeatingWords.Droid.Resource.Attribute.coordinatorLayoutStyle;
+			global::FormsControls.Droid.Resource.Attribute.cornerRadius = global::RepeatingWords.Droid.Resource.Attribute.cornerRadius;
 			global::FormsControls.Droid.Resource.Attribute.counterEnabled = global::RepeatingWords.Droid.Resource.Attribute.counterEnabled;
 			global::FormsControls.Droid.Resource.Attribute.counterMaxLength = global::RepeatingWords.Droid.Resource.Attribute.counterMaxLength;
 			global::FormsControls.Droid.Resource.Attribute.counterOverflowTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.counterOverflowTextAppearance;
 			global::FormsControls.Droid.Resource.Attribute.counterTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.counterTextAppearance;
 			global::FormsControls.Droid.Resource.Attribute.customNavigationLayout = global::RepeatingWords.Droid.Resource.Attribute.customNavigationLayout;
 			global::FormsControls.Droid.Resource.Attribute.defaultQueryHint = global::RepeatingWords.Droid.Resource.Attribute.defaultQueryHint;
+			global::FormsControls.Droid.Resource.Attribute.dialogCornerRadius = global::RepeatingWords.Droid.Resource.Attribute.dialogCornerRadius;
 			global::FormsControls.Droid.Resource.Attribute.dialogPreferredPadding = global::RepeatingWords.Droid.Resource.Attribute.dialogPreferredPadding;
 			global::FormsControls.Droid.Resource.Attribute.dialogTheme = global::RepeatingWords.Droid.Resource.Attribute.dialogTheme;
 			global::FormsControls.Droid.Resource.Attribute.displayOptions = global::RepeatingWords.Droid.Resource.Attribute.displayOptions;
@@ -2972,12 +3150,14 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.dividerVertical = global::RepeatingWords.Droid.Resource.Attribute.dividerVertical;
 			global::FormsControls.Droid.Resource.Attribute.drawableSize = global::RepeatingWords.Droid.Resource.Attribute.drawableSize;
 			global::FormsControls.Droid.Resource.Attribute.drawerArrowStyle = global::RepeatingWords.Droid.Resource.Attribute.drawerArrowStyle;
-			global::FormsControls.Droid.Resource.Attribute.dropDownListViewStyle = global::RepeatingWords.Droid.Resource.Attribute.dropDownListViewStyle;
 			global::FormsControls.Droid.Resource.Attribute.dropdownListPreferredItemHeight = global::RepeatingWords.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::FormsControls.Droid.Resource.Attribute.dropDownListViewStyle = global::RepeatingWords.Droid.Resource.Attribute.dropDownListViewStyle;
 			global::FormsControls.Droid.Resource.Attribute.editTextBackground = global::RepeatingWords.Droid.Resource.Attribute.editTextBackground;
 			global::FormsControls.Droid.Resource.Attribute.editTextColor = global::RepeatingWords.Droid.Resource.Attribute.editTextColor;
 			global::FormsControls.Droid.Resource.Attribute.editTextStyle = global::RepeatingWords.Droid.Resource.Attribute.editTextStyle;
 			global::FormsControls.Droid.Resource.Attribute.elevation = global::RepeatingWords.Droid.Resource.Attribute.elevation;
+			global::FormsControls.Droid.Resource.Attribute.enforceMaterialTheme = global::RepeatingWords.Droid.Resource.Attribute.enforceMaterialTheme;
+			global::FormsControls.Droid.Resource.Attribute.enforceTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.enforceTextAppearance;
 			global::FormsControls.Droid.Resource.Attribute.errorEnabled = global::RepeatingWords.Droid.Resource.Attribute.errorEnabled;
 			global::FormsControls.Droid.Resource.Attribute.errorTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.errorTextAppearance;
 			global::FormsControls.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable = global::RepeatingWords.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
@@ -2989,12 +3169,19 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.expandedTitleMarginStart = global::RepeatingWords.Droid.Resource.Attribute.expandedTitleMarginStart;
 			global::FormsControls.Droid.Resource.Attribute.expandedTitleMarginTop = global::RepeatingWords.Droid.Resource.Attribute.expandedTitleMarginTop;
 			global::FormsControls.Droid.Resource.Attribute.expandedTitleTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.expandedTitleTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.fabAlignmentMode = global::RepeatingWords.Droid.Resource.Attribute.fabAlignmentMode;
+			global::FormsControls.Droid.Resource.Attribute.fabCradleMargin = global::RepeatingWords.Droid.Resource.Attribute.fabCradleMargin;
+			global::FormsControls.Droid.Resource.Attribute.fabCradleRoundedCornerRadius = global::RepeatingWords.Droid.Resource.Attribute.fabCradleRoundedCornerRadius;
+			global::FormsControls.Droid.Resource.Attribute.fabCradleVerticalOffset = global::RepeatingWords.Droid.Resource.Attribute.fabCradleVerticalOffset;
+			global::FormsControls.Droid.Resource.Attribute.fabCustomSize = global::RepeatingWords.Droid.Resource.Attribute.fabCustomSize;
 			global::FormsControls.Droid.Resource.Attribute.fabSize = global::RepeatingWords.Droid.Resource.Attribute.fabSize;
 			global::FormsControls.Droid.Resource.Attribute.fastScrollEnabled = global::RepeatingWords.Droid.Resource.Attribute.fastScrollEnabled;
 			global::FormsControls.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable = global::RepeatingWords.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable;
 			global::FormsControls.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable = global::RepeatingWords.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable;
 			global::FormsControls.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable = global::RepeatingWords.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable;
 			global::FormsControls.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable = global::RepeatingWords.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable;
+			global::FormsControls.Droid.Resource.Attribute.firstBaselineToTopHeight = global::RepeatingWords.Droid.Resource.Attribute.firstBaselineToTopHeight;
+			global::FormsControls.Droid.Resource.Attribute.floatingActionButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.floatingActionButtonStyle;
 			global::FormsControls.Droid.Resource.Attribute.font = global::RepeatingWords.Droid.Resource.Attribute.font;
 			global::FormsControls.Droid.Resource.Attribute.fontFamily = global::RepeatingWords.Droid.Resource.Attribute.fontFamily;
 			global::FormsControls.Droid.Resource.Attribute.fontProviderAuthority = global::RepeatingWords.Droid.Resource.Attribute.fontProviderAuthority;
@@ -3004,33 +3191,54 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.fontProviderPackage = global::RepeatingWords.Droid.Resource.Attribute.fontProviderPackage;
 			global::FormsControls.Droid.Resource.Attribute.fontProviderQuery = global::RepeatingWords.Droid.Resource.Attribute.fontProviderQuery;
 			global::FormsControls.Droid.Resource.Attribute.fontStyle = global::RepeatingWords.Droid.Resource.Attribute.fontStyle;
+			global::FormsControls.Droid.Resource.Attribute.fontVariationSettings = global::RepeatingWords.Droid.Resource.Attribute.fontVariationSettings;
 			global::FormsControls.Droid.Resource.Attribute.fontWeight = global::RepeatingWords.Droid.Resource.Attribute.fontWeight;
 			global::FormsControls.Droid.Resource.Attribute.foregroundInsidePadding = global::RepeatingWords.Droid.Resource.Attribute.foregroundInsidePadding;
 			global::FormsControls.Droid.Resource.Attribute.gapBetweenBars = global::RepeatingWords.Droid.Resource.Attribute.gapBetweenBars;
 			global::FormsControls.Droid.Resource.Attribute.goIcon = global::RepeatingWords.Droid.Resource.Attribute.goIcon;
 			global::FormsControls.Droid.Resource.Attribute.headerLayout = global::RepeatingWords.Droid.Resource.Attribute.headerLayout;
 			global::FormsControls.Droid.Resource.Attribute.height = global::RepeatingWords.Droid.Resource.Attribute.height;
+			global::FormsControls.Droid.Resource.Attribute.helperText = global::RepeatingWords.Droid.Resource.Attribute.helperText;
+			global::FormsControls.Droid.Resource.Attribute.helperTextEnabled = global::RepeatingWords.Droid.Resource.Attribute.helperTextEnabled;
+			global::FormsControls.Droid.Resource.Attribute.helperTextTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.helperTextTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.hideMotionSpec = global::RepeatingWords.Droid.Resource.Attribute.hideMotionSpec;
 			global::FormsControls.Droid.Resource.Attribute.hideOnContentScroll = global::RepeatingWords.Droid.Resource.Attribute.hideOnContentScroll;
+			global::FormsControls.Droid.Resource.Attribute.hideOnScroll = global::RepeatingWords.Droid.Resource.Attribute.hideOnScroll;
 			global::FormsControls.Droid.Resource.Attribute.hintAnimationEnabled = global::RepeatingWords.Droid.Resource.Attribute.hintAnimationEnabled;
 			global::FormsControls.Droid.Resource.Attribute.hintEnabled = global::RepeatingWords.Droid.Resource.Attribute.hintEnabled;
 			global::FormsControls.Droid.Resource.Attribute.hintTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.hintTextAppearance;
 			global::FormsControls.Droid.Resource.Attribute.homeAsUpIndicator = global::RepeatingWords.Droid.Resource.Attribute.homeAsUpIndicator;
 			global::FormsControls.Droid.Resource.Attribute.homeLayout = global::RepeatingWords.Droid.Resource.Attribute.homeLayout;
+			global::FormsControls.Droid.Resource.Attribute.hoveredFocusedTranslationZ = global::RepeatingWords.Droid.Resource.Attribute.hoveredFocusedTranslationZ;
 			global::FormsControls.Droid.Resource.Attribute.icon = global::RepeatingWords.Droid.Resource.Attribute.icon;
+			global::FormsControls.Droid.Resource.Attribute.iconEndPadding = global::RepeatingWords.Droid.Resource.Attribute.iconEndPadding;
+			global::FormsControls.Droid.Resource.Attribute.iconGravity = global::RepeatingWords.Droid.Resource.Attribute.iconGravity;
+			global::FormsControls.Droid.Resource.Attribute.iconifiedByDefault = global::RepeatingWords.Droid.Resource.Attribute.iconifiedByDefault;
+			global::FormsControls.Droid.Resource.Attribute.iconPadding = global::RepeatingWords.Droid.Resource.Attribute.iconPadding;
+			global::FormsControls.Droid.Resource.Attribute.iconSize = global::RepeatingWords.Droid.Resource.Attribute.iconSize;
+			global::FormsControls.Droid.Resource.Attribute.iconStartPadding = global::RepeatingWords.Droid.Resource.Attribute.iconStartPadding;
 			global::FormsControls.Droid.Resource.Attribute.iconTint = global::RepeatingWords.Droid.Resource.Attribute.iconTint;
 			global::FormsControls.Droid.Resource.Attribute.iconTintMode = global::RepeatingWords.Droid.Resource.Attribute.iconTintMode;
-			global::FormsControls.Droid.Resource.Attribute.iconifiedByDefault = global::RepeatingWords.Droid.Resource.Attribute.iconifiedByDefault;
 			global::FormsControls.Droid.Resource.Attribute.imageButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.imageButtonStyle;
 			global::FormsControls.Droid.Resource.Attribute.indeterminateProgressStyle = global::RepeatingWords.Droid.Resource.Attribute.indeterminateProgressStyle;
 			global::FormsControls.Droid.Resource.Attribute.initialActivityCount = global::RepeatingWords.Droid.Resource.Attribute.initialActivityCount;
 			global::FormsControls.Droid.Resource.Attribute.insetForeground = global::RepeatingWords.Droid.Resource.Attribute.insetForeground;
 			global::FormsControls.Droid.Resource.Attribute.isLightTheme = global::RepeatingWords.Droid.Resource.Attribute.isLightTheme;
 			global::FormsControls.Droid.Resource.Attribute.itemBackground = global::RepeatingWords.Droid.Resource.Attribute.itemBackground;
+			global::FormsControls.Droid.Resource.Attribute.itemHorizontalPadding = global::RepeatingWords.Droid.Resource.Attribute.itemHorizontalPadding;
+			global::FormsControls.Droid.Resource.Attribute.itemHorizontalTranslationEnabled = global::RepeatingWords.Droid.Resource.Attribute.itemHorizontalTranslationEnabled;
+			global::FormsControls.Droid.Resource.Attribute.itemIconPadding = global::RepeatingWords.Droid.Resource.Attribute.itemIconPadding;
+			global::FormsControls.Droid.Resource.Attribute.itemIconSize = global::RepeatingWords.Droid.Resource.Attribute.itemIconSize;
 			global::FormsControls.Droid.Resource.Attribute.itemIconTint = global::RepeatingWords.Droid.Resource.Attribute.itemIconTint;
 			global::FormsControls.Droid.Resource.Attribute.itemPadding = global::RepeatingWords.Droid.Resource.Attribute.itemPadding;
+			global::FormsControls.Droid.Resource.Attribute.itemSpacing = global::RepeatingWords.Droid.Resource.Attribute.itemSpacing;
 			global::FormsControls.Droid.Resource.Attribute.itemTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.itemTextAppearance;
+			global::FormsControls.Droid.Resource.Attribute.itemTextAppearanceActive = global::RepeatingWords.Droid.Resource.Attribute.itemTextAppearanceActive;
+			global::FormsControls.Droid.Resource.Attribute.itemTextAppearanceInactive = global::RepeatingWords.Droid.Resource.Attribute.itemTextAppearanceInactive;
 			global::FormsControls.Droid.Resource.Attribute.itemTextColor = global::RepeatingWords.Droid.Resource.Attribute.itemTextColor;
 			global::FormsControls.Droid.Resource.Attribute.keylines = global::RepeatingWords.Droid.Resource.Attribute.keylines;
+			global::FormsControls.Droid.Resource.Attribute.labelVisibilityMode = global::RepeatingWords.Droid.Resource.Attribute.labelVisibilityMode;
+			global::FormsControls.Droid.Resource.Attribute.lastBaselineToBottomHeight = global::RepeatingWords.Droid.Resource.Attribute.lastBaselineToBottomHeight;
 			global::FormsControls.Droid.Resource.Attribute.layout = global::RepeatingWords.Droid.Resource.Attribute.layout;
 			global::FormsControls.Droid.Resource.Attribute.layoutManager = global::RepeatingWords.Droid.Resource.Attribute.layoutManager;
 			global::FormsControls.Droid.Resource.Attribute.layout_anchor = global::RepeatingWords.Droid.Resource.Attribute.layout_anchor;
@@ -3043,6 +3251,9 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.layout_keyline = global::RepeatingWords.Droid.Resource.Attribute.layout_keyline;
 			global::FormsControls.Droid.Resource.Attribute.layout_scrollFlags = global::RepeatingWords.Droid.Resource.Attribute.layout_scrollFlags;
 			global::FormsControls.Droid.Resource.Attribute.layout_scrollInterpolator = global::RepeatingWords.Droid.Resource.Attribute.layout_scrollInterpolator;
+			global::FormsControls.Droid.Resource.Attribute.liftOnScroll = global::RepeatingWords.Droid.Resource.Attribute.liftOnScroll;
+			global::FormsControls.Droid.Resource.Attribute.lineHeight = global::RepeatingWords.Droid.Resource.Attribute.lineHeight;
+			global::FormsControls.Droid.Resource.Attribute.lineSpacing = global::RepeatingWords.Droid.Resource.Attribute.lineSpacing;
 			global::FormsControls.Droid.Resource.Attribute.listChoiceBackgroundIndicator = global::RepeatingWords.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
 			global::FormsControls.Droid.Resource.Attribute.listDividerAlertDialog = global::RepeatingWords.Droid.Resource.Attribute.listDividerAlertDialog;
 			global::FormsControls.Droid.Resource.Attribute.listItemLayout = global::RepeatingWords.Droid.Resource.Attribute.listItemLayout;
@@ -3056,14 +3267,18 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.listPreferredItemPaddingRight = global::RepeatingWords.Droid.Resource.Attribute.listPreferredItemPaddingRight;
 			global::FormsControls.Droid.Resource.Attribute.logo = global::RepeatingWords.Droid.Resource.Attribute.logo;
 			global::FormsControls.Droid.Resource.Attribute.logoDescription = global::RepeatingWords.Droid.Resource.Attribute.logoDescription;
+			global::FormsControls.Droid.Resource.Attribute.materialButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.materialButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.materialCardViewStyle = global::RepeatingWords.Droid.Resource.Attribute.materialCardViewStyle;
 			global::FormsControls.Droid.Resource.Attribute.maxActionInlineWidth = global::RepeatingWords.Droid.Resource.Attribute.maxActionInlineWidth;
 			global::FormsControls.Droid.Resource.Attribute.maxButtonHeight = global::RepeatingWords.Droid.Resource.Attribute.maxButtonHeight;
+			global::FormsControls.Droid.Resource.Attribute.maxImageSize = global::RepeatingWords.Droid.Resource.Attribute.maxImageSize;
 			global::FormsControls.Droid.Resource.Attribute.measureWithLargestChild = global::RepeatingWords.Droid.Resource.Attribute.measureWithLargestChild;
 			global::FormsControls.Droid.Resource.Attribute.menu = global::RepeatingWords.Droid.Resource.Attribute.menu;
 			global::FormsControls.Droid.Resource.Attribute.multiChoiceItemLayout = global::RepeatingWords.Droid.Resource.Attribute.multiChoiceItemLayout;
 			global::FormsControls.Droid.Resource.Attribute.navigationContentDescription = global::RepeatingWords.Droid.Resource.Attribute.navigationContentDescription;
 			global::FormsControls.Droid.Resource.Attribute.navigationIcon = global::RepeatingWords.Droid.Resource.Attribute.navigationIcon;
 			global::FormsControls.Droid.Resource.Attribute.navigationMode = global::RepeatingWords.Droid.Resource.Attribute.navigationMode;
+			global::FormsControls.Droid.Resource.Attribute.navigationViewStyle = global::RepeatingWords.Droid.Resource.Attribute.navigationViewStyle;
 			global::FormsControls.Droid.Resource.Attribute.numericModifiers = global::RepeatingWords.Droid.Resource.Attribute.numericModifiers;
 			global::FormsControls.Droid.Resource.Attribute.overlapAnchor = global::RepeatingWords.Droid.Resource.Attribute.overlapAnchor;
 			global::FormsControls.Droid.Resource.Attribute.paddingBottomNoButtons = global::RepeatingWords.Droid.Resource.Attribute.paddingBottomNoButtons;
@@ -3094,6 +3309,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.reverseLayout = global::RepeatingWords.Droid.Resource.Attribute.reverseLayout;
 			global::FormsControls.Droid.Resource.Attribute.rippleColor = global::RepeatingWords.Droid.Resource.Attribute.rippleColor;
 			global::FormsControls.Droid.Resource.Attribute.scrimAnimationDuration = global::RepeatingWords.Droid.Resource.Attribute.scrimAnimationDuration;
+			global::FormsControls.Droid.Resource.Attribute.scrimBackground = global::RepeatingWords.Droid.Resource.Attribute.scrimBackground;
 			global::FormsControls.Droid.Resource.Attribute.scrimVisibleHeightTrigger = global::RepeatingWords.Droid.Resource.Attribute.scrimVisibleHeightTrigger;
 			global::FormsControls.Droid.Resource.Attribute.searchHintIcon = global::RepeatingWords.Droid.Resource.Attribute.searchHintIcon;
 			global::FormsControls.Droid.Resource.Attribute.searchIcon = global::RepeatingWords.Droid.Resource.Attribute.searchIcon;
@@ -3103,9 +3319,14 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.selectableItemBackgroundBorderless = global::RepeatingWords.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
 			global::FormsControls.Droid.Resource.Attribute.showAsAction = global::RepeatingWords.Droid.Resource.Attribute.showAsAction;
 			global::FormsControls.Droid.Resource.Attribute.showDividers = global::RepeatingWords.Droid.Resource.Attribute.showDividers;
+			global::FormsControls.Droid.Resource.Attribute.showMotionSpec = global::RepeatingWords.Droid.Resource.Attribute.showMotionSpec;
 			global::FormsControls.Droid.Resource.Attribute.showText = global::RepeatingWords.Droid.Resource.Attribute.showText;
 			global::FormsControls.Droid.Resource.Attribute.showTitle = global::RepeatingWords.Droid.Resource.Attribute.showTitle;
 			global::FormsControls.Droid.Resource.Attribute.singleChoiceItemLayout = global::RepeatingWords.Droid.Resource.Attribute.singleChoiceItemLayout;
+			global::FormsControls.Droid.Resource.Attribute.singleLine = global::RepeatingWords.Droid.Resource.Attribute.singleLine;
+			global::FormsControls.Droid.Resource.Attribute.singleSelection = global::RepeatingWords.Droid.Resource.Attribute.singleSelection;
+			global::FormsControls.Droid.Resource.Attribute.snackbarButtonStyle = global::RepeatingWords.Droid.Resource.Attribute.snackbarButtonStyle;
+			global::FormsControls.Droid.Resource.Attribute.snackbarStyle = global::RepeatingWords.Droid.Resource.Attribute.snackbarStyle;
 			global::FormsControls.Droid.Resource.Attribute.spanCount = global::RepeatingWords.Droid.Resource.Attribute.spanCount;
 			global::FormsControls.Droid.Resource.Attribute.spinBars = global::RepeatingWords.Droid.Resource.Attribute.spinBars;
 			global::FormsControls.Droid.Resource.Attribute.spinnerDropDownItemStyle = global::RepeatingWords.Droid.Resource.Attribute.spinnerDropDownItemStyle;
@@ -3116,8 +3337,12 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.state_above_anchor = global::RepeatingWords.Droid.Resource.Attribute.state_above_anchor;
 			global::FormsControls.Droid.Resource.Attribute.state_collapsed = global::RepeatingWords.Droid.Resource.Attribute.state_collapsed;
 			global::FormsControls.Droid.Resource.Attribute.state_collapsible = global::RepeatingWords.Droid.Resource.Attribute.state_collapsible;
+			global::FormsControls.Droid.Resource.Attribute.state_liftable = global::RepeatingWords.Droid.Resource.Attribute.state_liftable;
+			global::FormsControls.Droid.Resource.Attribute.state_lifted = global::RepeatingWords.Droid.Resource.Attribute.state_lifted;
 			global::FormsControls.Droid.Resource.Attribute.statusBarBackground = global::RepeatingWords.Droid.Resource.Attribute.statusBarBackground;
 			global::FormsControls.Droid.Resource.Attribute.statusBarScrim = global::RepeatingWords.Droid.Resource.Attribute.statusBarScrim;
+			global::FormsControls.Droid.Resource.Attribute.strokeColor = global::RepeatingWords.Droid.Resource.Attribute.strokeColor;
+			global::FormsControls.Droid.Resource.Attribute.strokeWidth = global::RepeatingWords.Droid.Resource.Attribute.strokeWidth;
 			global::FormsControls.Droid.Resource.Attribute.subMenuArrow = global::RepeatingWords.Droid.Resource.Attribute.subMenuArrow;
 			global::FormsControls.Droid.Resource.Attribute.submitBackground = global::RepeatingWords.Droid.Resource.Attribute.submitBackground;
 			global::FormsControls.Droid.Resource.Attribute.subtitle = global::RepeatingWords.Droid.Resource.Attribute.subtitle;
@@ -3132,8 +3357,15 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.tabBackground = global::RepeatingWords.Droid.Resource.Attribute.tabBackground;
 			global::FormsControls.Droid.Resource.Attribute.tabContentStart = global::RepeatingWords.Droid.Resource.Attribute.tabContentStart;
 			global::FormsControls.Droid.Resource.Attribute.tabGravity = global::RepeatingWords.Droid.Resource.Attribute.tabGravity;
+			global::FormsControls.Droid.Resource.Attribute.tabIconTint = global::RepeatingWords.Droid.Resource.Attribute.tabIconTint;
+			global::FormsControls.Droid.Resource.Attribute.tabIconTintMode = global::RepeatingWords.Droid.Resource.Attribute.tabIconTintMode;
+			global::FormsControls.Droid.Resource.Attribute.tabIndicator = global::RepeatingWords.Droid.Resource.Attribute.tabIndicator;
+			global::FormsControls.Droid.Resource.Attribute.tabIndicatorAnimationDuration = global::RepeatingWords.Droid.Resource.Attribute.tabIndicatorAnimationDuration;
 			global::FormsControls.Droid.Resource.Attribute.tabIndicatorColor = global::RepeatingWords.Droid.Resource.Attribute.tabIndicatorColor;
+			global::FormsControls.Droid.Resource.Attribute.tabIndicatorFullWidth = global::RepeatingWords.Droid.Resource.Attribute.tabIndicatorFullWidth;
+			global::FormsControls.Droid.Resource.Attribute.tabIndicatorGravity = global::RepeatingWords.Droid.Resource.Attribute.tabIndicatorGravity;
 			global::FormsControls.Droid.Resource.Attribute.tabIndicatorHeight = global::RepeatingWords.Droid.Resource.Attribute.tabIndicatorHeight;
+			global::FormsControls.Droid.Resource.Attribute.tabInlineLabel = global::RepeatingWords.Droid.Resource.Attribute.tabInlineLabel;
 			global::FormsControls.Droid.Resource.Attribute.tabMaxWidth = global::RepeatingWords.Droid.Resource.Attribute.tabMaxWidth;
 			global::FormsControls.Droid.Resource.Attribute.tabMinWidth = global::RepeatingWords.Droid.Resource.Attribute.tabMinWidth;
 			global::FormsControls.Droid.Resource.Attribute.tabMode = global::RepeatingWords.Droid.Resource.Attribute.tabMode;
@@ -3142,20 +3374,39 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.tabPaddingEnd = global::RepeatingWords.Droid.Resource.Attribute.tabPaddingEnd;
 			global::FormsControls.Droid.Resource.Attribute.tabPaddingStart = global::RepeatingWords.Droid.Resource.Attribute.tabPaddingStart;
 			global::FormsControls.Droid.Resource.Attribute.tabPaddingTop = global::RepeatingWords.Droid.Resource.Attribute.tabPaddingTop;
+			global::FormsControls.Droid.Resource.Attribute.tabRippleColor = global::RepeatingWords.Droid.Resource.Attribute.tabRippleColor;
 			global::FormsControls.Droid.Resource.Attribute.tabSelectedTextColor = global::RepeatingWords.Droid.Resource.Attribute.tabSelectedTextColor;
+			global::FormsControls.Droid.Resource.Attribute.tabStyle = global::RepeatingWords.Droid.Resource.Attribute.tabStyle;
 			global::FormsControls.Droid.Resource.Attribute.tabTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.tabTextAppearance;
 			global::FormsControls.Droid.Resource.Attribute.tabTextColor = global::RepeatingWords.Droid.Resource.Attribute.tabTextColor;
+			global::FormsControls.Droid.Resource.Attribute.tabUnboundedRipple = global::RepeatingWords.Droid.Resource.Attribute.tabUnboundedRipple;
 			global::FormsControls.Droid.Resource.Attribute.textAllCaps = global::RepeatingWords.Droid.Resource.Attribute.textAllCaps;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceBody1 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceBody1;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceBody2 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceBody2;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceButton = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceButton;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceCaption = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceCaption;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceHeadline1 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceHeadline1;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceHeadline2 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceHeadline2;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceHeadline3 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceHeadline3;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceHeadline4 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceHeadline4;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceHeadline5 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceHeadline5;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceHeadline6 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceHeadline6;
 			global::FormsControls.Droid.Resource.Attribute.textAppearanceLargePopupMenu = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
 			global::FormsControls.Droid.Resource.Attribute.textAppearanceListItem = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceListItem;
 			global::FormsControls.Droid.Resource.Attribute.textAppearanceListItemSecondary = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceListItemSecondary;
 			global::FormsControls.Droid.Resource.Attribute.textAppearanceListItemSmall = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceListItemSmall;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceOverline = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceOverline;
 			global::FormsControls.Droid.Resource.Attribute.textAppearancePopupMenuHeader = global::RepeatingWords.Droid.Resource.Attribute.textAppearancePopupMenuHeader;
 			global::FormsControls.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
 			global::FormsControls.Droid.Resource.Attribute.textAppearanceSearchResultTitle = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
 			global::FormsControls.Droid.Resource.Attribute.textAppearanceSmallPopupMenu = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceSubtitle1 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceSubtitle1;
+			global::FormsControls.Droid.Resource.Attribute.textAppearanceSubtitle2 = global::RepeatingWords.Droid.Resource.Attribute.textAppearanceSubtitle2;
 			global::FormsControls.Droid.Resource.Attribute.textColorAlertDialogListItem = global::RepeatingWords.Droid.Resource.Attribute.textColorAlertDialogListItem;
 			global::FormsControls.Droid.Resource.Attribute.textColorSearchUrl = global::RepeatingWords.Droid.Resource.Attribute.textColorSearchUrl;
+			global::FormsControls.Droid.Resource.Attribute.textEndPadding = global::RepeatingWords.Droid.Resource.Attribute.textEndPadding;
+			global::FormsControls.Droid.Resource.Attribute.textInputStyle = global::RepeatingWords.Droid.Resource.Attribute.textInputStyle;
+			global::FormsControls.Droid.Resource.Attribute.textStartPadding = global::RepeatingWords.Droid.Resource.Attribute.textStartPadding;
 			global::FormsControls.Droid.Resource.Attribute.theme = global::RepeatingWords.Droid.Resource.Attribute.theme;
 			global::FormsControls.Droid.Resource.Attribute.thickness = global::RepeatingWords.Droid.Resource.Attribute.thickness;
 			global::FormsControls.Droid.Resource.Attribute.thumbTextPadding = global::RepeatingWords.Droid.Resource.Attribute.thumbTextPadding;
@@ -3171,9 +3422,9 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.titleMargin = global::RepeatingWords.Droid.Resource.Attribute.titleMargin;
 			global::FormsControls.Droid.Resource.Attribute.titleMarginBottom = global::RepeatingWords.Droid.Resource.Attribute.titleMarginBottom;
 			global::FormsControls.Droid.Resource.Attribute.titleMarginEnd = global::RepeatingWords.Droid.Resource.Attribute.titleMarginEnd;
+			global::FormsControls.Droid.Resource.Attribute.titleMargins = global::RepeatingWords.Droid.Resource.Attribute.titleMargins;
 			global::FormsControls.Droid.Resource.Attribute.titleMarginStart = global::RepeatingWords.Droid.Resource.Attribute.titleMarginStart;
 			global::FormsControls.Droid.Resource.Attribute.titleMarginTop = global::RepeatingWords.Droid.Resource.Attribute.titleMarginTop;
-			global::FormsControls.Droid.Resource.Attribute.titleMargins = global::RepeatingWords.Droid.Resource.Attribute.titleMargins;
 			global::FormsControls.Droid.Resource.Attribute.titleTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.titleTextAppearance;
 			global::FormsControls.Droid.Resource.Attribute.titleTextColor = global::RepeatingWords.Droid.Resource.Attribute.titleTextColor;
 			global::FormsControls.Droid.Resource.Attribute.titleTextStyle = global::RepeatingWords.Droid.Resource.Attribute.titleTextStyle;
@@ -3186,7 +3437,9 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.track = global::RepeatingWords.Droid.Resource.Attribute.track;
 			global::FormsControls.Droid.Resource.Attribute.trackTint = global::RepeatingWords.Droid.Resource.Attribute.trackTint;
 			global::FormsControls.Droid.Resource.Attribute.trackTintMode = global::RepeatingWords.Droid.Resource.Attribute.trackTintMode;
+			global::FormsControls.Droid.Resource.Attribute.ttcIndex = global::RepeatingWords.Droid.Resource.Attribute.ttcIndex;
 			global::FormsControls.Droid.Resource.Attribute.useCompatPadding = global::RepeatingWords.Droid.Resource.Attribute.useCompatPadding;
+			global::FormsControls.Droid.Resource.Attribute.viewInflaterClass = global::RepeatingWords.Droid.Resource.Attribute.viewInflaterClass;
 			global::FormsControls.Droid.Resource.Attribute.voiceIcon = global::RepeatingWords.Droid.Resource.Attribute.voiceIcon;
 			global::FormsControls.Droid.Resource.Attribute.windowActionBar = global::RepeatingWords.Droid.Resource.Attribute.windowActionBar;
 			global::FormsControls.Droid.Resource.Attribute.windowActionBarOverlay = global::RepeatingWords.Droid.Resource.Attribute.windowActionBarOverlay;
@@ -3201,6 +3454,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Boolean.abc_action_bar_embed_tabs = global::RepeatingWords.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
 			global::FormsControls.Droid.Resource.Boolean.abc_allow_stacked_button_bar = global::RepeatingWords.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
 			global::FormsControls.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::RepeatingWords.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::FormsControls.Droid.Resource.Boolean.mtrl_btn_textappearance_all_caps = global::RepeatingWords.Droid.Resource.Boolean.mtrl_btn_textappearance_all_caps;
 			global::FormsControls.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark = global::RepeatingWords.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
 			global::FormsControls.Droid.Resource.Color.abc_background_cache_hint_selector_material_light = global::RepeatingWords.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
 			global::FormsControls.Droid.Resource.Color.abc_btn_colored_borderless_text_material = global::RepeatingWords.Droid.Resource.Color.abc_btn_colored_borderless_text_material;
@@ -3237,6 +3491,10 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Color.bright_foreground_inverse_material_light = global::RepeatingWords.Droid.Resource.Color.bright_foreground_inverse_material_light;
 			global::FormsControls.Droid.Resource.Color.bright_foreground_material_dark = global::RepeatingWords.Droid.Resource.Color.bright_foreground_material_dark;
 			global::FormsControls.Droid.Resource.Color.bright_foreground_material_light = global::RepeatingWords.Droid.Resource.Color.bright_foreground_material_light;
+			global::FormsControls.Droid.Resource.Color.browser_actions_bg_grey = global::RepeatingWords.Droid.Resource.Color.browser_actions_bg_grey;
+			global::FormsControls.Droid.Resource.Color.browser_actions_divider_color = global::RepeatingWords.Droid.Resource.Color.browser_actions_divider_color;
+			global::FormsControls.Droid.Resource.Color.browser_actions_text_color = global::RepeatingWords.Droid.Resource.Color.browser_actions_text_color;
+			global::FormsControls.Droid.Resource.Color.browser_actions_title_color = global::RepeatingWords.Droid.Resource.Color.browser_actions_title_color;
 			global::FormsControls.Droid.Resource.Color.button_material_dark = global::RepeatingWords.Droid.Resource.Color.button_material_dark;
 			global::FormsControls.Droid.Resource.Color.button_material_light = global::RepeatingWords.Droid.Resource.Color.button_material_light;
 			global::FormsControls.Droid.Resource.Color.cardview_dark_background = global::RepeatingWords.Droid.Resource.Color.cardview_dark_background;
@@ -3244,6 +3502,8 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Color.cardview_shadow_end_color = global::RepeatingWords.Droid.Resource.Color.cardview_shadow_end_color;
 			global::FormsControls.Droid.Resource.Color.cardview_shadow_start_color = global::RepeatingWords.Droid.Resource.Color.cardview_shadow_start_color;
 			global::FormsControls.Droid.Resource.Color.design_bottom_navigation_shadow_color = global::RepeatingWords.Droid.Resource.Color.design_bottom_navigation_shadow_color;
+			global::FormsControls.Droid.Resource.Color.design_default_color_primary = global::RepeatingWords.Droid.Resource.Color.design_default_color_primary;
+			global::FormsControls.Droid.Resource.Color.design_default_color_primary_dark = global::RepeatingWords.Droid.Resource.Color.design_default_color_primary_dark;
 			global::FormsControls.Droid.Resource.Color.design_error = global::RepeatingWords.Droid.Resource.Color.design_error;
 			global::FormsControls.Droid.Resource.Color.design_fab_shadow_end_color = global::RepeatingWords.Droid.Resource.Color.design_fab_shadow_end_color;
 			global::FormsControls.Droid.Resource.Color.design_fab_shadow_mid_color = global::RepeatingWords.Droid.Resource.Color.design_fab_shadow_mid_color;
@@ -3258,6 +3518,8 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Color.dim_foreground_disabled_material_light = global::RepeatingWords.Droid.Resource.Color.dim_foreground_disabled_material_light;
 			global::FormsControls.Droid.Resource.Color.dim_foreground_material_dark = global::RepeatingWords.Droid.Resource.Color.dim_foreground_material_dark;
 			global::FormsControls.Droid.Resource.Color.dim_foreground_material_light = global::RepeatingWords.Droid.Resource.Color.dim_foreground_material_light;
+			global::FormsControls.Droid.Resource.Color.error_color_material_dark = global::RepeatingWords.Droid.Resource.Color.error_color_material_dark;
+			global::FormsControls.Droid.Resource.Color.error_color_material_light = global::RepeatingWords.Droid.Resource.Color.error_color_material_light;
 			global::FormsControls.Droid.Resource.Color.foreground_material_dark = global::RepeatingWords.Droid.Resource.Color.foreground_material_dark;
 			global::FormsControls.Droid.Resource.Color.foreground_material_light = global::RepeatingWords.Droid.Resource.Color.foreground_material_light;
 			global::FormsControls.Droid.Resource.Color.highlighted_text_material_dark = global::RepeatingWords.Droid.Resource.Color.highlighted_text_material_dark;
@@ -3274,6 +3536,32 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Color.material_grey_800 = global::RepeatingWords.Droid.Resource.Color.material_grey_800;
 			global::FormsControls.Droid.Resource.Color.material_grey_850 = global::RepeatingWords.Droid.Resource.Color.material_grey_850;
 			global::FormsControls.Droid.Resource.Color.material_grey_900 = global::RepeatingWords.Droid.Resource.Color.material_grey_900;
+			global::FormsControls.Droid.Resource.Color.mtrl_bottom_nav_colored_item_tint = global::RepeatingWords.Droid.Resource.Color.mtrl_bottom_nav_colored_item_tint;
+			global::FormsControls.Droid.Resource.Color.mtrl_bottom_nav_item_tint = global::RepeatingWords.Droid.Resource.Color.mtrl_bottom_nav_item_tint;
+			global::FormsControls.Droid.Resource.Color.mtrl_btn_bg_color_disabled = global::RepeatingWords.Droid.Resource.Color.mtrl_btn_bg_color_disabled;
+			global::FormsControls.Droid.Resource.Color.mtrl_btn_bg_color_selector = global::RepeatingWords.Droid.Resource.Color.mtrl_btn_bg_color_selector;
+			global::FormsControls.Droid.Resource.Color.mtrl_btn_ripple_color = global::RepeatingWords.Droid.Resource.Color.mtrl_btn_ripple_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_btn_stroke_color_selector = global::RepeatingWords.Droid.Resource.Color.mtrl_btn_stroke_color_selector;
+			global::FormsControls.Droid.Resource.Color.mtrl_btn_text_btn_ripple_color = global::RepeatingWords.Droid.Resource.Color.mtrl_btn_text_btn_ripple_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_btn_text_color_disabled = global::RepeatingWords.Droid.Resource.Color.mtrl_btn_text_color_disabled;
+			global::FormsControls.Droid.Resource.Color.mtrl_btn_text_color_selector = global::RepeatingWords.Droid.Resource.Color.mtrl_btn_text_color_selector;
+			global::FormsControls.Droid.Resource.Color.mtrl_btn_transparent_bg_color = global::RepeatingWords.Droid.Resource.Color.mtrl_btn_transparent_bg_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_chip_background_color = global::RepeatingWords.Droid.Resource.Color.mtrl_chip_background_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_chip_close_icon_tint = global::RepeatingWords.Droid.Resource.Color.mtrl_chip_close_icon_tint;
+			global::FormsControls.Droid.Resource.Color.mtrl_chip_ripple_color = global::RepeatingWords.Droid.Resource.Color.mtrl_chip_ripple_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_chip_text_color = global::RepeatingWords.Droid.Resource.Color.mtrl_chip_text_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_fab_ripple_color = global::RepeatingWords.Droid.Resource.Color.mtrl_fab_ripple_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_scrim_color = global::RepeatingWords.Droid.Resource.Color.mtrl_scrim_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_tabs_colored_ripple_color = global::RepeatingWords.Droid.Resource.Color.mtrl_tabs_colored_ripple_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_tabs_icon_color_selector = global::RepeatingWords.Droid.Resource.Color.mtrl_tabs_icon_color_selector;
+			global::FormsControls.Droid.Resource.Color.mtrl_tabs_icon_color_selector_colored = global::RepeatingWords.Droid.Resource.Color.mtrl_tabs_icon_color_selector_colored;
+			global::FormsControls.Droid.Resource.Color.mtrl_tabs_legacy_text_color_selector = global::RepeatingWords.Droid.Resource.Color.mtrl_tabs_legacy_text_color_selector;
+			global::FormsControls.Droid.Resource.Color.mtrl_tabs_ripple_color = global::RepeatingWords.Droid.Resource.Color.mtrl_tabs_ripple_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_textinput_default_box_stroke_color = global::RepeatingWords.Droid.Resource.Color.mtrl_textinput_default_box_stroke_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_textinput_disabled_color = global::RepeatingWords.Droid.Resource.Color.mtrl_textinput_disabled_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_textinput_filled_box_default_background_color = global::RepeatingWords.Droid.Resource.Color.mtrl_textinput_filled_box_default_background_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_textinput_hovered_box_stroke_color = global::RepeatingWords.Droid.Resource.Color.mtrl_textinput_hovered_box_stroke_color;
+			global::FormsControls.Droid.Resource.Color.mtrl_text_btn_text_color_selector = global::RepeatingWords.Droid.Resource.Color.mtrl_text_btn_text_color_selector;
 			global::FormsControls.Droid.Resource.Color.notification_action_color_filter = global::RepeatingWords.Droid.Resource.Color.notification_action_color_filter;
 			global::FormsControls.Droid.Resource.Color.notification_icon_bg_color = global::RepeatingWords.Droid.Resource.Color.notification_icon_bg_color;
 			global::FormsControls.Droid.Resource.Color.notification_material_background_media_default_color = global::RepeatingWords.Droid.Resource.Color.notification_material_background_media_default_color;
@@ -3316,6 +3604,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Dimension.abc_action_button_min_width_material = global::RepeatingWords.Droid.Resource.Dimension.abc_action_button_min_width_material;
 			global::FormsControls.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material = global::RepeatingWords.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
 			global::FormsControls.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height = global::RepeatingWords.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::FormsControls.Droid.Resource.Dimension.abc_alert_dialog_button_dimen = global::RepeatingWords.Droid.Resource.Dimension.abc_alert_dialog_button_dimen;
 			global::FormsControls.Droid.Resource.Dimension.abc_button_inset_horizontal_material = global::RepeatingWords.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
 			global::FormsControls.Droid.Resource.Dimension.abc_button_inset_vertical_material = global::RepeatingWords.Droid.Resource.Dimension.abc_button_inset_vertical_material;
 			global::FormsControls.Droid.Resource.Dimension.abc_button_padding_horizontal_material = global::RepeatingWords.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
@@ -3325,6 +3614,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Dimension.abc_control_corner_material = global::RepeatingWords.Droid.Resource.Dimension.abc_control_corner_material;
 			global::FormsControls.Droid.Resource.Dimension.abc_control_inset_material = global::RepeatingWords.Droid.Resource.Dimension.abc_control_inset_material;
 			global::FormsControls.Droid.Resource.Dimension.abc_control_padding_material = global::RepeatingWords.Droid.Resource.Dimension.abc_control_padding_material;
+			global::FormsControls.Droid.Resource.Dimension.abc_dialog_corner_radius_material = global::RepeatingWords.Droid.Resource.Dimension.abc_dialog_corner_radius_material;
 			global::FormsControls.Droid.Resource.Dimension.abc_dialog_fixed_height_major = global::RepeatingWords.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
 			global::FormsControls.Droid.Resource.Dimension.abc_dialog_fixed_height_minor = global::RepeatingWords.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
 			global::FormsControls.Droid.Resource.Dimension.abc_dialog_fixed_width_major = global::RepeatingWords.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
@@ -3372,6 +3662,8 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::RepeatingWords.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
 			global::FormsControls.Droid.Resource.Dimension.abc_text_size_title_material = global::RepeatingWords.Droid.Resource.Dimension.abc_text_size_title_material;
 			global::FormsControls.Droid.Resource.Dimension.abc_text_size_title_material_toolbar = global::RepeatingWords.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::FormsControls.Droid.Resource.Dimension.browser_actions_context_menu_max_width = global::RepeatingWords.Droid.Resource.Dimension.browser_actions_context_menu_max_width;
+			global::FormsControls.Droid.Resource.Dimension.browser_actions_context_menu_min_padding = global::RepeatingWords.Droid.Resource.Dimension.browser_actions_context_menu_min_padding;
 			global::FormsControls.Droid.Resource.Dimension.cardview_compat_inset_shadow = global::RepeatingWords.Droid.Resource.Dimension.cardview_compat_inset_shadow;
 			global::FormsControls.Droid.Resource.Dimension.cardview_default_elevation = global::RepeatingWords.Droid.Resource.Dimension.cardview_default_elevation;
 			global::FormsControls.Droid.Resource.Dimension.cardview_default_radius = global::RepeatingWords.Droid.Resource.Dimension.cardview_default_radius;
@@ -3380,11 +3672,15 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Dimension.compat_button_padding_horizontal_material = global::RepeatingWords.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
 			global::FormsControls.Droid.Resource.Dimension.compat_button_padding_vertical_material = global::RepeatingWords.Droid.Resource.Dimension.compat_button_padding_vertical_material;
 			global::FormsControls.Droid.Resource.Dimension.compat_control_corner_material = global::RepeatingWords.Droid.Resource.Dimension.compat_control_corner_material;
+			global::FormsControls.Droid.Resource.Dimension.compat_notification_large_icon_max_height = global::RepeatingWords.Droid.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::FormsControls.Droid.Resource.Dimension.compat_notification_large_icon_max_width = global::RepeatingWords.Droid.Resource.Dimension.compat_notification_large_icon_max_width;
 			global::FormsControls.Droid.Resource.Dimension.design_appbar_elevation = global::RepeatingWords.Droid.Resource.Dimension.design_appbar_elevation;
 			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width = global::RepeatingWords.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_active_item_min_width = global::RepeatingWords.Droid.Resource.Dimension.design_bottom_navigation_active_item_min_width;
 			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_active_text_size = global::RepeatingWords.Droid.Resource.Dimension.design_bottom_navigation_active_text_size;
 			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_elevation = global::RepeatingWords.Droid.Resource.Dimension.design_bottom_navigation_elevation;
 			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_height = global::RepeatingWords.Droid.Resource.Dimension.design_bottom_navigation_height;
+			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_icon_size = global::RepeatingWords.Droid.Resource.Dimension.design_bottom_navigation_icon_size;
 			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_item_max_width = global::RepeatingWords.Droid.Resource.Dimension.design_bottom_navigation_item_max_width;
 			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_item_min_width = global::RepeatingWords.Droid.Resource.Dimension.design_bottom_navigation_item_min_width;
 			global::FormsControls.Droid.Resource.Dimension.design_bottom_navigation_margin = global::RepeatingWords.Droid.Resource.Dimension.design_bottom_navigation_margin;
@@ -3397,10 +3693,13 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Dimension.design_fab_image_size = global::RepeatingWords.Droid.Resource.Dimension.design_fab_image_size;
 			global::FormsControls.Droid.Resource.Dimension.design_fab_size_mini = global::RepeatingWords.Droid.Resource.Dimension.design_fab_size_mini;
 			global::FormsControls.Droid.Resource.Dimension.design_fab_size_normal = global::RepeatingWords.Droid.Resource.Dimension.design_fab_size_normal;
+			global::FormsControls.Droid.Resource.Dimension.design_fab_translation_z_hovered_focused = global::RepeatingWords.Droid.Resource.Dimension.design_fab_translation_z_hovered_focused;
 			global::FormsControls.Droid.Resource.Dimension.design_fab_translation_z_pressed = global::RepeatingWords.Droid.Resource.Dimension.design_fab_translation_z_pressed;
 			global::FormsControls.Droid.Resource.Dimension.design_navigation_elevation = global::RepeatingWords.Droid.Resource.Dimension.design_navigation_elevation;
 			global::FormsControls.Droid.Resource.Dimension.design_navigation_icon_padding = global::RepeatingWords.Droid.Resource.Dimension.design_navigation_icon_padding;
 			global::FormsControls.Droid.Resource.Dimension.design_navigation_icon_size = global::RepeatingWords.Droid.Resource.Dimension.design_navigation_icon_size;
+			global::FormsControls.Droid.Resource.Dimension.design_navigation_item_horizontal_padding = global::RepeatingWords.Droid.Resource.Dimension.design_navigation_item_horizontal_padding;
+			global::FormsControls.Droid.Resource.Dimension.design_navigation_item_icon_padding = global::RepeatingWords.Droid.Resource.Dimension.design_navigation_item_icon_padding;
 			global::FormsControls.Droid.Resource.Dimension.design_navigation_max_width = global::RepeatingWords.Droid.Resource.Dimension.design_navigation_max_width;
 			global::FormsControls.Droid.Resource.Dimension.design_navigation_padding_bottom = global::RepeatingWords.Droid.Resource.Dimension.design_navigation_padding_bottom;
 			global::FormsControls.Droid.Resource.Dimension.design_navigation_separator_vertical_padding = global::RepeatingWords.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
@@ -3418,6 +3717,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Dimension.design_tab_scrollable_min_width = global::RepeatingWords.Droid.Resource.Dimension.design_tab_scrollable_min_width;
 			global::FormsControls.Droid.Resource.Dimension.design_tab_text_size = global::RepeatingWords.Droid.Resource.Dimension.design_tab_text_size;
 			global::FormsControls.Droid.Resource.Dimension.design_tab_text_size_2line = global::RepeatingWords.Droid.Resource.Dimension.design_tab_text_size_2line;
+			global::FormsControls.Droid.Resource.Dimension.design_textinput_caption_translate_y = global::RepeatingWords.Droid.Resource.Dimension.design_textinput_caption_translate_y;
 			global::FormsControls.Droid.Resource.Dimension.disabled_alpha_material_dark = global::RepeatingWords.Droid.Resource.Dimension.disabled_alpha_material_dark;
 			global::FormsControls.Droid.Resource.Dimension.disabled_alpha_material_light = global::RepeatingWords.Droid.Resource.Dimension.disabled_alpha_material_light;
 			global::FormsControls.Droid.Resource.Dimension.fastscroll_default_thickness = global::RepeatingWords.Droid.Resource.Dimension.fastscroll_default_thickness;
@@ -3433,6 +3733,54 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::RepeatingWords.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
 			global::FormsControls.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::RepeatingWords.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
 			global::FormsControls.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::RepeatingWords.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_bottomappbar_fabOffsetEndMode = global::RepeatingWords.Droid.Resource.Dimension.mtrl_bottomappbar_fabOffsetEndMode;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_margin = global::RepeatingWords.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_margin;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_rounded_corner_radius = global::RepeatingWords.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_rounded_corner_radius;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_vertical_offset = global::RepeatingWords.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_vertical_offset;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_bottomappbar_height = global::RepeatingWords.Droid.Resource.Dimension.mtrl_bottomappbar_height;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_corner_radius = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_corner_radius;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_dialog_btn_min_width = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_dialog_btn_min_width;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_disabled_elevation = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_disabled_elevation;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_disabled_z = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_disabled_z;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_elevation = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_elevation;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_focused_z = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_focused_z;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_hovered_z = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_hovered_z;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_icon_btn_padding_left = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_icon_btn_padding_left;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_icon_padding = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_icon_padding;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_inset = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_inset;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_letter_spacing = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_letter_spacing;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_padding_bottom = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_padding_bottom;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_padding_left = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_padding_left;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_padding_right = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_padding_right;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_padding_top = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_padding_top;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_pressed_z = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_pressed_z;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_stroke_size = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_stroke_size;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_text_btn_icon_padding = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_text_btn_icon_padding;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_left = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_left;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_right = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_right;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_text_size = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_text_size;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_btn_z = global::RepeatingWords.Droid.Resource.Dimension.mtrl_btn_z;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_card_elevation = global::RepeatingWords.Droid.Resource.Dimension.mtrl_card_elevation;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_card_spacing = global::RepeatingWords.Droid.Resource.Dimension.mtrl_card_spacing;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_chip_pressed_translation_z = global::RepeatingWords.Droid.Resource.Dimension.mtrl_chip_pressed_translation_z;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_chip_text_size = global::RepeatingWords.Droid.Resource.Dimension.mtrl_chip_text_size;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_fab_elevation = global::RepeatingWords.Droid.Resource.Dimension.mtrl_fab_elevation;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_fab_translation_z_hovered_focused = global::RepeatingWords.Droid.Resource.Dimension.mtrl_fab_translation_z_hovered_focused;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_fab_translation_z_pressed = global::RepeatingWords.Droid.Resource.Dimension.mtrl_fab_translation_z_pressed;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_navigation_elevation = global::RepeatingWords.Droid.Resource.Dimension.mtrl_navigation_elevation;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_navigation_item_horizontal_padding = global::RepeatingWords.Droid.Resource.Dimension.mtrl_navigation_item_horizontal_padding;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_navigation_item_icon_padding = global::RepeatingWords.Droid.Resource.Dimension.mtrl_navigation_item_icon_padding;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_snackbar_background_corner_radius = global::RepeatingWords.Droid.Resource.Dimension.mtrl_snackbar_background_corner_radius;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_snackbar_margin = global::RepeatingWords.Droid.Resource.Dimension.mtrl_snackbar_margin;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_textinput_box_bottom_offset = global::RepeatingWords.Droid.Resource.Dimension.mtrl_textinput_box_bottom_offset;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_medium = global::RepeatingWords.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_medium;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_small = global::RepeatingWords.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_small;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_textinput_box_label_cutout_padding = global::RepeatingWords.Droid.Resource.Dimension.mtrl_textinput_box_label_cutout_padding;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_textinput_box_padding_end = global::RepeatingWords.Droid.Resource.Dimension.mtrl_textinput_box_padding_end;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_default = global::RepeatingWords.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_default;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_focused = global::RepeatingWords.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_focused;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding = global::RepeatingWords.Droid.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding;
+			global::FormsControls.Droid.Resource.Dimension.mtrl_toolbar_default_height = global::RepeatingWords.Droid.Resource.Dimension.mtrl_toolbar_default_height;
 			global::FormsControls.Droid.Resource.Dimension.notification_action_icon_size = global::RepeatingWords.Droid.Resource.Dimension.notification_action_icon_size;
 			global::FormsControls.Droid.Resource.Dimension.notification_action_text_size = global::RepeatingWords.Droid.Resource.Dimension.notification_action_text_size;
 			global::FormsControls.Droid.Resource.Dimension.notification_big_circle_margin = global::RepeatingWords.Droid.Resource.Dimension.notification_big_circle_margin;
@@ -3448,6 +3796,10 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Dimension.notification_subtext_size = global::RepeatingWords.Droid.Resource.Dimension.notification_subtext_size;
 			global::FormsControls.Droid.Resource.Dimension.notification_top_pad = global::RepeatingWords.Droid.Resource.Dimension.notification_top_pad;
 			global::FormsControls.Droid.Resource.Dimension.notification_top_pad_large_text = global::RepeatingWords.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::FormsControls.Droid.Resource.Dimension.subtitle_corner_radius = global::RepeatingWords.Droid.Resource.Dimension.subtitle_corner_radius;
+			global::FormsControls.Droid.Resource.Dimension.subtitle_outline_width = global::RepeatingWords.Droid.Resource.Dimension.subtitle_outline_width;
+			global::FormsControls.Droid.Resource.Dimension.subtitle_shadow_offset = global::RepeatingWords.Droid.Resource.Dimension.subtitle_shadow_offset;
+			global::FormsControls.Droid.Resource.Dimension.subtitle_shadow_radius = global::RepeatingWords.Droid.Resource.Dimension.subtitle_shadow_radius;
 			global::FormsControls.Droid.Resource.Dimension.tooltip_corner_radius = global::RepeatingWords.Droid.Resource.Dimension.tooltip_corner_radius;
 			global::FormsControls.Droid.Resource.Dimension.tooltip_horizontal_padding = global::RepeatingWords.Droid.Resource.Dimension.tooltip_horizontal_padding;
 			global::FormsControls.Droid.Resource.Dimension.tooltip_margin = global::RepeatingWords.Droid.Resource.Dimension.tooltip_margin;
@@ -3496,6 +3848,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Drawable.abc_ic_voice_search_api_material = global::RepeatingWords.Droid.Resource.Drawable.abc_ic_voice_search_api_material;
 			global::FormsControls.Droid.Resource.Drawable.abc_item_background_holo_dark = global::RepeatingWords.Droid.Resource.Drawable.abc_item_background_holo_dark;
 			global::FormsControls.Droid.Resource.Drawable.abc_item_background_holo_light = global::RepeatingWords.Droid.Resource.Drawable.abc_item_background_holo_light;
+			global::FormsControls.Droid.Resource.Drawable.abc_list_divider_material = global::RepeatingWords.Droid.Resource.Drawable.abc_list_divider_material;
 			global::FormsControls.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
 			global::FormsControls.Droid.Resource.Drawable.abc_list_focused_holo = global::RepeatingWords.Droid.Resource.Drawable.abc_list_focused_holo;
 			global::FormsControls.Droid.Resource.Drawable.abc_list_longpressed_holo = global::RepeatingWords.Droid.Resource.Drawable.abc_list_longpressed_holo;
@@ -3526,6 +3879,11 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
 			global::FormsControls.Droid.Resource.Drawable.abc_tab_indicator_material = global::RepeatingWords.Droid.Resource.Drawable.abc_tab_indicator_material;
 			global::FormsControls.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::FormsControls.Droid.Resource.Drawable.abc_textfield_search_material = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_search_material;
 			global::FormsControls.Droid.Resource.Drawable.abc_text_cursor_material = global::RepeatingWords.Droid.Resource.Drawable.abc_text_cursor_material;
 			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::RepeatingWords.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
 			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::RepeatingWords.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
@@ -3533,11 +3891,6 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::RepeatingWords.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
 			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::RepeatingWords.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
 			global::FormsControls.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::RepeatingWords.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
-			global::FormsControls.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::FormsControls.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::FormsControls.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::FormsControls.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::FormsControls.Droid.Resource.Drawable.abc_textfield_search_material = global::RepeatingWords.Droid.Resource.Drawable.abc_textfield_search_material;
 			global::FormsControls.Droid.Resource.Drawable.abc_vector_test = global::RepeatingWords.Droid.Resource.Drawable.abc_vector_test;
 			global::FormsControls.Droid.Resource.Drawable.avd_hide_password = global::RepeatingWords.Droid.Resource.Drawable.avd_hide_password;
 			global::FormsControls.Droid.Resource.Drawable.avd_show_password = global::RepeatingWords.Droid.Resource.Drawable.avd_show_password;
@@ -3547,6 +3900,11 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Drawable.design_ic_visibility_off = global::RepeatingWords.Droid.Resource.Drawable.design_ic_visibility_off;
 			global::FormsControls.Droid.Resource.Drawable.design_password_eye = global::RepeatingWords.Droid.Resource.Drawable.design_password_eye;
 			global::FormsControls.Droid.Resource.Drawable.design_snackbar_background = global::RepeatingWords.Droid.Resource.Drawable.design_snackbar_background;
+			global::FormsControls.Droid.Resource.Drawable.ic_mtrl_chip_checked_black = global::RepeatingWords.Droid.Resource.Drawable.ic_mtrl_chip_checked_black;
+			global::FormsControls.Droid.Resource.Drawable.ic_mtrl_chip_checked_circle = global::RepeatingWords.Droid.Resource.Drawable.ic_mtrl_chip_checked_circle;
+			global::FormsControls.Droid.Resource.Drawable.ic_mtrl_chip_close_circle = global::RepeatingWords.Droid.Resource.Drawable.ic_mtrl_chip_close_circle;
+			global::FormsControls.Droid.Resource.Drawable.mtrl_snackbar_background = global::RepeatingWords.Droid.Resource.Drawable.mtrl_snackbar_background;
+			global::FormsControls.Droid.Resource.Drawable.mtrl_tabs_default_indicator = global::RepeatingWords.Droid.Resource.Drawable.mtrl_tabs_default_indicator;
 			global::FormsControls.Droid.Resource.Drawable.navigation_empty_icon = global::RepeatingWords.Droid.Resource.Drawable.navigation_empty_icon;
 			global::FormsControls.Droid.Resource.Drawable.notification_action_background = global::RepeatingWords.Droid.Resource.Drawable.notification_action_background;
 			global::FormsControls.Droid.Resource.Drawable.notification_bg = global::RepeatingWords.Droid.Resource.Drawable.notification_bg;
@@ -3562,13 +3920,8 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Drawable.notify_panel_notification_icon_bg = global::RepeatingWords.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
 			global::FormsControls.Droid.Resource.Drawable.tooltip_frame_dark = global::RepeatingWords.Droid.Resource.Drawable.tooltip_frame_dark;
 			global::FormsControls.Droid.Resource.Drawable.tooltip_frame_light = global::RepeatingWords.Droid.Resource.Drawable.tooltip_frame_light;
-			global::FormsControls.Droid.Resource.Id.ALT = global::RepeatingWords.Droid.Resource.Id.ALT;
-			global::FormsControls.Droid.Resource.Id.CTRL = global::RepeatingWords.Droid.Resource.Id.CTRL;
-			global::FormsControls.Droid.Resource.Id.FUNCTION = global::RepeatingWords.Droid.Resource.Id.FUNCTION;
-			global::FormsControls.Droid.Resource.Id.META = global::RepeatingWords.Droid.Resource.Id.META;
-			global::FormsControls.Droid.Resource.Id.SHIFT = global::RepeatingWords.Droid.Resource.Id.SHIFT;
-			global::FormsControls.Droid.Resource.Id.SYM = global::RepeatingWords.Droid.Resource.Id.SYM;
 			global::FormsControls.Droid.Resource.Id.action0 = global::RepeatingWords.Droid.Resource.Id.action0;
+			global::FormsControls.Droid.Resource.Id.actions = global::RepeatingWords.Droid.Resource.Id.actions;
 			global::FormsControls.Droid.Resource.Id.action_bar = global::RepeatingWords.Droid.Resource.Id.action_bar;
 			global::FormsControls.Droid.Resource.Id.action_bar_activity_content = global::RepeatingWords.Droid.Resource.Id.action_bar_activity_content;
 			global::FormsControls.Droid.Resource.Id.action_bar_container = global::RepeatingWords.Droid.Resource.Id.action_bar_container;
@@ -3586,17 +3939,24 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.action_mode_bar_stub = global::RepeatingWords.Droid.Resource.Id.action_mode_bar_stub;
 			global::FormsControls.Droid.Resource.Id.action_mode_close_button = global::RepeatingWords.Droid.Resource.Id.action_mode_close_button;
 			global::FormsControls.Droid.Resource.Id.action_text = global::RepeatingWords.Droid.Resource.Id.action_text;
-			global::FormsControls.Droid.Resource.Id.actions = global::RepeatingWords.Droid.Resource.Id.actions;
 			global::FormsControls.Droid.Resource.Id.activity_chooser_view_content = global::RepeatingWords.Droid.Resource.Id.activity_chooser_view_content;
 			global::FormsControls.Droid.Resource.Id.add = global::RepeatingWords.Droid.Resource.Id.add;
 			global::FormsControls.Droid.Resource.Id.alertTitle = global::RepeatingWords.Droid.Resource.Id.alertTitle;
 			global::FormsControls.Droid.Resource.Id.all = global::RepeatingWords.Droid.Resource.Id.all;
+			global::FormsControls.Droid.Resource.Id.ALT = global::RepeatingWords.Droid.Resource.Id.ALT;
 			global::FormsControls.Droid.Resource.Id.always = global::RepeatingWords.Droid.Resource.Id.always;
 			global::FormsControls.Droid.Resource.Id.async = global::RepeatingWords.Droid.Resource.Id.async;
 			global::FormsControls.Droid.Resource.Id.auto = global::RepeatingWords.Droid.Resource.Id.auto;
 			global::FormsControls.Droid.Resource.Id.beginning = global::RepeatingWords.Droid.Resource.Id.beginning;
 			global::FormsControls.Droid.Resource.Id.blocking = global::RepeatingWords.Droid.Resource.Id.blocking;
 			global::FormsControls.Droid.Resource.Id.bottom = global::RepeatingWords.Droid.Resource.Id.bottom;
+			global::FormsControls.Droid.Resource.Id.bottomtab_navarea = global::RepeatingWords.Droid.Resource.Id.bottomtab_navarea;
+			global::FormsControls.Droid.Resource.Id.bottomtab_tabbar = global::RepeatingWords.Droid.Resource.Id.bottomtab_tabbar;
+			global::FormsControls.Droid.Resource.Id.browser_actions_header_text = global::RepeatingWords.Droid.Resource.Id.browser_actions_header_text;
+			global::FormsControls.Droid.Resource.Id.browser_actions_menu_items = global::RepeatingWords.Droid.Resource.Id.browser_actions_menu_items;
+			global::FormsControls.Droid.Resource.Id.browser_actions_menu_item_icon = global::RepeatingWords.Droid.Resource.Id.browser_actions_menu_item_icon;
+			global::FormsControls.Droid.Resource.Id.browser_actions_menu_item_text = global::RepeatingWords.Droid.Resource.Id.browser_actions_menu_item_text;
+			global::FormsControls.Droid.Resource.Id.browser_actions_menu_view = global::RepeatingWords.Droid.Resource.Id.browser_actions_menu_view;
 			global::FormsControls.Droid.Resource.Id.buttonPanel = global::RepeatingWords.Droid.Resource.Id.buttonPanel;
 			global::FormsControls.Droid.Resource.Id.cancel_action = global::RepeatingWords.Droid.Resource.Id.cancel_action;
 			global::FormsControls.Droid.Resource.Id.center = global::RepeatingWords.Droid.Resource.Id.center;
@@ -3608,8 +3968,10 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.clip_vertical = global::RepeatingWords.Droid.Resource.Id.clip_vertical;
 			global::FormsControls.Droid.Resource.Id.collapseActionView = global::RepeatingWords.Droid.Resource.Id.collapseActionView;
 			global::FormsControls.Droid.Resource.Id.container = global::RepeatingWords.Droid.Resource.Id.container;
+			global::FormsControls.Droid.Resource.Id.content = global::RepeatingWords.Droid.Resource.Id.content;
 			global::FormsControls.Droid.Resource.Id.contentPanel = global::RepeatingWords.Droid.Resource.Id.contentPanel;
 			global::FormsControls.Droid.Resource.Id.coordinator = global::RepeatingWords.Droid.Resource.Id.coordinator;
+			global::FormsControls.Droid.Resource.Id.CTRL = global::RepeatingWords.Droid.Resource.Id.CTRL;
 			global::FormsControls.Droid.Resource.Id.custom = global::RepeatingWords.Droid.Resource.Id.custom;
 			global::FormsControls.Droid.Resource.Id.customPanel = global::RepeatingWords.Droid.Resource.Id.customPanel;
 			global::FormsControls.Droid.Resource.Id.decor_content_parent = global::RepeatingWords.Droid.Resource.Id.decor_content_parent;
@@ -3626,14 +3988,19 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.enterAlways = global::RepeatingWords.Droid.Resource.Id.enterAlways;
 			global::FormsControls.Droid.Resource.Id.enterAlwaysCollapsed = global::RepeatingWords.Droid.Resource.Id.enterAlwaysCollapsed;
 			global::FormsControls.Droid.Resource.Id.exitUntilCollapsed = global::RepeatingWords.Droid.Resource.Id.exitUntilCollapsed;
-			global::FormsControls.Droid.Resource.Id.expand_activities_button = global::RepeatingWords.Droid.Resource.Id.expand_activities_button;
 			global::FormsControls.Droid.Resource.Id.expanded_menu = global::RepeatingWords.Droid.Resource.Id.expanded_menu;
+			global::FormsControls.Droid.Resource.Id.expand_activities_button = global::RepeatingWords.Droid.Resource.Id.expand_activities_button;
 			global::FormsControls.Droid.Resource.Id.fill = global::RepeatingWords.Droid.Resource.Id.fill;
+			global::FormsControls.Droid.Resource.Id.filled = global::RepeatingWords.Droid.Resource.Id.filled;
 			global::FormsControls.Droid.Resource.Id.fill_horizontal = global::RepeatingWords.Droid.Resource.Id.fill_horizontal;
 			global::FormsControls.Droid.Resource.Id.fill_vertical = global::RepeatingWords.Droid.Resource.Id.fill_vertical;
 			global::FormsControls.Droid.Resource.Id.@fixed = global::RepeatingWords.Droid.Resource.Id.@fixed;
+			global::FormsControls.Droid.Resource.Id.flyoutcontent_appbar = global::RepeatingWords.Droid.Resource.Id.flyoutcontent_appbar;
+			global::FormsControls.Droid.Resource.Id.flyoutcontent_recycler = global::RepeatingWords.Droid.Resource.Id.flyoutcontent_recycler;
 			global::FormsControls.Droid.Resource.Id.forever = global::RepeatingWords.Droid.Resource.Id.forever;
+			global::FormsControls.Droid.Resource.Id.FUNCTION = global::RepeatingWords.Droid.Resource.Id.FUNCTION;
 			global::FormsControls.Droid.Resource.Id.ghost_view = global::RepeatingWords.Droid.Resource.Id.ghost_view;
+			global::FormsControls.Droid.Resource.Id.group_divider = global::RepeatingWords.Droid.Resource.Id.group_divider;
 			global::FormsControls.Droid.Resource.Id.home = global::RepeatingWords.Droid.Resource.Id.home;
 			global::FormsControls.Droid.Resource.Id.homeAsUp = global::RepeatingWords.Droid.Resource.Id.homeAsUp;
 			global::FormsControls.Droid.Resource.Id.icon = global::RepeatingWords.Droid.Resource.Id.icon;
@@ -3643,17 +4010,25 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.info = global::RepeatingWords.Droid.Resource.Id.info;
 			global::FormsControls.Droid.Resource.Id.italic = global::RepeatingWords.Droid.Resource.Id.italic;
 			global::FormsControls.Droid.Resource.Id.item_touch_helper_previous_elevation = global::RepeatingWords.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::FormsControls.Droid.Resource.Id.labeled = global::RepeatingWords.Droid.Resource.Id.labeled;
 			global::FormsControls.Droid.Resource.Id.largeLabel = global::RepeatingWords.Droid.Resource.Id.largeLabel;
 			global::FormsControls.Droid.Resource.Id.left = global::RepeatingWords.Droid.Resource.Id.left;
 			global::FormsControls.Droid.Resource.Id.line1 = global::RepeatingWords.Droid.Resource.Id.line1;
 			global::FormsControls.Droid.Resource.Id.line3 = global::RepeatingWords.Droid.Resource.Id.line3;
 			global::FormsControls.Droid.Resource.Id.listMode = global::RepeatingWords.Droid.Resource.Id.listMode;
 			global::FormsControls.Droid.Resource.Id.list_item = global::RepeatingWords.Droid.Resource.Id.list_item;
+			global::FormsControls.Droid.Resource.Id.main_appbar = global::RepeatingWords.Droid.Resource.Id.main_appbar;
+			global::FormsControls.Droid.Resource.Id.main_tablayout = global::RepeatingWords.Droid.Resource.Id.main_tablayout;
+			global::FormsControls.Droid.Resource.Id.main_toolbar = global::RepeatingWords.Droid.Resource.Id.main_toolbar;
+			global::FormsControls.Droid.Resource.Id.main_viewpager = global::RepeatingWords.Droid.Resource.Id.main_viewpager;
 			global::FormsControls.Droid.Resource.Id.masked = global::RepeatingWords.Droid.Resource.Id.masked;
 			global::FormsControls.Droid.Resource.Id.media_actions = global::RepeatingWords.Droid.Resource.Id.media_actions;
 			global::FormsControls.Droid.Resource.Id.message = global::RepeatingWords.Droid.Resource.Id.message;
+			global::FormsControls.Droid.Resource.Id.META = global::RepeatingWords.Droid.Resource.Id.META;
 			global::FormsControls.Droid.Resource.Id.middle = global::RepeatingWords.Droid.Resource.Id.middle;
 			global::FormsControls.Droid.Resource.Id.mini = global::RepeatingWords.Droid.Resource.Id.mini;
+			global::FormsControls.Droid.Resource.Id.mtrl_child_content_container = global::RepeatingWords.Droid.Resource.Id.mtrl_child_content_container;
+			global::FormsControls.Droid.Resource.Id.mtrl_internal_children_alpha_tag = global::RepeatingWords.Droid.Resource.Id.mtrl_internal_children_alpha_tag;
 			global::FormsControls.Droid.Resource.Id.multiply = global::RepeatingWords.Droid.Resource.Id.multiply;
 			global::FormsControls.Droid.Resource.Id.navigation_header_container = global::RepeatingWords.Droid.Resource.Id.navigation_header_container;
 			global::FormsControls.Droid.Resource.Id.never = global::RepeatingWords.Droid.Resource.Id.never;
@@ -3662,6 +4037,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.notification_background = global::RepeatingWords.Droid.Resource.Id.notification_background;
 			global::FormsControls.Droid.Resource.Id.notification_main_column = global::RepeatingWords.Droid.Resource.Id.notification_main_column;
 			global::FormsControls.Droid.Resource.Id.notification_main_column_container = global::RepeatingWords.Droid.Resource.Id.notification_main_column_container;
+			global::FormsControls.Droid.Resource.Id.outline = global::RepeatingWords.Droid.Resource.Id.outline;
 			global::FormsControls.Droid.Resource.Id.parallax = global::RepeatingWords.Droid.Resource.Id.parallax;
 			global::FormsControls.Droid.Resource.Id.parentPanel = global::RepeatingWords.Droid.Resource.Id.parentPanel;
 			global::FormsControls.Droid.Resource.Id.parent_matrix = global::RepeatingWords.Droid.Resource.Id.parent_matrix;
@@ -3675,10 +4051,10 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.save_non_transition_alpha = global::RepeatingWords.Droid.Resource.Id.save_non_transition_alpha;
 			global::FormsControls.Droid.Resource.Id.screen = global::RepeatingWords.Droid.Resource.Id.screen;
 			global::FormsControls.Droid.Resource.Id.scroll = global::RepeatingWords.Droid.Resource.Id.scroll;
+			global::FormsControls.Droid.Resource.Id.scrollable = global::RepeatingWords.Droid.Resource.Id.scrollable;
 			global::FormsControls.Droid.Resource.Id.scrollIndicatorDown = global::RepeatingWords.Droid.Resource.Id.scrollIndicatorDown;
 			global::FormsControls.Droid.Resource.Id.scrollIndicatorUp = global::RepeatingWords.Droid.Resource.Id.scrollIndicatorUp;
 			global::FormsControls.Droid.Resource.Id.scrollView = global::RepeatingWords.Droid.Resource.Id.scrollView;
-			global::FormsControls.Droid.Resource.Id.scrollable = global::RepeatingWords.Droid.Resource.Id.scrollable;
 			global::FormsControls.Droid.Resource.Id.search_badge = global::RepeatingWords.Droid.Resource.Id.search_badge;
 			global::FormsControls.Droid.Resource.Id.search_bar = global::RepeatingWords.Droid.Resource.Id.search_bar;
 			global::FormsControls.Droid.Resource.Id.search_button = global::RepeatingWords.Droid.Resource.Id.search_button;
@@ -3689,7 +4065,11 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.search_plate = global::RepeatingWords.Droid.Resource.Id.search_plate;
 			global::FormsControls.Droid.Resource.Id.search_src_text = global::RepeatingWords.Droid.Resource.Id.search_src_text;
 			global::FormsControls.Droid.Resource.Id.search_voice_btn = global::RepeatingWords.Droid.Resource.Id.search_voice_btn;
+			global::FormsControls.Droid.Resource.Id.selected = global::RepeatingWords.Droid.Resource.Id.selected;
 			global::FormsControls.Droid.Resource.Id.select_dialog_listview = global::RepeatingWords.Droid.Resource.Id.select_dialog_listview;
+			global::FormsControls.Droid.Resource.Id.shellcontent_appbar = global::RepeatingWords.Droid.Resource.Id.shellcontent_appbar;
+			global::FormsControls.Droid.Resource.Id.shellcontent_toolbar = global::RepeatingWords.Droid.Resource.Id.shellcontent_toolbar;
+			global::FormsControls.Droid.Resource.Id.SHIFT = global::RepeatingWords.Droid.Resource.Id.SHIFT;
 			global::FormsControls.Droid.Resource.Id.shortcut = global::RepeatingWords.Droid.Resource.Id.shortcut;
 			global::FormsControls.Droid.Resource.Id.showCustom = global::RepeatingWords.Droid.Resource.Id.showCustom;
 			global::FormsControls.Droid.Resource.Id.showHome = global::RepeatingWords.Droid.Resource.Id.showHome;
@@ -3698,6 +4078,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.snackbar_action = global::RepeatingWords.Droid.Resource.Id.snackbar_action;
 			global::FormsControls.Droid.Resource.Id.snackbar_text = global::RepeatingWords.Droid.Resource.Id.snackbar_text;
 			global::FormsControls.Droid.Resource.Id.snap = global::RepeatingWords.Droid.Resource.Id.snap;
+			global::FormsControls.Droid.Resource.Id.snapMargins = global::RepeatingWords.Droid.Resource.Id.snapMargins;
 			global::FormsControls.Droid.Resource.Id.spacer = global::RepeatingWords.Droid.Resource.Id.spacer;
 			global::FormsControls.Droid.Resource.Id.split_action_bar = global::RepeatingWords.Droid.Resource.Id.split_action_bar;
 			global::FormsControls.Droid.Resource.Id.src_atop = global::RepeatingWords.Droid.Resource.Id.src_atop;
@@ -3705,17 +4086,23 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.src_over = global::RepeatingWords.Droid.Resource.Id.src_over;
 			global::FormsControls.Droid.Resource.Id.start = global::RepeatingWords.Droid.Resource.Id.start;
 			global::FormsControls.Droid.Resource.Id.status_bar_latest_event_content = global::RepeatingWords.Droid.Resource.Id.status_bar_latest_event_content;
+			global::FormsControls.Droid.Resource.Id.stretch = global::RepeatingWords.Droid.Resource.Id.stretch;
 			global::FormsControls.Droid.Resource.Id.submenuarrow = global::RepeatingWords.Droid.Resource.Id.submenuarrow;
 			global::FormsControls.Droid.Resource.Id.submit_area = global::RepeatingWords.Droid.Resource.Id.submit_area;
+			global::FormsControls.Droid.Resource.Id.SYM = global::RepeatingWords.Droid.Resource.Id.SYM;
 			global::FormsControls.Droid.Resource.Id.tabMode = global::RepeatingWords.Droid.Resource.Id.tabMode;
 			global::FormsControls.Droid.Resource.Id.tag_transition_group = global::RepeatingWords.Droid.Resource.Id.tag_transition_group;
+			global::FormsControls.Droid.Resource.Id.tag_unhandled_key_event_manager = global::RepeatingWords.Droid.Resource.Id.tag_unhandled_key_event_manager;
+			global::FormsControls.Droid.Resource.Id.tag_unhandled_key_listeners = global::RepeatingWords.Droid.Resource.Id.tag_unhandled_key_listeners;
 			global::FormsControls.Droid.Resource.Id.text = global::RepeatingWords.Droid.Resource.Id.text;
 			global::FormsControls.Droid.Resource.Id.text2 = global::RepeatingWords.Droid.Resource.Id.text2;
-			global::FormsControls.Droid.Resource.Id.textSpacerNoButtons = global::RepeatingWords.Droid.Resource.Id.textSpacerNoButtons;
-			global::FormsControls.Droid.Resource.Id.textSpacerNoTitle = global::RepeatingWords.Droid.Resource.Id.textSpacerNoTitle;
-			global::FormsControls.Droid.Resource.Id.text_input_password_toggle = global::RepeatingWords.Droid.Resource.Id.text_input_password_toggle;
 			global::FormsControls.Droid.Resource.Id.textinput_counter = global::RepeatingWords.Droid.Resource.Id.textinput_counter;
 			global::FormsControls.Droid.Resource.Id.textinput_error = global::RepeatingWords.Droid.Resource.Id.textinput_error;
+			global::FormsControls.Droid.Resource.Id.textinput_helper_text = global::RepeatingWords.Droid.Resource.Id.textinput_helper_text;
+			global::FormsControls.Droid.Resource.Id.textSpacerNoButtons = global::RepeatingWords.Droid.Resource.Id.textSpacerNoButtons;
+			global::FormsControls.Droid.Resource.Id.textSpacerNoTitle = global::RepeatingWords.Droid.Resource.Id.textSpacerNoTitle;
+			global::FormsControls.Droid.Resource.Id.textStart = global::RepeatingWords.Droid.Resource.Id.textStart;
+			global::FormsControls.Droid.Resource.Id.text_input_password_toggle = global::RepeatingWords.Droid.Resource.Id.text_input_password_toggle;
 			global::FormsControls.Droid.Resource.Id.time = global::RepeatingWords.Droid.Resource.Id.time;
 			global::FormsControls.Droid.Resource.Id.title = global::RepeatingWords.Droid.Resource.Id.title;
 			global::FormsControls.Droid.Resource.Id.titleDividerNoCustom = global::RepeatingWords.Droid.Resource.Id.titleDividerNoCustom;
@@ -3729,6 +4116,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Id.transition_scene_layoutid_cache = global::RepeatingWords.Droid.Resource.Id.transition_scene_layoutid_cache;
 			global::FormsControls.Droid.Resource.Id.transition_transform = global::RepeatingWords.Droid.Resource.Id.transition_transform;
 			global::FormsControls.Droid.Resource.Id.uniform = global::RepeatingWords.Droid.Resource.Id.uniform;
+			global::FormsControls.Droid.Resource.Id.unlabeled = global::RepeatingWords.Droid.Resource.Id.unlabeled;
 			global::FormsControls.Droid.Resource.Id.up = global::RepeatingWords.Droid.Resource.Id.up;
 			global::FormsControls.Droid.Resource.Id.useLogo = global::RepeatingWords.Droid.Resource.Id.useLogo;
 			global::FormsControls.Droid.Resource.Id.view_offset_helper = global::RepeatingWords.Droid.Resource.Id.view_offset_helper;
@@ -3745,9 +4133,18 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Integer.cancel_button_image_alpha = global::RepeatingWords.Droid.Resource.Integer.cancel_button_image_alpha;
 			global::FormsControls.Droid.Resource.Integer.config_tooltipAnimTime = global::RepeatingWords.Droid.Resource.Integer.config_tooltipAnimTime;
 			global::FormsControls.Droid.Resource.Integer.design_snackbar_text_max_lines = global::RepeatingWords.Droid.Resource.Integer.design_snackbar_text_max_lines;
+			global::FormsControls.Droid.Resource.Integer.design_tab_indicator_anim_duration_ms = global::RepeatingWords.Droid.Resource.Integer.design_tab_indicator_anim_duration_ms;
 			global::FormsControls.Droid.Resource.Integer.hide_password_duration = global::RepeatingWords.Droid.Resource.Integer.hide_password_duration;
+			global::FormsControls.Droid.Resource.Integer.mtrl_btn_anim_delay_ms = global::RepeatingWords.Droid.Resource.Integer.mtrl_btn_anim_delay_ms;
+			global::FormsControls.Droid.Resource.Integer.mtrl_btn_anim_duration_ms = global::RepeatingWords.Droid.Resource.Integer.mtrl_btn_anim_duration_ms;
+			global::FormsControls.Droid.Resource.Integer.mtrl_chip_anim_duration = global::RepeatingWords.Droid.Resource.Integer.mtrl_chip_anim_duration;
+			global::FormsControls.Droid.Resource.Integer.mtrl_tab_indicator_anim_duration_ms = global::RepeatingWords.Droid.Resource.Integer.mtrl_tab_indicator_anim_duration_ms;
 			global::FormsControls.Droid.Resource.Integer.show_password_duration = global::RepeatingWords.Droid.Resource.Integer.show_password_duration;
 			global::FormsControls.Droid.Resource.Integer.status_bar_notification_info_maxnum = global::RepeatingWords.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::FormsControls.Droid.Resource.Interpolator.mtrl_fast_out_linear_in = global::RepeatingWords.Droid.Resource.Interpolator.mtrl_fast_out_linear_in;
+			global::FormsControls.Droid.Resource.Interpolator.mtrl_fast_out_slow_in = global::RepeatingWords.Droid.Resource.Interpolator.mtrl_fast_out_slow_in;
+			global::FormsControls.Droid.Resource.Interpolator.mtrl_linear = global::RepeatingWords.Droid.Resource.Interpolator.mtrl_linear;
+			global::FormsControls.Droid.Resource.Interpolator.mtrl_linear_out_slow_in = global::RepeatingWords.Droid.Resource.Interpolator.mtrl_linear_out_slow_in;
 			global::FormsControls.Droid.Resource.Layout.abc_action_bar_title_item = global::RepeatingWords.Droid.Resource.Layout.abc_action_bar_title_item;
 			global::FormsControls.Droid.Resource.Layout.abc_action_bar_up_container = global::RepeatingWords.Droid.Resource.Layout.abc_action_bar_up_container;
 			global::FormsControls.Droid.Resource.Layout.abc_action_menu_item_layout = global::RepeatingWords.Droid.Resource.Layout.abc_action_menu_item_layout;
@@ -3759,6 +4156,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Layout.abc_alert_dialog_button_bar_material = global::RepeatingWords.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
 			global::FormsControls.Droid.Resource.Layout.abc_alert_dialog_material = global::RepeatingWords.Droid.Resource.Layout.abc_alert_dialog_material;
 			global::FormsControls.Droid.Resource.Layout.abc_alert_dialog_title_material = global::RepeatingWords.Droid.Resource.Layout.abc_alert_dialog_title_material;
+			global::FormsControls.Droid.Resource.Layout.abc_cascading_menu_item_layout = global::RepeatingWords.Droid.Resource.Layout.abc_cascading_menu_item_layout;
 			global::FormsControls.Droid.Resource.Layout.abc_dialog_title_material = global::RepeatingWords.Droid.Resource.Layout.abc_dialog_title_material;
 			global::FormsControls.Droid.Resource.Layout.abc_expanded_menu_layout = global::RepeatingWords.Droid.Resource.Layout.abc_expanded_menu_layout;
 			global::FormsControls.Droid.Resource.Layout.abc_list_menu_item_checkbox = global::RepeatingWords.Droid.Resource.Layout.abc_list_menu_item_checkbox;
@@ -3774,6 +4172,10 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line = global::RepeatingWords.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
 			global::FormsControls.Droid.Resource.Layout.abc_search_view = global::RepeatingWords.Droid.Resource.Layout.abc_search_view;
 			global::FormsControls.Droid.Resource.Layout.abc_select_dialog_material = global::RepeatingWords.Droid.Resource.Layout.abc_select_dialog_material;
+			global::FormsControls.Droid.Resource.Layout.abc_tooltip = global::RepeatingWords.Droid.Resource.Layout.abc_tooltip;
+			global::FormsControls.Droid.Resource.Layout.BottomTabLayout = global::RepeatingWords.Droid.Resource.Layout.BottomTabLayout;
+			global::FormsControls.Droid.Resource.Layout.browser_actions_context_menu_page = global::RepeatingWords.Droid.Resource.Layout.browser_actions_context_menu_page;
+			global::FormsControls.Droid.Resource.Layout.browser_actions_context_menu_row = global::RepeatingWords.Droid.Resource.Layout.browser_actions_context_menu_row;
 			global::FormsControls.Droid.Resource.Layout.design_bottom_navigation_item = global::RepeatingWords.Droid.Resource.Layout.design_bottom_navigation_item;
 			global::FormsControls.Droid.Resource.Layout.design_bottom_sheet_dialog = global::RepeatingWords.Droid.Resource.Layout.design_bottom_sheet_dialog;
 			global::FormsControls.Droid.Resource.Layout.design_layout_snackbar = global::RepeatingWords.Droid.Resource.Layout.design_layout_snackbar;
@@ -3788,6 +4190,9 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Layout.design_navigation_menu = global::RepeatingWords.Droid.Resource.Layout.design_navigation_menu;
 			global::FormsControls.Droid.Resource.Layout.design_navigation_menu_item = global::RepeatingWords.Droid.Resource.Layout.design_navigation_menu_item;
 			global::FormsControls.Droid.Resource.Layout.design_text_input_password_icon = global::RepeatingWords.Droid.Resource.Layout.design_text_input_password_icon;
+			global::FormsControls.Droid.Resource.Layout.FlyoutContent = global::RepeatingWords.Droid.Resource.Layout.FlyoutContent;
+			global::FormsControls.Droid.Resource.Layout.mtrl_layout_snackbar = global::RepeatingWords.Droid.Resource.Layout.mtrl_layout_snackbar;
+			global::FormsControls.Droid.Resource.Layout.mtrl_layout_snackbar_include = global::RepeatingWords.Droid.Resource.Layout.mtrl_layout_snackbar_include;
 			global::FormsControls.Droid.Resource.Layout.notification_action = global::RepeatingWords.Droid.Resource.Layout.notification_action;
 			global::FormsControls.Droid.Resource.Layout.notification_action_tombstone = global::RepeatingWords.Droid.Resource.Layout.notification_action_tombstone;
 			global::FormsControls.Droid.Resource.Layout.notification_media_action = global::RepeatingWords.Droid.Resource.Layout.notification_media_action;
@@ -3803,30 +4208,47 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Layout.notification_template_media_custom = global::RepeatingWords.Droid.Resource.Layout.notification_template_media_custom;
 			global::FormsControls.Droid.Resource.Layout.notification_template_part_chronometer = global::RepeatingWords.Droid.Resource.Layout.notification_template_part_chronometer;
 			global::FormsControls.Droid.Resource.Layout.notification_template_part_time = global::RepeatingWords.Droid.Resource.Layout.notification_template_part_time;
+			global::FormsControls.Droid.Resource.Layout.RootLayout = global::RepeatingWords.Droid.Resource.Layout.RootLayout;
 			global::FormsControls.Droid.Resource.Layout.select_dialog_item_material = global::RepeatingWords.Droid.Resource.Layout.select_dialog_item_material;
 			global::FormsControls.Droid.Resource.Layout.select_dialog_multichoice_material = global::RepeatingWords.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::FormsControls.Droid.Resource.Layout.select_dialog_singlechoice_material = global::RepeatingWords.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::FormsControls.Droid.Resource.Layout.ShellContent = global::RepeatingWords.Droid.Resource.Layout.ShellContent;
 			global::FormsControls.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::RepeatingWords.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
 			global::FormsControls.Droid.Resource.String.abc_action_bar_home_description = global::RepeatingWords.Droid.Resource.String.abc_action_bar_home_description;
 			global::FormsControls.Droid.Resource.String.abc_action_bar_up_description = global::RepeatingWords.Droid.Resource.String.abc_action_bar_up_description;
 			global::FormsControls.Droid.Resource.String.abc_action_menu_overflow_description = global::RepeatingWords.Droid.Resource.String.abc_action_menu_overflow_description;
 			global::FormsControls.Droid.Resource.String.abc_action_mode_done = global::RepeatingWords.Droid.Resource.String.abc_action_mode_done;
-			global::FormsControls.Droid.Resource.String.abc_activity_chooser_view_see_all = global::RepeatingWords.Droid.Resource.String.abc_activity_chooser_view_see_all;
 			global::FormsControls.Droid.Resource.String.abc_activitychooserview_choose_application = global::RepeatingWords.Droid.Resource.String.abc_activitychooserview_choose_application;
+			global::FormsControls.Droid.Resource.String.abc_activity_chooser_view_see_all = global::RepeatingWords.Droid.Resource.String.abc_activity_chooser_view_see_all;
 			global::FormsControls.Droid.Resource.String.abc_capital_off = global::RepeatingWords.Droid.Resource.String.abc_capital_off;
 			global::FormsControls.Droid.Resource.String.abc_capital_on = global::RepeatingWords.Droid.Resource.String.abc_capital_on;
-			global::FormsControls.Droid.Resource.String.abc_search_hint = global::RepeatingWords.Droid.Resource.String.abc_search_hint;
+			global::FormsControls.Droid.Resource.String.abc_menu_alt_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_menu_alt_shortcut_label;
+			global::FormsControls.Droid.Resource.String.abc_menu_ctrl_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_menu_ctrl_shortcut_label;
+			global::FormsControls.Droid.Resource.String.abc_menu_delete_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_menu_delete_shortcut_label;
+			global::FormsControls.Droid.Resource.String.abc_menu_enter_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_menu_enter_shortcut_label;
+			global::FormsControls.Droid.Resource.String.abc_menu_function_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_menu_function_shortcut_label;
+			global::FormsControls.Droid.Resource.String.abc_menu_meta_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_menu_meta_shortcut_label;
+			global::FormsControls.Droid.Resource.String.abc_menu_shift_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_menu_shift_shortcut_label;
+			global::FormsControls.Droid.Resource.String.abc_menu_space_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_menu_space_shortcut_label;
+			global::FormsControls.Droid.Resource.String.abc_menu_sym_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_menu_sym_shortcut_label;
+			global::FormsControls.Droid.Resource.String.abc_prepend_shortcut_label = global::RepeatingWords.Droid.Resource.String.abc_prepend_shortcut_label;
 			global::FormsControls.Droid.Resource.String.abc_searchview_description_clear = global::RepeatingWords.Droid.Resource.String.abc_searchview_description_clear;
 			global::FormsControls.Droid.Resource.String.abc_searchview_description_query = global::RepeatingWords.Droid.Resource.String.abc_searchview_description_query;
 			global::FormsControls.Droid.Resource.String.abc_searchview_description_search = global::RepeatingWords.Droid.Resource.String.abc_searchview_description_search;
 			global::FormsControls.Droid.Resource.String.abc_searchview_description_submit = global::RepeatingWords.Droid.Resource.String.abc_searchview_description_submit;
 			global::FormsControls.Droid.Resource.String.abc_searchview_description_voice = global::RepeatingWords.Droid.Resource.String.abc_searchview_description_voice;
+			global::FormsControls.Droid.Resource.String.abc_search_hint = global::RepeatingWords.Droid.Resource.String.abc_search_hint;
 			global::FormsControls.Droid.Resource.String.abc_shareactionprovider_share_with = global::RepeatingWords.Droid.Resource.String.abc_shareactionprovider_share_with;
 			global::FormsControls.Droid.Resource.String.abc_shareactionprovider_share_with_application = global::RepeatingWords.Droid.Resource.String.abc_shareactionprovider_share_with_application;
 			global::FormsControls.Droid.Resource.String.abc_toolbar_collapse_description = global::RepeatingWords.Droid.Resource.String.abc_toolbar_collapse_description;
 			global::FormsControls.Droid.Resource.String.appbar_scrolling_view_behavior = global::RepeatingWords.Droid.Resource.String.appbar_scrolling_view_behavior;
 			global::FormsControls.Droid.Resource.String.bottom_sheet_behavior = global::RepeatingWords.Droid.Resource.String.bottom_sheet_behavior;
+			global::FormsControls.Droid.Resource.String.character_counter_content_description = global::RepeatingWords.Droid.Resource.String.character_counter_content_description;
 			global::FormsControls.Droid.Resource.String.character_counter_pattern = global::RepeatingWords.Droid.Resource.String.character_counter_pattern;
+			global::FormsControls.Droid.Resource.String.fab_transformation_scrim_behavior = global::RepeatingWords.Droid.Resource.String.fab_transformation_scrim_behavior;
+			global::FormsControls.Droid.Resource.String.fab_transformation_sheet_behavior = global::RepeatingWords.Droid.Resource.String.fab_transformation_sheet_behavior;
+			global::FormsControls.Droid.Resource.String.hide_bottom_view_on_scroll_behavior = global::RepeatingWords.Droid.Resource.String.hide_bottom_view_on_scroll_behavior;
+			global::FormsControls.Droid.Resource.String.mtrl_chip_close_icon_content_description = global::RepeatingWords.Droid.Resource.String.mtrl_chip_close_icon_content_description;
 			global::FormsControls.Droid.Resource.String.password_toggle_content_description = global::RepeatingWords.Droid.Resource.String.password_toggle_content_description;
 			global::FormsControls.Droid.Resource.String.path_password_eye = global::RepeatingWords.Droid.Resource.String.path_password_eye;
 			global::FormsControls.Droid.Resource.String.path_password_eye_mask_strike_through = global::RepeatingWords.Droid.Resource.String.path_password_eye_mask_strike_through;
@@ -3846,8 +4268,8 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::RepeatingWords.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
 			global::FormsControls.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip = global::RepeatingWords.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip;
 			global::FormsControls.Droid.Resource.Style.Base_CardView = global::RepeatingWords.Droid.Resource.Style.Base_CardView;
-			global::FormsControls.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_TextAppearance_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::RepeatingWords.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
 			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::RepeatingWords.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
@@ -3896,20 +4318,6 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::RepeatingWords.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
 			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::RepeatingWords.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
 			global::FormsControls.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::RepeatingWords.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
 			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::RepeatingWords.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
 			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::RepeatingWords.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
@@ -3917,11 +4325,53 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
 			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
 			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Bridge = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Bridge;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_CompactMenu = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_CompactMenu;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Light = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Light;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize;
+			global::FormsControls.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Base_V14_Theme_MaterialComponents = global::RepeatingWords.Droid.Resource.Style.Base_V14_Theme_MaterialComponents;
+			global::FormsControls.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge = global::RepeatingWords.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge;
+			global::FormsControls.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light = global::RepeatingWords.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light;
+			global::FormsControls.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge = global::RepeatingWords.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge;
+			global::FormsControls.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::RepeatingWords.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::FormsControls.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
 			global::FormsControls.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_V21_Theme_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
 			global::FormsControls.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
 			global::FormsControls.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
-			global::FormsControls.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
 			global::FormsControls.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_V22_Theme_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
 			global::FormsControls.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_V23_Theme_AppCompat;
@@ -3929,11 +4379,13 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Base_V26_Theme_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_V26_Theme_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light;
 			global::FormsControls.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::RepeatingWords.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
+			global::FormsControls.Droid.Resource.Style.Base_V28_Theme_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_V28_Theme_AppCompat;
+			global::FormsControls.Droid.Resource.Style.Base_V28_Theme_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Base_V28_Theme_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
 			global::FormsControls.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_V7_Theme_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
 			global::FormsControls.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
 			global::FormsControls.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
-			global::FormsControls.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
 			global::FormsControls.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::RepeatingWords.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
 			global::FormsControls.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::RepeatingWords.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
 			global::FormsControls.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::RepeatingWords.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
@@ -3949,13 +4401,13 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Button;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
-			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
@@ -3995,11 +4447,19 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::RepeatingWords.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
 			global::FormsControls.Droid.Resource.Style.Base_Widget_Design_TabLayout = global::RepeatingWords.Droid.Resource.Style.Base_Widget_Design_TabLayout;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_MaterialComponents_Chip = global::RepeatingWords.Droid.Resource.Style.Base_Widget_MaterialComponents_Chip;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText = global::RepeatingWords.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText;
+			global::FormsControls.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout = global::RepeatingWords.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout;
 			global::FormsControls.Droid.Resource.Style.CardView = global::RepeatingWords.Droid.Resource.Style.CardView;
 			global::FormsControls.Droid.Resource.Style.CardView_Dark = global::RepeatingWords.Droid.Resource.Style.CardView_Dark;
 			global::FormsControls.Droid.Resource.Style.CardView_Light = global::RepeatingWords.Droid.Resource.Style.CardView_Light;
+			global::FormsControls.Droid.Resource.Style.collectionViewStyle = global::RepeatingWords.Droid.Resource.Style.collectionViewStyle;
 			global::FormsControls.Droid.Resource.Style.Platform_AppCompat = global::RepeatingWords.Droid.Resource.Style.Platform_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Platform_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Platform_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Platform_MaterialComponents = global::RepeatingWords.Droid.Resource.Style.Platform_MaterialComponents;
+			global::FormsControls.Droid.Resource.Style.Platform_MaterialComponents_Dialog = global::RepeatingWords.Droid.Resource.Style.Platform_MaterialComponents_Dialog;
+			global::FormsControls.Droid.Resource.Style.Platform_MaterialComponents_Light = global::RepeatingWords.Droid.Resource.Style.Platform_MaterialComponents_Light;
+			global::FormsControls.Droid.Resource.Style.Platform_MaterialComponents_Light_Dialog = global::RepeatingWords.Droid.Resource.Style.Platform_MaterialComponents_Light_Dialog;
 			global::FormsControls.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::RepeatingWords.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::RepeatingWords.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
 			global::FormsControls.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
@@ -4013,13 +4473,16 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
 			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
 			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
 			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
+			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
 			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
 			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
 			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
 			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
 			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
-			global::FormsControls.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::RepeatingWords.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
 			global::FormsControls.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::RepeatingWords.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
 			global::FormsControls.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::RepeatingWords.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
 			global::FormsControls.Droid.Resource.Style.TextAppearance_AppCompat = global::RepeatingWords.Droid.Resource.Style.TextAppearance_AppCompat;
@@ -4084,31 +4547,66 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Counter = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Design_Counter;
 			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
 			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Error = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Design_Error;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_HelperText = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Design_HelperText;
 			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Hint = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Design_Hint;
 			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
 			global::FormsControls.Droid.Resource.Style.TextAppearance_Design_Tab = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Design_Tab;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Body1 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Body1;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Body2 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Body2;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Button = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Button;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Caption = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Caption;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Chip = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Chip;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline1 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline1;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline2 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline2;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline3 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline3;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline4 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline4;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline5 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline5;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline6 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline6;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Overline = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Overline;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle1 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle1;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle2 = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle2;
+			global::FormsControls.Droid.Resource.Style.TextAppearance_MaterialComponents_Tab = global::RepeatingWords.Droid.Resource.Style.TextAppearance_MaterialComponents_Tab;
 			global::FormsControls.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
 			global::FormsControls.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
 			global::FormsControls.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::RepeatingWords.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark_ActionBar = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark_ActionBar;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Light = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Light;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox;
+			global::FormsControls.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_CompactMenu = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DayNight;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
-			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Light;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_Dialog = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
 			global::FormsControls.Droid.Resource.Style.Theme_AppCompat_NoActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
 			global::FormsControls.Droid.Resource.Style.Theme_Design = global::RepeatingWords.Droid.Resource.Style.Theme_Design;
@@ -4117,13 +4615,27 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::RepeatingWords.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
 			global::FormsControls.Droid.Resource.Style.Theme_Design_Light_NoActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
 			global::FormsControls.Droid.Resource.Style.Theme_Design_NoActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_Design_NoActionBar;
-			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat;
-			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
-			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
-			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog;
-			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
-			global::FormsControls.Droid.Resource.Style.ThemeOverlay_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_BottomSheetDialog = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_BottomSheetDialog;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Bridge = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Bridge;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_CompactMenu = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_CompactMenu;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Dialog = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Dialog;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_Bridge = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_Bridge;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar;
+			global::FormsControls.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge = global::RepeatingWords.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionBar = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_ActionBar;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
@@ -4136,13 +4648,13 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Button;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ButtonBar = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_Borderless = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_Colored = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_Button_Small = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_Button_Small;
-			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ButtonBar = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
 			global::FormsControls.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::RepeatingWords.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
@@ -4208,7 +4720,46 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Widget_Design_Snackbar = global::RepeatingWords.Droid.Resource.Style.Widget_Design_Snackbar;
 			global::FormsControls.Droid.Resource.Style.Widget_Design_TabLayout = global::RepeatingWords.Droid.Resource.Style.Widget_Design_TabLayout;
 			global::FormsControls.Droid.Resource.Style.Widget_Design_TextInputLayout = global::RepeatingWords.Droid.Resource.Style.Widget_Design_TextInputLayout;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar_Colored = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar_Colored;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView_Colored = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView_Colored;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_BottomSheet_Modal = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_BottomSheet_Modal;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button_Icon = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button_Icon;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton_Icon = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton_Icon;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Icon = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Icon;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Icon = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Icon;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_CardView = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_CardView;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_ChipGroup = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_ChipGroup;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Chip_Action = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Chip_Action;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Chip_Choice = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Chip_Choice;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Chip_Entry = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Chip_Entry;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Chip_Filter = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Chip_Filter;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_FloatingActionButton = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_FloatingActionButton;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_NavigationView = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_NavigationView;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Snackbar = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Snackbar;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TabLayout = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TabLayout;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TabLayout_Colored = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TabLayout_Colored;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox_Dense = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox_Dense;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense;
+			global::FormsControls.Droid.Resource.Style.Widget_MaterialComponents_Toolbar = global::RepeatingWords.Droid.Resource.Style.Widget_MaterialComponents_Toolbar;
+			global::FormsControls.Droid.Resource.Style.Widget_Support_CoordinatorLayout = global::RepeatingWords.Droid.Resource.Style.Widget_Support_CoordinatorLayout;
 			global::FormsControls.Droid.Resource.Styleable.ActionBar = global::RepeatingWords.Droid.Resource.Styleable.ActionBar;
+			global::FormsControls.Droid.Resource.Styleable.ActionBarLayout = global::RepeatingWords.Droid.Resource.Styleable.ActionBarLayout;
+			global::FormsControls.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::RepeatingWords.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
 			global::FormsControls.Droid.Resource.Styleable.ActionBar_background = global::RepeatingWords.Droid.Resource.Styleable.ActionBar_background;
 			global::FormsControls.Droid.Resource.Styleable.ActionBar_backgroundSplit = global::RepeatingWords.Droid.Resource.Styleable.ActionBar_backgroundSplit;
 			global::FormsControls.Droid.Resource.Styleable.ActionBar_backgroundStacked = global::RepeatingWords.Droid.Resource.Styleable.ActionBar_backgroundStacked;
@@ -4238,8 +4789,6 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.ActionBar_subtitleTextStyle = global::RepeatingWords.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
 			global::FormsControls.Droid.Resource.Styleable.ActionBar_title = global::RepeatingWords.Droid.Resource.Styleable.ActionBar_title;
 			global::FormsControls.Droid.Resource.Styleable.ActionBar_titleTextStyle = global::RepeatingWords.Droid.Resource.Styleable.ActionBar_titleTextStyle;
-			global::FormsControls.Droid.Resource.Styleable.ActionBarLayout = global::RepeatingWords.Droid.Resource.Styleable.ActionBarLayout;
-			global::FormsControls.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::RepeatingWords.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
 			global::FormsControls.Droid.Resource.Styleable.ActionMenuItemView = global::RepeatingWords.Droid.Resource.Styleable.ActionMenuItemView;
 			global::FormsControls.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth = global::RepeatingWords.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
 			global::FormsControls.Droid.Resource.Styleable.ActionMenuView = global::RepeatingWords.Droid.Resource.Styleable.ActionMenuView;
@@ -4255,24 +4804,43 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount = global::RepeatingWords.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
 			global::FormsControls.Droid.Resource.Styleable.AlertDialog = global::RepeatingWords.Droid.Resource.Styleable.AlertDialog;
 			global::FormsControls.Droid.Resource.Styleable.AlertDialog_android_layout = global::RepeatingWords.Droid.Resource.Styleable.AlertDialog_android_layout;
+			global::FormsControls.Droid.Resource.Styleable.AlertDialog_buttonIconDimen = global::RepeatingWords.Droid.Resource.Styleable.AlertDialog_buttonIconDimen;
 			global::FormsControls.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::RepeatingWords.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
 			global::FormsControls.Droid.Resource.Styleable.AlertDialog_listItemLayout = global::RepeatingWords.Droid.Resource.Styleable.AlertDialog_listItemLayout;
 			global::FormsControls.Droid.Resource.Styleable.AlertDialog_listLayout = global::RepeatingWords.Droid.Resource.Styleable.AlertDialog_listLayout;
 			global::FormsControls.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::RepeatingWords.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
 			global::FormsControls.Droid.Resource.Styleable.AlertDialog_showTitle = global::RepeatingWords.Droid.Resource.Styleable.AlertDialog_showTitle;
 			global::FormsControls.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::RepeatingWords.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableCompat = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableCompat;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableItem = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableItem;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_id = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_id;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableTransition = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableTransition;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible;
+			global::FormsControls.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId = global::RepeatingWords.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId;
 			global::FormsControls.Droid.Resource.Styleable.AppBarLayout = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayoutStates;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates_state_liftable = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayoutStates_state_liftable;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates_state_lifted = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayoutStates_state_lifted;
 			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_android_background = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout_android_background;
 			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster;
 			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus;
 			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_elevation = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout_elevation;
 			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_expanded = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout_expanded;
-			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayoutStates;
-			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
-			global::FormsControls.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
 			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_Layout = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout_Layout;
 			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags;
 			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator;
+			global::FormsControls.Droid.Resource.Styleable.AppBarLayout_liftOnScroll = global::RepeatingWords.Droid.Resource.Styleable.AppBarLayout_liftOnScroll;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatImageView = global::RepeatingWords.Droid.Resource.Styleable.AppCompatImageView;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatImageView_android_src = global::RepeatingWords.Droid.Resource.Styleable.AppCompatImageView_android_src;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatImageView_srcCompat = global::RepeatingWords.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
@@ -4298,7 +4866,10 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_fontFamily = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_fontFamily;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_lineHeight = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_lineHeight;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTextView_textAllCaps = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
@@ -4360,12 +4931,13 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_controlBackground = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dialogCornerRadius = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_dialogCornerRadius;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dialogTheme = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dividerVertical = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
-			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_editTextBackground = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_editTextColor = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_editTextStyle = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
@@ -4410,6 +4982,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
+			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_viewInflaterClass = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_viewInflaterClass;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowActionBar = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
@@ -4420,13 +4993,26 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
 			global::FormsControls.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle = global::RepeatingWords.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::FormsControls.Droid.Resource.Styleable.BottomAppBar = global::RepeatingWords.Droid.Resource.Styleable.BottomAppBar;
+			global::FormsControls.Droid.Resource.Styleable.BottomAppBar_backgroundTint = global::RepeatingWords.Droid.Resource.Styleable.BottomAppBar_backgroundTint;
+			global::FormsControls.Droid.Resource.Styleable.BottomAppBar_fabAlignmentMode = global::RepeatingWords.Droid.Resource.Styleable.BottomAppBar_fabAlignmentMode;
+			global::FormsControls.Droid.Resource.Styleable.BottomAppBar_fabCradleMargin = global::RepeatingWords.Droid.Resource.Styleable.BottomAppBar_fabCradleMargin;
+			global::FormsControls.Droid.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius = global::RepeatingWords.Droid.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius;
+			global::FormsControls.Droid.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset = global::RepeatingWords.Droid.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset;
+			global::FormsControls.Droid.Resource.Styleable.BottomAppBar_hideOnScroll = global::RepeatingWords.Droid.Resource.Styleable.BottomAppBar_hideOnScroll;
 			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView;
 			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_elevation = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_elevation;
 			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemBackground = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_itemBackground;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemIconSize = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_itemIconSize;
 			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemIconTint = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_itemIconTint;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceActive = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceActive;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceInactive = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceInactive;
 			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_itemTextColor = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_itemTextColor;
+			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_labelVisibilityMode = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_labelVisibilityMode;
 			global::FormsControls.Droid.Resource.Styleable.BottomNavigationView_menu = global::RepeatingWords.Droid.Resource.Styleable.BottomNavigationView_menu;
 			global::FormsControls.Droid.Resource.Styleable.BottomSheetBehavior_Layout = global::RepeatingWords.Droid.Resource.Styleable.BottomSheetBehavior_Layout;
+			global::FormsControls.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents = global::RepeatingWords.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents;
 			global::FormsControls.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable = global::RepeatingWords.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable;
 			global::FormsControls.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight = global::RepeatingWords.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight;
 			global::FormsControls.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed = global::RepeatingWords.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed;
@@ -4446,6 +5032,48 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.CardView_contentPaddingLeft = global::RepeatingWords.Droid.Resource.Styleable.CardView_contentPaddingLeft;
 			global::FormsControls.Droid.Resource.Styleable.CardView_contentPaddingRight = global::RepeatingWords.Droid.Resource.Styleable.CardView_contentPaddingRight;
 			global::FormsControls.Droid.Resource.Styleable.CardView_contentPaddingTop = global::RepeatingWords.Droid.Resource.Styleable.CardView_contentPaddingTop;
+			global::FormsControls.Droid.Resource.Styleable.Chip = global::RepeatingWords.Droid.Resource.Styleable.Chip;
+			global::FormsControls.Droid.Resource.Styleable.ChipGroup = global::RepeatingWords.Droid.Resource.Styleable.ChipGroup;
+			global::FormsControls.Droid.Resource.Styleable.ChipGroup_checkedChip = global::RepeatingWords.Droid.Resource.Styleable.ChipGroup_checkedChip;
+			global::FormsControls.Droid.Resource.Styleable.ChipGroup_chipSpacing = global::RepeatingWords.Droid.Resource.Styleable.ChipGroup_chipSpacing;
+			global::FormsControls.Droid.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::RepeatingWords.Droid.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
+			global::FormsControls.Droid.Resource.Styleable.ChipGroup_chipSpacingVertical = global::RepeatingWords.Droid.Resource.Styleable.ChipGroup_chipSpacingVertical;
+			global::FormsControls.Droid.Resource.Styleable.ChipGroup_singleLine = global::RepeatingWords.Droid.Resource.Styleable.ChipGroup_singleLine;
+			global::FormsControls.Droid.Resource.Styleable.ChipGroup_singleSelection = global::RepeatingWords.Droid.Resource.Styleable.ChipGroup_singleSelection;
+			global::FormsControls.Droid.Resource.Styleable.Chip_android_checkable = global::RepeatingWords.Droid.Resource.Styleable.Chip_android_checkable;
+			global::FormsControls.Droid.Resource.Styleable.Chip_android_ellipsize = global::RepeatingWords.Droid.Resource.Styleable.Chip_android_ellipsize;
+			global::FormsControls.Droid.Resource.Styleable.Chip_android_maxWidth = global::RepeatingWords.Droid.Resource.Styleable.Chip_android_maxWidth;
+			global::FormsControls.Droid.Resource.Styleable.Chip_android_text = global::RepeatingWords.Droid.Resource.Styleable.Chip_android_text;
+			global::FormsControls.Droid.Resource.Styleable.Chip_android_textAppearance = global::RepeatingWords.Droid.Resource.Styleable.Chip_android_textAppearance;
+			global::FormsControls.Droid.Resource.Styleable.Chip_checkedIcon = global::RepeatingWords.Droid.Resource.Styleable.Chip_checkedIcon;
+			global::FormsControls.Droid.Resource.Styleable.Chip_checkedIconEnabled = global::RepeatingWords.Droid.Resource.Styleable.Chip_checkedIconEnabled;
+			global::FormsControls.Droid.Resource.Styleable.Chip_checkedIconVisible = global::RepeatingWords.Droid.Resource.Styleable.Chip_checkedIconVisible;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipBackgroundColor = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipBackgroundColor;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipCornerRadius = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipCornerRadius;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipEndPadding = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipEndPadding;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipIcon = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipIcon;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipIconEnabled = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipIconEnabled;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipIconSize = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipIconSize;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipIconTint = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipIconTint;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipIconVisible = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipIconVisible;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipMinHeight = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipMinHeight;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipStartPadding = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipStartPadding;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipStrokeColor = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipStrokeColor;
+			global::FormsControls.Droid.Resource.Styleable.Chip_chipStrokeWidth = global::RepeatingWords.Droid.Resource.Styleable.Chip_chipStrokeWidth;
+			global::FormsControls.Droid.Resource.Styleable.Chip_closeIcon = global::RepeatingWords.Droid.Resource.Styleable.Chip_closeIcon;
+			global::FormsControls.Droid.Resource.Styleable.Chip_closeIconEnabled = global::RepeatingWords.Droid.Resource.Styleable.Chip_closeIconEnabled;
+			global::FormsControls.Droid.Resource.Styleable.Chip_closeIconEndPadding = global::RepeatingWords.Droid.Resource.Styleable.Chip_closeIconEndPadding;
+			global::FormsControls.Droid.Resource.Styleable.Chip_closeIconSize = global::RepeatingWords.Droid.Resource.Styleable.Chip_closeIconSize;
+			global::FormsControls.Droid.Resource.Styleable.Chip_closeIconStartPadding = global::RepeatingWords.Droid.Resource.Styleable.Chip_closeIconStartPadding;
+			global::FormsControls.Droid.Resource.Styleable.Chip_closeIconTint = global::RepeatingWords.Droid.Resource.Styleable.Chip_closeIconTint;
+			global::FormsControls.Droid.Resource.Styleable.Chip_closeIconVisible = global::RepeatingWords.Droid.Resource.Styleable.Chip_closeIconVisible;
+			global::FormsControls.Droid.Resource.Styleable.Chip_hideMotionSpec = global::RepeatingWords.Droid.Resource.Styleable.Chip_hideMotionSpec;
+			global::FormsControls.Droid.Resource.Styleable.Chip_iconEndPadding = global::RepeatingWords.Droid.Resource.Styleable.Chip_iconEndPadding;
+			global::FormsControls.Droid.Resource.Styleable.Chip_iconStartPadding = global::RepeatingWords.Droid.Resource.Styleable.Chip_iconStartPadding;
+			global::FormsControls.Droid.Resource.Styleable.Chip_rippleColor = global::RepeatingWords.Droid.Resource.Styleable.Chip_rippleColor;
+			global::FormsControls.Droid.Resource.Styleable.Chip_showMotionSpec = global::RepeatingWords.Droid.Resource.Styleable.Chip_showMotionSpec;
+			global::FormsControls.Droid.Resource.Styleable.Chip_textEndPadding = global::RepeatingWords.Droid.Resource.Styleable.Chip_textEndPadding;
+			global::FormsControls.Droid.Resource.Styleable.Chip_textStartPadding = global::RepeatingWords.Droid.Resource.Styleable.Chip_textStartPadding;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
@@ -4457,15 +5085,15 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
+			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_title = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
 			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
-			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
-			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
-			global::FormsControls.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::RepeatingWords.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
 			global::FormsControls.Droid.Resource.Styleable.ColorStateListItem = global::RepeatingWords.Droid.Resource.Styleable.ColorStateListItem;
 			global::FormsControls.Droid.Resource.Styleable.ColorStateListItem_alpha = global::RepeatingWords.Droid.Resource.Styleable.ColorStateListItem_alpha;
 			global::FormsControls.Droid.Resource.Styleable.ColorStateListItem_android_alpha = global::RepeatingWords.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
@@ -4476,7 +5104,6 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.CompoundButton_buttonTintMode = global::RepeatingWords.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
 			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout;
 			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_keylines = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout_keylines;
-			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
 			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout_Layout;
 			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
 			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
@@ -4485,6 +5112,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
 			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
 			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::FormsControls.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::RepeatingWords.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
 			global::FormsControls.Droid.Resource.Styleable.DesignTheme = global::RepeatingWords.Droid.Resource.Styleable.DesignTheme;
 			global::FormsControls.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::RepeatingWords.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
 			global::FormsControls.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle = global::RepeatingWords.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
@@ -4500,32 +5128,60 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton;
 			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_backgroundTint = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
 			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
-			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_borderWidth = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
-			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_elevation = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_elevation;
-			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_fabSize = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_fabSize;
-			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
-			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_rippleColor = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
-			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
 			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
 			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_borderWidth = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_elevation = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_elevation;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_fabCustomSize = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_fabCustomSize;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_fabSize = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_fabSize;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_hideMotionSpec = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_hideMotionSpec;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_hoveredFocusedTranslationZ = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_hoveredFocusedTranslationZ;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_maxImageSize = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_maxImageSize;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_rippleColor = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_showMotionSpec = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_showMotionSpec;
+			global::FormsControls.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding = global::RepeatingWords.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::FormsControls.Droid.Resource.Styleable.FlowLayout = global::RepeatingWords.Droid.Resource.Styleable.FlowLayout;
+			global::FormsControls.Droid.Resource.Styleable.FlowLayout_itemSpacing = global::RepeatingWords.Droid.Resource.Styleable.FlowLayout_itemSpacing;
+			global::FormsControls.Droid.Resource.Styleable.FlowLayout_lineSpacing = global::RepeatingWords.Droid.Resource.Styleable.FlowLayout_lineSpacing;
 			global::FormsControls.Droid.Resource.Styleable.FontFamily = global::RepeatingWords.Droid.Resource.Styleable.FontFamily;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_font = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_font = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_fontStyle = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_fontWeight = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_ttcIndex = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
 			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderAuthority = global::RepeatingWords.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
 			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderCerts = global::RepeatingWords.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
 			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::RepeatingWords.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
 			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::RepeatingWords.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
 			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderPackage = global::RepeatingWords.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
 			global::FormsControls.Droid.Resource.Styleable.FontFamily_fontProviderQuery = global::RepeatingWords.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
-			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont;
-			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_font = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_android_font;
-			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
-			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
-			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_font = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_font;
-			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_fontStyle = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
-			global::FormsControls.Droid.Resource.Styleable.FontFamilyFont_fontWeight = global::RepeatingWords.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
 			global::FormsControls.Droid.Resource.Styleable.ForegroundLinearLayout = global::RepeatingWords.Droid.Resource.Styleable.ForegroundLinearLayout;
 			global::FormsControls.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::RepeatingWords.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
 			global::FormsControls.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::RepeatingWords.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
 			global::FormsControls.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::RepeatingWords.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor = global::RepeatingWords.Droid.Resource.Styleable.GradientColor;
+			global::FormsControls.Droid.Resource.Styleable.GradientColorItem = global::RepeatingWords.Droid.Resource.Styleable.GradientColorItem;
+			global::FormsControls.Droid.Resource.Styleable.GradientColorItem_android_color = global::RepeatingWords.Droid.Resource.Styleable.GradientColorItem_android_color;
+			global::FormsControls.Droid.Resource.Styleable.GradientColorItem_android_offset = global::RepeatingWords.Droid.Resource.Styleable.GradientColorItem_android_offset;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_centerColor = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_centerColor;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_centerX = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_centerX;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_centerY = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_centerY;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_endColor = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_endColor;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_endX = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_endX;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_endY = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_endY;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_gradientRadius = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_startColor = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_startColor;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_startX = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_startX;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_startY = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_startY;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_tileMode = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_tileMode;
+			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_type = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_type;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
@@ -4534,16 +5190,69 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_divider = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_divider;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
-			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_showDividers = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_showDividers = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
 			global::FormsControls.Droid.Resource.Styleable.ListPopupWindow = global::RepeatingWords.Droid.Resource.Styleable.ListPopupWindow;
 			global::FormsControls.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::RepeatingWords.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
 			global::FormsControls.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::RepeatingWords.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_android_insetBottom = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_android_insetBottom;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_android_insetLeft = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_android_insetLeft;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_android_insetRight = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_android_insetRight;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_android_insetTop = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_android_insetTop;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_backgroundTint = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_backgroundTint;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_backgroundTintMode = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_backgroundTintMode;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_cornerRadius = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_cornerRadius;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_icon = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_icon;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_iconGravity = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_iconGravity;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_iconPadding = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_iconPadding;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_iconSize = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_iconSize;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_iconTint = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_iconTint;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_iconTintMode = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_iconTintMode;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_rippleColor = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_rippleColor;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_strokeColor = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_strokeColor;
+			global::FormsControls.Droid.Resource.Styleable.MaterialButton_strokeWidth = global::RepeatingWords.Droid.Resource.Styleable.MaterialButton_strokeWidth;
+			global::FormsControls.Droid.Resource.Styleable.MaterialCardView = global::RepeatingWords.Droid.Resource.Styleable.MaterialCardView;
+			global::FormsControls.Droid.Resource.Styleable.MaterialCardView_strokeColor = global::RepeatingWords.Droid.Resource.Styleable.MaterialCardView_strokeColor;
+			global::FormsControls.Droid.Resource.Styleable.MaterialCardView_strokeWidth = global::RepeatingWords.Droid.Resource.Styleable.MaterialCardView_strokeWidth;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_bottomSheetDialogTheme = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_bottomSheetDialogTheme;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_bottomSheetStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_bottomSheetStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_chipGroupStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_chipGroupStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_chipStandaloneStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_chipStandaloneStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_chipStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_chipStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_colorAccent = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_colorAccent;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_colorBackgroundFloating = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_colorBackgroundFloating;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_colorPrimary = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_colorPrimary;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_colorPrimaryDark = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_colorPrimaryDark;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_colorSecondary = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_colorSecondary;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_editTextStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_editTextStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_floatingActionButtonStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_floatingActionButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_materialButtonStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_materialButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_materialCardViewStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_materialCardViewStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_navigationViewStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_navigationViewStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_scrimBackground = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_scrimBackground;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_snackbarButtonStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_snackbarButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_tabStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_tabStyle;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceBody1 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceBody1;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceBody2 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceBody2;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceButton = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceButton;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceCaption = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceCaption;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline1 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline1;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline2 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline2;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline3 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline3;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline4 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline4;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline5 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline5;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline6 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceHeadline6;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceOverline = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceOverline;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceSubtitle1 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceSubtitle1;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceSubtitle2 = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textAppearanceSubtitle2;
+			global::FormsControls.Droid.Resource.Styleable.MaterialComponentsTheme_textInputStyle = global::RepeatingWords.Droid.Resource.Styleable.MaterialComponentsTheme_textInputStyle;
 			global::FormsControls.Droid.Resource.Styleable.MenuGroup = global::RepeatingWords.Droid.Resource.Styleable.MenuGroup;
 			global::FormsControls.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior = global::RepeatingWords.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
 			global::FormsControls.Droid.Resource.Styleable.MenuGroup_android_enabled = global::RepeatingWords.Droid.Resource.Styleable.MenuGroup_android_enabled;
@@ -4592,16 +5301,18 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.NavigationView_elevation = global::RepeatingWords.Droid.Resource.Styleable.NavigationView_elevation;
 			global::FormsControls.Droid.Resource.Styleable.NavigationView_headerLayout = global::RepeatingWords.Droid.Resource.Styleable.NavigationView_headerLayout;
 			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemBackground = global::RepeatingWords.Droid.Resource.Styleable.NavigationView_itemBackground;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemHorizontalPadding = global::RepeatingWords.Droid.Resource.Styleable.NavigationView_itemHorizontalPadding;
+			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemIconPadding = global::RepeatingWords.Droid.Resource.Styleable.NavigationView_itemIconPadding;
 			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemIconTint = global::RepeatingWords.Droid.Resource.Styleable.NavigationView_itemIconTint;
 			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
 			global::FormsControls.Droid.Resource.Styleable.NavigationView_itemTextColor = global::RepeatingWords.Droid.Resource.Styleable.NavigationView_itemTextColor;
 			global::FormsControls.Droid.Resource.Styleable.NavigationView_menu = global::RepeatingWords.Droid.Resource.Styleable.NavigationView_menu;
 			global::FormsControls.Droid.Resource.Styleable.PopupWindow = global::RepeatingWords.Droid.Resource.Styleable.PopupWindow;
+			global::FormsControls.Droid.Resource.Styleable.PopupWindowBackgroundState = global::RepeatingWords.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::FormsControls.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::RepeatingWords.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
 			global::FormsControls.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::RepeatingWords.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
 			global::FormsControls.Droid.Resource.Styleable.PopupWindow_android_popupBackground = global::RepeatingWords.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
 			global::FormsControls.Droid.Resource.Styleable.PopupWindow_overlapAnchor = global::RepeatingWords.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
-			global::FormsControls.Droid.Resource.Styleable.PopupWindowBackgroundState = global::RepeatingWords.Droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::FormsControls.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::RepeatingWords.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
 			global::FormsControls.Droid.Resource.Styleable.RecycleListView = global::RepeatingWords.Droid.Resource.Styleable.RecycleListView;
 			global::FormsControls.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::RepeatingWords.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
 			global::FormsControls.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::RepeatingWords.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
@@ -4639,16 +5350,28 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.SearchView_submitBackground = global::RepeatingWords.Droid.Resource.Styleable.SearchView_submitBackground;
 			global::FormsControls.Droid.Resource.Styleable.SearchView_suggestionRowLayout = global::RepeatingWords.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
 			global::FormsControls.Droid.Resource.Styleable.SearchView_voiceIcon = global::RepeatingWords.Droid.Resource.Styleable.SearchView_voiceIcon;
+			global::FormsControls.Droid.Resource.Styleable.Snackbar = global::RepeatingWords.Droid.Resource.Styleable.Snackbar;
 			global::FormsControls.Droid.Resource.Styleable.SnackbarLayout = global::RepeatingWords.Droid.Resource.Styleable.SnackbarLayout;
 			global::FormsControls.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth = global::RepeatingWords.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
 			global::FormsControls.Droid.Resource.Styleable.SnackbarLayout_elevation = global::RepeatingWords.Droid.Resource.Styleable.SnackbarLayout_elevation;
 			global::FormsControls.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::RepeatingWords.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::FormsControls.Droid.Resource.Styleable.Snackbar_snackbarButtonStyle = global::RepeatingWords.Droid.Resource.Styleable.Snackbar_snackbarButtonStyle;
+			global::FormsControls.Droid.Resource.Styleable.Snackbar_snackbarStyle = global::RepeatingWords.Droid.Resource.Styleable.Snackbar_snackbarStyle;
 			global::FormsControls.Droid.Resource.Styleable.Spinner = global::RepeatingWords.Droid.Resource.Styleable.Spinner;
 			global::FormsControls.Droid.Resource.Styleable.Spinner_android_dropDownWidth = global::RepeatingWords.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
 			global::FormsControls.Droid.Resource.Styleable.Spinner_android_entries = global::RepeatingWords.Droid.Resource.Styleable.Spinner_android_entries;
 			global::FormsControls.Droid.Resource.Styleable.Spinner_android_popupBackground = global::RepeatingWords.Droid.Resource.Styleable.Spinner_android_popupBackground;
 			global::FormsControls.Droid.Resource.Styleable.Spinner_android_prompt = global::RepeatingWords.Droid.Resource.Styleable.Spinner_android_prompt;
 			global::FormsControls.Droid.Resource.Styleable.Spinner_popupTheme = global::RepeatingWords.Droid.Resource.Styleable.Spinner_popupTheme;
+			global::FormsControls.Droid.Resource.Styleable.StateListDrawable = global::RepeatingWords.Droid.Resource.Styleable.StateListDrawable;
+			global::FormsControls.Droid.Resource.Styleable.StateListDrawableItem = global::RepeatingWords.Droid.Resource.Styleable.StateListDrawableItem;
+			global::FormsControls.Droid.Resource.Styleable.StateListDrawableItem_android_drawable = global::RepeatingWords.Droid.Resource.Styleable.StateListDrawableItem_android_drawable;
+			global::FormsControls.Droid.Resource.Styleable.StateListDrawable_android_constantSize = global::RepeatingWords.Droid.Resource.Styleable.StateListDrawable_android_constantSize;
+			global::FormsControls.Droid.Resource.Styleable.StateListDrawable_android_dither = global::RepeatingWords.Droid.Resource.Styleable.StateListDrawable_android_dither;
+			global::FormsControls.Droid.Resource.Styleable.StateListDrawable_android_enterFadeDuration = global::RepeatingWords.Droid.Resource.Styleable.StateListDrawable_android_enterFadeDuration;
+			global::FormsControls.Droid.Resource.Styleable.StateListDrawable_android_exitFadeDuration = global::RepeatingWords.Droid.Resource.Styleable.StateListDrawable_android_exitFadeDuration;
+			global::FormsControls.Droid.Resource.Styleable.StateListDrawable_android_variablePadding = global::RepeatingWords.Droid.Resource.Styleable.StateListDrawable_android_variablePadding;
+			global::FormsControls.Droid.Resource.Styleable.StateListDrawable_android_visible = global::RepeatingWords.Droid.Resource.Styleable.StateListDrawable_android_visible;
 			global::FormsControls.Droid.Resource.Styleable.SwitchCompat = global::RepeatingWords.Droid.Resource.Styleable.SwitchCompat;
 			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_android_textOff = global::RepeatingWords.Droid.Resource.Styleable.SwitchCompat_android_textOff;
 			global::FormsControls.Droid.Resource.Styleable.SwitchCompat_android_textOn = global::RepeatingWords.Droid.Resource.Styleable.SwitchCompat_android_textOn;
@@ -4672,8 +5395,15 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabBackground = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabBackground;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabContentStart = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabContentStart;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabGravity = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabGravity;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIconTint = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabIconTint;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIconTintMode = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabIconTintMode;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIndicator = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabIndicator;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIndicatorAnimationDuration = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabIndicatorAnimationDuration;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIndicatorColor = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIndicatorFullWidth = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabIndicatorFullWidth;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIndicatorGravity = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabIndicatorGravity;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabInlineLabel = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabInlineLabel;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabMaxWidth = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabMinWidth = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabMinWidth;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabMode = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabMode;
@@ -4682,9 +5412,11 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabPaddingEnd = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabPaddingStart = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabPaddingTop = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabRippleColor = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabRippleColor;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
 			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabTextColor = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabTextColor;
+			global::FormsControls.Droid.Resource.Styleable.TabLayout_tabUnboundedRipple = global::RepeatingWords.Droid.Resource.Styleable.TabLayout_tabUnboundedRipple;
 			global::FormsControls.Droid.Resource.Styleable.TextAppearance = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance;
 			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_fontFamily = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_android_fontFamily;
 			global::FormsControls.Droid.Resource.Styleable.TextAppearance_android_shadowColor = global::RepeatingWords.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
@@ -4702,12 +5434,24 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_android_hint = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_android_hint;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_android_textColorHint = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_boxBackgroundColor = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_boxBackgroundColor;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_boxBackgroundMode = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_boxBackgroundMode;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_boxCollapsedPaddingTop = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_boxCollapsedPaddingTop;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomEnd = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomEnd;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomStart = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomStart;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_boxStrokeColor = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_boxStrokeColor;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_boxStrokeWidth = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_boxStrokeWidth;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_counterEnabled = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_counterMaxLength = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_errorEnabled = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_helperText = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_helperText;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_helperTextEnabled = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_helperTextEnabled;
+			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_helperTextTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_helperTextTextAppearance;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_hintEnabled = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
@@ -4716,6 +5460,10 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_passwordToggleEnabled = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_passwordToggleEnabled;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_passwordToggleTint = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_passwordToggleTint;
 			global::FormsControls.Droid.Resource.Styleable.TextInputLayout_passwordToggleTintMode = global::RepeatingWords.Droid.Resource.Styleable.TextInputLayout_passwordToggleTintMode;
+			global::FormsControls.Droid.Resource.Styleable.ThemeEnforcement = global::RepeatingWords.Droid.Resource.Styleable.ThemeEnforcement;
+			global::FormsControls.Droid.Resource.Styleable.ThemeEnforcement_android_textAppearance = global::RepeatingWords.Droid.Resource.Styleable.ThemeEnforcement_android_textAppearance;
+			global::FormsControls.Droid.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme = global::RepeatingWords.Droid.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme;
+			global::FormsControls.Droid.Resource.Styleable.ThemeEnforcement_enforceTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.ThemeEnforcement_enforceTextAppearance;
 			global::FormsControls.Droid.Resource.Styleable.Toolbar = global::RepeatingWords.Droid.Resource.Styleable.Toolbar;
 			global::FormsControls.Droid.Resource.Styleable.Toolbar_android_gravity = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_android_gravity;
 			global::FormsControls.Droid.Resource.Styleable.Toolbar_android_minHeight = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_android_minHeight;
@@ -4741,17 +5489,12 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMargin = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_titleMargin;
 			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMarginBottom = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
 			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMarginEnd = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMargins = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_titleMargins;
 			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMarginStart = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_titleMarginStart;
 			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMarginTop = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_titleMarginTop;
-			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleMargins = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_titleMargins;
 			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleTextAppearance = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
 			global::FormsControls.Droid.Resource.Styleable.Toolbar_titleTextColor = global::RepeatingWords.Droid.Resource.Styleable.Toolbar_titleTextColor;
 			global::FormsControls.Droid.Resource.Styleable.View = global::RepeatingWords.Droid.Resource.Styleable.View;
-			global::FormsControls.Droid.Resource.Styleable.View_android_focusable = global::RepeatingWords.Droid.Resource.Styleable.View_android_focusable;
-			global::FormsControls.Droid.Resource.Styleable.View_android_theme = global::RepeatingWords.Droid.Resource.Styleable.View_android_theme;
-			global::FormsControls.Droid.Resource.Styleable.View_paddingEnd = global::RepeatingWords.Droid.Resource.Styleable.View_paddingEnd;
-			global::FormsControls.Droid.Resource.Styleable.View_paddingStart = global::RepeatingWords.Droid.Resource.Styleable.View_paddingStart;
-			global::FormsControls.Droid.Resource.Styleable.View_theme = global::RepeatingWords.Droid.Resource.Styleable.View_theme;
 			global::FormsControls.Droid.Resource.Styleable.ViewBackgroundHelper = global::RepeatingWords.Droid.Resource.Styleable.ViewBackgroundHelper;
 			global::FormsControls.Droid.Resource.Styleable.ViewBackgroundHelper_android_background = global::RepeatingWords.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
 			global::FormsControls.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::RepeatingWords.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
@@ -4760,6 +5503,11 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.ViewStubCompat_android_id = global::RepeatingWords.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::FormsControls.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::RepeatingWords.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::FormsControls.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::RepeatingWords.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::FormsControls.Droid.Resource.Styleable.View_android_focusable = global::RepeatingWords.Droid.Resource.Styleable.View_android_focusable;
+			global::FormsControls.Droid.Resource.Styleable.View_android_theme = global::RepeatingWords.Droid.Resource.Styleable.View_android_theme;
+			global::FormsControls.Droid.Resource.Styleable.View_paddingEnd = global::RepeatingWords.Droid.Resource.Styleable.View_paddingEnd;
+			global::FormsControls.Droid.Resource.Styleable.View_paddingStart = global::RepeatingWords.Droid.Resource.Styleable.View_paddingStart;
+			global::FormsControls.Droid.Resource.Styleable.View_theme = global::RepeatingWords.Droid.Resource.Styleable.View_theme;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::RepeatingWords.Droid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::RepeatingWords.Droid.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::RepeatingWords.Droid.Resource.Attribute.font;
@@ -12898,262 +13646,265 @@ namespace RepeatingWords.Droid
 			public const int common_google_signin_btn_text_light_pressed = 2131034168;
 			
 			// aapt resource value: 0x7F050039
-			public const int design_bottom_navigation_shadow_color = 2131034169;
+			public const int common_google_signin_btn_tint = 2131034169;
 			
 			// aapt resource value: 0x7F05003A
-			public const int design_default_color_primary = 2131034170;
+			public const int design_bottom_navigation_shadow_color = 2131034170;
 			
 			// aapt resource value: 0x7F05003B
-			public const int design_default_color_primary_dark = 2131034171;
+			public const int design_default_color_primary = 2131034171;
 			
 			// aapt resource value: 0x7F05003C
-			public const int design_error = 2131034172;
+			public const int design_default_color_primary_dark = 2131034172;
 			
 			// aapt resource value: 0x7F05003D
-			public const int design_fab_shadow_end_color = 2131034173;
+			public const int design_error = 2131034173;
 			
 			// aapt resource value: 0x7F05003E
-			public const int design_fab_shadow_mid_color = 2131034174;
+			public const int design_fab_shadow_end_color = 2131034174;
 			
 			// aapt resource value: 0x7F05003F
-			public const int design_fab_shadow_start_color = 2131034175;
+			public const int design_fab_shadow_mid_color = 2131034175;
 			
 			// aapt resource value: 0x7F050040
-			public const int design_fab_stroke_end_inner_color = 2131034176;
+			public const int design_fab_shadow_start_color = 2131034176;
 			
 			// aapt resource value: 0x7F050041
-			public const int design_fab_stroke_end_outer_color = 2131034177;
+			public const int design_fab_stroke_end_inner_color = 2131034177;
 			
 			// aapt resource value: 0x7F050042
-			public const int design_fab_stroke_top_inner_color = 2131034178;
+			public const int design_fab_stroke_end_outer_color = 2131034178;
 			
 			// aapt resource value: 0x7F050043
-			public const int design_fab_stroke_top_outer_color = 2131034179;
+			public const int design_fab_stroke_top_inner_color = 2131034179;
 			
 			// aapt resource value: 0x7F050044
-			public const int design_snackbar_background_color = 2131034180;
+			public const int design_fab_stroke_top_outer_color = 2131034180;
 			
 			// aapt resource value: 0x7F050045
-			public const int design_tint_password_toggle = 2131034181;
+			public const int design_snackbar_background_color = 2131034181;
 			
 			// aapt resource value: 0x7F050046
-			public const int dim_foreground_disabled_material_dark = 2131034182;
+			public const int design_tint_password_toggle = 2131034182;
 			
 			// aapt resource value: 0x7F050047
-			public const int dim_foreground_disabled_material_light = 2131034183;
+			public const int dim_foreground_disabled_material_dark = 2131034183;
 			
 			// aapt resource value: 0x7F050048
-			public const int dim_foreground_material_dark = 2131034184;
+			public const int dim_foreground_disabled_material_light = 2131034184;
 			
 			// aapt resource value: 0x7F050049
-			public const int dim_foreground_material_light = 2131034185;
+			public const int dim_foreground_material_dark = 2131034185;
 			
 			// aapt resource value: 0x7F05004A
-			public const int error_color_material_dark = 2131034186;
+			public const int dim_foreground_material_light = 2131034186;
 			
 			// aapt resource value: 0x7F05004B
-			public const int error_color_material_light = 2131034187;
+			public const int error_color_material_dark = 2131034187;
 			
 			// aapt resource value: 0x7F05004C
-			public const int foreground_material_dark = 2131034188;
+			public const int error_color_material_light = 2131034188;
 			
 			// aapt resource value: 0x7F05004D
-			public const int foreground_material_light = 2131034189;
+			public const int foreground_material_dark = 2131034189;
 			
 			// aapt resource value: 0x7F05004E
-			public const int highlighted_text_material_dark = 2131034190;
+			public const int foreground_material_light = 2131034190;
 			
 			// aapt resource value: 0x7F05004F
-			public const int highlighted_text_material_light = 2131034191;
+			public const int highlighted_text_material_dark = 2131034191;
 			
 			// aapt resource value: 0x7F050050
-			public const int material_blue_grey_800 = 2131034192;
+			public const int highlighted_text_material_light = 2131034192;
 			
 			// aapt resource value: 0x7F050051
-			public const int material_blue_grey_900 = 2131034193;
+			public const int material_blue_grey_800 = 2131034193;
 			
 			// aapt resource value: 0x7F050052
-			public const int material_blue_grey_950 = 2131034194;
+			public const int material_blue_grey_900 = 2131034194;
 			
 			// aapt resource value: 0x7F050053
-			public const int material_deep_teal_200 = 2131034195;
+			public const int material_blue_grey_950 = 2131034195;
 			
 			// aapt resource value: 0x7F050054
-			public const int material_deep_teal_500 = 2131034196;
+			public const int material_deep_teal_200 = 2131034196;
 			
 			// aapt resource value: 0x7F050055
-			public const int material_grey_100 = 2131034197;
+			public const int material_deep_teal_500 = 2131034197;
 			
 			// aapt resource value: 0x7F050056
-			public const int material_grey_300 = 2131034198;
+			public const int material_grey_100 = 2131034198;
 			
 			// aapt resource value: 0x7F050057
-			public const int material_grey_50 = 2131034199;
+			public const int material_grey_300 = 2131034199;
 			
 			// aapt resource value: 0x7F050058
-			public const int material_grey_600 = 2131034200;
+			public const int material_grey_50 = 2131034200;
 			
 			// aapt resource value: 0x7F050059
-			public const int material_grey_800 = 2131034201;
+			public const int material_grey_600 = 2131034201;
 			
 			// aapt resource value: 0x7F05005A
-			public const int material_grey_850 = 2131034202;
+			public const int material_grey_800 = 2131034202;
 			
 			// aapt resource value: 0x7F05005B
-			public const int material_grey_900 = 2131034203;
+			public const int material_grey_850 = 2131034203;
 			
 			// aapt resource value: 0x7F05005C
-			public const int mtrl_bottom_nav_colored_item_tint = 2131034204;
+			public const int material_grey_900 = 2131034204;
 			
 			// aapt resource value: 0x7F05005D
-			public const int mtrl_bottom_nav_item_tint = 2131034205;
+			public const int mtrl_bottom_nav_colored_item_tint = 2131034205;
 			
 			// aapt resource value: 0x7F05005E
-			public const int mtrl_btn_bg_color_disabled = 2131034206;
+			public const int mtrl_bottom_nav_item_tint = 2131034206;
 			
 			// aapt resource value: 0x7F05005F
-			public const int mtrl_btn_bg_color_selector = 2131034207;
+			public const int mtrl_btn_bg_color_disabled = 2131034207;
 			
 			// aapt resource value: 0x7F050060
-			public const int mtrl_btn_ripple_color = 2131034208;
+			public const int mtrl_btn_bg_color_selector = 2131034208;
 			
 			// aapt resource value: 0x7F050061
-			public const int mtrl_btn_stroke_color_selector = 2131034209;
+			public const int mtrl_btn_ripple_color = 2131034209;
 			
 			// aapt resource value: 0x7F050062
-			public const int mtrl_btn_text_btn_ripple_color = 2131034210;
+			public const int mtrl_btn_stroke_color_selector = 2131034210;
 			
 			// aapt resource value: 0x7F050063
-			public const int mtrl_btn_text_color_disabled = 2131034211;
+			public const int mtrl_btn_text_btn_ripple_color = 2131034211;
 			
 			// aapt resource value: 0x7F050064
-			public const int mtrl_btn_text_color_selector = 2131034212;
+			public const int mtrl_btn_text_color_disabled = 2131034212;
 			
 			// aapt resource value: 0x7F050065
-			public const int mtrl_btn_transparent_bg_color = 2131034213;
+			public const int mtrl_btn_text_color_selector = 2131034213;
 			
 			// aapt resource value: 0x7F050066
-			public const int mtrl_chip_background_color = 2131034214;
+			public const int mtrl_btn_transparent_bg_color = 2131034214;
 			
 			// aapt resource value: 0x7F050067
-			public const int mtrl_chip_close_icon_tint = 2131034215;
+			public const int mtrl_chip_background_color = 2131034215;
 			
 			// aapt resource value: 0x7F050068
-			public const int mtrl_chip_ripple_color = 2131034216;
+			public const int mtrl_chip_close_icon_tint = 2131034216;
 			
 			// aapt resource value: 0x7F050069
-			public const int mtrl_chip_text_color = 2131034217;
+			public const int mtrl_chip_ripple_color = 2131034217;
 			
 			// aapt resource value: 0x7F05006A
-			public const int mtrl_fab_ripple_color = 2131034218;
+			public const int mtrl_chip_text_color = 2131034218;
 			
 			// aapt resource value: 0x7F05006B
-			public const int mtrl_scrim_color = 2131034219;
+			public const int mtrl_fab_ripple_color = 2131034219;
 			
 			// aapt resource value: 0x7F05006C
-			public const int mtrl_tabs_colored_ripple_color = 2131034220;
+			public const int mtrl_scrim_color = 2131034220;
 			
 			// aapt resource value: 0x7F05006D
-			public const int mtrl_tabs_icon_color_selector = 2131034221;
+			public const int mtrl_tabs_colored_ripple_color = 2131034221;
 			
 			// aapt resource value: 0x7F05006E
-			public const int mtrl_tabs_icon_color_selector_colored = 2131034222;
+			public const int mtrl_tabs_icon_color_selector = 2131034222;
 			
 			// aapt resource value: 0x7F05006F
-			public const int mtrl_tabs_legacy_text_color_selector = 2131034223;
+			public const int mtrl_tabs_icon_color_selector_colored = 2131034223;
 			
 			// aapt resource value: 0x7F050070
-			public const int mtrl_tabs_ripple_color = 2131034224;
-			
-			// aapt resource value: 0x7F050072
-			public const int mtrl_textinput_default_box_stroke_color = 2131034226;
-			
-			// aapt resource value: 0x7F050073
-			public const int mtrl_textinput_disabled_color = 2131034227;
-			
-			// aapt resource value: 0x7F050074
-			public const int mtrl_textinput_filled_box_default_background_color = 2131034228;
-			
-			// aapt resource value: 0x7F050075
-			public const int mtrl_textinput_hovered_box_stroke_color = 2131034229;
+			public const int mtrl_tabs_legacy_text_color_selector = 2131034224;
 			
 			// aapt resource value: 0x7F050071
-			public const int mtrl_text_btn_text_color_selector = 2131034225;
+			public const int mtrl_tabs_ripple_color = 2131034225;
+			
+			// aapt resource value: 0x7F050073
+			public const int mtrl_textinput_default_box_stroke_color = 2131034227;
+			
+			// aapt resource value: 0x7F050074
+			public const int mtrl_textinput_disabled_color = 2131034228;
+			
+			// aapt resource value: 0x7F050075
+			public const int mtrl_textinput_filled_box_default_background_color = 2131034229;
 			
 			// aapt resource value: 0x7F050076
-			public const int notification_action_color_filter = 2131034230;
+			public const int mtrl_textinput_hovered_box_stroke_color = 2131034230;
+			
+			// aapt resource value: 0x7F050072
+			public const int mtrl_text_btn_text_color_selector = 2131034226;
 			
 			// aapt resource value: 0x7F050077
-			public const int notification_icon_bg_color = 2131034231;
+			public const int notification_action_color_filter = 2131034231;
 			
 			// aapt resource value: 0x7F050078
-			public const int notification_material_background_media_default_color = 2131034232;
+			public const int notification_icon_bg_color = 2131034232;
 			
 			// aapt resource value: 0x7F050079
-			public const int primary_dark_material_dark = 2131034233;
+			public const int notification_material_background_media_default_color = 2131034233;
 			
 			// aapt resource value: 0x7F05007A
-			public const int primary_dark_material_light = 2131034234;
+			public const int primary_dark_material_dark = 2131034234;
 			
 			// aapt resource value: 0x7F05007B
-			public const int primary_material_dark = 2131034235;
+			public const int primary_dark_material_light = 2131034235;
 			
 			// aapt resource value: 0x7F05007C
-			public const int primary_material_light = 2131034236;
+			public const int primary_material_dark = 2131034236;
 			
 			// aapt resource value: 0x7F05007D
-			public const int primary_text_default_material_dark = 2131034237;
+			public const int primary_material_light = 2131034237;
 			
 			// aapt resource value: 0x7F05007E
-			public const int primary_text_default_material_light = 2131034238;
+			public const int primary_text_default_material_dark = 2131034238;
 			
 			// aapt resource value: 0x7F05007F
-			public const int primary_text_disabled_material_dark = 2131034239;
+			public const int primary_text_default_material_light = 2131034239;
 			
 			// aapt resource value: 0x7F050080
-			public const int primary_text_disabled_material_light = 2131034240;
+			public const int primary_text_disabled_material_dark = 2131034240;
 			
 			// aapt resource value: 0x7F050081
-			public const int ripple_material_dark = 2131034241;
+			public const int primary_text_disabled_material_light = 2131034241;
 			
 			// aapt resource value: 0x7F050082
-			public const int ripple_material_light = 2131034242;
+			public const int ripple_material_dark = 2131034242;
 			
 			// aapt resource value: 0x7F050083
-			public const int secondary_text_default_material_dark = 2131034243;
+			public const int ripple_material_light = 2131034243;
 			
 			// aapt resource value: 0x7F050084
-			public const int secondary_text_default_material_light = 2131034244;
+			public const int secondary_text_default_material_dark = 2131034244;
 			
 			// aapt resource value: 0x7F050085
-			public const int secondary_text_disabled_material_dark = 2131034245;
+			public const int secondary_text_default_material_light = 2131034245;
 			
 			// aapt resource value: 0x7F050086
-			public const int secondary_text_disabled_material_light = 2131034246;
+			public const int secondary_text_disabled_material_dark = 2131034246;
 			
 			// aapt resource value: 0x7F050087
-			public const int switch_thumb_disabled_material_dark = 2131034247;
+			public const int secondary_text_disabled_material_light = 2131034247;
 			
 			// aapt resource value: 0x7F050088
-			public const int switch_thumb_disabled_material_light = 2131034248;
+			public const int switch_thumb_disabled_material_dark = 2131034248;
 			
 			// aapt resource value: 0x7F050089
-			public const int switch_thumb_material_dark = 2131034249;
+			public const int switch_thumb_disabled_material_light = 2131034249;
 			
 			// aapt resource value: 0x7F05008A
-			public const int switch_thumb_material_light = 2131034250;
+			public const int switch_thumb_material_dark = 2131034250;
 			
 			// aapt resource value: 0x7F05008B
-			public const int switch_thumb_normal_material_dark = 2131034251;
+			public const int switch_thumb_material_light = 2131034251;
 			
 			// aapt resource value: 0x7F05008C
-			public const int switch_thumb_normal_material_light = 2131034252;
+			public const int switch_thumb_normal_material_dark = 2131034252;
 			
 			// aapt resource value: 0x7F05008D
-			public const int tooltip_background_dark = 2131034253;
+			public const int switch_thumb_normal_material_light = 2131034253;
 			
 			// aapt resource value: 0x7F05008E
-			public const int tooltip_background_light = 2131034254;
+			public const int tooltip_background_dark = 2131034254;
+			
+			// aapt resource value: 0x7F05008F
+			public const int tooltip_background_light = 2131034255;
 			
 			static Color()
 			{
@@ -14154,94 +14905,94 @@ namespace RepeatingWords.Droid
 			public const int common_google_signin_btn_icon_dark = 2131165289;
 			
 			// aapt resource value: 0x7F07006A
-			public const int common_google_signin_btn_icon_dark_disabled = 2131165290;
+			public const int common_google_signin_btn_icon_dark_focused = 2131165290;
 			
 			// aapt resource value: 0x7F07006B
-			public const int common_google_signin_btn_icon_dark_focused = 2131165291;
+			public const int common_google_signin_btn_icon_dark_normal = 2131165291;
 			
 			// aapt resource value: 0x7F07006C
-			public const int common_google_signin_btn_icon_dark_normal = 2131165292;
+			public const int common_google_signin_btn_icon_dark_normal_background = 2131165292;
 			
 			// aapt resource value: 0x7F07006D
-			public const int common_google_signin_btn_icon_dark_pressed = 2131165293;
+			public const int common_google_signin_btn_icon_disabled = 2131165293;
 			
 			// aapt resource value: 0x7F07006E
 			public const int common_google_signin_btn_icon_light = 2131165294;
 			
 			// aapt resource value: 0x7F07006F
-			public const int common_google_signin_btn_icon_light_disabled = 2131165295;
+			public const int common_google_signin_btn_icon_light_focused = 2131165295;
 			
 			// aapt resource value: 0x7F070070
-			public const int common_google_signin_btn_icon_light_focused = 2131165296;
+			public const int common_google_signin_btn_icon_light_normal = 2131165296;
 			
 			// aapt resource value: 0x7F070071
-			public const int common_google_signin_btn_icon_light_normal = 2131165297;
+			public const int common_google_signin_btn_icon_light_normal_background = 2131165297;
 			
 			// aapt resource value: 0x7F070072
-			public const int common_google_signin_btn_icon_light_pressed = 2131165298;
+			public const int common_google_signin_btn_text_dark = 2131165298;
 			
 			// aapt resource value: 0x7F070073
-			public const int common_google_signin_btn_text_dark = 2131165299;
+			public const int common_google_signin_btn_text_dark_focused = 2131165299;
 			
 			// aapt resource value: 0x7F070074
-			public const int common_google_signin_btn_text_dark_disabled = 2131165300;
+			public const int common_google_signin_btn_text_dark_normal = 2131165300;
 			
 			// aapt resource value: 0x7F070075
-			public const int common_google_signin_btn_text_dark_focused = 2131165301;
+			public const int common_google_signin_btn_text_dark_normal_background = 2131165301;
 			
 			// aapt resource value: 0x7F070076
-			public const int common_google_signin_btn_text_dark_normal = 2131165302;
+			public const int common_google_signin_btn_text_disabled = 2131165302;
 			
 			// aapt resource value: 0x7F070077
-			public const int common_google_signin_btn_text_dark_pressed = 2131165303;
+			public const int common_google_signin_btn_text_light = 2131165303;
 			
 			// aapt resource value: 0x7F070078
-			public const int common_google_signin_btn_text_light = 2131165304;
+			public const int common_google_signin_btn_text_light_focused = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int common_google_signin_btn_text_light_disabled = 2131165305;
+			public const int common_google_signin_btn_text_light_normal = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int common_google_signin_btn_text_light_focused = 2131165306;
+			public const int common_google_signin_btn_text_light_normal_background = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int common_google_signin_btn_text_light_normal = 2131165307;
+			public const int design_bottom_navigation_item_background = 2131165307;
 			
 			// aapt resource value: 0x7F07007C
-			public const int common_google_signin_btn_text_light_pressed = 2131165308;
+			public const int design_fab_background = 2131165308;
 			
 			// aapt resource value: 0x7F07007D
-			public const int design_bottom_navigation_item_background = 2131165309;
+			public const int design_ic_visibility = 2131165309;
 			
 			// aapt resource value: 0x7F07007E
-			public const int design_fab_background = 2131165310;
+			public const int design_ic_visibility_off = 2131165310;
 			
 			// aapt resource value: 0x7F07007F
-			public const int design_ic_visibility = 2131165311;
+			public const int design_password_eye = 2131165311;
 			
 			// aapt resource value: 0x7F070080
-			public const int design_ic_visibility_off = 2131165312;
+			public const int design_snackbar_background = 2131165312;
 			
 			// aapt resource value: 0x7F070081
-			public const int design_password_eye = 2131165313;
+			public const int entry_cursor = 2131165313;
 			
 			// aapt resource value: 0x7F070082
-			public const int design_snackbar_background = 2131165314;
+			public const int floating_btn_add = 2131165314;
 			
 			// aapt resource value: 0x7F070083
-			public const int entry_cursor = 2131165315;
+			public const int floating_btn_cloud = 2131165315;
 			
 			// aapt resource value: 0x7F070084
-			public const int floating_btn_add = 2131165316;
+			public const int floating_btn_impFile = 2131165316;
 			
 			// aapt resource value: 0x7F070085
-			public const int floating_btn_cloud = 2131165317;
+			public const int floating_btn_learn = 2131165317;
 			
 			// aapt resource value: 0x7F070086
-			public const int floating_btn_impFile = 2131165318;
+			public const int googleg_disabled_color_18 = 2131165318;
 			
 			// aapt resource value: 0x7F070087
-			public const int floating_btn_learn = 2131165319;
+			public const int googleg_standard_color_18 = 2131165319;
 			
 			// aapt resource value: 0x7F07008D
 			public const int icons_cardsbutton = 2131165325;
@@ -15693,73 +16444,97 @@ namespace RepeatingWords.Droid
 			public const int common_google_play_services_install_title = 2131558436;
 			
 			// aapt resource value: 0x7F0D0025
-			public const int common_google_play_services_notification_ticker = 2131558437;
+			public const int common_google_play_services_notification_channel_name = 2131558437;
 			
 			// aapt resource value: 0x7F0D0026
-			public const int common_google_play_services_unknown_issue = 2131558438;
+			public const int common_google_play_services_notification_ticker = 2131558438;
 			
 			// aapt resource value: 0x7F0D0027
-			public const int common_google_play_services_unsupported_text = 2131558439;
+			public const int common_google_play_services_unknown_issue = 2131558439;
 			
 			// aapt resource value: 0x7F0D0028
-			public const int common_google_play_services_update_button = 2131558440;
+			public const int common_google_play_services_unsupported_text = 2131558440;
 			
 			// aapt resource value: 0x7F0D0029
-			public const int common_google_play_services_update_text = 2131558441;
+			public const int common_google_play_services_update_button = 2131558441;
 			
 			// aapt resource value: 0x7F0D002A
-			public const int common_google_play_services_update_title = 2131558442;
+			public const int common_google_play_services_update_text = 2131558442;
 			
 			// aapt resource value: 0x7F0D002B
-			public const int common_google_play_services_updating_text = 2131558443;
+			public const int common_google_play_services_update_title = 2131558443;
 			
 			// aapt resource value: 0x7F0D002C
-			public const int common_google_play_services_wear_update_text = 2131558444;
+			public const int common_google_play_services_updating_text = 2131558444;
 			
 			// aapt resource value: 0x7F0D002D
-			public const int common_open_on_phone = 2131558445;
+			public const int common_google_play_services_wear_update_text = 2131558445;
 			
 			// aapt resource value: 0x7F0D002E
-			public const int common_signin_button_text = 2131558446;
+			public const int common_open_on_phone = 2131558446;
 			
 			// aapt resource value: 0x7F0D002F
-			public const int common_signin_button_text_long = 2131558447;
+			public const int common_signin_button_text = 2131558447;
 			
 			// aapt resource value: 0x7F0D0030
-			public const int fab_transformation_scrim_behavior = 2131558448;
+			public const int common_signin_button_text_long = 2131558448;
 			
 			// aapt resource value: 0x7F0D0031
-			public const int fab_transformation_sheet_behavior = 2131558449;
+			public const int fab_transformation_scrim_behavior = 2131558449;
 			
 			// aapt resource value: 0x7F0D0032
-			public const int hide_bottom_view_on_scroll_behavior = 2131558450;
+			public const int fab_transformation_sheet_behavior = 2131558450;
 			
 			// aapt resource value: 0x7F0D0033
-			public const int library_name = 2131558451;
+			public const int hide_bottom_view_on_scroll_behavior = 2131558451;
 			
 			// aapt resource value: 0x7F0D0034
-			public const int mtrl_chip_close_icon_content_description = 2131558452;
+			public const int library_name = 2131558452;
 			
 			// aapt resource value: 0x7F0D0035
-			public const int password_toggle_content_description = 2131558453;
+			public const int mtrl_chip_close_icon_content_description = 2131558453;
 			
 			// aapt resource value: 0x7F0D0036
-			public const int path_password_eye = 2131558454;
+			public const int password_toggle_content_description = 2131558454;
 			
 			// aapt resource value: 0x7F0D0037
-			public const int path_password_eye_mask_strike_through = 2131558455;
+			public const int path_password_eye = 2131558455;
 			
 			// aapt resource value: 0x7F0D0038
-			public const int path_password_eye_mask_visible = 2131558456;
+			public const int path_password_eye_mask_strike_through = 2131558456;
 			
 			// aapt resource value: 0x7F0D0039
-			public const int path_password_strike_through = 2131558457;
+			public const int path_password_eye_mask_visible = 2131558457;
 			
 			// aapt resource value: 0x7F0D003A
-			public const int search_menu_title = 2131558458;
+			public const int path_password_strike_through = 2131558458;
 			
 			// aapt resource value: 0x7F0D003B
-			public const int status_bar_notification_info_overflow = 2131558459;
+			public const int s1 = 2131558459;
+			
+			// aapt resource value: 0x7F0D003C
+			public const int s2 = 2131558460;
+			
+			// aapt resource value: 0x7F0D003D
+			public const int s3 = 2131558461;
+			
+			// aapt resource value: 0x7F0D003E
+			public const int s4 = 2131558462;
+			
+			// aapt resource value: 0x7F0D003F
+			public const int s5 = 2131558463;
+			
+			// aapt resource value: 0x7F0D0040
+			public const int s6 = 2131558464;
+			
+			// aapt resource value: 0x7F0D0041
+			public const int s7 = 2131558465;
+			
+			// aapt resource value: 0x7F0D0042
+			public const int search_menu_title = 2131558466;
+			
+			// aapt resource value: 0x7F0D0043
+			public const int status_bar_notification_info_overflow = 2131558467;
 			
 			static String()
 			{

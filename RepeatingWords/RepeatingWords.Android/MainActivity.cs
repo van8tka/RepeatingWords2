@@ -26,21 +26,20 @@ namespace RepeatingWords.Droid
      
 
         public static bool HasPermissionToReadWriteExternalStorage = false;
-        private const string APPLICATION_CODE = "ca-app-pub-5993977371632312~7094124560";
+      //  private const string APPLICATION_CODE = "ca-app-pub-5993977371632312~7094124560";
 
         protected override void OnCreate(Bundle bundle)
         {
             Android.Support.V7.App.AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
             base.OnCreate(bundle);
             Instance = this;
-            global::Xamarin.Forms.Forms.Init(this, bundle);          
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+         //   Android.Gms.Ads.MobileAds.Initialize(this, APPLICATION_CODE);
             Task.Run(() =>
             {
                 //проверка наличия разрешения
                 CheckPermissionForStorage();
-                Android.Gms.Ads.MobileAds.Initialize(ApplicationContext, APPLICATION_CODE);
                 UserDialogs.Init(this);
-                //UserDialogs.Init(() => (Android.App.Activity)Forms.Context);
             });
             FormsControls.Droid.Main.Init(this);
             LoadApplication(new App( new SQLite_Android()));                   
