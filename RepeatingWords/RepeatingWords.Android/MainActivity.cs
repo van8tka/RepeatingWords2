@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Android;
@@ -11,22 +10,18 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Support.V7.Widget;
-using Xamarin.Forms;
 using RepeatingWords.LoggerService;
 
 namespace RepeatingWords.Droid
 {
+ 
 
-    [Activity(Label = "Cards of words", MainLauncher = true, Theme = "@style/MyTheme.Splash", Icon = "@mipmap/icon", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+[Activity(Label = "Cards of words", MainLauncher = true, Theme = "@style/MyTheme.Splash", Icon = "@mipmap/icon", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     //для установки SplashScreen обязательно использовать FormsAppCompatActivity а не FormsApplicationActivity
     public partial class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, GoogleApiClient.IConnectionCallbacks, IResultCallback, IDriveApiDriveContentsResult
     {
-
         internal static MainActivity Instance { get; private set; }
-     
-
         public static bool HasPermissionToReadWriteExternalStorage = false;
-      //  private const string APPLICATION_CODE = "ca-app-pub-5993977371632312~7094124560";
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -34,7 +29,6 @@ namespace RepeatingWords.Droid
             base.OnCreate(bundle);
             Instance = this;
             global::Xamarin.Forms.Forms.Init(this, bundle);
-         //   Android.Gms.Ads.MobileAds.Initialize(this, APPLICATION_CODE);
             Task.Run(() =>
             {
                 //проверка наличия разрешения
@@ -42,7 +36,7 @@ namespace RepeatingWords.Droid
                 UserDialogs.Init(this);
             });
             FormsControls.Droid.Main.Init(this);
-            LoadApplication(new App( new SQLite_Android()));                   
+            LoadApplication(new App( new SQLite_Android()));
         }
         
         //код получения разрешения

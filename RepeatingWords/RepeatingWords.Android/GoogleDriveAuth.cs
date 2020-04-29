@@ -59,7 +59,7 @@ namespace RepeatingWords.Droid
                 CreateGoogleClient();
                 RunBackupOrRestore();
             }
-            catch (Exception e){ CreateAlertDialog("", "58 Error GoogleCustomAuthorithation: " + e.Message);}
+            catch (Exception e){ CreateAlertDialog("", "Error GoogleAuthorithation: " + e.Message);}
         }
 
         private void CreateGoogleClient()
@@ -68,7 +68,6 @@ namespace RepeatingWords.Droid
             {
                 if (_googleApiClient == null)
                 {
-                    CreateAlertDialog("", "63 CreateGoogleClient");
                     _googleApiClient = new GoogleApiClient.Builder(this)
                         .AddApi(DriveClass.API)
                         .AddScope(DriveClass.ScopeFile)
@@ -89,13 +88,11 @@ namespace RepeatingWords.Droid
             {
                 if (!_googleApiClient.IsConnected)
                 {
-                    CreateAlertDialog("", "85 RunBackupOrRestore _googleApiClient.Connect()");
-                    _googleApiClient.Connect();
+                   _googleApiClient.Connect();
                 }
                 else
                 {
-                    CreateAlertDialog("", "90 RunBackupOrRestore DoWorkBackupOrRestore");
-                    DoWorkBackupOrRestore(_contentResults);
+                   DoWorkBackupOrRestore(_contentResults);
                 }
             }
             catch (Exception e)
@@ -112,14 +109,12 @@ namespace RepeatingWords.Droid
             CreateAlertDialog("", "105 onConnectionFailed ");
             if (!result.HasResolution)
             {
-                CreateAlertDialog("", "108 ConnectionResult "+result.ErrorMessage);
-                GoogleApiAvailability.Instance.GetErrorDialog(this, result.ErrorCode, 0).Show();
+              GoogleApiAvailability.Instance.GetErrorDialog(this, result.ErrorCode, 0).Show();
                 return;
             }
             try
             {
-                CreateAlertDialog("", "114 StartResolutionForResult");
-                result.StartResolutionForResult(this, REQUEST_CODE_RESOLUTION);
+              result.StartResolutionForResult(this, REQUEST_CODE_RESOLUTION);
             }
             catch (IntentSender.SendIntentException e)
             {
@@ -131,32 +126,28 @@ namespace RepeatingWords.Droid
         //подключаемся к Google диску
         public void OnConnected(Bundle connectionHint)
         {
-            CreateAlertDialog("", "127 OnConnected");
-            DriveClass.DriveApi.NewDriveContents(_googleApiClient).SetResultCallback(this);
+           DriveClass.DriveApi.NewDriveContents(_googleApiClient).SetResultCallback(this);
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            CreateAlertDialog("", $"133 OnActivityResult resultCode = {resultCode.ToString()} (must = 3)");
-            base.OnActivityResult(requestCode, resultCode, data);
+          base.OnActivityResult(requestCode, resultCode, data);
             if (requestCode == REQUEST_CODE_RESOLUTION)
             {
                 switch (resultCode)
                 {
                     case Result.Ok:
-                        CreateAlertDialog("", "140 Ok");
-                        _googleApiClient.Connect();
+                     _googleApiClient.Connect();
                         break;
                     case Result.Canceled:
-                        CreateAlertDialog("", "144 Canceled");
+                        CreateAlertDialog("", "Canceled");
                       //  CreateAlertDialog("", errorMessage);
                         break;
                     case Result.FirstUser:
-                        CreateAlertDialog("", "148 FirstUser");
-                      //  CreateAlertDialog("", errorMessage);
+                       //  CreateAlertDialog("", errorMessage);
                         break;
                     default:
-                        CreateAlertDialog("", "152 Error" + errorMessage);
+                        CreateAlertDialog("", "Error" + errorMessage);
                         return;
                 }
             }
@@ -165,8 +156,7 @@ namespace RepeatingWords.Droid
         //если удачно авторизовались 
         void IResultCallback.OnResult(Java.Lang.Object result)
         {
-            CreateAlertDialog("", "161 IResultCallback.OnResult - invoke DoWork..");
-            _contentResults = (result).JavaCast<IDriveApiDriveContentsResult>();
+           _contentResults = (result).JavaCast<IDriveApiDriveContentsResult>();
             DoWorkBackupOrRestore(_contentResults);
         }
 
@@ -272,16 +262,6 @@ namespace RepeatingWords.Droid
 
             _dialogService.ShowToast(message);
              Thread.Sleep(1000);
-             //RunOnUiThread(() =>
-             //{
-             //    AlertDialog.Builder builder;
-             //    builder = new AlertDialog.Builder(this);
-             //    builder.SetTitle(title);
-             //    builder.SetMessage(message);
-             //    builder.SetCancelable(false);
-             //    builder.SetPositiveButton("OK", delegate { });
-             //    builder.Show();
-             //});
         }
 
 
