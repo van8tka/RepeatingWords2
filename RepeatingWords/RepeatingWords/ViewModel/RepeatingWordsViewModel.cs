@@ -248,7 +248,6 @@ namespace RepeatingWords.ViewModel
                 var wordsList = GetWordsCollection(_dictionary);
                 ShakeWordsCollection(wordsList);
                 Model.IsFromNative = _showLanguageService.GetFirstLanguage();
-                Model.WordsLearningAll = wordsList.ToList();
                 await ShowLearningCards();
                 SpeackerLang = _speechService.Language;
                 await base.InitializeAsync(navigationData);
