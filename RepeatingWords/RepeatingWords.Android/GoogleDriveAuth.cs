@@ -106,10 +106,10 @@ namespace RepeatingWords.Droid
         //если ошибка подключения
         private void onConnectionFailed(ConnectionResult result)
         {
-            CreateAlertDialog("", "105 onConnectionFailed ");
             if (!result.HasResolution)
             {
-              GoogleApiAvailability.Instance.GetErrorDialog(this, result.ErrorCode, 0).Show();
+                CreateAlertDialog("", "105 onConnectionFailed ");
+                GoogleApiAvailability.Instance.GetErrorDialog(this, result.ErrorCode, 0).Show();
                 return;
             }
             try
