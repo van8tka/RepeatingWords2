@@ -16,13 +16,13 @@ namespace RepeatingWords.Droid
         {
             Log.Logger.Info("Get path to db");
             string newPathDb = MainActivity.Instance.GetDatabasePath(filename).AbsolutePath;
-            try {
-              
+            try
+            {
                 Log.Logger.Info("Standart path to db: " + newPathDb);
                 string olderPathDb = null;
                 if (IsDbInOtherPath(oldDbName, ref olderPathDb))
                 {
-                    Log.Logger.Info("Older path to db is EXIST ");
+                    Log.Logger.Info("Old path to db is EXIST ");
                     CopyToStandartAndroidDbPath(newPathDb, olderPathDb);
                 }
                 return newPathDb;
@@ -56,14 +56,14 @@ namespace RepeatingWords.Droid
             try
             {
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                string path = Path.Combine(documentsPath, filename);
-                Log.Logger.Info("Older path to db: " + path);
+                string path = Path.Combine(documentsPath, ".local/share/" + filename);
+                Log.Logger.Info("Old path to db: " + path);
                 olderPathDb = path;
                 return File.Exists(path);
             }
             catch (Exception er)
             {
-                Log.Logger.Error("Error get older path to DB"+er.Message);
+                Log.Logger.Error("Error get old path to DB"+er.Message);
                 throw;
             }
         }
