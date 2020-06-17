@@ -49,7 +49,7 @@
         <ContentView x:Name="cvWorkSpaceContainer" Content="{Binding WorkSpaceView}" VerticalOptions="FillAndExpand" Padding="20" HorizontalOptions="FillAndExpand"/>
 
         <StackLayout VerticalOptions="End">
-        <local:AdMobView HeightRequest="50" />
+        <!--<local:AdMobView HeightRequest="50" />-->
             <StackLayout  Style="{DynamicResource BottomBarStyle}" >
                 <BoxView HeightRequest="2" BackgroundColor="#CFCFCF" Margin="-5,-5,-5,0"/>
                 <Grid HorizontalOptions="End">

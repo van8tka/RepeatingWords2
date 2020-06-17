@@ -44,14 +44,14 @@
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
-    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
@@ -65,8 +65,8 @@
     <AndroidDexTool>d8</AndroidDexTool>
     <JavaMaximumHeapSize>
     </JavaMaximumHeapSize>
-    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
-    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidUseAapt2>false</AndroidUseAapt2>
     <AndroidKeyStore>false</AndroidKeyStore>
     <AndroidSigningKeyStore>
     </AndroidSigningKeyStore>
@@ -109,9 +109,6 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>4.6.0.616-pre4</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
-      <Version>71.1720.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.GooglePlayServices.Drive">
       <Version>71.1600.0</Version>

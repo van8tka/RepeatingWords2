@@ -12,7 +12,7 @@ namespace RepeatingWords.View
         {
             InitializeComponent();
             //fullscreen advertizing
-            DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/4024752876");
+            //  DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/4024752876");
             BindingContext = LocatorService.Container.GetInstance<SettingsViewModel>();
         }
         public IPageAnimation PageAnimation { get; } = new SlidePageAnimation { Duration = AnimationDuration.Short, Subtype = AnimationSubtype.FromRight };
