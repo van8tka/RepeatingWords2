@@ -10,7 +10,10 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Support.V7.Widget;
+using RepeatingWords.Droid.LoggerService;
+using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
+using Xamarin.Forms;
 
 namespace RepeatingWords.Droid
 {
@@ -36,7 +39,10 @@ namespace RepeatingWords.Droid
                 UserDialogs.Init(this);
             });
             FormsControls.Droid.Main.Init(this);
-            LoadApplication(new App( new SQLite_Android()));
+            var logManager = new NLogManager().GetLog();
+            var log = new Log(logManager);
+            logManager.Info("____NEW SESSION CARDS OF WORDS___");
+            LoadApplication(new App(new SQLite_Android(), log));
         }
         
         //код получения разрешения

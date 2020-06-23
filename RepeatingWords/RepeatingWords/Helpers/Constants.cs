@@ -6,7 +6,8 @@ namespace RepeatingWords.Heleprs
     internal class Constants
     {
         // as this constants has DataService
-        internal const string DATABASE_NAME = "repeatwords_v_1.db";
+        internal const string DATABASE_NAME = "repeatwords.db";
+     //   internal const string DATABASE_NAME = "repeatwords_v_1.db";
         internal const string LOCAL_FOLDER_BACKUP = "CardsOfWordsBackup";
 
         internal const string THEME = "theme";

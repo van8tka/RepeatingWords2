@@ -15,11 +15,12 @@ namespace RepeatingWords.Services
 
         public static Container Container { get; private set; }
 
-        internal static Container Boot(ISQLite sqlitePath)
+        internal static Container Boot(ISQLite sqlitePath, Log log)
         {
             var _container = new Container();
-            _container.RegisterInstance(typeof(ISQLite), sqlitePath);     
-            _container.RegisterInstance(typeof(ILoggerService),new Log(DependencyService.Get<ILogManager>().GetLog()));
+            _container.RegisterInstance(typeof(ISQLite), sqlitePath);
+          //  var log = new Log(DependencyService.Get<ILogManager>().GetLog());
+            _container.RegisterInstance(typeof(ILoggerService),log);
             var unitOfWork = new UnitOfWork(sqlitePath);
             var initDb = new InitDefaultDb(unitOfWork);
             _container.RegisterInstance(typeof(IUnitOfWork), unitOfWork);

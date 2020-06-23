@@ -25,6 +25,8 @@ namespace RepeatingWords.Droid
                     Log.Logger.Info("Old path to db is EXIST ");
                     CopyToStandartAndroidDbPath(newPathDb, olderPathDb);
                 }
+                else
+                    Log.Logger.Info("Old path to db is NOT EXIST ");
                 return newPathDb;
             }
             catch (Exception er)
@@ -56,7 +58,7 @@ namespace RepeatingWords.Droid
             try
             {
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                string path = Path.Combine(documentsPath, ".local/share/" + filename);
+                string path = Path.Combine(documentsPath, filename);
                 Log.Logger.Info("Old path to db: " + path);
                 olderPathDb = path;
                 return File.Exists(path);

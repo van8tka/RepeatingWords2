@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using NLog.Config;
 using NLog.Targets;
@@ -12,7 +13,7 @@ namespace RepeatingWords.Droid.LoggerService
 {
     public class NLogManager : ILogManager
     {
-        private string LOG_FILE_NAME = "log_cardsofwords.txt";
+        private string LOG_FILE_NAME = "_log_cardsofwords.txt";
 
         public NLogManager()
         {
@@ -46,11 +47,22 @@ namespace RepeatingWords.Droid.LoggerService
         private void FileConfigurationLogger(LoggingConfiguration config)
         {
             var fileTarget = new FileTarget();
-            var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            fileTarget.FileName = Path.Combine(folder, LOG_FILE_NAME);
+            var folder = MainActivity.Instance.ApplicationContext.GetExternalFilesDirs(null).FirstOrDefault()?.Parent;
+            string dirLogPath = Path.Combine(folder, "CardsOfWordsLogs");
+            if (!Directory.Exists(dirLogPath))
+                Directory.CreateDirectory(dirLogPath);
+            string filePathLog = Path.Combine(dirLogPath, DateTime.Now.ToString("dd_MM_yyyy") + LOG_FILE_NAME);
+            fileTarget.FileName = filePathLog;
+            if(!File.Exists(filePathLog))
+                File.Create(filePathLog);
             config.AddTarget("file", fileTarget);
-            var fileRule = new LoggingRule("*", NLog.LogLevel.Warn, fileTarget);
-            config.LoggingRules.Add(fileRule);
+            LoggingRule rule;
+#if RELEASE
+        rule = new LoggingRule("*", NLog.LogLevel.Error, fileTarget);     
+#else 
+        rule = new LoggingRule("*", NLog.LogLevel.Info, fileTarget);     
+#endif
+            config.LoggingRules.Add(rule);
         }
 
         private void ConsoleConfigurationLogger(LoggingConfiguration config)

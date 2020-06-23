@@ -8,6 +8,7 @@ using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.Services;
 using RepeatingWords.ViewModel;
 using Xamarin.Forms.Xaml;
+using RepeatingWords.LoggerService;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace RepeatingWords
@@ -15,10 +16,10 @@ namespace RepeatingWords
     public partial class App : Application
     {
            //ctor   
-        public App(ISQLite sqlitePath)
+        public App(ISQLite sqlitePath, Log log)
         {           
             InitializeComponent();
-            _container = LocatorService.Boot(sqlitePath);
+            _container = LocatorService.Boot(sqlitePath, log);
         }
 
         private Container _container;
