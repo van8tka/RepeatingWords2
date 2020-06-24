@@ -53,8 +53,9 @@ namespace RepeatingWords.ViewModel
                 else
                 {
                     CounterShowWord(isFirstShowAfterLoad);
-                    await _dialogService.ShowAlertDialog(Resource.ModalFinishWords, Resource.Continue);
-                    await _navigationService.GoBackPage();
+                    int unlearned = Model.AllOpenedWordsCount;
+                    int learned = Model.AllShowedWordsCount - unlearned;
+                    await _navigationService.NavigateToAsync<FinishLearnViewModel>(new Tuple<int, int>(learned, unlearned));
                 }
             }
             catch (Exception e)

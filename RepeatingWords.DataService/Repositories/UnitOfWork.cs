@@ -7,7 +7,6 @@ namespace RepeatingWords.DataService.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-      
         public UnitOfWork(ISQLite sqlite)
         {
             _dbpath = sqlite.GetDatabasePath(DATABASE_NAME);

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="cardsofwords.cardsofwords" android:versionName="2.16" android:versionCode="36">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="cardsofwords.cardsofwords" android:versionName="2.17" android:versionCode="37">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
 	<application android:label="Cards of words" android:icon="@mipmap/icon" android:name="android.support.multidex.MultiDexApplication">
 		<meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-5993977371632312~7094124560" />

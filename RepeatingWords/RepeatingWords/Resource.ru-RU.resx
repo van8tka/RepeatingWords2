@@ -462,4 +462,22 @@
   <data name="screen4" xml:space="preserve">
     <value>picture4ru.png</value>
   </data>
+  <data name="BtnLearnMore" xml:space="preserve">
+    <value>Давайте учить ещё!</value>
+  </data>
+  <data name="LbAdvertizing" xml:space="preserve">
+    <value>Реклама помогает сделать наше приложение бесплатным.</value>
+  </data>
+  <data name="LbCongratulations" xml:space="preserve">
+    <value>Поздравляем!</value>
+  </data>
+  <data name="LbFinishStudied" xml:space="preserve">
+    <value>Вы закончили изучать слова.</value>
+  </data>
+  <data name="LbLearnedCount" xml:space="preserve">
+    <value>Выученные слова: </value>
+  </data>
+  <data name="LbUnlearnedCount" xml:space="preserve">
+    <value>Невыученные слова: </value>
+  </data>
 </root>

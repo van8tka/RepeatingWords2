@@ -464,4 +464,22 @@
   <data name="screen4" xml:space="preserve">
     <value>picture4en.png</value>
   </data>
+  <data name="BtnLearnMore" xml:space="preserve">
+    <value>Let's learn more</value>
+  </data>
+  <data name="LbAdvertizing" xml:space="preserve">
+    <value>Advertizing helps to make our app is free.</value>
+  </data>
+  <data name="LbCongratulations" xml:space="preserve">
+    <value>Congratulations!</value>
+  </data>
+  <data name="LbFinishStudied" xml:space="preserve">
+    <value>You're done learning words.</value>
+  </data>
+  <data name="LbLearnedCount" xml:space="preserve">
+    <value>Learned words: </value>
+  </data>
+  <data name="LbUnlearnedCount" xml:space="preserve">
+    <value>Unlearned words: </value>
+  </data>
 </root>

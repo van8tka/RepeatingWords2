@@ -196,6 +196,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s learn more.
+        /// </summary>
+        public static string BtnLearnMore {
+            get {
+                return ResourceManager.GetString("BtnLearnMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About app.
         /// </summary>
         public static string ButtonAbout {
@@ -633,6 +642,51 @@ namespace RepeatingWords {
         public static string LabelTranscription {
             get {
                 return ResourceManager.GetString("LabelTranscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advertizing helps to make our app is free..
+        /// </summary>
+        public static string LbAdvertizing {
+            get {
+                return ResourceManager.GetString("LbAdvertizing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congratulations!.
+        /// </summary>
+        public static string LbCongratulations {
+            get {
+                return ResourceManager.GetString("LbCongratulations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re done learning words..
+        /// </summary>
+        public static string LbFinishStudied {
+            get {
+                return ResourceManager.GetString("LbFinishStudied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learned words: .
+        /// </summary>
+        public static string LbLearnedCount {
+            get {
+                return ResourceManager.GetString("LbLearnedCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlearned words: .
+        /// </summary>
+        public static string LbUnlearnedCount {
+            get {
+                return ResourceManager.GetString("LbUnlearnedCount", resourceCulture);
             }
         }
         

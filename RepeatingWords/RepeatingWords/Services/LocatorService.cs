@@ -53,11 +53,13 @@ namespace RepeatingWords.Services
             _container.Register(typeof(RepeatingWordsViewModel));
             _container.Register(typeof(CreateWordViewModel));
             _container.Register(typeof(EntryTranscriptionViewModel));
+            _container.Register(typeof(FinishLearnViewModel));
             //must befor RepeatingWords
             _container.Register(typeof(WorkSpaceCardsViewModel));
             _container.Register(typeof(WorkSpaceEnterWordViewModel));
             _container.Register(typeof(WorkSpaceSelectWordViewModel));                     
             _container.Register(typeof(VolumeLanguagesViewModel));
+           
             Container = _container;
             return _container;
         }
