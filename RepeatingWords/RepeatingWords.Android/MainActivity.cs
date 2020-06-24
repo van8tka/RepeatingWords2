@@ -9,11 +9,10 @@ using Android.Gms.Drive;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
-using Android.Support.V7.Widget;
+using AndroidX.AppCompat.Widget;
 using RepeatingWords.Droid.LoggerService;
-using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
-using Xamarin.Forms;
+ 
 
 namespace RepeatingWords.Droid
 {
@@ -28,7 +27,7 @@ namespace RepeatingWords.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
-            Android.Support.V7.App.AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
+            AndroidX.AppCompat.App.AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
             base.OnCreate(bundle);
             Instance = this;
             global::Xamarin.Forms.Forms.Init(this, bundle);
@@ -38,6 +37,8 @@ namespace RepeatingWords.Droid
                 CheckPermissionForStorage();
                 UserDialogs.Init(this);
             });
+            //!!!REMOVE Nuget Packages AnimationNavigationPage
+            //Build and Reference library on  E:\Visual\AnimationNavigationPage called FormsControls.Base and .Droid
             FormsControls.Droid.Main.Init(this);
             var logManager = new NLogManager().GetLog();
             var log = new Log(logManager);

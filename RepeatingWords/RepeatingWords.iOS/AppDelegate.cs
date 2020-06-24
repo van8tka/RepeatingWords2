@@ -23,7 +23,8 @@ namespace RepeatingWords.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App(new SQLite_iOS()));
+            //LoadApplication(new App(new SQLite_iOS()));
+            LoadApplication(null);
             return base.FinishedLaunching(app, options);
         }
     }
