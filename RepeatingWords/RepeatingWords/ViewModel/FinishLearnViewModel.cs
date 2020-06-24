@@ -83,6 +83,9 @@ namespace RepeatingWords.ViewModel
             await _animationService.AnimationFade(VUnlerned, 1,250);
             await Task.Delay(350);
             await _animationService.AnimationFade(VLearnMore, 1, 250);
+            await Task.Delay(350);
+            //fullscreen advertizing  
+            DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/4024752876");
         }
     }
 }

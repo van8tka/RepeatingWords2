@@ -44,7 +44,7 @@ namespace RepeatingWords.Services
                 {
                     return Preferences.Get(Constants.VOLUME_LANGUAGE, "");
                 }
-                var currentLocale = Locales?.Where(x => x.Country == "GB").FirstOrDefault();
+                var currentLocale = Locales?.FirstOrDefault();
                 if (currentLocale == null)
                     throw new ArgumentNullException(nameof(currentLocale));
                 Preferences.Set(Constants.VOLUME_LANGUAGE, currentLocale.Name);

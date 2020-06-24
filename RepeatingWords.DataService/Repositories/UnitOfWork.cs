@@ -30,12 +30,14 @@ namespace RepeatingWords.DataService.Repositories
 
         public void CommitTransaction()
         {
-            _dbContext.Database.CommitTransaction();
+            if(_dbContext.Database.CurrentTransaction!=null)
+                _dbContext.Database.CommitTransaction();
         }
 
         public void RollBackTransaction()
         {
-            _dbContext.Database.RollbackTransaction();
+            if (_dbContext.Database.CurrentTransaction != null)
+                _dbContext.Database.RollbackTransaction();
         }
 
 

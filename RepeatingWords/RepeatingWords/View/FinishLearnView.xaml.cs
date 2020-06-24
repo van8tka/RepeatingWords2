@@ -16,8 +16,6 @@ namespace RepeatingWords.View
     public FinishLearnView()
     {
         InitializeComponent();
-        //fullscreen advertizing
-        //  DependencyService.Get<IAdmobInterstitial>().Show("ca-app-pub-5993977371632312/4024752876");
         var vm =    LocatorService.Container.GetInstance<FinishLearnViewModel>();
         vm.VCongratulation = stCongratulation;
         vm.VLearned = lbLearned;
