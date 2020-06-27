@@ -4,6 +4,7 @@ using Acr.UserDialogs;
 using Android;
 using Android.App;
 using Android.Content.PM;
+using Android.Gms.Ads;
 using Android.Gms.Common.Apis;
 using Android.Gms.Drive;
 using Android.OS;
@@ -27,6 +28,7 @@ namespace RepeatingWords.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
+            LinkerPleaseInclude();
             AndroidX.AppCompat.App.AppCompatDelegate.CompatVectorFromResourcesEnabled = true;
             base.OnCreate(bundle);
             Instance = this;
@@ -97,10 +99,16 @@ namespace RepeatingWords.Droid
         static bool falseflag = false;
         static void LinkerPleaseInclude()
         {
+            MobileAdsInitProvider intiPr;
+            string tt;
             if (falseflag)
             {
                 var ignore = new FitWindowsLinearLayout(Android.App.Application.Context);
+                intiPr = new MobileAdsInitProvider();
+                tt = intiPr.CallingPackage;
             }
+
+           
         }
     }
 }
