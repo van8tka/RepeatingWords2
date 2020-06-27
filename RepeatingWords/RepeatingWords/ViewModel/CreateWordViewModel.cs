@@ -19,12 +19,13 @@ namespace RepeatingWords.ViewModel
         {
             _keyboardService = keyboardService;
             _studyService = studyService;
-            SendCommand = new Command(SendWord);
-            FocusedTranscriptionCommand = new Command( async()=> await FocusedTranscription());
+            SendCommand = new Command(async()=>await SendWord());
+            FocusedTranscriptionCommand = new Command(async()=>await FocusedTranscription());
         }
       
-        public override Task InitializeAsync(object navigationData)
+        public override async Task InitializeAsync(object navigationData)
         {
+            Log.Logger.Info("\n InitializeAsync CreateWordViewModel");
             IsBusy = true;
             if (navigationData is WordsModel word)
             {
@@ -51,7 +52,7 @@ namespace RepeatingWords.ViewModel
                 _isChangeWord = false;
             }
             MessagingCenter.Send<CreateWordViewModel>(this, "SetFocus");
-            return base.InitializeAsync(navigationData);
+            await base.InitializeAsync(navigationData);
         }
 
         private bool _isChangeWord { get; set; }
@@ -73,10 +74,11 @@ namespace RepeatingWords.ViewModel
         public ICommand SendCommand { get; set; }
         public ICommand FocusedTranscriptionCommand { get; set; }
 
-        private async void SendWord()
+        private async Task SendWord()
         {
             try
-            {               
+            {
+                Log.Logger.Info("\n Send new word");
                 string ModelNoFillFull = Resource.ModelNoFillFull;
                 if (!String.IsNullOrEmpty(NativeWord) && !String.IsNullOrEmpty(TranslateWord))
                 {
@@ -91,7 +93,8 @@ namespace RepeatingWords.ViewModel
                     {
                         TranscriptionWord = "[]";
                     }
-                   await CreateWord(); 
+                   
+                   CreateWord(); 
                    await GoBack();
                 }
                 else
@@ -110,17 +113,19 @@ namespace RepeatingWords.ViewModel
             var lastPage = NavigationService.PreviousPageViewModel;
             if (lastPage is WordsListViewModel || lastPage is EntryTranscriptionViewModel)
             {
-                await NavigationService.RemoveLastFromBackStackAsync();
-                await NavigationService.NavigateToAsync<WordsListViewModel>(_dictionary);
-                await NavigationService.RemoveLastFromBackStackAsync();
+               Log.Logger.Info("Previous page is WordsListViewModel or EntryTranscriptionViewModel");
+               await NavigationService.RemoveLastFromBackStackAsync();
+               await NavigationService.NavigateToAsync<WordsListViewModel>(_dictionary);
+               await NavigationService.RemoveLastFromBackStackAsync();
             }
             else
             {
+                Log.Logger.Info("Previous page GoBackPage");
                 await NavigationService.GoBackPage();
             }
         }
 
-        private async Task<WordsModel> CreateWord()
+        private void CreateWord()
         {
             if (!_isChangeWord)
             {
@@ -130,14 +135,15 @@ namespace RepeatingWords.ViewModel
                 model.RusWord = NativeWord;
                 model.EngWord = TranslateWord;
                 model.Transcription = TranscriptionWord; 
-                model = await Task.Run( () => _studyService.AddWord(model));
+                model = _studyService.AddWord(model);
                 _dictionary.WordsCollection.Add(model);
-                return model;
             }
-            Log.Logger.Info("\n Update WordsModel");
-            SetDataToChangeWord();
-            await Task.Run(() => _studyService.UpdateWord(_wordChange));
-            return _wordChange;
+            else
+            {
+                Log.Logger.Info("\n Update WordsModel");
+                SetDataToChangeWord();
+                _studyService.UpdateWord(_wordChange);
+            }
         }
 
         private async Task FocusedTranscription()
@@ -146,17 +152,7 @@ namespace RepeatingWords.ViewModel
             if (_keyboardService.GetCurrentTranscriptionKeyboard())
             {
                 DependencyService.Get<IKeyboardService>().HideKeyboard();
-                if (_isChangeWord)
-                {
-                    SetDataToChangeWord();
-                    await NavigationService.NavigateToAsync<EntryTranscriptionViewModel>(_wordChange);
-                }
-                else
-                    await NavigationService.NavigateToAsync<EntryTranscriptionViewModel>(new WordsModel()
-                    {
-                        Id = -1, Transcription = TranscriptionWord, RusWord = NativeWord, EngWord = TranslateWord,
-                        DictionaryParent = _dictionary
-                    });
+                await NavigationService.NavigateToAsync<EntryTranscriptionViewModel>(TranscriptionWord);
             }
         }
 

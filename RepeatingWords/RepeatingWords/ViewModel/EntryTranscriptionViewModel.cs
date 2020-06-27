@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
+using RepeatingWords.LoggerService;
 using RepeatingWords.Model;
 using Xamarin.Forms;
 
@@ -12,10 +14,9 @@ namespace RepeatingWords.ViewModel
     {
         public EntryTranscriptionViewModel(INavigationService navigationServcie, IDialogService dialogService) : base(navigationServcie, dialogService)
         {
-            SendCommand = new Command(async()=>await Send());
+            SendCommand = new Command(async()=> await Send());
             CursorBlink();
         }
-        private WordsModel _word;
         public ICommand SendCommand { get; set; }
         private string _textTranscription;
         public string TextTranscription { get => _textTranscription; set { _textTranscription = value; OnPropertyChanged(nameof(TextTranscription)); } }
@@ -35,19 +36,22 @@ namespace RepeatingWords.ViewModel
 
         private async Task Send()
         {
-          _word.Transcription = TextTranscription;
-           await NavigationService.RemoveLastFromBackStackAsync();
-           await NavigationService.NavigateToAsync<CreateWordViewModel>(_word);
-           await NavigationService.RemoveLastFromBackStackAsync();
+            Log.Logger.Info("\n Send Transcription");
+            var vm = NavigationService.PreviousPageViewModel as CreateWordViewModel;
+            if (vm != null)
+                vm.TranscriptionWord = TextTranscription;
+            else
+                Log.Logger.Error("Error write transcription to privious viewmodel");
+            await NavigationService.GoBackPage();
         }
 
 
-        public override Task InitializeAsync(object navigationData)
+        public override async Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
-            _word = navigationData as WordsModel;
-            TextTranscription = _word?.Transcription??string.Empty;
-            return base.InitializeAsync(navigationData);
+                Log.Logger.Info("\n InitializeAsync EntryTranscriptionViewModel");
+                IsBusy = true;
+                TextTranscription = navigationData as string ?? string.Empty;
+                await base.InitializeAsync(navigationData);
         }
 
         private async void CursorBlink()
