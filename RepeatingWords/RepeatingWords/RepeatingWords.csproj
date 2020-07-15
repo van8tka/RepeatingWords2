@@ -23,8 +23,7 @@
 
   <ItemGroup>
     <Reference Include="FormsControls.Base">
-      <HintPath>E:\Visual\AnimationNavigationPage-master\SourceCode\Lib\FormsControls\FormsControls.Droid\bin\Release\FormsControls.Base.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\..\FormsControls\FormsControls.Base\bin\Release\netstandard2.0\FormsControls.Base.dll</HintPath>
     </Reference>
   </ItemGroup>
 

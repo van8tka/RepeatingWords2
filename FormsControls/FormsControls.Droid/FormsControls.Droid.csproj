@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{2E135E3C-E516-45C5-91F2-F42B13EF0F5F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FormsControls.Droid</RootNamespace>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AssemblyName>FormsControls.Droid</AssemblyName>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <AndroidTlsProvider>
+    </AndroidTlsProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Design|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <ConsolePause>false</ConsolePause>
+    <ErrorReport>prompt</ErrorReport>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Design|iPhoneSimulator' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Design</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Design|iPhone' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Design</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\AnimationNavigationRenderer.cs" />
+    <Compile Include="Renderers\IXPage.cs" />
+    <Compile Include="Renderers\XPage.cs" />
+    <Compile Include="NativeServices\DroidDevice.cs" />
+    <Compile Include="Utils\PageExtensions.cs" />
+    <Compile Include="Effects\ColoredSliderEffect.cs" />
+    <Compile Include="Renderers\AppCompatAnimationNavRenderer.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Utils\AppCompatNavRendererHelper.cs" />
+    <Compile Include="Helpers\AnimationsId.cs" />
+    <Compile Include="Helpers\AnimationHelper.cs" />
+    <Compile Include="Helpers\SlowAnimationsId.cs" />
+    <Compile Include="Helpers\NormalAnimationsId.cs" />
+    <Compile Include="Helpers\LongAnimationsId.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\animator\empty_Animation.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_bottom.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_left.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_right.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_top.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_bottom.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_left.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_right.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_top.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_left.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_left.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_right.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_right.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_top.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_top.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_bottom.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_bottom.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_bottom.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_left.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_right.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_top.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_bottom.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_left.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_right.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_top.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_left.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_right.xml" />
+    <AndroidResource Include="Resources\values\settings.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_left.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_right.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_top.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_bottom.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_top.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_bottom.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_bottom.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_left.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_right.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_top.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_bottom.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_left.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_right.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_top.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate.xml" />
+    <AndroidResource Include="Resources\animator\empty_Animation_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_left_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_right_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_top_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_left_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_right_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_top_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_left_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_right_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_top_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_left_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_right_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_top_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_left_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_right_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_top_short.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_left_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_right_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_top_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_left_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_right_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_top_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_left_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_right_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_top_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_left_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_right_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_top_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_bottom_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_left_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_right_short.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_top_short.xml" />
+    <AndroidResource Include="Resources\animator\empty_Animation_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_left_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_right_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_top_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_left_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_right_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_top_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_left_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_right_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_top_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_left_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_right_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_top_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_left_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_right_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_top_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_left_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_right_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_from_top_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_landing_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_left_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_right_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_roll_to_top_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_left_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_right_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_rotate_to_top_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_left_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_right_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_from_top_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_scale_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_bottom_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_left_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_right_long.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_top_long.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_bottom_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_left_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_right_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_top_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_bottom_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_left_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_right_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_top_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_bottom_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_left_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_right_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_top_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_bottom_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_left_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_right_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_top_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_bottom_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_left_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_right_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_top_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_bottom_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_left_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_right_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_top_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_bottom_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_left_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_right_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_top_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_bottom_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_left_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_right_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_top_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_bottom_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_left_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_right_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_top_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_bottom_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_left_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_right_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_top_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_bottom_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_left_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_right_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_from_top_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_bottom_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_left_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_right_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_landing_from_top_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_bottom_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_left_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_right_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_roll_from_top_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_bottom_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_left_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_right_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_rotate_from_top_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_bottom_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_left_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_right_bounce.xml" />
+    <AndroidResource Include="Resources\animator\enter_scale_from_top_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_bottom_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_bottom_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_bottom_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_left_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_left_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_left_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_right_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_right_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_right_short_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_top_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_top_long_bounce.xml" />
+    <AndroidResource Include="Resources\animator\exit_to_top_short_bounce.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.AndroidX.Arch.Core.Common">
+      <Version>2.0.1-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.Common">
+      <Version>2.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime">
+      <Version>2.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.VectorDrawable.Animated">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Annotation">
+      <Version>1.0.2-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Core">
+      <Version>1.0.1-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.Core.UI">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.Core.Utils">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Google.Android.Material">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Fragment">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Media">
+      <Version>1.0.1-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Transition">
+      <Version>1.0.1-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.AppCompat">
+      <Version>1.0.2-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.CardView">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.MediaRouter">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Palette">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.RecyclerView">
+      <Version>1.0.0-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.VectorDrawable">
+      <Version>1.0.1-preview02</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>4.3.0.991211</Version>
+    </PackageReference>
+  <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.0-preview03" /></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FormsControls.Base\FormsControls.Base.csproj">
+      <Project>{453B182A-A11B-41B8-AB06-F90E5C0FD967}</Project>
+      <Name>FormsControls.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

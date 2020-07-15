@@ -83,10 +83,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FormsControls.Base">
-      <HintPath>E:\Visual\AnimationNavigationPage-master\SourceCode\Lib\FormsControls\FormsControls.Droid\bin\Release\FormsControls.Base.dll</HintPath>
+      <HintPath>..\..\FormsControls\FormsControls.Base\bin\Release\netstandard2.0\FormsControls.Base.dll</HintPath>
     </Reference>
     <Reference Include="FormsControls.Droid">
-      <HintPath>E:\Visual\AnimationNavigationPage-master\SourceCode\Lib\FormsControls\FormsControls.Droid\bin\Release\FormsControls.Droid.dll</HintPath>
+      <HintPath>..\..\FormsControls\FormsControls.Droid\bin\Release\FormsControls.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
