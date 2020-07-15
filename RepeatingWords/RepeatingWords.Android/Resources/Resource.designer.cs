@@ -3104,6 +3104,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Attribute.collapsedTitleGravity = global::RepeatingWords.Droid.Resource.Attribute.collapsedTitleGravity;
 			global::FormsControls.Droid.Resource.Attribute.collapsedTitleTextAppearance = global::RepeatingWords.Droid.Resource.Attribute.collapsedTitleTextAppearance;
 			global::FormsControls.Droid.Resource.Attribute.collapseIcon = global::RepeatingWords.Droid.Resource.Attribute.collapseIcon;
+			global::FormsControls.Droid.Resource.Attribute.collectionViewStyle = global::RepeatingWords.Droid.Resource.Attribute.collectionViewStyle;
 			global::FormsControls.Droid.Resource.Attribute.color = global::RepeatingWords.Droid.Resource.Attribute.color;
 			global::FormsControls.Droid.Resource.Attribute.colorAccent = global::RepeatingWords.Droid.Resource.Attribute.colorAccent;
 			global::FormsControls.Droid.Resource.Attribute.colorBackgroundFloating = global::RepeatingWords.Droid.Resource.Attribute.colorBackgroundFloating;
@@ -4261,6 +4262,7 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::RepeatingWords.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::FormsControls.Droid.Resource.Style.Animation_AppCompat_Tooltip = global::RepeatingWords.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::FormsControls.Droid.Resource.Style.Animation_Design_BottomSheetDialog = global::RepeatingWords.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::FormsControls.Droid.Resource.Style.AppCompatDialogStyle = global::RepeatingWords.Droid.Resource.Style.AppCompatDialogStyle;
 			global::FormsControls.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::RepeatingWords.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::FormsControls.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::RepeatingWords.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -4452,6 +4454,10 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Style.CardView = global::RepeatingWords.Droid.Resource.Style.CardView;
 			global::FormsControls.Droid.Resource.Style.CardView_Dark = global::RepeatingWords.Droid.Resource.Style.CardView_Dark;
 			global::FormsControls.Droid.Resource.Style.CardView_Light = global::RepeatingWords.Droid.Resource.Style.CardView_Light;
+			global::FormsControls.Droid.Resource.Style.collectionViewScrollBars = global::RepeatingWords.Droid.Resource.Style.collectionViewScrollBars;
+			global::FormsControls.Droid.Resource.Style.collectionViewTheme = global::RepeatingWords.Droid.Resource.Style.collectionViewTheme;
+			global::FormsControls.Droid.Resource.Style.MainTheme = global::RepeatingWords.Droid.Resource.Style.MainTheme;
+			global::FormsControls.Droid.Resource.Style.MainTheme_Base = global::RepeatingWords.Droid.Resource.Style.MainTheme_Base;
 			global::FormsControls.Droid.Resource.Style.Platform_AppCompat = global::RepeatingWords.Droid.Resource.Style.Platform_AppCompat;
 			global::FormsControls.Droid.Resource.Style.Platform_AppCompat_Light = global::RepeatingWords.Droid.Resource.Style.Platform_AppCompat_Light;
 			global::FormsControls.Droid.Resource.Style.Platform_MaterialComponents = global::RepeatingWords.Droid.Resource.Style.Platform_MaterialComponents;
@@ -5180,6 +5186,8 @@ namespace RepeatingWords.Droid
 			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_startY = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_startY;
 			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_tileMode = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_tileMode;
 			global::FormsControls.Droid.Resource.Styleable.GradientColor_android_type = global::RepeatingWords.Droid.Resource.Styleable.GradientColor_android_type;
+			global::FormsControls.Droid.Resource.Styleable.ItemsViewRendererTheme = global::RepeatingWords.Droid.Resource.Styleable.ItemsViewRendererTheme;
+			global::FormsControls.Droid.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle = global::RepeatingWords.Droid.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
 			global::FormsControls.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::RepeatingWords.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;

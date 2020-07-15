@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -370,9 +370,10 @@
       <Version>1.0.1-preview02</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>4.3.0.991211</Version>
+      <Version>4.7.0.1080</Version>
     </PackageReference>
-  <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.0-preview03" /></ItemGroup>
+    <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.0-preview03" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FormsControls.Base\FormsControls.Base.csproj">
       <Project>{453B182A-A11B-41B8-AB06-F90E5C0FD967}</Project>

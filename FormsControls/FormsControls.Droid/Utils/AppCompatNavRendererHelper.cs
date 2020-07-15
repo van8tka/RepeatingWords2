@@ -1,5 +1,4 @@
-﻿using Android.Support.V7.App;
-using System;
+﻿using System;
 using System.Reflection;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -9,6 +8,7 @@ using Xamarin.Forms.Platform.Android.AppCompat;
 using Fragment = Android.Support.V4.App.Fragment;
 using FragmentManager = Android.Support.V4.App.FragmentManager;
 using Android.Content;
+using AndroidX.AppCompat.App;
 
 namespace FormsControls.Droid
 {
