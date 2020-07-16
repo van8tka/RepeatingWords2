@@ -5,8 +5,6 @@ using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.Gms.Ads;
-using Android.Gms.Common.Apis;
-using Android.Gms.Drive;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
@@ -21,7 +19,7 @@ namespace RepeatingWords.Droid
 
 [Activity(Label = "Cards of words", MainLauncher = true, Theme = "@style/MyTheme.Splash", Icon = "@mipmap/icon", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     //для установки SplashScreen обязательно использовать FormsAppCompatActivity а не FormsApplicationActivity
-    public partial class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, GoogleApiClient.IConnectionCallbacks, IResultCallback, IDriveApiDriveContentsResult
+    public partial class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         internal static MainActivity Instance { get; private set; }
         public static bool HasPermissionToReadWriteExternalStorage = false;
@@ -95,7 +93,7 @@ namespace RepeatingWords.Droid
         }
 
 
-        //this fake method for include 
+        //this fake method for include libs
         static bool falseflag = false;
         static void LinkerPleaseInclude()
         {
