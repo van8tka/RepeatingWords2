@@ -1,56 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using RepeatingWords.Interfaces;
+using RepeatingWords.Helpers.Interfaces;
+using RepeatingWords.Model;
 using Xamarin.Auth;
-using Xamarin.Forms;
 
 namespace RepeatingWords.Services
 {
     public class AuthGoogle
-    {
-        public AuthGoogle(IDialogService dialogService)
-        {
-            _dialogService = dialogService;
-        }
-
-        private GoogleOAuthToken _tokenData;
-        public GoogleOAuthToken GetAuthToken
-        {
-            get
-            {
-                if (_tokenData == null)
-                {
-                    CreateOauth();
-                }
-                else if (DateTime.UtcNow.Subtract(_tokenData.TimeCreated).TotalMinutes > 15)
-                {
-                    CreateOauth();
-                }
-                return _tokenData;
-            }
-        }
-
-        private readonly IDialogService _dialogService;
-        private readonly string  ClientId = "197917761798-qqgd5bg3kieinjmlvl81bl3h7u0kd22u.apps.googleusercontent.com";
-        private readonly string RedirectUrl = "cardsofwords.cardsofwords:/oauth2redirect";
+    { 
+        
         private const string AuthorizeUrl = "https://accounts.google.com/o/oauth2/v2/auth";
         private const string AccessTokenUrl = "https://www.googleapis.com/oauth2/v4/token";
         private const bool IsUsingNativeUI = true;
+        private OAuth2Authenticator _auth;
+        private IGoogleAuthenticationDelegate _authenticationDelegate;
 
-
-        private void CreateOauth()
+        public AuthGoogle(string clientId, string scope, string redirectUrl, IGoogleAuthenticationDelegate authenticationDelegate)
         {
-           var auth = new OAuth2Authenticator(
-                 ClientId,
+            _authenticationDelegate = authenticationDelegate;
+             _auth = new OAuth2Authenticator(
+               clientId,
                 string.Empty,
-                "email",
+               scope,
                 new Uri(AuthorizeUrl),
-                new Uri(RedirectUrl),
+                new Uri(redirectUrl),
                 new Uri(AccessTokenUrl),
                  null , IsUsingNativeUI);
-           auth.Completed += OnAuthenticationCompleted;
-           auth.Error += OnAuthenticationFailed;
+           _auth.Completed += OnAuthenticationCompleted;
+           _auth.Error += OnAuthenticationFailed;
         }
 
        private void OnAuthenticationCompleted(object sender, AuthenticatorCompletedEventArgs e)
@@ -59,31 +35,35 @@ namespace RepeatingWords.Services
             {
                 // The user is authenticated
                 // Extract the OAuth token
-                var token = new GoogleOAuthToken
+               var tokenData = new GoogleOAuthToken
                 {
                     TokenType = e.Account.Properties["token_type"],
                     AccessToken = e.Account.Properties["access_token"],
                     TimeCreated = DateTime.UtcNow
                 };
-
-                // Do something
+               _authenticationDelegate.OnAuthenticationCompleted(tokenData);
             }
             else
             {
-                _dialogService.ShowToast("User could not authorization to Google");
+                _authenticationDelegate.OnAuthenticationCanceled();
             }
         }
 
        private void OnAuthenticationFailed(object sender, AuthenticatorErrorEventArgs e)
        {
-          _dialogService.ShowToast("Error authorization to Google");
+           _authenticationDelegate.OnAuthenticationCanceled();
+       }
+
+       public OAuth2Authenticator GetAuthenticator()
+       {
+           return _auth;
+       }
+
+       public void OnPageLoading(Uri uri)
+       {
+           _auth.OnPageLoading(uri);
        }
     }
 
-    public sealed class GoogleOAuthToken
-    {
-        public string TokenType { get; set; }
-        public string AccessToken { get; set; }
-        public DateTime TimeCreated { get; set; }
-    }
+   
 }

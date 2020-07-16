@@ -1,28 +1,56 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Android.Widget;
+using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
 using RepeatingWords.LoggerService;
+using RepeatingWords.Model;
+using RepeatingWords.Services;
 
 namespace RepeatingWords.Droid
 {
-    public partial class MainActivity
+    public partial class MainActivity: IGoogleAuthenticationDelegate
     {
         ///WORK WITH GOOGLE DRIVE
         //разные версии регистрации в googleApis в зависимости от sha1 
         //для debug - учетка в gooleApis с именем: debugAndroidV28
         //для release - clientcardsofwordsandroid
+        public static AuthGoogle Auth;
+
+       
+
+        public void GoogleCustomAuth()
+        {
+            Auth = new AuthGoogle(Config.CLIENT_ID, Config.SCOPE, Config.REDIRECT_URL, this);
+            var authenticator = Auth.GetAuthenticator();
+            var intent = authenticator.GetUI(this);
+            StartActivity(intent);
+        }
+ 
+
+        public void OnAuthenticationCompleted(GoogleOAuthToken token)
+        {
+            ShowToast("Success authorization on Google Drive");
+            //create service backkup
+        }
+
+        public void OnAuthenticationFailed(string message, Exception exception)
+        {
+           ShowToast("Error authorization on Google Drive");
+        }
+
+        public void OnAuthenticationCanceled()
+        {
+             ShowToast("Canceled authorization on Google Drive");
+        }
 
 
+        private void ShowToast(string msg)
+        {
+            Toast.MakeText(this, msg, ToastLength.Long).Show();
+        }
 
-        public void GoogleCustomAuthorithation(bool isCreateBackUp, IDialogService dialogService, string folderName = null, string fileName = null, string pathToDb = null,
-            string successMessage = "Excelent", string errorMessage = "Error",
-            Func<string, Task<bool>> restoreFunc = null)
-
-    {
     }
-
-
-}
 }
 
 ///

@@ -13,13 +13,15 @@ namespace RepeatingWords.Droid
       
         public bool CreateBackupGoogleDrive(string folderName, string fileName, string pathToDb, string succesMessage, string errorMessage, IDialogService dialogService)
         {
-            MainActivity.Instance.GoogleCustomAuthorithation(true, dialogService ,folderName, fileName, pathToDb, succesMessage, errorMessage);
+           // MainActivity.Instance.GoogleCustomAuthorithation(true, dialogService ,folderName, fileName, pathToDb, succesMessage, errorMessage);
+            MainActivity.Instance.GoogleCustomAuth();
             return true;
         }
 
         public bool RestoreBackupGoogleDriveFile(string filePathToDbFull,string partOfFileNameBackup,string folderName, string successMessage, string errorMessage, Func<string, Task<bool>> restoreLocaleFunc, IDialogService dialogService)
         {
-            MainActivity.Instance.GoogleCustomAuthorithation(false, dialogService, folderName:folderName, fileName:partOfFileNameBackup, pathToDb: filePathToDbFull, successMessage: successMessage, errorMessage: errorMessage, restoreLocaleFunc);
+            MainActivity.Instance.GoogleCustomAuth();
+            // MainActivity.Instance.GoogleCustomAuthorithation(false, dialogService, folderName:folderName, fileName:partOfFileNameBackup, pathToDb: filePathToDbFull, successMessage: successMessage, errorMessage: errorMessage, restoreLocaleFunc);
             return true;
         }
     }
