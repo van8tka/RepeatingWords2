@@ -10,12 +10,13 @@ namespace RepeatingWords.Services
 {
     public class BackupGoogleService : IBackupService
     {
-        public BackupGoogleService(BackupLocalService localBackup, IDialogService dialogService)
+        public BackupGoogleService(BackupLocalService localBackup, IDialogService dialogService, IImport import)
         {
             _localBaclupService = localBackup;
             _dialogService = dialogService;
+            _import = import;
         }
-
+        private readonly IImport _import;
         private readonly IDialogService _dialogService;
         private readonly BackupLocalService _localBaclupService;
 
@@ -41,10 +42,10 @@ namespace RepeatingWords.Services
             try
             {
                 //получаем путь к локальному бэкапу
-                string filePathDefault = DependencyService.Get<IFileWorker>().CreateFolder(Constants.LOCAL_FOLDER_BACKUP,"fromGDrivebackup" + DateTime.Now.ToString("ddMMyyyy_hhmm") + ".json");
+             //   string filePathDefault = DependencyService.Get<IFileWorker>().CreateFolder(Constants.LOCAL_FOLDER_BACKUP,"fromGDrivebackup" + DateTime.Now.ToString("ddMMyyyy_hhmm") + ".json");
                 //копируем бэкап из GooglDrive в локальную папку
-                Func<string, Task<bool>> restoreFunc = (str) => _localBaclupService.RestoreBackup(str);
-                bool success = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(filePathDefault, file, Constants.LOCAL_FOLDER_BACKUP, Resource.BackupRestored, Resource.BackUpErrorRestored, restoreFunc, _dialogService);
+            //    Func<string, Task<bool>> restoreFunc = (str) => _localBaclupService.RestoreBackup(str);
+                bool success = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(_import,  file, Constants.LOCAL_FOLDER_BACKUP);
                 return Task.FromResult(true);
             }
             catch (Exception e)

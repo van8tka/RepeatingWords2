@@ -17,10 +17,16 @@ namespace RepeatingWords.Droid
         //для release - clientcardsofwordsandroid
         public static AuthGoogle Auth;
 
+        private string FOLDER_NAME { get; set; }
+        private string FILE_START_NAME { get; set; }
+        private IImport import { get; set; }
        
 
-        public void GoogleCustomAuth()
+        public void GoogleCustomAuth(IImport import, string folderBackup, string fileStartNameBackup)
         {
+            FOLDER_NAME = folderBackup;
+            FILE_START_NAME = fileStartNameBackup;
+            this.import = import;
             Auth = new AuthGoogle(Config.CLIENT_ID, Config.SCOPE, Config.REDIRECT_URL, this);
             var authenticator = Auth.GetAuthenticator();
             var intent = authenticator.GetUI(this);
@@ -28,10 +34,15 @@ namespace RepeatingWords.Droid
         }
  
 
-        public void OnAuthenticationCompleted(GoogleOAuthToken token)
+        public async Task OnAuthenticationCompleted(GoogleOAuthToken token)
         {
             ShowToast("Success authorization on Google Drive");
             //create service backkup
+            var gds = new GoogleDriveService();
+            if (await gds.GetBackupAsync(token, FOLDER_NAME, FILE_START_NAME, import))
+                ShowToast("Success Backup");
+            else
+                ShowToast("Backup failed");
         }
 
         public void OnAuthenticationFailed(string message, Exception exception)

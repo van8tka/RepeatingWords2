@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Globalization;
+using NUnit.Framework;
 using RepeatingWords.DataService.Interfaces;
 using RepeatingWords.DataService.Model;
 using System.Linq;
@@ -16,6 +18,21 @@ namespace RepeatingWords.NUnitTest
             var container =  UnityConfig.Load();
             _unitOfWork = container.Resolve<IUnitOfWork>();
         }
+
+
+        [Test]
+        public void Test_Parse_Date()
+        {
+            string input = "backupcardsofwords21042020_0358.json";
+            string fileStartName = "backupcardsofwords";
+            DateTime newDate;
+            var DateTimeCreated = DateTime.TryParseExact(input.Replace(fileStartName, "").Replace(".json",""), "ddMMyyyy_hhmm", null,
+                DateTimeStyles.None, out newDate);
+            string dr = newDate.ToString("yy-MMM-dd ddd");
+            Assert.IsNotNull(newDate);   
+        }
+        
+
 
         [Test]
         public void Test_Create_CreateDictionaryInDb_ReturnDictionary()

@@ -6,15 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using RepeatingWords.DataService.Model;
+using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using RepeatingWords.Model;
 
 namespace RepeatingWords.Services
 {
-    public interface IImport
-    {
-        Task<bool> import(JObject jobject);
-    }
+  
     public class ImportJsonDb:IImport
     {
         public ImportJsonDb(IStudyService studyService)

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using RepeatingWords.Helpers.Interfaces;
 
 namespace RepeatingWords.Services
 {
-    public interface IExport
-    {
-        Task<JObject> Export();
-    }
+ 
     public class ExportJsonDb:IExport
     {
         public ExportJsonDb(IStudyService studyService)
