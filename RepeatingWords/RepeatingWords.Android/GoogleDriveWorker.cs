@@ -1,9 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Android.Content;
-using RepeatingWords.Helpers.Interfaces;
-using RepeatingWords.Interfaces;
-using RepeatingWords.Services;
+﻿using RepeatingWords.Helpers.Interfaces;
 using Xamarin.Forms;
 
 
@@ -12,19 +7,15 @@ namespace RepeatingWords.Droid
 {
     public class GoogleDriveWorker : IGoogleDriveWorker             
     {
-      
-        public bool CreateBackupGoogleDrive(string folderName, string fileName, string pathToDb, string succesMessage, string errorMessage, IDialogService dialogService)
+
+        public void CreateBackupGoogleDrive(IExport exportLocal, string fileNameStart, string folderName)
         {
-           // MainActivity.Instance.GoogleCustomAuthorithation(true, dialogService ,folderName, fileName, pathToDb, succesMessage, errorMessage);
-           // MainActivity.Instance.GoogleCustomAuth();
-            return true;
+            MainActivity.Instance.GoogleCustomAuthExport(exportLocal,folderName, fileNameStart);
         }
 
-        public bool RestoreBackupGoogleDriveFile(IImport import, string partOfFileNameBackup, string folderName)
+        public void RestoreBackupGoogleDriveFile(IImport importLocal, string fileNameStart, string folderName)
         {
-            MainActivity.Instance.GoogleCustomAuth(import,folderName, partOfFileNameBackup);
-            // MainActivity.Instance.GoogleCustomAuthorithation(false, dialogService, folderName:folderName, fileName:partOfFileNameBackup, pathToDb: filePathToDbFull, successMessage: successMessage, errorMessage: errorMessage, restoreLocaleFunc);
-            return true;
+            MainActivity.Instance.GoogleCustomAuthImport(importLocal, folderName, fileNameStart);
         }
     }
 }

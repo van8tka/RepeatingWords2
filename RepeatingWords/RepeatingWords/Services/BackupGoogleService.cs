@@ -3,37 +3,31 @@ using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.LoggerService;
 using System;
 using System.Threading.Tasks;
-using RepeatingWords.Interfaces;
 using Xamarin.Forms;
 
 namespace RepeatingWords.Services
 {
     public class BackupGoogleService : IBackupService
     {
-        public BackupGoogleService(BackupLocalService localBackup, IDialogService dialogService, IImport import)
+        public BackupGoogleService(IExport export, IImport import)
         {
-            _localBaclupService = localBackup;
-            _dialogService = dialogService;
+            _export = export;
             _import = import;
         }
         private readonly IImport _import;
-        private readonly IDialogService _dialogService;
-        private readonly BackupLocalService _localBaclupService;
+        private readonly IExport _export;
 
-        public async Task<bool> CreateBackup(string file)
+        public Task<bool> CreateBackup(string file)
         {
             try
             {
-                //создаем локальный бэкап
-                await _localBaclupService.CreateBackup(file);
-                //копируем в GoogleDrive
-                bool success = DependencyService.Get<IGoogleDriveWorker>().CreateBackupGoogleDrive(Constants.LOCAL_FOLDER_BACKUP, file, _localBaclupService.PathToLastBackupFile, Resource.BackupWasCreatedGoogle, Resource.BackUpErrorCreated, _dialogService);
-                return true;
+                DependencyService.Get<IGoogleDriveWorker>().CreateBackupGoogleDrive(_export, file, Constants.LOCAL_FOLDER_BACKUP);
+                return Task.FromResult(true);
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                return false;
+                return Task.FromResult(false);
             }
         }
 
@@ -41,11 +35,7 @@ namespace RepeatingWords.Services
         {
             try
             {
-                //получаем путь к локальному бэкапу
-             //   string filePathDefault = DependencyService.Get<IFileWorker>().CreateFolder(Constants.LOCAL_FOLDER_BACKUP,"fromGDrivebackup" + DateTime.Now.ToString("ddMMyyyy_hhmm") + ".json");
-                //копируем бэкап из GooglDrive в локальную папку
-            //    Func<string, Task<bool>> restoreFunc = (str) => _localBaclupService.RestoreBackup(str);
-                bool success = DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(_import,  file, Constants.LOCAL_FOLDER_BACKUP);
+                DependencyService.Get<IGoogleDriveWorker>().RestoreBackupGoogleDriveFile(_import,  file, Constants.LOCAL_FOLDER_BACKUP);
                 return Task.FromResult(true);
             }
             catch (Exception e)
