@@ -63,7 +63,7 @@ namespace RepeatingWords.Droid
             }
             else
             {
-                if (await gds.SetBackupAsync(token, FOLDER_NAME, FILE_START_NAME, export))
+                if (await gds.SetBackupAsync(token,  FILE_START_NAME, FOLDER_NAME, export))
                     ShowToast("Success create backup");
                 else
                     ShowToast("Backup create failed");

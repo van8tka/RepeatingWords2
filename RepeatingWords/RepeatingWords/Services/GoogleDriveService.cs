@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -9,6 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Model;
+using Xamarin.Forms;
 using Log = RepeatingWords.LoggerService.Log;
 
 namespace RepeatingWords.Services
@@ -22,37 +25,25 @@ namespace RepeatingWords.Services
     {
 
         private const string ENTRY_POINT_GDRIVE = "https://www.googleapis.com/drive/";
-        private const string VERSION_API_V2 = "v2/";
         private const string VERSION_API_V3 = "v3/";
+        private const string VERSION_API_V2 = "v2/";
+        private const string TIME_FORMAT = "ddMMyyyy_hhmm";
 
         public async Task<bool> GetBackupAsync(GoogleOAuthToken oAuthToken, string fileStartName, string folderName,
             IImport import)
         {
             try
             {
+                string jsonStr;
                 var httpClient = new HttpClient();
-                httpClient.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
-                var jsonStr = await httpClient.GetStringAsync(ENTRY_POINT_GDRIVE + VERSION_API_V3 + "files");
-                var json = (JObject) JsonConvert.DeserializeObject(jsonStr);
-                var metaFilesList = (JArray) json["files"];
-                var isExistFolder = from meta in metaFilesList
-                    where meta["name"].ToString() == folderName
-                    select meta["id"].ToString();
-                if (isExistFolder.Any())
+                var existFolders = await GetBackupFolders(oAuthToken, folderName, httpClient);
+                if (existFolders.Any())
                 {
-                    var lastFileMeta = (metaFilesList.Where(meta =>
-                            meta["mimeType"].ToString().Equals("application/json") &&
-                            meta["name"].ToString().StartsWith(fileStartName))
-                        .Select(meta => new MetaFileGoogle
-                        {
-                            Id = meta["id"].ToString(),
-                            CreateDateTime = ParseDateTimeFromFileName(meta["name"].ToString(), fileStartName)
-                        })).OrderBy(x => x.CreateDateTime).LastOrDefault();
-                    var contentFile = await httpClient.GetStringAsync(
-                        ENTRY_POINT_GDRIVE + VERSION_API_V2 + "files/" + lastFileMeta.Id +
-                        "?alt=media&source=downloadUrl");
-                    byte[] bytes = Convert.FromBase64String(contentFile.ToString());
+                    jsonStr = await httpClient.GetStringAsync("https://www.googleapis.com/drive/v3/files?orderBy=createdTime&q=mimeType%3D%27application%2Fjson%27%20and%20name%20contains%20%27backupcardsofwords%27");
+                    var json = (JObject)JsonConvert.DeserializeObject(jsonStr);
+                    var lastMetaFileId = (((JArray)json["files"]).Last() as JObject)?["id"].ToString();
+                    jsonStr = await httpClient.GetStringAsync(ENTRY_POINT_GDRIVE + VERSION_API_V2 + "files/" + lastMetaFileId + "?alt=media&source=downloadUrl");
+                    byte[] bytes = Convert.FromBase64String(jsonStr);
                     var jsonStrContent = JObject.Parse(Encoding.UTF8.GetString(bytes));
                     return await import.import(jsonStrContent);
                 }
@@ -66,21 +57,81 @@ namespace RepeatingWords.Services
             }
         }
 
-        private DateTime ParseDateTimeFromFileName(string input, string fileStartName)
+        private static async Task<IEnumerable<string>> GetBackupFolders(GoogleOAuthToken oAuthToken, string folderName, HttpClient httpClient)
         {
-            DateTime newDate;
-            if (DateTime.TryParseExact(input.Replace(fileStartName, "").Replace(".json", ""), "ddMMyyyy_hhmm", null,
-                DateTimeStyles.None, out newDate))
-                return newDate;
-            Log.Logger.Error("Error parse datetime from file name: " + input);
-            return DateTime.MinValue;
+            httpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
+            var jsonStr = await httpClient.GetStringAsync(
+                "https://www.googleapis.com/drive/v3/files?q=mimeType%3D%27application%2Fvnd.google-apps.folder%27%20and%20name%3D%27CardsOfWordsBackup%27");
+            var json = (JObject) JsonConvert.DeserializeObject(jsonStr);
+            var metaFilesList = (JArray) json["files"];
+            var existFolder = from meta in metaFilesList
+                where meta["name"].ToString() == folderName
+                select meta["id"].ToString();
+            return existFolder;
         }
 
-        public async Task<bool> SetBackupAsync(GoogleOAuthToken token, string fileStartName, string folderName, IExport export)
+        
+        public async Task<bool> SetBackupAsync(GoogleOAuthToken oAuthToken, string fileName, string folderName, IExport export)
         {
             try
             {
-                return true;
+                var jsonContent = await export.Export();
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
+                var jsonStr = await client.GetStringAsync(ENTRY_POINT_GDRIVE + VERSION_API_V3 + "files");
+                var json = (JObject)JsonConvert.DeserializeObject(jsonStr);
+                var metaFilesList = (JArray)json["files"];
+                var existFolder = from meta in metaFilesList
+                    where meta["name"].ToString() == folderName
+                    select meta["id"].ToString();
+                if (!existFolder.Any())
+                {
+                    //create folder
+                    //get id folder
+                }
+                //create file in folder
+
+                client = new HttpClient();
+                HttpRequestMessage request = new HttpRequestMessage();
+                request.RequestUri = new Uri("https://www.googleapis.com/upload/drive/v3/files?enforceSingleParent=true");
+                request.Method = HttpMethod.Post;
+                request.Headers.Add("Accept", "application/json");
+                request.Headers.Add("title", fileName);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
+                JObject body = new JObject();
+                body.Add("driveId", existFolder.FirstOrDefault());
+                body.Add("name", fileName);
+                request.Content = new StringContent(body.ToString());
+                HttpResponseMessage response = await client.SendAsync(request);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    HttpContent responseContent = response.Content;
+                    var answer = await responseContent.ReadAsStringAsync();
+                    var jsonAnswer = (JObject)JsonConvert.DeserializeObject(jsonStr);
+                 
+                    //upload file data
+                    client = new HttpClient();
+                    request = new HttpRequestMessage();
+                    request.RequestUri = new Uri("https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable&upload_id="+jsonAnswer["id"]);
+                    request.Method = HttpMethod.Put;
+                    byte[] bytes = ASCIIEncoding.UTF8.GetBytes(jsonContent.ToString(Newtonsoft.Json.Formatting.None));
+                    request.Headers.Add("Accept", "application/json");
+                    request.Headers.Add("Content-Length", bytes.Length.ToString());
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
+                    request.Content = new ByteArrayContent(bytes);
+                    HttpResponseMessage responseUpdate = await client.SendAsync(request);
+                    if (responseUpdate.StatusCode == HttpStatusCode.OK)
+                    {
+                        HttpContent responseContentUpdate = responseUpdate.Content;
+                        var resp = await responseContent.ReadAsStringAsync();
+                        return true;
+                    }
+                }
+                return false;
             }
             catch (Exception er)
             {
