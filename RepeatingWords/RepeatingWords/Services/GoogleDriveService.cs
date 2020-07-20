@@ -78,40 +78,32 @@ namespace RepeatingWords.Services
             {
                 var jsonContent = await export.Export();
                 var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
-                var jsonStr = await client.GetStringAsync(ENTRY_POINT_GDRIVE + VERSION_API_V3 + "files");
-                var json = (JObject)JsonConvert.DeserializeObject(jsonStr);
-                var metaFilesList = (JArray)json["files"];
-                var existFolder = from meta in metaFilesList
-                    where meta["name"].ToString() == folderName
-                    select meta["id"].ToString();
-                if (!existFolder.Any())
+                var existFolders = await GetBackupFolders(oAuthToken, folderName, client);
+                if (existFolders.Any())
                 {
                     //create folder
                     //get id folder
                 }
                 //create file in folder
-
                 client = new HttpClient();
                 HttpRequestMessage request = new HttpRequestMessage();
-                request.RequestUri = new Uri("https://www.googleapis.com/upload/drive/v3/files?enforceSingleParent=true");
+                request.RequestUri = new Uri("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart");
                 request.Method = HttpMethod.Post;
                 request.Headers.Add("Accept", "application/json");
-                request.Headers.Add("title", fileName);
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
                 JObject body = new JObject();
-                body.Add("driveId", existFolder.FirstOrDefault());
+                JArray parents = new JArray();
+                parents.Add(existFolders.LastOrDefault());
                 body.Add("name", fileName);
-                request.Content = new StringContent(body.ToString());
+                body.Add("parents", parents);
+                request.Content = new StringContent(body.ToString(), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.SendAsync(request);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     HttpContent responseContent = response.Content;
                     var answer = await responseContent.ReadAsStringAsync();
-                    var jsonAnswer = (JObject)JsonConvert.DeserializeObject(jsonStr);
-                 
+                    var jsonAnswer = (JObject)JsonConvert.DeserializeObject(answer);
                     //upload file data
                     client = new HttpClient();
                     request = new HttpRequestMessage();
@@ -119,7 +111,6 @@ namespace RepeatingWords.Services
                     request.Method = HttpMethod.Put;
                     byte[] bytes = ASCIIEncoding.UTF8.GetBytes(jsonContent.ToString(Newtonsoft.Json.Formatting.None));
                     request.Headers.Add("Accept", "application/json");
-                    request.Headers.Add("Content-Length", bytes.Length.ToString());
                     client.DefaultRequestHeaders.Authorization =
                         new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
                     request.Content = new ByteArrayContent(bytes);
