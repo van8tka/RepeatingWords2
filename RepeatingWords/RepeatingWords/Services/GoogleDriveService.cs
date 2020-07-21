@@ -78,49 +78,34 @@ namespace RepeatingWords.Services
             {
                 var jsonContent = await export.Export();
                 var client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
                 var existFolders = await GetBackupFolders(oAuthToken, folderName, client);
+                string folderDriveId;
                 if (existFolders.Any())
-                {
-                    //create folder
-                    //get id folder
-                }
+                    folderDriveId = await CreateGDriveItem(folderName, "application/vnd.google-apps.folder", client);
+                else
+                    folderDriveId = existFolders.LastOrDefault();
                 //create file in folder
-                client = new HttpClient();
+                string fileId = await CreateGDriveItem(fileName, "application/json", client, folderDriveId);
+                //update content file(upload data)
                 HttpRequestMessage request = new HttpRequestMessage();
-                request.RequestUri = new Uri("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart");
-                request.Method = HttpMethod.Post;
-                request.Headers.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
+                request.RequestUri = new Uri("https://content.googleapis.com/drive/v3/files/"+ fileId);
+                request.Method = HttpMethod.Put;
+                byte[] bytes = ASCIIEncoding.UTF8.GetBytes(jsonContent.ToString(Newtonsoft.Json.Formatting.None));
                 JObject body = new JObject();
                 JArray parents = new JArray();
-                parents.Add(existFolders.LastOrDefault());
+                parents.Add(folderDriveId);
                 body.Add("name", fileName);
                 body.Add("parents", parents);
                 request.Content = new StringContent(body.ToString(), Encoding.UTF8, "application/json");
+
+
                 HttpResponseMessage response = await client.SendAsync(request);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     HttpContent responseContent = response.Content;
                     var answer = await responseContent.ReadAsStringAsync();
                     var jsonAnswer = (JObject)JsonConvert.DeserializeObject(answer);
-                    //upload file data
-                    client = new HttpClient();
-                    request = new HttpRequestMessage();
-                    request.RequestUri = new Uri("https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable&upload_id="+jsonAnswer["id"]);
-                    request.Method = HttpMethod.Put;
-                    byte[] bytes = ASCIIEncoding.UTF8.GetBytes(jsonContent.ToString(Newtonsoft.Json.Formatting.None));
-                    request.Headers.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue(oAuthToken.TokenType, oAuthToken.AccessToken);
-                    request.Content = new ByteArrayContent(bytes);
-                    HttpResponseMessage responseUpdate = await client.SendAsync(request);
-                    if (responseUpdate.StatusCode == HttpStatusCode.OK)
-                    {
-                        HttpContent responseContentUpdate = responseUpdate.Content;
-                        var resp = await responseContent.ReadAsStringAsync();
-                        return true;
-                    }
                 }
                 return false;
             }
@@ -130,6 +115,32 @@ namespace RepeatingWords.Services
                 return false;
             }
 
+        }
+
+       
+
+        private async Task<string> CreateGDriveItem(string name,string mimeType, HttpClient client, string parent = null)
+        {
+            string body;
+            if (String.IsNullOrEmpty(parent))
+                body = "{\"name\": \""+ name + "\", \"mimeType\": \""+ mimeType + "\"}";
+            else
+              body = "{\"name\": \"" + name + "\", \"mimeType\": \"" + mimeType + "\", \"parents\": [\""+parent+"\"] }";
+            HttpRequestMessage request = new HttpRequestMessage()
+            {
+                RequestUri = new Uri("https://content.googleapis.com/drive/v3/files"),
+                Method = HttpMethod.Post,
+                Content = new StringContent(body, Encoding.UTF8, "application/json")
+            };
+            HttpResponseMessage response = await client.SendAsync(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                HttpContent responseContent = response.Content;
+                var answer = await responseContent.ReadAsStringAsync();
+                var jsonAnswer = (JObject)JsonConvert.DeserializeObject(answer);
+                return jsonAnswer["id"].ToString();
+            }
+            throw new Exception("Error create folder or file in google drive? with name: "+name);
         }
     }
 
