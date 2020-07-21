@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,7 +10,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Model;
-using Xamarin.Forms;
 using Log = RepeatingWords.LoggerService.Log;
 
 namespace RepeatingWords.Services
@@ -25,15 +23,14 @@ namespace RepeatingWords.Services
     {
 
         private const string ENTRY_POINT_GDRIVE = "https://www.googleapis.com/drive/";
-        private const string VERSION_API_V3 = "v3/";
         private const string VERSION_API_V2 = "v2/";
-        private const string TIME_FORMAT = "ddMMyyyy_hhmm";
 
         public async Task<bool> GetBackupAsync(GoogleOAuthToken oAuthToken, string fileStartName, string folderName,
             IImport import)
         {
             try
             {
+                Log.Logger.Info("Get backup file from Google drive");
                 string jsonStr;
                 var httpClient = new HttpClient();
                 var existFolders = await GetBackupFolders(oAuthToken, folderName, httpClient);
@@ -43,8 +40,7 @@ namespace RepeatingWords.Services
                     var json = (JObject)JsonConvert.DeserializeObject(jsonStr);
                     var lastMetaFileId = (((JArray)json["files"]).Last() as JObject)?["id"].ToString();
                     jsonStr = await httpClient.GetStringAsync(ENTRY_POINT_GDRIVE + VERSION_API_V2 + "files/" + lastMetaFileId + "?alt=media&source=downloadUrl");
-                    byte[] bytes = Convert.FromBase64String(jsonStr);
-                    var jsonStrContent = JObject.Parse(Encoding.UTF8.GetString(bytes));
+                    var jsonStrContent = JObject.Parse(jsonStr);
                     return await import.import(jsonStrContent);
                 }
 
@@ -76,12 +72,13 @@ namespace RepeatingWords.Services
         {
             try
             {
+                Log.Logger.Info("Create backup file in Google drive");
                 var jsonContent = await export.Export();
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
                 var existFolders = await GetBackupFolders(oAuthToken, folderName, client);
                 string folderDriveId;
-                if (existFolders.Any())
+                if (!existFolders.Any())
                     folderDriveId = await CreateGDriveItem(folderName, "application/vnd.google-apps.folder", client);
                 else
                     folderDriveId = existFolders.LastOrDefault();
@@ -89,25 +86,12 @@ namespace RepeatingWords.Services
                 string fileId = await CreateGDriveItem(fileName, "application/json", client, folderDriveId);
                 //update content file(upload data)
                 HttpRequestMessage request = new HttpRequestMessage();
-                request.RequestUri = new Uri("https://content.googleapis.com/drive/v3/files/"+ fileId);
-                request.Method = HttpMethod.Put;
+                request.RequestUri = new Uri($"https://www.googleapis.com/upload/drive/v3/files/{fileId}?uploadType=media");
+                request.Method = new HttpMethod("PATCH") ;
                 byte[] bytes = ASCIIEncoding.UTF8.GetBytes(jsonContent.ToString(Newtonsoft.Json.Formatting.None));
-                JObject body = new JObject();
-                JArray parents = new JArray();
-                parents.Add(folderDriveId);
-                body.Add("name", fileName);
-                body.Add("parents", parents);
-                request.Content = new StringContent(body.ToString(), Encoding.UTF8, "application/json");
-
-
+                request.Content = new ByteArrayContent(bytes);
                 HttpResponseMessage response = await client.SendAsync(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    HttpContent responseContent = response.Content;
-                    var answer = await responseContent.ReadAsStringAsync();
-                    var jsonAnswer = (JObject)JsonConvert.DeserializeObject(answer);
-                }
-                return false;
+                return response.StatusCode == HttpStatusCode.OK;
             }
             catch (Exception er)
             {
@@ -116,8 +100,6 @@ namespace RepeatingWords.Services
             }
 
         }
-
-       
 
         private async Task<string> CreateGDriveItem(string name,string mimeType, HttpClient client, string parent = null)
         {
@@ -142,11 +124,5 @@ namespace RepeatingWords.Services
             }
             throw new Exception("Error create folder or file in google drive? with name: "+name);
         }
-    }
-
-    internal class MetaFileGoogle
-    {
-        internal DateTime CreateDateTime { get; set; }
-        internal string Id { get; set; }
     }
 }
