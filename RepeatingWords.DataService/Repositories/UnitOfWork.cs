@@ -30,7 +30,7 @@ namespace RepeatingWords.DataService.Repositories
 
         public void CommitTransaction()
         {
-            if(_dbContext.Database.CurrentTransaction!=null)
+            if (_dbContext.Database.CurrentTransaction!=null)
                 _dbContext.Database.CommitTransaction();
         }
 
