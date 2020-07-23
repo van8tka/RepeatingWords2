@@ -17,8 +17,8 @@ namespace RepeatingWords.ViewModel
     {
         public WorkSpaceEnterWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation, IStudyService studyService, IEntryWordValidator wordValidator) : base(_dialogService, _navigationService, animation, studyService)
         {
-            CheckWordCommand = new Command(CheckWord);
-            HintWordCommand = new Command(HintWord);
+            CheckWordCommand = new Command(async ()=>await CheckWord());
+            HintWordCommand = new Command(async ()=>await HintWord());
             ColorEnterWord = Color.LightGray;
             _wordValidator = wordValidator ?? throw new ArgumentNullException(nameof(wordValidator));
         }
@@ -43,50 +43,66 @@ namespace RepeatingWords.ViewModel
 
         public override async Task SetViewWords(WordsModel currentWord, bool isFromNative)
         {
-            await AnimationService.AnimationFade(WordContainer,0);
-            _showingWord = currentWord;
-            CurrentShowingWord = isFromNative ? currentWord.RusWord : currentWord.EngWord;
-            EnterAnswerWord = string.Empty;
-            await AnimationService.AnimationFade(WordContainer, 1);
+            try
+            {
+                await AnimationService.AnimationFade(WordContainer, 0);
+                _showingWord = currentWord;
+                CurrentShowingWord = isFromNative ? currentWord.RusWord : currentWord.EngWord;
+                EnterAnswerWord = string.Empty;
+                await AnimationService.AnimationFade(WordContainer, 1);
+            }
+            catch (Exception er)
+            {
+                Log.Logger.Error(er);
+            }
         }
 
         /// <summary>
         /// подсказывать слово
         /// </summary>
         /// <returns></returns>
-        private void HintWord()
+        private Task HintWord()
         {
             try
             {
                 var checkWord = Model.IsFromNative ? _showingWord.EngWord : _showingWord.RusWord;
                 if (string.Equals(EnterAnswerWord, checkWord, StringComparison.OrdinalIgnoreCase))
                 {
-                    SetValidMarks();
+                    var task = SetValidMarks();
                     _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
                     ;
                     IncrementOpenWords();
                     Model.IsOpenCurrentWord = false; 
                     ShowNextWord();
+                    return task;
                 }
-                else
-                {
                     CompareEntryWord(checkWord);
-                }
+                    return Task.FromResult(false);
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
+                return Task.FromResult(false);
             }
         }
 
         private void CompareEntryWord(string checkWord)
         {
-            StringBuilder tempEnterWord;
-            if (EnterAnswerWord.Count() > checkWord.Count())
-                tempEnterWord = new StringBuilder(EnterAnswerWord.Remove(checkWord.Count()));
-            else
-                tempEnterWord = new StringBuilder(EnterAnswerWord);
-            SetHintChar(checkWord, tempEnterWord);
+            try
+            {
+                StringBuilder tempEnterWord;
+                if (EnterAnswerWord.Count() > checkWord.Count())
+                    tempEnterWord = new StringBuilder(EnterAnswerWord.Remove(checkWord.Count()));
+                else
+                    tempEnterWord = new StringBuilder(EnterAnswerWord);
+                SetHintChar(checkWord, tempEnterWord);
+            }
+            catch (Exception er)
+            {
+                Log.Logger.Error(er);
+                throw;
+            }
+            
         }
 
         private void SetHintChar(string checkWord, StringBuilder tempEnterWord)
@@ -136,25 +152,25 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private void CheckWord()
+        private async Task CheckWord()
         {
             try
             {
                 var checkWord = Model.IsFromNative ? _showingWord.EngWord : _showingWord.RusWord;
                 if ( _wordValidator.IsValidWord(EnterAnswerWord, checkWord))
                 {                 
-                     SetValidMarks();
+                     await SetValidMarks();
                     _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
-                    Model.IsOpenCurrentWord = false;
-                     ShowNextWord();
+                     Model.IsOpenCurrentWord = false;
+                    await ShowNextWord();
                 }
                 else
                 {
-                    EnterAnswerWord = _wordValidator.ClearEntryWord(EnterAnswerWord, checkWord);
-                     SetInvalidMarks();
+                     EnterAnswerWord = _wordValidator.ClearEntryWord(EnterAnswerWord, checkWord);
+                     await SetInvalidMarks();
                     _countCheckAvailabel--;
                 }
-                 UnavailableCheck();
+                await UnavailableCheck();
             }
             catch (Exception e)
             {
@@ -164,20 +180,27 @@ namespace RepeatingWords.ViewModel
 
         private async Task UnavailableCheck()
         {
-            if (_countCheckAvailabel == 0)
-            {             
-                await ShowRightWord();
-                IncrementOpenWords();
-                _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
-                Model.IsOpenCurrentWord = true;
-                await ShowNextWord();
+            try
+            {
+                if (_countCheckAvailabel == 0)
+                {
+                    await ShowRightWord();
+                    IncrementOpenWords();
+                    _countCheckAvailabel = Constants.CHECK_AVAILABLE_COUNT;
+                    Model.IsOpenCurrentWord = true;
+                    await ShowNextWord();
+                }
+            }
+            catch (Exception er)
+            {
+                Log.Logger.Error(er);
             }
         }
 
-        private async Task ShowRightWord()
+        private Task ShowRightWord()
         {
             EnterAnswerWord = Model.IsFromNative ? _showingWord.EngWord : _showingWord.RusWord;
-            await SetValidMarks();
+            return SetValidMarks();
         }
 
         private void IncrementOpenWords()
@@ -189,7 +212,7 @@ namespace RepeatingWords.ViewModel
         {
             ColorEnterWord = Color.Red;           
             await Task.Delay(800);
-           ColorEnterWord = Color.LightGray;
+            ColorEnterWord = Color.LightGray;
         }
         private async Task SetValidMarks()
         {

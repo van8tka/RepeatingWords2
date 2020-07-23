@@ -17,7 +17,7 @@ namespace RepeatingWords.ViewModel
     {
         public WorkSpaceSelectWordViewModel(IDialogService _dialogService, INavigationService _navigationService, IAnimationService animation , IStudyService studyService) : base(_dialogService, _navigationService, animation, studyService)
         {
-            TapWordCommand = new Command<string>(TapWord);
+            TapWordCommand = new Command<string>(async(i)=>await TapWord(i));
         }
 
         private int _timeShowRightWord = 800;
@@ -27,35 +27,42 @@ namespace RepeatingWords.ViewModel
         /// </summary>
         /// <param name="wordName">слово выбранное в квадрате</param>
         private bool isTapAlready;
-        private async void TapWord(string wordName)
+        private async Task TapWord(string wordName)
         {
             if(!isTapAlready)
             {
                 isTapAlready = true;
                 string compareWord = !Model.IsFromNative ? _showingWord.RusWord : _showingWord.EngWord;
-                if (string.IsNullOrEmpty(wordName))
-                    return;
-                if (compareWord.Equals(wordName, StringComparison.OrdinalIgnoreCase))
+                if (!string.IsNullOrEmpty(wordName))
                 {
-                    Model.IsOpenCurrentWord = false;
-                    SetRightMark(wordName, Color.FromHex("#6bafef"));
-                    await Task.Delay(_timeShowRightWord);
+                    if (compareWord.Equals(wordName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Model.IsOpenCurrentWord = false;
+                        SetRightMark(wordName, Color.FromHex("#6bafef"));
+                        await Task.Delay(_timeShowRightWord);
+                    }
+                    else
+                    {
+                        Model.IsOpenCurrentWord = true;
+                        SetRightMark(compareWord, Color.FromHex("#6bafef"));
+                        SetRightMark(wordName, Color.Red);
+                        Model.WordsOpen.Add(_showingWord);
+                        Model.AllOpenedWordsCount++;
+                        await Task.Delay(_timeShowMistakeWord);
+                    }
+                    ClearBackgroundColor();
+                    await ShowNextAsync();
+                    isTapAlready = false;
+                   
                 }
-                else
-                {
-                    Model.IsOpenCurrentWord = true;
-                    SetRightMark(compareWord, Color.FromHex("#6bafef"));
-                    SetRightMark(wordName, Color.Red);
-                    Model.WordsOpen.Add(_showingWord);
-                    Model.AllOpenedWordsCount++;
-                    await Task.Delay(_timeShowMistakeWord);
-                }
-                ClearBackgroundColor();
-                await AnimationService.AnimationFade(WordContainer, 0);
-                await ShowNextWord();
-                await AnimationService.AnimationFade(WordContainer, 1);
-                isTapAlready = false;
-            }           
+            }
+        }
+
+        private async Task ShowNextAsync()
+        {
+            await AnimationService.AnimationFade(WordContainer, 0);
+            await ShowNextWord();
+            await AnimationService.AnimationFade(WordContainer, 1);
         }
 
         private void ClearBackgroundColor()

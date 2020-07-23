@@ -23,17 +23,17 @@ namespace RepeatingWords.ViewModel
             _showLanguageService = showLanguageService;
             _speechService = speechService;
             Model = new RepeatingWordsModel();
-            VoiceActingCommand = new Command(async () => await _speechService.Speak(Model?.CurrentWord?.EngWord));
-            EditCurrentWordCommand = new Command(async () =>
+            VoiceActingCommand = new Command( () =>  _speechService.Speak(Model?.CurrentWord?.EngWord));
+            EditCurrentWordCommand = new Command( () =>
             {
                 _isEditing = true;
                 if (Model.CurrentWord != null)
-                    await NavigationService.NavigateToAsync<CreateWordViewModel>(Model.CurrentWord);
+                     NavigationService.NavigateToAsync<CreateWordViewModel>(Model.CurrentWord);
             });
-            EnterTranslateCommand = new Command(async () => await ShowEnterTranslate());
-            SelectFromWordsCommand = new Command(async () => await ShowSelectFromWords());
-            LearningCardsCommand = new Command(async () => await ShowLearningCards());
-            AppearingCommand = new Command(async () => await AppearingPage());
+            EnterTranslateCommand = new Command( () =>  ShowEnterTranslate());
+            SelectFromWordsCommand = new Command( () =>  ShowSelectFromWords());
+            LearningCardsCommand = new Command( () =>  ShowLearningCards());
+            AppearingCommand = new Command( () =>  AppearingPage());
             DisappearingCommand = new Command( Disappearing);
             _resetLearnedTask = null;
         }
@@ -168,22 +168,23 @@ namespace RepeatingWords.ViewModel
         private WorkSpaceCardsView _cardsView;
         private WorkSpaceCardsView CardsView => _cardsView ?? (_cardsView = new WorkSpaceCardsView());
 
-        private async Task WorkSurface(string nameSurface, ICustomContentView viewSurface)
+        private Task WorkSurface(string nameSurface, ICustomContentView viewSurface)
         {
             if (Model.AllWordsCount == 0)
-                return;
-            await _animationService.AnimationFade(WorkContainerView, 0);
+                return null;
+            var tAnim0 = _animationService.AnimationFade(WorkContainerView, 0);
             WorkSpaceView = viewSurface as ContentView ?? throw new Exception("Error SurfaceView is null");
             _workSpaceVM = viewSurface.CustomVM;
             _workSpaceVM.Model = Model;
-            await _workSpaceVM.ShowNextWord(isFirstShowAfterLoad: true);
+            var tShowNext = _workSpaceVM.ShowNextWord(isFirstShowAfterLoad: true);
             SetBackgroundButton(nameSurface);
-            await _animationService.AnimationFade(WorkContainerView, 1);
+            var tAnim1 = _animationService.AnimationFade(WorkContainerView, 1);
+            return Task.WhenAll(tAnim0, tShowNext, tAnim1);
         }
 
-        private async Task ShowEnterTranslate() => await WorkSurface(nameof(EntryImage), EnterWordView);
-        private async Task ShowSelectFromWords() => await WorkSurface(nameof(SelectImage), SelectWordView);
-        private async Task ShowLearningCards() => await WorkSurface(nameof(CardsImage), CardsView);
+        private Task ShowEnterTranslate() => WorkSurface(nameof(EntryImage), EnterWordView);
+        private Task ShowSelectFromWords() => WorkSurface(nameof(SelectImage), SelectWordView);
+        private Task ShowLearningCards() =>  WorkSurface(nameof(CardsImage), CardsView);
 
         private void SetBackgroundButton(string button)
         {
@@ -231,7 +232,7 @@ namespace RepeatingWords.ViewModel
             Model.WordsLeft = new List<WordsModel>(Model.WordsLearningAll);
         }
 
-        public override async Task InitializeAsync(object navigationData)
+        public override Task InitializeAsync(object navigationData)
         {
             try
             {
@@ -240,18 +241,20 @@ namespace RepeatingWords.ViewModel
                 SetBackgroundButton(nameof(CardsImage));
                 _dictionary = navigationData as DictionaryModel;
                 Model.Dictionary = _dictionary;
-                DictionaryName = _dictionary.Name;
+                DictionaryName = _dictionary?.Name;
                 var wordsList = GetWordsCollection(_dictionary);
                 ShakeWordsCollection(wordsList);
                 Model.IsFromNative = _showLanguageService.GetFirstLanguage();
-                await ShowLearningCards();
+               var tShow = ShowLearningCards();
                 SpeackerLang = _speechService.Language;
-                await base.InitializeAsync(navigationData);
+                var tBase =  base.InitializeAsync(navigationData);
+                return Task.WhenAll(tShow, tBase);
             }
             catch (Exception e)
             {
                 _studyService.RollBackTransaction();
                 DialogService.ShowToast("Error loading words to study" + e.Message);
+                return Task.FromResult(false);
             }
         }
 
@@ -282,28 +285,33 @@ namespace RepeatingWords.ViewModel
             });
         }
 
-        private async Task AppearingPage()
+        private Task AppearingPage()
         {
+            Task t = null;
             if(_disappiaring)
                 _studyService.BeginTransaction();
             if (_isEditing)
-                await _workSpaceVM.SetViewWords(Model.CurrentWord, Model.IsFromNative);
+               t = _workSpaceVM.SetViewWords(Model.CurrentWord, Model.IsFromNative);
             _isEditing = false;
             _disappiaring = false;
+            return t;
         }
 
         private bool _disappiaring;
         private const int PERSENT = 100;
         private void Disappearing()
         {
-            _disappiaring = true;
-            if (_resetLearnedTask!=null)
-                _resetLearnedTask.Wait();
-            _dictionary.LastUpdated = DateTime.UtcNow;
-            float proportion = (float)_dictionary.CountLearned / (float) _dictionary.CountWords;
-            _dictionary.PercentOfLearned = ((int)(proportion * PERSENT)).ToString();
-            _studyService.UpdateDictionary(_dictionary);
-            _studyService.CommitTransaction();
+            if (_dictionary != null)
+            {
+                _disappiaring = true;
+                if (_resetLearnedTask != null)
+                    _resetLearnedTask.Wait();
+                _dictionary.LastUpdated = DateTime.UtcNow;
+                float proportion = (float)_dictionary.CountLearned / (float)_dictionary.CountWords;
+                _dictionary.PercentOfLearned = ((int)(proportion * PERSENT)).ToString();
+                _studyService.UpdateDictionary(_dictionary);
+                _studyService.CommitTransaction();
+            }
         }
     }
 }

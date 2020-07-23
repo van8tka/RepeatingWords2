@@ -23,7 +23,7 @@ namespace RepeatingWords.ViewModel
             FocusedTranscriptionCommand = new Command(async()=>await FocusedTranscription());
         }
       
-        public override async Task InitializeAsync(object navigationData)
+        public override Task InitializeAsync(object navigationData)
         {
             Log.Logger.Info("\n InitializeAsync CreateWordViewModel");
             IsBusy = true;
@@ -52,7 +52,7 @@ namespace RepeatingWords.ViewModel
                 _isChangeWord = false;
             }
             MessagingCenter.Send<CreateWordViewModel>(this, "SetFocus");
-            await base.InitializeAsync(navigationData);
+            return base.InitializeAsync(navigationData);
         }
 
         private bool _isChangeWord { get; set; }
@@ -79,7 +79,6 @@ namespace RepeatingWords.ViewModel
             try
             {
                 Log.Logger.Info("\n Send new word");
-                string ModelNoFillFull = Resource.ModelNoFillFull;
                 if (!String.IsNullOrEmpty(NativeWord) && !String.IsNullOrEmpty(TranslateWord))
                 {
                     if (!String.IsNullOrEmpty(TranscriptionWord))
@@ -99,7 +98,7 @@ namespace RepeatingWords.ViewModel
                 }
                 else
                 {
-                      DialogService.ShowToast(ModelNoFillFull);
+                      DialogService.ShowToast(Resource.ModelNoFillFull);
                 }
             }
             catch (Exception er)

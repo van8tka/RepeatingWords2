@@ -46,12 +46,12 @@ namespace RepeatingWords.ViewModel
         }
 
 
-        public override async Task InitializeAsync(object navigationData)
+        public override Task InitializeAsync(object navigationData)
         {
                 Log.Logger.Info("\n InitializeAsync EntryTranscriptionViewModel");
                 IsBusy = true;
                 TextTranscription = navigationData as string ?? string.Empty;
-                await base.InitializeAsync(navigationData);
+                 return base.InitializeAsync(navigationData);
         }
 
         private async void CursorBlink()

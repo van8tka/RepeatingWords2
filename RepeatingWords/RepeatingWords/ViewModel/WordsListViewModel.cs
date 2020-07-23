@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RepeatingWords.Model;
 using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Interfaces;
@@ -19,11 +20,11 @@ namespace RepeatingWords.ViewModel
         {
             _studyService = studyService ?? throw new ArgumentNullException(nameof(studyService));
             _importFile = importFile ?? throw new ArgumentNullException(nameof(importFile));
-            AddWordCommand = new Command(async()=> { await NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); });
-            RepeatingWordsCommand = new Command(async()=> { await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); });
-            ImportWordsCommand = new Command(async () => { DialogService.ShowLoadDialog(); await ImportFile(); });
-            ChangeWordCommand = new Command<WordsModel>(async(selectedItem)=>await NavigationService.NavigateToAsync<CreateWordViewModel>(selectedItem));
-            RemoveWordCommand = new Command<WordsModel>(async(s)=>await Remove(s));
+            AddWordCommand = new Command(()=> { NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); });
+            RepeatingWordsCommand = new Command(()=> { NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); });
+            ImportWordsCommand = new Command( async () => { DialogService.ShowLoadDialog(); await ImportFile(); });
+            ChangeWordCommand = new Command<WordsModel>((selectedItem)=> NavigationService.NavigateToAsync<CreateWordViewModel>(selectedItem));
+            RemoveWordCommand = new Command<WordsModel>((s)=> Remove(s));
         }
         public ICommand AddWordCommand { get; set; }
         public ICommand RepeatingWordsCommand { get; set; }
@@ -79,13 +80,14 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private async Task Remove(WordsModel selectedItem)
+        private Task Remove(WordsModel selectedItem)
         {
             WordsList.Remove(selectedItem);
-            await Task.Run(()=>_studyService.RemoveWord(selectedItem));
+            var task = Task.Run(()=>_studyService.RemoveWord(selectedItem));
             SetIsListEmptyLabel();
             OnPropertyChanged(nameof(WordsList));
             CountWords--;
+            return task;
         }
 
         private int _countWords = 0;
@@ -100,14 +102,14 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        public override async Task InitializeAsync(object navigationData)
+        public override Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
             _dictionary = navigationData as DictionaryModel;
-            CountWords = _dictionary.CountWords;
-            WordsList = _dictionary.WordsCollection;
+            CountWords = _dictionary?.CountWords??0;
+            WordsList = _dictionary?.WordsCollection??new ObservableCollectionListSource<WordsModel>();
             SetIsListEmptyLabel();
-            await base.InitializeAsync(navigationData);
+            return base.InitializeAsync(navigationData);
         }
 
         protected async Task ImportFile()

@@ -17,7 +17,7 @@ namespace RepeatingWords.Services
         Language GetLanguage(string name);
         int AddLanguage(string nameLanguage);
         int AddLanguage(Language language);
-        Task<bool> RemoveLanguage(int idlanguage);
+        bool RemoveLanguage(int idlanguage);
     }
     public interface IWordStudyService
     {
@@ -30,10 +30,10 @@ namespace RepeatingWords.Services
     public interface IDictionaryStudyService
     {
         DictionaryModel GetDictionary(int idDictionary);
-        Task<bool> RemoveDictionaryFromLanguage(int dictionaryId);
+        bool RemoveDictionaryFromLanguage(int dictionaryId);
         int AddDictionary(string dictionaryName, int idLang);
         int AddDictionary(Dictionary dictionary);
-        Task UpdateDictionary(DictionaryModel dictionary);
+        void UpdateDictionary(DictionaryModel dictionary);
     }
     public interface ITransactionService
     {
@@ -178,11 +178,9 @@ namespace RepeatingWords.Services
             }
         }
 
-        public Task<bool> RemoveLanguage(int idlanguage)
+        public bool RemoveLanguage(int idlanguage)
         {
-            return Task.Run(() =>
-            {
-                try
+            try
                 {
                     var removedLanguage = _dictionaryList.FirstOrDefault(x => x.Id == idlanguage);
                     var dictionaries = _dictionaries.Where(x => x.IdLanguage == idlanguage).AsEnumerable();
@@ -203,22 +201,19 @@ namespace RepeatingWords.Services
                     Log.Logger.Error(e);
                     return false;
                 }
-            });
         }
 
-        public Task<bool> RemoveDictionaryFromLanguage(int dictionaryId)
+        public bool RemoveDictionaryFromLanguage(int dictionaryId)
         {
-            return Task.Run(() => {
-                try
-                {
-                    return RemoveDictionary(dictionaryId);
-                }
-                catch (Exception e)
-                {
-                    Log.Logger.Error(e);
-                    return false;
-                }
-            });
+            try
+            {
+                return RemoveDictionary(dictionaryId);
+            }
+            catch (Exception e)
+            {
+                Log.Logger.Error(e);
+                return false;
+            }
         }
 
         private bool RemoveDictionary(int dictionaryId)
@@ -292,7 +287,7 @@ namespace RepeatingWords.Services
         {
             _unitOfWork.WordsRepository.Create(listWords);
             _unitOfWork.Save();
-            (_words as List<Words>).AddRange(listWords);
+            (_words as List<Words>)?.AddRange(listWords);
             var dictModel = GetDictionary(listWords.FirstOrDefault().IdDictionary);
             for (int i = 0; i < listWords.Count(); i++)
             {
@@ -324,10 +319,10 @@ namespace RepeatingWords.Services
             }
         }
 
-        public Task UpdateDictionary(DictionaryModel dictionary)
+        public void UpdateDictionary(DictionaryModel dictionary)
         {
             Log.Logger.Info($"\n Update dictionary id={dictionary.Id}; name={dictionary.Name}");
-            return Task.Run(() => SetDictionaryUpdate(dictionary.Id));
+            SetDictionaryUpdate(dictionary.Id);
         }
 
         private void SetDictionaryUpdate(int idDictionary)

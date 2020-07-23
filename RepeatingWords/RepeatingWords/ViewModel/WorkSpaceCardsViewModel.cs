@@ -46,7 +46,7 @@ namespace RepeatingWords.ViewModel
                 case SwipeDirection.Up:
                     {
                         Model.IsOpenCurrentWord = true;
-                        ShowTranslateWord();
+                        await ShowTranslateWord();
                         break;
                     }
                 case SwipeDirection.Left:
@@ -57,7 +57,7 @@ namespace RepeatingWords.ViewModel
                     }
                 case SwipeDirection.Right:
                     {
-                        ShowPreviousWord();
+                        await ShowPreviousWord();
                         break;
                     }
             }
@@ -85,28 +85,31 @@ namespace RepeatingWords.ViewModel
         }
 
 
-        private void ShowPreviousWord()
+        private Task ShowPreviousWord()
         {
             _isOpened = false;
             if (Model.IndexWordShowNow > 0)
             {
                 Model.IndexWordShowNow--;
                 Model.CurrentWord = Model.WordsLearningAll.ElementAt(Model.IndexWordShowNow);
-                SetViewWords(Model.CurrentWord, Model.IsFromNative);
+                var task = SetViewWords(Model.CurrentWord, Model.IsFromNative);
                 Model.AllShowedWordsCount--;
                 Model.WordsLeft.Add(Model.CurrentWord);
+                return task;
             }
-            else
-                Model.IndexWordShowNow = 0;
+            Model.IndexWordShowNow = 0;
+            return Task.FromResult(false);
         }
 
       
-        private void ShowTranslateWord()
+        private Task ShowTranslateWord()
         {
-            SetOpenWordsCount();
-            _isOpened = !_isOpened;
-            SetViewWords(Model.CurrentWord, Model.IsFromNative, _isOpened);
-
+            return Task.Run(() =>
+            {
+                SetOpenWordsCount();
+                _isOpened = !_isOpened;
+                SetViewWords(Model.CurrentWord, Model.IsFromNative, _isOpened);
+            });
         }
 
         private void SetOpenWordsCount()

@@ -26,15 +26,15 @@ namespace RepeatingWords.ViewModel
         {
             this._dialogService = _dialogService;
             this._navigationService = _navigationService;
-         this.AnimationService = _animationService;
-         this._studyService = studyService;
+            this.AnimationService = _animationService;
+            this._studyService = studyService;
         }
         private readonly IDialogService _dialogService;
         private readonly INavigationService _navigationService;
         private readonly IWordStudyService _studyService;
         protected readonly IAnimationService AnimationService;
 
-        public async Task ShowNextWord(bool isFirstShowAfterLoad = false)
+        public Task ShowNextWord(bool isFirstShowAfterLoad = false)
         {
             try
             {
@@ -46,21 +46,23 @@ namespace RepeatingWords.ViewModel
                 {
                     Model.IndexWordShowNow++;
                     Model.CurrentWord = Model.WordsLearningAll.ElementAtOrDefault(Model.IndexWordShowNow);
-                    await SetViewWords(Model.CurrentWord, Model.IsFromNative);
+                    var t = SetViewWords(Model.CurrentWord, Model.IsFromNative);
                     CounterShowWord(isFirstShowAfterLoad);
                     Model.WordsLeft.Remove(Model.CurrentWord);
+                    return t;
                 }
                 else
                 {
                     CounterShowWord(isFirstShowAfterLoad);
                     int unlearned = Model.AllOpenedWordsCount;
                     int learned = Model.AllShowedWordsCount - unlearned;
-                    await _navigationService.NavigateToAsync<FinishLearnViewModel>(new Tuple<int, int>(learned, unlearned));
+                    return _navigationService.NavigateToAsync<FinishLearnViewModel>(new Tuple<int, int>(learned, unlearned));
                 }
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
+                return Task.FromResult(false);
             }
         }
 
@@ -69,7 +71,7 @@ namespace RepeatingWords.ViewModel
             if (!modelIsOpenCurrentWord && modelCurrentWord!=null)
             {
                 modelCurrentWord.IsLearned = true;
-                Task.Run(() => _studyService.UpdateWord(modelCurrentWord));
+                _studyService.UpdateWord(modelCurrentWord);
             }
         }
 

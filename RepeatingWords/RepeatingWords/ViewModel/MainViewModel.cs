@@ -83,11 +83,11 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        public override async Task InitializeAsync(object navigationData)
+        public override Task InitializeAsync(object navigationData)
         {
             IsBusy = true;
             LoadData();
-            await base.InitializeAsync(navigationData);
+            return base.InitializeAsync(navigationData);
         }
 
         private void LoadData()
@@ -225,7 +225,7 @@ namespace RepeatingWords.ViewModel
                 DialogService.ShowLoadDialog(Resource.Deleting);
                 OnPropertyChanged(nameof(DictionaryList));
                 _studyService.BeginTransaction();
-                await _studyService.RemoveDictionaryFromLanguage(removeDictionary.Id);
+                await Task.Run(()=> _studyService.RemoveDictionaryFromLanguage(removeDictionary.Id));
                 _studyService.CommitTransaction();
                 DictionaryList.FirstOrDefault(x => x.Id == removeDictionary.IdLanguage)
                     ?.RemoveDictionary(removeDictionary.Id);
@@ -245,7 +245,7 @@ namespace RepeatingWords.ViewModel
             Log.Logger.Info($"remove language with id = {idlanguage}");
             DialogService.ShowLoadDialog(Resource.Deleting);
             _studyService.BeginTransaction();
-            if (await _studyService.RemoveLanguage(idlanguage))
+            if (await Task.Run(()=> _studyService.RemoveLanguage(idlanguage)))
                 _studyService.CommitTransaction();
             else
                 _studyService.RollBackTransaction();

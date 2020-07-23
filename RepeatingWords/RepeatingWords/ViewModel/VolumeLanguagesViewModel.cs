@@ -20,11 +20,11 @@ namespace RepeatingWords.ViewModel
             _volumeLangList = new VolumeLanguageList();
         }
 
-        public override async Task InitializeAsync(object navigationData)
+        public override Task InitializeAsync(object navigationData)
         {
             SetLanguages();
             _settingsVm = (navigationData as SettingsViewModel);
-            await base.InitializeAsync(navigationData);
+            return base.InitializeAsync(navigationData);
         }
 
      

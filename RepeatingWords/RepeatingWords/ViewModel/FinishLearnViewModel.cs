@@ -17,7 +17,7 @@ namespace RepeatingWords.ViewModel
             UnlearnedWordsCount = _unlearned;
             LearnedWordsCount = _learned;
             _animationService = animationService;
-            GoMainPageCommand = new Command(GoMainPage);
+            GoMainPageCommand = new Command(()=> NavigationService.GoBackPage());
         }
 
         private IAnimationService _animationService;
@@ -29,10 +29,7 @@ namespace RepeatingWords.ViewModel
 
         public ICommand GoMainPageCommand { get; private set; }
 
-        private async void GoMainPage()
-        {
-            await NavigationService.GoBackPage();
-        }
+      
 
         private string _learnedCount;
         public string LearnedWordsCount { get=>_learnedCount;

@@ -25,15 +25,15 @@ namespace RepeatingWords.ViewModel
             SwitchThemeCommand = new Command(SwitchThemeApp);
             SwitchTranskriptionKeyboardCommand = new Command(SwitchTranscriptionKeyboard);
             ChangeFirstLanguageCommand = new Command(SwitchFirstLanguageShow);
-            BackUpCommand = new Command(async () => { await ContextMenyBackup(); });
+            BackUpCommand = new Command( () => {  ContextMenyBackup(); });
             ;
-            RestoreBackUpCommand = new Command(async () => { await RestoreBackup(); });
-            ChangeVoiceLanguageCommand = new Command(async () =>
-                await NavigationService.NavigateToAsync<VolumeLanguagesViewModel>(this));
-            BackUpLocalCommand = new Command(async () => { await BackupLocal(); });
-            BackUpGoogleCommand = new Command(async () => { await BackupGoogle(); });
-            RestoreLocalCommand = new Command(async () => { await RestoreLocal(); });
-            RestoreGoogleCommand = new Command(async () => { await RestoreGoogle(); });
+            RestoreBackUpCommand = new Command( () => {  RestoreBackup(); });
+            ChangeVoiceLanguageCommand = new Command( () =>
+                 NavigationService.NavigateToAsync<VolumeLanguagesViewModel>(this));
+            BackUpLocalCommand = new Command( () => {  BackupLocal(); });
+            BackUpGoogleCommand = new Command( () => {  BackupGoogle(); });
+            RestoreLocalCommand = new Command( () => {  RestoreLocal(); });
+            RestoreGoogleCommand = new Command( () => {  RestoreGoogle(); });
         }
 
         public override Task InitializeAsync(object navigationData)
