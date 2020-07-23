@@ -27,7 +27,7 @@ namespace RepeatingWords.ViewModel
             _showLanguageService = showLanguageService;
             _speechService = speechService;
             Model = new RepeatingWordsModel();
-            VoiceActingCommand = new Command(async () => await _speechService.Speak(Model.CurrentWord.EngWord));
+            VoiceActingCommand = new Command(async () => await _speechService.Speak(Model?.CurrentWord?.EngWord));
             EditCurrentWordCommand = new Command(async () =>
             {
                 _isEditing = true;

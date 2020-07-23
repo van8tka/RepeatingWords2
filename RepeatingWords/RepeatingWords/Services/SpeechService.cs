@@ -40,9 +40,11 @@ namespace RepeatingWords.Services
 
         public async Task Speak(string text)
         {
-            Log.Logger.Info($"SpeechService Speak - {text} +language- {_language}");
-            Debug.Assert(_settings!=null);
-            await TextToSpeech.SpeakAsync(text, _settings);
+            if (!string.IsNullOrEmpty(text))
+            {
+                Log.Logger.Info($"SpeechService Speak - {text} +language- {_language}");
+                await TextToSpeech.SpeakAsync(text, _settings);
+            }
         }
     }
 }
