@@ -40,6 +40,8 @@ namespace RepeatingWords.Helpers
                     {
                         await GetWordsByLanguage(dataRaw, newLanguageId);
                     }
+                    if(!_studyService.DictionaryList.FirstOrDefault(x => x.Id == newLanguageId).Expanded)
+                        _studyService.DictionaryList.FirstOrDefault(x => x.Id == newLanguageId).Expanded = true;
                 }
                 _studyService.CommitTransaction();
             }

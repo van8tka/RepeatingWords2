@@ -16,8 +16,9 @@ namespace RepeatingWords.Model
    public class LanguageModel:ObservableCollection<DictionaryModel>,INotifyPropertyChanged, ISerializebleJson
     {
        public LanguageModel() { }
-        public LanguageModel( Language language, IEnumerable<DictionaryModel> dictionaries = null, bool expanded = true)
+        public LanguageModel( Language language, IEnumerable<DictionaryModel> dictionaries = null, bool expanded = false)
         {
+            _expanded = false;
             Id = language.Id;
             Name = language.NameLanguage;
             AddDictionariesToCash(dictionaries);
@@ -46,6 +47,7 @@ namespace RepeatingWords.Model
         private void AddRangeToCollection()
         {
             int count = _dictionariesCash.Count();
+            this.Clear();
             for (int i = 0; i < count ; i++)
                 this.Add(_dictionariesCash.ElementAt(i));
         }
@@ -74,16 +76,13 @@ namespace RepeatingWords.Model
             get => _expanded;
             set
             {
-                if (_expanded != value)
-                {
-                    OnPropertyChanged(nameof(Expanded));
-                    OnPropertyChanged(nameof(StateIcon));
-                }
-                if(_expanded)
+                _expanded = value;
+                if (_expanded)
                    AddRangeToCollection();
                 else
                     this.Clear();
-                _expanded = value;
+                OnPropertyChanged(nameof(Expanded));
+                OnPropertyChanged(nameof(StateIcon));
             }
         }
 

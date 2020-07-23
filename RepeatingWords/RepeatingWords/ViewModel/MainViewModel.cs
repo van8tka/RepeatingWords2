@@ -202,7 +202,13 @@ namespace RepeatingWords.ViewModel
             var dictionaryName = await DialogService.ShowInputTextDialog(Resource.EntryNameDict, Resource.ButtonAddDict,
                 Resource.ButtonCreate, Resource.ModalActCancel);
             if (!string.IsNullOrEmpty(dictionaryName))
-                return _studyService.AddDictionary(dictionaryName, idLanguage);
+            {
+                int id = _studyService.AddDictionary(dictionaryName, idLanguage);
+                var isExp = DictionaryList.FirstOrDefault(x => x.Id == idLanguage).Expanded;
+                if (!isExp)
+                    DictionaryList.FirstOrDefault(x => x.Id == idLanguage).Expanded = true;
+                return id;
+            }
             return -1;
         }
 
