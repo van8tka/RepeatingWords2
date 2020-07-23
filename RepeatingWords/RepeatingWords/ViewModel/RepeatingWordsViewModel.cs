@@ -1,8 +1,4 @@
-﻿using RepeatingWords.DataService.Interfaces;
-using RepeatingWords.DataService.Model;
-using RepeatingWords.Heleprs;
-using RepeatingWords.Helpers.Interfaces;
-using RepeatingWords.LoggerService;
+﻿using RepeatingWords.Helpers.Interfaces;
 using RepeatingWords.Model;
 using RepeatingWords.View;
 using System;
