@@ -34,7 +34,7 @@ namespace RepeatingWords.ViewModel
         private readonly IWordStudyService _studyService;
         protected readonly IAnimationService AnimationService;
 
-        public Task ShowNextWord(bool isFirstShowAfterLoad = false)
+        public async Task ShowNextWord(bool isFirstShowAfterLoad = false)
         {
             try
             {
@@ -46,23 +46,22 @@ namespace RepeatingWords.ViewModel
                 {
                     Model.IndexWordShowNow++;
                     Model.CurrentWord = Model.WordsLearningAll.ElementAtOrDefault(Model.IndexWordShowNow);
-                    var t = SetViewWords(Model.CurrentWord, Model.IsFromNative);
+                    await SetViewWords(Model.CurrentWord, Model.IsFromNative);
                     CounterShowWord(isFirstShowAfterLoad);
                     Model.WordsLeft.Remove(Model.CurrentWord);
-                    return t;
+                   
                 }
                 else
                 {
                     CounterShowWord(isFirstShowAfterLoad);
                     int unlearned = Model.AllOpenedWordsCount;
                     int learned = Model.AllShowedWordsCount - unlearned;
-                    return _navigationService.NavigateToAsync<FinishLearnViewModel>(new Tuple<int, int>(learned, unlearned));
+                    await _navigationService.NavigateToAsync<FinishLearnViewModel>(new Tuple<int, int>(learned, unlearned));
                 }
             }
             catch (Exception e)
             {
                 Log.Logger.Error(e);
-                return Task.FromResult(false);
             }
         }
 
