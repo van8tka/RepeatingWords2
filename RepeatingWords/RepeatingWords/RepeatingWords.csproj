@@ -25,6 +25,7 @@
   <ItemGroup>
     <Reference Include="FormsControls.Base">
       <HintPath>..\..\FormsControls\FormsControls.Base\bin\Release\netstandard2.0\FormsControls.Base.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
 
