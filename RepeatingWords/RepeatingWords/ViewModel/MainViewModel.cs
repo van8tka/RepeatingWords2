@@ -21,8 +21,7 @@ namespace RepeatingWords.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        public MainViewModel(INavigationService navService, IDialogService dialogService,
-            IStudyService studyService, IImportFile importFile) : base(navService, dialogService)
+        public MainViewModel(INavigationService navService, IDialogService dialogService, IStudyService studyService, IImportFile importFile) : base(navService, dialogService)
         {
             _studyService = studyService;
             _importFile = importFile;
@@ -38,7 +37,6 @@ namespace RepeatingWords.ViewModel
             });
             AppearingCommand = new Command(Appearing);
             ContextMenuLanguageCommand = new Command<int>(async (id) => await ContextMenuLanguage(id));
-
         }
 
         private readonly IStudyService _studyService;
@@ -140,12 +138,8 @@ namespace RepeatingWords.ViewModel
                 string removeDictionary = Resource.ButtonRemove;
                 string showWords = Resource.ButtonShowWords;
                 string studing = Resource.ButtonRepeatWords;
-                string studingNotLearning = Resource.ButtonStudyNotLearning;
                 string[] actionButtons;
-                if (selectedItem.CountLearned > 0 && selectedItem.CountLearned < selectedItem.CountWords)
-                    actionButtons = new string[] {studing, studingNotLearning, showWords, removeDictionary};
-                else
-                    actionButtons = new string[] {studing, showWords, removeDictionary};
+                actionButtons = new string[] {studing, showWords, removeDictionary};
                 var result =
                     await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
                 if (result.Equals(studing, StringComparison.OrdinalIgnoreCase))
@@ -153,16 +147,10 @@ namespace RepeatingWords.ViewModel
                     selectedItem.IsStudyUnlearnedWords = false;
                     await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(selectedItem);
                 }
-                else if (result.Equals(studingNotLearning, StringComparison.OrdinalIgnoreCase))
-                {
-                    selectedItem.IsStudyUnlearnedWords = true;
-                    await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(selectedItem);
-                }
                 else if (result.Equals(showWords, StringComparison.OrdinalIgnoreCase))
                     await NavigationService.NavigateToAsync<WordsListViewModel>(selectedItem);
                 else if (result.Equals(removeDictionary, StringComparison.OrdinalIgnoreCase))
                     await RemoveDictionary(selectedItem);
-
                 SelectedItem = null;
             }
             catch (Exception e)

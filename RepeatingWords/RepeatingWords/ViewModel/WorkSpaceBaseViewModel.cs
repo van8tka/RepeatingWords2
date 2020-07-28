@@ -67,11 +67,8 @@ namespace RepeatingWords.ViewModel
 
         private void MarkLearnedWord(WordsModel modelCurrentWord, bool modelIsOpenCurrentWord)
         {
-            if (!modelIsOpenCurrentWord && modelCurrentWord!=null)
-            {
+            if (!modelIsOpenCurrentWord && modelCurrentWord != null)
                 modelCurrentWord.IsLearned = true;
-                _studyService.UpdateWord(modelCurrentWord);
-            }
         }
 
         private void CounterShowWord(bool isFirstShowAfterLoad)

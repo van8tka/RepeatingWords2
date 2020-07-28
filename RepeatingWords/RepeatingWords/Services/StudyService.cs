@@ -342,7 +342,6 @@ namespace RepeatingWords.Services
         {
             try
             {
-                Log.Logger.Info($"\n Update word id={word.Id}; rusWord={word.RusWord}");
                 var wordDb = _words.FirstOrDefault(x => x.Id == word.Id);
                 int index = _words.IndexOf(wordDb);
                 _words.ElementAt(index).EngWord = word.EngWord;
