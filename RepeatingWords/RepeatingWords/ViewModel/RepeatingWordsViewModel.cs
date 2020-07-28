@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Acr.UserDialogs.Infrastructure;
 using RepeatingWords.Interfaces;
 using RepeatingWords.Services;
 using Xamarin.Forms;
+using Log = RepeatingWords.LoggerService.Log;
 
 namespace RepeatingWords.ViewModel
 {
@@ -301,16 +303,24 @@ namespace RepeatingWords.ViewModel
         private const int PERSENT = 100;
         private void Disappearing()
         {
-            if (_dictionary != null)
+            try
             {
-                _disappiaring = true;
-                if (_resetLearnedTask != null)
-                    _resetLearnedTask.Wait();
-                _dictionary.LastUpdated = DateTime.UtcNow;
-                float proportion = (float)_dictionary.CountLearned / (float)_dictionary.CountWords;
-                _dictionary.PercentOfLearned = ((int)(proportion * PERSENT)).ToString();
-                _studyService.UpdateDictionary(_dictionary);
-                _studyService.CommitTransaction();
+                if (_dictionary != null)
+                {
+                    _disappiaring = true;
+                    if (_resetLearnedTask != null)
+                        _resetLearnedTask.Wait();
+                    _dictionary.LastUpdated = DateTime.UtcNow;
+                    float proportion = (float)_dictionary.CountLearned / (float)_dictionary.CountWords;
+                    _dictionary.PercentOfLearned = ((int)(proportion * PERSENT)).ToString();
+                    _studyService.UpdateDictionary(_dictionary);
+                    _studyService.CommitTransaction();
+                }
+            }
+            catch (Exception er)
+            {
+                _studyService.RollBackTransaction();
+                Log.Logger.Error(er);
             }
         }
     }
