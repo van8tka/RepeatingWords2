@@ -47,15 +47,14 @@ namespace RepeatingWords.ViewModel
         }
 
 
-        public async void LoadLanguage(Language selectedLanguage)
+        public async Task LoadLanguage(Language selectedLanguage)
         {
             SelectedItem = null;
             try
             {
                 await _languageLoader.LoadLanguageFromApi(selectedLanguage.Id, selectedLanguage.NameLanguage);
                 DialogService.HideLoadDialog();
-                await NavigationService.NavigateToAsync<MainViewModel>();
-                await NavigationService.RemoveBackStackAsync();
+                await NavigationService.GoBackPage();
             }
             catch (Exception e)
             {
@@ -95,10 +94,17 @@ namespace RepeatingWords.ViewModel
 
         public override async Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
-            await LoadData();
-            await base.InitializeAsync(navigationData);
-            DialogService.HideLoadDialog();
+            try
+            {
+                IsBusy = true;
+                await LoadData();
+                await base.InitializeAsync(navigationData);
+                DialogService.HideLoadDialog();
+            }
+            catch (Exception er)
+            {
+                Log.Logger.Error(er);
+            }
         }
     }
 }

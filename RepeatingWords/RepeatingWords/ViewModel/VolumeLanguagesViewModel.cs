@@ -22,8 +22,15 @@ namespace RepeatingWords.ViewModel
 
         public override Task InitializeAsync(object navigationData)
         {
-            SetLanguages();
-            _settingsVm = (navigationData as SettingsViewModel);
+            try
+            {
+                SetLanguages();
+                _settingsVm = (navigationData as SettingsViewModel);
+            }
+            catch (Exception er)
+            {
+                Log.Logger.Error(er);
+            }
             return base.InitializeAsync(navigationData);
         }
 

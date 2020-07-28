@@ -104,11 +104,18 @@ namespace RepeatingWords.ViewModel
 
         public override Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
-            _dictionary = navigationData as DictionaryModel;
-            CountWords = _dictionary?.CountWords??0;
-            WordsList = _dictionary?.WordsCollection??new ObservableCollectionListSource<WordsModel>();
-            SetIsListEmptyLabel();
+            try
+            {
+                IsBusy = true;
+                _dictionary = navigationData as DictionaryModel;
+                CountWords = _dictionary?.CountWords ?? 0;
+                WordsList = _dictionary?.WordsCollection ?? new ObservableCollectionListSource<WordsModel>();
+                SetIsListEmptyLabel();
+            }
+            catch (Exception er)
+            {
+                Log.Logger.Error(er);
+            }
             return base.InitializeAsync(navigationData);
         }
 

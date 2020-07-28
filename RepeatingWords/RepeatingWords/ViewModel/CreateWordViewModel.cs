@@ -25,33 +25,40 @@ namespace RepeatingWords.ViewModel
       
         public override Task InitializeAsync(object navigationData)
         {
-            Log.Logger.Info("\n InitializeAsync CreateWordViewModel");
-            IsBusy = true;
-            if (navigationData is WordsModel word)
+            try
             {
-                if (word.Id > -1)
+                Log.Logger.Info("\n InitializeAsync CreateWordViewModel");
+                IsBusy = true;
+                if (navigationData is WordsModel word)
                 {
-                    _isChangeWord = true;
-                    TitleEditWord = Resource.TitleChangeWord;
+                    if (word.Id > -1)
+                    {
+                        _isChangeWord = true;
+                        TitleEditWord = Resource.TitleChangeWord;
+                    }
+                    else
+                    {
+                        _isChangeWord = false;
+                        TitleEditWord = Resource.TitleCreateWord;
+                    }
+                    NativeWord = word.RusWord;
+                    TranslateWord = word.EngWord;
+                    TranscriptionWord = word.Transcription;
+                    _wordChange = word;
+                    _dictionary = word.DictionaryParent;
                 }
                 else
                 {
-                    _isChangeWord = false;
                     TitleEditWord = Resource.TitleCreateWord;
+                    _dictionary = navigationData as DictionaryModel;
+                    _isChangeWord = false;
                 }
-                NativeWord = word.RusWord;
-                TranslateWord = word.EngWord;
-                TranscriptionWord = word.Transcription;
-                _wordChange = word;
-                _dictionary = word.DictionaryParent;
+                MessagingCenter.Send<CreateWordViewModel>(this, "SetFocus");
             }
-            else
+            catch (Exception er)
             {
-                TitleEditWord = Resource.TitleCreateWord;             
-                _dictionary = navigationData as DictionaryModel;
-                _isChangeWord = false;
+                Log.Logger.Error(er);
             }
-            MessagingCenter.Send<CreateWordViewModel>(this, "SetFocus");
             return base.InitializeAsync(navigationData);
         }
 

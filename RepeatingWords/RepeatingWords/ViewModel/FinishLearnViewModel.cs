@@ -55,19 +55,26 @@ namespace RepeatingWords.ViewModel
 
         public override async Task InitializeAsync(object navigatedata)
         {
-            IsBusy = true;
-            await NavigationService.RemoveLastFromBackStackAsync();
-            if (navigatedata is Tuple<int, int> learnedData)
+            try
             {
-                string lerned = _learnedCount + learnedData.Item1;
-                string unlearned = _unlearned + learnedData.Item2;
-                UnlearnedWordsCount = unlearned;
-                LearnedWordsCount = lerned;
-                await AnimationShowData();
+                IsBusy = true;
+                await NavigationService.RemoveLastFromBackStackAsync();
+                if (navigatedata is Tuple<int, int> learnedData)
+                {
+                    string lerned = _learnedCount + learnedData.Item1;
+                    string unlearned = _unlearned + learnedData.Item2;
+                    UnlearnedWordsCount = unlearned;
+                    LearnedWordsCount = lerned;
+                    await AnimationShowData();
+                }
+                else
+                    Log.Logger.Error("Error get count learned words");
+                await base.InitializeAsync(navigatedata);
             }
-            else
-                Log.Logger.Error("Error get count learned words");
-            await base.InitializeAsync(navigatedata);
+            catch (Exception er)
+            {
+                Log.Logger.Error(er);
+            }
         }
 
         private async Task AnimationShowData()

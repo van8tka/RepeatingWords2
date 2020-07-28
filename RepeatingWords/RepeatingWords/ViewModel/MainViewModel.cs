@@ -85,8 +85,15 @@ namespace RepeatingWords.ViewModel
 
         public override Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
-            LoadData();
+            try
+            {
+                IsBusy = true;
+                LoadData();
+            }
+            catch (Exception er)
+            {
+                Log.Logger.Error(er);
+            }
             return base.InitializeAsync(navigationData);
         }
 

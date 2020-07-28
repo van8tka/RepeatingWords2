@@ -38,9 +38,16 @@ namespace RepeatingWords.ViewModel
 
         public override Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
-            CurrentVoiceLanguage = _volumeService.GetVolumeLanguage();
-            SetFirstLanguageView(_showLanguageService.GetFirstLanguage());
+            try
+            {
+                IsBusy = true;
+                CurrentVoiceLanguage = _volumeService.GetVolumeLanguage();
+                SetFirstLanguageView(_showLanguageService.GetFirstLanguage());
+            }
+            catch (Exception er)
+            {
+                Log.Logger.Error(er);
+            }
             return base.InitializeAsync(navigationData);
         }
 
