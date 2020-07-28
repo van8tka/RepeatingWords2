@@ -26,8 +26,7 @@ namespace RepeatingWords.ViewModel
             _studyService = studyService;
             _importFile = importFile;
             DictionaryList = new ObservableCollection<LanguageModel>();
-            ShowToolsCommand =
-                new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
+            ShowToolsCommand = new Command(async () => { await NavigationService.NavigateToAsync<SettingsViewModel>(); });
             HelperCommand = new Command(async () => { await NavigationService.NavigateToAsync<HelperViewModel>(); });
             LikeCommand = new Command(async () => { await LikeApplication.Like(DialogService); });
             AddLanguageCommand = new Command(async () => { await AddLanguage(); });
@@ -37,6 +36,8 @@ namespace RepeatingWords.ViewModel
             });
             AppearingCommand = new Command(Appearing);
             ContextMenuLanguageCommand = new Command<int>(async (id) => await ContextMenuLanguage(id));
+            ShowWordsCommand = new Command<DictionaryModel>(async(dictionary) => await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary));
+            RemoveDictionaryCommand = new Command<DictionaryModel>(async (dictionary) =>await RemoveDictionary(dictionary));
         }
 
         private readonly IStudyService _studyService;
@@ -47,6 +48,7 @@ namespace RepeatingWords.ViewModel
             LoadData();
         }
 
+    
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
         public ICommand HelperCommand { get; set; }
@@ -54,6 +56,9 @@ namespace RepeatingWords.ViewModel
         public ICommand ContextMenuLanguageCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
+
+        public ICommand ShowWordsCommand { get; set; }
+        public ICommand RemoveDictionaryCommand { get; set; }
 
         private ObservableCollection<LanguageModel> _dictionaryList;
 
@@ -68,7 +73,6 @@ namespace RepeatingWords.ViewModel
         }
 
         private DictionaryModel _selectedItem;
-
         public DictionaryModel SelectedItem
         {
             get => _selectedItem;
@@ -76,8 +80,8 @@ namespace RepeatingWords.ViewModel
             {
                 _selectedItem = value;
                 OnPropertyChanged(nameof(SelectedItem));
-                if (_selectedItem != null)
-                    ContextMenuDictionary(_selectedItem.Id);
+                if(value!=null)
+                    ContextMenuDictionary(_selectedItem);
             }
         }
 
@@ -144,27 +148,12 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private async void ContextMenuDictionary(int idDictionary)
+        private async void ContextMenuDictionary(DictionaryModel dictionary)
         {
             try
             {
-                var selectedItem = _studyService.GetDictionary(idDictionary);
-                string removeDictionary = Resource.ButtonRemove;
-                string showWords = Resource.ButtonShowWords;
-                string studing = Resource.ButtonRepeatWords;
-                string[] actionButtons;
-                actionButtons = new string[] {studing, showWords, removeDictionary};
-                var result =
-                    await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
-                if (result.Equals(studing, StringComparison.OrdinalIgnoreCase))
-                {
-                    selectedItem.IsStudyUnlearnedWords = false;
-                    await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(selectedItem);
-                }
-                else if (result.Equals(showWords, StringComparison.OrdinalIgnoreCase))
-                    await NavigationService.NavigateToAsync<WordsListViewModel>(selectedItem);
-                else if (result.Equals(removeDictionary, StringComparison.OrdinalIgnoreCase))
-                    await RemoveDictionary(selectedItem);
+                dictionary.IsStudyUnlearnedWords = false;
+                await NavigationService.NavigateToAsync<RepeatingWordsViewModel>(dictionary);
                 SelectedItem = null;
             }
             catch (Exception e)
@@ -172,6 +161,7 @@ namespace RepeatingWords.ViewModel
                 Log.Logger.Error(e);
             }
         }
+        
 
         private async Task<bool> ContextMenuLanguage(int idLanguage)
         {

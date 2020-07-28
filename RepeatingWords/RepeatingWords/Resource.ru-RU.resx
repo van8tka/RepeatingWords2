@@ -138,7 +138,7 @@
     <comment>Кн следующего слова</comment>
   </data>
   <data name="ButtonRemove" xml:space="preserve">
-    <value>Удалить словарь</value>
+    <value>Удалить</value>
     <comment>Кн удалить словарь</comment>
   </data>
   <data name="ButtonRepeatWords" xml:space="preserve">
@@ -232,7 +232,7 @@
     <value>Слово изменено!</value>
   </data>
   <data name="ButtonShowWords" xml:space="preserve">
-    <value>Просмотр списка слов</value>
+    <value>Просмотр</value>
     <comment>Переход на страницу списка слов словаря</comment>
   </data>
   <data name="PickerText" xml:space="preserve">

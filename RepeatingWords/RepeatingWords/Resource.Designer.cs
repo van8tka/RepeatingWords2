@@ -304,7 +304,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove the dictionary.
+        ///   Looks up a localized string similar to Remove.
         /// </summary>
         public static string ButtonRemove {
             get {
@@ -358,7 +358,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View the list of words.
+        ///   Looks up a localized string similar to View.
         /// </summary>
         public static string ButtonShowWords {
             get {

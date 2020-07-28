@@ -8,6 +8,6 @@
     <item name="android:colorActivatedHighlight">@color/colorMainDefineApp</item>
     <item name="android:statusBarColor">@color/colorMainDefineApp</item>
     <item name="colorAccent">@color/colorMainDefineApp</item>
+    <item name="android:actionModeBackground">@color/colorMainDefineApp</item>
   </style>
- 
 </resources>
