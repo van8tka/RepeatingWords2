@@ -81,11 +81,14 @@ namespace RepeatingWords.ViewModel
             }
         }
 
+       
         public override Task InitializeAsync(object navigationData)
         {
             try
             {
                 IsBusy = true;
+                if ( FirstStartService.IsFirstStart())
+                    ShowDialogSetup();
                 LoadData();
             }
             catch (Exception er)
@@ -93,6 +96,17 @@ namespace RepeatingWords.ViewModel
                 Log.Logger.Error(er);
             }
             return base.InitializeAsync(navigationData);
+        }
+
+        private async void ShowDialogSetup()
+        {
+            string btnSetup = Resource.ButtonSetup;
+            string btnLate = Resource.ButtonLater;
+            string titleNeedSetup = Resource.LabelNeedSetup;
+            var result = await DialogService.ShowConfirmAsync(titleNeedSetup,
+                "", btnSetup, btnLate);
+            if (result)
+                await NavigationService.NavigateToAsync<SettingsViewModel>();
         }
 
         private void LoadData()

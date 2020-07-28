@@ -5,6 +5,8 @@ namespace RepeatingWords.Heleprs
 {
     internal class Constants
     {
+        public static string IS_FIRST_START = "first_start_yes";
+
         // as this constants has DataService
         internal const string DATABASE_NAME = "repeatwords.db";
      //   internal const string DATABASE_NAME = "repeatwords_v_1.db";

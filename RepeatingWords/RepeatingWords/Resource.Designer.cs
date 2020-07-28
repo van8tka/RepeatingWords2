@@ -277,6 +277,15 @@ namespace RepeatingWords {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Later.
+        /// </summary>
+        public static string ButtonLater {
+            get {
+                return ResourceManager.GetString("ButtonLater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next card.
         /// </summary>
         public static string ButtonNextWord {
@@ -336,6 +345,15 @@ namespace RepeatingWords {
         public static string ButtonSendReview {
             get {
                 return ResourceManager.GetString("ButtonSendReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set.
+        /// </summary>
+        public static string ButtonSetup {
+            get {
+                return ResourceManager.GetString("ButtonSetup", resourceCulture);
             }
         }
         
@@ -516,6 +534,15 @@ namespace RepeatingWords {
         public static string LabelHeadCreateInstr {
             get {
                 return ResourceManager.GetString("LabelHeadCreateInstr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First, set the audio language and the first displayed language.
+        /// </summary>
+        public static string LabelNeedSetup {
+            get {
+                return ResourceManager.GetString("LabelNeedSetup", resourceCulture);
             }
         }
         

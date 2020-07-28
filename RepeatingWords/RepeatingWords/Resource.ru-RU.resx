@@ -480,4 +480,13 @@
   <data name="LbUnlearnedCount" xml:space="preserve">
     <value>Невыученные слова: </value>
   </data>
+  <data name="ButtonLater" xml:space="preserve">
+    <value>Позже</value>
+  </data>
+  <data name="ButtonSetup" xml:space="preserve">
+    <value>Установить</value>
+  </data>
+  <data name="LabelNeedSetup" xml:space="preserve">
+    <value>Для начала, установите язык озвучки и первый отображаемый язык.</value>
+  </data>
 </root>

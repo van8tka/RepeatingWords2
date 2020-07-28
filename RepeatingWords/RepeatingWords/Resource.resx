@@ -482,4 +482,13 @@
   <data name="LbUnlearnedCount" xml:space="preserve">
     <value>Unlearned words: </value>
   </data>
+  <data name="ButtonLater" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="ButtonSetup" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="LabelNeedSetup" xml:space="preserve">
+    <value>First, set the audio language and the first displayed language</value>
+  </data>
 </root>
