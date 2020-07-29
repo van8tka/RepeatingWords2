@@ -36,7 +36,7 @@ namespace RepeatingWords.ViewModel
             });
             AppearingCommand = new Command(Appearing);
             ContextMenuLanguageCommand = new Command<int>(async (id) => await ContextMenuLanguage(id));
-            ShowWordsCommand = new Command<DictionaryModel>(async(dictionary) => await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary));
+            ShowWordsCommand = new Command<DictionaryModel>(async(dictionary) =>await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary));
             RemoveDictionaryCommand = new Command<DictionaryModel>(async (dictionary) =>await RemoveDictionary(dictionary));
         }
 
@@ -48,7 +48,7 @@ namespace RepeatingWords.ViewModel
             LoadData();
         }
 
-    
+      
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
         public ICommand HelperCommand { get; set; }
@@ -56,9 +56,10 @@ namespace RepeatingWords.ViewModel
         public ICommand ContextMenuLanguageCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
-
         public ICommand ShowWordsCommand { get; set; }
         public ICommand RemoveDictionaryCommand { get; set; }
+
+       
 
         private ObservableCollection<LanguageModel> _dictionaryList;
 

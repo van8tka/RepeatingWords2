@@ -6,6 +6,7 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using RepeatingWords.DataService.Model;
 using RepeatingWords.Helpers.Interfaces;
+using Xamarin.Forms;
 
 namespace RepeatingWords.Model
 {
@@ -21,6 +22,7 @@ namespace RepeatingWords.Model
             IdLanguage = dictionary.IdLanguage;
             WordsCollection = GetCollectionWordsFromRawData(wordsDb);
         }
+ 
 
 
         ObservableCollection<WordsModel> GetCollectionWordsFromRawData(IEnumerable<Words> words)
