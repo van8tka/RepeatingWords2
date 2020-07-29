@@ -56,14 +56,21 @@ namespace RepeatingWords.Helpers
         {
             return Task.Run(() =>
             {
-                var jDataRaw = JArray.Parse(dataRaw);
-                int count = jDataRaw.Count();
-             
-                for (int i = 0; i < count; i++)
+                try
                 {
-                    var listWords = new List<Words>();
-                    AddDictionaryToDb(jDataRaw[i] as JArray, newLanguageId, listWords);
-                    _studyService.AddWords(listWords);
+                    var jDataRaw = JArray.Parse(dataRaw);
+                    int count = jDataRaw.Count();
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        var listWords = new List<Words>();
+                        AddDictionaryToDb(jDataRaw[i] as JArray, newLanguageId, listWords);
+                        _studyService.AddWords(listWords);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.Logger.Error(e);
                 }
             });
         }

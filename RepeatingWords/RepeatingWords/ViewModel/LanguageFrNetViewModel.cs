@@ -47,7 +47,7 @@ namespace RepeatingWords.ViewModel
         }
 
 
-        public async Task LoadLanguage(Language selectedLanguage)
+        public async void LoadLanguage(Language selectedLanguage)
         {
             SelectedItem = null;
             try
