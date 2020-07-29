@@ -76,7 +76,7 @@ namespace RepeatingWords.Droid
                           }
                           return lastFile;
                       }
-                      return null;
+                      throw new ArgumentNullException(nameof(pathToDir));
                   });
             }
             catch (Exception er)

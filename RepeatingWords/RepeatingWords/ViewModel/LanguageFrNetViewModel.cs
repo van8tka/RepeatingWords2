@@ -59,6 +59,7 @@ namespace RepeatingWords.ViewModel
             catch (Exception e)
             {
                 DialogService.HideLoadDialog();
+                DialogService.ShowToast(e.Message);
                 Log.Logger.Error(e);
             }           
         }
@@ -89,6 +90,7 @@ namespace RepeatingWords.ViewModel
             catch(Exception e)
             {
                 Log.Logger.Error(e);
+                DialogService.ShowToast(e.Message);
             }
         }
 

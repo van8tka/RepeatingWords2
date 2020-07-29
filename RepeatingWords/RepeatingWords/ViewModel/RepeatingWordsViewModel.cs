@@ -173,7 +173,7 @@ namespace RepeatingWords.ViewModel
         private Task WorkSurface(string nameSurface, ICustomContentView viewSurface)
         {
             if (Model.AllWordsCount == 0)
-                return null;
+                return Task.FromResult(false);
             var tAnim0 = _animationService.AnimationFade(WorkContainerView, 0);
             WorkSpaceView = viewSurface as ContentView ?? throw new Exception("Error SurfaceView is null");
             _workSpaceVM = viewSurface.CustomVM;

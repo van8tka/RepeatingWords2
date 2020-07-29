@@ -183,8 +183,7 @@ namespace RepeatingWords.Services
                         IEnumerable<T> items = JsonConvert.DeserializeObject<IEnumerable<T>>(data);
                         return items;
                     }
-                    else
-                        return null;
+                    throw new ArgumentNullException(nameof(data));
                 });             
             }
             catch (Exception e)
