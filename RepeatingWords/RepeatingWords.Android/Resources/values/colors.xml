@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="colorMainDefineApp">#6bafef</color>
-  <!--<color name="colorMainDefineApp">#4badf9</color>-->
+  <color name="colorNonActivated">#B4CDCD</color>
 </resources>

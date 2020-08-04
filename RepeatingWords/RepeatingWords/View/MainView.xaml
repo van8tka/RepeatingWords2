@@ -64,16 +64,28 @@
                                 <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding ="0,5,10,5">
                                 <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" MaxLines="1" LineBreakMode="TailTruncation"/>
-                                <Image HorizontalOptions="End" VerticalOptions="Center" Source="{Binding StateIcon}" Margin="0,0,10,0" >
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ExpandCommand}"  NumberOfTapsRequired="1"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
+                                <Image HorizontalOptions="End" VerticalOptions="Center" Source="{Binding StateIcon}" Margin="0,0,10,0" />
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference RelativeLayoutContext}, Path=BindingContext.ContextMenuLanguageCommand}" NumberOfTapsRequired="1" CommandParameter="{Binding Id}"/>
+                                    <TapGestureRecognizer Command="{Binding ExpandCommand}" NumberOfTapsRequired="1"/>
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
-                                </ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Command="{Binding Path=BindingContext.AddDictionaryCommand, Source={x:Reference Name=MyLanguageList}}"
+                                                  CommandParameter="{Binding .}"
+                                                  IconImageSource="floating_btn_add.png"
+                                                  Text="{local:Translate ButtonAddDict}" />
+                                        <MenuItem Command="{Binding Path=BindingContext.ImportFromFileCommand, Source={x:Reference Name=MyLanguageList}}"
+                                                  CommandParameter="{Binding .}"
+                                                  IconImageSource="btn_round_import.png"
+                                                  Text="{local:Translate ButtonImport}" />
+                                        <MenuItem Command="{Binding Path=BindingContext.RemoveLanguageCommand, Source={x:Reference Name=MyLanguageList} }"
+                                                  CommandParameter="{Binding .}"
+                                                  IconImageSource="btn_round_basket.png"
+                                                  Text="{local:Translate ButtonRemoveLanguage}" 
+                                                  IsDestructive="True" />
+                                    </ViewCell.ContextActions>
+
+                        </ViewCell>
                             </DataTemplate>
                         </ListView.GroupHeaderTemplate>
                         </ListView>

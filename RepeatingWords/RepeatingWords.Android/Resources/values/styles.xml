@@ -8,8 +8,8 @@
     <item name="android:statusBarColor">@color/colorMainDefineApp</item>
     <item name="colorAccent">@color/colorMainDefineApp</item>
     <item name="android:actionModeBackground">@color/colorMainDefineApp</item>
-    <item name="android:colorPressedHighlight">@color/colorMainDefineApp</item>
-    <item name="android:colorLongPressedHighlight">@color/colorMainDefineApp</item>
-    <item name="android:colorActivatedHighlight">@color/colorMainDefineApp</item>
+    <item name="android:colorPressedHighlight">@color/colorNonActivated</item>
+    <item name="android:colorLongPressedHighlight">@color/colorNonActivated</item>
+    <item name="android:colorActivatedHighlight">@color/colorNonActivated</item>
   </style>
 </resources>

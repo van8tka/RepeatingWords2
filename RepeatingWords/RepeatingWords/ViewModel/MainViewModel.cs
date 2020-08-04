@@ -36,9 +36,12 @@ namespace RepeatingWords.ViewModel
             });
             AddWordCommand = new Command<DictionaryModel>((dictionary) => { NavigationService.NavigateToAsync<CreateWordViewModel>(dictionary); });
             AppearingCommand = new Command(Appearing);
-            ContextMenuLanguageCommand = new Command<int>(async (id) => await ContextMenuLanguage(id));
             ShowWordsCommand = new Command<DictionaryModel>(async(dictionary) =>await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary));
             RemoveDictionaryCommand = new Command<DictionaryModel>(async (dictionary) =>await RemoveDictionary(dictionary));
+           ImportFromFileCommand = new Command<LanguageModel>((language)=>ImportFile(language.Id));
+            RemoveLanguageCommand = new Command<LanguageModel>((language) =>RemoveLanguage(language.Id));
+            AddDictionaryCommand = new Command<LanguageModel>((language) =>AddDictionary(language.Id));
+
         }
 
         private readonly IStudyService _studyService;
@@ -48,13 +51,14 @@ namespace RepeatingWords.ViewModel
         {
             LoadData();
         }
-
-      public ICommand AddWordCommand { get; set; }
+        public ICommand ImportFromFileCommand { get; set; }
+        public ICommand RemoveLanguageCommand { get; set; }
+        public ICommand AddDictionaryCommand { get; set; }
+        public ICommand AddWordCommand { get; set; }
         public ICommand ShowToolsCommand { get; set; }
         public ICommand LikeCommand { get; set; }
         public ICommand HelperCommand { get; set; }
         public ICommand AddLanguageCommand { get; set; }
-        public ICommand ContextMenuLanguageCommand { get; set; }
         public ICommand AddWordsFromNetCommand { get; set; }
         public ICommand AppearingCommand { get; set; }
         public ICommand ShowWordsCommand { get; set; }
@@ -83,7 +87,7 @@ namespace RepeatingWords.ViewModel
                 _selectedItem = value;
                 OnPropertyChanged(nameof(SelectedItem));
                 if(value!=null)
-                    ContextMenuDictionary(_selectedItem);
+                    StudyDictionary(_selectedItem);
             }
         }
 
@@ -150,7 +154,7 @@ namespace RepeatingWords.ViewModel
             }
         }
 
-        private async void ContextMenuDictionary(DictionaryModel dictionary)
+        private async void StudyDictionary(DictionaryModel dictionary)
         {
             try
             {
@@ -164,38 +168,7 @@ namespace RepeatingWords.ViewModel
             }
         }
         
-
-        private async Task<bool> ContextMenuLanguage(int idLanguage)
-        {
-            try
-            {
-                string removeLanguage = Resource.ButtonRemoveLanguage;
-                string addDictionary = Resource.ButtonAddDict;
-                string addFromFile = Resource.ButtonImport;
-
-                string[] actionButtons = new string[] {removeLanguage, addDictionary, addFromFile};
-                var result =
-                    await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: actionButtons);
-                if (result.Equals(removeLanguage, StringComparison.OrdinalIgnoreCase))
-                    await RemoveLanguage(idLanguage);
-                else if (result.Equals(addDictionary, StringComparison.OrdinalIgnoreCase))
-                    await AddDictionary(idLanguage);
-                else if (result.Equals(addFromFile, StringComparison.OrdinalIgnoreCase))
-                {
-                    DialogService.ShowLoadDialog();
-                    await ImportFile(idLanguage);
-                }
-
-                DialogService.HideLoadDialog();
-                return true;
-            }
-            catch (Exception e)
-            {
-                DialogService.HideLoadDialog();
-                Log.Logger.Error(e);
-                return false;
-            }
-        }
+ 
 
 
         public async Task<int> AddDictionary(int idLanguage)
