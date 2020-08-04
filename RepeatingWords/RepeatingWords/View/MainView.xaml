@@ -42,11 +42,17 @@
                                             </StackLayout>
                                         </ViewCell.View>
                                         <ViewCell.ContextActions>
-                                                <MenuItem Command="{Binding Path=BindingContext.ShowWordsCommand, Source={x:Reference Name=MyLanguageList}}"
+                                                 <MenuItem Command="{Binding Path=BindingContext.ShowWordsCommand, Source={x:Reference Name=MyLanguageList}}"
                                                       CommandParameter="{Binding .}"
+                                                      IconImageSource="floating_btn_add.png"
+                                                      Text="{local:Translate ButtonShowWords}" />
+                                              <MenuItem Command="{Binding Path=BindingContext.ShowWordsCommand, Source={x:Reference Name=MyLanguageList}}"
+                                                      CommandParameter="{Binding .}"
+                                                      IconImageSource="btn_round_list.png"
                                                       Text="{local:Translate ButtonShowWords}" />
                                                  <MenuItem Command="{Binding Path=BindingContext.RemoveDictionaryCommand, Source={x:Reference Name=MyLanguageList} }"
                                                       CommandParameter="{Binding .}"
+                                                      IconImageSource="btn_round_basket.png"
                                                       Text="{local:Translate ButtonRemove}" 
                                                       IsDestructive="True" />
                                         </ViewCell.ContextActions>
