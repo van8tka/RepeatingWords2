@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              xmlns:locale ="clr-namespace:RepeatingWords;assembly=RepeatingWords"
              x:Class="RepeatingWords.View.FinishLearnView"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              Style="{StaticResource TitleApp}"
 >
     <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -16,36 +17,40 @@
                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, ElementName=SearchControlsGrid, Property=Height,Factor=1, Constant=0}" 
                />
 
-        <StackLayout x:Name="stCongratulation" Orientation="Vertical" HorizontalOptions="Center"
-                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
-                    Property=Height, Factor=0.20, Constant=0}" 
-                    RelativeLayout.WidthConstraint="{ConstraintExpression
-                    Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
-                    Margin="2"
-                    Opacity="0"
+        <StackLayout x:Name="stCongratulation" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="FillAndExpand"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, ElementName=SearchControlsGrid,Property=Width, Factor=1, Constant=0 }"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, ElementName=SearchControlsGrid, Property=Height,Factor=1, Constant=0}" 
+                     Opacity="0"
                     >
             <Label FontSize="35" HorizontalTextAlignment="Center" Text="{locale:Translate LbCongratulations}" TextColor="White" FontAttributes="Bold" />
-            <Label FontAttributes="Bold" FontSize="26" HorizontalTextAlignment="Center" Text="{locale:Translate LbFinishStudied}" TextColor="White"  />
+            <Label FontAttributes="Bold" FontSize="26" HorizontalTextAlignment="Center" Text="{locale:Translate LbFinishStudied}" TextColor="White"  Margin="2"/>
+
+            <StackLayout Orientation="Vertical" Margin="30,0,0,0" VerticalOptions="CenterAndExpand" >
+                <Label x:Name="lbLearned"  
+                       Opacity="0"
+                       Text="{Binding LearnedWordsCount}"
+                       FontSize="Medium" 
+                       TextColor="White"/>
+                <Label x:Name="lbUnlearned" 
+                       Opacity="0"
+                       Text="{Binding UnlearnedWordsCount}"
+                       FontSize="Medium"
+                       TextColor="White"/>
+
             </StackLayout>
-           <StackLayout Orientation="Vertical" Margin="30,0,0,0"
-                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=stCongratulation, 
-                    Property=Y, Factor=1, Constant=150}" 
-                        >
-            <Label x:Name="lbLearned"  Opacity="0" Text="{Binding LearnedWordsCount}" FontSize="Medium" TextColor="White"/>
-            <Label x:Name="lbUnlearned"  Opacity="0"  Text="{Binding UnlearnedWordsCount}" FontSize="Medium" TextColor="White"/>
-               
+            <StackLayout x:Name="stLearnMore"  Orientation="Vertical" VerticalOptions="End" Opacity="0">
+                <Label FontSize="Small" Text="{locale:Translate LbAdvertizing}" HorizontalTextAlignment="Center"/>
+                <Button 
+                    BackgroundColor="{StaticResource ColorCustomBackgrountButton}" 
+                    TextColor="White" 
+                    Text="{locale:Translate BtnLearnMore}" 
+                    FontSize="20"
+                    Command="{Binding GoMainPageCommand}"
+                    HeightRequest="100"
+                    android:Button.UseDefaultPadding="true"
+                    android:Button.UseDefaultShadow="true"
+                />
+            </StackLayout>
         </StackLayout>
-           <StackLayout x:Name="stLearnMore"  Orientation="Vertical"
-                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
-                        Property=Height, Factor=1, Constant=-132}" 
-                        RelativeLayout.WidthConstraint="{ConstraintExpression
-                        Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
-                        Margin="2"
-                        Opacity="0"
-                    >
-            <Label FontSize="Small" Text="{locale:Translate LbAdvertizing}" HorizontalTextAlignment="Center"/>
-            <Button BackgroundColor="{StaticResource ColorCustomBackgrountButton}" TextColor="White" Text="{locale:Translate BtnLearnMore}" FontSize="20" Command="{Binding GoMainPageCommand}" HeightRequest="100" />
-           </StackLayout>
-       
-   </RelativeLayout>
+    </RelativeLayout>
 </ContentPage>

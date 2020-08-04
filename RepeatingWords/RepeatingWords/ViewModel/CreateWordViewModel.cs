@@ -126,7 +126,10 @@ namespace RepeatingWords.ViewModel
             else
             {
                 if (lastPage is MainViewModel)
+                {
                     await NavigationService.NavigateToAsync<WordsListViewModel>(_dictionary);
+                    await NavigationService.RemoveLastFromBackStackAsync();
+                }
                 else
                     await NavigationService.GoBackPage();
             }

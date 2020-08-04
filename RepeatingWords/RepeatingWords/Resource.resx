@@ -474,7 +474,7 @@
     <value>Congratulations!</value>
   </data>
   <data name="LbFinishStudied" xml:space="preserve">
-    <value>You're done learning words.</value>
+    <value>You're done learning words</value>
   </data>
   <data name="LbLearnedCount" xml:space="preserve">
     <value>Learned words: </value>

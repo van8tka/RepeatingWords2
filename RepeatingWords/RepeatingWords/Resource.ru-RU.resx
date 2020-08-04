@@ -472,7 +472,7 @@
     <value>Поздравляем!</value>
   </data>
   <data name="LbFinishStudied" xml:space="preserve">
-    <value>Вы закончили изучать слова.</value>
+    <value>Вы закончили изучать слова</value>
   </data>
   <data name="LbLearnedCount" xml:space="preserve">
     <value>Выученные слова: </value>

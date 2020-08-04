@@ -691,7 +691,7 @@ namespace RepeatingWords {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;re done learning words..
+        ///   Looks up a localized string similar to You&apos;re done learning words.
         /// </summary>
         public static string LbFinishStudied {
             get {
