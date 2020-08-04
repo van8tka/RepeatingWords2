@@ -99,9 +99,8 @@ namespace RepeatingWords.ViewModel
                     {
                         TranscriptionWord = "[]";
                     }
-                   
-                   CreateWord(); 
-                   await GoBack();
+                    CreateWord();
+                    await GoBack();
                 }
                 else
                 {
@@ -126,8 +125,10 @@ namespace RepeatingWords.ViewModel
             }
             else
             {
-                Log.Logger.Info("Previous page GoBackPage");
-                await NavigationService.GoBackPage();
+                if (lastPage is MainViewModel)
+                    await NavigationService.NavigateToAsync<WordsListViewModel>(_dictionary);
+                else
+                    await NavigationService.GoBackPage();
             }
         }
 

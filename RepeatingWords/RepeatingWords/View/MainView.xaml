@@ -42,7 +42,7 @@
                                             </StackLayout>
                                         </ViewCell.View>
                                         <ViewCell.ContextActions>
-                                                 <MenuItem Command="{Binding Path=BindingContext.ShowWordsCommand, Source={x:Reference Name=MyLanguageList}}"
+                                                 <MenuItem Command="{Binding Path=BindingContext.AddWordCommand, Source={x:Reference Name=MyLanguageList}}"
                                                       CommandParameter="{Binding .}"
                                                       IconImageSource="floating_btn_add.png"
                                                       Text="{local:Translate ButtonShowWords}" />
