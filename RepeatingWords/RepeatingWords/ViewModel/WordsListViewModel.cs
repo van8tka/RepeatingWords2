@@ -23,8 +23,8 @@ namespace RepeatingWords.ViewModel
             AddWordCommand = new Command(()=> { NavigationService.NavigateToAsync<CreateWordViewModel>(_dictionary); });
             RepeatingWordsCommand = new Command(()=> { NavigationService.NavigateToAsync<RepeatingWordsViewModel>(_dictionary); });
             ImportWordsCommand = new Command( async () => { DialogService.ShowLoadDialog(); await ImportFile(); });
-            ChangeWordCommand = new Command<WordsModel>((selectedItem)=> NavigationService.NavigateToAsync<CreateWordViewModel>(selectedItem));
-            RemoveWordCommand = new Command<WordsModel>((s)=> Remove(s));
+            ChangeWordCommand = new Command<WordsModel>((word)=> NavigationService.NavigateToAsync<CreateWordViewModel>(word));
+            RemoveWordCommand = new Command<WordsModel>((word)=> Remove(word));
         }
         public ICommand AddWordCommand { get; set; }
         public ICommand RepeatingWordsCommand { get; set; }
@@ -44,16 +44,7 @@ namespace RepeatingWords.ViewModel
                 OnPropertyChanged(nameof(DictionaryName)); } }
         private ObservableCollection<WordsModel> _wordsList;
         public ObservableCollection<WordsModel> WordsList { get => _wordsList; set { _wordsList = value; OnPropertyChanged(nameof(WordsList)); } }
-        private WordsModel _selectedItem;
-        public WordsModel SelectedItem
-        {
-            get => _selectedItem;
-            set { _selectedItem = value; 
-                OnPropertyChanged(nameof(SelectedItem));
-                if (_selectedItem != null) 
-                    ShowActions(_selectedItem);
-            }
-        }
+     
         private bool _isVisibleListEmpty;
         public bool IsVisibleListEmpty
         {
@@ -61,29 +52,12 @@ namespace RepeatingWords.ViewModel
             set { _isVisibleListEmpty = value; OnPropertyChanged(nameof(IsVisibleListEmpty)); }
         }
 
-        private async void ShowActions(WordsModel selectedItem)
-        {
-            try
-            {
-                SelectedItem = null;
-                string remove = Resource.ModalRemoveAct;
-                string change = Resource.ModalActChange;               
-                var result = await DialogService.ShowActionSheetAsync("", "", Resource.ModalActCancel, buttons: new string[] { change, remove });
-                if (result.Equals(change, StringComparison.OrdinalIgnoreCase))
-                    ChangeWordCommand.Execute(selectedItem);
-                if (result.Equals(remove, StringComparison.OrdinalIgnoreCase))
-                    RemoveWordCommand.Execute(selectedItem);
-            }
-            catch (Exception e)
-            {
-                Log.Logger.Error(e);
-            }
-        }
+       
 
-        private Task Remove(WordsModel selectedItem)
+        private Task Remove(WordsModel word)
         {
-            WordsList.Remove(selectedItem);
-            var task = Task.Run(()=>_studyService.RemoveWord(selectedItem));
+            WordsList.Remove(word);
+            var task = Task.Run(()=>_studyService.RemoveWord(word));
             SetIsListEmptyLabel();
             OnPropertyChanged(nameof(WordsList));
             CountWords--;
