@@ -136,7 +136,6 @@
     <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.6.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdMobRenderer.cs" />
     <Compile Include="AdMobRendererInterstitial.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EntryRepeatingWordRender.cs" />
