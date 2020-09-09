@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using RepeatingWords.iOS.LoggerService;
+using RepeatingWords.LoggerService;
 
 namespace RepeatingWords.iOS
 {
@@ -22,9 +24,14 @@ namespace RepeatingWords.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            SQLitePCL.Batteries.Init();
             global::Xamarin.Forms.Forms.Init();
             //LoadApplication(new App(new SQLite_iOS()));
-            LoadApplication(null);
+            FormsControls.Touch.Main.Init();
+            var logManager = new NLogManager().GetLog();
+            var log = new Log(logManager);
+            logManager.Info("____NEW SESSION CARDS OF WORDS___");
+            LoadApplication(new App(new SQLite_iOS(), log));
             return base.FinishedLaunching(app, options);
         }
     }

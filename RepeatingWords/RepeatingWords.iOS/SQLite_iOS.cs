@@ -8,7 +8,9 @@ using RepeatingWords.Interfaces;
 using RepeatingWords.iOS;
 using UIKit;
 using Xamarin.Forms;
-
+using RepeatingWords.Interfaces;
+using RepeatingWords.LoggerService;
+using System.IO;
 [assembly:Dependency(typeof(SQLite_iOS))]
 namespace RepeatingWords.iOS
 {
@@ -16,7 +18,8 @@ namespace RepeatingWords.iOS
     {
         public string GetDatabasePath(string filename)
         {
-            throw new NotImplementedException();
+            Log.Logger.Info("Get path to db");
+           return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"..","Library", filename);
         }
     }
 }
