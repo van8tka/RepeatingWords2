@@ -24,7 +24,7 @@ namespace RepeatingWords.iOS
             _interstitial = new Interstitial("ca-app-pub-5993977371632312/9672263359");
             var request = Request.GetDefaultRequest();
 #pragma warning disable CS0618 // Type or member is obsolete
-            request.TestDevices = new string[] { "3B68FB49-8490-48E8-BBC3-41A1BA2D41B7", "GADSimulator" };
+         //   request.TestDevices = new string[] { "3B68FB49-8490-48E8-BBC3-41A1BA2D41B7", "GADSimulator" };
 #pragma warning restore CS0618 // Type or member is obsolete
             _interstitial.LoadRequest(request);
         }

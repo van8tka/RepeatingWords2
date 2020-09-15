@@ -34,11 +34,6 @@
 		<string>Icon-60@3x</string>
 		<string>Icon-76</string>
 		<string>Icon-76@2x</string>
-		<string>Default</string>
-		<string>Default@2x</string>
-		<string>Default-568h@2x</string>
-		<string>Default-Portrait</string>
-		<string>Default-Portrait@2x</string>
 		<string>Icon-Small-40</string>
 		<string>Icon-Small-40@2x</string>
 		<string>Icon-Small-40@3x</string>
@@ -47,8 +42,17 @@
 		<string>Icon-Small@3x</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>maingp</string>
 	<key>CFBundleName</key>
 	<string>RepeatingWords</string>
+	<key>GADApplicationIdentifier</key>
+<string>ca-app-pub-5993977371632312~1985345028</string>
+<key>SKAdNetworkItems</key>
+  <array>
+    <dict>
+      <key>SKAdNetworkIdentifier</key>
+      <string>cstr6suwn9.skadnetwork</string>
+    </dict>
+  </array>
 </dict>
 </plist>

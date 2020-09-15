@@ -105,13 +105,9 @@
     <Compile Include="KeyButtonRender.cs" />
     <Compile Include="KeyboardService.cs" />
     <Compile Include="AdMobRenderInterstitial.cs" />
+    <Compile Include="ListViewRendererHackfix_AutomaticHeaderHeights_20190418.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-60%403x.png" />
     <BundleResource Include="Resources\Icon-76.png" />
@@ -123,6 +119,31 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\arrow_down.png" />
+    <BundleResource Include="Resources\arrow_up.png" />
+    <BundleResource Include="Resources\background.png" />
+    <BundleResource Include="Resources\btn_round_basket.png" />
+    <BundleResource Include="Resources\btn_round_edit.png" />
+    <BundleResource Include="Resources\btn_round_import.png" />
+    <BundleResource Include="Resources\btn_round_list.png" />
+    <BundleResource Include="Resources\floating_btn_add.png" />
+    <BundleResource Include="Resources\floating_btn_cloud.png" />
+    <BundleResource Include="Resources\floating_btn_impFile.png" />
+    <BundleResource Include="Resources\floating_btn_learn.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\icons_cardsbutton.png" />
+    <BundleResource Include="Resources\icons_cardsbuttonGray.png" />
+    <BundleResource Include="Resources\icons_keyboard.png" />
+    <BundleResource Include="Resources\icons_keyboardGray.png" />
+    <BundleResource Include="Resources\icons_select_word.png" />
+    <BundleResource Include="Resources\icons_select_wordGray.png" />
+    <BundleResource Include="Resources\maingp.png" />
+    <BundleResource Include="Resources\toolbarImageAdd.png" />
+    <BundleResource Include="Resources\toolbarImageEdit.png" />
+    <BundleResource Include="Resources\toolbarImageHelp.png" />
+    <BundleResource Include="Resources\toolbarImageLike.png" />
+    <BundleResource Include="Resources\toolbarImageTools.png" />
+    <BundleResource Include="Resources\voice.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

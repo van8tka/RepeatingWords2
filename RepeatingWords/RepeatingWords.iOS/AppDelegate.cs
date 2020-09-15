@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Google.MobileAds;
 using Foundation;
 using UIKit;
 using RepeatingWords.iOS.LoggerService;
@@ -24,9 +24,9 @@ namespace RepeatingWords.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            MobileAds.SharedInstance.Start(null); 
             SQLitePCL.Batteries.Init();
             global::Xamarin.Forms.Forms.Init();
-            //LoadApplication(new App(new SQLite_iOS()));
             FormsControls.Touch.Main.Init();
             var logManager = new NLogManager().GetLog();
             var log = new Log(logManager);

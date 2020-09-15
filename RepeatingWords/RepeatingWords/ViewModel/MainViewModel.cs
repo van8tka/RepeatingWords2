@@ -12,6 +12,7 @@ using RepeatingWords.Interfaces;
 using RepeatingWords.Model;
 using RepeatingWords.Services;
 using Xamarin.Forms;
+using System.Threading;
 
 namespace RepeatingWords.ViewModel
 {
@@ -38,9 +39,10 @@ namespace RepeatingWords.ViewModel
             AppearingCommand = new Command(Appearing);
             ShowWordsCommand = new Command<DictionaryModel>(async(dictionary) =>await NavigationService.NavigateToAsync<WordsListViewModel>(dictionary));
             RemoveDictionaryCommand = new Command<DictionaryModel>(async (dictionary) =>await RemoveDictionary(dictionary));
-           ImportFromFileCommand = new Command<LanguageModel>((language)=>ImportFile(language.Id));
+            ImportFromFileCommand = new Command<LanguageModel>((language)=>ImportFile(language.Id));
             RemoveLanguageCommand = new Command<LanguageModel>((language) =>RemoveLanguage(language.Id));
             AddDictionaryCommand = new Command<LanguageModel>((language) =>AddDictionary(language.Id));
+            ContextActionsMenuCommand = new Command<LanguageModel>((language) => ContextActionsMenu(language));
 
         }
 
@@ -63,8 +65,9 @@ namespace RepeatingWords.ViewModel
         public ICommand AppearingCommand { get; set; }
         public ICommand ShowWordsCommand { get; set; }
         public ICommand RemoveDictionaryCommand { get; set; }
+        public ICommand ContextActionsMenuCommand { get; set; }
 
-       
+
 
         private ObservableCollection<LanguageModel> _dictionaryList;
 
@@ -123,6 +126,29 @@ namespace RepeatingWords.ViewModel
         {
             DictionaryList = _studyService.DictionaryList;
         }
+
+
+       private async void ContextActionsMenu(LanguageModel language)
+       {
+            try
+            {
+                string add = Resource.ButtonCreate;
+                string remove = Resource.ButtonRemove;
+                string import = Resource.ButtonImport;
+                var action = await DialogService.ShowActionSheetAsync("", Resource.ModalActCancel, "", CancellationToken.None , add, remove, import);
+                if (action.Equals(add))
+                    AddDictionaryCommand.Execute(language);
+                else if (action.Equals(import))
+                    ImportFromFileCommand.Execute(language);
+                else if (action.Equals(remove))
+                    RemoveLanguageCommand.Execute(language);
+
+            }
+            catch(Exception er)
+            {
+                Log.Logger.Error(er);
+            }
+       }
 
 
         protected async Task ImportFile(int idLanguage)

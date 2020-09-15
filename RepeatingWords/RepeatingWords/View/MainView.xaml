@@ -21,31 +21,52 @@
 
     <ContentPage.Content>
         <RelativeLayout x:Name="RelativeLayoutContext"  Margin="10,0,10,5">
+           
+                 
             <ListView VerticalOptions="EndAndExpand"  x:DataType="vm:MainViewModel" 
                              ItemsSource="{Binding DictionaryList}" 
                              SeparatorColor="{StaticResource ColorCustomBackgrountButton}"
-                             IsGroupingEnabled="True"
+                             IsGroupingEnabled="true"
+                             HasUnevenRows="True"
                              SelectedItem ="{Binding SelectedItem, Mode=TwoWay}"
                              SelectionMode="Single"
-                             GroupDisplayBinding="{Binding Title}"
-                             GroupShortNameBinding="{Binding Name}"
+                           
                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}" 
                              x:Name="MyLanguageList" 
                               >
-                <ListView.ItemTemplate>
+                   <ListView.GroupHeaderTemplate>   
+                          <DataTemplate  x:DataType="modOut:LanguageModel">
+                                <ViewCell>
+                                
+                            <StackLayout Orientation="Horizontal" Padding ="0,5,10,5">
+                                <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" MaxLines="1" LineBreakMode="TailTruncation"/>
+                                <Image HorizontalOptions="End" VerticalOptions="Center" Source="{Binding StateIcon}" Margin="0,0,10,0" >
+                                     <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ExpandCommand}" NumberOfTapsRequired="1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.ContextActionsMenuCommand, Source={x:Reference Name=MyLanguageList}}"
+                                                          CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>                                         
+                        </ViewCell>
+                            </DataTemplate>                                 
+                        </ListView.GroupHeaderTemplate>
+            <ListView.ItemTemplate>
                             <DataTemplate x:DataType="modOut:DictionaryModel">
                                     <ViewCell>
-                                        <ViewCell.View>
+                                     
                                             <StackLayout Orientation="Horizontal" >
                                                 <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" Style="{DynamicResource LabelColor}" MaxLines="1" LineBreakMode="TailTruncation" />
                                                 <Label HorizontalOptions="End" HorizontalTextAlignment="End" MinimumWidthRequest="55" FontSize="13" VerticalTextAlignment="Center" Text="{Binding PercentOfLearned}" TextColor="{StaticResource ColorCustomBackgrountButton}" Margin="0,0,25,0"/>
                                             </StackLayout>
-                                        </ViewCell.View>
-                                        <ViewCell.ContextActions>
-                                                 <MenuItem Command="{Binding Path=BindingContext.AddWordCommand, Source={x:Reference Name=MyLanguageList}}"
+
+                                                   <ViewCell.ContextActions>
+                                                <MenuItem Command="{Binding Path=BindingContext.AddWordCommand, Source={x:Reference Name=MyLanguageList}}"
                                                       CommandParameter="{Binding .}"
                                                       IconImageSource="floating_btn_add.png"
-                                                      Text="{local:Translate ButtonShowWords}" />
+                                                      Text="{local:Translate ButtonCreate}" />
                                                  <MenuItem Command="{Binding Path=BindingContext.ShowWordsCommand, Source={x:Reference Name=MyLanguageList}}"
                                                       CommandParameter="{Binding .}"
                                                       IconImageSource="btn_round_list.png"
@@ -56,38 +77,10 @@
                                                       Text="{local:Translate ButtonRemove}" 
                                                       IsDestructive="True" />
                                         </ViewCell.ContextActions>
+
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                        <ListView.GroupHeaderTemplate>
-                          <DataTemplate  x:DataType="modOut:LanguageModel">
-                                <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding ="0,5,10,5">
-                                <Label HorizontalOptions="StartAndExpand" HeightRequest="60" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="Medium" TextColor="{StaticResource ColorCustomBackgrountButton}" MaxLines="1" LineBreakMode="TailTruncation"/>
-                                <Image HorizontalOptions="End" VerticalOptions="Center" Source="{Binding StateIcon}" Margin="0,0,10,0" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding ExpandCommand}" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                                    <ViewCell.ContextActions>
-                                        <MenuItem Command="{Binding Path=BindingContext.AddDictionaryCommand, Source={x:Reference Name=MyLanguageList}}"
-                                                  CommandParameter="{Binding .}"
-                                                  IconImageSource="floating_btn_add.png"
-                                                  Text="{local:Translate ButtonAddDict}" />
-                                        <MenuItem Command="{Binding Path=BindingContext.ImportFromFileCommand, Source={x:Reference Name=MyLanguageList}}"
-                                                  CommandParameter="{Binding .}"
-                                                  IconImageSource="btn_round_import.png"
-                                                  Text="{local:Translate ButtonImport}" />
-                                        <MenuItem Command="{Binding Path=BindingContext.RemoveLanguageCommand, Source={x:Reference Name=MyLanguageList} }"
-                                                  CommandParameter="{Binding .}"
-                                                  IconImageSource="btn_round_basket.png"
-                                                  Text="{local:Translate ButtonRemoveLanguage}" 
-                                                  IsDestructive="True" />
-                                    </ViewCell.ContextActions>
-
-                        </ViewCell>
-                            </DataTemplate>
-                        </ListView.GroupHeaderTemplate>
                         </ListView>
             <controls:ImageButtonAnimationScale
                 x:Name="FabCloudBtn"              
